@@ -11,6 +11,11 @@ export const sponsors: SponsorTier[] = [
     size: "big",
     items: [
       {
+        name: "Gusto",
+        url: "https://opencollective.com/gusto",
+        img: "https://images.opencollective.com/gusto/483a29b/logo/460.png",
+      },
+      {
         name: "schoolhouse.world",
         url: "https://github.com/schoolhouse-world",
         img: "https://avatars.githubusercontent.com/u/74070155?v=4",
@@ -36,6 +41,16 @@ export const sponsors: SponsorTier[] = [
         url: "https://opencollective.com/mirohq",
         img: "https://images.opencollective.com/mirohq/3c1699c/logo/460.png",
       },
+      {
+        name: "Benoît Rouleau",
+        url: "https://github.com/benface",
+        img: "https://avatars.githubusercontent.com/u/1059139?u=5c324233e22fbe8b507db6de8f18dcfeb1cba86d&v=4",
+      },
+      {
+        name: "Aikido Security",
+        url: "https://opencollective.com/aikidosec",
+        img: "https://images.opencollective.com/aikidosec/d2cacd5/logo/460.png",
+      },
     ],
   },
   {
@@ -43,19 +58,19 @@ export const sponsors: SponsorTier[] = [
     size: "avatar",
     items: [
       {
-        name: "LongYinan",
-        url: "https://github.com/Brooooooklyn",
-        img: "https://avatars.githubusercontent.com/u/3468483?u=daf25d236ad2cc227470fa0da2d5bdf3dbb7feed&v=4",
-      },
-      {
         name: "ubugeeei",
         url: "https://github.com/ubugeeei",
-        img: "https://avatars.githubusercontent.com/u/71201308?u=536018d050af3f13a99026d03a5d1ab57bda6a20&v=4",
+        img: "https://avatars.githubusercontent.com/u/71201308?u=44f9771e6bc51934d392e86a4644c32c615cdec8&v=4",
       },
       {
         name: "Michael Ireland",
         url: "https://github.com/MIreland",
         img: "https://avatars.githubusercontent.com/u/1170700?u=b7b435c7c541e3584cc213bebd1809a861ad3327&v=4",
+      },
+      {
+        name: "LongYinan",
+        url: "https://github.com/Brooooooklyn",
+        img: "https://avatars.githubusercontent.com/u/3468483?u=daf25d236ad2cc227470fa0da2d5bdf3dbb7feed&v=4",
       },
       {
         name: "Léo Coletta",
@@ -101,11 +116,6 @@ export const sponsors: SponsorTier[] = [
         name: "Kye Hohenberger",
         url: "https://github.com/tkh44",
         img: "https://avatars.githubusercontent.com/u/662750?u=8378469c523e21d343a564f685574e0d4f0720ed&v=4",
-      },
-      {
-        name: "Kuba Jastrzębski",
-        url: "https://github.com/KubaJastrz",
-        img: "https://avatars.githubusercontent.com/u/6443113?u=b1e3f71c98cfe9553b4928b87cc0623bffc5c7b4&v=4",
       },
       {
         name: "Ivan Nikolić",
@@ -158,21 +168,6 @@ export const sponsors: SponsorTier[] = [
         img: "https://avatars.githubusercontent.com/u/179804668?v=4",
       },
       {
-        name: "Arciom Picikin",
-        url: "https://opencollective.com/kasmacioma",
-        img: "https://images.opencollective.com/kasmacioma/4f6640c/avatar/460.png",
-      },
-      {
-        name: "Hyeseong Kim",
-        url: "https://opencollective.com/cometkim",
-        img: "https://images.opencollective.com/cometkim/3523805/avatar/460.png",
-      },
-      {
-        name: "Mikel Software",
-        url: "https://opencollective.com/mikel-software",
-        img: "https://images.opencollective.com/mikel-software/5198efd/logo/460.png",
-      },
-      {
         name: "Dedale Intelligence",
         url: "https://github.com/dedale-intelligence",
         img: "https://avatars.githubusercontent.com/u/117840906?v=4",
@@ -180,7 +175,7 @@ export const sponsors: SponsorTier[] = [
       {
         name: "Noel Kim (김민혁)",
         url: "https://github.com/nnnnoel",
-        img: "https://avatars.githubusercontent.com/u/67718949?u=0211168eef3f8ac777aa7cd17bc6f5c3e320528d&v=4",
+        img: "https://avatars.githubusercontent.com/u/67718949?u=b8bd4c1066607c5204bc22cc8870cc5c985ffe87&v=4",
       },
       {
         name: "Connor Shea",
@@ -188,9 +183,9 @@ export const sponsors: SponsorTier[] = [
         img: "https://avatars.githubusercontent.com/u/2977353?u=16bc8a352fe2375d06afa25a6b6e3f56bbfa07dd&v=4",
       },
       {
-        name: "Naoki Haba",
+        name: "NaokiHaba",
         url: "https://github.com/naokihaba",
-        img: "https://avatars.githubusercontent.com/u/59875779?u=4528dd68762567967bc5abbf831b6876252d7081&v=4",
+        img: "https://avatars.githubusercontent.com/u/59875779?u=9eb21272191d359fd1a13b301cdc258c73c2a2a5&v=4",
       },
       {
         name: "Alex M. M.",
@@ -206,6 +201,76 @@ export const sponsors: SponsorTier[] = [
         name: "Marcel Elias",
         url: "https://github.com/dromzeh",
         img: "https://avatars.githubusercontent.com/u/65048232?u=a703a78da3ac335011cc534b3e2be94be9442078&v=4",
+      },
+      {
+        name: "Eric Taylor",
+        url: "https://github.com/erictaylor",
+        img: "https://avatars.githubusercontent.com/u/637924?u=05a764a6ac0a6aa6a76bd3ccdeb9f7749e142d5a&v=4",
+      },
+      {
+        name: "Jacob Hands",
+        url: "https://github.com/jahands",
+        img: "https://avatars.githubusercontent.com/u/10719325?v=4",
+      },
+      {
+        name: "Aerius Ventilation AB",
+        url: "https://github.com/aeriusventilation",
+        img: "https://avatars.githubusercontent.com/u/107723282?u=2639caa14ce293a0b6202c5766a40bb99ac9697e&v=4",
+      },
+      {
+        name: "Stephen Zhou",
+        url: "https://github.com/hyoban",
+        img: "https://avatars.githubusercontent.com/u/38493346?u=73b116ae6704175ce20f30e993b35305ce1c631c&v=4",
+      },
+      {
+        name: "vlt /vōlt/",
+        url: "https://github.com/vltpkg",
+        img: "https://avatars.githubusercontent.com/u/121986630?v=4",
+      },
+      {
+        name: "elzup",
+        url: "https://github.com/elzup",
+        img: "https://avatars.githubusercontent.com/u/2284908?u=d136063c35917db63b91018be853e280a87f9511&v=4",
+      },
+      {
+        name: "Ole Asteo",
+        url: "https://github.com/oleasteo",
+        img: "https://avatars.githubusercontent.com/u/140124231?u=16f6058bb4867ae14da8c4d7ea0c7a6caf9be204&v=4",
+      },
+      {
+        name: "Georg Wittberger",
+        url: "https://github.com/georgwittberger",
+        img: "https://avatars.githubusercontent.com/u/7693677?u=4f47bf275612cc4767f899d56b3c74b6fd26e6e9&v=4",
+      },
+      {
+        name: "Okinea Dev",
+        url: "https://github.com/okineadev",
+        img: "https://avatars.githubusercontent.com/u/81070564?u=dde49ca43772c9b932df6ea302ac2c486ee16693&v=4",
+      },
+      {
+        name: "Raul Carini",
+        url: "https://github.com/R4ULtv",
+        img: "https://avatars.githubusercontent.com/u/85316240?u=28bf5abcb2743219018913afb1c7f9d81a68a8d1&v=4",
+      },
+      {
+        name: "Scott S.",
+        url: "https://github.com/shinmc",
+        img: "https://avatars.githubusercontent.com/u/10883031?u=8063e947e2f1d2317d4e8535e9de99fbf5f290d0&v=4",
+      },
+      {
+        name: "Arciom Picikin",
+        url: "https://opencollective.com/kasmacioma",
+        img: "https://images.opencollective.com/kasmacioma/4f6640c/avatar/460.png",
+      },
+      {
+        name: "Hyeseong Kim",
+        url: "https://opencollective.com/cometkim",
+        img: "https://images.opencollective.com/cometkim/3523805/avatar/460.png",
+      },
+      {
+        name: "Mikel Software",
+        url: "https://opencollective.com/mikel-software",
+        img: "https://images.opencollective.com/mikel-software/5198efd/logo/460.png",
       },
       {
         name: "kzhrk",
