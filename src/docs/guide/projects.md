@@ -17,11 +17,21 @@ outline: deep
 ## Oxlint
 
 - [Shopify](https://www.shopify.com/news/performance%F0%9F%91%86-complexity%F0%9F%91%87-killer-updates-from-shopify-engineering) - Reduced hour of workload to seconds
+- [OpenClaw](https://github.com/openclaw/openclaw) - Open source legal technology platform
+- [AFFiNE](https://github.com/toeverything/affine) - Next-gen knowledge base
 - [Preact](https://github.com/preactjs/preact) - Fast 3kB React alternative with the same modern API
 - [napi-rs](https://github.com/napi-rs/napi-rs) - A framework for building compiled Node.js add-ons in Rust via Node-API
-- [AFFiNE](https://github.com/toeverything/affine) - Next-gen knowledge base
-- [nuxt-auth](https://github.com/sidebase/nuxt-auth) - Authentication built for Nuxt 3
 - [Hey API](https://heyapi.dev/) - OpenAPI to TypeScript codegen ecosystem
+- [nuxt-auth](https://github.com/sidebase/nuxt-auth) - Authentication built for Nuxt 3
+
+## Oxfmt
+
+- [OpenClaw](https://github.com/openclaw/openclaw) - Open source legal technology platform
+- [Vue.js](https://github.com/vuejs/core) - The progressive JavaScript framework
+- [Turborepo](https://github.com/vercel/turborepo) - High-performance build system for JavaScript and TypeScript codebases
+- [Sentry JavaScript](https://github.com/getsentry/sentry-javascript) - Official Sentry SDKs for JavaScript
+- [npmx.dev](https://github.com/npmx-dev/npmx.dev) - npm package explorer
+- [Hugging Face JS](https://github.com/huggingface/huggingface.js) - Hugging Face JS libraries
 
 ## Resolver
 
