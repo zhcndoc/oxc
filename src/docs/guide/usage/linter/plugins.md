@@ -21,13 +21,25 @@ It is **strongly recommended** to use a config file to enable plugins, as it mak
 
 ### Enable in a config file
 
-You can also enable plugins in `.oxlintrc.json` using the `plugins` field:
+You can also enable plugins in your config file using the `plugins` field:
+
+::: code-group
 
 ```json [.oxlintrc.json]
 {
   "plugins": ["import"]
 }
 ```
+
+```ts [oxlint.config.ts]
+import { defineConfig } from "oxlint";
+
+export default defineConfig({
+  plugins: ["import"],
+});
+```
+
+:::
 
 Setting `plugins` **overwrites the default plugin set**. The list should include every plugin you want enabled.
 
@@ -59,11 +71,23 @@ Tip: run `oxlint --help` to see the full list of plugin flags.
 
 To disable all default plugins in a config file, set `plugins` to an empty array:
 
+::: code-group
+
 ```json [.oxlintrc.json]
 {
   "plugins": []
 }
 ```
+
+```ts [oxlint.config.ts]
+import { defineConfig } from "oxlint";
+
+export default defineConfig({
+  plugins: [],
+});
+```
+
+:::
 
 This disables all default plugins and uses only the base rule set.
 
