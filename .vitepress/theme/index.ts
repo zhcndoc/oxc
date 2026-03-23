@@ -5,6 +5,7 @@ import AppBlogPostHeader from "./components/AppBlogPostHeader.vue";
 import AppBlogList from "./components/AppBlogList.vue";
 import RulesTable from "./components/RulesTable.vue";
 import RuleHeader from "./components/RuleHeader.vue";
+import RuleReferences from "./components/RuleReferences.vue";
 import Alert from "./components/Alert.vue";
 import "./styles.css";
 
@@ -16,5 +17,6 @@ export default {
     app.component("AppBlogList", AppBlogList);
     app.component("RulesTable", RulesTable);
     app.component("RuleHeader", RuleHeader);
+    app.component("RuleReferences", RuleReferences);
   },
 } satisfies Theme;
