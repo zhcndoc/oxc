@@ -7,6 +7,17 @@ import type { SponsorTier } from "@voidzero-dev/vitepress-theme/src/types/sponso
 
 export const sponsors: SponsorTier[] = [
   {
+    tier: "Gold Sponsors",
+    size: "big",
+    items: [
+      {
+        name: "Hive",
+        url: "https://github.com/hiveteams",
+        img: "https://avatars.githubusercontent.com/u/13912057?v=4",
+      },
+    ],
+  },
+  {
     tier: "Silver Sponsors",
     size: "big",
     items: [
@@ -47,6 +58,11 @@ export const sponsors: SponsorTier[] = [
         img: "https://avatars.githubusercontent.com/u/1059139?u=5c324233e22fbe8b507db6de8f18dcfeb1cba86d&v=4",
       },
       {
+        name: "Clipboard",
+        url: "https://github.com/ClipboardHealth",
+        img: "https://avatars.githubusercontent.com/u/28880063?v=4",
+      },
+      {
         name: "Aikido Security",
         url: "https://opencollective.com/aikidosec",
         img: "https://images.opencollective.com/aikidosec/d2cacd5/logo/460.png",
@@ -58,6 +74,11 @@ export const sponsors: SponsorTier[] = [
     size: "avatar",
     items: [
       {
+        name: "LongYinan",
+        url: "https://github.com/Brooooooklyn",
+        img: "https://avatars.githubusercontent.com/u/3468483?u=daf25d236ad2cc227470fa0da2d5bdf3dbb7feed&v=4",
+      },
+      {
         name: "ubugeeei",
         url: "https://github.com/ubugeeei",
         img: "https://avatars.githubusercontent.com/u/71201308?u=44f9771e6bc51934d392e86a4644c32c615cdec8&v=4",
@@ -68,11 +89,6 @@ export const sponsors: SponsorTier[] = [
         img: "https://avatars.githubusercontent.com/u/1170700?u=b7b435c7c541e3584cc213bebd1809a861ad3327&v=4",
       },
       {
-        name: "LongYinan",
-        url: "https://github.com/Brooooooklyn",
-        img: "https://avatars.githubusercontent.com/u/3468483?u=daf25d236ad2cc227470fa0da2d5bdf3dbb7feed&v=4",
-      },
-      {
         name: "Léo Coletta",
         url: "https://github.com/leo91000",
         img: "https://avatars.githubusercontent.com/u/1354510?u=97b8fda8e1ba58fc6c2302c3ec75a81133aae28e&v=4",
@@ -80,12 +96,7 @@ export const sponsors: SponsorTier[] = [
       {
         name: "Spence",
         url: "https://github.com/spence",
-        img: "https://avatars.githubusercontent.com/u/138762?u=1cbdee7001ff8cfa2da08b50b388d97301e7249d&v=4",
-      },
-      {
-        name: "Snyder Technologies",
-        url: "https://github.com/snydertechnologies",
-        img: "https://avatars.githubusercontent.com/u/24222702?v=4",
+        img: "https://avatars.githubusercontent.com/u/138762?u=52d8032878811cec95b2c0a3d75581db6bb44a28&v=4",
       },
       {
         name: "ArrayZoneYour",
@@ -108,11 +119,6 @@ export const sponsors: SponsorTier[] = [
         img: "https://avatars.githubusercontent.com/u/3825256?u=9c704b1724eaf1c8b6f16dd15ad1b36f5f33aed9&v=4",
       },
       {
-        name: "Marais Rossouw",
-        url: "https://github.com/maraisr",
-        img: "https://avatars.githubusercontent.com/u/599459?u=334be41a858bac1a6570efd0a00115e4701cbeb2&v=4",
-      },
-      {
         name: "Kye Hohenberger",
         url: "https://github.com/tkh44",
         img: "https://avatars.githubusercontent.com/u/662750?u=8378469c523e21d343a564f685574e0d4f0720ed&v=4",
@@ -131,11 +137,6 @@ export const sponsors: SponsorTier[] = [
         name: "Kenzo Wada",
         url: "https://github.com/Kenzo-Wada",
         img: "https://avatars.githubusercontent.com/u/79452224?u=b2025a51d85b5401b9284062302996e4a8ed515d&v=4",
-      },
-      {
-        name: "Christian :)",
-        url: "https://github.com/christianjuth",
-        img: "https://avatars.githubusercontent.com/u/5768801?u=56930cfee14fe6b87e19d023abc4c9a58cfea997&v=4",
       },
       {
         name: "Oskar Lebuda",
@@ -166,6 +167,21 @@ export const sponsors: SponsorTier[] = [
         name: "Liminity AB",
         url: "https://github.com/liminityab",
         img: "https://avatars.githubusercontent.com/u/179804668?v=4",
+      },
+      {
+        name: "Snyder Technologies",
+        url: "https://github.com/snydertechnologies",
+        img: "https://avatars.githubusercontent.com/u/24222702?v=4",
+      },
+      {
+        name: "Marais Rossouw",
+        url: "https://github.com/maraisr",
+        img: "https://avatars.githubusercontent.com/u/599459?u=334be41a858bac1a6570efd0a00115e4701cbeb2&v=4",
+      },
+      {
+        name: "Christian :)",
+        url: "https://github.com/christianjuth",
+        img: "https://avatars.githubusercontent.com/u/5768801?u=56930cfee14fe6b87e19d023abc4c9a58cfea997&v=4",
       },
       {
         name: "Dedale Intelligence",
@@ -213,29 +229,9 @@ export const sponsors: SponsorTier[] = [
         img: "https://avatars.githubusercontent.com/u/10719325?v=4",
       },
       {
-        name: "Aerius Ventilation AB",
-        url: "https://github.com/aeriusventilation",
-        img: "https://avatars.githubusercontent.com/u/107723282?u=2639caa14ce293a0b6202c5766a40bb99ac9697e&v=4",
-      },
-      {
-        name: "Stephen Zhou",
-        url: "https://github.com/hyoban",
-        img: "https://avatars.githubusercontent.com/u/38493346?u=73b116ae6704175ce20f30e993b35305ce1c631c&v=4",
-      },
-      {
         name: "vlt /vōlt/",
         url: "https://github.com/vltpkg",
         img: "https://avatars.githubusercontent.com/u/121986630?v=4",
-      },
-      {
-        name: "elzup",
-        url: "https://github.com/elzup",
-        img: "https://avatars.githubusercontent.com/u/2284908?u=d136063c35917db63b91018be853e280a87f9511&v=4",
-      },
-      {
-        name: "Ole Asteo",
-        url: "https://github.com/oleasteo",
-        img: "https://avatars.githubusercontent.com/u/140124231?u=16f6058bb4867ae14da8c4d7ea0c7a6caf9be204&v=4",
       },
       {
         name: "Georg Wittberger",
@@ -256,6 +252,11 @@ export const sponsors: SponsorTier[] = [
         name: "Scott S.",
         url: "https://github.com/shinmc",
         img: "https://avatars.githubusercontent.com/u/10883031?u=8063e947e2f1d2317d4e8535e9de99fbf5f290d0&v=4",
+      },
+      {
+        name: "JJ",
+        url: "https://github.com/konojunya",
+        img: "https://avatars.githubusercontent.com/u/12035578?u=62c5bbf72eee9db163a49408434fc32ce3858406&v=4",
       },
       {
         name: "Arciom Picikin",
