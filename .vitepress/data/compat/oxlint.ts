@@ -129,6 +129,16 @@ export const oxlintEntries: CompatEntry[] = [
     status: { level: "full" },
   },
   {
+    frameworkId: "react-native",
+    toolId: "oxlint",
+    featureId: "lint",
+    status: {
+      level: "full",
+      notes: "Expo-specific rules available via JS plugins",
+      sources: [oxlintPlugins],
+    },
+  },
+  {
     frameworkId: "nextjs",
     toolId: "oxlint",
     featureId: "lint",
@@ -157,6 +167,12 @@ export const oxlintEntries: CompatEntry[] = [
     toolId: "oxlint",
     featureId: "lint",
     status: { level: "partial", ...noTemplateLintNote },
+  },
+  {
+    frameworkId: "tanstack-start",
+    toolId: "oxlint",
+    featureId: "lint",
+    status: { level: "full" },
   },
   { frameworkId: "css", toolId: "oxlint", featureId: "lint", status: { level: "n/a" } },
   { frameworkId: "scss", toolId: "oxlint", featureId: "lint", status: { level: "n/a" } },

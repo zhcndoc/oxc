@@ -74,6 +74,12 @@ export const oxfmtEntries: CompatEntry[] = [
     status: { level: "partial", ...noGjsGtsNote },
   },
   { frameworkId: "alpine", toolId: "oxfmt", featureId: "format", status: { level: "full" } },
+  {
+    frameworkId: "react-native",
+    toolId: "oxfmt",
+    featureId: "format",
+    status: { level: "full" },
+  },
   { frameworkId: "nextjs", toolId: "oxfmt", featureId: "format", status: { level: "full" } },
   { frameworkId: "nuxt", toolId: "oxfmt", featureId: "format", status: { level: "full" } },
   {
@@ -88,6 +94,12 @@ export const oxfmtEntries: CompatEntry[] = [
     toolId: "oxfmt",
     featureId: "format",
     status: { level: "none", ...needsPluginSupport },
+  },
+  {
+    frameworkId: "tanstack-start",
+    toolId: "oxfmt",
+    featureId: "format",
+    status: { level: "full" },
   },
   { frameworkId: "css", toolId: "oxfmt", featureId: "format", status: { level: "full" } },
   { frameworkId: "scss", toolId: "oxfmt", featureId: "format", status: { level: "full" } },
