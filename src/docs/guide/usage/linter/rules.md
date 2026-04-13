@@ -17,21 +17,21 @@ const defaultCount = rules.filter((r) => r.default).length;
 const fixableCount = rules.filter((r) => hasFix(r.fix)).length;
 </script>
 
-# Rules
+# 规则
 
-The progress of all rule implementations is tracked [here](https://github.com/oxc-project/oxc/issues/481).
+所有规则实现的进度在 [此处](https://github.com/oxc-project/oxc/issues/481) 跟踪。
 
-- Total number of rules: {{ rulesCount }}
-- Rules turned on by default: {{ defaultCount }}
-- Rules with fixes available: {{ fixableCount }}
+- 规则总数：{{ rulesCount }}
+- 默认启用的规则：{{ defaultCount }}
+- 提供修复的规则：{{ fixableCount }}
 
-::: details Legend for 'Fixable?' column
+::: details '可修复？' 列图例
 
-- 🛠️: an auto-fix is available for this rule
-- 💡: a suggestion is available for this rule
-- ⚠️🛠️: a dangerous auto-fix is available for this rule
-- ⚠️💡: a dangerous suggestion is available for this rule
-- 🚧: an auto-fix or suggestion is possible, but currently not implemented
+- 🛠️: 此规则提供自动修复
+- 💡: 此规则提供建议
+- ⚠️🛠️: 此规则提供危险的自动修复
+- ⚠️💡: 此规则提供危险的建议
+- 🚧: 可能提供自动修复或建议，但当前尚未实现
 
 :::
 

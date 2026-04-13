@@ -1,39 +1,39 @@
 ---
-title: Setup editors
-description: Configure Oxfmt in VS Code, Zed, JetBrains, and other editors.
+title: 设置编辑器
+description: 在 VS Code、Zed、JetBrains 和其他编辑器中配置 Oxfmt。
 outline: 2
 ---
 
-# Setup editors
+# 设置编辑器
 
-Editor extensions use `oxfmt --lsp` from your project, so `oxfmt` must be installed locally.
+编辑器扩展使用项目中的 `oxfmt --lsp`，因此必须在本地安装 `oxfmt`。
 
-See [Quickstart](./quickstart) to install Oxfmt.
+参见 [快速开始](./quickstart) 安装 Oxfmt。
 
-## Supported editors
+## 支持的编辑器
 
-- [VS Code](#vs-code) (and Cursor, etc.)
+- [VS Code](#vs-code)（以及 Cursor 等）
 - [Zed](#zed)
 - [JetBrains](#jetbrains)
 - [Neovim](#neovim)
-- [Other editors](#other-editors)
+- [其他编辑器](#other-editors)
 
 ## VS Code
 
-### Install
+### 安装
 
-Download the official Oxc VS Code extension from:
+从以下地址下载官方 Oxc VS Code 扩展：
 
 - [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)
 - [Open VSX Registry](https://open-vsx.org/extension/oxc/oxc-vscode)
 
-**The extension is compatible with other VS Code-based editors**, including Cursor.
+**该扩展兼容其他基于 VS Code 的编辑器**，包括 Cursor。
 
-### Team setup
+### 团队设置
 
-1. Recommend the extension for contributors:
+1. 向贡献者推荐该扩展：
 
-`.vscode/extensions.json`:
+`.vscode/extensions.json`：
 
 ```json [.vscode/extensions.json]
 {
@@ -41,7 +41,7 @@ Download the official Oxc VS Code extension from:
 }
 ```
 
-2. Enable format on save in `.vscode/settings.json`:
+2. 在 `.vscode/settings.json` 中启用保存时格式化：
 
 ```json [.vscode/settings.json]
 {
@@ -51,7 +51,7 @@ Download the official Oxc VS Code extension from:
 }
 ```
 
-To set per language:
+按语言设置：
 
 ```json [.vscode/settings.json]
 {
@@ -66,29 +66,29 @@ To set per language:
 }
 ```
 
-### Reference
+### 参考
 
 - [oxc-project/oxc-vscode](https://github.com/oxc-project/oxc-vscode)
 
 ## Zed
 
-### Install
+### 安装
 
 - [Oxc Zed Extension](https://zed.dev/extensions/oxc)
 
-### Reference
+### 参考
 
 - [oxc-project/oxc-zed](https://github.com/oxc-project/oxc-zed)
 
 ## JetBrains
 
-IntelliJ IDEA and WebStorm.
+IntelliJ IDEA 和 WebStorm。
 
-### Install
+### 安装
 
 - [Oxc in JetBrains Marketplace](https://plugins.jetbrains.com/plugin/27061-oxc)
 
-### Reference
+### 参考
 
 - [oxc-project/oxc-intellij-plugin](https://github.com/oxc-project/oxc-intellij-plugin)
 
@@ -131,20 +131,20 @@ require("conform").setup({
 
 - [oxc-project/coc-oxc](https://github.com/oxc-project/coc-oxc)
 
-## Other editors
+## 其他编辑器
 
-For editors with LSP support (Emacs, Helix, Sublime), configure:
+对于支持 LSP 的编辑器（Emacs、Helix、Sublime），配置：
 
 ```sh
 oxfmt --lsp
 ```
 
-Or, for editors without LSP support:
+或者，对于不支持 LSP 的编辑器：
 
 ```sh
 cat foo/bar.js | oxfmt --stdin-filepath dummy.js --config ./path/to/config.json
 ```
 
-## Reference
+## 参考
 
 - [oxc_language_server](https://github.com/oxc-project/oxc/tree/main/crates/oxc_language_server)

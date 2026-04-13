@@ -1,19 +1,19 @@
 ---
-title: Output formats
-description: Output linting results in various formats for CI or human consumption
+title: 输出格式
+description: 以多种格式输出 lint 结果，适用于 CI 系统或人工阅读
 ---
 
-# Output formats
+# 输出格式
 
-Oxlint supports multiple output formats for emitting lint results. These can be used to integrate with various CI systems or other tools.
+Oxlint 支持多种用于输出 lint 结果的格式。这些格式可用于与各种 CI 系统或其他工具集成。
 
-You can specify the desired format using the `--format` (or `-f`) option when running Oxlint from the CLI.
+在从 CLI 运行 Oxlint 时，您可以使用 `--format`（或 `-f`）选项指定所需的格式。
 
-## Available formats
+## 可用格式
 
 ### `--format=default`
 
-This is the default output format if none is specified.
+如果未指定任何格式，这是默认的输出格式。
 
 ```
   x eslint(no-debugger): `debugger` statement is not allowed
@@ -31,7 +31,7 @@ Finished in 6ms on 1 file with 2 rules using 1 threads.
 
 ### `--format=checkstyle`
 
-Outputs Checkstyle XML format, which can be ingested by some CI tools.
+输出 Checkstyle XML 格式，可被某些 CI 工具解析。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -44,7 +44,7 @@ Outputs Checkstyle XML format, which can be ingested by some CI tools.
 
 ### `--format=github`
 
-This format is intended for use with GitHub Actions and GitHub's [annotations feature](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-an-error-message).
+此格式旨在与 GitHub Actions 和 GitHub 的 [注释功能](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-an-error-message) 配合使用。
 
 ```
 ::error file=test.js,line=5,endLine=5,col=1,endColumn=10,title=eslint(no-debugger)::`debugger` statement is not allowed
@@ -52,7 +52,7 @@ This format is intended for use with GitHub Actions and GitHub's [annotations fe
 
 ### `--format=gitlab`
 
-This format is intended for use with GitLab CI and [GitLab's Code Quality feature](https://docs.gitlab.com/ci/testing/code_quality/#code-quality-report-format).
+此格式旨在与 GitLab CI 和 [GitLab 的代码质量功能](https://docs.gitlab.com/ci/testing/code_quality/#code-quality-report-format) 配合使用。
 
 ```json
 [
@@ -74,7 +74,7 @@ This format is intended for use with GitLab CI and [GitLab's Code Quality featur
 
 ### `--format=json`
 
-A general JSON output format, can also be used with `--rules` to get a list of all Oxlint rules in JSON format.
+一种通用的 JSON 输出格式，也可与 `--rules` 配合使用，以 JSON 格式获取所有 Oxlint 规则的列表。
 
 ```json
 {
@@ -109,7 +109,7 @@ A general JSON output format, can also be used with `--rules` to get a list of a
 
 ### `--format=junit`
 
-Outputs JUnit XML format, useful for CI systems that support JUnit reports, such as [GitLab CI](https://docs.gitlab.com/ci/testing/unit_test_reports/#junit-xml-format-specification) or [Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/test-reporting-in-pipelines/).
+输出 JUnit XML 格式，适用于支持 JUnit 报告的 CI 系统，例如 [GitLab CI](https://docs.gitlab.com/ci/testing/unit_test_reports/#junit-xml-format-specification) 或 [Bitbucket Pipelines](https://support.atlassian.com/bitbucket-cloud/docs/test-reporting-in-pipelines/)。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -124,7 +124,7 @@ Outputs JUnit XML format, useful for CI systems that support JUnit reports, such
 
 ### `--format=stylish`
 
-Stylish is the default output format of ESLint, and is good for compact human-readable output.
+Stylish 是 ESLint 的默认输出格式，适用于紧凑的人类可读输出。
 
 ```
 test.js
@@ -135,7 +135,7 @@ test.js
 
 ### `--format=unix`
 
-A basic, single-line format.
+一种基本的单行格式。
 
 ```
 test.js:5:1: `debugger` statement is not allowed [Error/eslint(no-debugger)]

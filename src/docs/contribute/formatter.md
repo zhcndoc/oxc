@@ -1,41 +1,41 @@
 ---
-title: Formatter
+title: 格式化器
 outline: deep
 ---
 
-# Formatter (oxfmt)
+# 格式化器 (oxfmt)
 
-We are currently porting Prettier and Biome Formatter to Oxc to create a high-performance, Prettier-compatible formatter.
+我们目前正在将 Prettier 和 Biome Formatter 移植到 Oxc，以创建一个高性能、与 Prettier 兼容的格式化器。
 
-## Architecture Overview
+## 架构概述
 
-The Oxc formatter is built around the same core concepts as Prettier but with significant performance optimizations:
+Oxc 格式化器围绕与 Prettier 相同的核心概念构建，但进行了显著的性能优化：
 
-- **Document Model**: Uses Prettier and Biome's document IR (Intermediate Representation)
-- **Pretty Printing**: Implements Wadler's pretty printing algorithm
-- **AST Integration**: Leverages Oxc's fast parser for optimal performance
+- **文档模型**：使用 Prettier 和 Biome 的文档 IR（中间表示）
+- **美化打印**：实现 Wadler 的美化打印算法
+- **AST 集成**：利用 Oxc 的快速解析器实现最佳性能
 
-## Performance Considerations
+## 性能考量
 
-### Optimization Strategies
+### 优化策略
 
-- **Memory Arena**: AST allocated in bump allocator
-- **String Interning**: Reuse common strings
-- **Lazy Evaluation**: Defer expensive computations
+- **内存 Arena**：AST 分配在 bump 分配器中
+- **字符串驻留**：复用常见字符串
+- **惰性求值**：推迟昂贵的计算
 
-## Current Challenges
+## 当前挑战
 
-### Technical Challenges
+### 技术挑战
 
-1. **Comment Handling**: Preserving comment placement and formatting
-2. **JavaScript Quirks**: Handling edge cases in JavaScript syntax
-3. **Performance vs Compatibility**: Balancing speed with exact Prettier output
-4. **Memory Management**: Efficient handling of large files
+1. **注释处理**：保留注释位置和格式
+2. **JavaScript 怪癖**：处理 JavaScript 语法中的边缘情况
+3. **性能与兼容性**：平衡速度与精确的 Prettier 输出
+4. **内存管理**：高效处理大文件
 
-### Missing Features
+### 缺失功能
 
-- [ ] Plugin system compatibility
-- [x] Configuration file support
-- [ ] Editor integrations
-- [x] CLI tool
-- [x] Language server protocol
+- [ ] 插件系统兼容性
+- [x] 配置文件支持
+- [ ] 编辑器集成
+- [x] CLI 工具
+- [x] 语言服务器协议

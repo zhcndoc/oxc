@@ -1,15 +1,15 @@
 ---
-title: Quickstart
-description: Install Oxlint and learn the common workflows.
+title: 快速开始
+description: 安装 Oxlint 并学习常见的工作流程。
 ---
 
-# Quickstart
+# 快速开始
 
-This page shows the recommended setup for Oxlint and the most common workflows, with copy-paste commands.
+本页展示了 Oxlint 的推荐设置和最常见的工作流程，并提供可复制粘贴的命令。
 
-## Install
+## 安装
 
-Install `oxlint` as a dev dependency:
+将 `oxlint` 安装为开发依赖：
 
 ::: code-group
 
@@ -31,7 +31,7 @@ $ bun add -D oxlint
 
 :::
 
-Add lint commands to `package.json`:
+将 lint 命令添加到 `package.json`：
 
 ```json [package.json]
 {
@@ -42,7 +42,7 @@ Add lint commands to `package.json`:
 }
 ```
 
-Run it:
+运行它：
 
 ::: code-group
 
@@ -64,7 +64,7 @@ bun run lint
 
 :::
 
-Apply fixes:
+应用修复：
 
 ::: code-group
 
@@ -86,19 +86,19 @@ bun run lint:fix
 
 :::
 
-## Usage
+## 用法
 
-For the complete list of options, see the [CLI reference](/docs/guide/usage/linter/cli.html).
+有关选项的完整列表，请参阅 [CLI 参考](/docs/guide/usage/linter/cli.html)。
 
 ```sh
 oxlint [OPTIONS] [PATH]...
 ```
 
-If `PATH` is omitted, Oxlint lints the current working directory.
+如果省略 `PATH`，Oxlint 将对当前工作目录进行 lint 检查。
 
-## Common workflows
+## 常见工作流程
 
-### Pre-commit with [lint-staged](https://npmx.dev/package/lint-staged)
+### 使用 [lint-staged](https://npmx.dev/package/lint-staged) 进行 Pre-commit
 
 ::: code-group
 
@@ -136,128 +136,128 @@ If `PATH` is omitted, Oxlint lints the current working directory.
 
 :::
 
-### Create a config file
+### 创建配置文件
 
-Initialize the `.oxlintrc.json` config with default values:
+使用默认值初始化 `.oxlintrc.json` 配置：
 
 ```sh
 oxlint --init
 ```
 
-Then customize `.oxlintrc.json` as needed. See [Configuration](/docs/guide/usage/linter/config).
+然后根据需要自定义 `.oxlintrc.json`。请参阅 [配置](/docs/guide/usage/linter/config)。
 
-Alternatively, Oxlint supports a TypeScript config file named `oxlint.config.ts`. See [Configuration](/docs/guide/usage/linter/config#typescript-config) for details.
+或者，Oxlint 支持名为 `oxlint.config.ts` 的 TypeScript 配置文件。详见 [配置](/docs/guide/usage/linter/config#typescript-config)。
 
-Then run Oxlint:
+然后运行 Oxlint：
 
 ```sh
 oxlint
 ```
 
 ::: tip
-If you are migrating from ESLint, see [the "Migrate from ESLint" page](/docs/guide/usage/linter/migrate-from-eslint) for detailed guidance on migrating.
+如果你是从 ESLint 迁移过来的，请参阅 [“从 ESLint 迁移”页面](/docs/guide/usage/linter/migrate-from-eslint) 获取详细的迁移指南。
 :::
 
-### Fix problems
+### 修复问题
 
-Apply safe fixes:
+应用安全修复：
 
 ```sh
 oxlint --fix
 ```
 
-Apply suggestions (may change program behavior):
+应用建议（可能会改变程序行为）：
 
 ```sh
 oxlint --fix-suggestions
 ```
 
-Apply dangerous fixes and suggestions:
+应用危险修复和建议：
 
 ```sh
 oxlint --fix-dangerously
 ```
 
-See [Automatic fixes](/docs/guide/usage/linter/automatic-fixes) for guidance on when to use each mode.
+请参阅 [自动修复](/docs/guide/usage/linter/automatic-fixes) 了解何时使用每种模式的指南。
 
-### Ignore files
+### 忽略文件
 
-Use an explicit ignore file:
+使用显式的忽略文件：
 
 ```sh
 oxlint --ignore-path .oxlintignore
 ```
 
-Add ignore patterns from the command line:
+从命令行添加忽略模式：
 
 ```sh
 oxlint --ignore-pattern "dist/**" --ignore-pattern "*.min.js"
 ```
 
-Disable ignore handling:
+禁用忽略处理：
 
 ```sh
 oxlint --no-ignore
 ```
 
-See [Ignore files](/docs/guide/usage/linter/ignore-files).
+请参阅 [忽略文件](/docs/guide/usage/linter/ignore-files)。
 
-### Fail CI reliably
+### 确保 CI 可靠失败
 
-Only report errors:
+仅报告错误：
 
 ```sh
 oxlint --quiet
 ```
 
-Fail if any warnings are found:
+如果发现任何警告则失败：
 
 ```sh
 oxlint --deny-warnings
 ```
 
-Fail if warnings exceed a threshold:
+如果警告超过阈值则失败：
 
 ```sh
 oxlint --max-warnings 0
 ```
 
-See [CI setup](/docs/guide/usage/linter/ci).
+请参阅 [CI 设置](/docs/guide/usage/linter/ci)。
 
-### Use machine-readable output
+### 使用机器可读输出
 
-Select an output format:
+选择输出格式：
 
 ```sh
 oxlint -f json
 ```
 
-Available formats include: `default`, `json`, `unix`, `checkstyle`, `github`, `gitlab`, `junit`, and `stylish`. See [Output formats](/docs/guide/usage/linter/output-formats) for more info.
+可用格式包括：`default`、`json`、`unix`、`checkstyle`、`github`、`gitlab`、`junit` 和 `stylish`。详见 [输出格式](/docs/guide/usage/linter/output-formats)。
 
-### Inspect the effective configuration
+### 检查有效配置
 
-Print the configuration that would be used for a file:
+打印将用于文件的配置：
 
 ```sh
 oxlint --print-config path/to/file.ts
 ```
 
-### List available rules
+### 列出可用规则
 
-List registered rules, including those enabled by your current Oxlint config:
+列出已注册的规则，包括当前 Oxlint 配置启用的规则：
 
 ```sh
 oxlint --rules
 ```
 
-The full list is in the [Rules reference](/docs/guide/usage/linter/rules).
+完整列表位于 [规则参考](/docs/guide/usage/linter/rules)。
 
-## Next steps
+## 下一步
 
-- Configure rules, plugins, and ignores: [Configuration](/docs/guide/usage/linter/config)
-- [Setup editors](/docs/guide/usage/linter/editors)
-- [Setup CI](/docs/guide/usage/linter/ci)
-- Learn advanced features: [Multi-file analysis](/docs/guide/usage/linter/multi-file-analysis), [Type-aware linting](/docs/guide/usage/linter/type-aware), [JS plugins](/docs/guide/usage/linter/js-plugins)
-- Migrate: [From ESLint](/docs/guide/usage/linter/migrate-from-eslint) <!-- , [From Biome](/docs/guide/usage/linter/migrate-from-biome) -->
-- [Compatibility matrix](/compatibility)
-- [CLI reference](/docs/guide/usage/linter/cli)
+- 配置规则、插件和忽略项：[配置](/docs/guide/usage/linter/config)
+- [设置编辑器](/docs/guide/usage/linter/editors)
+- [设置 CI](/docs/guide/usage/linter/ci)
+- 学习高级功能：[多文件分析](/docs/guide/usage/linter/multi-file-analysis)、[类型感知 lint](/docs/guide/usage/linter/type-aware)、[JS 插件](/docs/guide/usage/linter/js-plugins)
+- 迁移：[从 ESLint 迁移](/docs/guide/usage/linter/migrate-from-eslint) <!-- , [从 Biome 迁移](/docs/guide/usage/linter/migrate-from-biome) -->
+- [兼容性矩阵](/compatibility)
+- [CLI 参考](/docs/guide/usage/linter/cli)

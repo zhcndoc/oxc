@@ -1,85 +1,85 @@
 ---
-title: Minifier
+title: 压缩器
 outline: deep
 ---
 
-# Minifier
+# 压缩器
 
-JavaScript minification plays a crucial role in optimizing website performance as it reduces the amount of data sent to users,
-resulting in faster page loads.
-This holds tremendous economic value, particularly for e-commerce websites, where every second can equate to millions of dollars.
+JavaScript 压缩在优化网站性能方面起着至关重要的作用，因为它减少了发送给用户的数据量，
+从而实现了更快的页面加载速度。
+这具有巨大的经济价值，特别是对于电子商务网站而言，每一秒都可能相当于数百万美元。
 
-However, existing minifiers typically require a trade-off between compression quality and speed.
-You have to choose between the slowest for the best compression or the fastest for less compression.
-But what if we could develop a faster minifier without compromising on compression?
+然而，现有的压缩器通常需要在压缩质量和速度之间做出权衡。
+你必须在压缩效果最好但速度最慢，和速度最快但压缩效果较差之间做出选择。
+但是，如果我们能开发出一个在不牺牲压缩效果的情况下更快的压缩器呢？
 
-## Project Goals
+## 项目目标
 
-We are actively working on a prototype that aims to achieve this goal,
-by porting all test cases from well-known minifiers such as [google-closure-compiler], [terser], [esbuild], and [tdewolff-minify].
+我们正积极致力于实现这一目标的原型开发，
+方法是从知名的压缩器（如 [google-closure-compiler]、[terser]、[esbuild] 和 [tdewolff-minify]）移植所有测试用例。
 
-Preliminary results indicate that we are on track to achieve our objectives.
-With the Oxc minifier, you can expect faster minification times without sacrificing compression quality.
+初步结果表明，我们正朝着目标稳步前进。
+使用 Oxc 压缩器，你可以期待更快的压缩时间，同时不牺牲压缩质量。
 
-### Target Performance
+### 目标性能
 
-- **Speed**: faster than Terser, competitive with esbuild
-- **Compression**: Match or exceed Terser's compression ratio
-- **Correctness**: Pass all major minifier test suites
+- **速度**：比 Terser 更快，与 esbuild 相当
+- **压缩率**：达到或超过 Terser 的压缩率
+- **正确性**：通过所有主要压缩器测试套件
 
-## Architecture Overview
+## 架构概述
 
-### Design Principles
+### 设计原则
 
-The Oxc minifier is built around several key principles:
+Oxc 压缩器围绕以下几个关键原则构建：
 
-1. **Semantic-Aware**: Uses semantic analysis to enable safe optimizations
-2. **Incremental**: Designed for incremental compilation workflows
-3. **Configurable**: Supports various optimization levels and targets
-4. **Correct**: Prioritizes correctness over aggressive optimization
+1. **语义感知**：利用语义分析实现安全优化
+2. **增量式**：专为增量编译工作流设计
+3. **可配置**：支持各种优化级别和目标
+4. **正确性**：优先考虑正确性而非激进优化
 
-## Current Status
+## 当前状态
 
-### Implemented Features
+### 已实现功能
 
-- ✅ **Dead Code Elimination**: Remove unreachable code
-- ✅ **Constant Folding**: Evaluate constant expressions
-- ✅ **Tree Shaking**: Remove unused exports (basic)
-- ✅ **Variable Merging**: Merge variable declarations
-- ✅ **Statement Merging**: Combine compatible statements
-- ✅ **Name Mangling**: Shorten variable and function names
-- ✅ **Control Flow Optimization**: Simplify control structures
-- ✅ **Function Inlining**: Inline small functions
-- ✅ **Advanced Tree Shaking**: Cross-module optimization
+- ✅ **死代码消除**：移除无法到达的代码
+- ✅ **常量折叠**：评估常量表达式
+- ✅ **摇树优化**：移除未使用的导出（基础）
+- ✅ **变量合并**：合并变量声明
+- ✅ **语句合并**：合并兼容的语句
+- ✅ **名称混淆**：缩短变量和函数名
+- ✅ **控制流优化**：简化控制结构
+- ✅ **函数内联**：内联小型函数
+- ✅ **高级摇树优化**：跨模块优化
 
-### Performance Optimization
+### 性能优化
 
-Key strategies for maintaining performance:
+保持性能的关键策略：
 
-1. **Minimal AST Traversals**: Combine multiple optimizations in single passes
-2. **Efficient Data Structures**: Use arena allocation and compact representations
-3. **Early Termination**: Skip optimizations when no benefit is possible
+1. **最小化 AST 遍历**：在单次遍历中结合多种优化
+2. **高效数据结构**：使用区域分配和紧凑表示
+3. **早期终止**：当无法获得收益时跳过优化
 
-## Resources
+## 资源
 
-### Documentation
+### 文档
 
-- [Minifier API Documentation](https://docs.rs/oxc_minifier)
+- [压缩器 API 文档](https://docs.rs/oxc_minifier)
 
-### External References
+### 外部参考
 
-- [Google Closure Compiler Optimizations](https://github.com/google/closure-compiler/wiki/JS-Modules)
-- [Terser Options](https://github.com/terser/terser#minify-options)
-- [esbuild Minification](https://esbuild.github.io/api/#minification)
+- [Google Closure Compiler 优化](https://github.com/google/closure-compiler/wiki/JS-Modules)
+- [Terser 选项](https://github.com/terser/terser#minify-options)
+- [esbuild 压缩](https://esbuild.github.io/api/#minification)
 
-#### Playgrounds
+#### 在线 Playground
 
 - esbuild: https://esbuild.github.io/try
 - rollup: https://rollupjs.org/repl
 - swc: https://play.swc.rs
 - terser: https://try.terser.org
 - closure compiler: https://jscompressor.treblereel.dev
-  - Official website is no longer available: [Closure Compiler Webservice Turndown - 2025](https://github.com/google/closure-compiler/issues/4199)
+  - 官方网站已不再可用：[Closure Compiler Webservice Turndown - 2025](https://github.com/google/closure-compiler/issues/4199)
 
 [google-closure-compiler]: https://github.com/google/closure-compiler
 [terser]: https://github.com/terser/terser

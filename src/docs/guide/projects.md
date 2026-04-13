@@ -1,53 +1,53 @@
 ---
-title: Projects using Oxc
+title: 使用 Oxc 的项目
 outline: deep
 ---
 
-# Projects Using Oxc
+# 使用 Oxc 的项目
 
-## Crates
+## 组件包
 
-- [Andromeda](https://github.com/tryandromeda/andromeda) - A modern, and secure JavaScript & TypeScript runtime built with The Nova Engine and oxc crates
-- [Rolldown](https://rolldown.rs) - Uses all compiler components
-- [sovra](https://github.com/oblador/sovra) - Test decider for large JavaScript projects
-- [Tauri](https://github.com/tauri-apps/tauri/blob/8c6d1e8e6c852667bb223b5f4823948868c26d98/crates/tauri-cli/src/migrate/migrations/v1/frontend.rs) - Uses the parser for its codemod
-- [tree-shaker](https://github.com/KermanX/tree-shaker) - An experimental tree shaker for JavaScript
-- [Tyvm](https://github.com/zackradisic/tyvm) - An experimental bytecode interpreter for type-level TypeScript
+- [Andromeda](https://github.com/tryandromeda/andromeda) - 一个基于 The Nova Engine 和 oxc 组件包构建的现代、安全的 JavaScript & TypeScript 运行时
+- [Rolldown](https://rolldown.rs) - 使用所有编译器组件
+- [sovra](https://github.com/oblador/sovra) - 大型 JavaScript 项目的测试决策器
+- [Tauri](https://github.com/tauri-apps/tauri/blob/8c6d1e8e6c852667bb223b5f4823948868c26d98/crates/tauri-cli/src/migrate/migrations/v1/frontend.rs) - 在其 codemod 中使用解析器
+- [tree-shaker](https://github.com/KermanX/tree-shaker) - 一个实验性的 JavaScript 树摇优化器
+- [Tyvm](https://github.com/zackradisic/tyvm) - 一个实验性的类型级 TypeScript 字节码解释器
 
 ## Oxlint
 
-- [Shopify](https://www.shopify.com/news/performance%F0%9F%91%86-complexity%F0%9F%91%87-killer-updates-from-shopify-engineering) - Reduced hour of workload to seconds
-- [OpenClaw](https://github.com/openclaw/openclaw) - Open source personal AI assistant
-- [AFFiNE](https://github.com/toeverything/affine) - Next-gen knowledge base
-- [Preact](https://github.com/preactjs/preact) - Fast 3kB React alternative with the same modern API
-- [napi-rs](https://github.com/napi-rs/napi-rs) - A framework for building compiled Node.js add-ons in Rust via Node-API
-- [Hey API](https://heyapi.dev/) - OpenAPI to TypeScript codegen ecosystem
-- [nuxt-auth](https://github.com/sidebase/nuxt-auth) - Authentication built for Nuxt 3
+- [Shopify](https://www.shopify.com/news/performance%F0%9F%91%86-complexity%F0%9F%91%87-killer-updates-from-shopify-engineering) - 将数小时的工作量减少到几秒钟
+- [OpenClaw](https://github.com/openclaw/openclaw) - 开源个人 AI 助手
+- [AFFiNE](https://github.com/toeverything/affine) - 下一代知识库
+- [Preact](https://github.com/preactjs/preact) - 具有相同现代 API 的快速 3kB React 替代方案
+- [napi-rs](https://github.com/napi-rs/napi-rs) - 通过 Node-API 使用 Rust 构建编译型 Node.js 插件的框架
+- [Hey API](https://heyapi.dev/) - OpenAPI 到 TypeScript 的代码生成生态系统
+- [nuxt-auth](https://github.com/sidebase/nuxt-auth) - 为 Nuxt 3 构建的身份认证工具
 
 ## Oxfmt
 
-- [OpenClaw](https://github.com/openclaw/openclaw) - Open source personal AI assistant
-- [Vue.js](https://github.com/vuejs/core) - The progressive JavaScript framework
-- [Turborepo](https://github.com/vercel/turborepo) - High-performance build system for JavaScript and TypeScript codebases
-- [Sentry JavaScript](https://github.com/getsentry/sentry-javascript) - Official Sentry SDKs for JavaScript
-- [npmx.dev](https://github.com/npmx-dev/npmx.dev) - npm package explorer
-- [Hugging Face JS](https://github.com/huggingface/huggingface.js) - Hugging Face JS libraries
+- [OpenClaw](https://github.com/openclaw/openclaw) - 开源个人 AI 助手
+- [Vue.js](https://github.com/vuejs/core) - 渐进式 JavaScript 框架
+- [Turborepo](https://github.com/vercel/turborepo) - 用于 JavaScript 和 TypeScript 代码库的高性能构建系统
+- [Sentry JavaScript](https://github.com/getsentry/sentry-javascript) - JavaScript 官方 Sentry SDK
+- [npmx.dev](https://github.com/npmx-dev/npmx.dev) - npm 包浏览器
+- [Hugging Face JS](https://github.com/huggingface/huggingface.js) - Hugging Face JS 库
 
-## Resolver
+## 模块解析器
 
-- [swc-node](https://github.com/swc-project/swc-node) - Faster ts-node without typecheck
-- [Biome](https://biomejs.dev) - for loading configuration
-- [turborepo](https://github.com/vercel/turborepo/pull/9134) - for `turbo-trace`
-- [dts-resolver](https://npmx.dev/package/dts-resolver) - Resolves TypeScript declaration files for dependencies
-- [codemod](https://github.com/codemod/codemod) - For module resolution in jssg codemods
+- [swc-node](https://github.com/swc-project/swc-node) - 无需类型检查的更快 ts-node
+- [Biome](https://biomejs.dev) - 用于加载配置
+- [turborepo](https://github.com/vercel/turborepo/pull/9134) - 用于 `turbo-trace`
+- [dts-resolver](https://npmx.dev/package/dts-resolver) - 解析依赖项的 TypeScript 声明文件
+- [codemod](https://github.com/codemod/codemod) - 用于 jssg codemods 中的模块解析
 
-## Parser
+## 解析器
 
-- [todoctor](https://github.com/azat-io/todoctor) - CLI tool to track and visualize TODO comments in Git repositories and make report
-- [nuxt](https://nuxt.com) - Uses `oxc-parser` to [parse code in plugins](https://github.com/nuxt/nuxt/pull/30066)
-- [Elide](https://elide.dev) - Uses `oxc` to strip TypeScript types before execution
+- [todoctor](https://github.com/azat-io/todoctor) - 用于跟踪和可视化 Git 仓库中的 TODO 注释并生成报告的 CLI 工具
+- [nuxt](https://nuxt.com) - 使用 `oxc-parser` [解析插件中的代码](https://github.com/nuxt/nuxt/pull/30066)
+- [Elide](https://elide.dev) - 使用 `oxc` 在执行前剥离 TypeScript 类型
 
-## Transformer
+## 转换器
 
-- [unplugin-isolated-decl](https://npmx.dev/package/unplugin-isolated-decl) - A blazing-fast tool for generating isolated declarations
-- [stc](https://github.com/long-woo/stc) - A tool for converting OpenApi/Swagger/Apifox into code
+- [unplugin-isolated-decl](https://npmx.dev/package/unplugin-isolated-decl) - 用于生成隔离声明的极速工具
+- [stc](https://github.com/long-woo/stc) - 用于将 OpenApi/Swagger/Apifox 转换为代码的工具

@@ -1,14 +1,14 @@
 ---
-title: AST Tools
+title: AST 工具
 outline: deep
 ---
 
-# AST Tools
+# AST 工具
 
-The [AST Tools](https://github.com/oxc-project/oxc/tree/main/tasks/ast_tools) task serves as our secret weapon for managing all generated files.
-These tools include the AST builder, visitors, traits like `ContentEq` and `ContentHash`, and TypeScript types - all of which are machine-generated.
+[AST 工具](https://github.com/oxc-project/oxc/tree/main/tasks/ast_tools) 任务是我们管理所有生成文件的秘密武器。
+这些工具包括 AST 构建器、访问器、诸如 `ContentEq` 和 `ContentHash` 之类的 Trait，以及 TypeScript 类型——所有这些都是机器生成的。
 
-For instance, the following files are automatically generated:
+例如，以下文件是自动生成的：
 
 - `crates/oxc_ast/src/generated/ast_builder.rs`
 - `crates/oxc_ast/src/generated/visit.rs`
@@ -17,34 +17,34 @@ For instance, the following files are automatically generated:
 - `crates/oxc_ast/src/generated/derive_content_hash.rs`
 - `npm/oxc-types/src/generated/types.d.ts`
 
-## Background
+## 背景
 
-Rust's compile time is notoriously slow, and using procedural macros to generate this much code worsens the issue.
+Rust 的编译时间出了名的慢，而使用过程宏生成这么多代码会加剧这个问题。
 
-Requiring users to wait for code generation to complete at build time would significantly hinder the development experience for downstream projects.
+要求用户在构建时等待代码生成完成会显著阻碍下游项目的开发体验。
 
-Both cold and incremental build times [can regress drastically](https://github.com/swc-project/swc/issues/7071).
+冷构建和增量构建时间 [可能会急剧恶化](https://github.com/swc-project/swc/issues/7071)。
 
-## The RFC
+## RFC
 
-The team discussed the topic in [RFC: codegen AST related codes](https://github.com/oxc-project/oxc/issues/4134) and agreed on the following requirements and user story:
+团队在 [RFC: 生成与 AST 相关的代码](https://github.com/oxc-project/oxc/issues/4134) 中讨论了这个主题，并就以下需求和用户故事达成一致：
 
-### Requirements
+### 需求
 
-- No build.rs published to the user.
-- All generated code are checked into git.
-- No nightly.
-- Rust code is source of truth, need to parse types marked `#[ast]`.
-- Avoid compile-time procedural macros as much as possible.
+- 不向用户发布 build.rs。
+- 所有生成的代码都提交到 git。
+- 不使用 nightly。
+- Rust 代码是事实来源，需要解析标记为 `#[ast]` 的类型。
+- 尽可能避免编译时过程宏。
 
-### Workflow
+### 工作流
 
-- A user changes code in repo.
-- A watch change picks it up.
-- Parse all types marked `#[ast]`.
-- Record details of all AST types in a schema.
-- Generate code from schema and save to files.
+- 用户更改仓库中的代码。
+- 监视变更会捕获它。
+- 解析所有标记为 `#[ast]` 的类型。
+- 在模式中记录所有 AST 类型的详细信息。
+- 从模式生成代码并保存到文件。
 
-## Infrastructure
+## 基础设施
 
-More details to follow.
+更多细节随后跟进。

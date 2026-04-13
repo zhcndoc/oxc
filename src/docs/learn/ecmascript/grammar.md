@@ -1,52 +1,52 @@
 ---
-title: Grammar
+title: 语法
 outline: deep
 ---
 
-# Grammar
+# 语法
 
-JavaScript has one of the most challenging grammar to parse,
-this tutorial details all the sweat and tears I had while learning it.
+JavaScript 拥有最难解析的语法之一，
+本教程详细介绍了我在学习它时所有的辛酸泪。
 
-## LL(1) Grammar
+## LL(1) 语法
 
-According to [Wikipedia](https://en.wikipedia.org/wiki/LL_grammar),
+根据 [维基百科](https://en.wikipedia.org/wiki/LL_grammar)，
 
-> an LL grammar is a context-free grammar that can be parsed by an LL parser, which parses the input from Left to right
+> LL 语法是一种上下文无关语法，可以被 LL 解析器解析，该解析器从左到右解析输入
 
-The first **L** means the scanning the source from **L**eft to right,
-and the second **L** means the construction of a **L**eftmost derivation tree.
+第一个 **L** 表示从 **L**eft（左）到右扫描源代码，
+第二个 **L** 表示构建一个 **L**eftmost（最左）推导树。
 
-Context-free and the (1) in LL(1) means a tree can be constructed by just peeking at the next token and nothing else.
+上下文无关以及 LL(1) 中的 (1) 意味着可以通过仅查看下一个标记来构建树，而无需其他信息。
 
-LL Grammars are of particular interest in academia because we are lazy human beings and we want to write programs that generate parsers automatically so we don't need to write parsers by hand.
+LL 语法在学术界特别受关注，因为我们是懒惰的人类，我们希望编写自动生成解析器的程序，这样我们就不需要手动编写解析器了。
 
-Unfortunately, most industrial programming languages do not have a nice LL(1) grammar,
-and this applies to JavaScript too.
+不幸的是，大多数工业编程语言都没有一个好的 LL(1) 语法，
+这同样适用于 JavaScript。
 
 :::info
-Mozilla started the [jsparagus](https://github.com/mozilla-spidermonkey/jsparagus) project a few years ago
-and wrote a [LALR parser generator in Python](https://github.com/mozilla-spidermonkey/jsparagus/tree/master/jsparagus).
-They haven't updated it much in the past two years and they sent a strong message at the end of [js-quirks.md](https://github.com/mozilla-spidermonkey/jsparagus/blob/master/js-quirks.md)
+Mozilla 几年前启动了 [jsparagus](https://github.com/mozilla-spidermonkey/jsparagus) 项目
+并用 [Python 编写了一个 LALR 解析器生成器](https://github.com/mozilla-spidermonkey/jsparagus/tree/master/jsparagus)。
+在过去的两年里，他们没有怎么更新它，并在 [js-quirks.md](https://github.com/mozilla-spidermonkey/jsparagus/blob/master/js-quirks.md) 的结尾发出了一个强烈的信号
 
-> What have we learned today?
+> 今天我们学到了什么？
 >
-> - Do not write a JS parser.
-> - JavaScript has some syntactic horrors in it. But hey, you don't make the world's most widely used programming language by avoiding all mistakes. You do it by shipping a serviceable tool, in the right circumstances, for the right users.
+> - 不要编写 JS 解析器。
+> - JavaScript 中存在一些语法上的恐怖之处。但嘿，你不是通过避免所有错误来成为世界上使用最广泛的编程语言的。你是在适当的情况下，为适当的用户提供一个可用的工具。
 
 :::
 
 ---
 
-The only practical way to parse JavaScript is to write a recursive descent parser by hand because of the nature of its grammar,
-so let's learn all the quirks in the grammar before we shoot ourselves in the foot.
+由于其语法的性质，解析 JavaScript 的唯一实用方法是手动编写递归下降解析器，
+因此，在我们“自断后路”之前，让我们先学习所有语法上的怪癖。
 
-The list below starts simple and will become difficult to grasp,
-so please take grab a coffee and take your time.
+下面的列表从简单开始，然后会变得难以理解，
+所以请喝杯咖啡，慢慢来。
 
-## Identifiers
+## 标识符
 
-There are three types of identifiers defined in `#sec-identifiers`,
+在 `#sec-identifiers` 中定义了三种类型的标识符，
 
 ```
 IdentifierReference[Yield, Await] :
@@ -54,11 +54,11 @@ BindingIdentifier[Yield, Await] :
 LabelIdentifier[Yield, Await] :
 ```
 
-`estree` and some ASTs do not distinguish the above identifiers,
-and the specification does not explain them in plain text.
+`estree` 和一些 AST 不区分上述标识符，
+并且规范也没有用通俗的语言解释它们。
 
-`BindingIdentifier`s are declarations and `IdentifierReference`s are references to binding identifiers.
-For example in `var foo = bar`, `foo` is a `BindingIdentifier` and `bar` is a `IdentifierReference` in the grammar:
+`BindingIdentifier` 是声明，而 `IdentifierReference` 是对绑定标识符的引用。
+例如，在 `var foo = bar` 中，`foo` 是语法中的 `BindingIdentifier`，而 `bar` 是 `IdentifierReference`：
 
 ```
 VariableDeclaration[In, Yield, Await] :
@@ -68,14 +68,14 @@ Initializer[In, Yield, Await] :
     = AssignmentExpression[?In, ?Yield, ?Await]
 ```
 
-follow `AssignmentExpression` into `PrimaryExpression` we get
+在 `AssignmentExpression` 之后，我们得到 `PrimaryExpression`
 
 ```
 PrimaryExpression[Yield, Await] :
     IdentifierReference[?Yield, ?Await]
 ```
 
-Declaring these identifiers differently in the AST will greatly simply downstream tools, especially for semantic analysis.
+在 AST 中以不同的方式声明这些标识符将极大地简化下游工具，尤其是对于语义分析。
 
 ```rust
 pub struct BindingIdentifier {
@@ -91,13 +91,13 @@ pub struct IdentifierReference {
 
 ---
 
-## Class and Strict Mode
+## Class 和严格模式
 
-ECMAScript Class is born after strict mode, so they decided that everything inside a class must be strict mode for simplicity.
-It is stated as such in `#sec-class-definitions` with just a `Node: A class definition is always strict mode code.`
+ECMAScript Class 出生于严格模式之后，因此他们决定为了简单起见，类中的所有内容都必须是严格模式。
+这在 `#sec-class-definitions` 中被明确说明为 `Node: A class definition is always strict mode code.`（节点：类定义始终是严格模式代码）。
 
-It is easy to declare strict mode by associating it with function scopes, but a `class` declaration does not have a scope,
-we need to keep an extra state just for parsing classes.
+通过将严格模式与函数作用域关联起来很容易声明严格模式，但 `class` 声明没有作用域，
+我们需要额外维护一个状态来解析类。
 
 ```rust
 // https://github.com/swc-project/swc/blob/f9c4eff94a133fa497778328fa0734aa22d5697c/crates/swc_ecma_parser/src/parser/class_and_fn.rs#L85
@@ -114,38 +114,38 @@ fn parse_class_inner(
 
 ---
 
-## Legacy Octal and Use Strict
+## 旧式八进制和 Use Strict
 
-`#sec-string-literals-early-errors` disallows escaped legacy octal inside strings `"\01"`:
+`#sec-string-literals-early-errors` 禁止在字符串中使用转义的旧式八进制 `"\01"`：
 
 ```
 EscapeSequence ::
     LegacyOctalEscapeSequence
     NonOctalDecimalEscapeSequence
 
-It is a Syntax Error if the source text matched by this production is strict mode code.
+如果匹配此产生式的源文本是严格模式代码，则为语法错误。
 ```
 
-The best place to detect this is inside the lexer, it can ask the parser for strict mode state and throw errors accordingly.
+检测此问题的最佳位置是在词法分析器中，它可以询问解析器严格模式状态并相应地抛出错误。
 
-But, this becomes impossible when mixed with directives:
+但当与指令混合时，这变得不可能：
 
 ```javascript reference
 https://github.com/tc39/test262/blob/747bed2e8aaafe8fdf2c65e8a10dd7ae64f66c47/test/language/literals/string/legacy-octal-escape-sequence-prologue-strict.js#L16-L19
 ```
 
-`use strict` is declared after the escaped legacy octal, yet the syntax error needs to be thrown.
-Fortunately, no real code uses directives with legacy octals ... unless you want to pass the test262 case from above.
+`use strict` 在转义的旧式八进制之后声明，但仍然需要抛出语法错误。
+幸运的是，没有实际代码在指令中使用旧式八进制……除非你想通过上面的 test262 用例。
 
 ---
 
-## Non-simple Parameter and Strict Mode
+## 非简单参数和严格模式
 
-Identical function parameters is allowed in non-strict mode `function foo(a, a) { }`,
-and we can forbid this by adding `use strict`: `function foo(a, a) { "use strict" }`.
-Later on in es6, other grammars were added to function parameters, for example `function foo({ a }, b = c) {}`.
+在非严格模式下允许相同的函数参数 `function foo(a, a) { }`，
+我们可以通过添加 `use strict` 来禁止这种情况：`function foo(a, a) { "use strict" }`。
+后来在 es6 中，为函数参数添加了其他语法，例如 `function foo({ a }, b = c) {}`。
 
-Now, what happens if we write the following where "01" is a strict mode error?
+现在，如果我们编写以下代码，其中“01”是严格模式错误，会发生什么？
 
 ```javaScript
 function foo(
@@ -158,23 +158,23 @@ function foo(
 }
 ```
 
-More specifically, what should we do if there is a strict mode syntax error inside the parameters thinking from the parser perspective?
-So in `#sec-function-definitions-static-semantics-early-errors`, it just bans this by stating
+更具体地说，从解析器的角度来看，如果参数中存在严格模式语法错误，我们应该怎么做？
+因此，在 `#sec-function-definitions-static-semantics-early-errors` 中，它只是通过声明来禁止这种情况
 
 ```
 FunctionDeclaration :
 FunctionExpression :
 
-It is a Syntax Error if FunctionBodyContainsUseStrict of FunctionBody is true and IsSimpleParameterList of FormalParameters is false.
+如果 FunctionBodyContainsUseStrict of FunctionBody 为 true 且 IsSimpleParameterList of FormalParameters 为 false，则为语法错误。
 ```
 
-Chrome throws this error with a mysterious message "Uncaught SyntaxError: Illegal 'use strict' directive in function with non-simple parameter list".
+Chrome 以神秘的消息“Uncaught SyntaxError: Illegal 'use strict' directive in function with non-simple parameter list”（未捕获的语法错误：具有非简单参数列表的函数中存在非法的 'use strict' 指令）抛出此错误。
 
-A more in-depth explanation is described in [this blog post](https://humanwhocodes.com/blog/2016/10/the-ecmascript-2016-change-you-probably-dont-know/) by the author of ESLint.
+ESLint 作者的[这篇博文](https://humanwhocodes.com/blog/2016/10/the-ecmascript-2016-change-you-probably-dont-know/)对此进行了更深入的解释。
 
 :::info
 
-Fun fact, the above rule does not apply if we are targeting `es5` in TypeScript, it transpiles to
+有趣的是，上述规则不适用于你在 TypeScript 中以 `es5` 为目标的情况，它会转译为
 
 ```javaScript
 function foo(a, b) {
@@ -187,14 +187,14 @@ function foo(a, b) {
 
 ---
 
-## Parenthesized Expression
+## 括号表达式
 
-Parenthesized expressions are supposed to not have any semantic meanings?
-For instance the AST for `((x))` can just be a single `IdentifierReference`, not `ParenthesizedExpression` -> `ParenthesizedExpression` -> `IdentifierReference`.
-And this is the case for JavaScript grammar.
+括号表达式应该没有任何语义含义？
+例如，`((x))` 的 AST 可以只是一个单独的 `IdentifierReference`，而不是 `ParenthesizedExpression` -> `ParenthesizedExpression` -> `IdentifierReference`。
+JavaScript 语法也是如此。
 
-But ... who would have thought it can have runtime meanings.
-Found in [this estree issue](https://github.com/estree/estree/issues/194), it shows that
+但是……谁能想到它会有运行时含义。
+在 [这个 estree issue](https://github.com/estree/estree/issues/194) 中发现，它显示
 
 ```javascript
 > fn = function () {};
@@ -206,26 +206,26 @@ Found in [this estree issue](https://github.com/estree/estree/issues/194), it sh
 < ''
 ```
 
-So eventually acorn and babel added the `preserveParens` option for compatibility.
+因此，最终 acorn 和 babel 添加了 `preserveParens` 选项以实现兼容性。
 
 ---
 
-## Function Declaration in If Statement
+## If 语句中的函数声明
 
-If we follow the grammar precisely in `#sec-ecmascript-language-statements-and-declarations`:
+如果我们严格遵循 `#sec-ecmascript-language-statements-and-declarations` 中的语法：
 
 ```
 Statement[Yield, Await, Return] :
-    ... lots of statements
+    ... 许多语句
 
 Declaration[Yield, Await] :
-    ... declarations
+    ... 声明
 ```
 
-The `Statement` node we define for our AST would obviously not contain `Declaration`,
+我们为 AST 定义的 `Statement` 节点显然不包含 `Declaration`，
 
-but in Annex B `#sec-functiondeclarations-in-ifstatement-statement-clauses`,
-it allows declaration inside the statement position of `if` statements in non-strict mode:
+但在 Annex B `#sec-functiondeclarations-in-ifstatement-statement-clauses` 中，
+它允许在非严格模式下 `if` 语句的语句位置中进行声明：
 
 ```javascript
 if (x) {
@@ -235,11 +235,11 @@ if (x) {
 
 ---
 
-## Label statement is legit
+## 标签语句是合法的
 
-We probably have never written a single line of labelled statement, but it is legit in modern JavaScript and not banned by strict mode.
+我们可能从未写过一行标签语句，但它在现代 JavaScript 中是合法的，并且不被严格模式禁止。
 
-The following syntax is correct, it returns a labelled statement (not object literal).
+以下语法是正确的，它返回一个标签语句（而不是对象字面量）。
 
 ```javascript
 <Foo
@@ -252,10 +252,10 @@ The following syntax is correct, it returns a labelled statement (not object lit
 
 ---
 
-## `let` is not a keyword
+## `let` 不是关键字
 
-`let` is not a keyword so it is allowed to appear anywhere unless the grammar explicitly states `let` is not allowed in such positions.
-Parsers need to peek at the token after the `let` token and decide what it needs to be parsed into, e.g.:
+`let` 不是关键字，因此它允许出现在任何地方，除非语法明确规定 `let` 在这些位置不允许出现。
+解析器需要查看 `let` 标记之后的标记，并决定它需要被解析成什么，例如：
 
 ```javascript
 let a;
@@ -268,59 +268,59 @@ a = let[0];
 
 ---
 
-## For-in / For-of and the [In] context
+## For-in / For-of 和 [In] 上下文
 
-If we look at the grammar for `for-in` and `for-of` in `#prod-ForInOfStatement`,
-it is immediately confusing to understand how to parse these.
+如果我们查看 `#prod-ForInOfStatement` 中 `for-in` 和 `for-of` 的语法，
+要理解如何解析它们会立即令人困惑。
 
-There are two major obstacles for us to understand: the `[lookahead ≠ let]` part and the `[+In]` part.
+我们理解的两个主要障碍是 `[lookahead ≠ let]` 部分和 `[+In]` 部分。
 
-If we have parsed to `for (let`, we need to check the peeking token is:
+如果我们已经解析到 `for (let`，我们需要检查窥视的标记是：
 
-- not `in` to disallow `for (let in)`
-- is `{`, `[` or an identifier to allow `for (let {} = foo)`, `for (let [] = foo)` and `for (let bar = foo)`
+- 不是 `in` 以禁止 `for (let in)`
+- 是 `{`、`[` 或标识符以允许 `for (let {} = foo)`、`for (let [] = foo)` 和 `for (let bar = foo)`
 
-Once reached the `of` or `in` keyword, the right-hand side expression needs to be passed with the correct [+In] context to disallow
-the two `in` expressions in `#prod-RelationalExpression`:
+一旦到达 `of` 或 `in` 关键字，就需要使用正确的 `[+In]` 上下文传递右侧表达式，以禁止
+`#prod-RelationalExpression` 中的两个 `in` 表达式：
 
 ```
 RelationalExpression[In, Yield, Await] :
     [+In] RelationalExpression[+In, ?Yield, ?Await] in ShiftExpression[?Yield, ?Await]
     [+In] PrivateIdentifier in ShiftExpression[?Yield, ?Await]
 
-Note 2: The [In] grammar parameter is needed to avoid confusing the in operator in a relational expression with the in operator in a for statement.
+注意 2：[In] 语法参数是必需的，以避免将关系表达式中的 in 运算符与 for 语句中的 in 运算符混淆。
 ```
 
-And this is the only application for the `[In]` context in the entire specification.
+这是 `[In]` 上下文在整个规范中的唯一应用。
 
-Also to note, the grammar `[lookahead ∉ { let, async of }]` forbids `for (async of ...)`,
-and it needs to be explicitly guarded against.
+另外需要注意的是，语法 `[lookahead ∉ { let, async of }]` 禁止 `for (async of ...)`，
+需要明确防范。
 
 ---
 
-## Block-Level Function Declarations
+## 块级函数声明
 
-In Annex B.3.2 `#sec-block-level-function-declarations-web-legacy-compatibility-semantics`,
-an entire page is dedicated to explain how `FunctionDeclaration` is supposed to behave in `Block` statements.
-It boils down to
+在 Annex B.3.2 `#sec-block-level-function-declarations-web-legacy-compatibility-semantics` 中，
+专门用一整页来解释 `FunctionDeclaration` 在 `Block` 语句中的行为方式。
+其核心内容是
 
 ```javascript reference
 https://github.com/acornjs/acorn/blob/11735729c4ebe590e406f952059813f250a4cbd1/acorn/src/scope.js#L30-L35
 ```
 
-The name of a `FunctionDeclaration` needs to be treated the same as a `var` declaration if its inside a function declaration.
-This code snippet errors with a re-declaration error since `bar` is inside a block scope:
+如果 `FunctionDeclaration` 的名称在函数声明内部，则需要将其视为与 `var` 声明相同。
+此代码片段因重新声明错误而失败，因为 `bar` 在块作用域内：
 
 ```javascript
 function foo() {
   if (true) {
     var bar;
-    function bar() {} // redeclaration error
+    function bar() {} // 重新声明错误
   }
 }
 ```
 
-meanwhile, the following does not error because it is inside a function scope, function `bar` is treated as a var declaration:
+同时，以下代码不会出错，因为它在函数作用域内，函数 `bar` 被视为 var 声明：
 
 ```javascript
 function foo() {
@@ -329,47 +329,44 @@ function foo() {
 }
 ```
 
----
+## 语法上下文
 
-## Grammar Context
+语法有 5 个上下文参数，用于允许和禁止某些结构，
+即 `[In]`、`[Return]`、`[Yield]`、`[Await]` 和 `[Default]`。
 
-The syntactic grammar has 5 context parameters for allowing and disallowing certain constructs,
-namely `[In]`, `[Return]`, `[Yield]`, `[Await]` and `[Default]`.
-
-It is best to keep a context during parsing, for example in Biome:
+在解析过程中最好保留上下文，例如在 Biome 中：
 
 ```rust
 // https://github.com/rome/tools/blob/5a059c0413baf1d54436ac0c149a829f0dfd1f4d/crates/rome_js_parser/src/state.rs#L404-L425
 
 pub(crate) struct ParsingContextFlags: u8 {
-    /// Whether the parser is in a generator function like `function* a() {}`
-    /// Matches the `Yield` parameter in the ECMA spec
+    /// 解析器是否在生成器函数中，例如 `function* a() {}`
+    /// 对应 ECMA 规范中的 `Yield` 参数
     const IN_GENERATOR = 1 << 0;
-    /// Whether the parser is inside a function
+    /// 解析器是否在函数内部
     const IN_FUNCTION = 1 << 1;
-    /// Whatever the parser is inside a constructor
+    /// 解析器是否在构造函数内部
     const IN_CONSTRUCTOR = 1 << 2;
 
-    /// Is async allowed in this context. Either because it's an async function or top level await is supported.
-    /// Equivalent to the `Async` generator in the ECMA spec
+    /// 在此上下文中是否允许 async。要么是因为它是 async 函数，要么是支持顶层 await。
+    /// 对应 ECMA 规范中的 `Async` 生成器
     const IN_ASYNC = 1 << 3;
 
-    /// Whether the parser is parsing a top-level statement (not inside a class, function, parameter) or not
+    /// 解析器是否正在解析顶层语句（不在类、函数、参数内部）
     const TOP_LEVEL = 1 << 4;
 
-    /// Whether the parser is in an iteration or switch statement and
-    /// `break` is allowed.
+    /// 解析器是否在迭代或 switch 语句中，并且允许 `break`。
     const BREAK_ALLOWED = 1 << 5;
 
-    /// Whether the parser is in an iteration statement and `continue` is allowed.
+    /// 解析器是否在迭代语句中，并且允许 `continue`。
     const CONTINUE_ALLOWED = 1 << 6;
 ```
 
-And toggle and check these flags accordingly by following the grammar.
+并根据语法相应地切换和检查这些标志。
 
-## AssignmentPattern vs BindingPattern
+## AssignmentPattern 与 BindingPattern
 
-In `estree`, the left-hand side of an `AssignmentExpression` is a `Pattern`:
+在 `estree` 中，`AssignmentExpression` 的左侧是 `Pattern`：
 
 ```
 extend interface AssignmentExpression {
@@ -377,7 +374,7 @@ extend interface AssignmentExpression {
 }
 ```
 
-and the left-hand side of a `VariableDeclarator` is a `Pattern`:
+而 `VariableDeclarator` 的左侧是 `Pattern`：
 
 ```
 interface VariableDeclarator <: Node {
@@ -387,7 +384,7 @@ interface VariableDeclarator <: Node {
 }
 ```
 
-A `Pattern` can be a `Identifier`, `ObjectPattern`, `ArrayPattern`:
+`Pattern` 可以是 `Identifier`、`ObjectPattern`、`ArrayPattern`：
 
 ```
 interface Identifier <: Expression, Pattern {
@@ -406,7 +403,7 @@ interface ArrayPattern <: Pattern {
 }
 ```
 
-But from the specification perspective, we have the following JavaScript:
+但从规范的角度来看，我们有以下 JavaScript：
 
 ```javascript
 // AssignmentExpression:
@@ -422,24 +419,23 @@ var [ foo ] = bar;
       ^^^ BindingIdentifier
 ```
 
-This starts to become confusing because we now have a situation where we cannot directly distinguish whether the `Identifier` is a `BindingIdentifier` or a `IdentifierReference`
-inside a `Pattern`:
+这开始变得令人困惑，因为我们现在面临一个情况，即无法直接区分 `Identifier` 是 `BindingIdentifier` 还是 `Pattern` 中的 `IdentifierReference`：
 
 ```rust
 enum Pattern {
-    Identifier, // Is this a `BindingIdentifier` or a `IdentifierReference`?
+    Identifier, // 这是 `BindingIdentifier` 还是 `IdentifierReference`？
     ArrayPattern,
     ObjectPattern,
 }
 ```
 
-This will lead to all sorts of unnecessary code further down the parser pipeline.
-For example, when setting up the scope for semantic analysis, we need to inspect the parents of this `Identifier`
-to determine whether we should bind it to the scope or not.
+这将导致解析器管道下游出现各种不必要的代码。
+例如，在为语义分析设置作用域时，我们需要检查此 `Identifier` 的父级
+以确定是否应将其绑定到作用域。
 
-A better solution is to fully understand the specification and decide what to do.
+更好的解决方案是完全理解规范并决定如何处理。
 
-The grammar for `AssignmentExpression` and `VariableDeclaration` are defined as:
+`AssignmentExpression` 和 `VariableDeclaration` 的语法定义如下：
 
 ```
 13.15 Assignment Operators
@@ -449,9 +445,8 @@ AssignmentExpression[In, Yield, Await] :
 
 13.15.5 Destructuring Assignment
 
-In certain circumstances when processing an instance of the production
-AssignmentExpression : LeftHandSideExpression = AssignmentExpression
-the interpretation of LeftHandSideExpression is refined using the following grammar:
+在处理 AssignmentExpression : LeftHandSideExpression = AssignmentExpression 实例的某些情况下，
+LeftHandSideExpression 的解释会使用以下语法进行细化：
 
 AssignmentPattern[Yield, Await] :
     ObjectAssignmentPattern[?Yield, ?Await]
@@ -466,9 +461,9 @@ VariableDeclaration[In, Yield, Await] :
     BindingPattern[?Yield, ?Await] Initializer[?In, ?Yield, ?Await]
 ```
 
-The specification distinguishes this two grammar by defining them separately with an `AssignmentPattern` and a `BindingPattern`.
+规范通过分别定义 `AssignmentPattern` 和 `BindingPattern` 来区分这两种语法。
 
-So in situations like this, do not be afraid to deviate from `estree` and define extra AST nodes for our parser:
+因此，在这种情况下，不要害怕偏离 `estree`，为我们的解析器定义额外的 AST 节点：
 
 ```rust
 enum BindingPattern {
@@ -484,22 +479,22 @@ enum AssignmentPattern {
 }
 ```
 
-I was in a super confusing state for a whole week until I finally reached enlightenment:
-we need to define an `AssignmentPattern` node and a `BindingPattern` node instead of a single `Pattern` node.
+我曾陷入一个非常混乱的状态整整一周，直到我最终开悟：
+我们需要定义一个 `AssignmentPattern` 节点和一个 `BindingPattern` 节点，而不是一个单一的 `Pattern` 节点。
 
-- `estree` must be correct because people have been using it for years so it cannot be wrong?
-- how are we going to cleanly distinguish the `Identifier`s inside the patterns without defining two separate nodes? I just cannot find where the grammar is?
-- After a whole day of navigating the specification ... the grammar for `AssignmentPattern` is in the 5th subsection of the main section "13.15 Assignment Operators" with the subtitle "Supplemental Syntax" 🤯 - this is really out of place because all grammar is defined in the main section, not like this one defined after the "Runtime Semantics" section
+- `estree` 必须是正确的，因为人们已经使用了它很多年，所以它不可能是错的？
+- 在不定义两个单独的节点的情况下，我们将如何清晰地区分模式中的 `Identifier`？我找不到语法在哪里？
+- 在浏览了整整一天的规范后…… `AssignmentPattern` 的语法位于主部分“13.15 Assignment Operators”的第五个子部分，副标题为“Supplemental Syntax” 🤯 - 这真的不合适，因为所有语法都定义在主部分，而不是像这个定义在“Runtime Semantics”部分之后。
 
 ---
 
 :::tip
-The following cases are really difficult to grasp. Here be dragons.
+以下情况确实难以理解。此处有龙。
 :::
 
-## Ambiguous Grammar
+## 歧义语法
 
-Let's first think like a parser and solve the problem - given the `/` token, is it a division operator or the start of a regex expression?
+让我们先像解析器一样思考并解决问题——给定 `/` 标记，它是除法运算符还是正则表达式的开始？
 
 ```javascript
 a / b;
@@ -509,20 +504,20 @@ a /= / regex /;
 /=/ / /=/;
 ```
 
-It is almost impossible, isn't it? Let's break these down and follow the grammar.
+这几乎是不可能的，不是吗？让我们分解这些并遵循语法。
 
-The first thing we need to understand is that the syntactic grammar drives the lexical grammar as stated in `#sec-ecmascript-language-lexical-grammar`
+我们需要了解的第一件事是，正如 `#sec-ecmascript-language-lexical-grammar` 中所述，语法驱动词法语法
 
-> There are several situations where the identification of lexical input elements is sensitive to the syntactic grammar context that is consuming the input elements.
+> 在某些情况下，词法输入元素的识别对消耗这些输入元素的语法语法上下文很敏感。
 
-This means that the parser is responsible for telling the lexer which token to return next.
-The above example indicates that the lexer needs to return either a `/` token or a `RegExp` token.
-For getting the correct `/` or `RegExp` token, the specification says:
+这意味着解析器负责告诉词法分析器下一个要返回的标记。
+上述示例表明，词法分析器需要返回 `/` 标记或 `RegExp` 标记。
+为了获得正确的 `/` 或 `RegExp` 标记，规范说明：
 
-> The InputElementRegExp goal symbol is used in all syntactic grammar contexts where a RegularExpressionLiteral is permitted ...
-> In all other contexts, InputElementDiv is used as the lexical goal symbol.
+> `InputElementRegExp` 目标符号用于所有允许 `RegularExpressionLiteral` 的语法语法上下文……
+> 在所有其他上下文中，`InputElementDiv` 用作词法目标符号。
 
-And the syntax for `InputElementDiv` and `InputElementRegExp` are
+`InputElementDiv` 和 `InputElementRegExp` 的语法是
 
 ```
 InputElementDiv ::
@@ -530,7 +525,7 @@ InputElementDiv ::
     LineTerminator
     Comment
     CommonToken
-    DivPunctuator <---------- the `/` and `/=` token
+    DivPunctuator <---------- `/` 和 `/=` 标记
     RightBracePunctuator
 
 InputElementRegExp ::
@@ -539,13 +534,13 @@ InputElementRegExp ::
     Comment
     CommonToken
     RightBracePunctuator
-    RegularExpressionLiteral <-------- the `RegExp` token
+    RegularExpressionLiteral <-------- `RegExp` 标记
 ```
 
-This means whenever the grammar reaches `RegularExpressionLiteral`, `/` need to be tokenized as a `RegExp` token (and throw an error if it does not have a matching `/`).
-All other cases we'll tokenize `/` as a slash token.
+这意味着每当语法达到 `RegularExpressionLiteral` 时，`/` 都需要被标记为 `RegExp` 标记（如果它没有匹配的 `/` 则抛出错误）。
+在所有其他情况下，我们将 `/` 标记为斜杠标记。
 
-Let's walk through an example:
+让我们看一个例子：
 
 ```
 a / / regex /
@@ -554,44 +549,44 @@ a / / regex /
     ^^^^^^^^ - PrimaryExpression: RegularExpressionLiteral
 ```
 
-This statement does not match any other start of `Statement`,
-so it'll go down the `ExpressionStatement` route:
+此语句不匹配任何其他 `Statement` 的开头，
+因此它将沿着 `ExpressionStatement` 路径进行：
 
 `ExpressionStatement` --> `Expression` --> `AssignmentExpression` --> ... -->
 `MultiplicativeExpression` --> ... -->
-`MemberExpression` --> `PrimaryExpression` --> `IdentifierReference`.
+`MemberExpression` --> `PrimaryExpression` --> `IdentifierReference`。
 
-We stopped at `IdentifierReference` and not `RegularExpressionLiteral`,
-the statement "In all other contexts, InputElementDiv is used as the lexical goal symbol" applies.
-The first slash is a `DivPunctuator` token.
+我们在 `IdentifierReference` 处停止，而不是 `RegularExpressionLiteral`，
+“在所有其他上下文中，`InputElementDiv` 用作词法目标符号”的说法适用。
+第一个斜杠是 `DivPunctuator` 标记。
 
-Since this is a `DivPunctuator` token,
-the grammar `MultiplicativeExpression: MultiplicativeExpression MultiplicativeOperator ExponentiationExpression` is matched,
-the right-hand side is expected to be an `ExponentiationExpression`.
+由于这是一个 `DivPunctuator` 标记，
+匹配了语法 `MultiplicativeExpression: MultiplicativeExpression MultiplicativeOperator ExponentiationExpression`，
+右侧应为 `ExponentiationExpression`。
 
-Now we are at the second slash in `a / /`.
-By following `ExponentiationExpression`,
-we reach `PrimaryExpression: RegularExpressionLiteral` because `RegularExpressionLiteral` is the only matching grammar with a `/`:
+现在我们来到了 `a / /` 中的第二个斜杠。
+通过遵循 `ExponentiationExpression`，
+我们到达 `PrimaryExpression: RegularExpressionLiteral`，因为 `RegularExpressionLiteral` 是唯一匹配 `/` 的语法：
 
 ```
 RegularExpressionLiteral ::
     / RegularExpressionBody / RegularExpressionFlags
 ```
 
-This second `/` will be tokenized as `RegExp` because
-the specification states "The InputElementRegExp goal symbol is used in all syntactic grammar contexts where a RegularExpressionLiteral is permitted".
+第二个斜杠将被标记为 `RegExp`，因为
+规范说明“`InputElementRegExp` 目标符号用于所有允许 `RegularExpressionLiteral` 的语法语法上下文”。
 
 :::info
-As an exercise, try and follow the grammar for `/=/ / /=/`.
+作为练习，尝试遵循 `/=/ / /=/` 的语法。
 :::
 
 ---
 
-## Cover Grammar
+## 覆盖语法
 
-Read the [V8 blog post](https://v8.dev/blog/understanding-ecmascript-part-4) on this topic first.
+首先阅读 [V8 博客文章](https://v8.dev/blog/understanding-ecmascript-part-4) 关于此主题。
 
-To summarize, the specification states the following three cover grammars:
+总而言之，规范说明了以下三个覆盖语法：
 
 #### CoverParenthesizedExpressionAndArrowParameterList
 
@@ -599,9 +594,8 @@ To summarize, the specification states the following three cover grammars:
 PrimaryExpression[Yield, Await] :
     CoverParenthesizedExpressionAndArrowParameterList[?Yield, ?Await]
 
-When processing an instance of the production
-PrimaryExpression[Yield, Await] : CoverParenthesizedExpressionAndArrowParameterList[?Yield, ?Await]
-    the interpretation of CoverParenthesizedExpressionAndArrowParameterList is refined using the following grammar:
+在处理 PrimaryExpression[Yield, Await] : CoverParenthesizedExpressionAndArrowParameterList[?Yield, ?Await] 实例时
+    CoverParenthesizedExpressionAndArrowParameterList 的解释会使用以下语法进行细化：
 
 ParenthesizedExpression[Yield, Await] :
     ( Expression[+In, ?Yield, ?Await] )
@@ -616,7 +610,7 @@ ArrowParameters[Yield, Await] :
     CoverParenthesizedExpressionAndArrowParameterList[?Yield, ?Await]
 ```
 
-These definitions defines:
+这些定义了：
 
 ```javascript
 let foo = (a, b, c); // SequenceExpression
@@ -624,18 +618,18 @@ let bar = (a, b, c) => {}; // ArrowExpression
           ^^^^^^^^^ CoverParenthesizedExpressionAndArrowParameterList
 ```
 
-A simple but cumbersome approach to solving this problem is to parse it as a `Vec<Expression>` first,
-then write a converter function to convert it to `ArrowParameters` node, i.e. each individual `Expression` need to be converted to a `BindingPattern`.
+一种简单但繁琐的解决方法是先将其解析为 `Vec<Expression>`，
+然后编写一个转换函数将其转换为 `ArrowParameters` 节点，即每个单独的 `Expression` 都需要转换为 `BindingPattern`。
 
-It should be noted that, if we are building the scope tree within the parser,
-i.e. create the scope for arrow expression during parsing,
-but do not create one for a sequence expression,
-it is not obvious how to do this. [esbuild](https://github.com/evanw/esbuild) solved this problem by creating a temporary scope first,
-and then dropping it if it is not an `ArrowExpression`.
+值得注意的是，如果我们在解析器中构建作用域树，
+即在解析期间为箭头表达式创建作用域，
+但不对序列表达式创建作用域，
+这并不容易做到。[esbuild](https://github.com/evanw/esbuild) 通过先创建一个临时作用域来解决此问题，
+然后如果它不是 `ArrowExpression` 则将其删除。
 
-This is stated in its [architecture document](https://github.com/evanw/esbuild/blob/master/docs/architecture.md#symbols-and-scopes):
+这在其 [架构文档](https://github.com/evanw/esbuild/blob/master/docs/architecture.md#symbols-and-scopes) 中有所说明：
 
-> This is mostly pretty straightforward except for a few places where the parser has pushed a scope and is in the middle of parsing a declaration only to discover that it's not a declaration after all. This happens in TypeScript when a function is forward-declared without a body, and in JavaScript when it's ambiguous whether a parenthesized expression is an arrow function or not until we reach the => token afterwards. This would be solved by doing three passes instead of two so we finish parsing before starting to set up scopes and declare symbols, but we're trying to do this in just two passes. So instead we call popAndDiscardScope() or popAndFlattenScope() instead of popScope() to modify the scope tree later if our assumptions turn out to be incorrect.
+> 这大部分都很简单，除了少数地方，解析器已经推入了一个作用域，并且正在解析声明，但后来发现它实际上不是声明。这在 TypeScript 中发生在函数被前向声明但没有主体时，在 JavaScript 中发生在当它不确定一个括号表达式是否是箭头函数，直到稍后遇到 `=>` 标记时。这可以通过进行三个传递而不是两个传递来解决，这样我们就可以在开始设置作用域和声明符号之前完成解析，但我们试图在两个传递中完成此操作。所以我们调用 `popAndDiscardScope()` 或 `popAndFlattenScope()` 而不是 `popScope()` 来在我们的假设被证明是错误的情况下稍后修改作用域树。
 
 ---
 
@@ -645,9 +639,8 @@ This is stated in its [architecture document](https://github.com/evanw/esbuild/b
 CallExpression :
     CoverCallExpressionAndAsyncArrowHead
 
-When processing an instance of the production
-CallExpression : CoverCallExpressionAndAsyncArrowHead
-the interpretation of CoverCallExpressionAndAsyncArrowHead is refined using the following grammar:
+在处理 CallExpression : CoverCallExpressionAndAsyncArrowHead 实例时
+    CoverCallExpressionAndAsyncArrowHead 的解释会使用以下语法进行细化：
 
 CallMemberExpression[Yield, Await] :
     MemberExpression[?Yield, ?Await] Arguments[?Yield, ?Await]
@@ -660,15 +653,14 @@ AsyncArrowFunction[In, Yield, Await] :
 CoverCallExpressionAndAsyncArrowHead[Yield, Await] :
     MemberExpression[?Yield, ?Await] Arguments[?Yield, ?Await]
 
-When processing an instance of the production
-AsyncArrowFunction : CoverCallExpressionAndAsyncArrowHead => AsyncConciseBody
-the interpretation of CoverCallExpressionAndAsyncArrowHead is refined using the following grammar:
+在处理 AsyncArrowFunction : CoverCallExpressionAndAsyncArrowHead => AsyncConciseBody 实例时
+    CoverCallExpressionAndAsyncArrowHead 的解释会使用以下语法进行细化：
 
 AsyncArrowHead :
     async [no LineTerminator here] ArrowFormalParameters[~Yield, +Await]
 ```
 
-These definitions define:
+这些定义了：
 
 ```javascript
 async (a, b, c); // CallExpression
@@ -676,7 +668,7 @@ async (a, b, c) => {} // AsyncArrowFunction
 ^^^^^^^^^^^^^^^ CoverCallExpressionAndAsyncArrowHead
 ```
 
-This looks strange because `async` is not a keyword. The first `async` is a function name.
+这看起来很奇怪，因为 `async` 不是关键字。第一个 `async` 是函数名。
 
 ---
 
@@ -691,36 +683,36 @@ ObjectLiteral[Yield, Await] :
 PropertyDefinition[Yield, Await] :
     CoverInitializedName[?Yield, ?Await]
 
-Note 3: In certain contexts, ObjectLiteral is used as a cover grammar for a more restricted secondary grammar.
-The CoverInitializedName production is necessary to fully cover these secondary grammars. However, use of this production results in an early Syntax Error in normal contexts where an actual ObjectLiteral is expected.
+Note 3: 在某些情况下，ObjectLiteral 用作更受限制的次要语法的覆盖语法。
+CoverInitializedName 产生式对于完全覆盖这些次要语法是必需的。然而，使用此产生式会在实际期望 ObjectLiteral 的正常上下文中导致早期语法错误。
 
 13.2.5.1 Static Semantics: Early Errors
 
-In addition to describing an actual object initializer the ObjectLiteral productions are also used as a cover grammar for ObjectAssignmentPattern and may be recognized as part of a CoverParenthesizedExpressionAndArrowParameterList. When ObjectLiteral appears in a context where ObjectAssignmentPattern is required the following Early Error rules are not applied. In addition, they are not applied when initially parsing a CoverParenthesizedExpressionAndArrowParameterList or CoverCallExpressionAndAsyncArrowHead.
+除了描述实际的对象初始化器外，ObjectLiteral 产生式还用作 ObjectAssignmentPattern 的覆盖语法，并且可能被识别为 CoverParenthesizedExpressionAndArrowParameterList 的一部分。当 ObjectLiteral 出现在需要 ObjectAssignmentPattern 的上下文中时，以下早期错误规则不适用。此外，当最初解析 CoverParenthesizedExpressionAndArrowParameterList 或 CoverCallExpressionAndAsyncArrowHead 时，它们也不适用。
 
 PropertyDefinition : CoverInitializedName
-    I* t is a Syntax Error if any source text is matched by this production.
+    I* 如果任何源文本被此产生式匹配，则为语法错误。
 ```
 
 ```
 13.15.1 Static Semantics: Early Errors
 
 AssignmentExpression : LeftHandSideExpression = AssignmentExpression
-If LeftHandSideExpression is an ObjectLiteral or an ArrayLiteral, the following Early Error rules are applied:
-    * LeftHandSideExpression must cover an AssignmentPattern.
+如果 LeftHandSideExpression 是 ObjectLiteral 或 ArrayLiteral，则应用以下早期错误规则：
+    * LeftHandSideExpression 必须覆盖一个 AssignmentPattern。
 ```
 
-These definitions define:
+这些定义了：
 
 ```javascript
 ({ prop = value } = {}); // ObjectAssignmentPattern
 ({ prop: value }); // ObjectLiteral with SyntaxError
 ```
 
-Parsers need to parse `ObjectLiteral` with `CoverInitializedName`,
-and throw the syntax error if it does not reach `=` for `ObjectAssignmentPattern`.
+解析器需要解析带有 `CoverInitializedName` 的 `ObjectLiteral`，
+如果它没有达到 `=` 来进行 `ObjectAssignmentPattern`，则抛出语法错误。
 
-As an exercise, which one of the following `=` should throw a syntax error?
+作为练习，以下哪个 `=` 应该抛出语法错误？
 
 ```javascript
 let { x = 1 } = ({ x = 1 } = { x: 1 });

@@ -19,7 +19,7 @@ import Footer from "@voidzero-dev/vitepress-theme/src/components/oss/Footer.vue"
   <Hero />
   <!-- 'shopify' requires public/trusted-by/shopify.svg -->
   <!-- <TrustedBy :logos="['shopify', 'airbnb', 'atlassian']" /> -->
-  <HeadingSection heading="Foundation of Modern JavaScript Tooling" />
+  <HeadingSection heading="现代 JavaScript 工具链的基础" />
   <section id="features">
     <FeatureToolbar />
     <FeatureLinter />
@@ -30,16 +30,16 @@ import Footer from "@voidzero-dev/vitepress-theme/src/components/oss/Footer.vue"
     <FeatureMinifier />
   </section>
   <Sponsors
-    description="Oxc is free and open source, made possible by wonderful sponsors."
+    description="Oxc 是自由开源项目，由慷慨的赞助者共同支持。"
     sponsorLink="/sponsor"
     :sponsors="sponsors"
-    :side-by-side-tiers="['Bronze Sponsors', 'Backers']"
+    :side-by-side-tiers="['青铜赞助商', '支持者']"
     logo-style="opencollective"
   />
   <Footer
-    heading="Explore the Oxc ecosystem"
-    subheading="Lint, format, parse, minify, transform and resolve JavaScript at blazing speed"
-    button-text="Get started"
+    heading="探索 Oxc 生态"
+    subheading="以极快速度完成 JavaScript 的检查、格式化、解析、压缩、转换和模块解析"
+    button-text="开始使用"
     button-link="/docs/guide/introduction"
   />
 </template>

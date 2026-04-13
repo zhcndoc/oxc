@@ -1,102 +1,102 @@
 ---
-title: Linter
+title: Linter 架构
 outline: deep
 ---
 
-# Linter Architecture
+# Linter 架构
 
-This article is originally posted on [leaysgur.github.io/posts](https://leaysgur.github.io/posts/2024/01/15/160838) by [@leaysgur](https://github.com/leaysgur).
+本文最初发布于 [leaysgur.github.io/posts](https://leaysgur.github.io/posts/2024/01/15/160838)，作者为 [@leaysgur](https://github.com/leaysgur)。
 
 ## apps/oxlint
 
-The `oxlint` binary is the result of building `main.rs` from the `apps/oxlint` crate.
+`oxlint` 二进制文件是构建 `apps/oxlint` crate 中的 `main.rs` 的结果。
 
-> [Cargo.toml Configuration](https://github.com/oxc-project/oxc/blob/main/apps/oxlint/Cargo.toml)
+> [Cargo.toml 配置](https://github.com/oxc-project/oxc/blob/main/apps/oxlint/Cargo.toml)
 
-Here, it parses arguments and then runs the `LintRunner`.
+在这里，它解析参数然后运行 `LintRunner`。
 
-> [Lint Execution Flow](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_cli/src/lint/main.rs#L17-L19)
+> [Lint 执行流程](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_cli/src/lint/main.rs#L17-L19)
 
 ## crates/oxc_diagnostics
 
-The `LintService` passes the `mpsc::channel` Sender to `oxc_diagnostics` to receive lint results.
+`LintService` 将 `mpsc::channel` Sender 传递给 `oxc_diagnostics` 以接收 lint 结果。
 
-> [Receiving Lint Results](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_diagnostics/src/service.rs#L96)
+> [接收 Lint 结果](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_diagnostics/src/service.rs#L96)
 
-It formats and displays the received messages. The formatting is done by the `miette` crate.
+它格式化并显示接收到的消息。格式化由 `miette` crate 完成。
 
-> [miette Crate Reference](https://github.com/zkat/miette)
+> [miette Crate 参考](https://github.com/zkat/miette)
 
 ## crates/oxc_linter
 
-Starting with the `LintService`:
+从 `LintService` 开始：
 
-- Holds `self.runtime` as `Arc<Runtime>`
-- `Runtime` holds paths for linting
-- Upon running, it iterates over `Runtime` paths in parallel using `rayon`
-- It sends a `None` to finish
+- 持有 `self.runtime` 作为 `Arc<Runtime>`
+- `Runtime` 持有用于 lint 的路径
+- 运行时，它使用 `rayon` 并行遍历 `Runtime` 路径
+- 它发送一个 `None` 来完成
 
-> [LintService Implementation](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/service.rs#L51)
+> [LintService 实现](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/service.rs#L51)
 
 ### `Runtime`: `process_path()`
 
-- Infers extension and content from the path
-- Supports `.[m|c]?[j|t]s` or `.[j|t]sx` extensions
-- Exceptions for `.vue`, `.astro`, and `.svelte` with partial support for `script` blocks
-- Processes JavaScript and TypeScript sources
-- Executes linting and sends results to `DiagnosticService`
+- 从路径推断扩展名和内容
+- 支持 `.[m|c]?[j|t]s` 或 `.[j|t]sx` 扩展名
+- `.vue`、`.astro` 和 `.svelte` 例外，部分支持 `script` 块
+- 处理 JavaScript 和 TypeScript 源文件
+- 执行 linting 并将结果发送到 `DiagnosticService`
 
-> [Runtime Path Processing](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/service.rs#L162)
+> [Runtime 路径处理](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/service.rs#L162)
 
 ### `Runtime`: `process_source()`
 
-- Processes the source with a parser into an AST
-- Creates a `LintContext` from `SemanticBuilder` and runs it through `Linter`
+- 使用解析器将源代码处理为 AST
+- 从 `SemanticBuilder` 创建 `LintContext` 并通过 `Linter` 运行
 
-> [Runtime Source Processing](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/service.rs#L206)
+> [Runtime 源代码处理](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/service.rs#L206)
 
 ## crates/oxc_semantic: `SemanticBuilder`
 
-`SemanticBuilder` builds semantic information extracted from the source.
+`SemanticBuilder` 构建从源代码中提取的语义信息。
 
-> [SemanticBuilder Source](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_semantic/src/builder.rs#L156)
+> [SemanticBuilder 源码](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_semantic/src/builder.rs#L156)
 
-- `source_text`: Source code
-- `nodes`: AST nodes
-- `classes`: Classes
-- `scopes`: Scopes
-- `trivias`: Comments
+- `source_text`: 源代码
+- `nodes`: AST 节点
+- `classes`: 类
+- `scopes`: 作用域
+- `trivias`: 注释
 - `jsdoc`: JSDoc
-- etc.
+- 等等。
 
-When `SemanticBuilder` builds, it generates `SemanticBuilderReturn`, but only `Semantic` is passed to `LintContext`.
+当 `SemanticBuilder` 构建时，它生成 `SemanticBuilderReturn`，但只有 `Semantic` 被传递给 `LintContext`。
 
-> [SemanticBuilder Return](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_semantic/src/lib.rs#L34)
+> [SemanticBuilder 返回值](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_semantic/src/lib.rs#L34)
 
 ## crates/oxc_linter: `LintContext`
 
-> [LintContext Source](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/context.rs#L14)
+> [LintContext 源码](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/context.rs#L14)
 
-Represents the context, with `Semantic` as the main body. It includes getters for each piece of information and methods like `diagnostic()` to notify of linting issues.
+表示上下文，以 `Semantic` 为主体。它包含每条信息的 getter 以及像 `diagnostic()` 这样用于通知 lint 问题的方法。
 
 ## crates/oxc_linter: `Linter`
 
-> [Linter Source](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/lib.rs#L140)
+> [Linter 源码](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/lib.rs#L140)
 
-The `run()` function of this `Linter` is the core of the linting process.
+此 `Linter` 的 `run()` 函数是 lint 过程的核心。
 
-- `Linter` holds rules to execute on the target source in `self.rules`
-- Each rule can implement three types of processing as per the trait
-- It sequentially executes these three patterns
+- `Linter` 在 `self.rules` 中持有要在目标源上执行的规则
+- 每个规则可以根据 trait 实现三种类型的处理
+- 它按顺序执行这三种模式
 
-For the currently implemented rules, refer to this list.
+对于当前已实现的规则，请参考此列表。
 
-> [Implemented Rules](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/rules.rs)
+> [已实现的规则](https://github.com/oxc-project/oxc/blob/oxlint_v0.2.0/crates/oxc_linter/src/rules.rs)
 
-For adding new rules, remember to update this list.
+对于添加新规则，记得更新此列表。
 
-## Linter Example
+## Linter 示例
 
-The repository provides the minimum code configuration for creating a linter.
+仓库提供了创建 linter 的最小代码配置。
 
-> [Minimal Linter Code](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/examples/linter.rs)
+> [最小化 Linter 代码](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/examples/linter.rs)

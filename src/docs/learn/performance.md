@@ -1,42 +1,41 @@
 ---
-title: Performance
+title: 性能
 outline: deep
 ---
 
-# Pursuit of Performance on Building a JavaScript Compiler
+# 构建 JavaScript 编译器中的性能追求
 
-Originally posted on https://rustmagazine.org/issue-3/javascript-compiler/
+最初发布于 https://rustmagazine.org/issue-3/javascript-compiler/
 
-## On Performance
+## 关于性能
 
-After two years of writing Rust, performance has become an ingrained discipline for me - it boils down to
-**allocate less memory** and **use fewer CPU cycles**.
+在编写了两年 Rust 之后，性能已经成为我根深蒂固的习惯——它归结为
+**减少内存分配** 和 **减少 CPU 周期使用**。
 
-However, achieving optimal performance can be difficult without the knowledge of the problem domain or awareness of potential solutions.
+然而，如果没有对问题域的了解或对潜在解决方案的认识，要实现最佳性能可能会很困难。
 
-I will take you on my journey of performance and optimization in the following sections.
-My preferred method of learning is through a combination of research, trial, and error,
-so the following sections will be organized as such.
+在接下来的章节中，我将带您踏上我的性能和优化之旅。
+我喜欢的学习方式是结合研究、试错，因此接下来的章节将以此方式组织。
 
-# Parsing
+# 解析
 
-Oxc is a standard compiler that includes an abstract syntax tree (AST), a lexer, and a recursive descent parser.
+Oxc 是一个标准的编译器，包含抽象语法树 (AST)、词法分析器和递归下降解析器。
 
-## Abstract Syntax Tree (AST)
+## 抽象语法树 (AST)
 
-The first architectural design for a compiler is its AST.
+编译器的第一个架构设计是其 AST。
 
-All JavaScript tools work on the AST level, for example:
+所有 JavaScript 工具都在 AST 层面工作，例如：
 
-- A linter (e.g. ESLint) checks the AST for errors
-- A formatter (e.g. prettier) prints the AST back to JavaScript text
-- A minifier (e.g. terser) transforms the AST
-- A bundler connects all import and export statements between ASTs from different files
+- linter (例如 ESLint) 检查 AST 中的错误
+- formatter (例如 prettier) 将 AST 打印回 JavaScript 文本
+- minifier (例如 terser) 转换 AST
+- bundler 连接不同文件 AST 之间的所有 import 和 export 语句
 
-It will be painful to build these tools if the AST is not user-friendly.
+如果 AST 不够用户友好，构建这些工具将会很痛苦。
 
-For JavaScript, the most used AST specification is [estree](https://github.com/estree/estree).
-My first AST version replicates estree:
+对于 JavaScript，最常用的 AST 规范是 [estree](https://github.com/estree/estree)。
+我的第一个 AST 版本复制了 estree：
 
 ```rust
 pub struct Program {
@@ -54,21 +53,21 @@ pub struct VariableDeclaration {
 }
 ```
 
-In Rust, declaring a tree is relatively straightforward, as it involves using structs and enums.
+在 Rust 中，声明树相对直接，因为它涉及使用结构体和枚举。
 
-### Memory Allocation
+### 内存分配
 
-I worked on this version of AST for a couple of months while writing the parser.
-And one day I decided to profile it. The profiler showed the program was spending a lot of time calling `drop`.
+在编写解析器期间，我花了几个月时间研究这个版本的 AST。
+有一天，我决定对其进行性能分析。分析器显示程序花费了大量时间调用 `drop`。
 
-💡 Nodes of the AST are allocated on the heap via `Box` or `Vec`, they are allocated individually so they are dropped in sequential order.
+💡 AST 的节点通过 `Box` 或 `Vec` 在堆上分配，它们是单独分配的，因此它们按顺序被释放。
 
-Is there a solution to mitigate this?
+有什么方法可以缓解这种情况吗？
 
-So while working on the parser I studied some of the other JavaScript parsers written in Rust,
-mainly [ratel](https://github.com/ratel-rust/ratel-core) and [jsparagus](https://github.com/mozilla-spidermonkey/jsparagus).
+因此，在研究解析器时，我研究了一些用 Rust 编写的其他 JavaScript 解析器，
+主要是 [ratel](https://github.com/ratel-rust/ratel-core) 和 [jsparagus](https://github.com/mozilla-spidermonkey/jsparagus)。
 
-Both of these parsers declare their AST with a lifetime annotation,
+这两个解析器都使用生命周期注解来声明它们的 AST，
 
 ```rust
 pub enum Statement<'ast> {
@@ -76,26 +75,26 @@ pub enum Statement<'ast> {
 }
 ```
 
-and they have an accompanying file called `arena.rs`.
+并且它们都有一个伴随的名为 `arena.rs` 的文件。
 
-I did not understand what it does so I neglected them until I started reading about their usage of memory arenas:
-[bumpalo](https://docs.rs/bumpalo/latest/bumpalo/) and [toolshed](https://docs.rs/toolshed/latest/toolshed/struct.Arena.html).
+我不明白它有什么作用，所以一直忽略它，直到我开始阅读它们关于内存分配器的使用：
+[bumpalo](https://docs.rs/bumpalo/latest/bumpalo/) 和 [toolshed](https://docs.rs/toolshed/latest/toolshed/struct.Arena.html)。
 
-In summary, memory arena allocates memory upfront in chunks or pages and deallocate altogether when the arena is dropped.
-The AST is allocated on the arena so dropping the AST is a fast operation.
+总而言之，内存分配器会预先以块或页的形式分配内存，并在分配器被释放时一次性释放所有内存。
+AST 在分配器上分配，因此释放 AST 是一个快速操作。
 
-Another nice side effect that comes with this is that,
-the AST is constructed in a specific order, and tree traversal also follows the same order, resulting in linear memory access during the visitation process.
-This access pattern will be efficient since all nearby memory will be read into the CPU cache in pages, resulting in faster access times.
+这带来的另一个好处是，
+AST 是按特定顺序构建的，树遍历也遵循相同的顺序，从而在访问过程中实现线性内存访问。
+这种访问模式将是高效的，因为所有附近的内存都将以页为单位读入 CPU 缓存，从而加快访问速度。
 
-Unfortunately it can be challenging for Rust beginners to use memory arenas because all data structures and relevant functions need to be parameterized by lifetime annotations.
-It took me five attempts to allocate the AST inside `bumpalo`.
+不幸的是，对于 Rust 初学者来说，使用内存分配器可能具有挑战性，因为所有数据结构和相关函数都需要通过生命周期注解进行参数化。
+我花了五次尝试才将 AST 分配到 `bumpalo` 中。
 
-Changing to a memory arena for the AST resulted around 20% performance improvement.
+将 AST 更改为内存分配器带来了约 20% 的性能提升。
 
-### Enum Sizes
+### 枚举大小
 
-Due to the recursive nature of ASTs, we need to define the types in a way to avoid the "recursive without indirection" error:
+由于 AST 的递归性质，我们需要以避免“无间隙递归”错误的方式定义类型：
 
 ```
 error[E0072]: recursive types `Enum` and `Variant` have infinite size
@@ -105,6 +104,7 @@ error[E0072]: recursive types `Enum` and `Variant` have infinite size
   | ^^^^^^^^^
 2 |     Variant(Variant),
   |             ------- recursive without indirection
+  |
 3 | }
 4 | struct Variant {
   | ^^^^^^^^^^^^^^
@@ -119,15 +119,15 @@ help: insert some indirection (e.g., a `Box`, `Rc`, or `&`) to break the cycle
 5 ~     field: Box<Enum>,
 ```
 
-There are two ways to do this. Either box the enum in the enum variant or box the struct field.
+有两种方法可以做到这一点。要么在枚举变体中装箱枚举，要么装箱结构体字段。
 
-I found the same question in the Rust forum back in 2017,
+我在 2017 年的 Rust 论坛上找到了同样的问题，
 [Is there a better way to represent an abstract syntax tree?](https://users.rust-lang.org/t/is-there-a-better-way-to-represent-an-abstract-syntax-tree/9549/4)
 
-Aleksey (matklad) told us to box the enum variants to keep the `Expression` enum small. But what does this mean?
+Aleksey (matklad) 告诉我们装箱枚举变体以保持 `Expression` 枚举较小。但这又意味着什么呢？
 
-As it turns out, the memory layout of a Rust enum is dependent on the sizes of all its variants, its total byte size dependents on the largest variant.
-For example, the following enum will take up 56 bytes (1 byte for the tag, 48 bytes for the payload, and 8 bytes for alignment).
+事实证明，Rust 枚举的内存布局取决于其所有变体的大小，其总字节大小取决于最大的变体。
+例如，以下枚举将占用 56 字节（1 字节用于标签，48 字节用于有效负载，8 字节用于对齐）。
 
 ```rust
 enum Enum {
@@ -137,14 +137,14 @@ enum Enum {
 }
 ```
 
-In a typical JavaScript AST, the `Expression` enum holds 45 variants and the `Statement` enum holds 20 variants. They take up more than 200 bytes if not boxed by enum variants.
-These 200 bytes have to be passed around, and also accessed every time we do a `matches!(expr, Expression::Variant(_))` check, which is not very cache friendly for performance.
+在典型的 JavaScript AST 中，`Expression` 枚举包含 45 个变体，`Statement` 枚举包含 20 个变体。如果不通过枚举变体装箱，它们将占用 200 多字节。
+这 200 字节必须传递，并且每次我们执行 `matches!(expr, Expression::Variant(_))` 检查时都需要访问，这对于性能来说对缓存并不友好。
 
-So to make memory access efficient, it is best to box the enum variants.
+因此，为了使内存访问高效，最好装箱枚举变体。
 
-The [perf-book](https://nnethercote.github.io/perf-book/type-sizes.html) describes additional info on how to find large types.
+[perf-book](https://nnethercote.github.io/perf-book/type-sizes.html) 提供了关于如何查找大型类型的额外信息。
 
-I also copied the test for restricting small enum sizes.
+我还复制了用于限制小型枚举大小的测试。
 
 ```rust
 #[cfg(all(target_arch = "x86_64", target_pointer_width = "64"))]
@@ -158,13 +158,13 @@ fn no_bloat_enum_sizes() {
 }
 ```
 
-Boxing the enum variants resulted around 10% speed-up.
+装箱枚举变体带来了约 10% 的速度提升。
 
 ### Span
 
-Occasionally, we may not realize that a smaller memory footprint is possible until we spend some extra time examining the data structures.
+有时，直到我们花一些额外时间检查数据结构后，才意识到可以实现更小的内存占用。
 
-In this instance, the leaf of all AST nodes contains a small data structure called the "span", which is used for storing the byte offset from the source text and comprises two `usize`s.
+在这种情况下，所有 AST 节点的叶子都包含一个称为“span”的小数据结构，用于存储源文本的字节偏移量，并包含两个 `usize`。
 
 ```rust
 pub struct Node {
@@ -173,14 +173,14 @@ pub struct Node {
 }
 ```
 
-It was [pointed out to me](https://github.com/oxc-project/oxc/pull/4#pullrequestreview-1294538874) that I can safely change `usize` to `u32`
-to reduce peak memory because larger than `u32` is a 4GB file.
+[有人指出](https://github.com/oxc-project/oxc/pull/4#pullrequestreview-1294538874) 我可以安全地将 `usize` 更改为 `u32`
+以减少峰值内存，因为大于 `u32` 的文件大小是 4GB。
 
-Changing to `u32` improved the performance [up to 5% performance on large files](https://github.com/oxc-project/oxc/pull/31).
+更改为 `u32` 在[大型文件上将性能提高了高达 5%](https://github.com/oxc-project/oxc/pull/31)。
 
-### Strings and Identifiers
+### 字符串和标识符
 
-Inside the AST, one may attempt to use a string reference to the source text for identifier names and string literals.
+在 AST 中，人们可能会尝试使用对标识符名称和字符串字面量的源文本的字符串引用。
 
 ```rust
 pub struct StringLiteral<'a> {
@@ -192,56 +192,53 @@ pub struct Identifier<'a> {
 }
 ```
 
-But unfortunately in JavaScript, strings and identifiers can have [escape sequences](https://mathiasbynens.be/notes/javascript-escapes),
-i.e. `'\251'`, `'\xA9'` and `'©'` are the same for the copyright symbol.
+但不幸的是，在 JavaScript 中，字符串和标识符可以有[转义序列](https://mathiasbynens.be/notes/javascript-escapes)，
+即 `'\251'`、`'\xA9'` 和 `'©'` 对于版权符号是相同的。
 
-This implies that we must compute the escaped values and allocate a new `String`.
+这意味着我们必须计算转义值并分配一个新的 `String`。
 
-### String interning
+### 字符串驻留
 
-When there are lots of heap-allocated strings,
-a technique called [string interning](https://en.wikipedia.org/wiki/String_interning) can be used to reduce total memory by storing only one copy of each distinct string value.
+当存在大量堆分配字符串时，
+可以使用一种称为[字符串驻留](https://en.wikipedia.org/wiki/String_interning)的技术来存储每个不同字符串值的副本，从而减少总内存。
 
-[string-cache](https://crates.io/crates/string_cache) is a popular and widely used library published by the servo team.
-Initially, I used the `string-cache` library for identifiers and strings in the AST.
-The performance of the parser was fast in a single thread,
-but when I started implementing the linter where there are multiples parser running parallel with rayon,
-CPU utilization was at about 50% of all cores.
+[string-cache](https://crates.io/crates/string_cache) 是 servo 团队发布的一个流行且广泛使用的库。
+最初，我将 `string-cache` 库用于 AST 中的标识符和字符串。
+解析器的性能在单线程中很快，
+但当我开始实现 linter，其中有多个解析器使用 rayon 并行运行时，
+CPU 利用率约为所有核心的 50%。
 
-Upon profiling, a method called `parking_lot::raw_mutex::RawMutex::lock_slow` showed up on the top of the execution time.
-I did not know much about locks and multi-core programming,
-but a global lock was just strange to start with,
-so I decided to remove the `string-cache` library to enable full CPU utilization.
+性能分析后，一个名为 `parking_lot::raw_mutex::RawMutex::lock_slow` 的方法出现在执行时间列表的顶部。
+我对锁和多核编程了解不多，
+但全局锁一开始就很奇怪，
+所以我决定删除 `string-cache` 库以实现完整的 CPU 利用率。
 
-Removing `string-cache` from the AST improved the performance of parallel parsing by about 30%.
+从 AST 中删除 `string-cache` 将并行解析的性能提高了约 30%。
 
 #### string-cache
 
-Half a year later, while working on another performance-critical project,
-the `string-cache` library resurfaced again. It was blocking all the threads during parallel text parsing.
+半年后，在处理另一个性能关键项目时，
+`string-cache` 库再次出现。它在并行文本解析期间阻塞了所有线程。
 
-I decided to study what `string-cache` does because I am
-prepared this time after reading the book [Rust Atomics and Locks](https://marabos.nl/atomics/) by Mara Bos.
+我决定研究 `string-cache` 的作用，因为这次我做好了准备，阅读了 Mara Bos 的著作 [Rust Atomics and Locks](https://marabos.nl/atomics/)。
 
-Here are the
-[relevant](https://github.com/servo/string-cache/blob/6c044c91bb3d8212dae931152a7895f498574f71/src/dynamic_set.rs#L41-L42)
-[code](https://github.com/servo/string-cache/blob/6c044c91bb3d8212dae931152a7895f498574f71/src/atom.rs#L204)
-around the lock. Please note that the code was written eight years ago in 2015.
+这是围绕锁的[相关](https://github.com/servo/string-cache/blob/6c044c91bb3d8212dae931152a7895f498574f71/src/dynamic_set.rs#L41-L42)
+[代码](https://github.com/servo/string-cache/blob/6c044c91bb3d8212dae931152a7895f498574f71/src/atom.rs#L204)。请注意，代码写于八年前的 2015 年。
 
 ```rust
 pub(crate) static DYNAMIC_SET: Lazy<Mutex<Set>> = Lazy::new(|| {
     Mutex::new({
 
-// ... in another place
+// ... 在另一个地方
 let ptr: std::ptr::NonNull<Entry> =
     DYNAMIC_SET.lock().insert(string_to_add, hash.g);
 ```
 
-So this is straightforward. It locks the data structure `Set` every time a string is being inserted.
-As this routine is called frequently within a parser, its performance is impacted negatively by synchronization.
+所以这很直接。每次插入字符串时，它都会锁定 `Set` 数据结构。
+由于解析器中频繁调用此例程，其性能会受到同步的负面影响。
 
-Now let's take a look at the [`Set` data structure](https://github.com/servo/string-cache/blob/6c044c91bb3d8212dae931152a7895f498574f71/src/dynamic_set.rs#L53-L86)
-and see what it does:
+现在让我们看一下 [`Set` 数据结构](https://github.com/servo/string-cache/blob/6c044c91bb3d8212dae931152a7895f498574f71/src/dynamic_set.rs#L53-L86)
+看看它是做什么的：
 
 ```rust
 pub(crate) fn insert(&mut self, string: Cow<str>, hash: u32) -> NonNull<Entry> {
@@ -275,40 +272,39 @@ pub(crate) fn insert(&mut self, string: Cow<str>, hash: u32) -> NonNull<Entry> {
 }
 ```
 
-It looks like it is looking for a bucket to store the string and it inserts the string if it is not in the bucket.
+看起来它正在查找一个存储字符串的桶，如果字符串不在桶中，它会插入字符串。
 
-💡 Is this linear probing? If this is linear probing then this `Set` is just a `HashMap` without saying it is a `HashMap`.
-💡 If this is a `HashMap`, then `Mutex<HashMap>` is a concurrent hashmap.
+💡 这是线性探测吗？如果这是线性探测，那么这个 `Set` 只是一个 `HashMap`，只是没有说它是 `HashMap`。
+💡 如果这是一个 `HashMap`，那么 `Mutex<HashMap>` 就是一个并发哈希表。
 
-Although the solution may seem straightforward when we know what to look for, it took me a month to figure this out because I was unaware of the issue.
-When it became evident that this is just a concurrent hashmap, applying the Mutex to the buckets instead of the entire hashmap was a clear and logical solution.
-Within an hour of implementing this change, I submitted a pull request and was happy with the outcome 😃.
+虽然当我们知道要寻找什么时，解决方案似乎很直接，但由于我不知道这个问题，所以我花了一个月才弄清楚。
+当显而易见这只是一个并发哈希表时，将 Mutex 应用于桶而不是整个哈希表是一个清晰而合乎逻辑的解决方案。
+在实现此更改的一个小时内，我提交了一个拉取请求，并对结果感到满意😃。
 
 ```
 https://github.com/servo/string-cache/pull/268
 ```
 
-It is worth mentioning that string interning is a battlefield within the Rust community.
-For the example shown in [this blog post](https://dev.to/cad97/string-interners-in-rust-797),
-there are single-threaded libraries such `string-interner`, `lasso`, `lalrpop-intern`, `intaglio` and `strena`.
+值得一提的是，字符串驻留是 Rust 社区中的一个战场。
+例如，在[这篇博文](https://dev.to/cad97/string-interners-in-rust-797)中展示的示例中，
+有单线程库，如 `string-interner`、`lasso`、`lalrpop-intern`、`intaglio` 和 `strena`。
 
-Since we are parsing files in parallel, an option is to utilize a multi-threaded string interner library such as [`ustr`](https://crates.io/crates/ustr).
-However, after profiling both `ustr` and the enhanced version of `string-cache`, it became apparent that the performance was still below expectations compared to the approach I am going to explain below.
+由于我们是并行解析文件，因此一个选择是使用多线程字符串驻留库，例如 [`ustr`](https://crates.io/crates/ustr)。
+然而，在对 `ustr` 和增强版的 `string-cache` 进行性能分析后，人们发现与我接下来要解释的方法相比，性能仍然低于预期。
 
-Some preliminary guesses for the sub-par performance are:
+一些初步猜测性能不佳的原因是：
 
-- Hashing - the interners need to hash the string for deduplication
-- Indirection - we need to read the string value from a "far away" heap, which is not cache friendly
+- 哈希 - 驻留器需要哈希字符串进行去重
+- 间接引用 - 我们需要从“遥远”的堆中读取字符串值，这不利于缓存
 
-### String Inlining
+### 字符串内联
 
-So we are back to the initial problem of having to allocate lots of strings.
-Fortunately, there is a partial solution to this problem if we look at what kind of data we are dealing with:
-short JavaScript variable names and some short strings.
-There is a technique called string inlining,
-where we store all of the bytes of a string on the stack.
+所以我们又回到了最初的问题，即必须分配大量字符串。
+幸运的是，如果我们看看我们正在处理的数据类型：
+短的 JavaScript 变量名和一些短字符串，这个问题有一个部分解决方案。有一种称为字符串内联的技术，
+即我们将字符串的所有字节存储在栈上。
 
-In essence, we want the following enum to store our string.
+本质上，我们希望以下枚举来存储我们的字符串。
 
 ```rust
 enum Str {
@@ -318,7 +314,7 @@ enum Str {
 }
 ```
 
-To minimize the size of the enum, `InlineRepresentation` should have the same size as `String`.
+为了最小化枚举的大小，`InlineRepresentation` 应该与 `String` 大小相同。
 
 ```rust
 #[cfg(all(target_arch = "x86_64", target_pointer_width = "64"))]
@@ -329,27 +325,27 @@ fn test_size() {
 }
 ```
 
-Many crates in the Rust community aim to optimize memory usage. This is yet another battlefield within the community.
-The most popular ones are
+Rust 社区中的许多 crate 都致力于优化内存使用。这又是社区中的一个战场。
+最受欢迎的包括
 
 - [smol_str](https://crates.io/crates/smol_str)
 - [smartstring](https://crates.io/crates/smartstring)
 - [compact_str](https://crates.io/crates/compact_str)
 - [flexstr](https://crates.io/crates/flexstr)
 
-Each of these crates have unique characteristics and approaches to achieving memory optimization, leading to a variety of trade-offs and considerations when choosing which one to use.
-For example `smol_str` and `flexstr` clones are O(1).
-`flexstr` can store 22 bytes, `smol_str` and `smartstring` can store 23 bytes, and `compact_str` can store 24 bytes on 64-bit systems.
+这些 crate 各有独特的特性和实现内存优化的方法，导致在选择使用哪个 crate 时需要考虑各种权衡。
+例如，`smol_str` 和 `flexstr` 的克隆是 O(1) 的。
+在 64 位系统上，`flexstr` 可以存储 22 字节，`smol_str` 和 `smartstring` 可以存储 23 字节，`compact_str` 可以存储 24 字节。
 
-[https://fasterthanli.me](https://fasterthanli.me) has a [deep dive](https://fasterthanli.me/articles/small-strings-in-rust) on this topic.
+[https://fasterthanli.me](https://fasterthanli.me) 对此主题进行了[深入探讨](https://fasterthanli.me/articles/small-strings-in-rust)。
 
-Changing `String` to `compact_str::CompactStr` reduced memory allocations by a large amount.
+将 `String` 更改为 `compact_str::CompactStr` 大大减少了内存分配。
 
 ## Lexer
 
 ### Token
 
-The job of the lexer (also known as tokenizer) is to turn source text into structured data called a token.
+Lexer（也称为 tokenizer）的工作是将源代码文本转换为称为 token 的结构化数据。
 
 ```rust
 pub struct Token {
@@ -357,25 +353,25 @@ pub struct Token {
 }
 ```
 
-To make it easier to work with, a token kind is typically defined as an enum in Rust. The variants of the enums hold the corresponding data for each token.
+为了方便使用，token 的种类通常在 Rust 中定义为枚举。枚举的变体包含每个 token 的相应数据。
 
 ```rust
 pub enum Kind {
-    // Keywords
+    // 关键字
     For,
     While,
     ...
-    // Literals
+    // 字面量
     String(String),
     Num(f64),
     ...
 }
 ```
 
-This enum currently uses 32 bytes, and a lexer often need to construct millions of this token `Kind`.
-Every time it constructs a `Kind::For` or `Kind::While`, it has to allocate 32 bytes of memory on the stack.
+这个枚举目前使用了 32 字节，而 lexer 通常需要构建数百万个这种 token `Kind`。
+每次构建 `Kind::For` 或 `Kind::While` 时，都必须在栈上分配 32 字节的内存。
 
-A clever way to improve this is to break up the enum variant to keep `Kind` to a single byte and move the values into another enum,
+一种改进此问题的巧妙方法是将枚举变体拆分，使 `Kind` 保持为单个字节，并将值移到另一个枚举中，
 
 ```rust
 pub struct Token<'a> {
@@ -390,12 +386,11 @@ pub enum TokenValue {
 }
 ```
 
-Since we control all the parsing code, it is our job to keep this safe by always declaring the corresponding token value to its kind.
+由于我们控制所有解析代码，因此我们有责任通过始终为 token 种类声明相应的 token 值来确保其安全性。
 
-While a `TokenValue` of 32 bytes is already quite small, it may still have a negative impact on performance because it is allocated frequently.
+虽然 32 字节的 `TokenValue` 已经很小了，但由于它经常被分配，仍然可能对性能产生负面影响。
 
-Let's take a look at the `String` type and see what we can find, by using the "go-to definition" in our code editors,
-we'll go through `String` -> `Vec` -> `RawVec`:
+让我们看一下 `String` 类型，通过使用代码编辑器中的“转到定义”，我们可以找到一些东西，我们将遍历 `String` -> `Vec` -> `RawVec`：
 
 ```rust
 pub struct String {
@@ -414,8 +409,8 @@ pub struct RawVec {
 }
 ```
 
-As advertised, a `String` is just a `Vec` of `u8`s, and a `Vec` has a length and a capacity field.
-Since we are never going to mutate this string, an optimization in terms of memory usage would be to drop the cap field and use a string slice (`&str`) instead.
+正如宣传的那样，`String` 只是 `u8` 的 `Vec`，而 `Vec` 具有长度和容量字段。
+由于我们永远不会修改此字符串，因此在内存使用方面的一种优化是删除 `cap` 字段，而是使用字符串切片 (`&str`)。
 
 ```rust
 pub enum TokenValue<'a> {
@@ -425,26 +420,26 @@ pub enum TokenValue<'a> {
 }
 ```
 
-`TokenValue` becomes 24 bytes.
+`TokenValue` 变为 24 字节。
 
-While using a string slice instead of String in `TokenValue` would reduce memory usage, it does come with the downside of adding a lifetime annotation.
-This can lead to issues with the borrow checker and the lifetime annotation will propagate to the rest of the codebase, making our code somewhat difficult to manage.
-I lost the borrow checking game 8 months ago but [finally won](https://github.com/oxc-project/oxc/pull/174) when I revisited this.
+虽然在 `TokenValue` 中使用字符串切片而不是 String 会减少内存使用量，但它确实会带来添加生命周期注解的缺点。
+这可能导致与借用检查器出现问题，并且生命周期注解会传播到代码库的其余部分，使我们的代码有些难以管理。
+我 8 个月前输掉了借用检查的游戏，但[终于赢了](https://github.com/oxc-project/oxc/pull/174)，当时我重新审视了这个问题。
 
-When it makes sense, we can always go for the owned version of the immutable data instead of using references.
-For example `Box<str>` for `String` and `Box<[u8]>` for `Vec<u8>`.
+在有意义的情况下，我们可以始终选择不可变数据的拥有版本，而不是使用引用。
+例如，`Box<str>` 用于 `String`，`Box<[u8]>` 用于 `Vec<u8>`。
 
-In summary, we can always come up with tricks to keep our data structures small,
-and it will sometimes reward us performance improvement.
+总而言之，我们可以想出各种技巧来保持我们的数据结构小巧，
+这有时会带来性能上的提升。
 
 ### Cow
 
-I first encountered the term `Cow` when I was studying jsparagus's code,
-it has an infrastructure called [`AutoCow`](https://github.com/mozilla-spidermonkey/jsparagus/blob/212f6bdbc2cae909e7d5cfebf36284560c3c4ef4/crates/parser/src/lexer.rs#L2256).
+我第一次遇到 `Cow` 这个词是在研究 jsparagus 的代码时，
+它有一个名为 [`AutoCow`](https://github.com/mozilla-spidermonkey/jsparagus/blob/212f6bdbc2cae909e7d5cfebf36284560c3c4ef4/crates/parser/src/lexer.rs#L2256) 的基础设施。
 
-I vaguely understood what the code was doing.
-When a JavaScript string is being tokenized,
-it allocates a new string when it encounters an escaped sequence or it returns the original string slice if it doesn't:
+我对代码的作用有模糊的理解。
+当 JavaScript 字符串被标记化时，
+它会在遇到转义序列时分配一个新字符串，或者在不遇到转义序列时返回原始字符串切片：
 
 ```rust
 fn finish(&mut self, lexer: &Lexer<'alloc>) -> &'alloc str {
@@ -455,40 +450,35 @@ fn finish(&mut self, lexer: &Lexer<'alloc>) -> &'alloc str {
 }
 ```
 
-This is clever because 99.9% of the time it will not allocate a new string because escaped strings are rare.
+这很巧妙，因为 99.9% 的时间它都不会分配新字符串，因为转义字符串很少见。
 
-But the term `Cow` or "clone-on-write smart pointer" never made sense to me.
+但是 `Cow` 或“写时复制智能指针”这个术语对我来说一直没有意义。
 
-> The type Cow is a smart pointer providing clone-on-write functionality: it can enclose and provide immutable access to borrowed data, and clone the data lazily when mutation or ownership is required. The type is designed to work with general borrowed data via the Borrow trait.
+> Cow 类型是一个智能指针，提供写时复制功能：它可以封装并提供对借用数据的不可变访问，并在需要变异或所有权时惰性地克隆数据。该类型旨在通过 Borrow trait 与通用的借用数据一起使用。
 
-If you are new to Rust (like I was), then this description just doesn't help (I still don't understand what it is talking about).
+如果你是 Rust 新手（就像我一样），那么这个描述并没有帮助（我仍然不明白它在说什么）。
 
-It was [pointed out to me](https://twitter.com/zack_overflow/status/1620387950264713216) that `clone-on-write` is
-just a use case of this data structure. A better name should be called `RefOrOwned` because it is a type that contains either
-owned data or a reference.
+[有人指出](https://twitter.com/zack_overflow/status/1620387950264713216)，“写时复制”只是这个数据结构的一个用例。一个更好的名字应该是 `RefOrOwned`，因为它是一个包含拥有数据或引用的类型。
 
 ### SIMD
 
-When I was going through the old Rust blogs, the [Announcing the Portable SIMD Project Group](https://blog.rust-lang.org/inside-rust/2020/09/29/Portable-SIMD-PG.html)
-caught my attention.
-I always wanted to play around with SIMD but never got the chance.
-After some research, I found a use case that may apply to a parser:
-[How quickly can you remove spaces from a string?](https://lemire.me/blog/2017/01/20/how-quickly-can-you-remove-spaces-from-a-string) by Daniel Lemire.
-So it turns out this has been done before, in a JSON parser called RapidJSON,
-which [uses SIMD to remove whitespaces](https://rapidjson.org/md_doc_internals.html#SkipwhitespaceWithSIMD).
+我在浏览旧的 Rust 博客时，[Announcing the Portable SIMD Project Group](https://blog.rust-lang.org/inside-rust/2020/09/29/Portable-SIMD-PG.html) 引起了我的注意。
+我一直想玩 SIMD，但从未有机会。
+经过一些研究，我发现了一个可能适用于解析器的用例：[How quickly can you remove spaces from a string?](https://lemire.me/blog/2017/01/20/how-quickly-can-you-remove-spaces-from-a-string) by Daniel Lemire。
+所以事实证明这以前有人做过，在一个名为 RapidJSON 的 JSON 解析器中，
+它[使用 SIMD 来删除空白字符](https://rapidjson.org/md_doc_internals.html#SkipwhitespaceWithSIMD)。
 
-So eventually with the help of portable-SIMD and RapidJSON's code,
-not only did I manage to [skip whitespaces](https://github.com/oxc-project/oxc/pull/26),
-I also managed to [skip multi-line comments](https://github.com/oxc-project/oxc/pull/23) as well.
+所以最终，在 portable-SIMD 和 RapidJSON 代码的帮助下，我不仅成功地[跳过了空白字符](https://github.com/oxc-project/oxc/pull/26)，
+我还成功地[跳过了多行注释](https://github.com/oxc-project/oxc/pull/23)。
 
-Both changes improved the performance by a few percent.
+这两项更改都将性能提高了几个百分点。
 
-### Keyword match
+### 关键字匹配
 
-At the top of the performance profile,
-there is a hot code path that takes about 1 - 2% of the total execution time.
+在性能配置文件的顶部，
+有一个占总执行时间约 1-2% 的热代码路径。
 
-It tries to match a string to a JavaScript keyword:
+它试图将字符串与 JavaScript 关键字进行匹配：
 
 ```rust
 fn match_keyword(s: &str) -> Self {
@@ -503,17 +493,17 @@ fn match_keyword(s: &str) -> Self {
 }
 ```
 
-With the addition of TypeScript, there are 84 strings for us to match from.
-After some research, I found a blog from V8 [Blazingly fast parsing, part 1: optimizing the scanner](https://v8.dev/blog/scanner),
-it describes its [keyword matching code](https://source.chromium.org/chromium/chromium/src/+/main:v8/src/parsing/keywords-gen.h) in detail.
+随着 TypeScript 的加入，我们有 84 个字符串需要匹配。
+经过一些研究，我发现 V8 的一篇博客 [Blazingly fast parsing, part 1: optimizing the scanner](https://v8.dev/blog/scanner)，
+它详细描述了其[关键字匹配代码](https://source.chromium.org/chromium/chromium/src/+/main:v8/src/parsing/keywords-gen.h)。
 
-> Since the list of keywords is static, we can compute a perfect hash function that for each identifier gives us at most one candidate keyword. V8 uses gperf to compute this function. The result computes a hash from the length and first two identifier characters to find the single candidate keyword. We only compare the identifier with the keyword if the length of that keyword matches the input identifier length.
+> 由于关键字列表是静态的，我们可以计算一个完美的哈希函数，该函数为每个标识符提供最多一个候选关键字。V8 使用 gperf 来计算此函数。结果通过长度和前两个标识符字符计算哈希值，以找到单个候选关键字。只有当关键字的长度与输入标识符长度匹配时，我们才将标识符与关键字进行比较。
 
-So a quick hash plus an integer comparison should be faster than 84 string comparisons.
-But we tried [again](https://github.com/oxc-project/oxc/pull/140) and [again](https://github.com/oxc-project/oxc/pull/171) to no avail.
+因此，快速哈希加上整数比较应该比 84 次字符串比较更快。
+但是我们[再次](https://github.com/oxc-project/oxc/pull/140)和[再次](https://github.com/oxc-project/oxc/pull/171)尝试，但都没有成功。
 
-As it turns out, [LLVM already optimized our code](https://github.com/oxc-project/oxc/issues/151#issuecomment-1464818336).
-By using `--emit=llvm-ir` on `rustc`, we find the relevant code:
+事实证明，[LLVM 已经优化了我们的代码](https://github.com/oxc-project/oxc/issues/151#issuecomment-1464818336)。
+通过使用 `rustc` 的 `--emit=llvm-ir`，我们找到了相关代码：
 
 ```
 switch i64 %s.1, label %bb6 [
@@ -530,41 +520,41 @@ switch i64 %s.1, label %bb6 [
 ], !dbg !191362
 ```
 
-`%s` is the string, `%s.1` is its length ... it is branching on the string length! The compiler is smarter than us 😃.
+`%s` 是字符串，`%s.1` 是它的长度……它正在根据字符串长度进行分支！编译器比我们聪明😃。
 
-(Yes, we got so serious with this so we started looking at LLVM IR and assembly code.)
+（是的，我们对此非常认真，以至于开始查看 LLVM IR 和汇编代码。）
 
-Later on, [@strager](https://twitter.com/strager) posted a very educational YouTube video [Faster than Rust and C++: the PERFECT hash table](https://www.youtube.com/watch?v=DMQ_HcNSOAI) on this topic.
-The video taught us a systematic approach to reasoning about fine-tuning performance problems
+后来，[@strager](https://twitter.com/strager) 发布了一个非常有教育意义的 YouTube 视频 [Faster than Rust and C++: the PERFECT hash table](https://www.youtube.com/watch?v=DMQ_HcNSOAI)，主题是这个。
+该视频教我们一种系统的方法来推理性能问题的细微调整。
 
-In the end, we concluded that the simple keyword match is enough for us since it was only about 1 - 2% of the performance,
-and the effort is not worth it after spending a few days on it - Rust does not have all the pieces we need to build this perfect hashmap.
+最后，我们得出结论，简单的关键字匹配对我们来说已经足够了，因为它只占性能的 1-2%，
+而且在花费了几天时间之后，这项工作并不值得——Rust 没有我们构建这个完美哈希图所需的所有组件。
 
 ## Linter
 
-A linter is a program that analyzes the source code for problems.
+Linter 是一个分析源代码问题的程序。
 
-The simplest linter visits each AST node and checks for rules.
-[The visitor pattern](https://rust-unofficial.github.io/patterns/patterns/behavioural/visitor.html) can be used:
+最简单的 linter 会访问每个 AST 节点并检查规则。
+[访问者模式](https://rust-unofficial.github.io/patterns/patterns/behavioural/visitor.html) 可以用于此：
 
 ```rust
 pub trait Visit<'a>: Sized {
-    // ... lots of visit functions
+    // ... 大量的 visit 函数
 
     fn visit_debugger_statement(&mut self, stmt: &'a DebuggerStatement) {
-        // report error
+        // 报告错误
     }
 }
 ```
 
-### Parent Pointing Tree
+### 父指针树
 
-It is easy to go down the AST by using visitors, but what if we want to go up the tree to collect some information?
+使用访问者很容易向下遍历 AST，但如果我们想向上遍历树来收集一些信息该怎么办？
 
-This problem is particularly challenging to solve in Rust, because it is not possible to add a pointer to the nodes of the AST.
+在 Rust 中解决这个问题尤其具有挑战性，因为无法向 AST 节点添加指针。
 
-Let's forget about ASTs for a second and focus on generic trees with the property of a node having a pointer to its parent.
-To build a generic tree, each tree node needs to be the same type `Node`, we can reference their parent by using `Rc`:
+让我们暂时忘记 AST，专注于具有节点指向其父节点的属性的通用树。
+要构建通用树，每个树节点都需要是相同的类型 `Node`，我们可以使用 `Rc` 来引用它们的父节点：
 
 ```rust
 struct Node {
@@ -572,10 +562,10 @@ struct Node {
 }
 ```
 
-It is tedious to work with this pattern if we need mutation, and
-it is not performant because the nodes have to be dropped at different times.
+如果需要变异，使用此模式会很繁琐，
+并且由于节点必须在不同时间被丢弃，因此性能不佳。
 
-A more efficient solution is to use a `Vec` as its backing storage and use indexes for pointers.
+更有效的解决方案是使用 `Vec` 作为其后备存储，并使用索引作为指针。
 
 ```rust
 struct Tree {
@@ -583,14 +573,14 @@ struct Tree {
 }
 
 struct Node {
-    parent: Option<usize> // index into `nodes`
+    parent: Option<usize> // 索引到 `nodes`
 }
 ```
 
-[`indextree`](https://crates.io/crates/indextree) is a nice library for this task.
+[`indextree`](https://crates.io/crates/indextree) 是这项任务的一个很好的库。
 
-Back to our AST, we can build a `indextree` by having the nodes point to an enum that wraps every single kind of AST node.
-We call this the untyped AST.
+回到我们的 AST，我们可以通过让节点指向包装所有 AST 节点种类的枚举来构建一个 `indextree`。
+我们称之为非类型化 AST。
 
 ```rust
 struct Node<'a> {
@@ -607,7 +597,7 @@ enum AstKind<'a> {
 }
 ```
 
-The last missing piece is to have callbacks inside the visitor pattern that builds this tree.
+最后缺失的一块是访问者模式中用于构建此树的回调。
 
 ```rust
 pub trait Visit<'a> {
@@ -633,38 +623,38 @@ impl<'a> Visit<'a> for TreeBuilder<'a> {
 }
 ```
 
-The final data structure becomes `indextree::Arena<Node<'a>>` where each `Node` has a pointer to an `AstKind<'a>`.
-`indextree::Node::parent` can be called to get the parent of any node.
+最终的数据结构变为 `indextree::Arena<Node<'a>>`，其中每个 `Node` 都包含一个指向 `AstKind<'a>` 的指针。
+可以调用 `indextree::Node::parent` 来获取任何节点的父节点。
 
-The nice benefit of making this parent pointing tree is that it becomes convenient to visit AST nodes without having to implement any visitors.
-A linter becomes a simple loop over all the nodes inside the `indextree`:
+创建这个父指针树的一个好处是，无需实现任何访问者即可方便地访问 AST 节点。
+Linter 变成了一个简单的循环，遍历 `indextree` 中的所有节点：
 
 ```rust
 for node in nodes {
     match node.get().kind {
         AstKind::DebuggerStatement(stmt) => {
-        // report error
+        // 报告错误
         }
         _ => {}
     }
 }
 ```
 
-A full example is provided [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/examples/linter.rs).
+此处提供了一个完整的示例：[here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/examples/linter.rs)。
 
-At first glance, this process may seem slow and inefficient.
-However, visiting the typed AST through a memory arena and pushing a pointer into `indextree` are efficient linear memory access patterns.
-The current benchmark indicates that this approach is 84 times faster than ESLint, so it is certainly fast enough for our purposes.
+乍一看，这个过程可能显得缓慢且效率低下。
+然而，通过内存分配器访问类型化的 AST 并将指针推入 `indextree` 是高效的线性内存访问模式。
+当前的基准测试表明，这种方法比 ESLint 快 84 倍，因此对于我们的目的来说肯定足够快了。
 
-### Processing files in parallel
+### 并行处理文件
 
-The linter uses the [ignore](https://crates.io/crates/ignore) crate for directory traversal,
-it supports `.gitignore` and adds additional ignore files such as `.eslintignore`.
+Linter 使用 [ignore](https://crates.io/crates/ignore) crate 进行目录遍历，
+它支持 `.gitignore` 并添加其他忽略文件，例如 `.eslintignore`。
 
-A small problem with this crate is that it does not have a parallel interface,
-There is no `par_iter` for `ignore::Walk::new(".")`.
+这个 crate 的一个小问题是它没有并行接口，
+`ignore::Walk::new(".")` 没有 `par_iter`。
 
-Instead, [primitives need to be used](https://github.com/oxc-project/oxc/blob/b51c2df3cc43b9f7d57380acc1552fac7db75fab/crates/oxc_cli/src/lint/runner.rs#L116-L139)
+相反，[需要使用原始类型](https://github.com/oxc-project/oxc/blob/b51c2df3cc43b9f7d57380acc1552fac7db75fab/crates/oxc_cli/src/lint/runner.rs#L116-L139)
 
 ```rust
 let walk = Walk::new(&self.options);
@@ -689,31 +679,31 @@ rayon::spawn(move || {
 });
 ```
 
-This unlocks a useful feature where we can print all diagnostics in a single thread, which leads us to the final topic of this article.
+这解锁了一个有用的功能，即我们可以将所有诊断信息打印到单个线程中，这引出了本文的最后一个主题。
 
-### Printing is slow
+### 打印很慢
 
-Printing the diagnostics was fast, but I have been working on this project for so long that it felt like an eternity to print thousands of diagnostic messages every time I run the linter on huge monorepos.
-So I started searching through the Rust GitHub issues and eventually found the relevant ones:
+打印诊断信息很快，但我从事这个项目已经很久了，每次在大型 monorepo 上运行 linter 时打印数千条诊断消息都感觉像永恒。
+所以我开始搜索 Rust GitHub issue，并最终找到了相关的：
 
 - [io::Stdout should use block buffering when appropriate](https://github.com/rust-lang/rust/issues/60673)
 - [stdin and stdout performance considerations are not documented](https://github.com/rust-lang/rust/issues/106133)
 
-In summary, a `println!` call will lock `stdout` every time it encounters a newline, this is called line buffering.
-To make things print faster, we need to opt-in for block buffering which is [documented here](https://rust-cli.github.io/book/tutorial/output.html#a-note-on-printing-performance).
+总而言之，每次遇到换行符时，`println!` 调用都会锁定 `stdout`，这称为行缓冲。
+为了加快打印速度，我们需要选择块缓冲，这[在此处有文档记录](https://rust-cli.github.io/book/tutorial/output.html#a-note-on-printing-performance)。
 
 ```rust
 use std::io::{self, Write};
 
-let stdout = io::stdout(); // get the global stdout entity
-let mut handle = io::BufWriter::new(stdout); // optional: wrap that handle in a buffer
-writeln!(handle, "foo: {}", 42); // add `?` if you care about errors here
+let stdout = io::stdout(); // 获取全局 stdout 实体
+let mut handle = io::BufWriter::new(stdout); // 可选：将该句柄包装在缓冲区中
+writeln!(handle, "foo: {}", 42); // 如果关心错误，请在此处添加 `?`
 ```
 
-Or acquire the lock on stdout.
+或者获取 stdout 的锁。
 
 ```rust
-let stdout = io::stdout(); // get the global stdout entity
-let mut handle = stdout.lock(); // acquire a lock on it
-writeln!(handle, "foo: {}", 42); // add `?` if you care about errors here
+let stdout = io::stdout(); // 获取全局 stdout 实体
+let mut handle = stdout.lock(); // 获取其锁
+writeln!(handle, "foo: {}", 42); // 如果关心错误，请在此处添加 `?`
 ```

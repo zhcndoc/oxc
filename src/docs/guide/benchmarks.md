@@ -1,39 +1,39 @@
 ---
-title: All Benchmarks
+title: 所有基准测试
 outline: deep
 ---
 
-# All Benchmarks
+# 所有基准测试
 
-## Parser
+## 解析器
 
-Oxc's parser is at least 3x faster than swc and 5x faster than Biome.
+Oxc 的解析器比 swc 快至少 3 倍，比 Biome 快 5 倍。
 
-Please note that it is not an apple-to-apple comparison with Biome. Biome's parser [produces a CST](https://biomejs.dev/internals/architecture) instead of an AST, which requires a lot more work.
+请注意，与 Biome 的比较并非完全对等。Biome 的解析器 [生成的是 CST](https://biomejs.dev/internals/architecture) 而不是 AST，这需要更多的工作。
 
-See repository [bench-javascript-parser-written-in-rust](https://github.com/oxc-project/bench-javascript-parser-written-in-rust).
+参见仓库 [bench-javascript-parser-written-in-rust](https://github.com/oxc-project/bench-javascript-parser-written-in-rust)。
 
-## Transformer
+## 转换器
 
-- Compared to swc, oxc transformer is 4x faster, uses 20% less memory, and is 35 MB smaller in package size (from swc's 37MB).
-- Compared to babel, oxc transformer is 40x faster, uses 70% less memory, and is 19 MB smaller with 168 npm packages less to install.
+- 与 swc 相比，oxc 转换器快 4 倍，内存使用少 20%，包大小小 35 MB（swc 为 37MB）。
+- 与 babel 相比，oxc 转换器快 40 倍，内存使用少 70%，大小小 19 MB，且需要安装的 npm 包少 168 个。
 
-See repository [bench-transformer](https://github.com/oxc-project/bench-transformer).
+参见仓库 [bench-transformer](https://github.com/oxc-project/bench-transformer)。
 
-## Linter
+## 代码检查器
 
-Oxlint is 50x - 100x faster than ESLint depending on the number of CPU cores.
+Oxlint 比 ESLint 快 50 到 100 倍，具体取决于 CPU 核心数。
 
-See repository [bench-javascript-linter](https://github.com/oxc-project/bench-javascript-linter).
+参见仓库 [bench-javascript-linter](https://github.com/oxc-project/bench-javascript-linter)。
 
-## Formatter
+## 格式化器
 
-Oxfmt is 3x faster than Biome, 35x faster than prettier.
+Oxfmt 比 Biome 快 3 倍，比 prettier 快 35 倍。
 
-See repository [bench-formatter](https://github.com/oxc-project/bench-formatter).
+参见仓库 [bench-formatter](https://github.com/oxc-project/bench-formatter)。
 
-## Resolver
+## 模块解析器
 
-`oxc-resolver` is 30x faster than webpack's `enhanced-resolve`.
+`oxc-resolver` 比 webpack 的 `enhanced-resolve` 快 30 倍。
 
-See repository [bench-resolver](https://github.com/oxc-project/bench-resolver).
+参见仓库 [bench-resolver](https://github.com/oxc-project/bench-resolver)。

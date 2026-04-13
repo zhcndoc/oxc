@@ -1,21 +1,21 @@
 ---
-title: Nested configuration files
-description: Use multiple configuration files to apply different Oxlint settings to different parts of a repository.
+title: 嵌套配置文件
+description: 使用多个配置文件将不同的 Oxlint 设置应用于仓库的不同部分。
 ---
 
-# Nested configuration files
+# 嵌套配置文件
 
-Oxlint can use multiple configuration files in the same repository. It automatically detects configuration files named `.oxlintrc.json` or `oxlint.config.ts` and applies them based on where files live in the directory tree.
+Oxlint 可以在同一个仓库中使用多个配置文件。它会自动检测名为 `.oxlintrc.json` 或 `oxlint.config.ts` 的配置文件，并根据文件在目录树中的位置应用它们。
 
-This is useful in monorepos where packages need their own settings, while still keeping a shared baseline.
+这在 monorepo 中非常有用，其中各个包需要自己的设置，同时仍保持共享基线。
 
-If you only need to exclude files or folders, use [Ignores](./ignore-files) instead.
+如果您只需要排除文件或文件夹，请改用 [忽略文件](./ignore-files)。
 
-## How it works
+## 工作原理
 
-For each file being linted, Oxlint uses the nearest config file (`.oxlintrc.json` or `oxlint.config.ts`) relative to that file.
+对于每个被 lint 的文件，Oxlint 会使用相对于该文件最近的配置文件（`.oxlintrc.json` 或 `oxlint.config.ts`）。
 
-Given the following structure:
+给定以下结构：
 
 ```
 my-project/
@@ -30,29 +30,29 @@ my-project/
     └── index.js
 ```
 
-Configuration resolution works as follows:
+配置解析工作如下：
 
-- `src/index.js` uses `my-project/.oxlintrc.json`
-- `package1/index.js` uses `my-project/package1/oxlint.config.ts`
-- `package2/index.js` uses `my-project/package2/.oxlintrc.json`
+- `src/index.js` 使用 `my-project/.oxlintrc.json`
+- `package1/index.js` 使用 `my-project/package1/oxlint.config.ts`
+- `package2/index.js` 使用 `my-project/package2/.oxlintrc.json`
 
-## What to expect
+## 预期行为
 
-Configuration files are not automatically merged. A config in a child directory does not affect the parent config.
+配置文件不会自动合并。子目录中的配置不会影响父级配置。
 
-Command line options override configuration files, regardless of whether they come from a parent or child directory.
+命令行选项会覆盖配置文件，无论它们来自父目录还是子目录。
 
-Passing an explicit config file location using `-c` or `--config` disables nested config lookup, and Oxlint will only use that single configuration file.
+使用 `-c` 或 `--config` 传递显式配置文件位置会禁用嵌套配置查找，Oxlint 将仅使用该单个配置文件。
 
-You can also disable nested configs with the `--disable-nested-config` flag.
+您也可以使用 `--disable-nested-config` 标志禁用嵌套配置。
 
-`options.typeAware` and `options.typeCheck` are root-config-only. If either is set in a nested config file, Oxlint reports an error.
+`options.typeAware` 和 `options.typeCheck` 仅限根配置。如果在嵌套配置文件中设置了其中任何一个，Oxlint 将报告错误。
 
-## Monorepo pattern: share a base config with extends
+## Monorepo 模式：使用 extends 共享基础配置
 
-In a monorepo, you often want one shared baseline at the root, and small package specific adjustments.
+在 monorepo 中，您通常希望在根目录有一个共享基线，以及针对特定包的小调整。
 
-You do this by keeping a root config file (either `.oxlintrc.json` or `oxlint.config.ts`), then having package configs extend it.
+您可以通过保留根配置文件（`.oxlintrc.json` 或 `oxlint.config.ts`），然后让包配置扩展它来实现这一点。
 
 ::: code-group
 
@@ -101,15 +101,15 @@ export default defineConfig({
 
 :::
 
-This keeps the shared baseline in one place and makes package configs small and focused.
+这将共享基线保持在一个地方，并使包配置小而专注。
 
-## Extending configuration files
+## 扩展配置文件
 
-A config can reuse settings from other files using `extends`. The value is an array of file paths, resolved relative to the config file that declares them.
+配置可以使用 `extends` 重用其他文件中的设置。值是文件路径数组，相对于声明它们的配置文件进行解析。
 
-Extended files can have any name. They do not need to be named `.oxlintrc.json`, as long as they are valid JSON configuration files. For `oxlint.config.ts`, the file with the `extends` property must be named `oxlint.config.ts`.
+被扩展的文件可以是任何名称。它们不需要命名为 `.oxlintrc.json`，只要是有效的 JSON 配置文件即可。对于 `oxlint.config.ts`，带有 `extends` 属性的文件必须命名为 `oxlint.config.ts`。
 
-Example:
+示例：
 
 ::: code-group
 
@@ -160,7 +160,7 @@ export default defineConfig({
 
 :::
 
-Only some properties can be extended. The supported properties are:
+只有某些属性可以被扩展。支持的属性包括：
 
 - `rules`
 - `plugins`

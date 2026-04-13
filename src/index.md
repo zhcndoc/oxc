@@ -1,5 +1,5 @@
 ---
-titleTemplate: "The JavaScript Oxidation Compiler"
+titleTemplate: "JavaScript 氧化编译器"
 layout: home
 theme: dark
 ---

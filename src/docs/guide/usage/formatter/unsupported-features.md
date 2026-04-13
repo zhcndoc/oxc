@@ -1,37 +1,37 @@
-# Unsupported features
+# 不支持的功能
 
 :::info
-These features are planned. Follow our [milestone](https://github.com/oxc-project/oxc/milestone/19).
+这些功能已在计划中。请关注我们的 [里程碑](https://github.com/oxc-project/oxc/milestone/19)。
 :::
 
-## Configuration limitations
+## 配置限制
 
-Not currently supported:
+目前不支持：
 
-- `prettier` field in `package.json`
-- Nested configs in sub directories
-- Nested `.editorconfig` in sub directories
-- `experimentalTernaries` and `experimentalOperatorPosition` options
+- `package.json` 中的 `prettier` 字段
+- 子目录中的嵌套配置
+- 子目录中的嵌套 `.editorconfig`
+- `experimentalTernaries` 和 `experimentalOperatorPosition` 选项
 
-Note: Default `printWidth` is `100` (Prettier uses `80`).
+注意：默认 `printWidth` 为 `100`（Prettier 使用 `80`）。
 
-## Prettier plugins
+## Prettier 插件
 
-Not supported. However, Oxfmt provides built-in alternatives:
+不支持。但是，Oxfmt 提供了内置的替代方案：
 
 - `sortImports`
-  - Based on `eslint-plugin-perfectionist/sort-imports`
-  - Disabled by default
+  - 基于 `eslint-plugin-perfectionist/sort-imports`
+  - 默认禁用
 - `sortTailwindcss`
-  - Based on `prettier-plugin-tailwindcss`
-  - Disabled by default
+  - 基于 `prettier-plugin-tailwindcss`
+  - 默认禁用
 - `sortPackageJson`
-  - Based on `prettier-plugin-packagejson`
-  - Enabled by default
+  - 基于 `prettier-plugin-packagejson`
+  - 默认启用
 - `jsdoc`
-  - Based on `prettier-plugin-jsdoc`
-  - Disabled by default
+  - 基于 `prettier-plugin-jsdoc`
+  - 默认禁用
 
-See [Configuration file reference](./config-file-reference) for details.
+详见 [配置文件参考](./config-file-reference)。
 
-For what Oxfmt does support across frameworks and file types, see the [compatibility matrix](/compatibility).
+关于 Oxfmt 在不同框架和文件类型中支持的内容，请参阅 [兼容性矩阵](/compatibility)。

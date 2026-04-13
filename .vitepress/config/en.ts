@@ -1,57 +1,57 @@
 import BLOG_SIDEBAR from "../sidebar.blog.json" with { type: "json" };
 import { defineLocaleConfig } from "./utils";
 
-const TITLE = "The JavaScript Oxidation Compiler";
-const DESCRIPTION = "A collection of high-performance JavaScript tools written in Rust";
+const TITLE = "Oxc 中文文档";
+const DESCRIPTION = "使用 Rust 编写的高性能 JavaScript 工具集";
 
 export const enConfig = defineLocaleConfig("root", {
-  label: "English",
-  lang: "en",
+  label: "简体中文",
+  lang: "zh-CN",
   title: TITLE,
-  titleTemplate: `:title | ${TITLE}`,
+  titleTemplate: `:title - ${TITLE}`,
   description: DESCRIPTION,
   themeConfig: {
     nav: [
-      { text: "Guide", link: "/docs/guide/introduction" },
+      { text: "指南", link: "/docs/guide/introduction" },
       {
-        text: "Tools",
+        text: "工具",
         items: [
-          { text: "Linter (Oxlint)", link: "/docs/guide/usage/linter" },
-          { text: "Formatter (Oxfmt)", link: "/docs/guide/usage/formatter" },
-          { text: "Parser", link: "/docs/guide/usage/parser" },
-          { text: "Transformer", link: "/docs/guide/usage/transformer" },
-          { text: "Minifier", link: "/docs/guide/usage/minifier" },
-          { text: "Resolver", link: "/docs/guide/usage/resolver" },
+          { text: "代码检查器（Oxlint）", link: "/docs/guide/usage/linter" },
+          { text: "格式化器（Oxfmt）", link: "/docs/guide/usage/formatter" },
+          { text: "解析器", link: "/docs/guide/usage/parser" },
+          { text: "转换器", link: "/docs/guide/usage/transformer" },
+          { text: "压缩器", link: "/docs/guide/usage/minifier" },
+          { text: "模块解析器", link: "/docs/guide/usage/resolver" },
         ],
       },
-      { text: "Contribute", link: "/docs/contribute/introduction" },
+      { text: "参与贡献", link: "/docs/contribute/introduction" },
       {
         text: "Playground",
         target: "_blank",
         link: "https://playground.oxc.rs",
       },
-      { text: "Sponsor", link: "/sponsor" },
+      { text: "赞助", link: "/sponsor" },
       {
-        text: "Resources",
+        text: "资源",
         items: [
-          { text: "Release Blog", link: BLOG_SIDEBAR[0].link },
-          { text: "Compatibility", link: "/compatibility" },
-          { text: "Endorsements", link: "/endorsements" },
-          { text: "Learn", link: "/docs/learn/parser_in_rust/intro" },
-          { text: "Team", link: "/team" },
-          { text: "Releases", link: "https://github.com/oxc-project/oxc/releases" },
-          { text: "Website GitHub", link: "https://github.com/oxc-project/website" },
+          { text: "发布博客", link: BLOG_SIDEBAR[0].link },
+          { text: "兼容性", link: "/compatibility" },
+          { text: "认可", link: "/endorsements" },
+          { text: "学习", link: "/docs/learn/parser_in_rust/intro" },
+          { text: "团队", link: "/team" },
+          { text: "版本发布", link: "https://github.com/oxc-project/oxc/releases" },
+          { text: "网站 GitHub", link: "https://github.com/oxc-project/website" },
         ],
       },
     ],
     sidebar: {
       "/docs/guide/": [
         {
-          text: "Introduction",
+          text: "简介",
           collapsed: false,
           items: [
-            { text: "What is Oxc?", link: "/docs/guide/what-is-oxc" },
-            { text: "Getting Started", link: "/docs/guide/introduction" },
+            { text: "什么是 Oxc？", link: "/docs/guide/what-is-oxc" },
+            { text: "快速开始", link: "/docs/guide/introduction" },
           ],
         },
         {
@@ -59,60 +59,60 @@ export const enConfig = defineLocaleConfig("root", {
           collapsed: true,
           link: "/docs/guide/usage/linter",
           items: [
-            { text: "Overview", link: "/docs/guide/usage/linter" },
+            { text: "概览", link: "/docs/guide/usage/linter" },
             {
-              text: "Configure and integrate",
+              text: "配置与集成",
               items: [
-                { text: "Quickstart", link: "/docs/guide/usage/linter/quickstart" },
-                { text: "Configuration", link: "/docs/guide/usage/linter/config" },
-                { text: "Editor setup", link: "/docs/guide/usage/linter/editors" },
-                { text: "CI & other setup", link: "/docs/guide/usage/linter/ci" },
+                { text: "快速上手", link: "/docs/guide/usage/linter/quickstart" },
+                { text: "配置", link: "/docs/guide/usage/linter/config" },
+                { text: "编辑器设置", link: "/docs/guide/usage/linter/editors" },
+                { text: "CI 与其他设置", link: "/docs/guide/usage/linter/ci" },
                 {
-                  text: "Nested configs",
+                  text: "嵌套配置",
                   link: "/docs/guide/usage/linter/nested-config",
                 },
               ],
             },
             {
-              text: "Features",
+              text: "功能",
               items: [
-                { text: "Built-in plugins", link: "/docs/guide/usage/linter/plugins" },
-                { text: "Automatic fixes", link: "/docs/guide/usage/linter/automatic-fixes" },
-                { text: "Ignore files", link: "/docs/guide/usage/linter/ignore-files" },
+                { text: "内置插件", link: "/docs/guide/usage/linter/plugins" },
+                { text: "自动修复", link: "/docs/guide/usage/linter/automatic-fixes" },
+                { text: "忽略文件", link: "/docs/guide/usage/linter/ignore-files" },
                 {
-                  text: "Inline ignore comments",
+                  text: "行内忽略注释",
                   link: "/docs/guide/usage/linter/ignore-comments",
                 },
                 {
-                  text: "Multi-file analysis",
+                  text: "多文件分析",
                   link: "/docs/guide/usage/linter/multi-file-analysis",
                 },
                 {
-                  text: "Output formats",
+                  text: "输出格式",
                   link: "/docs/guide/usage/linter/output-formats",
                 },
-                { text: "Type-aware linting", link: "/docs/guide/usage/linter/type-aware" },
-                { text: "JS plugins", link: "/docs/guide/usage/linter/js-plugins" },
-                { text: "Writing JS plugins", link: "/docs/guide/usage/linter/writing-js-plugins" },
+                { text: "类型感知检查", link: "/docs/guide/usage/linter/type-aware" },
+                { text: "JS 插件", link: "/docs/guide/usage/linter/js-plugins" },
+                { text: "编写 JS 插件", link: "/docs/guide/usage/linter/writing-js-plugins" },
               ],
             },
             {
-              text: "Migration",
+              text: "迁移",
               items: [
-                { text: "From ESLint", link: "/docs/guide/usage/linter/migrate-from-eslint" },
+                { text: "从 ESLint 迁移", link: "/docs/guide/usage/linter/migrate-from-eslint" },
                 // { text: "From Biome", link: "/docs/guide/usage/linter/migrate-from-biome" },
               ],
             },
             {
-              text: "Reference",
+              text: "参考",
               items: [
-                { text: "Rules reference", link: "/docs/guide/usage/linter/rules" },
-                { text: "CLI reference", link: "/docs/guide/usage/linter/cli" },
+                { text: "规则参考", link: "/docs/guide/usage/linter/rules" },
+                { text: "CLI 参考", link: "/docs/guide/usage/linter/cli" },
                 {
-                  text: "Config file reference",
+                  text: "配置文件参考",
                   link: "/docs/guide/usage/linter/config-file-reference",
                 },
-                { text: "Versioning", link: "/docs/guide/usage/linter/versioning" },
+                { text: "版本管理", link: "/docs/guide/usage/linter/versioning" },
               ],
             },
           ],
@@ -123,67 +123,67 @@ export const enConfig = defineLocaleConfig("root", {
           link: "/docs/guide/usage/formatter",
           items: [
             {
-              text: "Overview",
+              text: "概览",
               link: "/docs/guide/usage/formatter",
             },
             {
-              text: "Configure and integrate",
+              text: "配置与集成",
               items: [
                 {
-                  text: "Quickstart",
+                  text: "快速上手",
                   link: "/docs/guide/usage/formatter/quickstart",
                 },
                 {
-                  text: "Configuration",
+                  text: "配置",
                   link: "/docs/guide/usage/formatter/config",
                 },
-                { text: "Editor setup", link: "/docs/guide/usage/formatter/editors" },
-                { text: "CI & other setup", link: "/docs/guide/usage/formatter/ci" },
+                { text: "编辑器设置", link: "/docs/guide/usage/formatter/editors" },
+                { text: "CI 与其他设置", link: "/docs/guide/usage/formatter/ci" },
               ],
             },
             {
-              text: "Features",
+              text: "功能",
               items: [
                 {
-                  text: "Ignore files",
+                  text: "忽略文件",
                   link: "/docs/guide/usage/formatter/ignore-files",
                 },
                 {
-                  text: "Inline ignore comments",
+                  text: "行内忽略注释",
                   link: "/docs/guide/usage/formatter/ignore-comments",
                 },
                 {
-                  text: "Sorting",
+                  text: "排序",
                   link: "/docs/guide/usage/formatter/sorting",
                 },
                 {
-                  text: "Embedded formatting",
+                  text: "嵌入式格式化",
                   link: "/docs/guide/usage/formatter/embedded-formatting",
                 },
               ],
             },
             {
-              text: "Migration",
+              text: "迁移",
               items: [
                 {
-                  text: "Migrate from Prettier",
+                  text: "从 Prettier 迁移",
                   link: "/docs/guide/usage/formatter/migrate-from-prettier",
                 },
               ],
             },
             {
-              text: "Reference",
+              text: "参考",
               items: [
                 {
-                  text: "CLI reference",
+                  text: "CLI 参考",
                   link: "/docs/guide/usage/formatter/cli",
                 },
                 {
-                  text: "Configuration file reference",
+                  text: "配置文件参考",
                   link: "/docs/guide/usage/formatter/config-file-reference",
                 },
                 {
-                  text: "Unsupported features",
+                  text: "不支持的特性",
                   link: "/docs/guide/usage/formatter/unsupported-features",
                 },
               ],
@@ -191,19 +191,19 @@ export const enConfig = defineLocaleConfig("root", {
           ],
         },
         {
-          text: "Parser",
+          text: "解析器",
           collapsed: true,
           link: "/docs/guide/usage/parser",
-          items: [{ text: "Overview", link: "/docs/guide/usage/parser" }],
+          items: [{ text: "概览", link: "/docs/guide/usage/parser" }],
         },
         {
-          text: "Transformer",
+          text: "转换器",
           collapsed: true,
           link: "/docs/guide/usage/transformer",
           items: [
-            { text: "Overview", link: "/docs/guide/usage/transformer" },
+            { text: "概览", link: "/docs/guide/usage/transformer" },
             {
-              text: "Lowering",
+              text: "降级转换",
               link: "/docs/guide/usage/transformer/lowering",
             },
             {
@@ -215,96 +215,96 @@ export const enConfig = defineLocaleConfig("root", {
               link: "/docs/guide/usage/transformer/jsx",
             },
             {
-              text: "Plugins",
+              text: "插件",
               link: "/docs/guide/usage/transformer/plugins",
             },
             {
-              text: "Global Variable Replacement",
+              text: "全局变量替换",
               link: "/docs/guide/usage/transformer/global-variable-replacement",
             },
             {
-              text: "Isolated Declarations",
+              text: "独立声明",
               link: "/docs/guide/usage/transformer/isolated-declarations",
             },
           ],
         },
         {
-          text: "Minifier",
+          text: "压缩器",
           collapsed: true,
           link: "/docs/guide/usage/minifier",
           items: [
             {
-              text: "Overview",
+              text: "概览",
               link: "/docs/guide/usage/minifier",
             },
             {
-              text: "Dead Code Elimination",
+              text: "死代码消除",
               link: "/docs/guide/usage/minifier/dead-code-elimination",
             },
             {
-              text: "Syntax Normalization",
+              text: "语法规范化",
               link: "/docs/guide/usage/minifier/syntax-normalization",
             },
             {
-              text: "Mangling",
+              text: "名称混淆",
               link: "/docs/guide/usage/minifier/mangling",
             },
             {
-              text: "Whitespace Stripping",
+              text: "空白压缩",
               link: "/docs/guide/usage/minifier/whitespace-stripping",
             },
             {
-              text: "FAQ",
+              text: "常见问题",
               link: "/docs/guide/usage/minifier/faq",
             },
           ],
         },
         {
-          text: "Resolver",
+          text: "模块解析器",
           collapsed: true,
           link: "/docs/guide/usage/resolver",
-          items: [{ text: "Overview", link: "/docs/guide/usage/resolver" }],
+          items: [{ text: "概览", link: "/docs/guide/usage/resolver" }],
         },
         {
-          text: "Resources",
+          text: "资源",
           collapsed: false,
           items: [
-            { text: "Troubleshooting", link: "/docs/guide/troubleshooting" },
-            { text: "Benchmarks", link: "/docs/guide/benchmarks" },
-            { text: "Projects using Oxc", link: "/docs/guide/projects" },
-            { text: "Talks & media", link: "/docs/guide/media" },
+            { text: "故障排查", link: "/docs/guide/troubleshooting" },
+            { text: "基准测试", link: "/docs/guide/benchmarks" },
+            { text: "使用 Oxc 的项目", link: "/docs/guide/projects" },
+            { text: "演讲与媒体", link: "/docs/guide/media" },
           ],
         },
       ],
       "/docs/learn/": [
         {
-          text: "JavaScript Parser in Rust",
+          text: "Rust 中的 JavaScript 解析器",
           items: [
-            { text: "Introduction", link: "/docs/learn/parser_in_rust/intro" },
-            { text: "Lexer", link: "/docs/learn/parser_in_rust/lexer" },
+            { text: "简介", link: "/docs/learn/parser_in_rust/intro" },
+            { text: "词法分析器", link: "/docs/learn/parser_in_rust/lexer" },
             { text: "AST", link: "/docs/learn/parser_in_rust/ast" },
-            { text: "Parser", link: "/docs/learn/parser_in_rust/parser" },
-            { text: "Errors", link: "/docs/learn/parser_in_rust/errors" },
-            { text: "Semantic Analysis", link: "/docs/learn/parser_in_rust/semantic_analysis" },
+            { text: "解析器", link: "/docs/learn/parser_in_rust/parser" },
+            { text: "错误", link: "/docs/learn/parser_in_rust/errors" },
+            { text: "语义分析", link: "/docs/learn/parser_in_rust/semantic_analysis" },
           ],
         },
         {
-          text: "Architecture",
+          text: "架构",
           items: [
             {
-              text: "Parser",
+              text: "解析器",
               link: "/docs/learn/architecture/parser",
             },
             {
-              text: "Linter",
+              text: "代码检查",
               link: "/docs/learn/architecture/linter",
             },
             {
-              text: "Test Infrastructure",
+              text: "测试基础设施",
               link: "/docs/learn/architecture/test",
             },
             {
-              text: "AST Tools",
+              text: "AST 工具",
               link: "/docs/learn/architecture/ast-tools",
             },
           ],
@@ -312,30 +312,30 @@ export const enConfig = defineLocaleConfig("root", {
         {
           text: "ECMAScript",
           items: [
-            { text: "Specification", link: "/docs/learn/ecmascript/spec" },
+            { text: "规范", link: "/docs/learn/ecmascript/spec" },
             {
-              text: "Grammar",
+              text: "语法",
               link: "/docs/learn/ecmascript/grammar",
             },
           ],
         },
-        { text: "Performance", link: "/docs/learn/performance" },
-        { text: "Terminology", link: "/docs/learn/terminology" },
-        { text: "References", link: "/docs/learn/references" },
+        { text: "性能", link: "/docs/learn/performance" },
+        { text: "术语", link: "/docs/learn/terminology" },
+        { text: "参考资料", link: "/docs/learn/references" },
       ],
       "/docs/contribute/": [
         {
-          text: "Contribute",
+          text: "参与贡献",
           items: [
-            { text: "Introduction", link: "/docs/contribute/introduction" },
-            { text: "Getting Started", link: "/docs/contribute/development" },
+            { text: "简介", link: "/docs/contribute/introduction" },
+            { text: "快速开始", link: "/docs/contribute/development" },
           ],
         },
         {
-          text: "Tools",
+          text: "工具",
           items: [
             {
-              text: "Parser",
+              text: "解析器",
               link: "/docs/contribute/parser",
               items: [
                 {
@@ -345,25 +345,25 @@ export const enConfig = defineLocaleConfig("root", {
               ],
             },
             {
-              text: "Linter",
+              text: "代码检查",
               link: "/docs/contribute/linter",
-              items: [{ text: "Adding Rules", link: "/docs/contribute/linter/adding-rules" }],
+              items: [{ text: "添加规则", link: "/docs/contribute/linter/adding-rules" }],
             },
-            { text: "Formatter", link: "/docs/contribute/formatter" },
-            { text: "Resolver", link: "/docs/contribute/resolver" },
+            { text: "格式化器", link: "/docs/contribute/formatter" },
+            { text: "模块解析器", link: "/docs/contribute/resolver" },
             {
-              text: "Transformer",
+              text: "转换器",
               link: "/docs/contribute/transformer",
             },
-            { text: "Minifier", link: "/docs/contribute/minifier" },
-            { text: "Language Server", link: "/docs/contribute/language_server" },
-            { text: "VSCode", link: "/docs/contribute/vscode" },
+            { text: "压缩器", link: "/docs/contribute/minifier" },
+            { text: "语言服务器", link: "/docs/contribute/language_server" },
+            { text: "VS Code", link: "/docs/contribute/vscode" },
           ],
         },
-        { text: "Debugging", link: "/docs/contribute/debugging" },
-        { text: "Profiling", link: "/docs/contribute/profiling" },
-        { text: "PR Rules and Policies", link: "/docs/contribute/rules" },
-        { text: "Security Policy", link: "/docs/contribute/security" },
+        { text: "调试", link: "/docs/contribute/debugging" },
+        { text: "性能分析", link: "/docs/contribute/profiling" },
+        { text: "PR 规则与策略", link: "/docs/contribute/rules" },
+        { text: "安全策略", link: "/docs/contribute/security" },
       ],
       "/blog/": BLOG_SIDEBAR,
     },
@@ -384,7 +384,7 @@ export const enConfig = defineLocaleConfig("root", {
 
         return `https://github.com/oxc-project/website/edit/main/src/${filePath}`;
       },
-      text: "Suggest changes to this page",
+      text: "在 GitHub 上编辑此页",
     },
   },
 });

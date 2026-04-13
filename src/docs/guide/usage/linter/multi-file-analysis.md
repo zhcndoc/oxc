@@ -1,35 +1,31 @@
 ---
-title: Multi-file analysis
-description: Project-wide linting for import cycles and cross-file issues
+title: 多文件分析
+description: 针对导入循环和跨文件问题的项目级 lint 检查
 ---
 
-# Multi-file analysis
+# 多文件分析
 
-Multi-file analysis allows rules to use project-wide information, such as the module dependency graph, instead of analyzing each file in isolation.
+多文件分析允许规则使用项目范围内的信息，例如模块依赖图，而不是孤立地分析每个文件。
 
-## Performance and architecture
+## 性能和架构
 
-ESLint evaluates rules per file and does not provide a built-in project graph. Plugins such as
-[`eslint-plugin-import`](https://npmx.dev/package/eslint-plugin-import) must rebuild module resolution and the module graph outside of ESLint’s core. Projects report the original `import/no-cycle` rule taking tens of seconds, or - on larger repositories - over a minute.
+ESLint 按文件评估规则，不提供内置的项目图。诸如 [`eslint-plugin-import`](https://npmx.dev/package/eslint-plugin-import) 之类的插件必须在 ESLint 核心之外重建模块解析和模块图。有项目报告原始的 `import/no-cycle` 规则耗时数十秒，或者在较大的仓库中耗时超过一分钟。
 
-Oxlint implements multi-file analysis in the core engine. It lints files and builds the module graph in parallel, shares parsing and resolution across rules, and typically completes comparable `import/no-cycle` checks in a few seconds.
+Oxlint 在核心引擎中实现了多文件分析。它并行 lint 文件并构建模块图，在规则之间共享解析和解析结果，通常可以在几秒钟内完成可比的 `import/no-cycle` 检查。
 
-## Enable the `import` plugin
+## 启用 import 插件
 
-To use multi-file analysis, you must enable the `import` plugin and configure at
-least one `import/*` rule. For an example, see the config file in the next section.
+要使用多文件分析，你必须启用 `import` 插件并配置至少一个 `import/*` 规则。示例请参阅下一节中的配置文件。
 
-## Detect cycles with `import/no-cycle`
+## 使用 import/no-cycle 检测循环
 
-Enable
-[`import/no-cycle`](/docs/guide/usage/linter/rules/import/no-cycle.html)
-to detect circular dependencies.
+启用 [`import/no-cycle`](/docs/guide/usage/linter/rules/import/no-cycle.html) 以检测循环依赖。
 
-Import cycles:
+导入循环：
 
-- obscure dependency direction
-- make refactors harder
-- can cause imported values to be `undefined` due to evaluation order
+- 模糊依赖方向
+- 使重构更加困难
+- 由于求值顺序可能导致导入的值为 `undefined`
 
 ::: code-group
 
@@ -56,7 +52,6 @@ export default defineConfig({
 
 :::
 
-## TypeScript path aliases
+## TypeScript 路径别名
 
-When running `import/*` rules, Oxlint automatically discovers `tsconfig.json`
-to resolve TypeScript path aliases such as `compilerOptions.paths`.
+运行 `import/*` 规则时，Oxlint 会自动发现 `tsconfig.json` 以解析 TypeScript 路径别名，例如 `compilerOptions.paths`。

@@ -1,17 +1,17 @@
 ---
-title: Resolver
+title: 解析器
 outline: deep
 ---
 
-# Resolver
+# 解析器
 
-The Oxc resolver is a high-performance Node.js module resolution implementation that's compatible with webpack's enhanced-resolve. It's maintained in [its own GitHub repository](https://github.com/oxc-project/oxc_resolver).
+Oxc 解析器是一个高性能的 Node.js 模块解析实现，兼容 webpack 的 enhanced-resolve。它在 [独立的 GitHub 仓库](https://github.com/oxc-project/oxc_resolver) 中维护。
 
-## Architecture
+## 架构
 
-The resolver is designed as a direct port of [enhanced-resolve](https://github.com/webpack/enhanced-resolve) with significant performance improvements:
+该解析器设计为 [enhanced-resolve](https://github.com/webpack/enhanced-resolve) 的直接移植版本，并具有显著的性能改进：
 
-- **28x faster** than enhanced-resolve
-- **Zero-copy string operations** where possible
-- **Optimized path traversal** algorithms
-- **Efficient caching** strategies
+- 比 enhanced-resolve **快 28 倍**
+- 尽可能使用**零拷贝字符串操作**
+- **优化的路径遍历**算法
+- **高效的缓存**策略

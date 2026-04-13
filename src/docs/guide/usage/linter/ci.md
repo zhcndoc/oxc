@@ -1,21 +1,21 @@
 ---
-title: Setup CI and other integrations
-description: Run Oxlint in CI or as a git hook.
+title: 设置 CI 和其他集成
+description: 在 CI 中运行 Oxlint 或作为 git hook 运行。
 ---
 
-# Setup CI and other integrations
+# 设置 CI 和其他集成
 
-You can - and should - setup your CI pipeline to run Oxlint and fail the build on lint errors.
+你可以——并且应该——设置你的 CI 流水线来运行 Oxlint，并在 lint 错误时使构建失败。
 
-This page also covers other integrations you may want to include, like git pre-commit hooks.
+本页还涵盖了你可能想要包含的其他集成，例如 git pre-commit hooks。
 
 ## CI
 
-These instructions assume you have already set up Oxlint in your project by adding `oxlint` to your devDependencies in your `package.json`, and already have an oxlint configuration file in the repo.
+这些说明假设你已经在项目中设置了 Oxlint，即将 `oxlint` 添加到 `package.json` 的 devDependencies 中，并且仓库中已存在 oxlint 配置文件。
 
 ### GitHub Actions
 
-First, add a `lint` script to your `package.json` if you don't have one already:
+首先，如果你还没有 `lint` 脚本，请将其添加到 `package.json` 中：
 
 ```json [package.json]
 {
@@ -25,7 +25,7 @@ First, add a `lint` script to your `package.json` if you don't have one already:
 }
 ```
 
-Then create `.github/workflows/oxlint.yml`:
+然后创建 `.github/workflows/oxlint.yml`：
 
 ```yaml [.github/workflows/oxlint.yml]
 name: Lint
@@ -50,12 +50,12 @@ jobs:
           node-version: lts/*
           cache: pnpm
 
-      # alternatively use npm install / yarn install here
+      # 或者在这里使用 npm install / yarn install
       - run: pnpm install --frozen-lockfile
       - run: pnpm run lint
 ```
 
-You can, alternatively, output using the github format option, for [better warning/error annotations](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-an-error-message):
+或者，你可以使用 github 格式选项输出，以获得 [更好的警告/错误注释](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-an-error-message)：
 
 ```json [package.json]
 {
@@ -67,9 +67,9 @@ You can, alternatively, output using the github format option, for [better warni
 
 ### GitLab CI
 
-If you use GitLab CI, you can set up Oxlint with `--format=gitlab` and [GitLab's Code Quality feature](https://docs.gitlab.com/ci/testing/code_quality/#code-quality-report-format) to get inline annotations for lint violations in merge requests.
+如果你使用 GitLab CI，你可以使用 `--format=gitlab` 设置 Oxlint，并结合 [GitLab 的代码质量功能](https://docs.gitlab.com/ci/testing/code_quality/#code-quality-report-format)，在合并请求中获取 lint 违规的内联注释。
 
-To set this up, you can add a script to your `package.json` to output the gitlab format and save it to a file, like so:
+要设置此功能，你可以在 `package.json` 中添加一个脚本来输出 gitlab 格式并将其保存到文件，如下所示：
 
 ```json [package.json]
 {
@@ -79,33 +79,33 @@ To set this up, you can add a script to your `package.json` to output the gitlab
 }
 ```
 
-And then add a job to your `.gitlab-ci.yml`, to run the script and upload the report as a Code Quality artifact:
+然后向你的 `.gitlab-ci.yml` 添加一个作业，以运行脚本并将报告作为代码质量工件上传：
 
 ```yml [.gitlab-ci.yml]
 oxlint:
   image: node:lts
   stage: test
   before_script:
-    # alternatively use pnpm install / yarn install here
+    # 或者在这里使用 pnpm install / yarn install
     - npm install
   script:
     - npm run lint:gitlab
   artifacts:
     reports:
       codequality:
-        # This is relative to your repository root, so adjust if your repo has a different structure or you put the report in a different location
+        # 这是相对于你的仓库根目录的，所以如果你的仓库结构不同或将报告放在不同位置，请进行调整
         - gitlab-oxlint-report.json
 ```
 
-If you do not want to use the Code Quality feature, you can simply run oxlint without `--format=gitlab` in the CI job instead.
+如果你不想使用代码质量功能，你可以直接在 CI 作业中运行 oxlint 而不使用 `--format=gitlab`。
 
-You should ensure type-aware rules are enabled if you want to use them, and consider caching `node_modules` to speed up the installation of dependencies.
+如果你想使用类型感知规则，请确保启用了它们，并考虑缓存 `node_modules` 以加快依赖项的安装速度。
 
 ## Git hooks
 
 ### lint-staged
 
-For JS/TS projects using [lint-staged](https://npmx.dev/package/lint-staged), you can set up oxlint to run as a pre-commit hook as follows:
+对于使用 [lint-staged](https://npmx.dev/package/lint-staged) 的 JS/TS 项目，你可以按以下方式设置 oxlint 作为 pre-commit 钩子运行：
 
 ```json [package.json]
 {
@@ -115,11 +115,11 @@ For JS/TS projects using [lint-staged](https://npmx.dev/package/lint-staged), yo
 }
 ```
 
-To automatically install the git hook when installing dependencies, considering also using [husky](https://typicode.github.io/husky/get-started.html).
+为了在安装依赖时自动安装 git 钩子，考虑同时使用 [husky](https://typicode.github.io/husky/get-started.html)。
 
 ### pre-commit
 
-If you use [pre-commit](https://pre-commit.com/) to manage git hooks, you can set up Oxlint as follows:
+如果你使用 [pre-commit](https://pre-commit.com/) 来管理 git 钩子，你可以按以下方式设置 Oxlint：
 
 ```yaml [.pre-commit-config.yaml]
 repos:
@@ -130,14 +130,14 @@ repos:
         verbose: true
 ```
 
-Replace `v0.0.0` with the latest version.
+将 `v0.0.0` 替换为最新版本。
 
-## Other integrations
+## 其他集成
 
 ### Unplugin
 
-Unplugin is supported via a [third-party package](https://npmx.dev/package/unplugin-oxlint)
+Unplugin 通过 [第三方包](https://npmx.dev/package/unplugin-oxlint) 支持
 
 ### Vite plugin
 
-A Vite plugin is supported via a [third-party package](https://npmx.dev/package/vite-plugin-oxlint)
+Vite plugin 通过 [第三方包](https://npmx.dev/package/vite-plugin-oxlint) 支持

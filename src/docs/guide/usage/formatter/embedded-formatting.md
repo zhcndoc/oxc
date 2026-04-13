@@ -1,8 +1,8 @@
-# Embedded Formatting
+# 嵌入式格式化
 
-Formats code embedded in JS/TS files (CSS in template literals, GraphQL in template literals, JavaScript/TypeScript/CSS/etc in Markdown).
+格式化嵌入在 JS/TS 文件中的代码（模板字面量中的 CSS、模板字面量中的 GraphQL、Markdown 中的 JavaScript/TypeScript/CSS 等）。
 
-## Configuration
+## 配置
 
 ```json [.oxfmtrc.json]
 {
@@ -10,14 +10,14 @@ Formats code embedded in JS/TS files (CSS in template literals, GraphQL in templ
 }
 ```
 
-### Values
+### 值
 
-- `"auto"` — (default) Format embedded sections
-- `"off"` — Skip embedded formatting
+- `"auto"` —（默认）格式化嵌入部分
+- `"off"` — 跳过嵌入式格式化
 
-## Examples
+## 示例
 
-CSS inside a tagged template literal:
+标签模板字面量中的 CSS：
 
 ```js
 const styles = css`
@@ -28,7 +28,7 @@ const styles = css`
 `;
 ```
 
-Styled-components:
+Styled-components：
 
 ```js
 const Button = styled.button`
@@ -37,7 +37,7 @@ const Button = styled.button`
 `;
 ```
 
-Styled JSX:
+Styled JSX：
 
 ```jsx
 <style jsx>{`
@@ -48,7 +48,7 @@ Styled JSX:
 `}</style>
 ```
 
-GraphQL inside a tagged template literal:
+标签模板字面量中的 GraphQL：
 
 ```js
 const query = gql`
@@ -71,7 +71,7 @@ const query2 = graphql(`
 `);
 ```
 
-HTML inside a tagged template literal:
+标签模板字面量中的 HTML：
 
 ```js
 const template = html`
@@ -82,19 +82,19 @@ const template = html`
 `;
 ```
 
-JavaScript code blocks inside a Markdown file:
+Markdown 文件中的 JavaScript 代码块：
 
 ````md
 This is an example Markdown file with JavaScript code blocks:
 
 ```js
-const x = 1; // This will be formatted if embedded formatting is enabled.
+const x = 1; // 如果启用了嵌入式格式化，这将被格式化。
 ```
 
 Wow!
 ````
 
-JavaScript and CSS inside a Vue file:
+Vue 文件中的 JavaScript 和 CSS：
 
 ```vue
 <script setup>

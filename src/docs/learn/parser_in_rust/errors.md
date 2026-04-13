@@ -1,39 +1,39 @@
 ---
-title: Dealing with Errors
+title: 处理错误
 outline: deep
 ---
 
-# Dealing with Errors
+# 处理错误
 
-Quoting from the [Dragon Book](https://www.amazon.com/Compilers-Principles-Techniques-Tools-2nd/dp/0321486811)
+引用自 [Dragon Book](https://www.amazon.com/Compilers-Principles-Techniques-Tools-2nd/dp/0321486811)
 
-> Most programming language specifications do not describe how a compiler should respond to errors; error handling is left to the compiler designer.
-> Planning the error handling right from the start can both simplify the structure of a compiler and improve its handling of errors.
+> 大多数编程语言规范并没有描述编译器应该如何响应错误；错误处理留给了编译器设计者。
+> 从一开始就规划好错误处理既可以简化编译器的结构，又能改善其错误处理能力。
 
-A fully recoverable parser can construct an AST no matter what we throw at it.
-For tools such as linter or formatter, one would wish for a fully recoverable parser so we can act on part of the program.
+一个完全可恢复的分析器无论我们输入什么都能构建出 AST。
+对于 linter 或 formatter 这样的工具，人们希望拥有一个完全可恢复的分析器，以便我们可以对程序的一部分进行操作。
 
-A panicking parser will abort if there is any grammar mismatch, and a partially recoverable parser will recover from deterministic grammars.
+一个会恐慌（panic）的分析器在任何语法不匹配时都会中止，而一个部分可恢复的分析器将从确定性语法中恢复。
 
-For example, given a grammatically incorrect while statement `while true {}`, we know it is missing round brackets,
-and the only punctuation it can have are round brackets, so we can still return a valid AST and indicate its missing brackets.
+例如，给定一个语法不正确的 while 语句 `while true {}`，我们知道它缺少圆括号，
+并且它唯一可以拥有的标点符号是圆括号，所以我们仍然可以返回一个有效的 AST 并指出它缺少括号。
 
-Most JavaScript parsers out there are partially recoverable, so we'll do the same and build a partially recoverable parser.
+大多数现有的 JavaScript 分析器都是部分可恢复的，所以我们也这样做，构建一个部分可恢复的分析器。
 
 :::info
-The Biome parser is a fully recoverable parser.
+Biome 分析器是一个完全可恢复的分析器。
 :::
 
-Rust has the `Result` type for returning and propagating errors.
-In conjunction with the `?` syntax, the parse functions will remain simple and clean.
+Rust 拥有 `Result` 类型用于返回和传播错误。
+结合 `?` 语法，解析函数将保持简单和清晰。
 
-It is common to wrap the Result type so we can replace the error later:
+通常我们会包装 Result 类型，以便稍后替换错误：
 
 ```rust
 pub type Result<T> = std::result::Result<T, ()>;
 ```
 
-Our parse functions will return a Result, for example:
+我们的解析函数将返回一个 Result，例如：
 
 ```rust
 pub fn parse_binding_pattern(&mut self, ctx: Context) -> Result<BindingPattern<'a>> {
@@ -41,17 +41,17 @@ pub fn parse_binding_pattern(&mut self, ctx: Context) -> Result<BindingPattern<'
         Kind::LCurly => self.parse_object_binding_pattern(ctx),
         Kind::LBrack => self.parse_array_binding_pattern(ctx),
         kind if kind.is_binding_identifier() => {
-          // ... code omitted
+          // ... 代码省略
         }
         _ => Err(()), // [!code highlight]
     }
 }
 ```
 
-We can add an `expect` function for returning an error if the current token does not match the grammar:
+我们可以添加一个 `expect` 函数，如果当前令牌不匹配语法则返回错误：
 
 ```rust
-/// Expect a `Kind` or return error
+/// 期望一个 `Kind` 或返回错误
 pub fn expect(&mut self, kind: Kind) -> Result<()> {
     if !self.at(kind) {
         return Err(())
@@ -61,7 +61,7 @@ pub fn expect(&mut self, kind: Kind) -> Result<()> {
 }
 ```
 
-And use it as such:
+并使用它如下：
 
 ```rust
 pub fn parse_paren_expression(&mut self, ctx: Context) -> Result<Expression> {
@@ -74,14 +74,13 @@ pub fn parse_paren_expression(&mut self, ctx: Context) -> Result<Expression> {
 
 :::info
 
-For completeness, the lexer function `read_next_token` should also return `Result`
-when an unexpected `char` is found when lexing.
+为了完整性，词法分析器函数 `read_next_token` 在词法分析时发现意外的 `char` 也应该返回 `Result`
 
 :::
 
-### The `Error` Trait
+### `Error` Trait
 
-To return specific errors, we need to fill in the `Err` part of `Result`:
+为了返回特定的错误，我们需要填充 `Result` 的 `Err` 部分：
 
 ```rust
 pub type Result<T> = std::result::Result<T, SyntaxError>;
@@ -94,9 +93,9 @@ pub enum SyntaxError {
 }
 ```
 
-We call it `SyntaxError` because all "early error"s defined in the grammar section of the ECMAScript specification are syntax errors.
+我们称之为 `SyntaxError`，因为 ECMAScript 规范语法部分定义的所有“早期错误”都是语法错误。
 
-To make this a proper `Error`, it needs to implement the [`Error` Trait](https://doc.rust-lang.org/std/error/trait.Error.html). For cleaner code, we can use macros from the [`thiserror`](https://docs.rs/thiserror/latest/thiserror) crate:
+为了使其成为真正的 `Error`，它需要实现 [`Error` Trait](https://doc.rust-lang.org/std/error/trait.Error.html)。为了代码更清晰，我们可以使用 [`thiserror`](https://docs.rs/thiserror/latest/thiserror) crate 中的宏：
 
 ```rust
 #[derive(Debug, Error)]
@@ -112,10 +111,10 @@ pub enum SyntaxError {
 }
 ```
 
-We can then add an `expect` helper function for throwing an error if the token does not match:
+然后我们可以添加一个 `expect` 辅助函数，如果令牌不匹配则抛出错误：
 
 ```rust
-/// Expect a `Kind` or return error
+/// 期望一个 `Kind` 或返回错误
 pub fn expect(&mut self, kind: Kind) -> Result<()> {
     if self.at(kind) {
         return Err(SyntaxError::UnexpectedToken);
@@ -125,7 +124,7 @@ pub fn expect(&mut self, kind: Kind) -> Result<()> {
 }
 ```
 
-The `parse_debugger_statement` can now use the `expect` function for proper error management:
+`parse_debugger_statement` 现在可以使用 `expect` 函数进行适当的错误管理：
 
 ```rust
 fn parse_debugger_statement(&mut self) -> Result<Statement> {
@@ -137,25 +136,25 @@ fn parse_debugger_statement(&mut self) -> Result<Statement> {
 }
 ```
 
-Notice the `?` after the `expect`,
-it is a syntactic sugar called the ["question mark operator"](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator) for making the
-function return early if the `expect` function returns a `Err`.
+注意 `expect` 后面的 `?`，
+它是一种称为 ["问号运算符"](https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator) 的语法糖，用于
+如果 `expect` 函数返回 `Err`，则使函数提前返回。
 
-### Fancy Error Report
+### 漂亮的错误报告
 
-[`miette`](https://docs.rs/miette/latest/miette) is one of the nicest error reporting crate out there,
-it provides a fancy colored output
+[`miette`](https://docs.rs/miette/latest/miette) 是现有最好的错误报告 crate 之一，
+它提供漂亮的彩色输出
 
 ![miette](https://raw.githubusercontent.com/zkat/miette/main/images/serde_json.png)
 
-Add `miette` to your `Cargo.toml`
+将 `miette` 添加到你的 `Cargo.toml`
 
 ```toml
 [dependencies]
 miette = { version = "5", features = ["fancy"] }
 ```
 
-We can wrap our `Error` with `miette` and not modify the `Result` type defined in our parser:
+我们可以用 `miette` 包装我们的 `Error`，而不修改解析器中定义的 `Result` 类型：
 
 ```rust
 pub fn main() -> Result<()> {

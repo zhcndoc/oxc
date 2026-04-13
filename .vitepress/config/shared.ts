@@ -28,6 +28,13 @@ const head: HeadConfig[] = [
       href: "/logo-without-border.svg",
     },
   ],
+  [
+    "script",
+    {
+      src: "https://www.zhcndoc.com/js/common.js",
+      defer: "",
+    },
+  ],
   // Open Graph
   ["meta", { property: "og:site_name", content: "Oxc" }],
   [
@@ -129,16 +136,37 @@ export const sharedConfig = {
     //   url: latestBlog.link,
     // },
     banner: {
-      id: "viteplus-alpha",
-      text: "Announcing Vite+ Alpha: Open source. Unified. Next-gen.",
-      url: "https://voidzero.dev/posts/announcing-vite-plus-alpha?utm_source=oxc&utm_content=top_banner",
+      id: "rainyun",
+      text: "雨云 RainYun - 企业级云计算服务提供商：新用户注册立享五折！",
+      url: "https://www.rainyun.com/mm_?s=zhcndoc",
     },
 
-    siteTitle: "Oxc",
+    siteTitle: "Oxc 中文文档",
     logo: "https://cdn.jsdelivr.net/gh/oxc-project/oxc-assets/round.svg",
     search: {
       provider: "local",
       options: {
+        translations: {
+          button: {
+            buttonText: "搜索",
+            buttonAriaLabel: "搜索",
+          },
+          modal: {
+            displayDetails: "显示详细列表",
+            resetButtonTitle: "重置搜索",
+            backButtonTitle: "关闭搜索",
+            noResultsText: "没有结果：",
+            footer: {
+              selectText: "选择",
+              selectKeyAriaLabel: "回车",
+              navigateText: "导航",
+              navigateUpKeyAriaLabel: "上箭头",
+              navigateDownKeyAriaLabel: "下箭头",
+              closeText: "关闭",
+              closeKeyAriaLabel: "Esc",
+            },
+          },
+        },
         async _render(src: string, env: MarkdownEnv, md: AsyncMarkdownRenderer) {
           const html = await md.renderAsync(src, env);
           // Filter out pages with `search: false` in the frontmatter.
@@ -164,9 +192,20 @@ export const sharedConfig = {
       { icon: "github", link: "https://github.com/oxc-project/oxc" },
     ],
     lastUpdated: {
+      text: "最后更新",
       formatOptions: {
         dateStyle: "full",
       },
+    },
+    outline: {
+      label: "目录",
+    },
+    docFooter: {
+      prev: "上一页",
+      next: "下一页",
+    },
+    editLink: {
+      text: "在 GitHub 上编辑此页",
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} VoidZero Inc. and Oxc contributors.`,
@@ -174,29 +213,29 @@ export const sharedConfig = {
         {
           title: "Oxc",
           items: [
-            { text: "Guide", link: "/docs/guide/introduction" },
-            { text: "Learn", link: "/docs/learn/parser_in_rust/intro" },
-            { text: "Contribute", link: "/docs/contribute/introduction" },
+            { text: "指南", link: "/docs/guide/introduction" },
+            { text: "学习", link: "/docs/learn/parser_in_rust/intro" },
+            { text: "参与贡献", link: "/docs/contribute/introduction" },
             { text: "Playground", link: "https://playground.oxc.rs" },
-            { text: "Sponsor", link: "/sponsor" },
+            { text: "赞助", link: "/sponsor" },
           ],
         },
         {
-          title: "Tools",
+          title: "工具",
           items: [
-            { text: "Linter", link: "/docs/guide/usage/linter" },
-            { text: "Formatter", link: "/docs/guide/usage/formatter" },
-            { text: "Parser", link: "/docs/guide/usage/parser" },
-            { text: "Transformer", link: "/docs/guide/usage/transformer" },
-            { text: "Minifier", link: "/docs/guide/usage/minifier" },
-            { text: "Resolver", link: "/docs/guide/usage/resolver" },
+            { text: "代码检查器", link: "/docs/guide/usage/linter" },
+            { text: "格式化器", link: "/docs/guide/usage/formatter" },
+            { text: "解析器", link: "/docs/guide/usage/parser" },
+            { text: "转换器", link: "/docs/guide/usage/transformer" },
+            { text: "压缩器", link: "/docs/guide/usage/minifier" },
+            { text: "模块解析器", link: "/docs/guide/usage/resolver" },
           ],
         },
         {
-          title: "Resources",
+          title: "资源",
           items: [
-            { text: "Blog", link: BLOG_SIDEBAR[0].link },
-            { text: "Team", link: "/team" },
+            { text: "博客", link: BLOG_SIDEBAR[0].link },
+            { text: "团队", link: "/team" },
           ],
         },
         /*{

@@ -1,74 +1,71 @@
 ---
-title: Adding Linter Rules
+title: 添加 Linter 规则
 outline: deep
 ---
 
-# Adding Linter Rules
+# 添加 Linter 规则
 
-The best and easiest way to contribute to Oxlint is by adding new linter rules.
+为 Oxlint 做贡献最好且最简单的方法是添加新的 linter 规则。
 
-This guide will walk you through this process, using ESLint's
-[`no-debugger`](https://eslint.org/docs/latest/rules/no-debugger) rule as an
-example.
+本指南将带你完成这个过程，以 ESLint 的
+[`no-debugger`](https://eslint.org/docs/latest/rules/no-debugger) 规则作为
+示例。
 
 :::tip
-Make sure you've read the [setup instructions](../development.md) first.
+确保你首先阅读了 [设置说明](../development.md)。
 :::
 
-## Step 1: Pick a Rule
+## 步骤 1：选择规则
 
-Our [Linter product plan and progress](https://github.com/oxc-project/oxc/issues/481) issue tracks the status
-of all rules we want to implement from existing ESLint plugins. From there, pick
-a plugin that looks interesting to you and find a rule that has not been
-implemented.
+我们的 [Linter 产品计划和进度](https://github.com/oxc-project/oxc/issues/481) 问题跟踪了我们想要从现有 ESLint 插件实现的所有规则的状态。从这里，选择一个
+你感兴趣的插件，并找到一个尚未实现的规则。
 
-**Important**: Since ESLint-compatible JavaScript plugin support is now available, we do not plan to add new Rust-based plugins. However, contributions that add rules to existing plugins are **highly encouraged**. If you think a rule or plugin would benefit from being written in rust, please open a discussion first, before making a pull request.
+**重要**：由于现在支持兼容 ESLint 的 JavaScript 插件，我们不计划添加新的基于 Rust 的插件。但是，为现有插件添加规则的贡献是**强烈鼓励**的。如果你认为某个规则或插件受益于用 Rust 编写，请在提交 pull request 之前先开启讨论。
 
-Most documentation pages for ESLint rules include a link to the rule's [source code](https://eslint.org/docs/latest/rules/no-debugger#resources). Using this as
-a reference will help you with your implementation.
+大多数 ESLint 规则文档页面都包含指向规则 [源代码](https://eslint.org/docs/latest/rules/no-debugger#resources) 的链接。以此作为
+参考将有助于你的实现。
 
-## Step 2: Rule Generation
+## 步骤 2：规则生成
 
-Next, run the rulegen script to generate boilerplate code for your new rule.
+接下来，运行 rulegen 脚本为你的新规则生成样板代码。
 
 ```bash
 just new-rule no-debugger
 ```
 
-This will:
+这将：
 
-1. Create a new file in `crates/oxc_linter/src/rules/<plugin-name>/<rule-name>.rs` with the start of your rule's implementation and all test cases ported from ESLint
-2. Register the rule in the appropriate `mod` in [`rules.rs`](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs)
-3. Add the rule to `oxc_macros::declare_all_lint_rules!`
+1. 在 `crates/oxc_linter/src/rules/<plugin-name>/<rule-name>.rs` 创建一个新文件，包含规则实现的开头以及从 ESLint 移植的所有测试用例
+2. 在 [`rules.rs`](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rules.rs) 中的适当 `mod` 里注册规则
+3. 将规则添加到 `oxc_macros::declare_all_lint_rules!`
 
-For rules that are part of a different plugin, you'll need to use that plugin's
-own rulegen script.
+对于属于不同插件的规则，你需要使用该插件自己的 rulegen 脚本。
 
 :::tip
-Run `just` with no arguments to see all available commands.
+运行不带参数的 `just` 以查看所有可用命令。
 :::
 
 ```bash
-just new-rule [name]            # for eslint core rules
-just new-jest-rule [name]       # for eslint-plugin-jest
-just new-ts-rule [name]         # for @typescript-eslint/eslint-plugin
-just new-unicorn-rule [name]    # for eslint-plugin-unicorn
-just new-import-rule [name]     # for eslint-plugin-import
-just new-react-rule [name]      # for eslint-plugin-react and eslint-plugin-react-hooks
-just new-jsx-a11y-rule [name]   # for eslint-plugin-jsx-a11y
-just new-oxc-rule [name]        # for oxc's own rules
-just new-nextjs-rule [name]     # for eslint-plugin-next
-just new-jsdoc-rule [name]      # for eslint-plugin-jsdoc
-just new-react-perf-rule [name] # for eslint-plugin-react-perf
-just new-n-rule [name]          # for eslint-plugin-n
-just new-promise-rule [name]    # for eslint-plugin-promise
-just new-vitest-rule [name]     # for eslint-plugin-vitest
+just new-rule [name]            # 用于 eslint 核心规则
+just new-jest-rule [name]       # 用于 eslint-plugin-jest
+just new-ts-rule [name]         # 用于 @typescript-eslint/eslint-plugin
+just new-unicorn-rule [name]    # 用于 eslint-plugin-unicorn
+just new-import-rule [name]     # 用于 eslint-plugin-import
+just new-react-rule [name]      # 用于 eslint-plugin-react 和 eslint-plugin-react-hooks
+just new-jsx-a11y-rule [name]   # 用于 eslint-plugin-jsx-a11y
+just new-oxc-rule [name]        # 用于 oxc 自己的规则
+just new-nextjs-rule [name]     # 用于 eslint-plugin-next
+just new-jsdoc-rule [name]      # 用于 eslint-plugin-jsdoc
+just new-react-perf-rule [name] # 用于 eslint-plugin-react-perf
+just new-n-rule [name]          # 用于 eslint-plugin-n
+just new-promise-rule [name]    # 用于 eslint-plugin-promise
+just new-vitest-rule [name]     # 用于 eslint-plugin-vitest
 ```
 
-The generated file will look something like this:
+生成的文件看起来像这样：
 
 <details>
-<summary>Click to expand</summary>
+<summary>点击展开</summary>
 
 ::: code-group
 
@@ -88,30 +85,30 @@ use crate::{
 pub struct NoDebugger;
 
 declare_oxc_lint!(
-    /// ### What it does
+    /// ### 它做什么
     ///
     ///
-    /// ### Why is this bad?
+    /// ### 为什么这不好？
     ///
     ///
-    /// ### Examples
+    /// ### 示例
     ///
-    /// Examples of **incorrect** code for this rule:
+    /// 此规则 **不正确** 代码的示例：
     /// ```js
-    /// FIXME: Tests will fail if examples are missing or syntactically incorrect.
+    /// FIXME: 如果示例缺失或语法不正确，测试将失败。
     /// ```
     ///
-    /// Examples of **correct** code for this rule:
+    /// 此规则 **正确** 代码的示例：
     /// ```js
-    /// FIXME: Tests will fail if examples are missing or syntactically incorrect.
+    /// FIXME: 如果示例缺失或语法不正确，测试将失败。
     /// ```
     NoDebugger,
-    nursery, // TODO: change category to `correctness`, `suspicious`, `pedantic`, `perf`, `restriction`, or `style`
-             // See <https://oxc.rs/docs/contribute/linter.html#rule-category> for details
+    nursery, // TODO: 将类别更改为 `correctness`, `suspicious`, `pedantic`, `perf`, `restriction`, 或 `style`
+             // 参见 <https://oxc.rs/docs/contribute/linter.html#rule-category> 了解详情
 
-    pending  // TODO: describe fix capabilities. Remove if no fix can be done,
-             // keep at 'pending' if you think one could be added but don't know how.
-             // Options are 'fix', 'fix_dangerous', 'suggestion', and 'conditional_fix_suggestion'
+    pending  // TODO: 描述修复能力。如果无法完成修复则移除，
+             // 如果你认为可以添加但不知道如何做，则保持为 'pending'。
+             // 选项有 'fix', 'fix_dangerous', 'suggestion', 和 'conditional_fix_suggestion'
 );
 
 impl Rule for NoDebugger {
@@ -131,27 +128,26 @@ fn test() {
 
 </details>
 
-Your rule should now be ready to run! You can try it out with `cargo test -p
-oxc_linter`. The tests should fail, since you haven't implemented the rule yet.
+你的规则现在应该可以运行了！你可以使用 `cargo test -p
+oxc_linter` 尝试一下。测试应该会失败，因为你还没有实现该规则。
 
-## Step 3: Fill Out the Template
+## 步骤 3：填写模板
 
-### Documentation
+### 文档
 
-Fill out the various documentation sections.
+填写各种文档部分。
 
-- Provide a clear and concise summary of what the rule does.
-- Explain why the rule is important and what undesirable behavior it prevents.
-- Provide examples of code that violates the rule and code that does not.
+- 提供清晰简洁的规则功能摘要。
+- 解释为什么该规则很重要以及它防止了什么不良行为。
+- 提供违反规则的代码示例和未违反的代码示例。
 
-Remember, we use this documentation to generate the [rule documentation pages](/docs/guide/usage/linter/rules) for this website, so make sure your
-documentation is clear and helpful!
+请记住，我们使用此文档为此网站生成 [规则文档页面](/docs/guide/usage/linter/rules)，所以请确保你的文档清晰且有帮助！
 
-#### Configuration Documentation
+#### 配置文档
 
-If your rule has configuration options, you will need to document them. You should do so via the system for auto-generating documentation. This should be partially generated for you automatically by the rulegen script.
+如果你的规则有配置选项，你需要对它们进行文档化。你应该通过自动生成文档的系统来完成。这应该由 rulegen 脚本为你部分自动生成。
 
-Each configuration option should be defined by adding fields to the rule's struct:
+每个配置选项都应该通过向规则的 struct 添加字段来定义：
 
 ```rust
 pub struct RuleName {
@@ -161,7 +157,7 @@ pub struct RuleName {
 }
 ```
 
-Alternatively, you can instead define a separate `Config` struct to hold all configuration options:
+或者，你可以定义一个单独的 `Config` struct 来持有所有配置选项：
 
 ```rust
 pub struct RuleName(Box<RuleNameConfig>);
@@ -171,7 +167,7 @@ pub struct RuleNameConfig {
 }
 ```
 
-The configuration options should have `JsonSchema` derived for them and also a serde decoration, like so:
+配置选项应该派生 `JsonSchema` 并且还有一个 serde 装饰，如下所示：
 
 ```rust
 use schemars::JsonSchema;
@@ -183,7 +179,7 @@ pub struct RuleName {
 }
 ```
 
-Add documentation comments (`///`) to each field to describe the option, for example:
+为每个字段添加文档注释 (`///`) 以描述该选项，例如：
 
 ```rust
 use schemars::JsonSchema;
@@ -191,40 +187,34 @@ use schemars::JsonSchema;
 #[derive(Debug, Default, Clone, JsonSchema)]
 #[serde(rename_all = "camelCase", default)]
 pub struct RuleName {
-  /// Whether to check for foo and bar when evaluating baz.
-  /// The comment can be as long as you need to fully describe the option.
+  /// 是否在评估 baz 时检查 foo 和 bar。
+  /// 注释可以尽可能长，以充分描述该选项。
   option_name: bool,
 }
 ```
 
-The default value and the type of each option will be automatically extracted from the struct definition, and should not be mentioned in the documentation comments.
+每个选项的默认值和类型将从 struct 定义中自动提取，不应在文档注释中提及。
 
-See [this issue](https://github.com/oxc-project/oxc/issues/14743) for dozens of examples of how to properly document configuration options in all kinds of rules.
+参见 [此问题](https://github.com/oxc-project/oxc/issues/14743) 了解如何在各种规则中正确记录配置选项的数十个示例。
 
-You can view the generated documentation by running `cargo run -p website -- linter-rules --rule-docs target/rule-docs --git-ref $(git rev-parse HEAD)` and then opening `target/rule-docs/<plugin-name>/<rule-name>.md`.
+你可以通过运行 `cargo run -p website -- linter-rules --rule-docs target/rule-docs --git-ref $(git rev-parse HEAD)` 然后打开 `target/rule-docs/<plugin-name>/<rule-name>.md` 来查看生成的文档。
 
-### Rule Category
+### 规则类别
 
-First, pick a [rule category](../linter.md#rule-category) that best fits the
-rule. Remember that `correctness` rules will be run by default, so be careful
-when choosing this category. Set your category within the `declare_oxc_lint!` macro.
+首先，选择一个最适合该规则的 [规则类别](../linter.md#rule-category)。请记住，`correctness` 规则默认会运行，所以选择此类别时要小心。在 `declare_oxc_lint!` 宏中设置你的类别。
 
-### Fixer Status
+### 修复器状态
 
-If the rule has a fixer, register what kind of fixes it provides within
-`declare_oxc_lint!`. If you're not comfortable with implementing a fixer, you
-can also use `pending` as a placeholder. This helps other contributors find and
-implement missing fixers down the line.
+如果规则有修复器，在 `declare_oxc_lint!` 中注册它提供何种修复。如果你不想实现修复器，也可以使用 `pending` 作为占位符。这有助于其他贡献者随后找到并实现缺失的修复器。
 
-<!-- TODO: provide link to fixer kinds documentation -->
+<!-- TODO: 提供修复器类型文档的链接 -->
 
-### Diagnostics
+### 诊断
 
-Create a function to create diagnostics for rule violations. Follow these
-principles:
+创建一个函数来为规则违规创建诊断。遵循以下原则：
 
-1. The `message` should be an imperative statement about what is wrong, not a description of what the rule does.
-2. The `help` message should be a command-like statement that tells the user how to fix the issue.
+1. `message` 应该是关于出了什么问题的祈使句，而不是规则做什么的描述。
+2. `help` 消息应该是一个命令式的陈述，告诉用户如何修复问题。
 
 ::: code-group
 
@@ -245,26 +235,22 @@ fn no_debugger_diagnostic(span: Span) -> OxcDiagnostic {
 
 :::
 
-## Step 4: Rule Implementation
+## 步骤 4：规则实现
 
-Read the rule's source code to understand how it works. Although Oxlint works
-similarly to ESLint, it is unlikely that the rule can be ported directly.
+阅读规则的源代码以了解其工作原理。虽然 Oxlint 的工作方式与 ESLint 类似，但该规则不太可能直接移植。
 
-ESLint rules have a `create` function that returns an object whose keys are AST
-nodes that trigger the rule and values are functions that run lints on those
-nodes. Oxlint rules run on one of a few triggers, each of which come from the
+ESLint 规则有一个 `create` 函数，返回一个对象，其键是触发规则的 AST 节点，值是那些节点上运行 lint 的函数。Oxlint 规则在几个触发器之一上运行，每个触发器都来自
 [`Rule`](https://github.com/oxc-project/oxc/blob/main/crates/oxc_linter/src/rule.rs)
-trait:
+trait：
 
-1. Run on each AST node (via `run`)
-2. Run on each symbol (via `run_on_symbol`)
-3. Run a single time on the entire file (via `run_once`)
+1. 在每个 AST 节点上运行（通过 `run`）
+2. 在每个 symbol 上运行（通过 `run_on_symbol`）
+3. 在整个文件上运行一次（通过 `run_once`）
 
-In the case of `no-debugger`, we are looking for `DebuggerStatement` nodes, so
-we'll use `run`. Here's a simplified version of the rule:
+对于 `no-debugger`，我们正在寻找 `DebuggerStatement` 节点，所以我们将使用 `run`。这是该规则的简化版本：
 
 <details>
-<summary>Click to expand</summary>
+<summary>点击展开</summary>
 
 ::: code-group
 
@@ -285,17 +271,16 @@ fn no_debugger_diagnostic(span: Span) -> OxcDiagnostic {
 pub struct NoDebugger;
 
 declare_oxc_lint!(
-    /// ### What it does
-    /// Checks for usage of the `debugger` statement
+    /// ### 它做什么
+    /// 检查 `debugger` 语句的使用
     ///
-    /// ### Why is this bad?
-    /// `debugger` statements do not affect functionality when a
-    /// debugger isn't attached. They're most commonly an
-    /// accidental debugging leftover.
+    /// ### 为什么这不好？
+    /// 当没有附加调试器时，`debugger` 语句不影响功能。它们通常是
+    /// 意外留下的调试代码。
     ///
-    /// ### Example
+    /// ### 示例
     ///
-    /// Examples of **incorrect** code for this rule:
+    /// 此规则 **不正确** 代码的示例：
     /// ```js
     /// async function main() {
     ///     const data = await getData();
@@ -308,11 +293,11 @@ declare_oxc_lint!(
 );
 
 impl Rule for NoDebugger {
-    // Runs on each node in the AST
+    // 在 AST 中的每个节点上运行
     fn run<'a>(&self, node: &AstNode<'a>, ctx: &LintContext<'a>) {
-        // `debugger` statements have their own AST kind
+        // `debugger` 语句有它们自己的 AST 种类
         if let AstKind::DebuggerStatement(stmt) = node.kind() {
-            // Report a violation
+            // 报告违规
             ctx.diagnostic(no_debugger_diagnostic(stmt.span));
         }
     }
@@ -325,66 +310,52 @@ impl Rule for NoDebugger {
 
 :::tip
 
-You
-will want to get familiar with the data stored in
-[`Semantic`](https://github.com/oxc-project/oxc/blob/main/crates/oxc_semantic/src/lib.rs#L59),
-which is where all data extracted during semantic analysis is stored. You will
-also want to familiarize yourself with the AST structure. The two most important
-data structures here are
+你将会想要熟悉存储在
+[`Semantic`](https://github.com/oxc-project/oxc/blob/main/crates/oxc_semantic/src/lib.rs#L59)
+中的数据，这是语义分析期间提取的所有数据存储的地方。你还需要熟悉 AST 结构。这里最重要的两个数据结构是
 [`AstNode`](https://github.com/oxc-project/oxc/blob/main/crates/oxc_semantic/src/node/mod.rs)
-and
+和
 [`AstKind`](https://github.com/oxc-project/oxc/blob/main/crates/oxc_ast/src/generated/ast_kind.rs)
 :::
 
-## Step 5: Testing
+## 步骤 5：测试
 
-To test your rule whenever you make a change, run:
+每当您更改规则时，要测试它，请运行：
 
 ```bash
 just watch "test -p oxc_linter -- rule-name"
 ```
 
-Or to just test it once, run:
+或者只测试一次，请运行：
 
 ```bash
 cargo test -p oxc_linter -- rule-name
-# Or
+# 或者
 cargo insta test -p oxc_linter -- rule-name
 ```
 
-Oxlint uses [`cargo insta`](https://insta.rs/docs) for snapshot testing. `cargo
-test` will fail if snapshots have changed or have just been created. You can run
-`cargo insta test -p oxc_linter` to not see diffs in your test results. You can
-review the snapshots by running `cargo insta review`, or skip the review and
-just accept all changes using `cargo insta accept`.
+Oxlint 使用 [`cargo insta`](https://insta.rs/docs) 进行快照测试。如果快照已更改或刚刚创建，`cargo test` 将会失败。您可以运行 `cargo insta test -p oxc_linter` 以便在测试结果中不看到差异。您可以通过运行 `cargo insta review` 来审查快照，或者跳过审查并使用 `cargo insta accept` 直接接受所有更改。
 
-When you are ready to submit your PR, run `just ready` or `just r` to run CI
-checks locally. You can also run `just fix` to auto-fix any lint, format, or
-typo problems. Once `just ready` is passing, create a PR and a maintainer will
-review your changes.
+当您准备好提交 PR 时，运行 `just ready` 或 `just r` 以在本地运行 CI 检查。您还可以运行 `just fix` 来自动修复任何 lint、格式或拼写问题。一旦 `just ready` 通过，创建 PR 后维护者将审查您的更改。
 
-## General Advice
+## 一般建议
 
-### Pin point the error message to the shortest code span
+### 将错误消息定位到最短的代码跨度
 
-We want the user to focus on the problematic code rather than deciphering the
-error message to identify which part of the code is erroneous.
+我们希望用户专注于有问题的代码，而不是解读错误消息来识别代码的哪部分有误。
 
-### Use `let-else` statements
+### 使用 `let-else` 语句
 
-If you find yourself deeply nesting
-[`if-let`](https://doc.rust-lang.org/rust-by-example/flow_control/if_let.html)
-statements, consider using [`let-else`](https://doc.rust-lang.org/rust-by-example/flow_control/let_else.html) instead.
+如果您发现自己深层嵌套 [`if-let`](https://doc.rust-lang.org/rust-by-example/flow_control/if_let.html) 语句，请考虑改用 [`let-else`](https://doc.rust-lang.org/rust-by-example/flow_control/let_else.html)。
 
 :::tip
-CodeAesthetic's [never-nesting video](https://www.youtube.com/watch?v=CFRhGnuXG-4) explains this concept in
-more detail.
+CodeAesthetic 的 [永不嵌套视频](https://www.youtube.com/watch?v=CFRhGnuXG-4) 更详细地解释了这个概念。
 :::
 
 ::: code-group
 
 ```rust [good]
-// let-else is easier to read
+// let-else 更易读
 fn run<'a>(&self, node: &AstNode<'a>, ctx: &LintContext<'a>) {
     let AstKind::JSXOpeningElement(jsx_opening_elem) = node.kind() else {
         return;
@@ -400,7 +371,7 @@ fn run<'a>(&self, node: &AstNode<'a>, ctx: &LintContext<'a>) {
 ```
 
 ```rust [bad]
-// deep nesting is hard to read
+// 深层嵌套难以阅读
 fn run<'a>(&self, node: &AstNode<'a>, ctx: &LintContext<'a>) {
     if let AstKind::JSXOpeningElement(jsx_opening_elem) = node.kind() {
         if let Some(expr) = container.expression.as_expression() {
@@ -414,9 +385,9 @@ fn run<'a>(&self, node: &AstNode<'a>, ctx: &LintContext<'a>) {
 
 :::
 
-### Use `CompactStr` where possible
+### 尽可能使用 `CompactStr`
 
-Reducing allocations as much as possible is critical for performance in `oxc`. The `String` type requires allocating memory on the heap, which costs memory and CPU cycles. It is possible to [store small strings inline](https://oxc.rs/docs/learn/performance.html#string-inlining) (up to 24 bytes on 64-bit systems) on the stack using `CompactStr`, which means we don't need to allocate memory. If the string is too large to store inline, it will allocate the necessary space. Using `CompactStr` can be used almost anywhere that has the type `String` or `&str`, and can save a significant amount memory and CPU cycles compared to the `String` type.
+尽可能减少分配对于 `oxc` 的性能至关重要。`String` 类型需要在堆上分配内存，这会消耗内存和 CPU 周期。使用 `CompactStr` 可以在栈上 [内联存储小字符串](https://oxc.rs/docs/learn/performance.html#string-inlining)（64 位系统上最多 24 字节），这意味着我们不需要分配内存。如果字符串太大无法内联存储，它将分配必要的空间。`CompactStr` 几乎可以用在任何类型为 `String` 或 `&str` 的地方，与 `String` 类型相比可以节省大量的内存和 CPU 周期。
 
 ::: code-group
 

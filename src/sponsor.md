@@ -2,19 +2,19 @@
 editLink: false
 ---
 
-# 🌟 Become an Oxc Sponsor
+# 🌟 成为 Oxc 赞助商
 
-## 🤝 How to Sponsor
+## 🤝 如何赞助
 
-You may sponsor through [GitHub Sponsors](https://github.com/sponsors/Boshen) or [OpenCollective](https://opencollective.com/oxc).
+您可以通过 [GitHub Sponsors](https://github.com/sponsors/Boshen) 或 [OpenCollective](https://opencollective.com/oxc) 进行赞助。
 
-## 💚 Why sponsor?
+## 💚 为什么要赞助？
 
-Sponsorship helps us keep improving the JavaScript and Rust ecosystems while preventing burnout from maintaining fast and evolving tools in our personal time.
+赞助有助于我们持续改进 JavaScript 和 Rust 生态系统，同时防止我们在个人时间维护快速演进的工具时感到倦怠。
 
-If our work has improved your development experience, your CI pipelines, your build times, or your learning in any way, please consider sponsoring. It helps more than you might think, and it truly keeps the motivation alive.
+如果我们的工作以任何方式改善了您的开发体验、CI 流水线、构建时间或学习过程，请考虑赞助。这比您想象的更有帮助，并且确实能保持我们的动力。
 
-## Current Sponsors
+## 当前赞助商
 
 <script setup>
 import SponsorsSVG from '../public/sponsors.svg?raw'

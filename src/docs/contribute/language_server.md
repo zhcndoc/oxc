@@ -1,49 +1,49 @@
 ---
-title: Language Server
+title: 语言服务器
 outline: deep
 ---
 
-This page tells you the main concept of the `oxc_language_server` and what the differences to the CLI are.
-If you want to learn more about the communication between the language server and the editor, the official [LSP/LSIF documentation](https://microsoft.github.io/language-server-protocol/) is a great start.
-The [`README.md`](https://github.com/oxc-project/oxc/blob/main/crates/oxc_language_server/README.md) of the language server has a quick overview of the relevant specs.
+本页介绍 `oxc_language_server` 的主要概念以及它与 CLI 的区别。
+如果你想了解更多关于语言服务器和编辑器之间通信的信息，官方的 [LSP/LSIF 文档](https://microsoft.github.io/language-server-protocol/) 是一个很好的起点。
+语言服务器的 [`README.md`](https://github.com/oxc-project/oxc/blob/main/crates/oxc_language_server/README.md) 对相关规范进行了快速概述。
 
-Note: In this document we will talk a lot about "tools", this is an abstract concept of the core logic for `oxlint` and `oxfmt`.
+注意：在本文档中我们将大量谈论“工具”，这是 `oxlint` 和 `oxfmt` 核心逻辑的抽象概念。
 
-## `oxc_language_server` concept of implementing tools
+## `oxc_language_server` 实现工具的概念
 
-`oxc_language_server` can be used to upgrade your own script with the capability to work as a language server.
-The server on its own does not change your files or create suggestions. This is the responsibility of the tool.
-Instead, it manages the workspace folders and all the communication for loading the right configuration.
-To communicate with the provided tools, the server provides a [`ToolBuilder` and `Tool` trait](https://github.com/oxc-project/oxc/blob/main/crates/oxc_language_server/src/tool.rs).
+`oxc_language_server` 可用于升级你自己的脚本，使其具备作为语言服务器工作的能力。
+服务器本身不会更改你的文件或创建建议。这是工具的责任。
+相反，它管理工作区文件夹以及加载正确配置的所有通信。
+为了与提供的工具通信，服务器提供了一个 [`ToolBuilder` 和 `Tool` trait](https://github.com/oxc-project/oxc/blob/main/crates/oxc_language_server/src/tool.rs)。
 
-## Difference between Language Server and CLI
+## 语言服务器与 CLI 之间的区别
 
-### Editors changes the file, server communicates the changes
+### 编辑器更改文件，服务器通信更改
 
-A small but important part about the communication of a file and the fix of it.
-The CLI Tools are writing the changes to the file system.
-The (oxc) language server should NEVER write to it, instead it just communicates it changes to the editor.
+关于文件通信及其修复的一个小而重要的部分。
+CLI 工具将更改写入文件系统。
+(oxc) 语言服务器绝不应该写入它，相反，它只是将它的更改通信给编辑器。
 
-### Workspace Folders
+### 工作区文件夹
 
-You know when you open a git project in the editor? That is a workspace folder. The LSP has the concept of opening multiple (git) projects at the same time.
-Each of the projects can have its own configuration (see next part), but the most important part is the own "context" with a workspace URI.
-You can think of a workspace URI as the same as a "current working directory" for the CLI tool.
-Keep in mind that a workspace folder can be added / removed by the editor.
+你知道当你在编辑器中打开一个 git 项目时是什么情况吗？那就是一个工作区文件夹。LSP 具有同时打开多个 (git) 项目的概念。
+每个项目都可以有自己的配置（见下一部分），但最重要的部分是带有工作区 URI 的自有“上下文”。
+你可以将工作区 URI 视为与 CLI 工具的“当前工作目录”相同。
+请记住，工作区文件夹可以由编辑器添加/删除。
 
-### Configurations (with folders)
+### 配置（带有文件夹）
 
-The language server can (like the CLI flags) be configured, the oxc language server follows the concept:
-Each workspace folder can have its own configuration. As an example: git project A uses type aware linting, git project B uses dangerous fixes on auto save.
+语言服务器可以（像 CLI 标志一样）进行配置，oxc 语言服务器遵循以下概念：
+每个工作区文件夹都可以有自己的配置。例如：git 项目 A 使用类型感知 linting，git 项目 B 在自动保存时使用危险修复。
 
-### Changing Configuration
+### 更改配置
 
-Surprise! The user can change the language server configuration on the fly. The editor will send us the updated configuration.
-Currently, the server will send each tool the old and new configuration, so it can handle all kinds of stuff.
-Depending on the configuration the tool can restart/rebuild itself.
+惊喜！用户可以随时更改语言服务器配置。编辑器会将更新的配置发送给我们。
+目前，服务器会将旧配置和新配置发送给每个工具，以便它可以处理各种事情。
+根据配置，工具可以重启/重建自身。
 
-### Watch Patterns & Changing watched files
+### 监视模式 & 更改被监视的文件
 
-Your tool can tell the editor to watch for specific file (glob) patterns and notify the server, when the file is changed/created/deleted.
-This is mostly used for the `.ox**rc.json` configuration and the referenced files inside of it (example `extends` from `oxlint`).
-Depending on the configuration of the workspace and the tool, the tool may need to restart/rebuild itself again.
+你的工具可以告诉编辑器监视特定文件（glob）模式，并在文件被更改/创建/删除时通知服务器。
+这主要用于 `.ox**rc.json` 配置以及其中引用的文件（例如来自 `oxlint` 的 `extends`）。
+根据工作区和工具的配置，工具可能需要再次重启/重建自身。

@@ -2,7 +2,7 @@
 editLink: false
 ---
 
-# Command-line Interface
+# 命令行界面
 
-<!-- in oxc: `cargo run -p website_formatter cli > /path/to/generated-cli.md` -->
+<!-- 在 oxc 中：`cargo run -p website_formatter cli > /path/to/generated-cli.md` -->
 <!--@include: ./generated-cli.md-->

@@ -1,57 +1,57 @@
-# Test Infrastructure
+# 测试基础设施
 
 ::: info
 
-This article serves as an invitation for sharing ideas to improve our test infrastructure,
-feel free to contact us on [Discord][discord-url].
+本文旨在邀请大家分享改进我们测试基础设施的想法，
+请随时在 [Discord][discord-url] 上联系我们。
 
 :::
 
-In Oxc, correctness and reliability are taken extremely seriously.
+在 Oxc 中，正确性和可靠性受到极度重视。
 
-We spend a great deal of time strengthening the test infrastructure to prevent problems from propagating to downstream tools.
+我们花费大量时间加强测试基础设施，以防止问题传播到下游工具。
 
-## Parser
+## 解析器
 
-### Conformance
+### 一致性
 
-Parser tests from [Test262](https://github.com/tc39/test262), [Babel](https://github.com/babel/babel), and [TypeScript](https://github.com/microsoft/TypeScript) are used to test JavaScript, TypeScript, and JSX syntax.
+来自 [Test262](https://github.com/tc39/test262)、[Babel](https://github.com/babel/babel) 和 [TypeScript](https://github.com/microsoft/TypeScript) 的解析器测试用于测试 JavaScript、TypeScript 和 JSX 语法。
 
-For Test262, all stage 4 and regular expression tests are included.
+对于 Test262，包含所有 stage 4 和正则表达式测试。
 
-All conformance results are stored in a snapshot file for tracking changes:
+所有一致性结果都存储在快照文件中以跟踪变化：
 
 - [test262.snap](https://github.com/oxc-project/oxc/blob/main/tasks/coverage/snapshots/parser_test262.snap).
 - [babel.snap](https://github.com/oxc-project/oxc/blob/main/tasks/coverage/snapshots/parser_babel.snap).
 - [typescript.snap](https://github.com/oxc-project/oxc/blob/main/tasks/coverage/snapshots/parser_typescript.snap).
 
-All syntax errors are written to these snapshot files for diffing changes.
+所有语法错误都写入这些快照文件以便对比变化。
 
-### Fuzzing
+### 模糊测试
 
-To ensure that the parser does not panic when encountering random data, three fuzzers are used:
+为了确保解析器在遇到随机数据时不会 panic，使用了三个模糊测试工具：
 
-1. [cargo fuzz](https://github.com/rust-fuzz/cargo-fuzz) for [sending random bytes](https://github.com/oxc-project/oxc-fuzz-parser/blob/main/fuzz/fuzz_targets/parser.rs) to the parser.
-2. [shift-fuzzer-js](https://github.com/shapesecurity/shift-fuzzer-js) by [bakkot](https://github.com/bakkot) for producing random but valid ASTs.
-3. [Automated-Fuzzer](https://github.com/qarmin/Automated-Fuzzer) by [qarmin](https://github.com/qarmin), which [actively reports](https://github.com/oxc-project/oxc/issues?q=is%3Aissue+author%3Aqarmin+) crashes.
+1. [cargo fuzz](https://github.com/rust-fuzz/cargo-fuzz) 用于 [向解析器发送随机字节](https://github.com/oxc-project/oxc-fuzz-parser/blob/main/fuzz/fuzz_targets/parser.rs)。
+2. [shift-fuzzer-js](https://github.com/shapesecurity/shift-fuzzer-js) 由 [bakkot](https://github.com/bakkot) 开发，用于生成随机但有效的 AST。
+3. [Automated-Fuzzer](https://github.com/qarmin/Automated-Fuzzer) 由 [qarmin](https://github.com/qarmin) 开发，[主动报告](https://github.com/oxc-project/oxc/issues?q=is%3Aissue+author%3Aqarmin+) 崩溃。
 
-### Memory Safety
+### 内存安全
 
-Oxc uses an arena allocator based around [`bumpalo`](https://docs.rs/bumpalo/latest/bumpalo) as the memory allocator for its AST, and other data.
-None of the AST node types have a `Drop` implementation.
-This is enforced at compile time by Oxc's allocator, which causes a compile-time error if any code attempts to allocate types in the arena which are `Drop`.This statically ensures that types which own heap-allocated data cannot be stored in the arena, which would result in memory leaks.
+Oxc 使用基于 [`bumpalo`](https://docs.rs/bumpalo/latest/bumpalo) 的 arena 分配器作为其 AST 和其他数据的内存分配器。
+没有任何 AST 节点类型具有 `Drop` 实现。
+这是由 Oxc 的分配器在编译时强制执行的，如果任何代码尝试在 arena 中分配具有 `Drop` 的类型，会导致编译时错误。这在静态上确保了拥有堆分配数据的类型不能存储在 arena 中，否则会导致内存泄漏。
 
-### Unsafe code
+### 不安全代码
 
-Oxc uses `unsafe` code for performance optimizations. We aim to contain `unsafe` to within self-contained data structures which present safe APIs externally. Miri [is run](https://github.com/oxc-project/oxc/actions/workflows/miri.yml) on the crates containing these structures on every PR.
+Oxc 使用 `unsafe` 代码进行性能优化。我们的目标是将 `unsafe` 限制在内部自包含的数据结构中，对外呈现安全的 API。Miri [被运行](https://github.com/oxc-project/oxc/actions/workflows/miri.yml) 在包含这些结构的包上，每次 PR 都会运行。
 
-## Linter
+## 检查器
 
-### Snapshot Diagnostics
+### 快照诊断
 
-All linter diagnostics are written to a [snapshot file](https://github.com/oxc-project/oxc/tree/main/crates/oxc_linter/src/snapshots) for testing against regressions.
+所有检查器诊断信息都写入 [快照文件](https://github.com/oxc-project/oxc/tree/main/crates/oxc_linter/src/snapshots) 以测试回归。
 
-For example:
+例如：
 
 ```javascript
  ⚠ typescript-eslint(adjacent-overload-signatures): All "foo" signatures should be adjacent.
@@ -66,9 +66,9 @@ For example:
   ╰────
 ```
 
-### Ecosystem CI
+### 生态系统 CI
 
-[oxc-ecosystem-ci](https://github.com/oxc-project/oxc-ecosystem-ci) runs `oxlint` against large repositories to check for false positives, regressions, and panics. The repositories tested include:
+[oxc-ecosystem-ci](https://github.com/oxc-project/oxc-ecosystem-ci) 针对大型仓库运行 `oxlint` 以检查误报、回归和 panic。测试的仓库包括：
 
 - [rolldown/rolldown](https://github.com/rolldown-rs/rolldown)
 - [napi-rs/napi-rs](https://github.com/napi-rs/napi-rs)
@@ -79,11 +79,11 @@ For example:
 - [elastic/kibana](https://github.com/elastic/kibana)
 - [DefinitelyTyped/DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)
 
-## Idempotency
+## 幂等性
 
-Idempotency testing is used for integration tests and end-to-end tests on all tools.
+幂等性测试用于所有工具的集成测试和端到端测试。
 
-An idempotency test follows this procedure:
+幂等性测试遵循以下过程：
 
 ```javascript
 let sourceText = "foo";
@@ -92,23 +92,23 @@ let printed2 = tool(printed);
 assert(printed == printed2);
 ```
 
-For example, idempotently minifying a piece of code should yield the same result.
+例如，幂等地最小化一段代码应该产生相同的结果。
 
-All tools (parser, transformer, minifer, etc.) are idempotently tested on Test262, Babel and TypeScript test files.
+所有工具（解析器、转换器、最小化器等）都在 Test262、Babel 和 TypeScript 测试文件上进行幂等测试。
 
-## Integration Tests
+## 集成测试
 
-Integration tests are preferred over unit tests.
+集成测试优于单元测试。
 
-[codecov](https://app.codecov.io/gh/oxc-project/oxc) currently reports
-<span style="display:inline-block">[![Code Coverage][code-coverage-badge]][code-coverage-url]</span>
-line coverage.
+[codecov](https://app.codecov.io/gh/oxc-project/oxc) 目前报告
+<span style="display:inline-block">[![代码覆盖率][code-coverage-badge]][code-coverage-url]</span>
+行覆盖率。
 
-## End to End
+## 端到端
 
-The repository [monitor-oxc](https://github.com/oxc-project/monitor-oxc) performs end-to-end tests against the top 3000 npm packages from [npm-high-impact](https://github.com/wooorm/npm-high-impact).
+仓库 [monitor-oxc](https://github.com/oxc-project/monitor-oxc) 针对 [npm-high-impact](https://github.com/wooorm/npm-high-impact) 中前 3000 个 npm 包执行端到端测试。
 
-Its `package.json` has 3000 dependencies:
+其 `package.json` 有 3000 个依赖项：
 
 ```json
 "devDependencies": {
@@ -124,7 +124,7 @@ Its `package.json` has 3000 dependencies:
 }
 ```
 
-And a test file that imports these packages and asserts the import:
+以及一个导入这些包并断言导入的测试文件：
 
 `src/dynamic.test.mjs`
 
@@ -142,16 +142,16 @@ test("zustand", () => import("zustand").then(assert.ok));
 test("zwitch", () => import("zwitch").then(assert.ok));
 ```
 
-This test file is run after each of the tools (codegen, transformer, minifier, etc.) rewrites all the files in `node_modules`.
+此测试文件在每个工具（代码生成器、转换器、最小化器等）重写 `node_modules` 中的所有文件后运行。
 
-The packages are updated to their latest versions daily.
+包每天更新到最新版本。
 
-This setup has caught many obscure bugs that the conformance test suites missed.
+此设置捕获了许多一致性测试套件遗漏的隐蔽错误。
 
 ---
 
-If you any ideas on how to improve our test infrastructure,
-feel free to contact us on [Discord][discord-url].
+如果您有任何关于如何改进我们测试基础设施的想法，
+请随时在 [Discord][discord-url] 上联系我们。
 
 [discord-url]: https://discord.gg/9uXCAwqQZW
 [code-coverage-badge]: https://codecov.io/github/oxc-project/oxc/branch/main/graph/badge.svg

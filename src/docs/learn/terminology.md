@@ -7,32 +7,32 @@ outline: deep
 
 ## Binding
 
-A value being assigned/bound within a scope.
+在作用域内被赋值/绑定的值。
 
 ## Binding type
 
-The type of the binding: imported value, assigned value (let/const/var), exported value, func/class declaration, func/method arguments, etc.
+绑定的类型：导入的值、赋值的值（let/const/var）、导出的值、函数/类声明、函数/方法参数等。
 
 ## Scope
 
-A block in which bindings can exist. A block is any code surrounded with {}, such as classes, functions, methods, callbacks, if/else, etc. Scopes have a hierarchy, with parents having children (not always), and children belonging to a parent. Bindings in a child shadow those in a parent if they have the same name.
+绑定可以存在的代码块。代码块是任何用 {} 包围的代码，例如类、函数、方法、回调、if/else 等。作用域具有层次结构，父作用域可以有子作用域（不一定总是），子作用域属于父作用域。如果子作用域中的绑定与父作用域中的绑定同名，则子作用域的绑定会遮蔽父作用域的绑定。
 
 ## Scope flags
 
-Metadata about the current scope (not inherited hierarchy scope): function, constructor, top-level (program), etc.
+关于当前作用域的元数据（不包括继承的层次结构作用域）：函数、构造函数、顶层（程序）等。
 
 ## Symbol
 
-A binding wrapper with references to each usage/call site of the bound variable within the current source text. A symbol is assigned an ID in the order they are scanned, and reach reference points to the symbol by that ID.
+一个绑定包装器，包含对当前源文本中该绑定变量的每个使用/调用位置的引用。符号在被扫描时按照顺序分配一个 ID，并且每个引用通过该 ID 指向对应的符号。
 
 ## Symbol flags
 
-Metadata about the symbol/binding.
+关于符号/绑定的元数据。
 
 ## Reference
 
-A symbol reference is the usage of a symbol (and in turn a binding), and is assigned an ID in the order they are scanned. Each reference is flagged as read, write, or both.
+符号引用是对符号（以及因此对绑定）的使用，并且在被扫描时按照顺序分配一个 ID。每个引用会被标记为读取、写入或两者皆是。
 
 ## Span
 
-The start/end offset of the node within the source text.
+节点在源文本中的起始/结束偏移量。

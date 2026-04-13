@@ -2,677 +2,676 @@
 search: false
 ---
 
-# Configuration options for the Oxfmt.
+# Oxfmt 的配置选项。
 
-Most options are the same as Prettier's options, but not all of them.
-In addition, some options are our own extensions.
+大多数选项与 Prettier 的选项相同，但并非全部。
+此外，有些选项是我们自己的扩展。
 
 ## arrowParens
 
-type: `"always" | "avoid"`
+类型：`"always" | "avoid"`
 
-Include parentheses around a sole arrow function parameter.
+在唯一的箭头函数参数周围包含括号。
 
-- Default: `"always"`
+- 默认：`"always"`
 
 ## bracketSameLine
 
-type: `boolean`
+类型：`boolean`
 
-Put the `>` of a multi-line HTML (HTML, JSX, Vue, Angular) element at the end of the last line,
-instead of being alone on the next line (does not apply to self closing elements).
+将多行 HTML（HTML、JSX、Vue、Angular）元素的 `>` 放在最后一行的末尾，
+而不是单独放在下一行（不适用于自闭合元素）。
 
-- Default: `false`
+- 默认：`false`
 
 ## bracketSpacing
 
-type: `boolean`
+类型：`boolean`
 
-Print spaces between brackets in object literals.
+在对象字面量的括号之间打印空格。
 
-- Default: `true`
+- 默认：`true`
 
 ## embeddedLanguageFormatting
 
-type: `"auto" | "off"`
+类型：`"auto" | "off"`
 
-Control whether to format embedded parts (For example, CSS-in-JS, or JS-in-Vue, etc.) in the file.
+控制是否格式化文件中嵌入的部分（例如，CSS-in-JS 或 JS-in-Vue 等）。
 
-NOTE: XXX-in-JS support is incomplete.
+注意：XXX-in-JS 支持尚不完整。
 
-- Default: `"auto"`
+- 默认：`"auto"`
 
 ## endOfLine
 
-type: `"lf" | "crlf" | "cr"`
+类型：`"lf" | "crlf" | "cr"`
 
-Which end of line characters to apply.
+应用哪种行尾字符。
 
-NOTE: `"auto"` is not supported.
+注意：不支持 `"auto"`。
 
-- Default: `"lf"`
-- Overrides `.editorconfig.end_of_line`
+- 默认：`"lf"`
+- 覆盖 `.editorconfig.end_of_line`
 
 ## htmlWhitespaceSensitivity
 
-type: `"css" | "strict" | "ignore"`
+类型：`"css" | "strict" | "ignore"`
 
-Specify the global whitespace sensitivity for HTML, Vue, Angular, and Handlebars.
+指定 HTML、Vue、Angular 和 Handlebars 的全局空白敏感度。
 
-- Default: `"css"`
+- 默认：`"css"`
 
 ## ignorePatterns
 
-type: `string[]`
+类型：`string[]`
 
-Ignore files matching these glob patterns.
-Patterns are based on the location of the Oxfmt configuration file.
+忽略匹配这些 glob 模式的文件。
+模式基于 Oxfmt 配置文件的位置。
 
-- Default: `[]`
+- 默认：`[]`
 
 ## insertFinalNewline
 
-type: `boolean`
+类型：`boolean`
 
-Whether to insert a final newline at the end of the file.
+是否在文件末尾插入最终换行符。
 
-- Default: `true`
-- Overrides `.editorconfig.insert_final_newline`
+- 默认：`true`
+- 覆盖 `.editorconfig.insert_final_newline`
 
 ## jsdoc
 
-type: `object | boolean`
+类型：`object | boolean`
 
-Enable JSDoc comment formatting.
+启用 JSDoc 注释格式化。
 
-When enabled, JSDoc comments are normalized and reformatted:
-tag aliases are canonicalized, descriptions are capitalized,
-long lines are wrapped, and short comments are collapsed to single-line.
+启用时，JSDoc 注释会被标准化和重新格式化：
+标签别名被规范化，描述首字母大写，
+长行被换行，短注释被折叠为单行。
 
-Pass `true` or an object to enable with defaults, or omit/set `false` to disable.
+传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Default: Disabled
+- 默认：禁用
 
 ### jsdoc.addDefaultToDescription
 
-type: `boolean`
+类型：`boolean`
 
-Append default values to `@param` descriptions (e.g. "Default is `value`").
+将默认值附加到 `@param` 描述中（例如“默认值是 `value`"）。
 
-- Default: `true`
+- 默认：`true`
 
 ### jsdoc.bracketSpacing
 
-type: `boolean`
+类型：`boolean`
 
-Add spaces inside JSDoc type braces: `{string}` → `{ string }`.
+在 JSDoc 类型大括号内添加空格：`{string}` → `{ string }`。
 
-- Default: `false`
+- 默认：`false`
 
 ### jsdoc.capitalizeDescriptions
 
-type: `boolean`
+类型：`boolean`
 
-Capitalize the first letter of tag descriptions.
+将标签描述的首字母大写。
 
-- Default: `true`
+- 默认：`true`
 
 ### jsdoc.commentLineStrategy
 
-type: `string`
+类型：`string`
 
-How to format comment blocks.
+如何格式化注释块。
 
-- `"singleLine"` — Convert to single-line `/** content */` when possible.
-- `"multiline"` — Always use multi-line format.
-- `"keep"` — Preserve original formatting.
+- `"singleLine"` — 尽可能转换为单行 `/** content */`。
+- `"multiline"` — 始终使用多行格式。
+- `"keep"` — 保留原始格式。
 
-- Default: `"singleLine"`
+- 默认：`"singleLine"`
 
 ### jsdoc.descriptionTag
 
-type: `boolean`
+类型：`boolean`
 
-Emit `@description` tag instead of inline description.
+发出 `@description` 标签而不是内联描述。
 
-- Default: `false`
+- 默认：`false`
 
 ### jsdoc.descriptionWithDot
 
-type: `boolean`
+类型：`boolean`
 
-Add a trailing dot to the end of descriptions.
+在描述末尾添加尾随点。
 
-- Default: `false`
+- 默认：`false`
 
 ### jsdoc.keepUnparsableExampleIndent
 
-type: `boolean`
+类型：`boolean`
 
-Preserve indentation in unparsable `@example` code.
+保留不可解析的 `@example` 代码中的缩进。
 
-- Default: `false`
+- 默认：`false`
 
 ### jsdoc.lineWrappingStyle
 
-type: `string`
+类型：`string`
 
-Strategy for wrapping description lines at print width.
+在打印宽度处换行描述行的策略。
 
-- `"greedy"` — Always re-wrap text to fit within print width.
-- `"balance"` — Preserve original line breaks if all lines fit within print width.
+- `"greedy"` — 始终重新换行文本以适应打印宽度。
+- `"balance"` — 如果所有行都适合打印宽度，则保留原始换行符。
 
-- Default: `"greedy"`
+- 默认：`"greedy"`
 
 ### jsdoc.preferCodeFences
 
-type: `boolean`
+类型：`boolean`
 
-Use fenced code blocks (` ``` `) instead of 4-space indentation for code without a language tag.
+对于没有语言标签的代码，使用围栏代码块（` ``` `）而不是 4 空格缩进。
 
-- Default: `false`
+- 默认：`false`
 
 ### jsdoc.separateReturnsFromParam
 
-type: `boolean`
+类型：`boolean`
 
-Add a blank line between the last `@param` and `@returns`.
+在最后一个 `@param` 和 `@returns` 之间添加空行。
 
-- Default: `false`
+- 默认：`false`
 
 ### jsdoc.separateTagGroups
 
-type: `boolean`
+类型：`boolean`
 
-Add blank lines between different tag groups (e.g. between `@param` and `@returns`).
+在不同标签组之间添加空行（例如在 `@param` 和 `@returns` 之间）。
 
-- Default: `false`
+- 默认：`false`
 
 ## jsxSingleQuote
 
-type: `boolean`
+类型：`boolean`
 
-Use single quotes instead of double quotes in JSX.
+在 JSX 中使用单引号而不是双引号。
 
-- Default: `false`
+- 默认：`false`
 
 ## objectWrap
 
-type: `"preserve" | "collapse"`
+类型：`"preserve" | "collapse"`
 
-How to wrap object literals when they could fit on one line or span multiple lines.
+当对象字面量可以适合一行或跨多行时，如何换行。
 
-By default, formats objects as multi-line if there is a newline prior to the first property.
-Authors can use this heuristic to contextually improve readability, though it has some downsides.
+默认情况下，如果第一个属性之前有换行符，则将对象格式化为多行。
+作者可以使用此启发式方法在上下文中提高可读性，尽管它有一些缺点。
 
-- Default: `"preserve"`
+- 默认：`"preserve"`
 
 ## overrides
 
-type: `array`
+类型：`array`
 
-File-specific overrides.
-When a file matches multiple overrides, the later override takes precedence (array order matters).
+特定于文件的覆盖。
+当文件匹配多个覆盖时，后面的覆盖优先（数组顺序很重要）。
 
-- Default: `[]`
+- 默认：`[]`
 
 ### overrides[n]
 
-type: `object`
+类型：`object`
 
 #### overrides[n].excludeFiles
 
-type: `string[]`
+类型：`string[]`
 
-Glob patterns to exclude from this override.
+从此覆盖中排除的 Glob 模式。
 
 #### overrides[n].files
 
-type: `string[]`
+类型：`string[]`
 
-Glob patterns to match files for this override.
-All patterns are relative to the Oxfmt configuration file.
+用于匹配此覆盖文件的 Glob 模式。
+所有模式均相对于 Oxfmt 配置文件。
 
 #### overrides[n].options
 
-type: `object`
+类型：`object`
 
 ##### overrides[n].options.arrowParens
 
-type: `"always" | "avoid"`
+类型：`"always" | "avoid"`
 
-Include parentheses around a sole arrow function parameter.
+在唯一的箭头函数参数周围包含括号。
 
-- Default: `"always"`
+- 默认：`"always"`
 
 ##### overrides[n].options.bracketSameLine
 
-type: `boolean`
+类型：`boolean`
 
-Put the `>` of a multi-line HTML (HTML, JSX, Vue, Angular) element at the end of the last line,
-instead of being alone on the next line (does not apply to self closing elements).
+将多行 HTML（HTML、JSX、Vue、Angular）元素的 `>` 放在最后一行的末尾，
+而不是单独放在下一行（不适用于自闭合元素）。
 
-- Default: `false`
+- 默认：`false`
 
 ##### overrides[n].options.bracketSpacing
 
-type: `boolean`
+类型：`boolean`
 
-Print spaces between brackets in object literals.
+在对象字面量的括号之间打印空格。
 
-- Default: `true`
+- 默认：`true`
 
 ##### overrides[n].options.embeddedLanguageFormatting
 
-type: `"auto" | "off"`
+类型：`"auto" | "off"`
 
-Control whether to format embedded parts (For example, CSS-in-JS, or JS-in-Vue, etc.) in the file.
+控制是否格式化文件中嵌入的部分（例如，CSS-in-JS 或 JS-in-Vue 等）。
 
-NOTE: XXX-in-JS support is incomplete.
+注意：XXX-in-JS 支持尚不完整。
 
-- Default: `"auto"`
+- 默认：`"auto"`
 
 ##### overrides[n].options.endOfLine
 
-type: `"lf" | "crlf" | "cr"`
+类型：`"lf" | "crlf" | "cr"`
 
-Which end of line characters to apply.
+应用哪种行尾字符。
 
-NOTE: `"auto"` is not supported.
+注意：不支持 `"auto"`。
 
-- Default: `"lf"`
-- Overrides `.editorconfig.end_of_line`
+- 默认：`"lf"`
+- 覆盖 `.editorconfig.end_of_line`
 
 ##### overrides[n].options.htmlWhitespaceSensitivity
 
-type: `"css" | "strict" | "ignore"`
+类型：`"css" | "strict" | "ignore"`
 
-Specify the global whitespace sensitivity for HTML, Vue, Angular, and Handlebars.
+指定 HTML、Vue、Angular 和 Handlebars 的全局空白敏感度。
 
-- Default: `"css"`
+- 默认：`"css"`
 
 ##### overrides[n].options.insertFinalNewline
 
-type: `boolean`
+类型：`boolean`
 
-Whether to insert a final newline at the end of the file.
+是否在文件末尾插入最终换行符。
 
-- Default: `true`
-- Overrides `.editorconfig.insert_final_newline`
+- 默认：`true`
+- 覆盖 `.editorconfig.insert_final_newline`
 
 ##### overrides[n].options.jsdoc
 
-type: `object | boolean`
+类型：`object | boolean`
 
-Enable JSDoc comment formatting.
+启用 JSDoc 注释格式化。
 
-When enabled, JSDoc comments are normalized and reformatted:
-tag aliases are canonicalized, descriptions are capitalized,
-long lines are wrapped, and short comments are collapsed to single-line.
+启用时，JSDoc 注释会被标准化和重新格式化：
+标签别名被规范化，描述首字母大写，
+长行被换行，短注释被折叠为单行。
 
-Pass `true` or an object to enable with defaults, or omit/set `false` to disable.
+传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Default: Disabled
+- 默认：禁用
 
 ###### overrides[n].options.jsdoc.addDefaultToDescription
 
-type: `boolean`
+类型：`boolean`
 
-Append default values to `@param` descriptions (e.g. "Default is `value`").
+将默认值附加到 `@param` 描述中（例如“默认值是 `value`"）。
 
-- Default: `true`
+- 默认：`true`
 
 ###### overrides[n].options.jsdoc.bracketSpacing
 
-type: `boolean`
+类型：`boolean`
 
-Add spaces inside JSDoc type braces: `{string}` → `{ string }`.
+在 JSDoc 类型大括号内添加空格：`{string}` → `{ string }`。
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.jsdoc.capitalizeDescriptions
 
-type: `boolean`
+类型：`boolean`
 
-Capitalize the first letter of tag descriptions.
+将标签描述的首字母大写。
 
-- Default: `true`
+- 默认：`true`
 
 ###### overrides[n].options.jsdoc.commentLineStrategy
 
-type: `string`
+类型：`string`
 
-How to format comment blocks.
+如何格式化注释块。
 
-- `"singleLine"` — Convert to single-line `/** content */` when possible.
-- `"multiline"` — Always use multi-line format.
-- `"keep"` — Preserve original formatting.
+- `"singleLine"` — 尽可能转换为单行 `/** content */`。
+- `"multiline"` — 始终使用多行格式。
+- `"keep"` — 保留原始格式。
 
-- Default: `"singleLine"`
+- 默认：`"singleLine"`
 
 ###### overrides[n].options.jsdoc.descriptionTag
 
-type: `boolean`
+类型：`boolean`
 
-Emit `@description` tag instead of inline description.
+发出 `@description` 标签而不是内联描述。
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.jsdoc.descriptionWithDot
 
-type: `boolean`
+类型：`boolean`
 
-Add a trailing dot to the end of descriptions.
+在描述末尾添加尾随点。
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.jsdoc.keepUnparsableExampleIndent
 
-type: `boolean`
+类型：`boolean`
 
-Preserve indentation in unparsable `@example` code.
+保留不可解析的 `@example` 代码中的缩进。
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.jsdoc.lineWrappingStyle
 
-type: `string`
+类型：`string`
 
-Strategy for wrapping description lines at print width.
+在打印宽度处换行描述行的策略。
 
-- `"greedy"` — Always re-wrap text to fit within print width.
-- `"balance"` — Preserve original line breaks if all lines fit within print width.
+- `"greedy"` — 始终重新换行文本以适应打印宽度。
+- `"balance"` — 如果所有行都适合打印宽度，则保留原始换行符。
 
-- Default: `"greedy"`
+- 默认：`"greedy"`
 
 ###### overrides[n].options.jsdoc.preferCodeFences
 
-type: `boolean`
+类型：`boolean`
 
-Use fenced code blocks (` ``` `) instead of 4-space indentation for code without a language tag.
+对于没有语言标签的代码，使用围栏代码块（` ``` `）而不是 4 空格缩进。
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.jsdoc.separateReturnsFromParam
 
-type: `boolean`
+类型：`boolean`
 
-Add a blank line between the last `@param` and `@returns`.
+在最后一个 `@param` 和 `@returns` 之间添加空行。
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.jsdoc.separateTagGroups
 
-type: `boolean`
+类型：`boolean`
 
-Add blank lines between different tag groups (e.g. between `@param` and `@returns`).
+在不同标签组之间添加空行（例如在 `@param` 和 `@returns` 之间）。
 
-- Default: `false`
+- 默认：`false`
 
 ##### overrides[n].options.jsxSingleQuote
 
-type: `boolean`
+类型：`boolean`
 
-Use single quotes instead of double quotes in JSX.
+在 JSX 中使用单引号而不是双引号。
 
-- Default: `false`
+- 默认：`false`
 
 ##### overrides[n].options.objectWrap
 
-type: `"preserve" | "collapse"`
+类型：`"preserve" | "collapse"`
 
-How to wrap object literals when they could fit on one line or span multiple lines.
+当对象字面量可以适合一行或跨多行时，如何换行。
 
-By default, formats objects as multi-line if there is a newline prior to the first property.
-Authors can use this heuristic to contextually improve readability, though it has some downsides.
+默认情况下，如果第一个属性之前有换行符，则将对象格式化为多行。
+作者可以使用此启发式方法在上下文中提高可读性，尽管它有一些缺点。
 
-- Default: `"preserve"`
+- 默认：`"preserve"`
 
 ##### overrides[n].options.printWidth
 
-type: `integer`
+类型：`integer`
 
-Specify the line length that the printer will wrap on.
+指定打印机换行的行长度。
 
-If you don't want line wrapping when formatting Markdown, you can set the `proseWrap` option to disable it.
+如果您不想在格式化 Markdown 时换行，可以将 `proseWrap` 选项设置为禁用它。
 
-- Default: `100`
-- Overrides `.editorconfig.max_line_length`
+- 默认：`100`
+- 覆盖 `.editorconfig.max_line_length`
 
 ##### overrides[n].options.proseWrap
 
-type: `"always" | "never" | "preserve"`
+类型：`"always" | "never" | "preserve"`
 
-How to wrap prose.
+如何换行散文文本。
 
-By default, formatter will not change wrapping in markdown text since some services use a linebreak-sensitive renderer, e.g. GitHub comments and BitBucket.
-To wrap prose to the print width, change this option to "always".
-If you want to force all prose blocks to be on a single line and rely on editor/viewer soft wrapping instead, you can use "never".
+默认情况下，格式化程序不会更改 Markdown 文本中的换行，因为某些服务使用对换行敏感的渲染器，例如 GitHub 评论和 BitBucket。
+要将散文文本换行到打印宽度，将此选项更改为 "always"。
+如果您想强制所有散文块位于单行并依赖编辑器/查看器软换行，可以使用 "never"。
 
-- Default: `"preserve"`
+- 默认：`"preserve"`
 
 ##### overrides[n].options.quoteProps
 
-type: `"as-needed" | "consistent" | "preserve"`
+类型：`"as-needed" | "consistent" | "preserve"`
 
-Change when properties in objects are quoted.
+更改对象中属性何时被引用。
 
-- Default: `"as-needed"`
+- 默认：`"as-needed"`
 
 ##### overrides[n].options.semi
 
-type: `boolean`
+类型：`boolean`
 
-Print semicolons at the ends of statements.
+在语句末尾打印分号。
 
-- Default: `true`
+- 默认：`true`
 
 ##### overrides[n].options.singleAttributePerLine
 
-type: `boolean`
+类型：`boolean`
 
-Enforce single attribute per line in HTML, Vue, and JSX.
+在 HTML、Vue 和 JSX 中强制每行单个属性。
 
-- Default: `false`
+- 默认：`false`
 
 ##### overrides[n].options.singleQuote
 
-type: `boolean`
+类型：`boolean`
 
-Use single quotes instead of double quotes.
+使用单引号而不是双引号。
 
-For JSX, you can set the `jsxSingleQuote` option.
+对于 JSX，您可以设置 `jsxSingleQuote` 选项。
 
-- Default: `false`
+- 默认：`false`
 
 ##### overrides[n].options.sortImports
 
-type: `object | boolean`
+类型：`object | boolean`
 
-Sort import statements.
+排序 import 语句。
 
-Using the similar algorithm as [eslint-plugin-perfectionist/sort-imports](https://perfectionist.dev/rules/sort-imports).
-For details, see each field's documentation.
+使用与 [eslint-plugin-perfectionist/sort-imports](https://perfectionist.dev/rules/sort-imports) 类似的算法。
+详细信息请参阅每个字段的文档。
 
-Pass `true` or an object to enable with defaults, or omit/set `false` to disable.
+传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Default: Disabled
+- 默认：禁用
 
 ###### overrides[n].options.sortImports.customGroups
 
-type: `array`
+类型：`array`
 
-Define your own groups for matching very specific imports.
+定义您自己的组以匹配非常具体的导入。
 
-The `customGroups` list is ordered: The first definition that matches an element will be used.
-Custom groups have a higher priority than any predefined group.
+`customGroups` 列表是有序的：第一个匹配元素的定义将被使用。
+自定义组比任何预定义组具有更高的优先级。
 
-If you want a predefined group to take precedence over a custom group,
-you must write a custom group definition that does the same as what the predefined group does, and put it first in the list.
+如果您希望预定义组优先于自定义组，
+您必须编写一个与预定义组作用相同的自定义组定义，并将其放在列表首位。
 
-If you specify multiple conditions like `elementNamePattern`, `selector`, and `modifiers`,
-all conditions must be met for an import to match the custom group (AND logic).
+如果您指定多个条件，如 `elementNamePattern`、`selector` 和 `modifiers`，
+所有条件都必须满足才能匹配自定义组（与逻辑）。
 
-- Default: `[]`
+- 默认：`[]`
 
 ####### overrides[n].options.sortImports.customGroups[n]
 
-type: `object`
+类型：`object`
 
 ######## overrides[n].options.sortImports.customGroups[n].elementNamePattern
 
-type: `string[]`
+类型：`string[]`
 
-default: `[]`
+默认：`[]`
 
-List of glob patterns to match import sources for this group.
+用于匹配此组导入源的 glob 模式列表。
 
 ######## overrides[n].options.sortImports.customGroups[n].groupName
 
-type: `string`
+类型：`string`
 
-default: `""`
+默认：`""`
 
-Name of the custom group, used in the `groups` option.
+自定义组的名称，用于 `groups` 选项。
 
 ######## overrides[n].options.sortImports.customGroups[n].modifiers
 
-type: `string[]`
+类型：`string[]`
 
-Modifiers to match the import characteristics.
-All specified modifiers must be present (AND logic).
+匹配导入特征的修饰符。
+所有指定的修饰符必须存在（与逻辑）。
 
-Possible values: `"side_effect"`, `"type"`, `"value"`, `"default"`, `"wildcard"`, `"named"`
+可能的值：`"side_effect"`、`"type"`、`"value"`、`"default"`、`"wildcard"`、`"named"`
 
 ######## overrides[n].options.sortImports.customGroups[n].selector
 
-type: `string`
+类型：`string`
 
-Selector to match the import kind.
+选择器以匹配导入种类。
 
-Possible values: `"type"`, `"side_effect_style"`, `"side_effect"`, `"style"`, `"index"`,
-`"sibling"`, `"parent"`, `"subpath"`, `"internal"`, `"builtin"`, `"external"`, `"import"`
+可能的值：`"type"`、`"side_effect_style"`、`"side_effect"`、`"style"`、`"index"`、
+`"sibling"`、`"parent"`、`"subpath"`、`"internal"`、`"builtin"`、`"external"`、`"import"`
 
 ###### overrides[n].options.sortImports.groups
 
-type: `array`
+类型：`array`
 
-Specifies a list of predefined import groups for sorting.
+指定用于排序的预定义导入组列表。
 
-Each import will be assigned a single group specified in the groups option (or the `unknown` group if no match is found).
-The order of items in the `groups` option determines how groups are ordered.
+每个导入将被分配 `groups` 选项中指定的单个组（如果未找到匹配项，则为 `unknown` 组）。
+`groups` 选项中项目的顺序决定了组的排序方式。
 
-Within a given group, members will be sorted according to the type, order, ignoreCase, etc. options.
+在给定组内，成员将根据 type、order、ignoreCase 等选项进行排序。
 
-Individual groups can be combined together by placing them in an array.
-The order of groups in that array does not matter.
-All members of the groups in the array will be sorted together as if they were part of a single group.
+可以通过将它们放在数组中来组合各个组。
+该数组中组的顺序无关紧要。
+数组中组的所有成员将一起排序，仿佛它们是单个组的一部分。
 
-Predefined groups are characterized by a single selector and potentially multiple modifiers.
-You may enter modifiers in any order, but the selector must always come at the end.
+预定义组由单个选择器和潜在多个修饰符表征。
+您可以按任何顺序输入修饰符，但选择器必须始终放在末尾。
 
-The list of selectors is sorted from most to least important:
+选择器列表按重要性从高到低排序：
 
-- `type` — TypeScript type imports.
-- `side_effect_style` — Side effect style imports.
-- `side_effect` — Side effect imports.
-- `style` — Style imports.
-- `index` — Main file from the current directory.
-- `sibling` — Modules from the same directory.
-- `parent` — Modules from the parent directory.
-- `subpath` — Node.js subpath imports.
-- `internal` — Your internal modules.
-- `builtin` — Node.js Built-in Modules.
-- `external` — External modules installed in the project.
-- `import` — Any import.
+- `type` — TypeScript 类型导入。
+- `side_effect_style` — 副作用样式导入。
+- `side_effect` — 副作用导入。
+- `style` — 样式导入。
+- `index` — 当前目录的主文件。
+- `sibling` — 同一目录的模块。
+- `parent` — 父目录的模块。
+- `subpath` — Node.js 子路径导入。
+- `internal` — 您的内部模块。
+- `builtin` — Node.js 内置模块。
+- `external` — 项目中安装的外部模块。
+- `import` — 任何导入。
 
-The list of modifiers is sorted from most to least important:
+修饰符列表按重要性从高到低排序：
 
-- `side_effect` — Side effect imports.
-- `type` — TypeScript type imports.
-- `value` — Value imports.
-- `default` — Imports containing the default specifier.
-- `wildcard` — Imports containing the wildcard (`* as`) specifier.
-- `named` — Imports containing at least one named specifier.
+- `side_effect` — 副作用导入。
+- `type` — TypeScript 类型导入。
+- `value` — 值导入。
+- `default` — 包含默认说明符的导入。
+- `wildcard` — 包含通配符（`* as`）说明符的导入。
+- `named` — 包含至少一个命名说明符的导入。
 
-- Default: See below
+- 默认：见下文
 
 ```json
 ["builtin", "external", ["internal", "subpath"], ["parent", "sibling", "index"], "style", "unknown"]
 ```
 
-Also, you can override the global `newlinesBetween` setting for specific group boundaries
-by including a `{ "newlinesBetween": boolean }` marker object in the `groups` list at the desired position.
+此外，您可以通过在 `groups` 列表中的所需位置包含 `{ "newlinesBetween": boolean }` 标记对象，来覆盖特定组边界的全局 `newlinesBetween` 设置。
 
 ####### overrides[n].options.sortImports.groups[n]
 
-type: `object | array | string`
+类型：`object | array | string`
 
 ######## overrides[n].options.sortImports.groups[n].newlinesBetween
 
-type: `boolean`
+类型：`boolean`
 
 ###### overrides[n].options.sortImports.ignoreCase
 
-type: `boolean`
+类型：`boolean`
 
-Specifies whether sorting should be case-sensitive.
+指定排序是否区分大小写。
 
-- Default: `true`
+- 默认：`true`
 
 ###### overrides[n].options.sortImports.internalPattern
 
-type: `string[]`
+类型：`string[]`
 
-Specifies a prefix for identifying internal imports.
+指定用于识别内部导入的前缀。
 
-This is useful for distinguishing your own modules from external dependencies.
+这有助于区分您自己的模块与外部依赖项。
 
-- Default: `["~/", "@/"]`
+- 默认：`["~/", "@/"]`
 
 ###### overrides[n].options.sortImports.newlinesBetween
 
-type: `boolean`
+类型：`boolean`
 
-Specifies whether to add newlines between groups.
+指定是否在组之间添加换行符。
 
-When `false`, no newlines are added between groups.
+当为 `false` 时，组之间不添加换行符。
 
-- Default: `true`
+- 默认：`true`
 
 ###### overrides[n].options.sortImports.order
 
-type: `"asc" | "desc"`
+类型：`"asc" | "desc"`
 
-Specifies whether to sort items in ascending or descending order.
+指定是按升序还是降序排序项目。
 
-- Default: `"asc"`
+- 默认：`"asc"`
 
 ###### overrides[n].options.sortImports.partitionByComment
 
-type: `boolean`
+类型：`boolean`
 
-Enables the use of comments to separate imports into logical groups.
+启用使用注释将导入分隔为逻辑组。
 
-When `true`, all comments will be treated as delimiters, creating partitions.
+当为 `true` 时，所有注释将被视为分隔符，创建分区。
 
 ```js
 import { b1, b2 } from "b";
-// PARTITION
+// 分区
 import { a } from "a";
 import { c } from "c";
 ```
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.sortImports.partitionByNewline
 
-type: `boolean`
+类型：`boolean`
 
-Enables the empty line to separate imports into logical groups.
+启用空行将导入分隔为逻辑组。
 
-When `true`, formatter will not sort imports if there is an empty line between them.
-This helps maintain the defined order of logically separated groups of members.
+当为 `true` 时，如果导入之间有空行，格式化程序将不会对导入进行排序。
+这有助于保持逻辑分离的成员组的定义顺序。
 
 ```js
 import { b1, b2 } from "b";
@@ -681,391 +680,391 @@ import { a } from "a";
 import { c } from "c";
 ```
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.sortImports.sortSideEffects
 
-type: `boolean`
+类型：`boolean`
 
-Specifies whether side effect imports should be sorted.
+指定是否应对副作用导入进行排序。
 
-By default, sorting side-effect imports is disabled for security reasons.
+默认情况下，出于安全原因，禁用副作用导入的排序。
 
-- Default: `false`
+- 默认：`false`
 
 ##### overrides[n].options.sortPackageJson
 
-type: `object | boolean`
+类型：`object | boolean`
 
-Sort `package.json` keys.
+排序 `package.json` 键。
 
-The algorithm is NOT compatible with [prettier-plugin-sort-packagejson](https://github.com/matzkoh/prettier-plugin-packagejson).
-But we believe it is clearer and easier to navigate.
-For details, see each field's documentation.
+该算法与 [prettier-plugin-sort-packagejson](https://github.com/matzkoh/prettier-plugin-packagejson) 不兼容。
+但我们认为它更清晰且更易于导航。
+详细信息请参阅每个字段的文档。
 
-- Default: `true`
+- 默认：`true`
 
 ###### overrides[n].options.sortPackageJson.sortScripts
 
-type: `boolean`
+类型：`boolean`
 
-Sort the `scripts` field alphabetically.
+按字母顺序排序 `scripts` 字段。
 
-- Default: `false`
+- 默认：`false`
 
 ##### overrides[n].options.sortTailwindcss
 
-type: `object | boolean`
+类型：`object | boolean`
 
-Sort Tailwind CSS classes.
+排序 Tailwind CSS 类。
 
-Using the same algorithm as [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss).
-Option names omit the `tailwind` prefix used in the original plugin (e.g., `config` instead of `tailwindConfig`).
-For details, see each field's documentation.
+使用与 [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) 相同的算法。
+选项名称省略了原始插件中使用的 `tailwind` 前缀（例如，`config` 而不是 `tailwindConfig`）。
+详细信息请参阅每个字段的文档。
 
-Pass `true` or an object to enable with defaults, or omit/set `false` to disable.
+传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Default: Disabled
+- 默认：禁用
 
 ###### overrides[n].options.sortTailwindcss.attributes
 
-type: `string[]`
+类型：`string[]`
 
-List of additional attributes to sort beyond `class` and `className` (exact match).
+除了 `class` 和 `className` 之外要排序的附加属性列表（精确匹配）。
 
-NOTE: Regex patterns are not yet supported.
+注意：尚不支持正则表达式模式。
 
-- Default: `[]`
-- Example: `["myClassProp", ":class"]`
+- 默认：`[]`
+- 示例：`["myClassProp", ":class"]`
 
 ###### overrides[n].options.sortTailwindcss.config
 
-type: `string`
+类型：`string`
 
-Path to your Tailwind CSS configuration file (v3).
+您的 Tailwind CSS 配置文件 (v3) 的路径。
 
-NOTE: Paths are resolved relative to the Oxfmt configuration file.
+注意：路径是相对于 Oxfmt 配置文件解析的。
 
-- Default: Automatically find `"tailwind.config.js"`
+- 默认：自动查找 `"tailwind.config.js"`
 
 ###### overrides[n].options.sortTailwindcss.functions
 
-type: `string[]`
+类型：`string[]`
 
-List of custom function names whose arguments should be sorted (exact match).
+应排序其参数的自定义函数名称列表（精确匹配）。
 
-NOTE: Regex patterns are not yet supported.
+注意：尚不支持正则表达式模式。
 
-- Default: `[]`
-- Example: `["clsx", "cn", "cva", "tw"]`
+- 默认：`[]`
+- 示例：`["clsx", "cn", "cva", "tw"]`
 
 ###### overrides[n].options.sortTailwindcss.preserveDuplicates
 
-type: `boolean`
+类型：`boolean`
 
-Preserve duplicate classes.
+保留重复的类。
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.sortTailwindcss.preserveWhitespace
 
-type: `boolean`
+类型：`boolean`
 
-Preserve whitespace around classes.
+保留类周围的空白。
 
-- Default: `false`
+- 默认：`false`
 
 ###### overrides[n].options.sortTailwindcss.stylesheet
 
-type: `string`
+类型：`string`
 
-Path to your Tailwind CSS stylesheet (v4).
+您的 Tailwind CSS 样式表 (v4) 的路径。
 
-NOTE: Paths are resolved relative to the Oxfmt configuration file.
+注意：路径是相对于 Oxfmt 配置文件解析的。
 
-- Default: Installed Tailwind CSS's `theme.css`
+- 默认：已安装 Tailwind CSS 的 `theme.css`
 
 ##### overrides[n].options.tabWidth
 
-type: `integer`
+类型：`integer`
 
-Specify the number of spaces per indentation-level.
+指定每个缩进级别的空格数。
 
-- Default: `2`
-- Overrides `.editorconfig.indent_size` (falls back to `.editorconfig.tab_width`)
+- 默认：`2`
+- 覆盖 `.editorconfig.indent_size`（回退到 `.editorconfig.tab_width`）
 
 ##### overrides[n].options.trailingComma
 
-type: `"all" | "es5" | "none"`
+类型：`"all" | "es5" | "none"`
 
-Print trailing commas wherever possible in multi-line comma-separated syntactic structures.
+在多行逗号分隔的语法结构中尽可能打印尾随逗号。
 
-A single-line array, for example, never gets trailing commas.
+例如，单行数组永远不会获得尾随逗号。
 
-- Default: `"all"`
+- 默认：`"all"`
 
 ##### overrides[n].options.useTabs
 
-type: `boolean`
+类型：`boolean`
 
-Indent lines with tabs instead of spaces.
+使用制表符而不是空格缩进行。
 
-- Default: `false`
-- Overrides `.editorconfig.indent_style`
+- 默认：`false`
+- 覆盖 `.editorconfig.indent_style`
 
 ##### overrides[n].options.vueIndentScriptAndStyle
 
-type: `boolean`
+类型：`boolean`
 
-Whether or not to indent the code inside `<script>` and `<style>` tags in Vue files.
+是否缩进 Vue 文件中 `<script>` 和 `<style>` 标签内的代码。
 
-- Default: `false`
+- 默认：`false`
 
 ## printWidth
 
-type: `integer`
+类型：`integer`
 
-Specify the line length that the printer will wrap on.
+指定打印机进行换行的行长度。
 
-If you don't want line wrapping when formatting Markdown, you can set the `proseWrap` option to disable it.
+如果您不想在格式化 Markdown 时进行换行，可以将 `proseWrap` 选项设置为禁用来禁用它。
 
-- Default: `100`
-- Overrides `.editorconfig.max_line_length`
+- 默认值：`100`
+- 覆盖 `.editorconfig.max_line_length`
 
 ## proseWrap
 
-type: `"always" | "never" | "preserve"`
+类型：`"always" | "never" | "preserve"`
 
-How to wrap prose.
+如何包裹文本。
 
-By default, formatter will not change wrapping in markdown text since some services use a linebreak-sensitive renderer, e.g. GitHub comments and BitBucket.
-To wrap prose to the print width, change this option to "always".
-If you want to force all prose blocks to be on a single line and rely on editor/viewer soft wrapping instead, you can use "never".
+默认情况下，格式化器不会更改 Markdown 文本中的换行，因为某些服务使用对换行敏感的渲染器，例如 GitHub 评论和 BitBucket。
+要将文本换行到打印宽度，将此选项更改为 "always"。
+如果您希望强制所有文本块位于单行，并依赖编辑器/查看器的软换行，可以使用 "never"。
 
-- Default: `"preserve"`
+- 默认值：`"preserve"`
 
 ## quoteProps
 
-type: `"as-needed" | "consistent" | "preserve"`
+类型：`"as-needed" | "consistent" | "preserve"`
 
-Change when properties in objects are quoted.
+更改对象中属性何时加引号。
 
-- Default: `"as-needed"`
+- 默认值：`"as-needed"`
 
 ## semi
 
-type: `boolean`
+类型：`boolean`
 
-Print semicolons at the ends of statements.
+在语句末尾打印分号。
 
-- Default: `true`
+- 默认值：`true`
 
 ## singleAttributePerLine
 
-type: `boolean`
+类型：`boolean`
 
-Enforce single attribute per line in HTML, Vue, and JSX.
+在 HTML、Vue 和 JSX 中强制每行单个属性。
 
-- Default: `false`
+- 默认值：`false`
 
 ## singleQuote
 
-type: `boolean`
+类型：`boolean`
 
-Use single quotes instead of double quotes.
+使用单引号代替双引号。
 
-For JSX, you can set the `jsxSingleQuote` option.
+对于 JSX，您可以设置 `jsxSingleQuote` 选项。
 
-- Default: `false`
+- 默认值：`false`
 
 ## sortImports
 
-type: `object | boolean`
+类型：`object | boolean`
 
-Sort import statements.
+排序 import 语句。
 
-Using the similar algorithm as [eslint-plugin-perfectionist/sort-imports](https://perfectionist.dev/rules/sort-imports).
-For details, see each field's documentation.
+使用与 [eslint-plugin-perfectionist/sort-imports](https://perfectionist.dev/rules/sort-imports) 类似的算法。
+详细信息，请参阅每个字段的文档。
 
-Pass `true` or an object to enable with defaults, or omit/set `false` to disable.
+传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Default: Disabled
+- 默认值：禁用
 
 ### sortImports.customGroups
 
-type: `array`
+类型：`array`
 
-Define your own groups for matching very specific imports.
+定义您自己的组以匹配非常具体的导入。
 
-The `customGroups` list is ordered: The first definition that matches an element will be used.
-Custom groups have a higher priority than any predefined group.
+`customGroups` 列表是有序的：第一个匹配元素的定义将被使用。
+自定义组比任何预定义组具有更高的优先级。
 
-If you want a predefined group to take precedence over a custom group,
-you must write a custom group definition that does the same as what the predefined group does, and put it first in the list.
+如果您希望预定义组优先于自定义组，
+您必须编写一个与预定义组作用相同的自定义组定义，并将其放在列表的最前面。
 
-If you specify multiple conditions like `elementNamePattern`, `selector`, and `modifiers`,
-all conditions must be met for an import to match the custom group (AND logic).
+如果您指定了多个条件，如 `elementNamePattern`、`selector` 和 `modifiers`，
+则所有条件都必须满足才能匹配自定义组（与逻辑）。
 
-- Default: `[]`
+- 默认值：`[]`
 
 #### sortImports.customGroups[n]
 
-type: `object`
+类型：`object`
 
 ##### sortImports.customGroups[n].elementNamePattern
 
-type: `string[]`
+类型：`string[]`
 
-default: `[]`
+默认值：`[]`
 
-List of glob patterns to match import sources for this group.
+用于匹配此组导入源的 glob 模式列表。
 
 ##### sortImports.customGroups[n].groupName
 
-type: `string`
+类型：`string`
 
-default: `""`
+默认值：`""`
 
-Name of the custom group, used in the `groups` option.
+自定义组的名称，在 `groups` 选项中使用。
 
 ##### sortImports.customGroups[n].modifiers
 
-type: `string[]`
+类型：`string[]`
 
-Modifiers to match the import characteristics.
-All specified modifiers must be present (AND logic).
+用于匹配导入特征的修饰符。
+所有指定的修饰符都必须存在（与逻辑）。
 
-Possible values: `"side_effect"`, `"type"`, `"value"`, `"default"`, `"wildcard"`, `"named"`
+可能的值：`"side_effect"`、`"type"`、`"value"`、`"default"`、`"wildcard"`、`"named"`
 
 ##### sortImports.customGroups[n].selector
 
-type: `string`
+类型：`string`
 
-Selector to match the import kind.
+用于匹配导入种类的选择器。
 
-Possible values: `"type"`, `"side_effect_style"`, `"side_effect"`, `"style"`, `"index"`,
-`"sibling"`, `"parent"`, `"subpath"`, `"internal"`, `"builtin"`, `"external"`, `"import"`
+可能的值：`"type"`、`"side_effect_style"`、`"side_effect"`、`"style"`、`"index"`、
+`"sibling"`、`"parent"`、`"subpath"`、`"internal"`、`"builtin"`、`"external"`、`"import"`
 
 ### sortImports.groups
 
-type: `array`
+类型：`array`
 
-Specifies a list of predefined import groups for sorting.
+指定用于排序的预定义导入组列表。
 
-Each import will be assigned a single group specified in the groups option (or the `unknown` group if no match is found).
-The order of items in the `groups` option determines how groups are ordered.
+每个导入将被分配一个在 groups 选项中指定的单一组（如果未找到匹配项，则为 `unknown` 组）。
+`groups` 选项中项目的顺序决定了组的排序方式。
 
-Within a given group, members will be sorted according to the type, order, ignoreCase, etc. options.
+在给定组内，成员将根据 type、order、ignoreCase 等选项进行排序。
 
-Individual groups can be combined together by placing them in an array.
-The order of groups in that array does not matter.
-All members of the groups in the array will be sorted together as if they were part of a single group.
+可以通过将单个组放在数组中将它们组合在一起。
+该数组中组的顺序无关紧要。
+数组中组的所有成员将一起排序，就像它们是单个组的一部分一样。
 
-Predefined groups are characterized by a single selector and potentially multiple modifiers.
-You may enter modifiers in any order, but the selector must always come at the end.
+预定义组的特征在于单个选择器和潜在多个修饰符。
+您可以按任何顺序输入修饰符，但选择器必须始终放在最后。
 
-The list of selectors is sorted from most to least important:
+选择器列表按重要性从高到低排序：
 
-- `type` — TypeScript type imports.
-- `side_effect_style` — Side effect style imports.
-- `side_effect` — Side effect imports.
-- `style` — Style imports.
-- `index` — Main file from the current directory.
-- `sibling` — Modules from the same directory.
-- `parent` — Modules from the parent directory.
-- `subpath` — Node.js subpath imports.
-- `internal` — Your internal modules.
-- `builtin` — Node.js Built-in Modules.
-- `external` — External modules installed in the project.
-- `import` — Any import.
+- `type` — TypeScript 类型导入。
+- `side_effect_style` — 副作用样式导入。
+- `side_effect` — 副作用导入。
+- `style` — 样式导入。
+- `index` — 当前目录的主文件。
+- `sibling` — 同一目录的模块。
+- `parent` — 父目录的模块。
+- `subpath` — Node.js 子路径导入。
+- `internal` — 您的内部模块。
+- `builtin` — Node.js 内置模块。
+- `external` — 项目中安装的外部模块。
+- `import` — 任何导入。
 
-The list of modifiers is sorted from most to least important:
+修饰符列表按重要性从高到低排序：
 
-- `side_effect` — Side effect imports.
-- `type` — TypeScript type imports.
-- `value` — Value imports.
-- `default` — Imports containing the default specifier.
-- `wildcard` — Imports containing the wildcard (`* as`) specifier.
-- `named` — Imports containing at least one named specifier.
+- `side_effect` — 副作用导入。
+- `type` — TypeScript 类型导入。
+- `value` — 值导入。
+- `default` — 包含默认说明符的导入。
+- `wildcard` — 包含通配符（`* as`）说明符的导入。
+- `named` — 包含至少一个命名说明符的导入。
 
-- Default: See below
+- 默认值：见下文
 
 ```json
 ["builtin", "external", ["internal", "subpath"], ["parent", "sibling", "index"], "style", "unknown"]
 ```
 
-Also, you can override the global `newlinesBetween` setting for specific group boundaries
-by including a `{ "newlinesBetween": boolean }` marker object in the `groups` list at the desired position.
+此外，您可以通过在 `groups` 列表中的所需位置包含 `{ "newlinesBetween": boolean }` 标记对象，
+来覆盖特定组边界的全局 `newlinesBetween` 设置。
 
 #### sortImports.groups[n]
 
-type: `object | array | string`
+类型：`object | array | string`
 
 ##### sortImports.groups[n].newlinesBetween
 
-type: `boolean`
+类型：`boolean`
 
 ### sortImports.ignoreCase
 
-type: `boolean`
+类型：`boolean`
 
-Specifies whether sorting should be case-sensitive.
+指定排序是否区分大小写。
 
-- Default: `true`
+- 默认值：`true`
 
 ### sortImports.internalPattern
 
-type: `string[]`
+类型：`string[]`
 
-Specifies a prefix for identifying internal imports.
+指定用于识别内部导入的前缀。
 
-This is useful for distinguishing your own modules from external dependencies.
+这对于区分您自己的模块和外部依赖项很有用。
 
-- Default: `["~/", "@/"]`
+- 默认值：`["~/", "@/"]`
 
 ### sortImports.newlinesBetween
 
-type: `boolean`
+类型：`boolean`
 
-Specifies whether to add newlines between groups.
+指定是否在组之间添加空行。
 
-When `false`, no newlines are added between groups.
+当为 `false` 时，组之间不添加空行。
 
-- Default: `true`
+- 默认值：`true`
 
 ### sortImports.order
 
-type: `"asc" | "desc"`
+类型：`"asc" | "desc"`
 
-Specifies whether to sort items in ascending or descending order.
+指定按升序还是降序排序项目。
 
-- Default: `"asc"`
+- 默认值：`"asc"`
 
 ### sortImports.partitionByComment
 
-type: `boolean`
+类型：`boolean`
 
-Enables the use of comments to separate imports into logical groups.
+启用使用注释将导入分隔为逻辑组。
 
-When `true`, all comments will be treated as delimiters, creating partitions.
+当为 `true` 时，所有注释都将被视为分隔符，创建分区。
 
 ```js
 import { b1, b2 } from "b";
-// PARTITION
+// 分区
 import { a } from "a";
 import { c } from "c";
 ```
 
-- Default: `false`
+- 默认值：`false`
 
 ### sortImports.partitionByNewline
 
-type: `boolean`
+类型：`boolean`
 
-Enables the empty line to separate imports into logical groups.
+启用空行将导入分隔为逻辑组。
 
-When `true`, formatter will not sort imports if there is an empty line between them.
-This helps maintain the defined order of logically separated groups of members.
+当为 `true` 时，如果导入之间有空行，格式化器将不会排序导入。
+这有助于保持逻辑分离的成员组的定义顺序。
 
 ```js
 import { b1, b2 } from "b";
@@ -1074,142 +1073,142 @@ import { a } from "a";
 import { c } from "c";
 ```
 
-- Default: `false`
+- 默认值：`false`
 
 ### sortImports.sortSideEffects
 
-type: `boolean`
+类型：`boolean`
 
-Specifies whether side effect imports should be sorted.
+指定是否应对副作用导入进行排序。
 
-By default, sorting side-effect imports is disabled for security reasons.
+默认情况下，出于安全原因，排序副作用导入是禁用的。
 
-- Default: `false`
+- 默认值：`false`
 
 ## sortPackageJson
 
-type: `object | boolean`
+类型：`object | boolean`
 
-Sort `package.json` keys.
+排序 `package.json` 键。
 
-The algorithm is NOT compatible with [prettier-plugin-sort-packagejson](https://github.com/matzkoh/prettier-plugin-packagejson).
-But we believe it is clearer and easier to navigate.
-For details, see each field's documentation.
+该算法与 [prettier-plugin-sort-packagejson](https://github.com/matzkoh/prettier-plugin-packagejson) 不兼容。
+但我们认为它更清晰且更易于导航。
+详细信息，请参阅每个字段的文档。
 
-- Default: `true`
+- 默认值：`true`
 
 ### sortPackageJson.sortScripts
 
-type: `boolean`
+类型：`boolean`
 
-Sort the `scripts` field alphabetically.
+按字母顺序排序 `scripts` 字段。
 
-- Default: `false`
+- 默认值：`false`
 
 ## sortTailwindcss
 
-type: `object | boolean`
+类型：`object | boolean`
 
-Sort Tailwind CSS classes.
+排序 Tailwind CSS 类。
 
-Using the same algorithm as [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss).
-Option names omit the `tailwind` prefix used in the original plugin (e.g., `config` instead of `tailwindConfig`).
-For details, see each field's documentation.
+使用与 [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) 相同的算法。
+选项名称省略了原始插件中使用的 `tailwind` 前缀（例如，`config` 而不是 `tailwindConfig`）。
+详细信息，请参阅每个字段的文档。
 
-Pass `true` or an object to enable with defaults, or omit/set `false` to disable.
+传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Default: Disabled
+- 默认值：禁用
 
 ### sortTailwindcss.attributes
 
-type: `string[]`
+类型：`string[]`
 
-List of additional attributes to sort beyond `class` and `className` (exact match).
+除了 `class` 和 `className`（精确匹配）之外，要排序的附加属性列表。
 
-NOTE: Regex patterns are not yet supported.
+注意：尚不支持正则表达式模式。
 
-- Default: `[]`
-- Example: `["myClassProp", ":class"]`
+- 默认值：`[]`
+- 示例：`["myClassProp", ":class"]`
 
 ### sortTailwindcss.config
 
-type: `string`
+类型：`string`
 
-Path to your Tailwind CSS configuration file (v3).
+您的 Tailwind CSS 配置文件 (v3) 的路径。
 
-NOTE: Paths are resolved relative to the Oxfmt configuration file.
+注意：路径是相对于 Oxfmt 配置文件解析的。
 
-- Default: Automatically find `"tailwind.config.js"`
+- 默认值：自动查找 `"tailwind.config.js"`
 
 ### sortTailwindcss.functions
 
-type: `string[]`
+类型：`string[]`
 
-List of custom function names whose arguments should be sorted (exact match).
+应排序其参数的自定义函数名称列表（精确匹配）。
 
-NOTE: Regex patterns are not yet supported.
+注意：尚不支持正则表达式模式。
 
-- Default: `[]`
-- Example: `["clsx", "cn", "cva", "tw"]`
+- 默认值：`[]`
+- 示例：`["clsx", "cn", "cva", "tw"]`
 
 ### sortTailwindcss.preserveDuplicates
 
-type: `boolean`
+类型：`boolean`
 
-Preserve duplicate classes.
+保留重复的类。
 
-- Default: `false`
+- 默认值：`false`
 
 ### sortTailwindcss.preserveWhitespace
 
-type: `boolean`
+类型：`boolean`
 
-Preserve whitespace around classes.
+保留类周围的空白。
 
-- Default: `false`
+- 默认值：`false`
 
 ### sortTailwindcss.stylesheet
 
-type: `string`
+类型：`string`
 
-Path to your Tailwind CSS stylesheet (v4).
+您的 Tailwind CSS 样式表 (v4) 的路径。
 
-NOTE: Paths are resolved relative to the Oxfmt configuration file.
+注意：路径是相对于 Oxfmt 配置文件解析的。
 
-- Default: Installed Tailwind CSS's `theme.css`
+- 默认值：已安装 Tailwind CSS 的 `theme.css`
 
 ## tabWidth
 
-type: `integer`
+类型：`integer`
 
-Specify the number of spaces per indentation-level.
+指定每个缩进级别的空格数。
 
-- Default: `2`
-- Overrides `.editorconfig.indent_size` (falls back to `.editorconfig.tab_width`)
+- 默认值：`2`
+- 覆盖 `.editorconfig.indent_size`（回退到 `.editorconfig.tab_width`）
 
 ## trailingComma
 
-type: `"all" | "es5" | "none"`
+类型：`"all" | "es5" | "none"`
 
-Print trailing commas wherever possible in multi-line comma-separated syntactic structures.
+在多行逗号分隔的语法结构中，尽可能打印尾随逗号。
 
-A single-line array, for example, never gets trailing commas.
+例如，单行数组永远不会获得尾随逗号。
 
-- Default: `"all"`
+- 默认值：`"all"`
 
 ## useTabs
 
-type: `boolean`
+类型：`boolean`
 
-Indent lines with tabs instead of spaces.
+使用制表符而不是空格缩进行。
 
-- Default: `false`
-- Overrides `.editorconfig.indent_style`
+- 默认值：`false`
+- 覆盖 `.editorconfig.indent_style`
 
 ## vueIndentScriptAndStyle
 
-type: `boolean`
+类型：`boolean`
 
-Whether or not to indent the code inside `<script>` and `<style>` tags in Vue files.
+是否缩进 Vue 文件中 `<script>` 和 `<style>` 标签内的代码。
 
-- Default: `false`
+- 默认值：`false`

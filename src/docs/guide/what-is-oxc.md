@@ -1,57 +1,57 @@
 ---
-title: What is Oxc?
-description: The fastest toolchain for JavaScript and TypeScript.
+title: 什么是 Oxc？
+description: 最快的 JavaScript 和 TypeScript 工具链。
 ---
 
-# What is Oxc?
+# 什么是 Oxc？
 
 /oʊ ɛks siː/
 
-The Oxidation Compiler is a collection of high-performance tools for JavaScript and TypeScript written in Rust.
+Oxidation Compiler 是一套用 Rust 编写的高性能 JavaScript 和 TypeScript 工具集合。
 
-Oxc is part of [VoidZero](https://voidzero.dev)'s vision for a unified, high-performance toolchain for JavaScript. It powers [Rolldown](https://rolldown.rs) ([Vite](https://vitejs.dev)'s future bundler) and enables the next generation of ultra-fast development tools that work seamlessly together.
+Oxc 是 [VoidZero](https://voidzero.dev) 为 JavaScript 构建统一、高性能工具链愿景的一部分。它为 [Rolldown](https://rolldown.rs)（[Vite](https://vitejs.dev) 未来的打包器）提供动力，并赋能下一代无缝协作的超快开发工具。
 
-<sub>\* Oxidation is the chemical process that creates rust</sub>
+<sub>\* Oxidation 是产生锈的化学过程</sub>
 
-## Fastest tooling across the stack
+## 全栈最快的工具
 
-Oxc focuses on performance across the whole toolchain. This includes parsing, module resolution, linting, formatting, transforms, and minification.
+Oxc 专注于整个工具链的性能。这包括解析、模块解析、lint 检查、格式化、转换和压缩。
 
-## Philosophy
+## 理念
 
-Oxc is built around a few core ideas.
+Oxc 围绕几个核心理念构建。
 
-### Performance is a feature
+### 性能是一项特性
 
-Oxc treats speed as a product requirement. Faster tools improve the local feedback loop and reduce CI cost. Performance regressions are treated as bugs.
+Oxc 将速度视为产品需求。更快的工具可以改善本地反馈循环并降低 CI 成本。性能回归被视为缺陷。
 
-### One toolchain, shared building blocks
+### 一个工具链，共享构建块
 
-Oxc is a suite. Tools like the linter, formatter, parser, transformer, minifier, and resolver are built on shared components. This reduces duplicated work and makes behavior more consistent across the stack.
+Oxc 是一套套件。像 lint 工具、格式化工具、解析器、转换器、压缩器和解析器这样的工具都是基于共享组件构建的。这减少了重复工作，并使整个栈的行为更加一致。
 
-### Correctness with clear boundaries
+### 正确性与清晰的边界
 
-Oxc aims to be correct and predictable. When behavior differs from other tools, the differences should be documented. Compatibility is a feature, not an accident.
+Oxc 旨在做到正确且可预测。当行为与其他工具不同时，应记录这些差异。兼容性是一项特性，而非偶然。
 
-### Practical developer experience
+### 实用的开发者体验
 
-Oxc focuses on a workflow that works in real projects. Defaults should be sensible, configuration should be understandable, and output should be stable.
+Oxc 专注于适用于真实项目的工作流。默认值应当合理，配置应当易懂，输出应当稳定。
 
-## What you get
+## 你能获得什么
 
-Oxc includes end-user tools and reusable compiler building blocks:
+Oxc 包括终端用户工具和可复用的编译器构建块：
 
-- [Oxlint](/docs/guide/usage/linter) is the fastest linter for JavaScript and TypeScript. It targets compatibility with the ESLint ecosystem.
-- [Oxfmt](/docs/guide/usage/formatter) is the fastest formatter. It targets Prettier-compatible formatting.
-- [Parser](/docs/guide/usage/parser) is the fastest JS and TS parser with an AST for tooling.
-- [Transformer](/docs/guide/usage/transformer) provides fastest TS, JSX, and modern JavaScript transforms.
-- [Minifier](/docs/guide/usage/minifier) is the fastest minifier for production output.
-- [Resolver](/docs/guide/usage/resolver) is the fastest module resolver for JS and TS projects.
+- [Oxlint](/docs/guide/usage/linter) 是最快的 JavaScript 和 TypeScript lint 工具。它旨在兼容 ESLint 生态系统。
+- [Oxfmt](/docs/guide/usage/formatter) 是最快的格式化工具。它旨在兼容 Prettier 格式化。
+- [Parser](/docs/guide/usage/parser) 是最快的 JS 和 TS 解析器，带有用于工具开发的 AST。
+- [Transformer](/docs/guide/usage/transformer) 提供最快的 TS、JSX 和现代 JavaScript 转换。
+- [Minifier](/docs/guide/usage/minifier) 是最快的生产输出压缩器。
+- [Resolver](/docs/guide/usage/resolver) 是最快的 JS 和 TS 项目模块解析器。
 
-You can use each tool on its own, or use them together as one toolchain.
+你可以单独使用每个工具，也可以将它们作为一个工具链一起使用。
 
-## Who Oxc is for
+## Oxc 适合谁
 
-- **App and library developers** who want the fastest lint and format loop locally and in CI.
-- **Toolchain and platform teams** who want a fast compiler-grade foundation at scale.
-- **Tool authors** who want fast reusable crates or npm packages for JS tooling.
+- **应用和库开发者** 希望在本地和 CI 中拥有最快的 lint 和 format 循环。
+- **工具链和平台团队** 希望拥有大规模的快速编译器级基础架构。
+- **工具作者** 希望为 JS 工具获取快速可复用的 crates 或 npm 包。

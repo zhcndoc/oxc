@@ -2,155 +2,155 @@
 search: false
 ---
 
-## Usage
+## 用法
 
 **`oxlint`** \[**`-c`**=_`<./.oxlintrc.json>`_\] \[_`PATH`_\]...
 
-## Basic Configuration
+## 基本配置
 
 - **`-c`**, **`--config`**=_`<./.oxlintrc.json>`_ &mdash;
-  Oxlint configuration file
+  Oxlint 配置文件
 
-* `.json` and `.jsonc` config files are supported in all runtimes
-* JavaScript/TypeScript config files are experimental and require running via Node.js
-* you can use comments in configuration files.
-* tries to be compatible with ESLint v8's format
+* `.json` 和 `.jsonc` 配置文件在所有运行时都支持
+* JavaScript/TypeScript 配置文件是实验性的，需要通过 Node.js 运行
+* 你可以在配置文件中使用注释。
+* 尝试兼容 ESLint v8 的格式
 
-  If not provided, Oxlint will look for a `.oxlintrc.json`, `.oxlintrc.jsonc`, or `oxlint.config.ts` file in the current working directory.
+  如果未提供，Oxlint 将在当前工作目录中查找 `.oxlintrc.json`、`.oxlintrc.jsonc` 或 `oxlint.config.ts` 文件。
 
 - **`    --tsconfig`**=_`<./tsconfig.json>`_ &mdash;
-  Override the TypeScript config used for import resolution. Oxlint automatically discovers the relevant `tsconfig.json` for each file. Use this only when your project uses a non-standard tsconfig name or location.
+  覆盖用于导入解析的 TypeScript 配置。Oxlint 会自动发现每个文件相关的 `tsconfig.json`。仅当你的项目使用非标准的 tsconfig 名称或位置时才使用此选项。
 
-  ::: warning Avoid using this option. It can cause differences between import resolution, and type-aware linting. Type aware linting **does not** respect this option, and will always discover the appropriate `tsconfig.json` for each file automatically. :::
+  ::: warning 避免使用此选项。它可能导致导入解析和类型感知 lint 之间的差异。类型感知 lint **不**尊重此选项，并将始终自动为每个文件发现合适的 `tsconfig.json`。 :::
 
 - **`    --init`** &mdash;
-  Initialize oxlint configuration with default values
+  使用默认值初始化 oxlint 配置
 
-## Allowing / Denying Multiple Lints
+## 允许/拒绝多个 Lint 规则
 
-Accumulate rules and categories from left to right on the command-line.
+在命令行上从左到右累积规则和类别。
 
-For example `-D correctness -A no-debugger` or `-A all -D no-debugger`.
-The categories are:
+例如 `-D correctness -A no-debugger` 或 `-A all -D no-debugger`。
+类别包括：
 
-- `correctness` - Code that is outright wrong or useless (default)
-- `suspicious` - Code that is most likely wrong or useless
-- `pedantic` - Lints which are rather strict or have occasional false positives
-- `perf` - Code that could be written in a more performant way
-- `style` - Code that should be written in a more idiomatic way
-- `restriction` - Lints which prevent the use of language and library features
-- `nursery` - New lints that are still under development
-- `all` - All categories listed above except `nursery`. Does not enable plugins automatically.
+- `correctness` - 完全错误或无用的代码（默认）
+- `suspicious` - 很可能错误或无用的代码
+- `pedantic` - 较为严格或偶尔有误报的 Lint 规则
+- `perf` - 可以写得更具性能的代码
+- `style` - 应该写得更符合习惯用法的代码
+- `restriction` - 阻止使用语言和库功能的 Lint 规则
+- `nursery` - 仍在开发中的新 Lint 规则
+- `all` - 除 `nursery` 外上述所有类别。不会自动启用插件。
 
-Arguments:
+参数：
 
 - **`-A`**, **`--allow`**=_`NAME`_ &mdash;
-  Allow the rule or category (suppress the lint)
+  允许规则或类别（抑制 lint）
 - **`-W`**, **`--warn`**=_`NAME`_ &mdash;
-  Deny the rule or category (emit a warning)
+  拒绝规则或类别（发出警告）
 - **`-D`**, **`--deny`**=_`NAME`_ &mdash;
-  Deny the rule or category (emit an error)
+  拒绝规则或类别（发出错误）
 
-## Enable/Disable Plugins
+## 启用/禁用插件
 
 - **`    --disable-unicorn-plugin`** &mdash;
-  Disable unicorn plugin, which is turned on by default
+  禁用 unicorn 插件，该插件默认开启
 - **`    --disable-oxc-plugin`** &mdash;
-  Disable oxc unique rules, which is turned on by default
+  禁用 oxc 独特规则，该规则默认开启
 - **`    --disable-typescript-plugin`** &mdash;
-  Disable TypeScript plugin, which is turned on by default
+  禁用 TypeScript 插件，该插件默认开启
 - **`    --import-plugin`** &mdash;
-  Enable import plugin and detect ESM problems.
+  启用 import 插件并检测 ESM 问题。
 - **`    --react-plugin`** &mdash;
-  Enable react plugin, which is turned off by default
+  启用 react 插件，该插件默认关闭
 - **`    --jsdoc-plugin`** &mdash;
-  Enable jsdoc plugin and detect JSDoc problems
+  启用 jsdoc 插件并检测 JSDoc 问题
 - **`    --jest-plugin`** &mdash;
-  Enable the Jest plugin and detect test problems
+  启用 Jest 插件并检测测试问题
 - **`    --vitest-plugin`** &mdash;
-  Enable the Vitest plugin and detect test problems
+  启用 Vitest 插件并检测测试问题
 - **`    --jsx-a11y-plugin`** &mdash;
-  Enable the JSX-a11y plugin and detect accessibility problems
+  启用 JSX-a11y 插件并检测无障碍问题
 - **`    --nextjs-plugin`** &mdash;
-  Enable the Next.js plugin and detect Next.js problems
+  启用 Next.js 插件并检测 Next.js 问题
 - **`    --react-perf-plugin`** &mdash;
-  Enable the React performance plugin and detect rendering performance problems
+  启用 React 性能插件并检测渲染性能问题
 - **`    --promise-plugin`** &mdash;
-  Enable the promise plugin and detect promise usage problems
+  启用 promise 插件并检测 promise 使用问题
 - **`    --node-plugin`** &mdash;
-  Enable the node plugin and detect node usage problems
+  启用 node 插件并检测 node 使用问题
 - **`    --vue-plugin`** &mdash;
-  Enable the vue plugin and detect vue usage problems
+  启用 vue 插件并检测 vue 使用问题
 
-## Fix Problems
+## 修复问题
 
 - **`    --fix`** &mdash;
-  Fix as many issues as possible. Only unfixed issues are reported in the output.
+  尽可能修复更多问题。输出中仅报告未修复的问题。
 - **`    --fix-suggestions`** &mdash;
-  Apply auto-fixable suggestions. May change program behavior.
+  应用可自动修复的建议。可能会改变程序行为。
 - **`    --fix-dangerously`** &mdash;
-  Apply dangerous fixes and suggestions
+  应用危险的修复和建议
 
-## Ignore Files
+## 忽略文件
 
 - **`    --ignore-path`**=_`PATH`_ &mdash;
-  Specify the file to use as your `.eslintignore`
+  指定用作 `.eslintignore` 的文件
 - **`    --ignore-pattern`**=_`PAT`_ &mdash;
-  Specify patterns of files to ignore (in addition to those in `.eslintignore`)
+  指定要忽略的文件模式（除了 `.eslintignore` 中的那些）
 
-  The supported syntax is the same as for `.eslintignore` and `.gitignore` files. You should quote your patterns in order to avoid shell interpretation of glob patterns.
+  支持的语法与 `.eslintignore` 和 `.gitignore` 文件相同。你应该引用你的模式以避免 shell 对 glob 模式的解释。
 
 - **`    --no-ignore`** &mdash;
-  Disable excluding files from `.eslintignore` files, **`--ignore-path`** flags and **`--ignore-pattern`** flags
+  禁用从 `.eslintignore` 文件、**`--ignore-path`** 标志和 **`--ignore-pattern`** 标志排除文件
 
-## Handle Warnings
+## 处理警告
 
 - **`    --quiet`** &mdash;
-  Disable reporting on warnings, only errors are reported
+  禁用警告报告，仅报告错误
 - **`    --deny-warnings`** &mdash;
-  Ensure warnings produce a non-zero exit code
+  确保警告产生非零退出码
 - **`    --max-warnings`**=_`INT`_ &mdash;
-  Specify a warning threshold, which can be used to force exit with an error status if there are too many warning-level rule violations in your project
+  指定警告阈值，如果项目中存在太多警告级别的规则违规，可用于强制以错误状态退出
 
-## Output
+## 输出
 
 - **`-f`**, **`--format`**=_`ARG`_ &mdash;
-  Use a specific output format. Possible values: `checkstyle`, `default`, `github`, `gitlab`, `json`, `junit`, `stylish`, `unix`
+  使用特定的输出格式。可能的值：`checkstyle`, `default`, `github`, `gitlab`, `json`, `junit`, `stylish`, `unix`
 
-## Miscellaneous
+## 杂项
 
 - **`    --silent`** &mdash;
-  Do not display any diagnostics
+  不显示任何诊断信息
 - **`    --threads`**=_`INT`_ &mdash;
-  Number of threads to use. Set to 1 for using only 1 CPU core.
+  要使用的线程数。设置为 1 以仅使用 1 个 CPU 核心。
 - **`    --print-config`** &mdash;
-  This option outputs the configuration to be used. When present, no linting is performed and only config-related options are valid.
+  此选项输出要使用的配置。当存在时，不执行 lint 检查，仅配置相关选项有效。
 
-## Inline Configuration Comments
+## 内联配置注释
 
 - **`    --report-unused-disable-directives`** &mdash;
-  Report directive comments like `// oxlint-disable-line`, when no errors would have been reported on that line anyway
+  报告指令注释（如 `// oxlint-disable-line`），当该行无论如何都不会报告错误时
 - **`    --report-unused-disable-directives-severity`**=_`SEVERITY`_ &mdash;
-  Same as `--report-unused-disable-directives`, but allows you to specify the severity level of the reported errors. Only one of these two options can be used at a time.
+  与 `--report-unused-disable-directives` 相同，但允许你指定报告错误的严重级别。这两个选项一次只能使用一个。
 
-## Available positional items:
+## 可用的位置项：
 
 - _`PATH`_ &mdash;
-  Single file, single path or list of paths
+  单个文件、单个路径或路径列表
 
-## Available options:
+## 可用的选项：
 
 - **`    --rules`** &mdash;
-  List all the rules that are currently registered
+  列出当前注册的所有规则
 - **`    --lsp`** &mdash;
-  Start the language server
+  启动语言服务器
 - **`    --disable-nested-config`** &mdash;
-  Disable the automatic loading of nested configuration files
+  禁用嵌套配置文件的自动加载
 - **`    --type-aware`** &mdash;
-  Enable rules that require type information
+  启用需要类型信息的规则
 - **`    --type-check`** &mdash;
-  Enable experimental type checking (includes TypeScript compiler diagnostics)
+  启用实验性类型检查（包括 TypeScript 编译器诊断）
 - **`-h`**, **`--help`** &mdash;
-  Prints help information
+  打印帮助信息
 - **`-V`**, **`--version`** &mdash;
-  Prints version information
+  打印版本信息

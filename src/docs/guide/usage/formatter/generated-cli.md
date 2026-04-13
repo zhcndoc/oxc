@@ -2,57 +2,57 @@
 search: false
 ---
 
-## Usage
+## 用法
 
 **`oxfmt`** \[**`-c`**=_`PATH`_\] \[_`PATH`_\]...
 
-## Mode Options:
+## 模式选项：
 
 - **`    --init`** &mdash;
-  Initialize `.oxfmtrc.json` with default values
+  使用默认值初始化 `.oxfmtrc.json`
 - **`    --migrate`**=_`SOURCE`_ &mdash;
-  Migrate configuration to `.oxfmtrc.json` from specified source Available sources: prettier, biome
+  从指定源迁移配置到 `.oxfmtrc.json` 可用源：prettier, biome
 - **`    --lsp`** &mdash;
-  Start language server protocol (LSP) server
+  启动语言服务器协议 (LSP) 服务器
 - **`    --stdin-filepath`**=_`PATH`_ &mdash;
-  Specify the file name to use to infer which parser to use
+  指定用于推断使用哪个解析器的文件名
 
-## Output Options:
+## 输出选项：
 
 - **`    --write`** &mdash;
-  Format and write files in place (default)
+  格式化并原地写入文件（默认）
 - **`    --check`** &mdash;
-  Check if files are formatted, also show statistics
+  检查文件是否已格式化，同时显示统计信息
 - **`    --list-different`** &mdash;
-  List files that would be changed
+  列出将被更改的文件
 
-## Config Options
+## 配置选项
 
 - **`-c`**, **`--config`**=_`PATH`_ &mdash;
-  Path to the configuration file (.json, .jsonc, .ts, .mts, .cts, .js, .mjs, .cjs)
+  配置文件路径 (.json, .jsonc, .ts, .mts, .cts, .js, .mjs, .cjs)
 
-## Ignore Options
+## 忽略选项
 
 - **`    --ignore-path`**=_`PATH`_ &mdash;
-  Path to ignore file(s). Can be specified multiple times. If not specified, .gitignore and .prettierignore in the current directory are used.
+  忽略文件的路径。可以指定多次。如果未指定，则使用当前目录中的 .gitignore 和 .prettierignore。
 - **`    --with-node-modules`** &mdash;
-  Format code in node_modules directory (skipped by default)
+  格式化 node_modules 目录中的代码（默认跳过）
 
-## Runtime Options
+## 运行时选项
 
 - **`    --no-error-on-unmatched-pattern`** &mdash;
-  Do not exit with error when pattern is unmatched
+  当模式未匹配时不要退出并报错
 - **`    --threads`**=_`INT`_ &mdash;
-  Number of threads to use. Set to 1 for using only 1 CPU core.
+  要使用的线程数。设置为 1 以仅使用 1 个 CPU 核心。
 
-## Available positional items:
+## 可用位置项：
 
 - _`PATH`_ &mdash;
-  Single file, path or list of paths. Glob patterns are also supported. (Be sure to quote them, otherwise your shell may expand them before passing.) Exclude patterns with `!` prefix like `'!**/fixtures/*.js'` are also supported. If not provided, current working directory is used.
+  单个文件、路径或路径列表。也支持 Glob 模式。（务必将它们引起来，否则你的 shell 可能在传递之前展开它们。）也支持带 `!` 前缀的排除模式，例如 `'!**/fixtures/*.js'`。如果未提供，则使用当前工作目录。
 
-## Available options:
+## 可用选项：
 
 - **`-h`**, **`--help`** &mdash;
-  Prints help information
+  打印帮助信息
 - **`-V`**, **`--version`** &mdash;
-  Prints version information
+  打印版本信息

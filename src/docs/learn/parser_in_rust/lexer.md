@@ -1,38 +1,38 @@
 ---
-title: Lexer
+title: 词法分析器
 outline: deep
 ---
 
-# Lexer
+# 词法分析器
 
-## Token
+## 令牌（Token）
 
-The lexer, also known as tokenizer or scanner, is responsible for transforming source text into tokens.
-The tokens will later be consumed by the parser so we don't have to worry about whitespaces and comments from the original text.
+词法分析器，也被称为标记器（tokenizer）或扫描器，是负责将源文本转换为令牌的工具。
+这些令牌后来会被语法分析器（parser）消费，因此我们不必担心原始文本中的空白符和注释。
 
-Let's start simple and transform a single `+` text into a token.
+让我们从简单的开始，将一个单独的 `+` 文本转换为一个令牌。
 
 ```rust
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Token {
-    /// Token Type
+    /// 令牌类型
     pub kind: Kind,
 
-    /// Start offset in source
+    /// 源中的起始偏移
     pub start: usize,
 
-    /// End offset in source
+    /// 源中的结束偏移
     pub end: usize,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub enum Kind {
-    Eof, // end of file
+    Eof, // 文件结束
     Plus,
 }
 ```
 
-A single `+` gives us
+一个单独的 `+` 会生成
 
 ```
 [
@@ -41,28 +41,28 @@ A single `+` gives us
 ]
 ```
 
-To loop through the string, we can either keep track of an index and pretend that we are writing C code,
-or we can take a look at the [string documentation](https://doc.rust-lang.org/std/primitive.str.html#)
-and find ourselves a [`Chars`](https://doc.rust-lang.org/std/str/struct.Chars.html) iterator to work with.
+要遍历字符串，我们可以选择两种方式：要么跟踪索引，假装自己在写 C 代码，
+要么查看 [字符串文档](https://doc.rust-lang.org/std/primitive.str.html#)，
+找到 [`Chars`](https://doc.rust-lang.org/std/str/struct.Chars.html) 迭代器来使用。
 
 :::info
-The `Chars` iterator abstracts away the tracking index and boundary checking to make us feel truly safe.
+`Chars` 迭代器抽象掉了索引跟踪和边界检查，让我们感觉非常安全。
 
-It gives us an `Option<char>` when we call `chars.next()`.
-But please note that a `char` is not a 0-255 ASCII value,
-it is a utf8 Unicode point value with the range of 0 to 0x10FFFF.
+调用 `chars.next()` 时会返回一个 `Option<char>`。
+但请注意，`char` 并不是一个 0-255 的ASCII值，
+它是一个utf8 Unicode 码点值，范围从 0 到 0x10FFFF。
 :::
 
-Let's define a starter lexer abstraction
+让我们定义一个起步的词法分析器抽象
 
 ```rust
 use std::str::Chars;
 
 struct Lexer<'a> {
-    /// Source Text
+    /// 源文本
     source: &'a str,
 
-    /// The remaining characters
+    /// 剩余的字符
     chars: Chars<'a>
 }
 
@@ -77,11 +77,11 @@ impl<'a> Lexer<'a> {
 ```
 
 :::info
-The lifetime `'a` here indicates the iterator has a reference to somewhere, it references to a `&'a str` in this case.
+这里的生命周期 `'a` 表示迭代器引用了某个地方，它引用的是一个 `&'a str`。
 :::
 
-To convert the source text to tokens, just keep calling `chars.next()` and match on the returned `char`s.
-The final token will always be `Kind::Eof`.
+要将源文本转换为令牌，只需不断调用 `chars.next()` 并匹配返回的 `char`。
+最终的令牌总是 `Kind::Eof`。
 
 ```rust
 impl<'a> Lexer<'a> {
@@ -102,28 +102,28 @@ impl<'a> Lexer<'a> {
         Token { kind, start, end }
     }
 
-    /// Get the length offset from the source text, in UTF-8 bytes
+    /// 获取源文本中偏移量（UTF-8字节数）
     fn offset(&self) -> usize {
         self.source.len() - self.chars.as_str().len()
     }
 }
 ```
 
-The `.len()` and `.as_str().len()` method calls inside `fn offset` feel like O(n), so let's dig deeper.
+在 `fn offset` 中的 `.len()` 和 `.as_str().len()` 方法调用看起来像是O(n)，让我们更深入了解。
 
-[`.as_str()`](https://doc.rust-lang.org/src/core/str/iter.rs.html#112) returns a pointer to a string slice
+[`.as_str()`](https://doc.rust-lang.org/src/core/str/iter.rs.html#112) 返回指向字符串切片的指针
 
 ```rust
 // https://github.com/rust-lang/rust/blob/b998821e4c51c44a9ebee395c91323c374236bbb/library/core/src/str/iter.rs#L112-L115
 
 pub fn as_str(&self) -> &'a str {
-    // SAFETY: `Chars` is only made from a str, which guarantees the iter is valid UTF-8.
+    // SAFETY: `Chars` 只由字符串构建，保证了迭代器的UTF-8合法性。
     unsafe { from_utf8_unchecked(self.iter.as_slice()) }
 }
 ```
 
-A [slice](https://doc.rust-lang.org/std/slice/index.html) is a view into a block of memory represented as a pointer and a length.
-The `.len()` method returns the metadata stored inside the slice
+一个 [切片](https://doc.rust-lang.org/std/slice/index.html) 是对一块内存的视图，用指针和长度表示。
+`.len()` 方法返回存储在切片中的元数据
 
 ```rust
 // https://github.com/rust-lang/rust/blob/b998821e4c51c44a9ebee395c91323c374236bbb/library/core/src/str/mod.rs#L157-L159
@@ -137,7 +137,7 @@ pub const fn len(&self) -> usize {
 // https://github.com/rust-lang/rust/blob/b998821e4c51c44a9ebee395c91323c374236bbb/library/core/src/str/mod.rs#L323-L325
 
 pub const fn as_bytes(&self) -> &[u8] {
-    // SAFETY: const sound because we transmute two types with the same layout
+    // SAFETY: 因为两个类型具有相同布局，所以转 transmute 是安全的
     unsafe { mem::transmute(self) }
 }
 ```
@@ -146,22 +146,20 @@ pub const fn as_bytes(&self) -> &[u8] {
 // https://github.com/rust-lang/rust/blob/b998821e4c51c44a9ebee395c91323c374236bbb/library/core/src/slice/mod.rs#L129-L138
 
 pub const fn len(&self) -> usize {
-    // FIXME: Replace with `crate::ptr::metadata(self)` when that is const-stable.
-    // As of this writing this causes a "Const-stable functions can only call other
-    // const-stable functions" error.
+    // FIXME：当 `crate::ptr::metadata(self)` 成为常量稳定版本后，替换此句。
+    // 本文撰写时会导致 "常量稳定函数只能调用其他常量稳定函数" 的错误。
 
-    // SAFETY: Accessing the value from the `PtrRepr` union is safe since *const T
-    // and PtrComponents<T> have the same memory layouts. Only std can make this
-    // guarantee.
+    // SAFETY：从 `PtrRepr` 联合体访问值是安全的，因为 *const T
+    // 和 PtrComponents<T> 具有相同的内存布局。只有标准库能保证此点。
     unsafe { crate::ptr::PtrRepr { const_ptr: self }.components.metadata }
 }
 ```
 
-All the above code will get compiled into a single data access, so `.as_str().len()` is actually O(1).
+以上所有代码都会被编译成一次数据访问，因此 `.as_str().len()` 实际上是 O(1)。
 
-## Peek
+## 瞥视（Peek）
 
-To tokenize multi-character operators such as `++` or `+=`, a helper function `peek` is required:
+为了对多字符操作符如 `++` 或 `+=` 进行标记化，需要一个辅助函数 `peek`：
 
 ```rust
 fn peek(&self) -> Option<char> {
@@ -169,11 +167,11 @@ fn peek(&self) -> Option<char> {
 }
 ```
 
-We don't want to advance the original `chars` iterator so we clone the iterator and advance the index.
+我们不想让原始的 `chars` 迭代器前进，所以对迭代器进行克隆，然后向前移动 index。
 
 :::info
-The `clone` is cheap if we dig into the [source code](https://doc.rust-lang.org/src/core/slice/iter.rs.html#148-152),
-it just copies the tracking and boundary index.
+如果深入源码，`clone` 很便宜（[详情点此](https://doc.rust-lang.org/src/core/slice/iter.rs.html#148-152)），
+它只是复制了跟踪和边界索引。
 
 ```rust
 // https://github.com/rust-lang/rust/blob/b998821e4c51c44a9ebee395c91323c374236bbb/library/core/src/slice/iter.rs#L148-L152
@@ -187,17 +185,17 @@ impl<T> Clone for Iter<'_, T> {
 
 :::
 
-The difference between `peek` and `chars.next()` is the former will always return the **same** next `char`,
-while the later will move forward and return a different `char`.
+`peek` 与 `chars.next()` 的区别在于，前者总是返回**相同**的下一个 `char`，
+而后者会向前移动并返回不同的 `char`。
 
-To demonstrate, consider the string `abc`:
+以字符串 `abc` 为例：
 
-- repeated `peek()` call returns `Some(a)`, `Some(a)`, `Some(a)`, ...
-- repeated `chars.next()` call returns `Some('a')`, `Some('b')`, `Some('c')`, `None`.
+- 重复调用 `peek()` 会返回 `Some('a')`，`Some('a')`，`Some('a')`，...
+- 重复调用 `chars.next()` 会返回 `Some('a')`，`Some('b')`，`Some('c')`，`None`。
 
-Equipped with `peek`, tokenizing `++` and `+=` are just nested if statements.
+通过 `peek`，对 `++` 和 `+=` 的标记化只需套用嵌套的 `if` 语句。
 
-Here is a real-world implementation from [jsparagus](https://github.com/mozilla-spidermonkey/jsparagus):
+这是 [jsparagus](https://github.com/mozilla-spidermonkey/jsparagus) 中的实际示例：
 
 ```rust
 // https://github.com/mozilla-spidermonkey/jsparagus/blob/master/crates/parser/src/lexer.rs#L1769-L1791
@@ -227,36 +225,33 @@ Here is a real-world implementation from [jsparagus](https://github.com/mozilla-
 },
 ```
 
-The above logic applies to all operators, so let us expand our knowledge on lexing JavaScript.
+上述逻辑适用于所有操作符，所以我们可以扩展理解 JavaScript 的词法分析。
 
 ## JavaScript
 
-A lexer written in Rust is rather boring, it feels like writing C code
-where we write long chained if statements and check for each `char` and then return the respective token.
+用 Rust 编写的词法分析器相当枯燥，就像写 C 代码一样，
+一大串链式的 `if` 语句，每次检查单个字符，然后返回对应的令牌。
 
-The real fun begins when we start lexing for JavaScript.
+真正有趣的部分是在开始 lex JavaScript 时。
 
-Let's open up the [ECMAScript Language Specification](https://tc39.es/ecma262/) and re-learn JavaScript.
+让我们打开 [ECMAScript 语言规范](https://tc39.es/ecma262/) ，重新学习 JavaScript。
 
 :::tip
-I still remember the first time I opened up the specification and went into a little corner
-and cried in agony because it feels like reading foreign text with jargons everywhere.
-So head over to my [guide on reading the specification](/docs/learn/ecmascript/spec.html) if things don't make sense.
+我还记得第一次打开规范时，跑到一个角落，
+痛苦地哭了，因为那感觉像在阅读布满术语的外语。
+如果理解不了，可以参考我的 [阅读规范指南](/docs/learn/ecmascript/spec.html)。
 :::
 
-### Comments
+### 注释
 
-Comments have no semantic meaning, they can be skipped if we are writing a runtime,
-but they need to be taken into consideration if we are writing a linter or a bundler.
+注释没有语义，只要写运行时可以跳过它们，但如果写静态分析器（linter）或打包工具（bundler），它们就必须要考虑。
 
-### Identifiers and Unicode
+### 标识符与 Unicode
 
-We mostly code in ASCII,
-but [Chapter 11 ECMAScript Language: Source Text](https://tc39.es/ecma262/#sec-ecmascript-language-source-code)
-states the source text should be in Unicode.
-And [Chapter 12.6 Names and Keywords](https://tc39.es/ecma262/#sec-names-and-keywords)
-states the identifiers are interpreted according to the Default Identifier Syntax given in Unicode Standard Annex #31.
-In detail:
+我们主要使用 ASCII 编码，
+但 [第11章 ECMAScript 语言：源文本](https://tc39.es/ecma262/#sec-ecmascript-language-source-code) 指定源文本应使用 Unicode。
+[第12.6章 名称与关键字](https://tc39.es/ecma262/#sec-names-and-keywords) 规定：标识符的解析应遵循 Unicode 标准附录 #31 中的 默认标识符语法（Default Identifier Syntax）。
+具体来说：
 
 ```
 IdentifierStartChar ::
@@ -266,27 +261,27 @@ IdentifierPartChar ::
     UnicodeIDContinue
 
 UnicodeIDStart ::
-    any Unicode code point with the Unicode property “ID_Start”
+    具有“ID_Start”属性的任何 Unicode 码点
 
 UnicodeIDContinue ::
-    any Unicode code point with the Unicode property “ID_Continue”
+    具有“ID_Continue”属性的任何 Unicode 码点
 ```
 
-This means that we can write `var ಠ_ಠ` but not `var 🦀`,
-`ಠ` has the Unicode property "ID_Start" while `🦀` does not.
+这意味着我们可以写 `var ಠ_ಠ` ，但不能写 `var 🦀`，
+因为 `ಠ` 具有“ID_Start”属性，而 `🦀` 没有。
 
 :::info
 
-I published the [unicode-id-start](https://crates.io/crates/unicode-id-start) crate for this exact purpose.
-`unicode_id_start::is_id_start(char)` and `unicode_id_start::is_id_continue(char)` can be called to check Unicode.
+我为此专门发布过 [unicode-id-start](https://crates.io/crates/unicode-id-start) crate。
+`unicode_id_start::is_id_start(char)` 和 `unicode_id_start::is_id_continue(char)` 可以调用以检查 Unicode。
 
 :::
 
-### Keywords
+### 关键字
 
-All the [keywords](https://tc39.es/ecma262/#sec-keywords-and-reserved-words) such as `if`, `while` and `for`
-need to be tokenized and interpreted as a whole.
-They need to be added to the token kind enum so we don't have to make string comparisons in the parser.
+所有的 [关键字](https://tc39.es/ecma262/#sec-keywords-and-reserved-words)，如 `if`、`while` 和 `for`，
+都需要作为一个整体进行标记化和解释。
+它们需要添加到令牌类型枚举中，这样在解析器中就不用进行字符串比较。
 
 ```rust
 pub enum Kind {
@@ -298,14 +293,14 @@ pub enum Kind {
 ```
 
 :::tip
-`undefined` is not a keyword, it is unnecessary to add it here.
+`undefined` 不是关键字，没必要在这里添加。
 :::
 
-Tokenizing keywords will just be matching the identifier from above.
+标记化关键字实际上就是匹配前面定义的标识符。
 
 ```rust
 fn match_keyword(&self, ident: &str) -> Kind {
-    // all keywords are 1 < length <= 10
+    // 所有关键字长度在 1 到 10 之间
     if ident.len() == 1 || ident.len() > 10 {
         return Kind::Identifier;
     }
@@ -318,17 +313,17 @@ fn match_keyword(&self, ident: &str) -> Kind {
 }
 ```
 
-### Token Value
+### 令牌值（Token Value）
 
-We often need to compare identifiers, numbers and strings in later stages of the compiler phases,
-for example testing against identifiers inside a linter.
+在后期的编译器阶段，我们经常需要比较标识符、数字和字符串，
+例如对静态分析器中的标识符进行检测。
 
-These values are currently in plain source text,
-let's convert them to Rust types so they are easier to work with.
+这些值目前存储为纯源文本，
+我们可以将它们转换为 Rust 类型，这样处理起来更方便。
 
 ```rust{4-6}
 pub enum Kind {
-    Eof, // end of file
+    Eof, // 结束符
     Plus,
     Identifier,
     Number,
@@ -337,16 +332,16 @@ pub enum Kind {
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Token {
-    /// Token Type
+    /// 令牌类型
     pub kind: Kind,
 
-    /// Start offset in source
+    /// 源中的起始偏移
     pub start: usize,
 
-    /// End offset in source
+    /// 源中的结束偏移
     pub end: usize,
 
-    pub value: TokenValue,// [!code highlight]
+    pub value: TokenValue, // [!代码高亮]
 }
 
 #[derive(Debug, Clone, PartialEq)]
@@ -357,26 +352,25 @@ pub enum TokenValue {
 }
 ```
 
-When an identifier `foo` or string `"bar"` is tokenized , we get
+当标记化到标识符 `foo` 或字符串 `"bar"` 时，会得到如下内容：
 
 ```
 Token { kind: Kind::Identifier, start: 0, end: 2, value: TokenValue::String("foo") }
 Token { kind: Kind::String, start: 0, end: 4, value: TokenValue::String("bar") }
 ```
 
-To convert them to Rust strings, call `let s = self.source[token.start..token.end].to_string()`
-and save it with `token.value = TokenValue::String(s)`.
+要将它们转换成 Rust 字符串，只需调用 `let s = self.source[token.start..token.end].to_string()` ，
+并用 `token.value = TokenValue::String(s)` 进行存储。
 
-When we tokenize a number `1.23`, we get a token with `Token { start: 0, end: 3 }`.
-To convert it to Rust `f64`, we can use the string [`parse`](https://doc.rust-lang.org/std/primitive.str.html#method.parse)
-method by calling `self.source[token.start..token.end].parse::<f64>()`, and then save the value into `token.value`.
-For binary, octal and integers, an example of their parsing techniques can be found in [jsparagus](https://github.com/mozilla-spidermonkey/jsparagus/blob/master/crates/parser/src/numeric_value.rs).
+当标记化一个数字 `1.23` 时，会得到一个有 `Token { start: 0, end: 3 }` 的令牌。
+要将其转换为 Rust 的 `f64`，可以调用字符串的 [`parse`](https://doc.rust-lang.org/std/primitive.str.html#method.parse) 方法，例如：`self.source[token.start..token.end].parse::<f64>()` ，
+然后将值存入 `token.value`。对于二进制、八进制和十进制整数，其解析技巧可以参考 [jsparagus](https://github.com/mozilla-spidermonkey/jsparagus/blob/master/crates/parser/src/numeric_value.rs)。
 
-## Rust Optimizations
+## Rust 优化
 
-### Smaller Tokens
+### 更小的标记
 
-It is tempting to put the token values inside the `Kind` enum and aim for simpler and safer code:
+将标记值放在 `Kind` 枚举中，并追求更简洁、更安全的代码，虽然很有吸引力：
 
 ```rust
 pub enum Kind {
@@ -385,29 +379,29 @@ pub enum Kind {
 }
 ```
 
-But it is known that the byte size of a Rust enum is the union of all its variants.
-This enum packs a lot of bytes compared to the original enum, which has only 1 byte.
-There will be heavy usages of this `Kind` enum in the parser,
-dealing with a 1 byte enum will obviously be faster than a multi-byte enum.
+但众所周知，Rust 枚举的字节大小是所有变体的联合体。
+这个枚举比原始枚举占用了更多的字节，后者只有1个字节。
+在解析器中会大量使用这个 `Kind` 枚举，
+处理只有1字节的枚举显然会比多字节的枚举要快。
 
-### String Interning
+### 字符串内部化
 
-It is not performant to use `String` in compilers, mainly due to:
+在编译器中使用 `String` 性能并不优越，主要原因包括：
 
-- `String` is a heap allocated object
-- String comparison is an O(n) operation
+- `String`是一个堆上分配的对象
+- 字符串比较是一个 O(n) 操作
 
-[String Interning](https://en.wikipedia.org/wiki/String_interning) solves these problems by
-storing only one copy of each distinct string value with a unique identifier in a cache.
-There will only be one heap allocation per distinct identifier or string, and string comparisons become O(1).
+[String Interning](https://en.wikipedia.org/wiki/String_interning) 通过
+在缓存中只存放每个不同字符串值的一个副本及其唯一标识符来解决这些问题。
+每个不同的标识符或字符串只会有一次堆分配，字符串比较变为 O(1)。
 
-There are lots of string interning libraries on [crates.io](https://crates.io/search?q=string%20interning)
-with different pros and cons.
+在 [crates.io](https://crates.io/search?q=string%20interning) 上有许多字符串内部化库，
+各有优缺点。
 
-A sufficient starting point is to use [`string-cache`](https://crates.io/crates/string_cache),
-it has an `Atom` type and a compile time `atom!("string")` interface.
+一个足够的起点是使用 [`string-cache`](https://crates.io/crates/string_cache)，
+它具有 `Atom` 类型和编译时 `atom!("string")` 接口。
 
-With `string-cache`, `TokenValue` becomes
+使用 `string-cache` 后，`TokenValue` 变为
 
 ```rust
 #[derive(Debug, Clone, PartialEq)]
@@ -418,4 +412,4 @@ pub enum TokenValue {
 }
 ```
 
-and string comparison becomes `matches!(value, TokenValue::String(atom!("string")))`.
+字符串比较变成 `matches!(value, TokenValue::String(atom!("string")))`。

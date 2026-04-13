@@ -1,26 +1,26 @@
 ---
-title: Abstract Syntax Tree
+title: 抽象语法树
 outline: deep
 ---
 
 # AST
 
-The parser in the upcoming chapter is responsible for turning Tokens into an abstract syntax tree (AST).
-It is much nicer to work on the AST compared to the source text.
+下一章中的解析器负责将令牌（Tokens）转换为抽象语法树（AST）。
+与源代码文本相比，在 AST 上工作要愉快得多。
 
-All JavaScript toolings work on the AST level, for example:
+所有 JavaScript 工具都在 AST 层面工作，例如：
 
-- A linter (e.g. ESLint) checks the AST for errors
-- A formatter (e.g.prettier) prints the AST back to JavaScript text
-- A minifier (e.g. terser) transforms the AST
-- A bundler connects all import and export statements between ASTs from different files
+- 一个 linter（例如 ESLint）检查 AST 中的错误
+- 一个 formatter（例如 prettier）将 AST 打印回 JavaScript 文本
+- 一个 minifier（例如 terser）转换 AST
+- 一个 bundler 连接不同文件 AST 之间的所有 import 和 export 语句
 
-In this chapter, let's construct a JavaScript AST by using Rust structs and enums.
+在本章中，让我们通过使用 Rust 结构体和枚举来构建一个 JavaScript AST。
 
-## Getting familiar with the AST
+## 熟悉 AST
 
-To get ourselves comfortable with an AST, let's visit [ASTExplorer](https://astexplorer.net/) and see what it looks like.
-On the top panel, select JavaScript, and then `acorn`, type in `var a` and we will see a tree view and a JSON view.
+为了让我们熟悉 AST，让我们访问 [ASTExplorer](https://astexplorer.net/) 看看它是什么样子的。
+在顶部面板中，选择 JavaScript，然后选择 `acorn`，输入 `var a`，我们将看到一个树视图和一个 JSON 视图。
 
 ```json
 {
@@ -53,24 +53,24 @@ On the top panel, select JavaScript, and then `acorn`, type in `var a` and we wi
 }
 ```
 
-Since this is a tree, every object is a node with a type name (e.g. `Program`, `VariableDeclaration`, `VariableDeclarator`, `Identifier`).
-`start` and `end` are the offsets from the source.
+由于这是一棵树，每个对象都是一个带有类型名称的节点（例如 `Program`、`VariableDeclaration`、`VariableDeclarator`、`Identifier`）。
+`start` 和 `end` 是相对于源代码的偏移量。
 
 ## estree
 
-[estree](https://github.com/estree/estree) is a community standard grammar specification for JavaScript,
-it defines [all the AST nodes](https://github.com/estree/estree/blob/master/es5.md) so different tools
-can be compatible with each other.
+[estree](https://github.com/estree/estree) 是 JavaScript 的社区标准语法规范，
+它定义了 [所有 AST 节点](https://github.com/estree/estree/blob/master/es5.md)，以便不同的工具
+可以相互兼容。
 
-The basic building block for any AST node is the `Node` type:
+任何 AST 节点的基本构建块是 `Node` 类型：
 
 ```rust
 #[derive(Debug, Default, Clone, Copy, Serialize, PartialEq, Eq)]
 pub struct Node {
-    /// Start offset in source
+    /// 源代码中的起始偏移量
     pub start: usize,
 
-    /// End offset in source
+    /// 源代码中的结束偏移量
     pub end: usize,
 }
 
@@ -81,7 +81,7 @@ impl Node {
 }
 ```
 
-AST for `var a` is defined as
+`var a` 的 AST 定义为
 
 ```rust
 pub struct Program {
@@ -113,9 +113,9 @@ pub enum Expression {
 }
 ```
 
-Rust does not have inheritance, so `Node` is added to each struct (this is called "composition over Inheritance").
+Rust 没有继承，所以 `Node` 被添加到每个结构体中（这称为“组合优于继承”）。
 
-`Statement`s and `Expression`s are enums because they will be expanded with a lot of other node types, for example:
+`Statement` 和 `Expression` 是枚举，因为它们将扩展许多其他节点类型，例如：
 
 ```rust
 pub enum Expression {
@@ -134,43 +134,43 @@ pub struct YieldExpression {
 }
 ```
 
-The `Box` is needed because self-referential structs are not allowed in Rust.
+需要 `Box` 是因为 Rust 不允许自引用结构体。
 
 :::info
-JavaScript grammar has a lot of nuisances, read the [grammar tutorial](/docs/learn/ecmascript/grammar.html) for amusement.
+JavaScript 语法有很多繁琐之处，阅读 [语法教程](/docs/learn/ecmascript/grammar.html) 以供娱乐。
 :::
 
-## Rust Optimizations
+## Rust 优化
 
-### Memory Allocations
+### 内存分配
 
-We need to look out for heap-allocated structs such as `Vec` and `Box` because heap allocations are not cheap.
+我们需要留意堆分配的结构体，如 `Vec` 和 `Box`，因为堆分配开销不小。
 
-Take a look at the [real world implementation from swc](https://github.com/swc-project/swc/blob/main/crates/swc_ecma_ast/src/expr.rs),
-we can see that an AST can have lots of `Box`s and `Vec`s, and also note that the `Statement` and `Expression` enums contain
-a dozen of enum variants.
+看看 [swc 的真实世界实现](https://github.com/swc-project/swc/blob/main/crates/swc_ecma_ast/src/expr.rs)，
+我们可以看到一个 AST 可能有很多 `Box` 和 `Vec`，还要注意 `Statement` 和 `Expression` 枚举包含
+十几个枚举变体。
 
-### Memory Arena
+### 内存 Arena
 
-Using the global memory allocator for the AST is actually not really efficient.
-Every `Box` and `Vec` are allocated on demand and then dropped separately.
-What we would like to do is pre-allocate memory and drop it in wholesale.
+使用全局内存分配器对于 AST 来说实际上并不是真的很高效。
+每个 `Box` 和 `Vec` 都是按需分配然后单独释放的。
+我们想要做的是预分配内存并批量释放它。
 
 :::info
-See also [Arenas in Rust](https://manishearth.github.io/blog/2021/03/15/arenas-in-rust) and [Flattening ASTs](https://www.cs.cornell.edu/~asampson/blog/flattening.html) for more background on storing ASTs in memory arenas.
+另见 [Rust 中的 Arenas](https://manishearth.github.io/blog/2021/03/15/arenas-in-rust) 和 [扁平化 ASTs](https://www.cs.cornell.edu/~asampson/blog/flattening.html) 以获取更多关于在内存 arena 中存储 AST 的背景信息。
 :::
 
-[`bumpalo`](https://docs.rs/bumpalo/latest/bumpalo/) is a very good candidate for our use case, according to its documentation:
+[`bumpalo`](https://docs.rs/bumpalo/latest/bumpalo/) 是我们用例的一个非常好的候选者，根据其文档：
 
-> Bump allocation is a fast, but limited approach to allocation.
-> We have a chunk of memory, and we maintain a pointer within that memory. Whenever we allocate an object,
-> we do a quick check that we have enough capacity left in our chunk to allocate the object and then update the pointer by the object’s size. That’s it!
+> Bump 分配是一种快速但有限的分配方法。
+> 我们有一块内存，并且我们在该内存中维护一个指针。每当我们要分配一个对象时，
+> 我们会快速检查块中是否有足够的容量来分配该对象，然后通过对象的大小更新指针。就是这样！
 >
-> The disadvantage of bump allocation is that there is no general way to deallocate individual objects or reclaim the memory region for a no-longer-in-use object.
+> bump 分配的缺点是没有通用方法来释放单个对象或回收不再使用的对象的内存区域。
 >
-> These trade offs make bump allocation well-suited for phase-oriented allocations. That is, a group of objects that will all be allocated during the same program phase, used, and then can all be deallocated together as a group.
+> 这些权衡使得 bump 分配非常适合面向阶段的分配。也就是说，一组对象将在同一程序阶段期间全部分配、使用，然后可以作为一个组全部分配释放。
 
-By using `bumpalo::collections::Vec` and `bumpalo::boxed::Box`, our AST will have lifetimes added to it:
+通过使用 `bumpalo::collections::Vec` 和 `bumpalo::boxed::Box`，我们的 AST 将添加生命周期：
 
 ```rust
 use bumpalo::collections::Vec;
@@ -193,37 +193,37 @@ pub struct YieldExpression<'a> {
 ```
 
 :::info
-Please be cautious if we are not comfortable dealing with lifetimes at this stage.
-Our program will work fine without a memory arena.
+如果在这个阶段我们还不习惯处理生命周期，请谨慎行事。
+我们的程序在没有内存 arena 的情况下也能正常工作。
 
-Code in the following chapters does not demonstrate the use of a memory arena for simplicity.
+为了简单起见，后续章节中的代码没有演示内存 arena 的使用。
 :::
 
-### Enum Size
+### 枚举大小
 
-The first optimization we are going to make is to reduce the size of the enums.
+我们要进行的第一个优化是减小枚举的大小。
 
-It is known that the byte size of a Rust enum is the union of all its variants.
-For example, the following enum will take up 56 bytes (1 byte for the tag, 48 bytes for the payload, and 8 bytes for alignment).
+众所周知，Rust 枚举的字节大小是其所有变体的联合。
+例如，以下枚举将占用 56 字节（标签 1 字节，负载 48 字节，对齐 8 字节）。
 
 ```rust
 enum Name {
-    Anonymous, // 0 byte payload
-    Nickname(String), // 24 byte payload
-    FullName{ first: String, last: String }, // 48 byte payload
+    Anonymous, // 0 字节负载
+    Nickname(String), // 24 字节负载
+    FullName{ first: String, last: String }, // 48 字节负载
 }
 ```
 
 :::info
-This example is taken from [this blog post](https://adeschamps.github.io/enum-size)
+此示例取自 [这篇博客文章](https://adeschamps.github.io/enum-size)
 :::
 
-As for the `Expression` and `Statement` enums, they can take up to more than 200 bytes with our current setup.
+至于 `Expression` 和 `Statement` 枚举，在我们当前的设置下，它们可能占用超过 200 字节。
 
-These 200 bytes need to be passed around, or accessed every time we do a `matches!(expr, Expression::AwaitExpression(_))` check,
-which is not very cache friendly for performance.
+这 200 字节需要被传递，或者每次我们进行 `matches!(expr, Expression::AwaitExpression(_))` 检查时都需要访问，
+这对性能来说并不是很缓存友好。
 
-A better approach would be to box the enum variants and only carry 16 bytes around.
+更好的方法是将枚举变体装箱，只携带 16 字节。
 
 ```rust
 pub enum Expression {
@@ -242,7 +242,7 @@ pub struct YieldExpression {
 }
 ```
 
-To make sure the enums are indeed 16 bytes on 64-bit systems, we can use `std::mem::size_of`.
+为了确保枚举在 64 位系统上确实是 16 字节，我们可以使用 `std::mem::size_of`。
 
 ```rust
 #[test]
@@ -253,30 +253,30 @@ fn no_bloat_enum_sizes() {
 }
 ```
 
-"no bloat enum sizes" test cases can often be seen in the Rust compiler source code for ensuring small enum sizes.
+"no bloat enum sizes" 测试用例经常出现在 Rust 编译器源代码中，以确保较小的枚举大小。
 
 ```rust
 // https://github.com/rust-lang/rust/blob/9c20b2a8cc7588decb6de25ac6a7912dcef24d65/compiler/rustc_ast/src/ast.rs#L3033-L3042
 
-// Some nodes are used a lot. Make sure they don't unintentionally get bigger.
+// 一些节点被频繁使用。确保它们不会意外变大。
 #[cfg(all(target_arch = "x86_64", target_pointer_width = "64"))]
 mod size_asserts {
     use super::*;
     use rustc_data_structures::static_assert_size;
-    // These are in alphabetical order, which is easy to maintain.
+    // 这些按字母顺序排列，易于维护。
     static_assert_size!(AssocItem, 160);
     static_assert_size!(AssocItemKind, 72);
     static_assert_size!(Attribute, 32);
     static_assert_size!(Block, 48);
 ```
 
-To find other large types, we can run
+要查找其他大型类型，我们可以运行
 
 ```bash
 RUSTFLAGS=-Zprint-type-sizes cargo +nightly build -p name_of_the_crate --release
 ```
 
-and see
+并看到
 
 ```
 print-type-size type: `ast::js::Statement`: 16 bytes, alignment: 8 bytes
@@ -291,10 +291,10 @@ print-type-size     variant `DebuggerStatement`: 8 bytes
 print-type-size         field `.0`: 8 bytes
 ```
 
-## JSON Serialization
+## JSON 序列化
 
-[serde](https://serde.rs/) can be used serialize the AST to JSON. Some techniques are needed to make it `estree` compatible.
-Here are some examples:
+[serde](https://serde.rs/) 可用于将 AST 序列化为 JSON。需要一些技术使其与 `estree` 兼容。
+以下是一些示例：
 
 ```rust
 use serde::Serialize;
@@ -324,6 +324,6 @@ pub enum Expression<'a> {
 }
 ```
 
-- `serde(tag = "type")` is used to make the struct name a "type" field, i.e. `{ "type" : "..." }`
-- `cfg_attr` + `serde(rename)` is used to rename different struct names to the same name, since `estree` does not distinguish different identifiers
-- `serde(untagged)` on the enum is used to not create an extra JSON object for the enum
+- `serde(tag = "type")` 用于使结构体名称成为一个 "type" 字段，即 `{ "type" : "..." }`
+- `cfg_attr` + `serde(rename)` 用于将不同的结构体名称重命名为相同的名称，因为 `estree` 不区分不同的标识符
+- 枚举上的 `serde(untagged)` 用于不为枚举创建额外的 JSON 对象

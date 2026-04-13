@@ -1,33 +1,33 @@
 ---
-title: Semantic Analysis
-outline: deep
+title: 语义分析
+outline: 深度
 ---
 
-# Semantic Analysis
+# 语义分析
 
-Semantic analysis is the process of checking whether our source code is correct or not.
-We need to check against all the "Early Error" rules in the ECMAScript specification.
+语义分析是检查我们的源代码是否正确的过程。  
+我们需要针对 ECMAScript 规范中的所有 “早期错误”(Early Error) 规则进行检查。
 
-## Context
+## 上下文
 
-For grammar contexts such as `[Yield]` or `[Await]`, an error need to be raised when the grammar forbids them, for example:
+对于诸如 `[Yield]` 或 `[Await]` 的语法上下文，当语法禁止它们时，需要抛出错误，例如：
 
-```
+```text
 BindingIdentifier[Yield, Await] :
   Identifier
   yield
   await
 
-13.1.1 Static Semantics: Early Errors
+13.1.1 静态语义：早期错误
 
 BindingIdentifier[Yield, Await] : yield
-* It is a Syntax Error if this production has a [Yield] parameter.
+* 如果此产生式具有 [Yield] 参数，则为语法错误。
 
 * BindingIdentifier[Yield, Await] : await
-It is a Syntax Error if this production has an [Await] parameter.
+如果此产生式具有 [Await] 参数，则为语法错误。
 ```
 
-need to raise an error for
+需要对以下代码抛出错误：
 
 ```javascript
 async function* foo() {
@@ -35,14 +35,14 @@ async function* foo() {
 }
 ```
 
-because `AsyncGeneratorDeclaration` has `[+Yield]` and `[+Await]` for `AsyncGeneratorBody`:
+因为 `AsyncGeneratorDeclaration` 对 `AsyncGeneratorBody` 具有 `[+Yield]` 和 `[+Await]`：
 
-```
+```text
 AsyncGeneratorBody :
   FunctionBody[+Yield, +Await]
 ```
 
-An example in Biome checking for the `yield` keyword:
+下面是 Biome 检查 `yield` 关键字的示例：
 
 ```rust
 // https://github.com/rome/tools/blob/5a059c0413baf1d54436ac0c149a829f0dfd1f4d/crates/rome_js_parser/src/syntax/expr.rs#L1368-L1377
@@ -54,26 +54,24 @@ pub(super) fn parse_identifier(p: &mut Parser, kind: JsSyntaxKind) -> ParsedSynt
 
     let error = match p.cur() {
         T![yield] if p.state.in_generator() => Some(
-            p.err_builder("Illegal use of `yield` as an identifier in generator function")
+            p.err_builder("在生成器函数中非法将 `yield` 用作标识符")
                 .primary(p.cur_range(), ""),
         ),
 ```
 
-## Scope
+## 作用域
 
-For declaration errors:
+关于声明错误：
 
-```
-14.2.1 Static Semantics: Early Errors
+```text
+14.2.1 静态语义：早期错误
 
 Block : { StatementList }
-* It is a Syntax Error if the LexicallyDeclaredNames of StatementList contains any duplicate entries.
-* It is a Syntax Error if any element of the LexicallyDeclaredNames of StatementList also occurs in the VarDeclaredNames of StatementList.
+* 如果 StatementList 的 LexicallyDeclaredNames 包含任何重复条目，则为语法错误。
+* 如果 StatementList 的任意 LexicallyDeclaredNames 条目也出现在 StatementList 的 VarDeclaredNames 中，则为语法错误。
 ```
 
-We need to add a scope tree. A scope tree has all the `var`s and `let`s declared inside it.
-It is also a parent pointing tree where we want to navigate up the tree and search for binding identifiers in parent scopes.
-The data structure we can use is a [`indextree`](https://docs.rs/indextree/latest/indextree/).
+我们需要添加一个作用域树。作用域树包含所有在其中声明的 `var` 和 `let`。它也是一棵指向父节点的树，我们需要向上遍历树并在父作用域中搜索绑定标识符。可以使用 [`indextree`](https://docs.rs/indextree/latest/indextree/) 作为数据结构。
 
 ```rust
 use indextree::{Arena, Node, NodeId};
@@ -95,26 +93,26 @@ bitflags! {
 
 #[derive(Debug, Clone)]
 pub struct Scope {
-    /// [Strict Mode Code](https://tc39.es/ecma262/#sec-strict-mode-code)
-    /// [Use Strict Directive Prologue](https://tc39.es/ecma262/#sec-directive-prologues-and-the-use-strict-directive)
+    /// [严格模式代码](https://tc39.es/ecma262/#sec-strict-mode-code)
+    /// [使用严格指令序言](https://tc39.es/ecma262/#sec-directive-prologues-and-the-use-strict-directive)
     pub strict_mode: bool,
 
     pub flags: ScopeFlags,
 
-    /// [Lexically Declared Names](https://tc39.es/ecma262/#sec-static-semantics-lexicallydeclarednames)
+    /// [词法声明的名称](https://tc39.es/ecma262/#sec-static-semantics-lexicallydeclarednames)
     pub lexical: IndexMap<Atom, SymbolId, FxBuildHasher>,
 
-    /// [Var Declared Names](https://tc39.es/ecma262/#sec-static-semantics-vardeclarednames)
+    /// [变量声明的名称](https://tc39.es/ecma262/#sec-static-semantics-vardeclarednames)
     pub var: IndexMap<Atom, SymbolId, FxBuildHasher>,
 
-    /// Function Declarations
+    /// 函数声明
     pub function: IndexMap<Atom, SymbolId, FxBuildHasher>,
 }
 ```
 
-The scope tree can either be built inside the parser for performance reasons, or built-in a separate AST pass.
+作用域树可以在解析器内部构建以提升性能，或在单独的 AST 通过阶段中构建。
 
-Generally, a `ScopeBuilder` is needed:
+通常，需要一个 `ScopeBuilder`：
 
 ```rust
 pub struct ScopeBuilder {
@@ -129,7 +127,7 @@ impl ScopeBuilder {
     }
 
     pub fn enter_scope(&mut self, flags: ScopeFlags) {
-        // Inherit strict mode for functions
+        // 为函数继承严格模式
         // https://tc39.es/ecma262/#sec-strict-mode-code
         let mut strict_mode = self.scopes[self.root_scope_id].get().strict_mode;
         let parent_scope = self.current_scope();
@@ -152,24 +150,21 @@ impl ScopeBuilder {
 }
 ```
 
-We then call `enter_scope` and `leave_scope` accordingly inside the parse functions, for example in acorn:
+随后在解析函数内部相应调用 `enter_scope` 与 `leave_scope`，例如在 acorn 中：
 
 ```javascript reference
 https://github.com/acornjs/acorn/blob/11735729c4ebe590e406f952059813f250a4cbd1/acorn/src/statement.js#L425-L437
 ```
 
 :::info
-One of the downsides of this approach is that for arrow functions,
-we may need to create a temporary scope and then drop it afterwards if it is not an arrow function but a sequence expression.
-This is detailed in [cover grammar](/docs/learn/ecmascript/grammar#cover-grammar).
+这种方式的一个缺点是，对于箭头函数，如果它不是箭头函数而是序列表达式，则可能需要创建临时作用域并在之后丢弃它。  
+详细说明见 [覆盖语法](/docs/learn/ecmascript/grammar#cover-grammar)。
 :::
 
-### The Visitor Pattern
+### 访问者模式
 
-If we decide to build the scope tree in another pass for simplicity,
-then every node in the AST need to be visited in depth-first preorder and build the scope tree.
+如果我们决定在另一遍中构建作用域树以简化实现，那么需要对 AST 中的每个节点进行深度优先先序遍历并构建作用域树。
 
-We can use the [Visitor Pattern](https://rust-unofficial.github.io/patterns/patterns/behavioural/visitor.html)
-to separate out the traversal process from the operations performed on each object.
+我们可以使用 [访问者模式](https://rust-unofficial.github.io/patterns/patterns/behavioural/visitor.html) 将遍历过程与对每个对象执行的操作分离。
 
-Upon visit, we can call `enter_scope` and `leave_scope` accordingly to build the scope tree.
+在访问时，我们可以相应地调用 `enter_scope` 与 `leave_scope` 来构建作用域树。

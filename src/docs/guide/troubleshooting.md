@@ -1,13 +1,13 @@
-# Troubleshooting
+# 故障排除
 
-## Cannot find native binding. npm has a bug related to optional dependencies
+## 找不到原生绑定。npm 有一个与可选依赖相关的 bug
 
-This is a npm (< v11.3.0) bug, things you can try:
+这是一个 npm (< v11.3.0) 的 bug，你可以尝试以下方法：
 
-- use latest npm
-- use pnpm
+- 使用最新版的 npm
+- 使用 pnpm
 - `rm -rf node_modules; npm i`
-- Install one of these bindings explicitly in your package.json because package manager is not picking up the optional dependency:
+- 在你的 package.json 中显式安装以下绑定之一，因为包管理器没有识别到可选依赖：
 
 ```
 @{app}/binding-win32-x64-msvc
@@ -27,4 +27,4 @@ This is a npm (< v11.3.0) bug, things you can try:
 @{app}/binding-wasm32-wasi
 ```
 
-where app is `oxlint`, `oxfmt`, `oxc-parser`, `oxc-transform`, `oxc-minify`, `oxc-resolver`
+其中 app 是 `oxlint`、`oxfmt`、`oxc-parser`、`oxc-transform`、`oxc-minify`、`oxc-resolver`

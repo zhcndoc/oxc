@@ -2,13 +2,13 @@
 search: false
 ---
 
-# Oxlint Configuration File
+# Oxlint 配置文件
 
-This configuration is aligned with ESLint v8's configuration schema (`eslintrc.json`).
+此配置与 ESLint v8 的配置模式（`eslintrc.json`）保持一致。
 
-Usage: `oxlint -c oxlintrc.json`
+用法：`oxlint -c oxlintrc.json`
 
-Example
+示例
 
 `.oxlintrc.json`
 
@@ -88,19 +88,19 @@ export default defineConfig({
 
 ## $schema
 
-type: `string`
+类型：`string`
 
-Schema URI for editor tooling.
+用于编辑器工具的 Schema URI。
 
 ## categories
 
-type: `object`
+类型：`object`
 
-Configure an entire category of rules all at once.
+一次性配置整个规则类别。
 
-Rules enabled or disabled this way will be overwritten by individual rules in the `rules` field.
+以此方式启用或禁用的规则将被 `rules` 字段中的单个规则覆盖。
 
-Example
+示例
 
 ```json
 {
@@ -130,35 +130,29 @@ Example
 
 ## env
 
-type: `Record<string, boolean>`
+类型：`Record<string, boolean>`
 
-Predefine global variables.
+预定义全局变量。
 
-Environments specify what global variables are predefined.
-See [ESLint's list of environments](https://eslint.org/docs/v8.x/use/configure/language-options#specifying-environments)
-for what environments are available and what each one provides.
+环境指定了预定义的全局变量。
+请参阅 [ESLint 的环境列表](https://eslint.org/docs/v8.x/use/configure/language-options#specifying-environments)
+以了解可用环境及其各自提供的内容。
 
 ## extends
 
-type: `string[]`
+类型：`string[]`
 
-Paths of configuration files that this configuration file extends (inherits from). The files
-are resolved relative to the location of the configuration file that contains the `extends`
-property. The configuration files are merged from the first to the last, with the last file
-overriding the previous ones.
+此配置文件扩展（继承自）的配置文件路径。文件路径是相对于包含 `extends` 属性的配置文件的位置解析的。配置文件从第一个到最后一个合并，最后一个文件覆盖之前的文件。
 
 ## globals
 
-type: `Record<string, string>`
+类型：`Record<string, string>`
 
-Add or remove global variables.
+添加或移除全局变量。
 
-For each global variable, set the corresponding value equal to `"writable"`
-to allow the variable to be overwritten or `"readonly"` to disallow overwriting.
+对于每个全局变量，将相应的值设置为 `"writable"` 以允许变量被覆盖，或设置为 `"readonly"` 以禁止覆盖。
 
-Globals can be disabled by setting their value to `"off"`. For example, in
-an environment where most Es2015 globals are available but `Promise` is unavailable,
-you might use this config:
+可以通过将全局变量的值设置为 `"off"` 来禁用它们。例如，在一个大多数 Es2015 全局变量可用但 `Promise` 不可用的环境中，你可以使用此配置：
 
 ```json
 {
@@ -172,31 +166,29 @@ you might use this config:
 }
 ```
 
-You may also use `"readable"` or `false` to represent `"readonly"`, and
-`"writeable"` or `true` to represent `"writable"`.
+你也可以使用 `"readable"` 或 `false` 来表示 `"readonly"`，使用 `"writeable"` 或 `true` 来表示 `"writable"`。
 
 ## ignorePatterns
 
-type: `string[]`
+类型：`string[]`
 
-default: `[]`
+默认值：`[]`
 
-Globs to ignore during linting. These are resolved from the configuration file path.
+linting 期间要忽略的 Glob 模式。这些模式是从配置文件路径解析的。
 
 ## jsPlugins
 
-type: `array`
+类型：`array`
 
-JS plugins, allows usage of ESLint plugins with Oxlint.
+JS 插件，允许在 Oxlint 中使用 ESLint 插件。
 
-Read more about JS plugins in
-[the docs](https://oxc.rs/docs/guide/usage/linter/js-plugins.html).
+在 [文档](https://oxc.rs/docs/guide/usage/linter/js-plugins.html) 中了解更多关于 JS 插件的信息。
 
-Note: JS plugins are in alpha and not subject to semver.
+注意：JS 插件处于 alpha 阶段，不受语义版本控制约束。
 
-Examples:
+示例：
 
-Basic usage with a local plugin path.
+使用本地插件路径的基本用法。
 
 ```json
 {
@@ -207,15 +199,14 @@ Basic usage with a local plugin path.
 }
 ```
 
-Basic usage with a TypeScript plugin and a local plugin path.
+使用 TypeScript 插件和本地插件路径的基本用法。
 
-TypeScript plugin files are supported in the following environments:
+TypeScript 插件文件在以下环境中受支持：
 
-- Deno and Bun: TypeScript files are supported natively.
-- Node.js >=22.18.0 and Node.js ^20.19.0: TypeScript files are supported natively with built-in
-  type-stripping enabled by default.
+- Deno 和 Bun：原生支持 TypeScript 文件。
+- Node.js >=22.18.0 和 Node.js ^20.19.0：原生支持 TypeScript 文件，默认启用内置的类型剥离功能。
 
-For older Node.js versions, TypeScript plugins are not supported. Please use JavaScript plugins or upgrade your Node version.
+对于较旧版本的 Node.js，不支持 TypeScript 插件。请使用 JavaScript 插件或升级你的 Node 版本。
 
 ```json
 {
@@ -226,8 +217,7 @@ For older Node.js versions, TypeScript plugins are not supported. Please use Jav
 }
 ```
 
-Using a built-in Rust plugin alongside a JS plugin with the same name
-by giving the JS plugin an alias.
+通过给 JS 插件设置别名，将内置的 Rust 插件与同名的 JS 插件一起使用。
 
 ```json
 {
@@ -242,15 +232,15 @@ by giving the JS plugin an alias.
 
 ### jsPlugins[n]
 
-type: `object | string`
+类型：`object | string`
 
 #### jsPlugins[n].name
 
-type: `string`
+类型：`string`
 
-Custom name/alias for the plugin.
+插件的自定义名称/别名。
 
-Note: The following plugin names are reserved because they are implemented natively in Rust within oxlint and cannot be used for JS plugins:
+注意：以下插件名称被保留，因为它们在 oxlint 中是以 Rust 原生实现的，不能用于 JS 插件：
 
 - react (includes react-hooks)
 - unicorn
@@ -268,112 +258,111 @@ Note: The following plugin names are reserved because they are implemented nativ
 - vue
 - eslint
 
-If you need to use the JavaScript version of any of these plugins, provide a custom alias to avoid conflicts.
+如果你需要使用其中任何插件的 JavaScript 版本，请提供自定义别名以避免冲突。
 
 #### jsPlugins[n].specifier
 
-type: `string`
+类型：`string`
 
-Path or package name of the plugin
+插件的路径或包名
 
 ## options
 
-type: `object`
+类型：`object`
 
-Options for the linter.
+linting 工具的选项。
 
 ### options.denyWarnings
 
-type: `boolean`
+类型：`boolean`
 
-Ensure warnings produce a non-zero exit code.
+确保警告产生非零退出代码。
 
-Equivalent to passing `--deny-warnings` on the CLI.
+等同于在 CLI 上传递 `--deny-warnings`。
 
 ### options.maxWarnings
 
-type: `integer`
+类型：`integer`
 
-Specify a warning threshold. Exits with an error status if warnings exceed this value.
+指定警告阈值。如果警告超过此值，则以错误状态退出。
 
-Equivalent to passing `--max-warnings` on the CLI.
+等同于在 CLI 上传递 `--max-warnings`。
 
 ### options.reportUnusedDisableDirectives
 
-Report unused disable directives (e.g. `// oxlint-disable-line` or `// eslint-disable-line`).
+报告未使用的禁用指令（例如 `// oxlint-disable-line` 或 `// eslint-disable-line`）。
 
-Equivalent to passing `--report-unused-disable-directives-severity` on the CLI.
-CLI flags take precedence over this value when both are set.
-Only supported in the root configuration file.
+等同于在 CLI 上传递 `--report-unused-disable-directives-severity`。
+当两者都设置时，CLI 标志优先于此值。
+仅在根配置文件中支持。
 
 ### options.typeAware
 
-type: `boolean`
+类型：`boolean`
 
-Enable rules that require type information.
+启用需要类型信息的规则。
 
-Equivalent to passing `--type-aware` on the CLI.
+等同于在 CLI 上传递 `--type-aware`。
 
-Note that this requires the `oxlint-tsgolint` package to be installed.
+注意，这需要安装 `oxlint-tsgolint` 包。
 
 ### options.typeCheck
 
-type: `boolean`
+类型：`boolean`
 
-Enable experimental type checking (includes TypeScript compiler diagnostics).
+启用实验性类型检查（包括 TypeScript 编译器诊断）。
 
-Equivalent to passing `--type-check` on the CLI.
+等同于在 CLI 上传递 `--type-check`。
 
-Note that this requires the `oxlint-tsgolint` package to be installed.
+注意，这需要安装 `oxlint-tsgolint` 包。
 
 ## overrides
 
-type: `array`
+类型：`array`
 
 ### overrides[n]
 
-type: `object`
+类型：`object`
 
 #### overrides[n].env
 
-type: `object`
+类型：`object`
 
-Environments enable and disable collections of global variables.
+环境启用和禁用全局变量集合。
 
 #### overrides[n].files
 
-type: `string[]`
+类型：`string[]`
 
-A set of glob patterns.
+一组 glob 模式。
 
 #### overrides[n].globals
 
-type: `object`
+类型：`object`
 
-Enabled or disabled specific global variables.
+启用或禁用特定的全局变量。
 
 #### overrides[n].jsPlugins
 
-type: `array`
+类型：`array`
 
-JS plugins for this override, allows usage of ESLint plugins with Oxlint.
+此覆盖的 JS 插件，允许在 Oxlint 中使用 ESLint 插件。
 
-Read more about JS plugins in
-[the docs](https://oxc.rs/docs/guide/usage/linter/js-plugins.html).
+在 [文档](https://oxc.rs/docs/guide/usage/linter/js-plugins.html) 中了解更多关于 JS 插件的信息。
 
-Note: JS plugins are in alpha and not subject to semver.
+注意：JS 插件处于 alpha 阶段，不受语义版本控制约束。
 
 ##### overrides[n].jsPlugins[n]
 
-type: `object | string`
+类型：`object | string`
 
 ###### overrides[n].jsPlugins[n].name
 
-type: `string`
+类型：`string`
 
-Custom name/alias for the plugin.
+插件的自定义名称/别名。
 
-Note: The following plugin names are reserved because they are implemented natively in Rust within oxlint and cannot be used for JS plugins:
+注意：以下插件名称被保留，因为它们在 oxlint 中是以 Rust 原生实现的，不能用于 JS 插件：
 
 - react (includes react-hooks)
 - unicorn
@@ -391,63 +380,60 @@ Note: The following plugin names are reserved because they are implemented nativ
 - vue
 - eslint
 
-If you need to use the JavaScript version of any of these plugins, provide a custom alias to avoid conflicts.
+如果你需要使用其中任何插件的 JavaScript 版本，请提供自定义别名以避免冲突。
 
 ###### overrides[n].jsPlugins[n].specifier
 
-type: `string`
+类型：`string`
 
-Path or package name of the plugin
+插件的路径或包名
 
 #### overrides[n].plugins
 
-type: `array`
+类型：`array`
 
-default: `null`
+默认值：`null`
 
-Optionally change what plugins are enabled for this override. When
-omitted, the base config's plugins are used.
+可选地更改为此覆盖启用的插件。省略时，使用基础配置的插件。
 
 ##### overrides[n].plugins[n]
 
-type: `"eslint" | "react" | "unicorn" | "typescript" | "oxc" | "import" | "jsdoc" | "jest" | "vitest" | "jsx-a11y" | "nextjs" | "react-perf" | "promise" | "node" | "vue"`
+类型：`"eslint" | "react" | "unicorn" | "typescript" | "oxc" | "import" | "jsdoc" | "jest" | "vitest" | "jsx-a11y" | "nextjs" | "react-perf" | "promise" | "node" | "vue"`
 
 #### overrides[n].rules
 
-type: `object`
+类型：`object`
 
-See [Oxlint Rules](https://oxc.rs/docs/guide/usage/linter/rules.html)
+请参阅 [Oxlint 规则](https://oxc.rs/docs/guide/usage/linter/rules.html)
 
 ## plugins
 
-type: `array`
+类型：`array`
 
-default: `null`
+默认值：`null`
 
-Enabled built-in plugins for Oxlint.
-You can view the list of available plugins on
-[the website](https://oxc.rs/docs/guide/usage/linter/plugins.html#supported-plugins).
+为 Oxlint 启用的内置插件。
+你可以在 [网站](https://oxc.rs/docs/guide/usage/linter/plugins.html#supported-plugins) 上查看可用插件列表。
 
-NOTE: Setting the `plugins` field will overwrite the base set of plugins.
-The `plugins` array should reflect all of the plugins you want to use.
+注意：设置 `plugins` 字段将覆盖基础插件集。`plugins` 数组应反映你想要使用的所有插件。
 
 ### plugins[n]
 
-type: `"eslint" | "react" | "unicorn" | "typescript" | "oxc" | "import" | "jsdoc" | "jest" | "vitest" | "jsx-a11y" | "nextjs" | "react-perf" | "promise" | "node" | "vue"`
+类型：`"eslint" | "react" | "unicorn" | "typescript" | "oxc" | "import" | "jsdoc" | "jest" | "vitest" | "jsx-a11y" | "nextjs" | "react-perf" | "promise" | "node" | "vue"`
 
 ## rules
 
-type: `object`
+类型：`object`
 
-See [Oxlint Rules](https://oxc.rs/docs/guide/usage/linter/rules.html)
+请参阅 [Oxlint 规则](https://oxc.rs/docs/guide/usage/linter/rules.html)
 
 ## settings
 
-type: `object`
+类型：`object`
 
-Configure the behavior of linter plugins.
+配置 linting 插件的行为。
 
-Here's an example if you're using Next.js in a monorepo:
+如果你在 monorepo 中使用 Next.js，这是一个示例：
 
 ```json
 {
@@ -475,90 +461,87 @@ Here's an example if you're using Next.js in a monorepo:
 
 ### settings.jsdoc
 
-type: `object`
+类型：`object`
 
 #### settings.jsdoc.augmentsExtendsReplacesDocs
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
-Only for `require-(yields|returns|description|example|param|throws)` rule
+仅适用于 `require-(yields|returns|description|example|param|throws)` 规则
 
 #### settings.jsdoc.exemptDestructuredRootsFromChecks
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
-Only for `require-param-type` and `require-param-description` rule
+仅适用于 `require-param-type` 和 `require-param-description` 规则
 
 #### settings.jsdoc.ignoreInternal
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
-For all rules but NOT apply to `empty-tags` rule
+适用于所有规则，但不适用于 `empty-tags` 规则
 
 #### settings.jsdoc.ignorePrivate
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
-For all rules but NOT apply to `check-access` and `empty-tags` rule
+适用于所有规则，但不适用于 `check-access` 和 `empty-tags` 规则
 
 #### settings.jsdoc.ignoreReplacesDocs
 
-type: `boolean`
+类型：`boolean`
 
-default: `true`
+默认值：`true`
 
-Only for `require-(yields|returns|description|example|param|throws)` rule
+仅适用于 `require-(yields|returns|description|example|param|throws)` 规则
 
 #### settings.jsdoc.implementsReplacesDocs
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
-Only for `require-(yields|returns|description|example|param|throws)` rule
+仅适用于 `require-(yields|returns|description|example|param|throws)` 规则
 
 #### settings.jsdoc.overrideReplacesDocs
 
-type: `boolean`
+类型：`boolean`
 
-default: `true`
+默认值：`true`
 
-Only for `require-(yields|returns|description|example|param|throws)` rule
+仅适用于 `require-(yields|returns|description|example|param|throws)` 规则
 
 #### settings.jsdoc.tagNamePreference
 
-type: `object`
+类型：`object`
 
-default: `{}`
+默认值：`{}`
 
 ### settings.jsx-a11y
 
-type: `object`
+类型：`object`
 
-Configure JSX A11y plugin rules.
+配置 JSX A11y 插件规则。
 
-See
-[eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y#configurations)'s
-configuration for a full reference.
+请参阅 [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y#configurations) 的配置以获取完整参考。
 
 #### settings.jsx-a11y.attributes
 
-type: `Record<string, array>`
+类型：`Record<string, array>`
 
-default: `{}`
+默认值：`{}`
 
-Map of attribute names to their DOM equivalents.
-This is useful for non-React frameworks that use different attribute names.
+属性名称到其 DOM 等效项的映射。这对于使用不同属性名称的非 React 框架很有用。
 
-Example:
+示例：
 
 ```json
 {
@@ -574,14 +557,13 @@ Example:
 
 #### settings.jsx-a11y.components
 
-type: `Record<string, string>`
+类型：`Record<string, string>`
 
-default: `{}`
+默认值：`{}`
 
-To have your custom components be checked as DOM elements, you can
-provide a mapping of your component names to the DOM element name.
+为了让你的自定义组件作为 DOM 元素进行检查，你可以提供组件名称到 DOM 元素名称的映射。
 
-Example:
+示例：
 
 ```json
 {
@@ -598,52 +580,49 @@ Example:
 
 #### settings.jsx-a11y.polymorphicPropName
 
-type: `string`
+类型：`string`
 
-An optional setting that define the prop your code uses to create polymorphic components.
-This setting will be used to determine the element type in rules that
-require semantic context.
+一个可选设置，定义你的代码用于创建多态组件的 prop。此设置将用于确定需要语义上下文的规则中的元素类型。
 
-For example, if you set the `polymorphicPropName` to `as`, then this element:
+例如，如果你将 `polymorphicPropName` 设置为 `as`，则此元素：
 
 ```jsx
 <Box as="h3">Hello</Box>
 ```
 
-Will be treated as an `h3`. If not set, this component will be treated
-as a `Box`.
+将被视为 `h3`。如果未设置，此组件将被视为 `Box`。
 
 ### settings.next
 
-type: `object`
+类型：`object`
 
-Configure Next.js plugin rules.
+配置 Next.js 插件规则。
 
 #### settings.next.rootDir
 
-type: `array | string`
+类型：`array | string`
 
 ##### settings.next.rootDir[n]
 
-type: `string`
+类型：`string`
 
 ### settings.react
 
-type: `object`
+类型：`object`
 
-Configure React plugin rules.
+配置 React 插件规则。
 
-Derived from [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc-)
+源自 [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react#configuration-legacy-eslintrc-)
 
 #### settings.react.componentWrapperFunctions
 
-type: `string[]`
+类型：`string[]`
 
-default: `[]`
+默认值：`[]`
 
-Functions that wrap React components and should be treated as HOCs.
+包装 React 组件并应被视为 HOC 的函数。
 
-Example:
+示例：
 
 ```jsonc
 {
@@ -657,13 +636,13 @@ Example:
 
 #### settings.react.formComponents
 
-type: `array`
+类型：`array`
 
-default: `[]`
+默认值：`[]`
 
-Components used as alternatives to `<form>` for forms, such as `<Formik>`.
+用作 `<form>` 替代方案的表单组件，例如 `<Formik>`。
 
-Example:
+示例：
 
 ```jsonc
 {
@@ -671,9 +650,9 @@ Example:
     "react": {
       "formComponents": [
         "CustomForm",
-        // OtherForm is considered a form component and has an endpoint attribute
+        // OtherForm 被视为表单组件并具有一个 endpoint 属性
         { "name": "OtherForm", "formAttribute": "endpoint" },
-        // allows specifying multiple properties if necessary
+        // 允许在必要时指定多个属性
         { "name": "Form", "formAttribute": ["registerEndpoint", "loginEndpoint"] },
       ],
     },
@@ -683,25 +662,25 @@ Example:
 
 ##### settings.react.formComponents[n]
 
-type: `object | string`
+类型：`object | string`
 
 ###### settings.react.formComponents[n].attribute
 
-type: `string`
+类型：`string`
 
 ###### settings.react.formComponents[n].name
 
-type: `string`
+类型：`string`
 
 #### settings.react.linkComponents
 
-type: `array`
+类型：`array`
 
-default: `[]`
+默认值：`[]`
 
-Components used as alternatives to `<a>` for linking, such as `<Link>`.
+用作 `<a>` 替代方案的链接组件，例如 `<Link>`。
 
-Example:
+示例：
 
 ```jsonc
 {
@@ -709,10 +688,9 @@ Example:
     "react": {
       "linkComponents": [
         "HyperLink",
-        // Use `linkAttribute` for components that use a different prop name
-        // than `href`.
+        // 对于使用与 `href` 不同 prop 名称的组件，使用 `linkAttribute`。
         { "name": "MyLink", "linkAttribute": "to" },
-        // allows specifying multiple properties if necessary
+        // 允许在必要时指定多个属性
         { "name": "Link", "linkAttribute": ["to", "href"] },
       ],
     },
@@ -722,27 +700,27 @@ Example:
 
 ##### settings.react.linkComponents[n]
 
-type: `object | string`
+类型：`object | string`
 
 ###### settings.react.linkComponents[n].attribute
 
-type: `string`
+类型：`string`
 
 ###### settings.react.linkComponents[n].name
 
-type: `string`
+类型：`string`
 
 #### settings.react.version
 
-type: `string`
+类型：`string`
 
-default: `null`
+默认值：`null`
 
-React version to use for version-specific rules.
+用于特定版本规则的 React 版本。
 
-Accepts semver versions (e.g., "18.2.0", "17.0").
+接受语义化版本（例如，"18.2.0", "17.0"）。
 
-Example:
+示例：
 
 ```jsonc
 {
@@ -756,19 +734,16 @@ Example:
 
 ### settings.vitest
 
-type: `object`
+类型：`object`
 
-Configure Vitest plugin rules.
+配置 Vitest 插件规则。
 
-See [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest)'s
-configuration for a full reference.
+请参阅 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest) 的配置以获取完整参考。
 
 #### settings.vitest.typecheck
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
-Whether to enable typecheck mode for Vitest rules.
-When enabled, some rules will skip certain checks for describe blocks
-to accommodate TypeScript type checking scenarios.
+是否为 Vitest 规则启用 typecheck 模式。启用后，某些规则将跳过对 describe 块的某些检查，以适应 TypeScript 类型检查场景。

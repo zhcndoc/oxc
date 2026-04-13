@@ -1,105 +1,105 @@
 ---
-title: Introduction
+title: 简介
 outline: deep
 ---
 
-# Contributing to Oxc
+# 为 Oxc 做贡献
 
-Thank you for your interest in contributing to Oxc! We're building the next generation of JavaScript tooling, and we'd love your help.
+感谢您有兴趣为 Oxc 做贡献！我们正在构建下一代 JavaScript 工具链，我们需要您的帮助。
 
-## Quick Start
+## 快速开始
 
-The fastest way to get started is through our [good first issues](https://github.com/oxc-project/oxc/contribute). These are carefully selected tasks that are perfect for new contributors.
+最快的开始方式是通过我们的 [good first issues](https://github.com/oxc-project/oxc/contribute)。这些都是精心挑选的任务，非常适合新贡献者。
 
-Need guidance? Join our [Discord community](https://discord.gg/9uXCAwqQZW) where our team and community members are happy to help.
+需要指导？加入我们的 [Discord 社区](https://discord.gg/9uXCAwqQZW)，我们的团队和社区成员很乐意提供帮助。
 
-## Ways to Contribute
+## 贡献方式
 
-We welcome and appreciate any form of contributions:
+我们欢迎并感谢任何形式的贡献：
 
-### 🐛 Bug Reports
+### 🐛 错误报告
 
-- Report parsing errors or incorrect linting behavior
-- Share performance issues or regressions
-- Document edge cases we haven't considered
+- 报告解析错误或错误的 lint 行为
+- 分享性能问题或回归
+- 记录我们尚未考虑的边界情况
 
-### 🚀 Feature Development
+### 🚀 功能开发
 
-- Add new linting rules
-- Improve parser conformance
-- Enhance transformer capabilities
-- Build new tools in the Oxc ecosystem
+- 添加新的 lint 规则
+- 提高解析器兼容性
+- 增强转换器能力
+- 在 Oxc 生态中构建新工具
 
-### 📚 Documentation
+### 📚 文档
 
-- Improve getting started guides
-- Add examples and tutorials
-- Document architecture decisions
-- Translate content to other languages
+- 改进入门指南
+- 添加示例和教程
+- 记录架构决策
+- 将内容翻译成其他语言
 
-### 🧪 Testing
+### 🧪 测试
 
-- Add test cases from real-world codebases
-- Improve test coverage
-- Create performance benchmarks
-- Test against ecosystem projects
+- 添加来自真实代码库的测试用例
+- 提高测试覆盖率
+- 创建性能基准测试
+- 针对生态系统项目进行测试
 
-### 🔧 Infrastructure
+### 🔧 基础设施
 
-- Improve build and CI systems
-- Enhance development tooling
-- Optimize performance critical paths
-- Maintain compatibility with other tools
+- 改进构建和 CI 系统
+- 增强开发工具
+- 优化性能关键路径
+- 保持与其他工具的兼容性
 
-### Understanding the Codebase
+### 了解代码库
 
-Oxc is organized into several crates:
+Oxc 组织为几个 crate 模块：
 
-- **`oxc_parser`**: High-performance JavaScript/TypeScript parser
-- **`oxc_linter`**: Fast linting engine with 650+ rules
-- **`oxc_transformer`**: TypeScript and JSX transformation
-- **`oxc_minifier`**: JavaScript minification (in development)
-- **`oxc_formatter`**: Code formatting, compatible with Prettier
+- **`oxc_parser`**: 高性能 JavaScript/TypeScript 解析器
+- **`oxc_linter`**: 拥有 650+ 规则的快速 lint 引擎
+- **`oxc_transformer`**: TypeScript 和 JSX 转换
+- **`oxc_minifier`**: JavaScript 压缩（开发中）
+- **`oxc_formatter`**: 代码格式化，与 Prettier 兼容
 
-### Your First Contribution
+### 您的第一次贡献
 
-1. **Browse Issues**: Look for issues labeled [`good first issue`](https://github.com/oxc-project/oxc/labels/good%20first%20issue)
-2. **Ask Questions**: Don't hesitate to ask for clarification on Discord or GitHub
-3. **Start Small**: Begin with documentation improvements or small bug fixes
-4. **Learn the Patterns**: Study existing code to understand our conventions
+1. **浏览 Issues**：查找标记为 [`good first issue`](https://github.com/oxc-project/oxc/labels/good%20first%20issue) 的问题
+2. **提问**：不要犹豫，在 Discord 或 GitHub 上寻求澄清
+3. **从小处着手**：从文档改进或小错误修复开始
+4. **学习模式**：研究现有代码以了解我们的约定
 
-## Community
+## 社区
 
-### Communication Channels
+### 沟通渠道
 
-- **GitHub Discussions**: For design discussions and questions
-- **Discord**: Real-time chat with the team and community
-- **GitHub Issues**: Bug reports and feature requests
-- **Twitter**: Follow [@boshen_c](https://twitter.com/boshen_c) for updates
+- **GitHub Discussions**：用于设计讨论和提问
+- **Discord**：与团队和社区的实时聊天
+- **GitHub Issues**：错误报告和功能请求
+- **Twitter**：关注 [@boshen_c](https://twitter.com/boshen_c) 获取更新
 
-### Code of Conduct
+### 行为准则
 
-We are committed to providing a welcoming and inclusive experience for everyone. Please read our [Code of Conduct](https://github.com/oxc-project/oxc?tab=coc-ov-file#readme) before participating.
+我们致力于为大家提供友好和包容的体验。在参与之前，请阅读我们的 [行为准则](https://github.com/oxc-project/oxc?tab=coc-ov-file#readme)。
 
-### AI Usage Policy
+### AI 使用政策
 
-When using AI tools (including LLMs like ChatGPT, Claude, Copilot, etc.) to contribute to Oxc:
+当使用 AI 工具（包括像 ChatGPT、Claude、Copilot 等 LLM）为 Oxc 做贡献时：
 
-- **Please disclose AI usage** to reduce maintainer fatigue
-- **You are responsible** for all AI-generated issues or PRs you submit
-- **Low-quality or unreviewed AI content will be closed immediately**
-- **Contributors who submit repeated low-quality ("slop") PRs will be banned without prior warning.** Bans may be lifted if you commit to contributing to Oxc in accordance with this policy. You may request an unban via our [Discord](https://discord.gg/9uXCAwqQZW).
+- **请披露 AI 使用情况** 以减少维护者的疲劳
+- **您需负责** 您提交的所有由 AI 生成的问题或 PR
+- **低质量或未经审查的 AI 内容将立即被关闭**
+- **提交重复低质量（"slop"）PR 的贡献者将被直接封禁，恕不事先警告。** 如果您承诺按照本政策为 Oxc 做贡献，封禁可能会被解除。您可以通过我们的 [Discord](https://discord.gg/9uXCAwqQZW) 请求解除封禁。
 
-We encourage the use of AI tools to assist with development, but all contributions must be thoroughly reviewed and tested by the contributor before submission. AI-generated code should be understood, validated, and adapted to meet Oxc's standards.
+我们鼓励使用 AI 工具辅助开发，但在提交之前，所有贡献必须由贡献者彻底审查和测试。AI 生成的代码应被理解、验证并调整以满足 Oxc 的标准。
 
-## Next Steps
+## 下一步
 
-Ready to contribute? Here are some great places to start:
+准备好贡献了吗？以下是一些很好的起点：
 
-- 📖 **Learn More**: Check out our [development guide](./development.md)
-- 🔍 **Find an Issue**: Browse our [good first issues](https://github.com/oxc-project/oxc/contribute)
-- 💬 **Join the Community**: Connect with us on [Discord](https://discord.gg/9uXCAwqQZW)
-- 🛠️ **Pick a Tool**: Dive into [parser](./parser.md), [linter](./linter.md), [transformer](./transformer.md), or [other tools](./formatter.md)
-- ⚡️ **Open a Pull Request**: Review our [PR Rules and Policies](./rules.md) to get started.
+- 📖 **了解更多**：查看我们的 [开发指南](./development.md)
+- 🔍 **查找 Issue**：浏览我们的 [good first issues](https://github.com/oxc-project/oxc/contribute)
+- 💬 **加入社区**：在 [Discord](https://discord.gg/9uXCAwqQZW) 上与我们联系
+- 🛠️ **选择工具**：深入了解 [解析器](./parser.md)、[linter](./linter.md)、[转换器](./transformer.md) 或 [其他工具](./formatter.md)
+- ⚡️ **发起 Pull Request**：查看我们的 [PR 规则和政策](./rules.md) 以开始。
 
-We can't wait to see what you'll build with us! 🚀
+我们迫不及待地想看到您与我们一起构建什么！🚀

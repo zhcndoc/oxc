@@ -1,15 +1,15 @@
 ---
-title: Quickstart
-description: Install Oxfmt and learn the common workflows.
+title: 快速开始
+description: 安装 Oxfmt 并学习常见工作流。
 ---
 
-# Quickstart
+# 快速开始
 
-Recommended setup and common workflows.
+推荐的设置和常见工作流。
 
-## Install
+## 安装
 
-Install `oxfmt` as a dev dependency:
+将 `oxfmt` 安装为开发依赖：
 
 ::: code-group
 
@@ -31,7 +31,7 @@ $ bun add -D oxfmt
 
 :::
 
-Add scripts to `package.json`:
+将脚本添加到 `package.json`：
 
 ```json [package.json]
 {
@@ -42,7 +42,7 @@ Add scripts to `package.json`:
 }
 ```
 
-Format files:
+格式化文件：
 
 ::: code-group
 
@@ -64,7 +64,7 @@ bun run fmt
 
 :::
 
-Check formatting without writing files:
+检查格式化而不写入文件：
 
 ::: code-group
 
@@ -86,23 +86,23 @@ bun run fmt:check
 
 :::
 
-## Usage
+## 用法
 
 ```sh
 oxfmt [OPTIONS] [PATH]...
 ```
 
-Running `oxfmt` without arguments formats the current directory (equivalent to `prettier --write .`).
+不带参数运行 `oxfmt` 会格式化当前目录（相当于 `prettier --write .`）。
 
-CLI options like `--no-semi` are not supported. Use the configuration file instead to ensure consistent settings across CLI and editor integrations.
+不支持像 `--no-semi` 这样的 CLI 选项。请使用配置文件来确保 CLI 和编辑器集成之间的设置一致。
 
-To use glob patterns in positional paths, be sure to quote them. Otherwise, they may or may not be expanded depending on your environment.
+要在位置路径中使用 glob 模式，请务必将它们用引号括起来。否则，它们可能会也可能不会根据您的环境进行展开。
 
-For the complete list of options, see the [CLI reference](/docs/guide/usage/formatter/cli.html).
+有关选项的完整列表，请参阅 [CLI 参考](/docs/guide/usage/formatter/cli.html)。
 
-## Common workflows
+## 常见工作流
 
-### Pre-commit with lint-staged
+### 与 lint-staged 一起进行预提交
 
 ```json [package.json]
 {
@@ -112,39 +112,39 @@ For the complete list of options, see the [CLI reference](/docs/guide/usage/form
 }
 ```
 
-`--no-error-on-unmatched-pattern` prevents errors when no files match the pattern.
+`--no-error-on-unmatched-pattern` 在没有文件匹配模式时防止报错。
 
-### Create a config file
+### 创建配置文件
 
-Initialize `.oxfmtrc.json` with defaults:
+使用默认值初始化 `.oxfmtrc.json`：
 
 ```sh
 oxfmt --init
 ```
 
-### Migrate from Prettier
+### 从 Prettier 迁移
 
 ```sh
 oxfmt --migrate prettier
 ```
 
-See [migrate from prettier](./migrate-from-prettier) for details.
+详见 [从 prettier 迁移](./migrate-from-prettier)。
 
-### List files that differ
+### 列出不同的文件
 
 ```sh
 oxfmt --list-different
 ```
 
-This is useful for configuring [files to ignore](./ignore-files).
+这对于配置 [要忽略的文件](./ignore-files) 很有用。
 
-### Piping file contents
+### 管道传输文件内容
 
 ```sh
 echo 'const   x   =   1' | oxfmt --stdin-filepath test.ts
 ```
 
-Prints `const x = 1;`
+输出 `const x = 1;`
 
 ### Node.js API
 
@@ -160,11 +160,11 @@ const { code } = await format("a.js", input, options);
 console.log(code); // "let a = 42"
 ```
 
-## Next steps
+## 下一步
 
-- [Change configuration](./config)
-- [Setup editors](./editors)
-- [Setup CI](./ci)
-- Learn advanced features: [sorting](./sorting), [embedded formatting](./embedded-formatting)
-- [Compatibility matrix](/compatibility)
-- Check [CLI reference](./cli)
+- [更改配置](./config)
+- [设置编辑器](./editors)
+- [设置 CI](./ci)
+- 学习高级功能：[排序](./sorting)、[嵌入格式化](./embedded-formatting)
+- [兼容性矩阵](/compatibility)
+- 查看 [CLI 参考](./cli)

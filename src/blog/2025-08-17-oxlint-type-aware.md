@@ -1,5 +1,5 @@
 ---
-title: Oxlint Type-Aware Preview
+title: Oxlint 类型感知预览
 outline: deep
 authors:
   - boshen
@@ -12,36 +12,35 @@ authors:
 
 <Alert type="info">
 
-**This post announces the technical preview of type-aware linting.** For the latest alpha release with improved stability, configurability, and rule coverage, see the [Type-Aware Linting Alpha announcement](/blog/2025-12-08-type-aware-alpha).
+**本文宣布类型感知 linting 的技术预览版。** 对于具有改进稳定性、可配置性和规则覆盖面的最新 alpha 版本，请参阅 [类型感知 Linting Alpha 公告](/blog/2025-12-08-type-aware-alpha)。
 
 </Alert>
 
 <br>
 
-We're thrilled to announce type-aware linting in `oxlint`!
+我们很高兴宣布 `oxlint` 中的类型感知 linting！
 
-The long-awaited `no-floating-promises` and related rules are here.
+期待已久的 `no-floating-promises` 及相关规则现已到来。
 
-This preview release aims to engage with the community for collaboration and
-discussion by documenting our decision process and technical details.
+此预览版旨在通过记录我们的决策过程和技术细节，与社区进行协作和讨论。
 
-## Quick Start
+## 快速开始
 
-If `oxlint` is already configured, install `oxlint-tsgolint` and run `oxlint` with the `--type-aware` flag:
+如果已配置 `oxlint`，请安装 `oxlint-tsgolint` 并使用 `--type-aware` 标志运行 `oxlint`：
 
 ```bash
 pnpm add -D oxlint-tsgolint@latest
 pnpm dlx oxlint --type-aware
 ```
 
-If `oxlint` is not configured but you want to see `no-floating-promises` in action:
+如果未配置 `oxlint` 但想查看 `no-floating-promises` 的实际效果：
 
 ```bash
 pnpm add -D oxlint-tsgolint@latest
 pnpm dlx oxlint@latest --type-aware -A all -D typescript/no-floating-promises
 ```
 
-We expect to see, for example:
+例如，我们将看到：
 
 ```js
  × typescript-eslint(no-floating-promises): Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator.
@@ -53,51 +52,51 @@ We expect to see, for example:
    ╰────
 ```
 
-Please visit our [usage guide](https://oxc.rs/docs/guide/usage/linter.html) for more configuration options.
+请访问我们的 [使用指南](https://oxc.rs/docs/guide/usage/linter.html) 了解更多配置选项。
 
-## Performance
+## 性能
 
-Our testing shows that repositories which previously took a minute to run with `typescript-eslint` now complete in less than 10 seconds.
+我们的测试显示，以前使用 `typescript-eslint` 需要一分钟才能运行的仓库，现在不到 10 秒即可完成。
 
-This is achieved by leveraging [`typescript-go`](https://github.com/microsoft/typescript-go),
-the [10x faster TypeScript](https://devblogs.microsoft.com/typescript/typescript-native-port) written in Go.
+这是通过利用 [`typescript-go`](https://github.com/microsoft/typescript-go) 实现的，
+它是用 Go 编写的 [速度提升 10 倍的 TypeScript](https://devblogs.microsoft.com/typescript/typescript-native-port)。
 
-Using projects from [oxc-ecosystem-ci](https://github.com/oxc-project/oxc-ecosystem-ci):
+使用来自 [oxc-ecosystem-ci](https://github.com/oxc-project/oxc-ecosystem-ci) 的项目：
 
-| Project  | Files | Time |
-| -------- | ----- | ---- |
-| napi-rs  | 144   | 1.0s |
-| preact   | 245   | 2.7s |
-| rolldown | 314   | 1.5s |
-| bluesky  | 1152  | 7.0s |
+| 项目     | 文件 | 时间 |
+| -------- | ---- | ---- |
+| napi-rs  | 144  | 1.0s |
+| preact   | 245  | 2.7s |
+| rolldown | 314  | 1.5s |
+| bluesky  | 1152 | 7.0s |
 
-## Type-Aware Linting
+## 类型感知 Linting
 
-Please refer to
-[Rust-Based JavaScript Linters: Fast, But No Typed Linting Right Now](https://www.joshuakgoldberg.com/blog/rust-based-javascript-linters-fast-but-no-typed-linting-right-now)
-to understand the current status of type-aware linting in the ecosystem.
+请参考
+[基于 Rust 的 JavaScript Linter：速度快，但目前没有类型化 Linting](https://www.joshuakgoldberg.com/blog/rust-based-javascript-linters-fast-but-no-typed-linting-right-now)
+以了解生态系统中类型感知 linting 的当前状态。
 
-## Technical Details
+## 技术细节
 
-The core of this new functionality is [oxc-project/tsgolint](https://github.com/oxc-project/tsgolint).
+此新功能的核心是 [oxc-project/tsgolint](https://github.com/oxc-project/tsgolint)。
 
-The `tsgolint` project was initially prototyped as [typescript-eslint/tsgolint](https://github.com/typescript-eslint/tsgolint).
-However, the `typescript-eslint` team decided not to allocate development resources to this prototype, as they plan to continue their work on `typescript-eslint` for typed linting with ESLint.
+`tsgolint` 项目最初作为 [typescript-eslint/tsgolint](https://github.com/typescript-eslint/tsgolint) 进行原型设计。
+然而，`typescript-eslint` 团队决定不为该原型分配开发资源，因为他们计划继续致力于使用 ESLint 进行类型化 linting 的 `typescript-eslint` 工作。
 
-[@boshen](https://github.com/Boshen) reached out to [@auvred](https://github.com/auvred) for a forked, scoped-down version adapted for oxlint.
-This version would only contain type-aware rules without the sophisticated configuration resolution a full linter would require.
+[@boshen](https://github.com/Boshen) 联系了 [@auvred](https://github.com/auvred)，希望获得一个针对 oxlint 适配的、范围缩小的分支版本。
+此版本将仅包含类型感知规则，而不需要完整 linter 所需的复杂配置解析。
 
-[@auvred](https://github.com/auvred) generously offered to continue its development under the Oxc organization.
+[@auvred](https://github.com/auvred) 慷慨地提出在 Oxc 组织下继续其开发工作。
 
-### Architecture
+### 架构
 
-`oxlint` (written in Rust) and `tsgolint` (written in Go) are compiled into their own binaries.
+`oxlint`（用 Rust 编写）和 `tsgolint`（用 Go 编写）被编译为各自的二进制文件。
 
-`oxlint` serves as the "frontend" for `tsgolint`, handling the CLI, path traversal, ignore logic, and diagnostic printing.
+`oxlint` 作为 `tsgolint` 的“前端”，处理 CLI、路径遍历、忽略逻辑和诊断信息打印。
 
-`tsgolint` acts as the backend for `oxlint`, accepting paths and configuration as input and outputting structured diagnostics.
+`tsgolint` 作为 `oxlint` 的后端，接受路径和配置作为输入，并输出结构化的诊断信息。
 
-This creates a simple pipeline:
+这创建了一个简单的管道：
 
 ```
 oxlint CLI (returns paths + rules + configuration)
@@ -107,124 +106,124 @@ oxlint CLI (returns paths + rules + configuration)
 
 ### `tsgolint`
 
-`tsgolint` does not communicate with typescript-go via public APIs.
+`tsgolint` 不通过公共 API 与 typescript-go 通信。
 
-Instead, it compiles `typescript-go` by [shimming](https://github.com/oxc-project/tsgolint/tree/main/shim) its internal APIs to make them public.
+相反，它通过 [shim](https://github.com/oxc-project/tsgolint/tree/main/shim) 其内部 API 使其公开，从而编译 `typescript-go`。
 
-All type-aware rules are written directly against these shimmed APIs.
+所有类型感知规则都是直接针对这些 shim 化的 API 编写的。
 
-While this isn't the recommended approach for accessing internals, it works!
+虽然这不是访问内部结构的推荐方法，但它有效！
 
-## Decision Process
+## 决策过程
 
-### Write our own type checker
+### 编写我们自己的类型检查器
 
-Previous abandoned attempts to implement a type-checker included:
+之前放弃的实现类型检查器的尝试包括：
 
-- My own attempt at [writing type inference](https://gist.github.com/Boshen/d189de0fe0720a30c5182cb666e3e9a5)
-- [Integrate](https://github.com/oxc-project/oxc/pull/413) [ezno type checker](https://github.com/kaleidawave/ezno) by [@kaleidawave](https://github.com/kaleidawave)
+- 我自己尝试 [编写类型推断](https://gist.github.com/Boshen/d189de0fe0720a30c5182cb666e3e9a5)
+- [集成](https://github.com/oxc-project/oxc/pull/413) [ezno 类型检查器](https://github.com/kaleidawave/ezno) by [@kaleidawave](https://github.com/kaleidawave)
 - [stc](https://github.com/dudykr/stc) by [@kdy1](https://github.com/kdy1)
-- There are also many attempts in the community that did not go far.
+- 社区中还有许多没有走得太远的尝试。
 
-Additionally, there's the work-in-progress [Biome 2.0](https://biomejs.dev/blog/biome-v2/) with its own type-inference implementation.
+此外，还有正在进行的 [Biome 2.0](https://biomejs.dev/blog/biome-v2/) 及其自己的类型推断实现。
 
-We determined that writing our own type-inferencer or type-checker was not feasible due to
-the challenge of keeping up with a fast-moving target like TypeScript.
+我们确定编写自己的类型推断器或类型检查器不可行，因为
+难以跟上像 TypeScript 这样快速变化的目标。
 
-### Communication with TypeScript Compiler
+### 与 TypeScript 编译器通信
 
-Prior to `typescript-go`, projects added plugin interfaces to TypeScript's public API by either mapping its AST to `estree` or directly traversing the TypeScript AST. Examples include:
+在 `typescript-go` 之前，项目通过将 AST 映射到 `estree` 或直接遍历 TypeScript AST，将插件接口添加到 TypeScript 的公共 API 中。例如：
 
 - [typescript-eslint](https://typescript-eslint.io/getting-started/typed-linting)
 - [tsslint](https://github.com/johnsoncodehk/tsslint)
 - [tsl](https://github.com/ArnaudBarre/tsl)
 
-We also explored [inter-process communication with oxlint](https://github.com/oxc-project/oxc/discussions/2855) but abandoned the idea.
+我们还探讨了 [与 oxlint 的进程间通信](https://github.com/oxc-project/oxc/discussions/2855)，但放弃了这个想法。
 
-With `typescript-go`, the TypeScript team is [leaning towards](https://github.com/microsoft/typescript-go/discussions/455)
-encoding the TypeScript AST and decoding it on the JavaScript side through inter-process communication.
+随着 `typescript-go` 的出现，TypeScript 团队 [倾向于](https://github.com/microsoft/typescript-go/discussions/455)
+编码 TypeScript AST 并通过进程间通信在 JavaScript 端解码。
 
-While these approaches work, they still incur:
+虽然这些方法可行，但它们仍然会产生：
 
-- Performance issues of varying degrees that don't suit oxlint's performance characteristics.
-- The cost of maintaining an AST mapping from TypeScript's AST.
+- 不同程度的性能问题，不适合 oxlint 的性能特征。
+- 维护从 TypeScript AST 映射的 AST 的成本。
 
-## Considerations
+## 注意事项
 
-While `tsgolint` solves the performance issue, there are other technical challenges that need to be addressed.
+虽然 `tsgolint` 解决了性能问题，但还有其他技术挑战需要解决。
 
-### Requirement for a Different TypeScript Version
+### 需要不同版本的 TypeScript
 
-We plan to release snapshots of `typescript-go` versions and align their version numbers with TypeScript.
-You will then be able to install `oxlint-typescript` with the correct TypeScript version.
+我们计划发布 `typescript-go` 版本的快照，并将其版本号与 TypeScript 对齐。
+届时您将能够安装具有正确 TypeScript 版本的 `oxlint-typescript`。
 
-The downside of this approach is that you may need to upgrade TypeScript if `oxlint-tsgolint` requires changes.
+这种方法的缺点是，如果 `oxlint-tsgolint` 需要更改，您可能需要升级 TypeScript。
 
-### Maintenance cost of `tsgolint`
+### `tsgolint` 的维护成本
 
-Shimming TypeScript's internal APIs carries some risk. However, the TypeScript AST and its visitor are actually quite stable.
-We accept this risk and will fix breaking changes when upgrading `typescript-go`.
+Shim TypeScript 的内部 API 带有一些风险。然而，TypeScript AST 及其访问者实际上相当稳定。
+我们接受此风险，并将在升级 `typescript-go` 时修复破坏性变更。
 
-Our `typescript-go` version is synced every day.
+我们的 `typescript-go` 版本每天同步。
 
-## Performance Issues
+## 性能问题
 
-`tsgolint` currently does not perform well on large monorepos with hundreds of projects or lots of project references.
+`tsgolint` 目前在具有数百个项目或大量项目引用的大型单体仓库上表现不佳。
 
-It may hang with a deadlock or cause OOM (out-of-memory) if a bug is encountered.
+如果遇到 bug，它可能会因死锁而挂起或导致 OOM（内存不足）。
 
-We are actively addressing these issues, profiling and submitting improvements to `typescript-go`, benefiting all `typescript-go` users.
+我们正在积极解决这些问题，对 `typescript-go` 进行性能分析并提交改进，使所有 `typescript-go` 用户受益。
 
-Our core team member [@camc314](https://github.com/camc314) has already submitted [many PRs](https://github.com/microsoft/typescript-go/pulls?q=is%3Apr+author%3Acamc314+) that made several code paths significantly faster.
+我们的核心团队成员 [@camc314](https://github.com/camc314) 已经提交了 [许多 PR](https://github.com/microsoft/typescript-go/pulls?q=is%3Apr+author%3Acamc314+)，使 several code paths 显著更快。
 
-## v1.0 Release
+## v1.0 发布
 
-For `tsgolint` v1.0, we will address:
+对于 `tsgolint` v1.0，我们将解决：
 
-- performance issue for large monorepos
-- be able to configure individual rules
-- correctness of each individual rules
-- IDE support
-- overall stability
+- 大型单体仓库的性能问题
+- 能够配置单个规则
+- 每个单独规则的正确性
+- IDE 支持
+- 整体稳定性
 
-## Acknowledgements
+## 致谢
 
-We'd like to extend our gratitude to:
+我们要向以下各方表示感谢：
 
-- The TypeScript team for creating `typescript-go`.
-- The `typescript-eslint` team for their heartwarming support.
-- [@auvred](https://github.com/auvred) for creating `tsgolint`.
-- [@camchenry](https://github.com/camchenry) for the `oxlint` + `tsgolint` integration.
-- [@camc314](https://github.com/camc314) for work on performance issues.
+- TypeScript 团队创建了 `typescript-go`。
+- `typescript-eslint` 团队给予的暖心支持。
+- [@auvred](https://github.com/auvred) 创建了 `tsgolint`。
+- [@camchenry](https://github.com/camchenry) 完成了 `oxlint` + `tsgolint` 集成。
+- [@camc314](https://github.com/camc314) 致力于性能问题的工作。
 
-## Join the Community
+## 加入社区
 
-We'd love to hear your feedback on `oxlint` and type-aware linting and are excited to see how it helps improve your development workflow.
+我们很希望听到您对 `oxlint` 和类型感知 linting 的反馈，并很高兴看到它如何帮助改善您的开发工作流程。
 
-Connect with us:
+联系我们：
 
-- **Discord**: Join our [community server](https://discord.gg/9uXCAwqQZW) for real-time discussions
-- **GitHub**: Share feedback on [GitHub Discussions](https://github.com/oxc-project/oxc/discussions)
-- **Issues**: Report `oxlint` bugs to [oxc](https://github.com/oxc-project/oxc/issues) and type-aware linting bugs to [tsgolint](https://github.com/oxc-project/tsgolint/issues).
+- **Discord**: 加入我们的 [社区服务器](https://discord.gg/9uXCAwqQZW) 进行实时讨论
+- **GitHub**: 在 [GitHub Discussions](https://github.com/oxc-project/oxc/discussions) 分享反馈
+- **Issues**: 向 [oxc](https://github.com/oxc-project/oxc/issues) 报告 `oxlint` bug，向 [tsgolint](https://github.com/oxc-project/tsgolint/issues) 报告类型感知 linting bug。
 
-## Next steps
+## 下一步
 
-Install `oxlint`:
+安装 `oxlint`：
 
 ```bash
 pnpm add -D oxlint@latest oxlint-tsgolint@latest
 pnpm dlx oxlint --init # generate .oxlintrc.json
 ```
 
-or follow the [installation guide](https://oxc.rs/docs/guide/usage/linter).
+或遵循 [安装指南](https://oxc.rs/docs/guide/usage/linter)。
 
-Use the `--type-aware` CLI flag.
+使用 `--type-aware` CLI 标志。
 
 ```bash
 pnpm dlx oxlint --type-aware
 ```
 
-And play around with any of the type-aware rules in `.oxlintrc.json`:
+并在 `.oxlintrc.json` 中尝试任何类型感知规则：
 
 ```json
 {

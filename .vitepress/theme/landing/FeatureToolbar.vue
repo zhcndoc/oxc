@@ -2,12 +2,12 @@
 import { ref, onMounted, onUnmounted } from "vue";
 
 const features = [
-  { id: "feature-linter", label: "linter" },
-  { id: "feature-formatter", label: "formatter" },
-  { id: "feature-parser", label: "parser" },
-  { id: "feature-transformer", label: "transformer" },
-  { id: "feature-resolver", label: "resolver" },
-  { id: "feature-minifier", label: "minifier" },
+  { id: "feature-linter", label: "检查" },
+  { id: "feature-formatter", label: "格式化" },
+  { id: "feature-parser", label: "解析" },
+  { id: "feature-transformer", label: "转换" },
+  { id: "feature-resolver", label: "模块解析" },
+  { id: "feature-minifier", label: "压缩" },
 ];
 
 const activeSection = ref(features[0].id);
@@ -177,12 +177,7 @@ onUnmounted(() => {
         class="absolute bottom-0 h-0.5 bg-white transition-all duration-300 ease-out"
         :style="underlineStyle"
       />
-      <li
-        v-for="(feature, _index) in features"
-        :key="feature.id"
-        ref="listItems"
-        class="flex-shrink-0"
-      >
+      <li v-for="(feature, _index) in features" :key="feature.id" ref="listItems" class="flex-none">
         <a
           :href="`#${feature.id}`"
           @click="scrollToSection($event, feature.id)"

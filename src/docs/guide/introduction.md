@@ -1,35 +1,35 @@
 ---
-title: Getting Started
+title: 入门指南
 ---
 
-# Getting Started
+# 入门指南
 
-[What is Oxc?](/docs/guide/what-is-oxc)
+[Oxc 是什么？](/docs/guide/what-is-oxc)
 
-## Lint or format a codebase
+## 代码检查或格式化代码库
 
-- Lint: [Oxlint](/docs/guide/usage/linter)
-- Format: [Oxfmt](/docs/guide/usage/formatter)
+- 代码检查：[Oxlint](/docs/guide/usage/linter)
+- 格式化：[Oxfmt](/docs/guide/usage/formatter)
 
-## Build tooling on top of Oxc
+## 基于 Oxc 构建工具
 
-- Parse JavaScript and TypeScript: [Parser](/docs/guide/usage/parser)
-- Transform TypeScript, JSX, and modern JavaScript: [Transformer](/docs/guide/usage/transformer)
-- Minify JavaScript for production builds: [Minifier](/docs/guide/usage/minifier)
-- Resolve modules for JavaScript and TypeScript: [Resolver](/docs/guide/usage/resolver)
+- 解析 JavaScript 和 TypeScript：[解析器](/docs/guide/usage/parser)
+- 转换 TypeScript、JSX 和现代 JavaScript：[转换器](/docs/guide/usage/transformer)
+- 为生产构建压缩 JavaScript：[压缩器](/docs/guide/usage/minifier)
+- 解析 JavaScript 和 TypeScript 模块：[模块解析器](/docs/guide/usage/resolver)
 
-## Contribute or learn
+## 贡献或学习
 
-- [Contribute](/docs/contribute/introduction)
-- [Learn](/docs/learn/parser_in_rust/intro)
+- [贡献](/docs/contribute/introduction)
+- [学习](/docs/learn/parser_in_rust/intro)
 
-## Other resources
+## 其他资源
 
-- [Troubleshooting](/docs/guide/troubleshooting)
-- [Benchmarks](/docs/guide/benchmarks)
-- [Projects using Oxc](/docs/guide/projects)
-- [Talks and media](/docs/guide/media)
-- [Team](/team)
-- [Endorsements](/endorsements)
-- [Release Blog](/blog/)
-- [Releases](https://github.com/oxc-project/oxc/releases)
+- [故障排除](/docs/guide/troubleshooting)
+- [基准测试](/docs/guide/benchmarks)
+- [使用 Oxc 的项目](/docs/guide/projects)
+- [演讲和媒体](/docs/guide/media)
+- [团队](/team)
+- [推荐](/endorsements)
+- [发布博客](/blog/)
+- [发布版本](https://github.com/oxc-project/oxc/releases)

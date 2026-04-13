@@ -1,35 +1,35 @@
 ---
-title: Specification
+title: 规范
 outline: deep
 ---
 
-# Specification
+# 规范
 
-[The ECMAScript® Language Specification](https://tc39.es/ecma262/) (a living standard) details everything about the JavaScript language, so anyone can implement their own JavaScript engine.
+[ECMAScript® 语言规范](https://tc39.es/ecma262/)（一个活标准）详细介绍了 JavaScript 语言的一切，因此任何人都可以实现自己的 JavaScript 引擎。
 
-The following chapters need to be studied for our parser:
+我们的解析器需要研究以下章节：
 
-- Chapter 5: Notational Conventions
-- Chapter 11: ECMAScript Language: Source Text
-- Chapter 12: ECMAScript Language: Lexical Grammar
-- Chapter 13 - 16: Expressions, Statements, Functions, Classes, Scripts and Modules
-- Annex B: Additional ECMAScript Features for Web Browsers
-- Annex C: The Strict Mode of ECMAScript
+- 第 5 章：表示约定
+- 第 11 章：ECMAScript 语言：源文本
+- 第 12 章：ECMAScript 语言：词法语法
+- 第 13 - 16 章：表达式、语句、函数、类、脚本和模块
+- 附录 B：面向 Web 浏览器的额外 ECMAScript 特性
+- 附录 C：ECMAScript 的严格模式
 
-For navigation inside the specification:
+在规范内部导航：
 
-- Anything clickable has a permanent link, they are shown on the URL as anchors, for example `#sec-identifiers`
-- Hovering over things may show a tooltip, clicking on `References` shows all its references
+- 任何可点击的内容都有一个永久链接，它们在 URL 中显示为锚点，例如 `#sec-identifiers`
+- 悬停在内容上可能会显示工具提示，点击 `References` 会显示其所有引用
 
-## Notational Conventions
+## 表示约定
 
-[Chapter 5.1.5 Grammar Notation](https://tc39.es/ecma262/#sec-grammar-notation) is the section we need to read.
+[第 5.1.5 章 语法表示法](https://tc39.es/ecma262/#sec-grammar-notation) 是我们需要阅读的部分。
 
-The things to note here are:
+这里需要注意的事项有：
 
-### Recursion
+### 递归
 
-This is how lists are presented in the grammar.
+这是列表在语法中的呈现方式。
 
 ```
 ArgumentList :
@@ -37,7 +37,7 @@ ArgumentList :
   ArgumentList , AssignmentExpression
 ```
 
-means
+意味着
 
 ```javascript
 a, b = 1, c = 2
@@ -46,16 +46,16 @@ a, b = 1, c = 2
           ^___^ AssignmentExpression
 ```
 
-### Optional
+### 可选
 
-The `_opt_` suffix for optional syntax. For example,
+可选语法的 _opt_ 后缀。例如，
 
 ```
 VariableDeclaration :
   BindingIdentifier Initializer_opt
 ```
 
-means
+意味着
 
 ```javascript
 var binding_identifier;
@@ -63,18 +63,18 @@ var binding_identifier = Initializer;
                        ______________ Initializer_opt
 ```
 
-### Parameters
+### 参数
 
-The `[Return]` and `[In]` are parameters of the grammar.
+`[Return]` 和 `[In]` 是语法的参数。
 
-For example
+例如
 
 ```
 ScriptBody :
     StatementList[~Yield, ~Await, ~Return]
 ```
 
-means top-level yield, await and return are not allowed in scripts, but
+意味着脚本中不允许顶层的 yield、await 和 return，但是
 
 ```
 ModuleItem :
@@ -83,28 +83,27 @@ ModuleItem :
   StatementListItem[~Yield, +Await, ~Return]
 ```
 
-allows for top-level await.
+允许顶层 await。
 
-## Source Text
+## 源文本
 
-[Chapter 11.2 Types of Source Code](https://tc39.es/ecma262/#sec-types-of-source-code) tells us that
-there is a huge distinction between script code and module code.
-And there is a `use strict` mode that makes the grammar saner by disallowing old JavaScript behaviors.
+[第 11.2 章 源代码类型](https://tc39.es/ecma262/#sec-types-of-source-code) 告诉我们脚本代码和模块代码之间有巨大的区别。
+并且有一个 `use strict` 模式，通过禁止旧的 JavaScript 行为使语法更合理。
 
-**Script Code** is not strict, `use strict` need to be inserted at the top of the file to make script code strict.
-In HTML we write `<script src="javascript.js"></script>`.
+**脚本代码** 不是严格模式，需要在文件顶部插入 `use strict` 才能使脚本代码变为严格模式。
+在 HTML 中我们写 `<script src="javascript.js"></script>`。
 
-**Module Code** is automatically strict.
-In HTML we write `<script type="module" src="main.mjs"></script>`.
+**模块代码** 自动是严格模式。
+在 HTML 中我们写 `<script type="module" src="main.mjs"></script>`。
 
-## ECMAScript Language: Lexical Grammar
+## ECMAScript 语言：词法语法
 
-For more in-depth explanation, read the V8 blog on [Understanding the ECMAScript spec](https://v8.dev/blog/understanding-ecmascript-part-3).
+如需更深入的解释，请阅读 V8 博客上的 [理解 ECMAScript 规范](https://v8.dev/blog/understanding-ecmascript-part-3)。
 
-### [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
+### [自动分号插入](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
 
-This section describes all the rules where we can omit a semicolon while writing JavaScript.
-All the explanation boils down to
+本节描述了我们在编写 JavaScript 时可以省略分号的所有规则。
+所有的解释归结为
 
 ```rust
     pub fn asi(&mut self) -> Result<()> {
@@ -120,7 +119,7 @@ All the explanation boils down to
     }
 ```
 
-The `asi` function need to be manually called where applicable, for example in the end of statement:
+asi 函数需要在适用的地方手动调用，例如在语句的末尾：
 
 ```rust
 fn parse_debugger_statement(&mut self) -> Result<Statement<'a>> {
@@ -133,15 +132,12 @@ fn parse_debugger_statement(&mut self) -> Result<Statement<'a>> {
 
 :::info
 
-This section on asi is written with a parser in mind,
-it explicitly states that the source text is parsed from left to right,
-which makes it almost impossible to write the parser in any other way.
-The author of jsparagus made a rant about this [here](https://github.com/mozilla-spidermonkey/jsparagus/blob/master/js-quirks.md#automatic-semicolon-insertion-).
+本节关于 asi 的内容是考虑到解析器而写的，它明确指出源文本是从左到右解析的，这使得几乎不可能以其他方式编写解析器。jsparagus 的作者对此发表了一篇牢骚 [这里](https://github.com/mozilla-spidermonkey/jsparagus/blob/master/js-quirks.md#automatic-semicolon-insertion-)。
 
-> The specification for this feature is both very-high-level and weirdly procedural (“When, as the source text is parsed from left to right, a token is encountered...”, as if the specification is telling a story about a browser. As far as I know, this is the only place in the spec where anything is assumed or implied about the internal implementation details of parsing.) But it would be hard to specify ASI any other way.
+> 该特性的规范既非常高层又奇怪地过程化（“当源文本从左到右解析时，遇到一个标记..."，就好像规范在讲述一个关于浏览器的故事。据我所知，这是规范中唯一假设或暗示关于解析内部实现细节的地方。）但很难用其他方式指定 ASI。
 
 :::
 
-## Expressions, Statements, Functions, Classes, Scripts and Modules
+## 表达式、语句、函数、类、脚本和模块
 
-It takes a while to understand the syntactic grammar, then apply them to writing a parser.
+理解句法语法需要花费一些时间，然后将它们应用于编写解析器。

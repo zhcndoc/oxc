@@ -1,19 +1,19 @@
 ---
-title: Setup CI and other integrations
-description: Run Oxfmt in CI or as a git hook.
+title: 设置 CI 和其他集成
+description: 在 CI 中运行 Oxfmt 或作为 git hook 运行。
 ---
 
-# Setup CI and other integrations
+# 设置 CI 和其他集成
 
-You can - and should - set up your CI pipeline to run Oxfmt and fail the build on formatting differences.
+你可以——并且应该——设置你的 CI 流水线来运行 Oxfmt，并在格式存在差异时使构建失败。
 
-This page also covers other integrations you may want to include, like git pre-commit hooks.
+本页还涵盖了你可能想要包含的其他集成，例如 git 预提交钩子。
 
 ## CI
 
 ### GitHub Actions
 
-First, add a `fmt:check` script to your `package.json` if you don't have one already:
+首先，如果你还没有的话，在你的 `package.json` 中添加一个 `fmt:check` 脚本：
 
 ```json [package.json]
 {
@@ -23,7 +23,7 @@ First, add a `fmt:check` script to your `package.json` if you don't have one alr
 }
 ```
 
-And then add a job to your GitHub Actions workflow:
+然后将一个 job 添加到你的 GitHub Actions 工作流中：
 
 ```yaml [.github/workflows/ci.yml]
 name: CI
@@ -48,21 +48,21 @@ jobs:
           node-version: lts/*
           cache: pnpm
 
-      # Or yarn, npm, etc.
+      # 或者 yarn, npm 等。
       - run: pnpm install --frozen-lockfile
       - run: pnpm run fmt:check
 ```
 
-#### Autofix formatting issues
+#### 自动修复格式问题
 
-If you find that you often forget to run Oxfmt before opening PRs, and don't or can't use pre-commit hooks, you can add an autofix step to your CI workflow using [autofix.ci](https://autofix.ci).
+如果你发现自己在打开 PR 之前经常忘记运行 Oxfmt，并且没有或无法使用预提交钩子，你可以使用 [autofix.ci](https://autofix.ci) 在你的 CI 工作流中添加一个自动修复步骤。
 
-See [https://autofix.ci/setup](https://autofix.ci/setup) for more details, you will need to install the relevant GitHub App as well.
+详见 [https://autofix.ci/setup](https://autofix.ci/setup)，你还需要安装相关的 GitHub App。
 
-Below is an example GitHub Actions workflow you can use:
+下面是一个你可以使用的 GitHub Actions 工作流示例：
 
 ```yaml [.github/workflows/autofix.yml]
-name: autofix.ci # needs to use this name
+name: autofix.ci # 需要使用此名称
 
 on:
   pull_request:
@@ -85,22 +85,22 @@ jobs:
           node-version: lts/*
           cache: pnpm
 
-      # Or yarn, npm, etc.
+      # 或者 yarn, npm 等。
       - run: pnpm install --frozen-lockfile
 
-      # Run oxfmt to write changes, autofix.ci will commit them if there are any differences.
-      # Be sure to add a `fmt` script to your `package.json` if you haven't already.
+      # 运行 oxfmt 以写入更改，如果存在任何差异，autofix.ci 将提交它们。
+      # 如果你还没有的话，确保在你的 `package.json` 中添加一个 `fmt` 脚本。
       - run: pnpm run fmt
 
-      # NOTE: It is strongly recommended to use the latest SHA hash for this action instead of the version number. (See https://autofix.ci/setup for more details.)
+      # 注意：强烈建议使用此 action 的最新 SHA 哈希值而不是版本号。（详见 https://autofix.ci/setup）
       - uses: autofix-ci/action@1.3.2
 ```
 
 ### GitLab CI
 
-If you use GitLab CI, you can set up Oxfmt to enforce code formatting as part of your CI pipeline.
+如果你使用 GitLab CI，你可以设置 Oxfmt 作为 CI 流水线的一部分来强制代码格式化。
 
-First, add a `fmt:check` script to your `package.json` if you don't have one already:
+首先，如果你还没有的话，在你的 `package.json` 中添加一个 `fmt:check` 脚本：
 
 ```json [package.json]
 {
@@ -110,28 +110,28 @@ First, add a `fmt:check` script to your `package.json` if you don't have one alr
 }
 ```
 
-And then add a job to your `.gitlab-ci.yml`, to check that all code is formatted correctly:
+然后将一个 job 添加到你的 `.gitlab-ci.yml` 中，以检查所有代码是否格式正确：
 
 ```yml [.gitlab-ci.yml]
 oxfmt:
   image: node:lts
   stage: test
   before_script:
-    # Or pnpm, yarn, etc.
+    # 或者 pnpm, yarn 等。
     - npm install
   script:
     - npm run fmt:check
 ```
 
-You may also want to add caching for your package manager to speed up installs.
+你可能还希望为你的包管理器添加缓存以加速安装。
 
-## Pre-commit hook
+## 预提交钩子
 
-To auto-format staged files, use `oxfmt --no-error-on-unmatched-pattern`. This formats all supported files and avoids errors when no files match (e.g., only Ruby files are staged).
+要自动格式化暂存的文件，使用 `oxfmt --no-error-on-unmatched-pattern`。这会格式化所有支持的文件，并在没有文件匹配时避免错误（例如，只暂存了 Ruby 文件）。
 
-Use `--check` to verify formatting without writing files.
+使用 `--check` 来验证格式而不写入文件。
 
-For [lint-staged](https://npmx.dev/package/lint-staged), add to `package.json`:
+对于 [lint-staged](https://npmx.dev/package/lint-staged)，添加到 `package.json`：
 
 ```json [package.json]
 {
@@ -141,4 +141,4 @@ For [lint-staged](https://npmx.dev/package/lint-staged), add to `package.json`:
 }
 ```
 
-To automatically install the git hook when installing dependencies, considering also using [husky](https://typicode.github.io/husky/get-started.html).
+要在安装依赖时自动安装 git hook，考虑也使用 [husky](https://typicode.github.io/husky/get-started.html)。

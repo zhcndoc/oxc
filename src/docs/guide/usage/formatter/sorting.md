@@ -1,22 +1,22 @@
-# Sorting
+# 排序
 
-Oxfmt includes sorting features for imports, Tailwind classes, and package.json.
+Oxfmt 包含用于导入、Tailwind 类和 package.json 的排序功能。
 
-- [Sort imports](#sort-imports)
-- [Sort Tailwind CSS classes](#sort-tailwind-css-classes)
-- [Sort package.json fields](#sort-package-json-fields)
+- [排序导入](#sort-imports)
+- [排序 Tailwind CSS 类](#sort-tailwind-css-classes)
+- [排序 package.json 字段](#sort-package-json-fields)
 
-See [Configuration file reference](./config-file-reference) for full details.
+详见 [配置文件参考](./config-file-reference)。
 
-## Sort imports
+## 排序导入
 
-Based on [eslint-plugin-perfectionist/sort-imports](https://perfectionist.dev/rules/sort-imports).
+基于 [eslint-plugin-perfectionist/sort-imports](https://perfectionist.dev/rules/sort-imports)。
 
-Disabled by default.
+默认禁用。
 
-### Example configuration
+### 配置示例
 
-The same order as `eslint-plugin-perfectionist/sort-imports` default.
+与 `eslint-plugin-perfectionist/sort-imports` 默认顺序相同。
 
 ```json [.oxfmtrc.json]
 {
@@ -34,7 +34,7 @@ The same order as `eslint-plugin-perfectionist/sort-imports` default.
 }
 ```
 
-Use `"newlinesBetween": false` at the top level to disable newlines between groups, then use `{ "newlinesBetween": true }` within `groups` to insert a newline at a specific point.
+在顶层使用 `"newlinesBetween": false` 禁用组之间的换行，然后在 `groups` 内使用 `{ "newlinesBetween": true }` 在特定点插入换行。
 
 ```json [.oxfmtrc.json]
 {
@@ -51,7 +51,7 @@ Use `"newlinesBetween": false` at the top level to disable newlines between grou
 }
 ```
 
-Use `customGroups` to define your own groups for matching specific imports. Each custom group has a `groupName` that can be referenced in `groups`. The `elementNamePattern` accepts glob patterns to match import sources.
+使用 `customGroups` 定义你自己的组以匹配特定的导入。每个自定义组都有一个 `groupName`，可以在 `groups` 中引用。`elementNamePattern` 接受 glob 模式来匹配导入源。
 
 ```json [.oxfmtrc.json]
 {
@@ -73,15 +73,15 @@ Use `customGroups` to define your own groups for matching specific imports. Each
 }
 ```
 
-## Sort Tailwind CSS classes
+## 排序 Tailwind CSS 类
 
-Sorts Tailwind utility classes.
+排序 Tailwind 工具类。
 
-Based on [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss).
+基于 [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss)。
 
-Disabled by default.
+默认禁用。
 
-### Example configuration
+### 配置示例
 
 ```json [.oxfmtrc.json]
 {
@@ -93,19 +93,19 @@ Disabled by default.
 }
 ```
 
-Regex patterns for `attributes` and `functions` are not supported.
+不支持 `attributes` 和 `functions` 的正则模式。
 
-## Sort package.json fields
+## 排序 package.json 字段
 
-Sorts keys in `package.json` using an opinionated order.
+使用预设的顺序排序 `package.json` 中的键。
 
-See [field ordering](https://github.com/oxc-project/sort-package-json?tab=readme-ov-file#field-ordering) for details.
+详见 [字段顺序](https://github.com/oxc-project/sort-package-json?tab=readme-ov-file#field-ordering)。
 
-Enabled by default.
+默认启用。
 
-### Example configuration
+### 配置示例
 
-To disable:
+禁用：
 
 ```json [.oxfmtrc.json]
 {
@@ -113,7 +113,7 @@ To disable:
 }
 ```
 
-To sort `scripts` alphabetically:
+按字母顺序排序 `scripts`：
 
 ```json [.oxfmtrc.json]
 {

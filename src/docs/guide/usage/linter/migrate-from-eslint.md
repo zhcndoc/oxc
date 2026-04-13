@@ -1,87 +1,87 @@
-# Migrate from ESLint
+# 从 ESLint 迁移
 
-This guide is for existing JavaScript and TypeScript projects that currently use ESLint and want to migrate to Oxlint.
+本指南适用于当前使用 ESLint 并希望迁移到 Oxlint 的现有 JavaScript 和 TypeScript 项目。
 
-## Overview
+## 概述
 
-Oxlint and ESLint share similar configuration concepts, but they differ in supported rules and config formats.
+Oxlint 和 ESLint 共享相似的配置概念，但它们在支持的规则和配置格式上有所不同。
 
-Oxlint already supports more than 700 rules from ESLint core and various popular plugins. We intend to support nearly all existing ESLint core rules, and this work is ongoing. Check the [compatibility matrix](/compatibility) to verify support for your frameworks and file types.
+Oxlint 已经支持来自 ESLint 核心和各种流行插件的 700 多条规则。我们打算支持几乎所有现有的 ESLint 核心规则，这项工作正在进行中。查看 [兼容性矩阵](/compatibility) 以验证对您框架和文件类型的支持。
 
-When migrating, expect the following:
+迁移时，请预期以下情况：
 
-- Most ESLint core rules and popular plugin rules are supported
-- Some rules may not yet be available
-- ESLint configuration files must be converted to Oxlint’s config format
-- Oxlint is designed for incremental adoption; a full migration is not required upfront
-- Oxlint's JS Plugins allow usage of ESLint plugins that are not implemented natively by Oxlint
+- 大多数 ESLint 核心规则和流行插件规则都受支持
+- 某些规则可能尚未可用
+- ESLint 配置文件必须转换为 Oxlint 的配置格式
+- Oxlint 专为渐进式采用而设计；不需要一开始就进行全面迁移
+- Oxlint 的 JS 插件允许使用 Oxlint 未原生实现的 ESLint 插件
 
-## Migrate with Skills
+## 使用 Skills 迁移
 
-You can migrate interactively using the [`migrate-oxlint`](https://skills.sh/oxc-project/oxc/migrate-oxlint) skill:
+您可以使用 [`migrate-oxlint`](https://skills.sh/oxc-project/oxc/migrate-oxlint) skill 进行交互式迁移：
 
 ```bash
 npx skills add https://github.com/oxc-project/oxc --skill migrate-oxlint
 ```
 
-Once installed, run `/migrate-oxlint` and the agent will walk you through the full migration.
+安装完成后，运行 `/migrate-oxlint`，助手将引导您完成整个迁移过程。
 
-## Migrating from an ESLint flat config
+## 从 ESLint flat config 迁移
 
-If your project uses an ESLint v9/v10 flat config (e.g. `eslint.config.js` or `eslint.config.mjs`), you can migrate automatically using [`@oxlint/migrate`](https://npmx.dev/package/@oxlint/migrate).
+如果您的项目使用 ESLint v9/v10 flat config（例如 `eslint.config.js` 或 `eslint.config.mjs`），您可以使用 [`@oxlint/migrate`](https://npmx.dev/package/@oxlint/migrate) 自动迁移。
 
-### Run the migration tool
+### 运行迁移工具
 
-From the project root:
+从项目根目录：
 
 ```bash
 npx @oxlint/migrate <optional-eslint-flat-config-path>
 ```
 
-This command:
+此命令：
 
-- Reads your ESLint flat config file
-- Converts supported rules to an Oxlint config
-- Preserves rule severities and options
-- Preserves file and path-specific overrides to allow different rulesets for different parts of a repo
-- Converts `globals` (e.g. `...globals.browser`) to equivalent `env` and `globals` values
-- Preserves root `ignore` patterns for ignoring specific paths/files
+- 读取您的 ESLint flat config 文件
+- 将支持的规则转换为 Oxlint 配置
+- 保留规则严重程度和选项
+- 保留特定文件和路径的重写，以允许仓库的不同部分使用不同的规则集
+- 将 `globals`（例如 `...globals.browser`）转换为等效的 `env` 和 `globals` 值
+- 保留根目录 `ignore` 模式以忽略特定路径/文件
 
-The generated `.oxlintrc.json` config can be edited manually after migration.
+生成的 `.oxlintrc.json` 配置可以在迁移后手动编辑。
 
-`.eslintignore` files will be respected by Oxlint and can be left in place during migration, but we recommend moving the contents to the `"ignorePatterns"` field in `.oxlintrc.json` after migrating. Files/paths ignored via a repo's `.gitignore` file will also be respected by Oxlint automatically.
+Oxlint 会尊重 `.eslintignore` 文件，迁移期间可以保留原位，但我们建议在迁移后将内容移动到 `.oxlintrc.json` 中的 `"ignorePatterns"` 字段。通过仓库的 `.gitignore` 文件忽略的文件/路径也将被 Oxlint 自动尊重。
 
-See the list of [available options](https://github.com/oxc-project/oxlint-migrate?tab=readme-ov-file#options) for more details.
+查看 [可用选项列表](https://github.com/oxc-project/oxlint-migrate?tab=readme-ov-file#options) 以获取更多详细信息。
 
-### Type-Aware TypeScript rules
+### 类型感知 TypeScript 规则
 
-If your ESLint setup uses `typescript-eslint` with type-aware rules, you can pass the `--type-aware` flag:
+如果您的 ESLint 设置使用带有类型感知规则的 `typescript-eslint`，您可以传递 `--type-aware` 标志：
 
 ```bash
 npx @oxlint/migrate --type-aware
 ```
 
-This ensures the generated Oxlint config includes type-aware rules.
+这确保生成的 Oxlint 配置包含类型感知规则。
 
-Note that type-aware linting requires [oxlint-tsgolint](https://github.com/oxc-project/tsgolint), and is based on the TypeScript native rewrite (aka TypeScript 7), but should be possible to adopt in most TypeScript projects without too much upgrade work.
+请注意，类型感知 linting 需要 [oxlint-tsgolint](https://github.com/oxc-project/tsgolint)，并且基于 TypeScript 原生重写（即 TypeScript 7），但应该可以在大多数 TypeScript 项目中采用，而无需太多升级工作。
 
-For further information on Oxlint's type-aware support, see [the Type-Aware Linting page](/docs/guide/usage/linter/type-aware).
+有关 Oxlint 类型感知支持的更多信息，请参阅 [类型感知 Linting 页面](/docs/guide/usage/linter/type-aware)。
 
-### JavaScript plugins
+### JavaScript 插件
 
-If your ESLint config uses plugins that are not supported natively by Oxlint, you can retain them using JavaScript plugins. `@oxlint/migrate` will migrate these plugins for you by default.
+如果您的 ESLint 配置使用 Oxlint 未原生支持的插件，您可以使用 JavaScript 插件保留它们。`@oxlint/migrate` 默认会为您迁移这些插件。
 
-This allows you to continue using those rules via Oxlint alongside the native rules/plugins. The JS Plugins functionality does not support all ESLint plugins, but Oxlint's JavaScript plugin system covers a vast majority of the ESLint v9 API and is actively being improved. Most ESLint plugins covering JavaScript/TypeScript code should work in Oxlint without problems.
+这允许您通过 Oxlint 继续使用这些规则，与原生规则/插件并存。JS 插件功能不支持所有 ESLint 插件，但 Oxlint 的 JavaScript 插件系统涵盖了绝大多数 ESLint v9 API，并且正在积极改进中。大多数涵盖 JavaScript/TypeScript 代码的 ESLint 插件应该可以在 Oxlint 中正常工作。
 
-If you do not want to migrate your ESLint plugins to use as JS Plugins, you can pass `--js-plugins=false`.
+如果您不想迁移 ESLint 插件以用作 JS 插件，您可以传递 `--js-plugins=false`。
 
-For more information on JavaScript Plugins, see [the JS Plugins page](/docs/guide/usage/linter/js-plugins).
+有关 JavaScript 插件的更多信息，请参阅 [JS 插件页面](/docs/guide/usage/linter/js-plugins)。
 
-#### Local custom ESLint plugins
+#### 本地自定义 ESLint 插件
 
-If you use local custom ESLint plugins from within your own repo (e.g. `import pluginMyCompany from './eslint-plugin-my-company/lib/index.js'`), these will not be migrated automatically by `@oxlint/migrate` right now.
+如果您在自己的仓库中使用本地自定义 ESLint 插件（例如 `import pluginMyCompany from './eslint-plugin-my-company/lib/index.js'`），这些目前不会由 `@oxlint/migrate` 自动迁移。
 
-However, they can be added manually to the Oxlint config file after running the migration script:
+但是，在运行迁移脚本后，可以将它们手动添加到 Oxlint 配置文件中：
 
 ::: code-group
 
@@ -102,50 +102,50 @@ export default defineConfig({
 
 :::
 
-## Running Oxlint and ESLint together
+## 同时运行 Oxlint 和 ESLint
 
-If not all required rules are available in Oxlint, you can run Oxlint and ESLint side by side.
+如果 Oxlint 中并非所有需要的规则都可用，您可以并排运行 Oxlint 和 ESLint。
 
-A common setup is:
+常见的设置是：
 
-1. Enable Oxlint for all supported rules
-2. Keep ESLint for unsupported rules
-3. Disable overlapping rules in ESLint
+1. 对所有支持的规则启用 Oxlint
+2. 对不支持的规则保留 ESLint
+3. 在 ESLint 中禁用重叠规则
 
-Because Oxlint is significantly faster than ESLint, it is recommended to run Oxlint first to catch errors early, then fall back to ESLint only if needed.
+因为 Oxlint 比 ESLint 快得多，建议先运行 Oxlint 以尽早捕获错误，然后仅在需要时回退到 ESLint。
 
-For example:
+例如：
 
 ```bash
 oxlint && eslint
 ```
 
-### Disabling overlapping rules in ESLint
+### 在 ESLint 中禁用重叠规则
 
-You can use [`eslint-plugin-oxlint`](https://npmx.dev/package/eslint-plugin-oxlint) to disable ESLint rules that are already handled by Oxlint:
+您可以使用 [`eslint-plugin-oxlint`](https://npmx.dev/package/eslint-plugin-oxlint) 禁用已由 Oxlint 处理的 ESLint 规则：
 
 ```bash
 npm install --save-dev eslint-plugin-oxlint
 ```
 
-This reduces duplicate diagnostics, can help cut down your linting time considerably, and allows ESLint to focus only on rules that Oxlint does not yet support.
+这减少了重复的诊断，可以帮助大幅减少 linting 时间，并允许 ESLint 仅专注于 Oxlint 尚未支持的规则。
 
-Long-term - once remaining important rules have been added in Oxlint - we strongly recommend moving fully to Oxlint to simplify your setup and reduce the number of dependencies for your project.
+长期来看 - 一旦 Oxlint 中添加了剩余的重要规则 - 我们强烈建议完全迁移到 Oxlint，以简化您的设置并减少项目的依赖数量。
 
-## Migrating from legacy ESLint (v8.x) configs
+## 从旧版 ESLint (v8.x) 配置迁移
 
-If your project uses ESLint v8.x with legacy config files (such as `.eslintrc.js` or `.eslintrc.json`), they cannot be migrated automatically by `@oxlint/migrate`.
+如果您的项目使用带有旧版配置文件（例如 `.eslintrc.js` 或 `.eslintrc.json`）的 ESLint v8.x，它们无法由 `@oxlint/migrate` 自动迁移。
 
-In some cases, you can [migrate them automatically to an ESLint flat config with `@eslint/migrate-config`](https://npmx.dev/package/@eslint/migrate-config) first, and _then_ to Oxlint using `@oxlint/migrate`.
+在某些情况下，您可以先 [使用 `@eslint/migrate-config` 将它们自动迁移到 ESLint flat config](https://npmx.dev/package/@eslint/migrate-config)，_然后_ 使用 `@oxlint/migrate` 迁移到 Oxlint。
 
-The "legacy" ESLint v8.x configuration file shape maps closely to Oxlint’s config format, so for simple setups most rules and options can be translated directly.
+“旧版”ESLint v8.x 配置文件结构与 Oxlint 的配置格式密切映射，因此对于简单的设置，大多数规则和选项可以直接转换。
 
-## Rule/plugin support
+## 规则/插件支持
 
-You may have specific rules that you rely on in ESLint that are not yet ported to Oxlint.
+您可能有一些在 ESLint 中依赖的特定规则尚未移植到 Oxlint。
 
-Almost all rules from our supported plugins will be ported - and a majority already have been. For those that will not be ported, some rules are deprecated in the original plugins, or have alternatives implemented already.
+我们支持的插件中的几乎所有规则都将被移植 - 并且大多数已经移植完成。对于那些不会移植的规则，有些规则在原始插件中已弃用，或者已经有了替代实现。
 
-You can check the [meta issue](https://github.com/oxc-project/oxc/issues/481) for rule/plugin implementation status to see if the rules you rely on are planned for implementation, or if they have already been implemented by other, equivalent rules.
+您可以查看 [元问题](https://github.com/oxc-project/oxc/issues/481) 了解规则/插件实现状态，以查看您依赖的规则是否计划实现，或者是否已由其他等效规则实现。
 
-For plugins that are not implemented natively in Oxlint, it is recommended to use [JS Plugins](/docs/guide/usage/linter/js-plugins).
+对于 Oxlint 中未原生实现的插件，建议使用 [JS 插件](/docs/guide/usage/linter/js-plugins)。

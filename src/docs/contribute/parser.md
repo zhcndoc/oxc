@@ -1,106 +1,106 @@
 ---
-title: Parser
+title: 解析器
 outline: deep
 ---
 
-# Parser
+# 解析器
 
-The Oxc parser is designed to be the fastest and most conformant JavaScript and TypeScript parser available. Contributing to the parser requires understanding both the implementation details and the extensive test infrastructure.
+Oxc 解析器旨在成为可用最快且最符合标准的 JavaScript 和 TypeScript 解析器。贡献解析器需要了解实现细节和广泛的测试基础设施。
 
-## Architecture Overview
+## 架构概述
 
-The parser follows a traditional compiler frontend architecture:
+解析器遵循传统的编译器前端架构：
 
 ```
 Source Text → Lexer → Tokens → Parser → AST
 ```
 
-### Key Components
+### 关键组件
 
-- **Lexer**: Tokenizes source text into structured tokens
-- **Parser**: Recursive descent parser that builds the AST
-- **AST**: Memory-efficient abstract syntax tree
-- **Error Recovery**: Advanced error handling and recovery
-- **Semantic Analysis**: Symbol resolution and scope management
+- **词法分析器 (Lexer)**：将源文本标记化为结构化的令牌
+- **解析器 (Parser)**：构建 AST 的递归下降解析器
+- **抽象语法树 (AST)**：内存高效的抽象语法树
+- **错误恢复 (Error Recovery)**：高级错误处理和恢复
+- **语义分析 (Semantic Analysis)**：符号解析和作用域管理
 
-### Design Goals
+### 设计目标
 
-We aim to be the fastest Rust-based ready-for-production parser with:
+我们的目标是成为最快的基于 Rust 的可供生产使用的解析器，具有：
 
-- **Speed**: 3x faster than SWC, 5x faster than Biome
-- **Conformance**: 100% Test262 compliance, 99%+ Babel/TypeScript compatibility
-- **Memory Efficiency**: Arena-based allocation, minimal heap usage
-- **Error Quality**: Helpful error messages with recovery
+- **速度**：比 SWC 快 3 倍，比 Biome 快 5 倍
+- **符合性**：100% 符合 Test262，99%+ 兼容 Babel/TypeScript
+- **内存效率**：基于 Arena 的分配，最小化堆使用
+- **错误质量**：带有恢复功能的有帮助的错误消息
 
-## Development Workflow
+## 开发工作流
 
-### Setting Up
+### 设置环境
 
 ```bash
-# Run parser tests
+# 运行解析器测试
 cargo test -p oxc_parser
 
-# Run conformance tests
-just c  # or `just coverage`
+# 运行符合性测试
+just c  # 或 `just coverage`
 ```
 
-### Project Structure
+### 项目结构
 
 ```
 crates/oxc_parser/
 ├── src/
-│   ├── lib.rs              # Public API
-│   ├── lexer/              # Tokenization
-│   ├── parser/             # Parsing logic
-│   ├── cursor.rs           # Token stream management
-│   └── diagnostics.rs      # Error handling
-├── tests/                  # Unit tests
-└── examples/               # Usage examples
+│   ├── lib.rs              # 公共 API
+│   ├── lexer/              # 词法分析
+│   ├── parser/             # 解析逻辑
+│   ├── cursor.rs           # 令牌流管理
+│   └── diagnostics.rs      # 错误处理
+├── tests/                  # 单元测试
+└── examples/               # 使用示例
 ```
 
-### Core Parser Files
+### 核心解析器文件
 
-- **`parser/mod.rs`**: Main parser entry point
-- **`parser/statement.rs`**: Statement parsing
-- **`parser/expression.rs`**: Expression parsing
-- **`parser/typescript.rs`**: TypeScript-specific parsing
-- **`parser/jsx.rs`**: JSX parsing logic
+- **`parser/mod.rs`**：主解析器入口点
+- **`parser/statement.rs`**：语句解析
+- **`parser/expression.rs`**：表达式解析
+- **`parser/typescript.rs`**：TypeScript 特定解析
+- **`parser/jsx.rs`**：JSX 解析逻辑
 
-## Conformance Testing
+## 符合性测试
 
-### Running Conformance Tests
+### 运行符合性测试
 
 ```bash
 just c
 ```
 
-This runs conformance test suites using the runner in [tasks/coverage](https://github.com/oxc-project/oxc/tree/main/tasks/coverage):
+这使用 [tasks/coverage](https://github.com/oxc-project/oxc/tree/main/tasks/coverage) 中的运行器运行符合性测试套件：
 
-### Test262 - ECMAScript Conformance
+### Test262 - ECMAScript 符合性
 
-JavaScript has the [ECMAScript Test Suite](https://github.com/tc39/test262) called Test262.
-The goal of Test262 is to provide test material that covers every observable behavior specified in the specification.
+JavaScript 拥有称为 Test262 的 [ECMAScript 测试套件](https://github.com/tc39/test262)。
+Test262 的目标是提供涵盖规范中指定的每种可观察行为的测试材料。
 
-Parser conformance uses the [parse phase tests](https://github.com/tc39/test262/blob/main/INTERPRETING.md#negative).
+解析器符合性使用 [解析阶段测试](https://github.com/tc39/test262/blob/main/INTERPRETING.md#negative)。
 
-**Current Status**: `43765/43765 (100.00%)`
+**当前状态**: `43765/43765 (100.00%)`
 
-### Babel Parser Tests
+### Babel 解析器测试
 
-When new language features are added to JavaScript, Babel implements them first.
-Babel has comprehensive [parser tests](https://github.com/babel/babel/tree/main/packages/babel-parser/test) for cutting-edge features.
+当新的语言特性被添加到 JavaScript 时，Babel 会首先实现它们。
+Babel 拥有针对前沿特性的全面 [解析器测试](https://github.com/babel/babel/tree/main/packages/babel-parser/test)。
 
-**Current Status**: `2093/2101 (99.62%)`
+**当前状态**: `2093/2101 (99.62%)`
 
-### TypeScript Conformance
+### TypeScript 符合性
 
-The TypeScript conformance tests can be found [here](https://github.com/microsoft/TypeScript/tree/main/tests/cases/conformance).
+TypeScript 符合性测试可以在 [这里](https://github.com/microsoft/TypeScript/tree/main/tests/cases/conformance) 找到。
 
-**Current Status**: `6470/6479 (99.86%)`
+**当前状态**: `6470/6479 (99.86%)`
 
-### Viewing Results
+### 查看结果
 
-Test results are stored in snapshot files for tracking changes:
+测试结果存储在快照文件中以跟踪更改：
 
 - [`parser_test262.snap`](https://github.com/oxc-project/oxc/blob/main/tasks/coverage/snapshots/parser_test262.snap)
 - [`parser_babel.snap`](https://github.com/oxc-project/oxc/blob/main/tasks/coverage/snapshots/parser_babel.snap)

@@ -3,41 +3,41 @@ title: AST
 outline: deep
 ---
 
-# Abstract Syntax Tree (AST)
+# 抽象语法树 (AST)
 
-The Oxc AST is the foundation of all Oxc tools. Understanding its structure and how to work with it is essential for contributing to parser, linter, transformer, and other components.
+Oxc AST 是所有 Oxc 工具的基础。理解其结构以及如何操作它对于贡献解析器、linter、转换器和其他组件至关重要。
 
-## AST Architecture
+## AST 架构
 
-### Design Principles
+### 设计原则
 
-The Oxc AST is designed with the following principles:
+Oxc AST 的设计遵循以下原则：
 
-1. **Performance First**: Optimized for speed and memory efficiency
-2. **Type Safety**: Leverages Rust's type system to prevent common errors
-3. **Spec Compliance**: Closely follows ECMAScript specification
-4. **Clear Semantics**: Removes ambiguity present in other AST formats
+1. **性能优先**：针对速度和内存效率进行优化
+2. **类型安全**：利用 Rust 的类型系统防止常见错误
+3. **规范合规**：紧密遵循 ECMAScript 规范
+4. **语义清晰**：消除其他 AST 格式中存在的歧义
 
-## Working with the AST
+## 使用 AST
 
-### Generate AST Related Code
+### 生成 AST 相关代码
 
-When you modify AST definitions, run the code generation tool:
+当你修改 AST 定义时，运行代码生成工具：
 
 ```bash
 just ast
 ```
 
-This generates:
+这将生成：
 
-- **Visitor patterns**: For traversing the AST
-- **Builder methods**: For constructing AST nodes
-- **Trait implementations**: For common operations
-- **TypeScript types**: For Node.js bindings
+- **访问者模式**：用于遍历 AST
+- **构建器方法**：用于构建 AST 节点
+- **Trait 实现**：用于常见操作
+- **TypeScript 类型**：用于 Node.js 绑定
 
-### AST Node Structure
+### AST 节点结构
 
-Every AST node follows a consistent pattern:
+每个 AST 节点都遵循一致的模式：
 
 ```rust
 #[ast(visit)]
@@ -53,15 +53,15 @@ pub struct FunctionDeclaration<'a> {
 }
 ```
 
-Key components:
+关键组件：
 
-- **`span`**: Source location information
-- **`#[ast(visit)]`**: Generates visitor methods
-- **Lifetime `'a`**: References to arena-allocated memory
+- **`span`**：源代码位置信息
+- **`#[ast(visit)]`**：生成访问者方法
+- **生命周期 `'a`**：指向 arena 分配内存的引用
 
-### Memory Management
+### 内存管理
 
-The AST uses a memory arena for efficient allocation:
+AST 使用内存 arena 进行高效分配：
 
 ```rust
 use oxc_allocator::Allocator;
@@ -70,18 +70,18 @@ let allocator = Allocator::default();
 let ast = parser.parse(&allocator, source_text, source_type)?;
 ```
 
-Benefits:
+优势：
 
-- **Fast allocation**: No individual malloc calls
-- **Fast deallocation**: Drop entire arena at once
-- **Cache friendly**: Linear memory layout
-- **No reference counting**: Simple lifetime management
+- **快速分配**：无需单独的 malloc 调用
+- **快速释放**：一次性释放整个 arena
+- **缓存友好**：线性内存布局
+- **无引用计数**：简单的生命周期管理
 
-## AST Traversal
+## AST 遍历
 
-### Visitor Pattern
+### 访问者模式
 
-Use the generated visitor for AST traversal:
+使用生成的访问者进行 AST 遍历：
 
 ```rust
 use oxc_ast::visit::{Visit, walk_mut};
@@ -95,14 +95,14 @@ impl<'a> Visit<'a> for MyVisitor {
     }
 }
 
-// Usage
+// 用法
 let mut visitor = MyVisitor;
 visitor.visit_program(&program);
 ```
 
-### Mutable Visitor
+### 可变访问者
 
-For transformations, use the mutable visitor:
+对于转换操作，使用可变访问者：
 
 ```rust
 use oxc_ast::visit::{VisitMut, walk_mut};
@@ -111,27 +111,27 @@ struct MyTransformer;
 
 impl<'a> VisitMut<'a> for MyTransformer {
     fn visit_binary_expression(&mut self, expr: &mut BinaryExpression<'a>) {
-        // Transform the expression
+        // 转换表达式
         if expr.operator == BinaryOperator::Addition {
-            // Modify the AST node
+            // 修改 AST 节点
         }
         walk_mut::walk_binary_expression_mut(self, expr);
     }
 }
 ```
 
-## AST Construction
+## AST 构建
 
-### Builder Pattern
+### 构建器模式
 
-Use the AST builder for creating nodes:
+使用 AST 构建器创建节点：
 
 ```rust
 use oxc_ast::AstBuilder;
 
 let ast = AstBuilder::new(&allocator);
 
-// Create a binary expression: a + b
+// 创建一个二元表达式：a + b
 let left = ast.expression_identifier_reference(SPAN, "a");
 let right = ast.expression_identifier_reference(SPAN, "b");
 let expr = ast.expression_binary_expression(
@@ -142,9 +142,9 @@ let expr = ast.expression_binary_expression(
 );
 ```
 
-### Helper Functions
+### 辅助函数
 
-Common patterns are provided as helpers:
+常用模式作为辅助函数提供：
 
 ```rust
 impl<'a> AstBuilder<'a> {
@@ -156,11 +156,11 @@ impl<'a> AstBuilder<'a> {
 }
 ```
 
-## Development Workflow
+## 开发工作流
 
-### Adding New AST Nodes
+### 添加新的 AST 节点
 
-1. **Define the struct**:
+1. **定义结构体**：
 
    ```rust
    #[ast(visit)]
@@ -171,77 +171,77 @@ impl<'a> AstBuilder<'a> {
    }
    ```
 
-2. **Add to enum**:
+2. **添加到枚举**：
 
    ```rust
    pub enum Statement<'a> {
-       // ... existing variants
+       // ... 现有变体
        MyNewStatement(Box<'a, MyNewNode<'a>>),
    }
    ```
 
-3. **Run code generation**:
+3. **运行代码生成**：
 
    ```bash
    just ast
    ```
 
-4. **Implement parsing logic**:
+4. **实现解析逻辑**：
    ```rust
    impl<'a> Parser<'a> {
        fn parse_my_new_node(&mut self) -> Result<MyNewNode<'a>> {
-           // Parsing implementation
+           // 解析实现
        }
    }
    ```
 
-## Comparing AST Formats
+## 比较 AST 格式
 
-### Use AST Explorer
+### 使用 AST Explorer
 
-For comparing with other parsers, use [ast-explorer.dev](https://ast-explorer.dev):
+为了与其他解析器进行比较，使用 [ast-explorer.dev](https://ast-explorer.dev)：
 
-1. **Better UI**: Modern interface with syntax highlighting
-2. **Up-to-date**: Latest parser versions
-3. **Multiple parsers**: Compare Oxc, Babel, TypeScript, etc.
-4. **Export formats**: JSON, code generation
+1. **更好的 UI**：具有语法高亮的现代界面
+2. **最新**：最新的解析器版本
+3. **多种解析器**：比较 Oxc、Babel、TypeScript 等
+4. **导出格式**：JSON、代码生成
 
-## Performance Considerations
+## 性能考量
 
-### Memory Layout
+### 内存布局
 
-The AST is designed for cache efficiency:
+AST 专为缓存效率而设计：
 
 ```rust
-// Good: Compact representation
+// 好：紧凑表示
 struct CompactNode<'a> {
-    span: Span,           // 8 bytes
-    flags: u8,            // 1 byte
-    name: Atom<'a>,       // 8 bytes
+    span: Span,           // 8 字节
+    flags: u8,            // 1 字节
+    name: Atom<'a>,       // 8 字节
 }
 
-// Avoid: Large enums without boxing
+// 避免：未装箱的大枚举
 enum LargeEnum {
     Small,
-    Large { /* 200 bytes of data */ },
+    Large { /* 200 字节的数据 */ },
 }
 ```
 
-### Arena Allocation
+### Arena 分配
 
-All AST nodes are allocated in the arena:
+所有 AST 节点都在 arena 中分配：
 
 ```rust
-// Automatically handled by #[ast] macro
+// 由 #[ast] 宏自动处理
 let node = self.ast.alloc(MyNode {
     span: SPAN,
     value: 42,
 });
 ```
 
-### Enum Size Testing
+### 枚举大小测试
 
-We enforce small enum sizes:
+我们强制要求较小的枚举大小：
 
 ```rust
 #[cfg(all(target_arch = "x86_64", target_pointer_width = "64"))]
@@ -254,11 +254,11 @@ fn no_bloat_enum_sizes() {
 }
 ```
 
-## Advanced Topics
+## 高级主题
 
-### Custom AST Attributes
+### 自定义 AST 属性
 
-Add custom attributes for specific tools:
+为特定工具添加自定义属性：
 
 ```rust
 #[ast(visit)]
@@ -270,9 +270,9 @@ pub struct MyNode<'a> {
 }
 ```
 
-### Integration with Semantic Analysis
+### 与语义分析集成
 
-Link AST nodes with semantic information:
+将 AST 节点与语义信息链接：
 
 ```rust
 #[ast(visit)]
@@ -284,21 +284,21 @@ pub struct IdentifierReference<'a> {
 }
 ```
 
-This allows tools to access binding information, scope context, and type information during AST traversal.
+这允许工具在 AST 遍历期间访问绑定信息、作用域上下文和类型信息。
 
-## Debugging Tips
+## 调试技巧
 
-### Pretty Printing
+### 美化打印
 
-Use the debug formatter to inspect AST:
+使用调试格式化器检查 AST：
 
 ```rust
 println!("{:#?}", ast_node);
 ```
 
-### Span Information
+### Span 信息
 
-Track source locations for error reporting:
+跟踪源代码位置以用于错误报告：
 
 ```rust
 let span = node.span();

@@ -1,27 +1,27 @@
 ---
-title: Built-in Plugins
-description: Enable built in plugin rule sets and extend Oxlint with ESLint compatible JavaScript plugins.
+title: 内置插件
+description: 启用内置插件规则集并使用与 ESLint 兼容的 JavaScript 插件扩展 Oxlint。
 ---
 
-# Built-in Plugins
+# 内置插件
 
-Oxlint includes built-in implementations of many popular ESLint plugin rule sets. Most rules in the `recommended` configs are already implemented, so you can get useful results without extra setup.
+Oxlint 包含了许多流行 ESLint 插件规则集的内置实现。`recommended` 配置中的大多数规则已经实现，因此无需额外设置即可获得有用的结果。
 
-Oxlint also supports plugins written in JavaScript with an ESLint-compatible API. See [JS Plugins](./js-plugins.md).
+Oxlint 还支持使用与 ESLint 兼容的 API 编写的 JavaScript 插件。请参阅 [JS 插件](./js-plugins.md)。
 
-## What a plugin means in Oxlint
+## Oxlint 中插件的含义
 
-A plugin is a named group of rules. Enabling a plugin makes its rules available, and category flags control which rules are enabled and at what severity.
+插件是一组命名的规则。启用插件使其规则可用，类别标志控制启用哪些规则及其严重程度。
 
-If you are migrating from ESLint, plugins map to the ecosystems you already know, such as import, react, jsx-a11y, jest, unicorn, and more.
+如果您是从 ESLint 迁移过来的，插件映射到您已经熟悉的生态系统，例如 import、react、jsx-a11y、jest、unicorn 等。
 
-## Enable a plugin
+## 启用插件
 
-It is **strongly recommended** to use a config file to enable plugins, as it makes it considerably easier to manage and share with other developers on a project.
+**强烈建议**使用配置文件来启用插件，因为这使得在项目中与其他开发人员管理和共享变得相当容易。
 
-### Enable in a config file
+### 在配置文件中启用
 
-You can also enable plugins in your config file using the `plugins` field:
+您也可以使用 `plugins` 字段在配置文件中启用插件：
 
 ::: code-group
 
@@ -41,35 +41,35 @@ export default defineConfig({
 
 :::
 
-Setting `plugins` **overwrites the default plugin set**. The list should include every plugin you want enabled.
+设置 `plugins` **会覆盖默认插件集**。列表应包含您想要启用的每个插件。
 
-### Enable with the CLI
+### 使用 CLI 启用
 
-You can also enable a plugin using a `--<plugin-name>-plugin` CLI flag.
+您也可以使用 `--<plugin-name>-plugin` CLI 标志启用插件。
 
-Example, enable the import plugin:
+例如，启用 import 插件：
 
 ```bash
 oxlint --import-plugin
 ```
 
-Once enabled, category flags determine what is turned on.
+启用后，类别标志决定开启什么。
 
-Example, enable import plugin rules in the correctness category as errors and suspicious as warnings:
+例如，将 correctness 类别中的 import 插件规则启用为错误，将 suspicious 启用为警告：
 
 ```bash
 oxlint --import-plugin -D correctness -W suspicious
 ```
 
-Correctness rules are enabled by default.
+Correctness 规则默认启用。
 
-Tip: run `oxlint --help` to see the full list of plugin flags.
+提示：运行 `oxlint --help` 查看插件标志的完整列表。
 
-## Disable default plugins
+## 禁用默认插件
 
-### Disable default plugins in a config file
+### 在配置文件中禁用默认插件
 
-To disable all default plugins in a config file, set `plugins` to an empty array:
+要在配置文件中禁用所有默认插件，请将 `plugins` 设置为空数组：
 
 ::: code-group
 
@@ -89,46 +89,46 @@ export default defineConfig({
 
 :::
 
-This disables all default plugins and uses only the base rule set.
+这将禁用所有默认插件并仅使用基本规则集。
 
-### Disable default plugins with the CLI
+### 使用 CLI 禁用默认插件
 
-Several plugins are enabled by default. You can disable a default plugin with `--disable-<plugin-name>-plugin`.
+默认启用了几个插件。您可以使用 `--disable-<plugin-name>-plugin` 禁用默认插件。
 
-Example, disable unicorn:
+例如，禁用 unicorn：
 
 ```bash
 oxlint --disable-unicorn-plugin
 ```
 
-Only default plugins support being disabled. Non-default plugins can simply be omitted.
+只有默认插件支持被禁用。非默认插件可以直接省略。
 
-## Supported plugins
+## 支持的插件
 
-This table lists the built-in plugins and where they come from.
+此表列出了内置插件及其来源。
 
-| Plugin name  | Default | Source                                                                                                                                                                                                                                                       |
-| ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `eslint`     | Yes     | [ESLint](https://eslint.org/) core rules                                                                                                                                                                                                                     |
-| `typescript` | Yes     | TypeScript rules from [typescript-eslint](https://typescript-eslint.io/) (aka `@typescript-eslint/plugin`). Type-aware rules are available using [the type-aware mode](./type-aware.md).                                                                     |
-| `unicorn`    | Yes     | [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)                                                                                                                                                                               |
-| `react`      | No      | [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react), [eslint-plugin-react-hooks](https://www.npmx.dev/package/eslint-plugin-react-hooks), and [eslint-plugin-react-refresh](https://github.com/ArnaudBarre/eslint-plugin-react-refresh) |
-| `react-perf` | No      | [eslint-plugin-react-perf](https://github.com/cvazac/eslint-plugin-react-perf)                                                                                                                                                                               |
-| `nextjs`     | No      | [@next/eslint-plugin-next](https://www.npmx.dev/package/@next/eslint-plugin-next)                                                                                                                                                                            |
-| `oxc`        | Yes     | Oxc-specific rules and selected rules ported from deepscan                                                                                                                                                                                                   |
-| `import`     | No      | [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import) (also equivalent to [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x))                                                                                     |
-| `jsdoc`      | No      | [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc)                                                                                                                                                                                          |
-| `jsx-a11y`   | No      | [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)                                                                                                                                                                               |
-| `node`       | No      | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                                                                                                                                                                                       |
-| `promise`    | No      | [eslint-plugin-promise](https://github.com/eslint-community/eslint-plugin-promise)                                                                                                                                                                           |
-| `jest`       | No      | [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest)                                                                                                                                                                                   |
-| `vitest`     | No      | [@vitest/eslint-plugin](https://github.com/vitest-dev/eslint-plugin-vitest) aka eslint-plugin-vitest                                                                                                                                                         |
-| `vue`        | No      | [eslint-plugin-vue](https://eslint.vuejs.org/) rules that work with script tags                                                                                                                                                                              |
+| 插件名称     | 默认 | 来源                                                                                                                                                                                                                                                       |
+| ------------ | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `eslint`     | 是   | [ESLint](https://eslint.org/) 核心规则                                                                                                                                                                                                                     |
+| `typescript` | 是   | 来自 [typescript-eslint](https://typescript-eslint.io/) 的 TypeScript 规则（即 `@typescript-eslint/plugin`）。使用 [类型感知模式](./type-aware.md) 可使用类型感知规则。                                                                                    |
+| `unicorn`    | 是   | [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)                                                                                                                                                                             |
+| `react`      | 否   | [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)、[eslint-plugin-react-hooks](https://www.npmx.dev/package/eslint-plugin-react-hooks) 和 [eslint-plugin-react-refresh](https://github.com/ArnaudBarre/eslint-plugin-react-refresh) |
+| `react-perf` | 否   | [eslint-plugin-react-perf](https://github.com/cvazac/eslint-plugin-react-perf)                                                                                                                                                                             |
+| `nextjs`     | 否   | [@next/eslint-plugin-next](https://www.npmx.dev/package/@next/eslint-plugin-next)                                                                                                                                                                          |
+| `oxc`        | 是   | Oxc 特定规则以及从 deepscan 移植的选定规则                                                                                                                                                                                                                 |
+| `import`     | 否   | [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)（也等同于 [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x)）                                                                                            |
+| `jsdoc`      | 否   | [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc)                                                                                                                                                                                        |
+| `jsx-a11y`   | 否   | [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)                                                                                                                                                                             |
+| `node`       | 否   | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                                                                                                                                                                                     |
+| `promise`    | 否   | [eslint-plugin-promise](https://github.com/eslint-community/eslint-plugin-promise)                                                                                                                                                                         |
+| `jest`       | 否   | [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest)                                                                                                                                                                                 |
+| `vitest`     | 否   | [@vitest/eslint-plugin](https://github.com/vitest-dev/eslint-plugin-vitest) 即 eslint-plugin-vitest                                                                                                                                                        |
+| `vue`        | 否   | [eslint-plugin-vue](https://eslint.vuejs.org/) 适用于 script 标签的规则                                                                                                                                                                                    |
 
-For the current status of rule coverage, see the linter [product plan issue](https://github.com/oxc-project/oxc/issues/481). For framework and file type support, see the [compatibility matrix](/compatibility).
+有关规则覆盖率的当前状态，请参阅 linter [产品计划 issue](https://github.com/oxc-project/oxc/issues/481)。有关框架和文件类型支持，请参阅 [兼容性矩阵](/compatibility)。
 
-## Adding new plugins
+## 添加新插件
 
-Oxlint focuses on supporting the ecosystem through built-in plugins and ESLint-compatible JavaScript plugins. [Contributions that add rules](/docs/contribute/linter/adding-rules) to existing built-in plugins are encouraged.
+Oxlint 专注于通过内置插件和与 ESLint 兼容的 JavaScript 插件来支持生态系统。鼓励 [贡献添加规则](/docs/contribute/linter/adding-rules) 到现有的内置插件。
 
-If you think a rule set should be implemented as a built-in plugin, please [open a GitHub discussion](https://github.com/oxc-project/oxc/discussions/new?category=feature-request) first.
+如果您认为某个规则集应该作为内置插件实现，请先 [开启 GitHub 讨论](https://github.com/oxc-project/oxc/discussions/new?category=feature-request)。

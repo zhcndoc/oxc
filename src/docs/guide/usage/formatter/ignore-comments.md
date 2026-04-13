@@ -1,6 +1,6 @@
-# Inline ignore comments
+# 内联忽略注释
 
-For JS/TS files, use `oxfmt-ignore` to skip formatting the next statement:
+对于 JS/TS 文件，使用 `oxfmt-ignore` 跳过下一条语句的格式化：
 
 <!-- prettier-ignore-start -->
 ```js
@@ -17,7 +17,7 @@ const x = () => { return 2; };
 ```
 <!-- prettier-ignore-end -->
 
-For JS-in-Vue, use `oxfmt-ignore` inside the `<script>` tag:
+对于 Vue 中的 JS，在 `<script>` 标签内使用 `oxfmt-ignore`：
 
 <!-- prettier-ignore-start -->
 ```vue
@@ -28,7 +28,7 @@ const a    = 42;
 ```
 <!-- prettier-ignore-end -->
 
-Trailing ignore comments are also supported:
+也支持行尾忽略注释：
 
 <!-- prettier-ignore-start -->
 ```js
@@ -36,10 +36,10 @@ const a    = 42; // oxfmt-ignore
 ```
 <!-- prettier-ignore-end -->
 
-For other files and non-JS parts of Vue files (e.g., `<template>`, `<style>`), use `prettier-ignore` comment. See also Prettier's [ignore documentation](https://prettier.io/docs/ignore#html).
+对于其他文件和 Vue 文件的非 JS 部分（例如 `<template>`、`<style>`），请使用 `prettier-ignore` 注释。另请参阅 Prettier 的 [忽略文档](https://prettier.io/docs/ignore#html)。
 
-Currently, TOML files do not support ignore comments.
+目前，TOML 文件不支持忽略注释。
 
-## Prettier compatibility
+## Prettier 兼容性
 
-- `prettier-ignore` comment is also supported
+- 也支持 `prettier-ignore` 注释

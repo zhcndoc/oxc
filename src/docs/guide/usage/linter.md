@@ -3,14 +3,14 @@ title: Oxlint
 outline: deep
 badges:
   - src: https://img.shields.io/npm/dw/oxlint
-    alt: npm weekly downloads
+    alt: npm 每周下载量
 ---
 
 <script setup>
 import { data } from './rule-count.data.js';
 const ruleCount = data;
-// Subtract 1 and then round down to nearest 5 so we can say "More than 650 rules" when the number is 655, instead of saying "More than 655 rules" when that's incorrect.
-// Inputs and outputs:
+// 减 1 然后向下舍入到最近的 5，这样当数字是 655 时我们可以说“超过 650 条规则”，而不是在不准确时说“超过 655 条规则”。
+// 输入和输出：
 // 655 -> 650
 // 654 -> 650
 // 651 -> 650
@@ -22,73 +22,73 @@ const ruleCountRounded = Math.floor((data - 1) / 5) * 5;
 
 <AppBadgeList />
 
-Oxlint (`/oʊ-ɛks-lɪnt/`) is a high-performance linter for JavaScript and TypeScript built on the Oxc compiler stack.
+Oxlint (`/oʊ-ɛks-lɪnt/`) 是一个基于 Oxc 编译器栈构建的高性能 JavaScript 和 TypeScript linter。
 
-## Built for scale
+## 为规模化而建
 
-Oxlint is built for large repositories and CI environments. Its architecture removes structural bottlenecks that limit performance in ESLint.
+Oxlint 专为大型仓库和 CI 环境构建。其架构消除了限制 ESLint 性能的结构瓶颈。
 
-Our [benchmarks](https://github.com/oxc-project/bench-linter) show Oxlint is 50 to 100 times faster than ESLint.
+我们的 [基准测试](https://github.com/oxc-project/bench-linter) 显示 Oxlint 比 ESLint 快 50 到 100 倍。
 
-## Correctness-focused defaults
+## 专注于正确性的默认配置
 
-Oxlint is useful out of the box. By default, it prioritizes high-signal correctness checks. These checks surface code that is incorrect, unsafe, or useless, so teams can adopt Oxlint without excessive noise.
+Oxlint 开箱即用。默认情况下，它优先考虑高信号的正确性检查。这些检查会暴露不正确、不安全或无用的代码，因此团队可以采用 Oxlint 而不会产生过多的噪音。
 
-Additional rules can be enabled incrementally as requirements evolve.
+随着需求的发展，可以逐步启用额外的规则。
 
-## A large ruleset with a focus on compatibility
+## 大型规则集，注重兼容性
 
-To make migration simple, Oxlint includes [more than {{ ruleCountRounded }} rules](/docs/guide/usage/linter/rules.md), with coverage across the linter plugins most teams already use, including:
+为了使迁移简单，Oxlint 包含了 [超过 {{ ruleCountRounded }} 条规则](/docs/guide/usage/linter/rules.md)，覆盖了大多数团队已经使用的 linter 插件，包括：
 
-- ESLint core rules
-- TypeScript rules (including type-aware rules)
-- Popular plugins such as React, Jest, Vitest, Import, Unicorn, and jsx-a11y
-- Custom [JS plugins](/docs/guide/usage/linter/js-plugins) compatible with the ESLint plugin ecosystem
+- ESLint 核心规则
+- TypeScript 规则（包括类型感知规则）
+- 流行插件，如 React、Jest、Vitest、Import、Unicorn 和 jsx-a11y
+- 与 ESLint 插件生态系统兼容的自定义 [JS 插件](/docs/guide/usage/linter/js-plugins)
 
-This breadth makes migration straightforward without sacrificing rule coverage. And tooling has been built [to migrate your entire linter config for you](/docs/guide/usage/linter/migrate-from-eslint).
+这种广度使得迁移变得直接，同时不会牺牲规则覆盖率。并且已经构建了工具 [为您迁移整个 linter 配置](/docs/guide/usage/linter/migrate-from-eslint)。
 
-## Type-aware linting
+## 类型感知 linting
 
-Oxlint leverages the native Go port of the TypeScript compiler ([tsgo](https://github.com/microsoft/typescript-go) aka TypeScript 7), providing full TypeScript compatibility and the same type system behavior you expect from TypeScript itself.
+Oxlint 利用 TypeScript 编译器的原生 Go 端口 ([tsgo](https://github.com/microsoft/typescript-go) aka TypeScript 7)，提供完整的 TypeScript 兼容性和您期望从 TypeScript 本身获得的相同类型系统行为。
 
-This enables mission critical checks that require types, such as detecting floating promises.
+这使得需要类型的任务关键型检查成为可能，例如检测浮动的 promises。
 
-In contrast, [Biome’s approach](https://biomejs.dev/blog/biome-v2) is to implement its own type inference instead of relying on the TypeScript compiler, and they note coverage is still improving.
+相比之下，[Biome 的方法](https://biomejs.dev/blog/biome-v2) 是实现自己的类型推断，而不是依赖 TypeScript 编译器，他们指出覆盖率仍在改进中。
 
-See: [Type-aware linting](/docs/guide/usage/linter/type-aware)
+参见：[类型感知 linting](/docs/guide/usage/linter/type-aware)
 
-## Multi-file analysis
+## 多文件分析
 
-Oxlint supports multi-file analysis as a first-class capability.
+Oxlint 将多文件分析支持作为一流功能。
 
-When enabled, Oxlint builds a project-wide module graph and shares parsing and resolution across rules. This improves checks that depend on cross-file imports and helps avoid the performance cliff often seen with rules like [`import/no-cycle`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-cycle.md) in ESLint.
+启用后，Oxlint 会构建项目范围的模块图，并在规则之间共享解析和解析结果。这改进了依赖于跨文件导入的检查，并有助于避免在 ESLint 中使用像 [`import/no-cycle`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-cycle.md) 这样的规则时经常看到的性能骤降。
 
-See: [Multi-file analysis](/docs/guide/usage/linter/multi-file-analysis.md)
+参见：[多文件分析](/docs/guide/usage/linter/multi-file-analysis.md)
 
-## Human _and_ AI-friendly diagnostics
+## 对人类 _和_ AI 友好的诊断
 
-Oxlint diagnostics are designed to be both human-readable and machine-actionable.
+Oxlint 诊断旨在既可读又可机器操作。
 
-In addition to clear messages, diagnostics include structured information such as precise spans, contextual data, and links to relevant documentation. This helps AI to understand issues and apply fixes reliably.
+除了清晰的消息外，诊断还包括结构化信息，如精确的范围、上下文数据和相关文档链接。这有助于 AI 理解问题并可靠地应用修复。
 
-## Reliability as a priority
+## 将可靠性作为优先事项
 
-Oxlint is built for workflows where failures are not acceptable.
+Oxlint 专为不能接受失败的工作流程而建。
 
-Crashes are treated as top priority bugs.
-Performance regressions are treated as bugs.
+崩溃被视为最高优先级的 bug。
+性能回归被视为 bug。
 
-Stability and throughput are always prioritized, especially for CI and large monorepos.
+稳定性和吞吐量始终被优先考虑，尤其是对于 CI 和大型 monorepos。
 
-## Getting started
+## 快速开始
 
-The recommended setup is to install Oxlint as a dev dependency and add scripts.
+推荐的设置是将 Oxlint 安装为开发依赖项并添加脚本。
 
 ```sh
 pnpm add -D oxlint
 ```
 
-Add scripts to `package.json`:
+将脚本添加到 `package.json`：
 
 ```json [package.json]
 {
@@ -99,50 +99,50 @@ Add scripts to `package.json`:
 }
 ```
 
-Next steps:
+下一步：
 
-- [Quickstart](/docs/guide/usage/linter/quickstart)
-- [Configuration](/docs/guide/usage/linter/config)
-- [Setup editors](/docs/guide/usage/linter/editors)
-- [Setup CI](/docs/guide/usage/linter/ci)
+- [快速开始](/docs/guide/usage/linter/quickstart)
+- [配置](/docs/guide/usage/linter/config)
+- [设置编辑器](/docs/guide/usage/linter/editors)
+- [设置 CI](/docs/guide/usage/linter/ci)
 
-## Adoption paths
+## 采用路径
 
 ::: tip
-If you're migrating from ESLint, see [the "Migrate from ESLint" page](/docs/guide/usage/linter/migrate-from-eslint) for detailed guidance.
+如果您正在从 ESLint 迁移，请参阅 [“从 ESLint 迁移”页面](/docs/guide/usage/linter/migrate-from-eslint) 获取详细指导。
 :::
 
-Choose the approach that fits your repository:
+选择适合您仓库的方法：
 
-- **Replace ESLint (recommended for most projects).** Use Oxlint as your primary linter.
-  - Use tooling such as [`@oxlint/migrate`](https://github.com/oxc-project/oxlint-migrate) to migrate your existing ESLint config.
-- **Migrate incrementally (recommended for especially large and complex repos).** Run Oxlint first, then run ESLint with overlapping rules disabled. This keeps CI fast while you migrate.
-  - Use [`eslint-plugin-oxlint`](https://npmx.dev/package/eslint-plugin-oxlint) to disable overlapping ESLint rules while running both.
-  - You can - and should - also use [`@oxlint/migrate`](https://github.com/oxc-project/oxlint-migrate) for this approach as well.
+- **替换 ESLint（推荐用于大多数项目）。** 将 Oxlint 用作您的主要 linter。
+  - 使用诸如 [`@oxlint/migrate`](https://github.com/oxc-project/oxlint-migrate) 之类的工具来迁移您现有的 ESLint 配置。
+- **逐步迁移（推荐用于特别大型和复杂的仓库）。** 先运行 Oxlint，然后运行 ESLint 并禁用重叠的规则。这在迁移期间保持 CI 快速。
+  - 使用 [`eslint-plugin-oxlint`](https://npmx.dev/package/eslint-plugin-oxlint) 在同时运行时禁用重叠的 ESLint 规则。
+  - 对于这种方法，您也可以 - 并且应该 - 使用 [`@oxlint/migrate`](https://github.com/oxc-project/oxlint-migrate)。
 
-## What Oxlint supports
+## Oxlint 支持的内容
 
-Oxlint supports:
+Oxlint 支持：
 
-- JavaScript and TypeScript (`.js`, `.mjs`, `.cjs`, `.ts`, `.mts`, `.cts`)
-- JSX and TSX (`.jsx`, `.tsx`)
-- Framework files (`.vue`, `.svelte`, `.astro`) by linting only their `<script>` blocks
+- JavaScript 和 TypeScript (`.js`, `.mjs`, `.cjs`, `.ts`, `.mts`, `.cts`)
+- JSX 和 TSX (`.jsx`, `.tsx`)
+- 框架文件 (`.vue`, `.svelte`, `.astro`)，仅 lint 它们的 `<script>` 块
 
-See the [compatibility matrix](/compatibility) for detailed framework support.
+请参阅 [兼容性矩阵](/compatibility) 了解详细的框架支持。
 
-## Features
+## 功能
 
-- [Native plugins](/docs/guide/usage/linter/plugins) for broad rule coverage with {{ ruleCount }} built-in rules, without a large JavaScript dependency tree.
-- [Automatic fixes](/docs/guide/usage/linter/automatic-fixes) to apply safe changes quickly.
-- [Ignore files](/docs/guide/usage/linter/ignore-files) to control which paths are linted.
-- [Inline ignore comments](/docs/guide/usage/linter/ignore-comments) for ignoring rules within a file.
-- [Multi-file analysis](/docs/guide/usage/linter/multi-file-analysis) for rules that require project-wide context such as import analysis like [no-cycle](/docs/guide/usage/linter/rules/import/no-cycle.html).
-- [Type-aware linting](/docs/guide/usage/linter/type-aware) for rules that require TypeScript type information.
-- [JS plugins](/docs/guide/usage/linter/js-plugins) (**alpha**) for compatibility with existing ESLint plugins.
+- [原生插件](/docs/guide/usage/linter/plugins) 提供广泛的规则覆盖，包含 {{ ruleCount }} 条内置规则，无需庞大的 JavaScript 依赖树。
+- [自动修复](/docs/guide/usage/linter/automatic-fixes) 快速应用安全的更改。
+- [忽略文件](/docs/guide/usage/linter/ignore-files) 控制哪些路径被 lint。
+- [内联忽略注释](/docs/guide/usage/linter/ignore-comments) 用于忽略文件内的规则。
+- [多文件分析](/docs/guide/usage/linter/multi-file-analysis) 用于需要项目范围上下文的规则，例如像 [no-cycle](/docs/guide/usage/linter/rules/import/no-cycle.html) 这样的导入分析。
+- [类型感知 linting](/docs/guide/usage/linter/type-aware) 用于需要 TypeScript 类型信息的规则。
+- [JS 插件](/docs/guide/usage/linter/js-plugins) (**alpha**) 用于与现有 ESLint 插件兼容。
 
-## Projects using Oxlint
+## 使用 Oxlint 的项目
 
-Oxlint is used in production by popular projects such as:
+Oxlint 被以下流行项目在生产环境中使用：
 
 - [elastic/kibana](https://github.com/elastic/kibana)
 - [getsentry/sentry-javascript](https://github.com/getsentry/sentry-javascript)
@@ -154,14 +154,14 @@ Oxlint is used in production by popular projects such as:
 - [actualbudget/actual](https://github.com/actualbudget/actual)
 - [cloudflare/agents](https://github.com/cloudflare/agents)
 
-## Migration
+## 迁移
 
-- [Migrate from ESLint](/docs/guide/usage/linter/migrate-from-eslint)
-<!-- - [Migrate from Biome](/docs/guide/usage/linter/migrate-from-biome) -->
+- [从 ESLint 迁移](/docs/guide/usage/linter/migrate-from-eslint)
+<!-- - [从 Biome 迁移](/docs/guide/usage/linter/migrate-from-biome) -->
 
-## References
+## 参考
 
-- [Rules reference](/docs/guide/usage/linter/rules)
-- [CLI reference](/docs/guide/usage/linter/cli)
-- [Config file reference](/docs/guide/usage/linter/config-file-reference)
-- [Versioning policy](/docs/guide/usage/linter/versioning)
+- [规则参考](/docs/guide/usage/linter/rules)
+- [CLI 参考](/docs/guide/usage/linter/cli)
+- [配置文件参考](/docs/guide/usage/linter/config-file-reference)
+- [版本控制策略](/docs/guide/usage/linter/versioning)

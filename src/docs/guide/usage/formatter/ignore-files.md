@@ -1,10 +1,10 @@
-# Ignore files
+# 忽略文件
 
-Oxfmt provides several ways to exclude files from formatting.
+Oxfmt 提供了多种排除文件不进行格式化的方法。
 
 ## `ignorePatterns`
 
-The recommended way to ignore files. Add to `.oxfmtrc.json`:
+推荐的忽略文件方式。添加到 `.oxfmtrc.json`：
 
 ```json [.oxfmtrc.json]
 {
@@ -12,35 +12,35 @@ The recommended way to ignore files. Add to `.oxfmtrc.json`:
 }
 ```
 
-- Uses `.gitignore` syntax
-- Paths are resolved relative to the directory containing the Oxfmt config file
-- Formatter-specific and independent of Git
+- 使用 `.gitignore` 语法
+- 路径相对于包含 Oxfmt 配置文件的目录解析
+- 特定于格式化程序且独立于 Git
 
-Files matching `ignorePatterns` **cannot be formatted**, even if explicitly specified.
+匹配 `ignorePatterns` 的文件**无法被格式化**，即使显式指定也是如此。
 
 ## `.gitignore`
 
-Oxfmt respects `.gitignore` files in the current directory tree.
+Oxfmt 会遵循当前目录树中的 `.gitignore` 文件。
 
-- Global gitignore and parent `.gitignore` files are not read
-- A `.git` directory is not required
+- 不会读取全局 gitignore 和父级 `.gitignore` 文件
+- 不需要 `.git` 目录
 
-Files ignored by `.gitignore` **can still be formatted** if explicitly specified.
+被 `.gitignore` 忽略的文件如果显式指定**仍然可以被格式化**。
 
-## VCS directories and `node_modules`
+## VCS 目录和 `node_modules`
 
-Ignored by default: `.git`, `.svn`, `.jj`, `node_modules`
+默认忽略：`.git`, `.svn`, `.jj`, `node_modules`
 
-Use `--with-node-modules` to include `node_modules`.
+使用 `--with-node-modules` 来包含 `node_modules`。
 
-## Lock files
+## 锁文件
 
-`package-lock.json`, `pnpm-lock.yaml`, etc. are always ignored.
+`package-lock.json`, `pnpm-lock.yaml` 等始终被忽略。
 
 ## `.prettierignore`
 
-Supported for Prettier compatibility. Uses `.gitignore` syntax.
+为兼容 Prettier 而支持。使用 `.gitignore` 语法。
 
-Files in `.prettierignore` cannot be formatted, even when explicitly specified.
+`.prettierignore` 中的文件无法被格式化，即使显式指定也是如此。
 
-For new projects, prefer `ignorePatterns`.
+对于新项目，优先使用 `ignorePatterns`。

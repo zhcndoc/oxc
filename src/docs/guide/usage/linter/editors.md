@@ -1,39 +1,39 @@
 ---
-title: Setup editors
-description: Configure Oxlint in VS Code, Zed, JetBrains, and other editors.
+title: 设置编辑器
+description: 在 VS Code、Zed、JetBrains 和其他编辑器中配置 Oxlint。
 outline: 2
 ---
 
-# Setup editors
+# 设置编辑器
 
-Editor extensions use `oxlint --lsp` from your project, so `oxlint` must be installed locally.
+编辑器扩展使用项目中的 `oxlint --lsp`，因此必须在本地安装 `oxlint`。
 
-See [Quickstart](./quickstart) to install Oxlint.
+请参阅 [快速开始](./quickstart) 以安装 Oxlint。
 
-## Supported editors
+## 支持的编辑器
 
-- [VS Code](#vs-code) (and Cursor, etc.)
+- [VS Code](#vs-code)（以及 Cursor 等）
 - [Zed](#zed)
 - [JetBrains](#jetbrains)
 - [Neovim](#neovim)
-- [Other editors](#other-editors)
+- [其他编辑器](#other-editors)
 
 ## VS Code
 
-### Install
+### 安装
 
-Download the official Oxc VS Code extension from:
+从以下地址下载官方 Oxc VS Code 扩展：
 
-- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)
-- [Open VSX Registry](https://open-vsx.org/extension/oxc/oxc-vscode)
+- [Visual Studio 市场](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)
+- [Open VSX 注册表](https://open-vsx.org/extension/oxc/oxc-vscode)
 
-**The extension is compatible with other VS Code-based editors**, including Cursor.
+**该扩展兼容其他基于 VS Code 的编辑器**，包括 Cursor。
 
-### Team setup
+### 团队设置
 
-1. Recommend the extension for contributors:
+1. 向贡献者推荐该扩展：
 
-`.vscode/extensions.json`:
+`.vscode/extensions.json`：
 
 ```json [.vscode/extensions.json]
 {
@@ -41,7 +41,7 @@ Download the official Oxc VS Code extension from:
 }
 ```
 
-2. Enable fix-on-save in `.vscode/settings.json`:
+2. 在 `.vscode/settings.json` 中启用保存时修复：
 
 ```json [.vscode/settings.json]
 {
@@ -51,9 +51,9 @@ Download the official Oxc VS Code extension from:
 }
 ```
 
-3. Enable type-aware linting (optional):
+3. 启用类型感知 linting（可选）：
 
-To enable it for the whole project, set it in the root Oxlint config:
+要为整个项目启用它，请在根目录 Oxlint 配置中设置：
 
 ::: code-group
 
@@ -77,7 +77,7 @@ export default defineConfig({
 
 :::
 
-Or set it in `.vscode/settings.json`:
+或在 `.vscode/settings.json` 中设置：
 
 ```json [.vscode/settings.json]
 {
@@ -85,33 +85,33 @@ Or set it in `.vscode/settings.json`:
 }
 ```
 
-When `oxc.typeAware` is unset, the editor uses the root config's `options.typeAware` value. When set explicitly, it overrides the config value.
+当未设置 `oxc.typeAware` 时，编辑器使用根配置中的 `options.typeAware` 值。当显式设置时，它会覆盖配置值。
 
-You also need to ensure `oxlint-tsgolint` is installed in your project. See [the type-aware linting docs](/docs/guide/usage/linter/type-aware) for more details.
+您还需要确保项目中安装了 `oxlint-tsgolint`。请参阅 [类型感知 linting 文档](/docs/guide/usage/linter/type-aware) 了解更多详情。
 
-### Reference
+### 参考
 
 - [oxc-project/oxc-vscode](https://github.com/oxc-project/oxc-vscode)
 
 ## Zed
 
-### Install
+### 安装
 
-- [Oxc Zed Extension](https://zed.dev/extensions/oxc)
+- [Oxc Zed 扩展](https://zed.dev/extensions/oxc)
 
-### Reference
+### 参考
 
 - [oxc-project/oxc-zed](https://github.com/oxc-project/oxc-zed)
 
 ## JetBrains
 
-IntelliJ IDEA and WebStorm.
+IntelliJ IDEA 和 WebStorm。
 
-### Install
+### 安装
 
-- [Oxc in JetBrains Marketplace](https://plugins.jetbrains.com/plugin/27061-oxc)
+- [JetBrains 市场中的 Oxc](https://plugins.jetbrains.com/plugin/27061-oxc)
 
-### Reference
+### 参考
 
 - [oxc-project/oxc-intellij-plugin](https://github.com/oxc-project/oxc-intellij-plugin)
 
@@ -137,14 +137,14 @@ vim.lsp.enable('oxlint')
 
 - [oxc-project/coc-oxc](https://github.com/oxc-project/coc-oxc)
 
-## Other editors
+## 其他编辑器
 
-For editors with LSP support (Emacs, Helix, Sublime), configure:
+对于支持 LSP 的编辑器（Emacs、Helix、Sublime），配置：
 
 ```bash
 oxlint --lsp
 ```
 
-## Reference
+## 参考
 
 - [oxc_language_server](https://github.com/oxc-project/oxc/tree/main/crates/oxc_language_server)

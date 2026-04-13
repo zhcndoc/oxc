@@ -1,35 +1,35 @@
 ---
-title: Configuration
-description: Configure Oxfmt using a .oxfmtrc.json file.
+title: 配置
+description: 使用 .oxfmtrc.json 文件配置 Oxfmt。
 ---
 
-# Configuration
+# 配置
 
-Oxfmt works out of the box, but most teams commit a configuration file to keep formatting consistent across local runs, editors, and CI.
+Oxfmt 开箱即用，但大多数团队会提交一个配置文件，以保持本地运行、编辑器和 CI 之间的格式一致。
 
-This page focuses on project configuration: formatting options, ignore patterns, and experimental features.
+本页重点介绍项目配置：格式化选项、忽略模式和实验性功能。
 
-## Create a config file
+## 创建配置文件
 
-To generate a starter config in the current directory:
+要在当前目录生成初始配置：
 
 ```sh
 oxfmt --init
 ```
 
-Oxfmt automatically looks for the following files starting from the current directory and walking up the tree:
+Oxfmt 会自动从当前目录开始向上遍历树状结构，查找以下文件：
 
 - `.oxfmtrc.json`
 - `.oxfmtrc.jsonc`
 - `oxfmt.config.ts`
 
-You can also pass a config explicitly with `-c`. This accepts any supported format (`.json`, `.jsonc`, `.ts`, `.mts`, `.cts`, `.js`, `.mjs`, `.cjs`):
+你也可以使用 `-c` 显式传递配置文件。它支持任何受支持的格式（`.json`、`.jsonc`、`.ts`、`.mts`、`.cts`、`.js`、`.mjs`、`.cjs`）：
 
 ```sh
 oxfmt -c path/to/yourconfig.json
 ```
 
-A minimal JSON configuration looks like this:
+最小的 JSON 配置如下所示：
 
 ```json [.oxfmtrc.json]
 {
@@ -38,7 +38,7 @@ A minimal JSON configuration looks like this:
 }
 ```
 
-JavaScript / TypeScript config files use a default export. `defineConfig` is optional but gives you type checking and editor autocomplete:
+JavaScript / TypeScript 配置文件使用默认导出。`defineConfig` 是可选的，但可以提供类型检查和编辑器自动补全：
 
 ```ts [oxfmt.config.ts]
 import { defineConfig } from "oxfmt";
@@ -48,26 +48,26 @@ export default defineConfig({
 });
 ```
 
-## Configuration file format
+## 配置文件格式
 
-A configuration file is a JSON object. The most common top-level fields are:
+配置文件是一个 JSON 对象。最常见的顶层字段包括：
 
-- `printWidth`: Line width limit (default: 100)
-- `tabWidth`: Spaces per indentation level (default: 2)
-- `useTabs`: Use tabs instead of spaces (default: false)
-- `semi`: Add semicolons (default: true)
-- `singleQuote`: Use single quotes (default: false)
-- `trailingComma`: Trailing commas in multi-line structures (default: "all")
-- `ignorePatterns`: Glob patterns to exclude from formatting
-- `sortImports`: Configure import sorting (disabled by default)
-- `sortTailwindcss`: Configure Tailwind class sorting (disabled by default)
-- `sortPackageJson`: Configure package.json sorting (enabled by default)
+- `printWidth`: 行宽限制（默认值：100）
+- `tabWidth`: 每个缩进级别的空格数（默认值：2）
+- `useTabs`: 使用制表符代替空格（默认值：false）
+- `semi`: 添加分号（默认值：true）
+- `singleQuote`: 使用单引号（默认值：false）
+- `trailingComma`: 多行结构中的尾随逗号（默认值："all"）
+- `ignorePatterns`: 排除在格式化之外的 Glob 模式
+- `sortImports`: 配置导入排序（默认禁用）
+- `sortTailwindcss`: 配置 Tailwind 类排序（默认禁用）
+- `sortPackageJson`: 配置 package.json 排序（默认启用）
 
-For a complete list of fields, see the [Config file reference](./config-file-reference).
+有关字段的完整列表，请参阅 [配置文件参考](./config-file-reference)。
 
-## JSON schema
+## JSON 模式
 
-Add a `$schema` field for editor validation and autocomplete:
+添加 `$schema` 字段以获得编辑器验证和自动补全：
 
 ```json [.oxfmtrc.json]
 {
@@ -77,7 +77,7 @@ Add a `$schema` field for editor validation and autocomplete:
 
 ## `.editorconfig`
 
-Oxfmt reads these `.editorconfig` properties:
+Oxfmt 读取以下 `.editorconfig` 属性：
 
 - `end_of_line` → `endOfLine`
 - `indent_style` → `useTabs`
@@ -85,7 +85,7 @@ Oxfmt reads these `.editorconfig` properties:
 - `max_line_length` → `printWidth`
 - `insert_final_newline` → `insertFinalNewline`
 
-Both root section and glob-based overrides are supported.
+支持根部分和基于 glob 的覆盖。
 
 ```
 [*]
@@ -95,14 +95,14 @@ indent_size = 4
 indent_size = 2
 ```
 
-Oxfmt uses only the nearest `.editorconfig` from the current directory:
+Oxfmt 仅使用当前目录中最近的 `.editorconfig`：
 
-- `root = true` is not respected
-- Nested `.editorconfig` files are not merged
+- `root = true` 不被尊重
+- 嵌套的 `.editorconfig` 文件不会合并
 
-## Overrides
+## 覆盖
 
-Use the `overrides` field to apply different formatting options to specific files:
+使用 `overrides` 字段将不同的格式化选项应用于特定文件：
 
 ```json [.oxfmtrc.json]
 {
@@ -125,41 +125,41 @@ Use the `overrides` field to apply different formatting options to specific file
 }
 ```
 
-Each override entry has:
+每个覆盖条目包含：
 
-- `files` (required): Glob patterns to match files
-- `excludeFiles` (optional): Glob patterns to exclude from this override
-- `options`: Formatting options to apply
+- `files`（必需）：匹配文件的 Glob 模式
+- `excludeFiles`（可选）：从此覆盖中排除的 Glob 模式
+- `options`: 要应用的格式化选项
 
-Glob patterns are resolved relative to the directory containing the Oxfmt config file.
+Glob 模式相对于包含 Oxfmt 配置文件的目录进行解析。
 
-## Precedence
+## 优先级
 
-Options are applied in order (lowest to highest priority):
+选项按顺序应用（优先级从低到高）：
 
-1. Defaults
-2. `.oxfmtrc.json(c)` root options
-3. `.oxfmtrc.json(c)` `overrides` options
-4. fallback to options supported by `.editorconfig` for unset fields
+1. 默认值
+2. `.oxfmtrc.json(c)` 根选项
+3. `.oxfmtrc.json(c)` `overrides` 选项
+4. 未设置的字段回退到 `.editorconfig` 支持的选项
 
-## Oxfmt-specific options
+## Oxfmt 特定选项
 
 ### `insertFinalNewline`
 
-Controls whether a final newline is added to formatted files. Defaults to `true`.
+控制是否在格式化的文件末尾添加换行符。默认值为 `true`。
 
-This is a [frequently requested Prettier feature](https://github.com/prettier/prettier/issues/6360), as some environments (e.g., Salesforce) strip trailing newlines.
+这是一个 [频繁请求的 Prettier 功能](https://github.com/prettier/prettier/issues/6360)，因为某些环境（例如 Salesforce）会剥离尾随换行符。
 
 ### `printWidth`
 
-Oxfmt defaults to `printWidth: 100` (Prettier uses 80). Reasons:
+Oxfmt 默认值为 `printWidth: 100`（Prettier 使用 80）。原因：
 
-- TypeScript code is longer due to type annotations
-- Import statements often have many specifiers
-- Modern screens are wider
-- Fewer line breaks mean fewer LLM tokens
+- TypeScript 代码由于类型注释而更长
+- 导入语句通常有许多说明符
+- 现代屏幕更宽
+- 更少的换行意味着更少的 LLM 令牌
 
-To match Prettier's default:
+要匹配 Prettier 的默认值：
 
 ```json [.oxfmtrc.json]
 {
@@ -167,9 +167,9 @@ To match Prettier's default:
 }
 ```
 
-## Next steps
+## 下一步
 
-- [Ignore files](./ignore-files): Ignore files and patterns, `.gitignore` and `.prettierignore` workflows.
-- [Inline ignore comments](./ignore-comments): Inline suppressions for specific code.
-- [Config file reference](./config-file-reference): Full schema and field documentation.
-- [CLI reference](./cli): Complete list of flags.
+- [忽略文件](./ignore-files): 忽略文件和模式，`.gitignore` 和 `.prettierignore` 工作流。
+- [内联忽略注释](./ignore-comments): 特定代码的内联抑制。
+- [配置文件参考](./config-file-reference): 完整的模式和字段文档。
+- [CLI 参考](./cli): 完整的标志列表。

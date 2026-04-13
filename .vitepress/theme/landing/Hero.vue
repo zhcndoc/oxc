@@ -10,16 +10,16 @@ import oxcAnimation from "@voidzero-dev/vitepress-theme/src/assets/oxc/animation
         class="flex flex-col gap-5 max-w-[30rem] text-center md:text-left items-center md:items-start"
       >
         <a class="flex items-center gap-2" href="https://voidzero.dev" target="_blank">
-          <span class="text-grey text-xs font-mono uppercase tracking-wide">By</span>
+          <span class="text-grey text-xs font-mono uppercase tracking-wide">由</span>
           <img src="@assets/logos/voidzero-light.svg" alt="VoidZero" class="h-2.5" />
         </a>
-        <h1 class="text-white text-pretty">The JavaScript Oxidation Compiler</h1>
+        <h1 class="text-white text-pretty">Oxc 中文文档</h1>
         <p class="text-white/70 text-lg max-w-[25rem] text-pretty">
-          A collection of high-performance JavaScript tools written in Rust
+          使用 Rust 编写的高性能 JavaScript 工具集
         </p>
         <div class="flex items-center gap-5 mt-8">
           <a href="/docs/guide/introduction" class="button button--primary inline-block w-fit">
-            Get Started
+            开始使用
           </a>
           <a
             href="https://github.com/oxc-project/oxc"
@@ -27,7 +27,7 @@ import oxcAnimation from "@voidzero-dev/vitepress-theme/src/assets/oxc/animation
             rel="noopener noreferrer"
             class="button inline-block w-fit"
           >
-            View on GitHub
+            在 GitHub 查看
           </a>
         </div>
       </div>
