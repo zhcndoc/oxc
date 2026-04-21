@@ -97,12 +97,14 @@ indent_size = 2
 
 Oxfmt 仅使用当前目录中最近的 `.editorconfig`：
 
-- `root = true` 不被尊重
+- `root = true` 不会被遵守
 - 嵌套的 `.editorconfig` 文件不会合并
 
 ## 覆盖
 
 使用 `overrides` 字段将不同的格式化选项应用于特定文件：
+
+::: code-group
 
 ```json [.oxfmtrc.json]
 {
@@ -125,7 +127,32 @@ Oxfmt 仅使用当前目录中最近的 `.editorconfig`：
 }
 ```
 
-每个覆盖条目包含：
+```ts [oxfmt.config.ts]
+import { defineConfig } from "oxfmt";
+
+export default defineConfig({
+  printWidth: 100,
+  overrides: [
+    {
+      files: ["*.test.js", "*.spec.ts"],
+      options: {
+        printWidth: 120,
+      },
+    },
+    {
+      files: ["*.md", "*.html"],
+      excludeFiles: ["*.min.js"],
+      options: {
+        tabWidth: 4,
+      },
+    },
+  ],
+});
+```
+
+:::
+
+每个覆盖项包含：
 
 - `files`（必需）：匹配文件的 Glob 模式
 - `excludeFiles`（可选）：从此覆盖中排除的 Glob 模式
@@ -146,9 +173,9 @@ Glob 模式相对于包含 Oxfmt 配置文件的目录进行解析。
 
 ### `insertFinalNewline`
 
-控制是否在格式化的文件末尾添加换行符。默认值为 `true`。
+控制是否在格式化文件末尾添加换行符。默认值为 `true`。
 
-这是一个 [频繁请求的 Prettier 功能](https://github.com/prettier/prettier/issues/6360)，因为某些环境（例如 Salesforce）会剥离尾随换行符。
+这是一个 [频繁请求的 Prettier 功能](https://github.com/prettier/prettier/issues/6360)，因为某些环境（例如 Salesforce）会去除尾随换行符。
 
 ### `printWidth`
 
@@ -161,13 +188,25 @@ Oxfmt 默认值为 `printWidth: 100`（Prettier 使用 80）。原因：
 
 要匹配 Prettier 的默认值：
 
+::: code-group
+
 ```json [.oxfmtrc.json]
 {
   "printWidth": 80
 }
 ```
 
-## 下一步
+```ts [oxfmt.config.ts]
+import { defineConfig } from "oxfmt";
+
+export default defineConfig({
+  printWidth: 80,
+});
+```
+
+:::
+
+## 后续步骤
 
 - [忽略文件](./ignore-files): 忽略文件和模式，`.gitignore` 和 `.prettierignore` 工作流。
 - [内联忽略注释](./ignore-comments): 特定代码的内联抑制。

@@ -189,7 +189,7 @@ const foo = bar(function* baz() {});
 
 ### 第 1 个选项
 
-type: `"always" | "as-needed" | "never"`
+类型: `"always" | "as-needed" | "never"`
 
 #### `"always"`
 
@@ -209,7 +209,9 @@ type: `"always" | "as-needed" | "never"`
 
 #### generators
 
-生成器函数表达式的配置。如果未指定，则使用主要配置。
+类型: `"always" | "as-needed" | "never"`
+
+生成器函数表达式的配置。如果未指定，则使用主配置。
 
 接受 `always`、`as-needed` 或 `never`。
 

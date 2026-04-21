@@ -484,6 +484,7 @@ search: false
 对于 JSX，您可以设置 `jsxSingleQuote` 选项。
 
 - 默认：`false`
+- 覆盖 `.editorconfig.quote_type`
 
 ##### overrides[n].options.sortImports
 
@@ -824,9 +825,9 @@ import { c } from "c";
 
 类型：`integer`
 
-指定打印机进行换行的行长度。
+指定打印时的行长度。
 
-如果您不想在格式化 Markdown 时进行换行，可以将 `proseWrap` 选项设置为禁用来禁用它。
+如果您不想在格式化 Markdown 时进行换行，可以将 `proseWrap` 选项设为禁用来关闭它。
 
 - 默认值：`100`
 - 覆盖 `.editorconfig.max_line_length`
@@ -838,8 +839,8 @@ import { c } from "c";
 如何包裹文本。
 
 默认情况下，格式化器不会更改 Markdown 文本中的换行，因为某些服务使用对换行敏感的渲染器，例如 GitHub 评论和 BitBucket。
-要将文本换行到打印宽度，将此选项更改为 "always"。
-如果您希望强制所有文本块位于单行，并依赖编辑器/查看器的软换行，可以使用 "never"。
+要将文本换行到打印宽度，请将此选项更改为 `"always"`。
+如果您希望强制所有文本块位于单行，并依赖编辑器/查看器的软换行，可以使用 `"never"`。
 
 - 默认值：`"preserve"`
 
@@ -876,6 +877,7 @@ import { c } from "c";
 对于 JSX，您可以设置 `jsxSingleQuote` 选项。
 
 - 默认值：`false`
+- 覆盖 `.editorconfig.quote_type`
 
 ## sortImports
 
@@ -886,7 +888,7 @@ import { c } from "c";
 使用与 [eslint-plugin-perfectionist/sort-imports](https://perfectionist.dev/rules/sort-imports) 类似的算法。
 详细信息，请参阅每个字段的文档。
 
-传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
+传递 `true` 或对象以启用并使用默认值，或省略/设置为 `false` 以禁用。
 
 - 默认值：禁用
 
@@ -896,7 +898,7 @@ import { c } from "c";
 
 定义您自己的组以匹配非常具体的导入。
 
-`customGroups` 列表是有序的：第一个匹配元素的定义将被使用。
+`customGroups` 列表是有序的：将使用第一个匹配元素的定义。
 自定义组比任何预定义组具有更高的优先级。
 
 如果您希望预定义组优先于自定义组，
@@ -1064,7 +1066,7 @@ import { c } from "c";
 启用空行将导入分隔为逻辑组。
 
 当为 `true` 时，如果导入之间有空行，格式化器将不会排序导入。
-这有助于保持逻辑分离的成员组的定义顺序。
+这有助于保持逻辑上分离的成员组的定义顺序。
 
 ```js
 import { b1, b2 } from "b";
@@ -1115,7 +1117,7 @@ import { c } from "c";
 选项名称省略了原始插件中使用的 `tailwind` 前缀（例如，`config` 而不是 `tailwindConfig`）。
 详细信息，请参阅每个字段的文档。
 
-传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
+传递 `true` 或对象以启用并使用默认值，或省略/设置为 `false` 以禁用。
 
 - 默认值：禁用
 
@@ -1134,7 +1136,7 @@ import { c } from "c";
 
 类型：`string`
 
-您的 Tailwind CSS 配置文件 (v3) 的路径。
+您的 Tailwind CSS 配置文件（v3）的路径。
 
 注意：路径是相对于 Oxfmt 配置文件解析的。
 
@@ -1171,7 +1173,7 @@ import { c } from "c";
 
 类型：`string`
 
-您的 Tailwind CSS 样式表 (v4) 的路径。
+您的 Tailwind CSS 样式表（v4）的路径。
 
 注意：路径是相对于 Oxfmt 配置文件解析的。
 
@@ -1192,7 +1194,7 @@ import { c } from "c";
 
 在多行逗号分隔的语法结构中，尽可能打印尾随逗号。
 
-例如，单行数组永远不会获得尾随逗号。
+例如，单行数组永远不会带有尾随逗号。
 
 - 默认值：`"all"`
 
@@ -1200,7 +1202,7 @@ import { c } from "c";
 
 类型：`boolean`
 
-使用制表符而不是空格缩进行。
+使用制表符而不是空格进行缩进。
 
 - 默认值：`false`
 - 覆盖 `.editorconfig.indent_style`

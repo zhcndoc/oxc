@@ -73,23 +73,12 @@ class C {
 
 ### exceptMethods
 
-类型：`array`
+类型：`string[]`
 
 默认值：`[]`
 
-免除此规则的方法名称列表。
-
-#### exceptMethods[n]
-
-类型：`object`
-
-##### exceptMethods[n].name
-
-类型：`string`
-
-##### exceptMethods[n].private
-
-类型：`boolean`
+要从此规则中豁免的方法名称列表。名称可以包含私有方法的 `#` 前缀。
+示例：`save`、`#rerender`
 
 ### ignoreClassesWithImplements
 
@@ -98,6 +87,14 @@ class C {
 默认值：`null`
 
 是否忽略实现接口的类。
+
+#### `"all"`
+
+忽略所有实现接口的类
+
+#### `"public-fields"`
+
+仅忽略实现接口的类中的公共字段
 
 ### ignoreOverrideMethods
 

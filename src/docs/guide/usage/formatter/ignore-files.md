@@ -4,7 +4,9 @@ Oxfmt 提供了多种排除文件不进行格式化的方法。
 
 ## `ignorePatterns`
 
-推荐的忽略文件方式。添加到 `.oxfmtrc.json`：
+推荐使用此方式来忽略文件。将其添加到你的 Oxfmt 配置中：
+
+::: code-group
 
 ```json [.oxfmtrc.json]
 {
@@ -12,9 +14,19 @@ Oxfmt 提供了多种排除文件不进行格式化的方法。
 }
 ```
 
+```ts [oxfmt.config.ts]
+import { defineConfig } from "oxfmt";
+
+export default defineConfig({
+  ignorePatterns: ["dist/**", "*.min.js"],
+});
+```
+
+:::
+
 - 使用 `.gitignore` 语法
-- 路径相对于包含 Oxfmt 配置文件的目录解析
-- 特定于格式化程序且独立于 Git
+- 路径将相对于包含 Oxfmt 配置文件的目录进行解析
+- 仅针对格式化器，且不依赖 Git
 
 匹配 `ignorePatterns` 的文件**无法被格式化**，即使显式指定也是如此。
 

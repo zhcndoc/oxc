@@ -67,6 +67,18 @@ function foo({a = {}}) {}
 function foo({a = []}) {}
 ```
 
+## 配置
+
+此规则接受一个包含以下属性的配置对象：
+
+### allowObjectPatternsAsParameters
+
+type: `boolean`
+
+default: `false`
+
+设置为 `true` 时，此规则允许直接作为函数参数使用的空对象模式，包括默认值为空对象字面量的参数。
+
 ## 如何使用
 
 <RuleHowToUse />

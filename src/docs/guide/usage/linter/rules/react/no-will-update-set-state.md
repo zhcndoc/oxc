@@ -1,6 +1,6 @@
 ---
 title: "react/no-will-update-set-state"
-category: "Correctness"
+category: "正确性"
 default: false
 type_aware: false
 fix: "none"
@@ -15,18 +15,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallows using `setState` in the `componentWillUpdate` lifecycle method.
+禁止在 `componentWillUpdate` 生命周期方法中使用 `setState`。
 
-### Why is this bad?
+### 为什么这不好？
 
-Updating the state during the component update step can lead to indeterminate component state and is not allowed.
-This can cause unexpected behavior and bugs in your React application.
+在组件更新阶段更新状态可能会导致组件状态不确定，因此是不被允许的。
+这可能会导致你的 React 应用出现意外行为和 bug。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```jsx
 var Hello = createReactClass({
@@ -41,7 +41,7 @@ var Hello = createReactClass({
 });
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```jsx
 var Hello = createReactClass({
@@ -54,16 +54,22 @@ var Hello = createReactClass({
 });
 ```
 
-## Configuration
+## 配置
 
-This rule accepts one of the following string values:
+此规则接受以下字符串值之一：
 
-type: `"allowed" | "disallow-in-func"`
+### `"allowed"`
 
-## How to use
+禁止在函数之外的 `componentWillUpdate` 中调用任何 `this.setState`。
+
+### `"disallow-in-func"`
+
+通过禁止即使在函数内部调用 `this.setState``，使此规则更加严格。
+
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 参考
 
 <RuleReferences />

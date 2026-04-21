@@ -132,11 +132,54 @@ export default defineConfig({
 
 类型：`Record<string, boolean>`
 
-预定义全局变量。
+预定义的全局变量。
 
-环境指定了预定义的全局变量。
-请参阅 [ESLint 的环境列表](https://eslint.org/docs/v8.x/use/configure/language-options#specifying-environments)
-以了解可用环境及其各自提供的内容。
+环境用于指定哪些全局变量是预定义的。
+可用的环境：
+
+- amd - `require()` 和 `define()` 全局变量。
+- applescript - AppleScript 全局变量。
+- astro - Astro 全局变量。
+- atomtest - Atom 测试全局变量。
+- audioworklet - AudioWorklet 全局变量。
+- browser - 浏览器全局变量。
+- builtin - 最新的 ECMAScript 全局变量，相当于 es2026。
+- commonjs - CommonJS 全局变量和作用域。
+- embertest - Ember 测试全局变量。
+- es2015 - ECMAScript 2015 全局变量。
+- es2016 - ECMAScript 2016 全局变量。
+- es2017 - ECMAScript 2017 全局变量。
+- es2018 - ECMAScript 2018 全局变量。
+- es2019 - ECMAScript 2019 全局变量。
+- es2020 - ECMAScript 2020 全局变量。
+- es2021 - ECMAScript 2021 全局变量。
+- es2022 - ECMAScript 2022 全局变量。
+- es2023 - ECMAScript 2023 全局变量。
+- es2024 - ECMAScript 2024 全局变量。
+- es2025 - ECMAScript 2025 全局变量。
+- es2026 - ECMAScript 2026 全局变量。
+- es6 - 除模块外的 ECMAScript 6 全局变量。
+- greasemonkey - GreaseMonkey 全局变量。
+- jasmine - Jasmine 全局变量。
+- jest - Jest 全局变量。
+- jquery - jQuery 全局变量。
+- meteor - Meteor 全局变量。
+- mocha - Mocha 全局变量。
+- mongo - MongoDB 全局变量。
+- nashorn - Java 8 Nashorn 全局变量。
+- node - Node.js 全局变量和作用域。
+- phantomjs - PhantomJS 全局变量。
+- prototypejs - Prototype.js 全局变量。
+- protractor - Protractor 全局变量。
+- qunit - QUnit 全局变量。
+- serviceworker - Service Worker 全局变量。
+- shared-node-browser - Node.js 和浏览器共用全局变量。
+- shelljs - ShellJS 全局变量。
+- svelte - Svelte 全局变量。
+- vitest - Vitest 全局变量。
+- vue - Vue 全局变量。
+- webextensions - WebExtensions 全局变量。
+- worker - Web Workers 全局变量。
 
 ## extends
 
@@ -289,6 +332,8 @@ linting 工具的选项。
 等同于在 CLI 上传递 `--max-warnings`。
 
 ### options.reportUnusedDisableDirectives
+
+类型：`"allow" | "off" | "warn" | "error" | "deny" | integer`
 
 报告未使用的禁用指令（例如 `// oxlint-disable-line` 或 `// eslint-disable-line`）。
 
@@ -458,6 +503,24 @@ linting 工具的选项。
   }
 }
 ```
+
+### settings.jest
+
+类型：`object`
+
+配置 Jest 插件规则。
+
+请参阅 [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest) 的配置以获取完整参考。
+
+#### settings.jest.version
+
+类型：`integer`
+
+默认值：`null`
+
+Jest 版本——接受数字（`29`）或 semver 字符串（`"29.1.0"` 或 `"v29.1.0"`），只保存主版本号。
+::: warning
+使用此配置将覆盖 `no-deprecated-functions` 的配置集。
 
 ### settings.jsdoc
 

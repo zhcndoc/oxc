@@ -29,7 +29,9 @@ search: false
 ## 配置选项
 
 - **`-c`**, **`--config`**=_`PATH`_ &mdash;
-  配置文件路径 (.json, .jsonc, .ts, .mts, .cts, .js, .mjs, .cjs)
+  配置文件的路径（.json, .jsonc, .ts, .mts, .cts, .js, .mjs, .cjs）
+- **`    --disable-nested-config`** &mdash;
+  不在子目录中搜索配置文件
 
 ## 忽略选项
 

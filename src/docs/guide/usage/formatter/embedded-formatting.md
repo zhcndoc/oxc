@@ -4,13 +4,25 @@
 
 ## 配置
 
+::: code-group
+
 ```json [.oxfmtrc.json]
 {
   "embeddedLanguageFormatting": "auto"
 }
 ```
 
-### 值
+```ts [oxfmt.config.ts]
+import { defineConfig } from "oxfmt";
+
+export default defineConfig({
+  embeddedLanguageFormatting: "auto",
+});
+```
+
+:::
+
+### 取值
 
 - `"auto"` —（默认）格式化嵌入部分
 - `"off"` — 跳过嵌入式格式化

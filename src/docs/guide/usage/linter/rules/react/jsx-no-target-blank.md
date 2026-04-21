@@ -15,32 +15,28 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule aims to prevent user generated link hrefs and form actions from creating security vulnerabilities by
-requiring `rel='noreferrer'` for external link hrefs and form actions, and optionally any dynamically generated
-link hrefs and form actions.
+此规则旨在通过要求外部链接 href 和表单 action 使用 `rel='noreferrer'`，从而防止用户生成的链接 href 和表单 action 造成安全漏洞，并可选地对任何动态生成的链接 href 和表单 action 进行同样的限制。
 
-### Why is this bad?
+### 为什么这不好？
 
-When creating a JSX element that has an `a` tag, it is often desired to have the link open in a new tab using the
-`target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer'`, however, is a severe security
-vulnerability (see [`noreferrer` docs] and [`noopener` docs] for more details).
-This rules requires that you accompany `target='_blank'` attributes with `rel='noreferrer'`.
+在创建一个包含 `a` 标签的 JSX 元素时，通常希望使用 `target='_blank'` 属性让链接在新标签页中打开。然而，如果单独使用此属性而不配合 `rel='noreferrer'`，就会造成严重的安全漏洞（有关更多细节，请参见 [`noreferrer` 文档] 和 [`noopener` 文档]）。
+此规则要求你在 `target='_blank'` 属性中同时使用 `rel='noreferrer'`。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```jsx
 var Hello = <a target="_blank" href="https://example.com/"></a>;
 var Hello = <a target="_blank" href={dynamicLink}></a>;
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```jsx
-/// correct
+/// 正确
 var Hello = <p target="_blank"></p>;
 var Hello = <a target="_blank" rel="noreferrer" href="https://example.com"></a>;
 var Hello = <a target="_blank" rel="noopener noreferrer" href="https://example.com"></a>;
@@ -49,12 +45,12 @@ var Hello = <a target="_blank" href="/absolute/path/in/the/host"></a>;
 var Hello = <a></a>;
 ```
 
-[`noreferrer` docs]: https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer
-[`noopener` docs]: https://html.spec.whatwg.org/multipage/links.html#link-type-noopener
+[`noreferrer` 文档]: https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer
+[`noopener` 文档]: https://html.spec.whatwg.org/multipage/links.html#link-type-noopener
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allowReferrer
 
@@ -62,7 +58,7 @@ type: `boolean`
 
 default: `false`
 
-Whether to allow referrers.
+是否允许 referrer。
 
 ### enforceDynamicLinks
 
@@ -70,7 +66,15 @@ type: `"always" | "never"`
 
 default: `"always"`
 
-Whether to enforce dynamic links or enforce static links.
+是否强制检查动态链接，或强制检查静态链接。
+
+#### `"always"`
+
+始终强制检查动态链接。
+
+#### `"never"`
+
+始终强制检查静态链接。
 
 ### forms
 
@@ -78,7 +82,7 @@ type: `boolean`
 
 default: `false`
 
-Whether to check form elements.
+是否检查表单元素。
 
 ### links
 
@@ -86,7 +90,7 @@ type: `boolean`
 
 default: `true`
 
-Whether to check link elements.
+是否检查链接元素。
 
 ### warnOnSpreadAttributes
 
@@ -94,12 +98,12 @@ type: `boolean`
 
 default: `false`
 
-Whether to warn when spread attributes are used.
+在使用展开属性时是否发出警告。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 参考
 
 <RuleReferences />

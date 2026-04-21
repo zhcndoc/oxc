@@ -1,6 +1,6 @@
 ---
 title: "eslint/curly"
-category: "Style"
+category: "样式"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -263,6 +263,8 @@ curly 规则的执行类型。
 当块嵌套或跨越多行时需要大括号
 
 ### 第 2 个选项
+
+类型：`"consistent"`
 
 ## 如何使用
 

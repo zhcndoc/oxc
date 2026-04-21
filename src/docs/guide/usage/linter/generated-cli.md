@@ -121,6 +121,8 @@ search: false
 
 - **`    --silent`** &mdash;
   不显示任何诊断信息
+- **`    --no-error-on-unmatched-pattern`** &mdash;
+  当没有选择任何文件进行 lint 检查时不要以错误退出（例如，在应用忽略模式之后）
 - **`    --threads`**=_`INT`_ &mdash;
   要使用的线程数。设置为 1 以仅使用 1 个 CPU 核心。
 - **`    --print-config`** &mdash;

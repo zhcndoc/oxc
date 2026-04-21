@@ -1,6 +1,6 @@
 ---
 title: "react/jsx-filename-extension"
-category: "Restriction"
+category: "限制"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,38 +15,38 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Enforces consistent use of the `.jsx` file extension.
+强制一致地使用 `.jsx` 文件扩展名。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-Some bundlers or parsers need to know by the file extension that it contains JSX
-in order to properly handle the files.
+某些打包器或解析器需要通过文件扩展名知道其中包含 JSX，
+才能正确处理这些文件。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```jsx
-// filename: MyComponent.js
+// 文件名: MyComponent.js
 function MyComponent() {
   return <div />;
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```jsx
-// filename: MyComponent.jsx
+// 文件名: MyComponent.jsx
 function MyComponent() {
   return <div />;
 }
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allow
 
@@ -54,8 +54,16 @@ type: `"always" | "as-needed"`
 
 default: `"always"`
 
-When to allow a JSX filename extension. By default all files may have a JSX extension.
-Set this to `as-needed` to only allow JSX file extensions in files that contain JSX syntax.
+何时允许使用 JSX 文件扩展名。默认情况下，所有文件都可以使用 JSX 扩展名。
+将其设置为 `as-needed`，则只允许在包含 JSX 语法的文件中使用 JSX 文件扩展名。
+
+#### `"always"`
+
+始终允许使用 `.jsx` 文件扩展名。
+
+#### `"as-needed"`
+
+仅允许在包含 JSX 语法的文件中使用 `.jsx` 文件扩展名。
 
 ### extensions
 
@@ -63,8 +71,8 @@ type: `string[]`
 
 default: `["jsx"]`
 
-The set of allowed file extensions.
-Can include or exclude the leading dot (e.g., "jsx" and ".jsx" are both valid).
+允许的文件扩展名集合。
+可以包含或省略前导点（例如，"jsx" 和 ".jsx" 都是有效的）。
 
 ### ignoreFilesWithoutCode
 
@@ -72,12 +80,12 @@ type: `boolean`
 
 default: `false`
 
-If enabled, files that do not contain code (i.e. are empty, contain only whitespaces or comments) will not be rejected.
+如果启用，不包含代码的文件（即为空、仅包含空白字符或注释）不会被拒绝。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 参考资料
 
 <RuleReferences />

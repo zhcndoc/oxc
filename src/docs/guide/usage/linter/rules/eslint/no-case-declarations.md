@@ -1,9 +1,9 @@
 ---
 title: "eslint/no-case-declarations"
-category: "Pedantic"
+category: "吹毛求疵"
 default: false
 type_aware: false
-fix: "pending"
+fix: "fixable_suggestion"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->

@@ -1,6 +1,6 @@
 ---
 title: "eslint/max-params"
-category: "Style"
+category: "样式"
 default: false
 type_aware: false
 fix: "none"
@@ -58,6 +58,8 @@ let foo = (bar, baz, qux) => {
 此规则接受一个具有以下属性的配置对象：
 
 ### countThis
+
+type: `"always" | "never" | "except-void"`
 
 此选项控制何时统计 `this` 参数。
 
