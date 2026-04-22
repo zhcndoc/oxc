@@ -2,6 +2,26 @@
 
 Oxc transformer includes built-in support for popular transformation plugins to improve developer experience and build performance.
 
+## Tagged Template Escape
+
+When enabled, `</script>` sequences inside tagged template literals are escaped to prevent browsers from prematurely closing a surrounding `<script>` tag. This avoids parsing errors and potential XSS vulnerabilities when JavaScript is embedded directly in HTML.
+
+::: tip Recommendation
+Enable this option when the transformed output may be embedded directly in HTML `<script>` tags. Without it, tagged template literals containing `</script>` can break when embedded in HTML `<script>` tags. See [oxc-project/oxc#15306](https://github.com/oxc-project/oxc/issues/15306) for details.
+:::
+
+```javascript
+import { transform } from "oxc-transform";
+
+const result = await transform("lib.js", sourceCode, {
+  plugins: {
+    taggedTemplateEscape: true,
+  },
+});
+```
+
+For example, `` foo`</script>` `` is transformed into a helper call where the `</script>` sequence is escaped to `<\/script>`.
+
 ## Styled Components
 
 The styled-components plugin adds comprehensive support for styled-components with server-side rendering, style minification, and enhanced debugging capabilities.

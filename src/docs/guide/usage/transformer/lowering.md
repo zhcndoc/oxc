@@ -24,11 +24,15 @@ Each target environment is an environment name followed by a version number. The
 
 The values that are supported by [esbuild's target option](https://esbuild.github.io/api/#target) are supported, excluding ES5.
 
+You can pass a single string or an array of strings:
+
 ```js
 import { transform } from "oxc-transform";
 
 const result = await transform("lib.js", "const foo = a ?? b;", {
-  target: ["chrome87", "es2022"],
+  target: "es2020",
+  // or multiple targets:
+  // target: ["chrome87", "es2022"],
 });
 ```
 
@@ -118,9 +122,25 @@ const result = await transform("lib.js", "const foo = a ?? b;", {
 
 The following assumptions are supported.
 
+### `ignoreFunctionLength`
+
+Assume that no code relies on the `.length` property of function objects.
+
+::: info Note
+This assumption is not fully implemented yet. In particular, enabling it with object rest/spread currently produces a transform error.
+:::
+
 ### `noDocumentAll`
 
 Assume that the deprecated `document.all` with its special behavior is not used.
+
+### `objectRestNoSymbols`
+
+Assume that object rest/spread properties do not include Symbol keys.
+
+::: info Note
+This assumption is not fully implemented yet. In particular, enabling it with object rest/spread currently produces a transform error.
+:::
 
 ### `pureGetters`
 
