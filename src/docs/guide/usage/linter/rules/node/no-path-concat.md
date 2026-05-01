@@ -1,6 +1,7 @@
 ---
 title: "node/no-path-concat"
 category: "Restriction"
+version: "1.49.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,26 +16,26 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallows string concatenation with `__dirname` and `__filename`.
+禁止将 `__dirname` 和 `__filename` 进行字符串拼接。
 
-### Why is this bad?
+### 为什么这不好？
 
-In Node.js, the `__dirname` and `__filename` global variables contain the directory path and the file path of the currently executing script file, respectively.
-Sometimes, developers try to use these variables to create paths to other files, such as:
+在 Node.js 中，`__dirname` 和 `__filename` 全局变量分别包含当前正在执行的脚本文件所在目录路径和文件路径。
+有时，开发者会尝试使用这些变量来创建其他文件的路径，例如：
 
 ```js
 var fullPath = __dirname + "/foo.js";
 ```
 
-However, this is error-prone because it doesn't account for different
-operating systems, which use different path separators. Using `path.join()`
-or `path.resolve()` is the proper way to create cross-platform file paths.
+然而，这种做法容易出错，因为它没有考虑不同的
+操作系统，而不同操作系统使用不同的路径分隔符。使用 `path.join()`
+或 `path.resolve()` 才是创建跨平台文件路径的正确方式。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```js
 const fullPath1 = __dirname + "/foo.js";
@@ -43,7 +44,7 @@ const fullPath3 = `${__dirname}/foo.js`;
 const fullPath4 = `${__filename}/foo.js`;
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```js
 const fullPath1 = path.join(__dirname, "foo.js");
@@ -54,10 +55,14 @@ const fullPath5 = `${__dirname}_foo.js`;
 const fullPath6 = `${__filename}.test.js`;
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.49.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "eslint/array-callback-return"
 category: "Pedantic"
+version: "0.0.3"
 default: false
 type_aware: false
 fix: "pending"
@@ -81,6 +82,10 @@ default: `false`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+该规则于 v0.0.3 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,46 +1,44 @@
-# Minifier
+# 压缩器
 
-::: tip
-We recommend thoroughly testing its output before deploying to production environments.
-:::
+一种高性能压缩器，通过移除未使用的代码并将其转换为更短的等价形式来缩减你的代码。
 
-## Features
+## 特性
 
-- [Eliminate dead code.](./minifier/dead-code-elimination)
-- [Transforms syntaxes to make the output shorter and repetitive.](./minifier/syntax-normalization)
-- [Mangle variable names.](./minifier/mangling)
-- [Remove whitespace and comments.](./minifier/whitespace-stripping)
+- [消除死代码。](./minifier/dead-code-elimination)
+- [将语法转换为更短且更重复的输出。](./minifier/syntax-normalization)
+- [混淆变量名。](./minifier/mangling)
+- [移除空白和注释。](./minifier/whitespace-stripping)
 
-## Assumptions
+## 假设
 
-To allow better optimizations, Oxc minifier makes some assumptions about your code. See [Assumptions document](https://github.com/oxc-project/oxc/blob/main/crates/oxc_minifier/docs/ASSUMPTIONS.md) for more information.
+为了实现更好的优化，Oxc 压缩器会对你的代码做出一些假设。更多信息请参见 [假设文档](https://github.com/oxc-project/oxc/blob/main/crates/oxc_minifier/docs/ASSUMPTIONS.md)。
 
-## FAQ
+## 常见问题
 
-See [FAQ](./minifier/faq) for common questions.
+有关常见问题，请参见 [常见问题](./minifier/faq)。
 
-## Installation
+## 安装
 
-### With Rolldown
+### 使用 Rolldown
 
-If you are using [Rolldown][url-rolldown], `oxc-minify` will be used for minification by default. No extra installation is required.
+如果你正在使用 [Rolldown][url-rolldown]，`oxc-minify` 将默认用于压缩。无需额外安装。
 
 ### Node.js
 
-- Use the node binding [oxc-minify][url-oxc-minify-npm].
-- Try on [stackblitz](https://stackblitz.com/edit/oxc-minify).
+- 使用 node 绑定 [oxc-minify][url-oxc-minify-npm]。
+- 在 [stackblitz](https://stackblitz.com/edit/oxc-minify) 上试用。
 
 ### Rust
 
-Use the umbrella crate [oxc][url-oxc-crate] with the `minifier` feature.
+使用带有 `minifier` 特性的总仓库 crate [oxc][url-oxc-crate]。
 
-Rust usage example can be found [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_minifier/examples/minifier.rs).
+Rust 使用示例可在 [这里](https://github.com/oxc-project/oxc/blob/main/crates/oxc_minifier/examples/minifier.rs) 找到。
 
-## Integrations
+## 集成
 
 - [`unplugin-oxc`](https://npmx.dev/package/unplugin-oxc)
 
-<!-- Links -->
+<!-- 链接 -->
 
 [url-oxc-crate]: https://docs.rs/oxc
 [url-oxc-minify-npm]: https://npmx.dev/package/oxc-minify

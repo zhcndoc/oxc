@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-useless-default-assignment"
-category: "正确性"
+category: "Correctness"
+version: "1.49.0"
 default: true
 type_aware: true
 fix: "none"
@@ -42,6 +43,10 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则已在 v1.49.0 中添加。
 
 ## 参考资料
 

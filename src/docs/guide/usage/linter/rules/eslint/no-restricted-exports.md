@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-restricted-exports"
 category: "Nursery"
+version: "1.59.0"
 default: false
 type_aware: false
 fix: "none"
@@ -164,6 +165,10 @@ export const foo = 1;
 
 <RuleHowToUse />
 
-## 参考
+## Version
+
+该规则于 v1.59.0 中添加。
+
+## References
 
 <RuleReferences />

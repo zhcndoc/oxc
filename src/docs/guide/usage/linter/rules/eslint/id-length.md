@@ -1,6 +1,7 @@
 ---
 title: "eslint/id-length"
-category: "风格"
+category: "样式"
+version: "1.4.0"
 default: false
 type_aware: false
 fix: "none"
@@ -154,7 +155,7 @@ default: `[]`
 
 type: `integer`
 
-default: `18446744073709551615`
+default: `Infinity`
 
 标识符中允许的最大字素数量。
 默认为无最大值（实际上无限）。
@@ -187,6 +188,10 @@ default: `"always"`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v1.4.0 中新增。
+
+## 参考资料
 
 <RuleReferences />

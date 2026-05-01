@@ -1,6 +1,7 @@
 ---
 title: "typescript/prefer-namespace-keyword"
-category: "Correctness"
+category: "正确性"
+version: "0.7.0"
 default: true
 type_aware: false
 fix: "fixable_fix"
@@ -15,42 +16,46 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule reports when the module keyword is used instead of namespace.
-This rule does not report on the use of TypeScript module declarations to describe external APIs (declare module 'foo' {}).
+当使用 module 关键字而不是 namespace 时，此规则会报告。
+此规则不会报告使用 TypeScript 模块声明来描述外部 API 的情况（declare module 'foo' {}）。
 
 ::: warning
-This rule is deprecated and will be removed in a future release.
+此规则已弃用，并将在未来的版本中移除。
 
-In a future version of TypeScript and Oxlint, this will be a hard error produced by the parser.
+在未来版本的 TypeScript 和 Oxlint 中，这将由解析器生成一个硬错误。
 
-See: https://github.com/microsoft/TypeScript/issues/54500, https://github.com/microsoft/TypeScript/issues/62211 and https://github.com/microsoft/TypeScript/pull/62876.
+参见：https://github.com/microsoft/TypeScript/issues/54500、https://github.com/microsoft/TypeScript/issues/62211 和 https://github.com/microsoft/TypeScript/pull/62876。
 :::
 
-### Why is this bad?
+### 为什么这不好？
 
-Namespaces are an outdated way to organize TypeScript code. ES2015 module syntax is now preferred (`import`/`export`).
-For projects still using custom modules / namespaces, it's preferred to refer to them as namespaces.
+命名空间是一种过时的组织 TypeScript 代码的方式。现在更推荐使用 ES2015 模块语法（`import`/`export`）。
+对于仍在使用自定义模块 / 命名空间的项目，最好将其称为命名空间。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```typescript
 module Example {}
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```typescript
 namespace Example {}
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.7.0 中添加。
+
+## 参考
 
 <RuleReferences />

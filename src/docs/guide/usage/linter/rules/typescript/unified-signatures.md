@@ -1,6 +1,7 @@
 ---
 title: "typescript/unified-signatures"
 category: "Style"
+version: "1.48.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,33 +16,32 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallow overload signatures that can be unified into one.
+不允许可以合并为一个的重载签名。
 
-### Why is this bad?
+### 为什么这不好？
 
-Duplicate overload signatures that only differ by a single type, or by an optional/rest
-parameter, are harder to maintain and read than a single unified signature.
+仅在单个类型不同，或仅在可选/剩余参数不同的重复重载签名，比一个统一的签名更难维护和阅读。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```ts
 function f(a: number): void;
 function f(a: string): void;
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```ts
 function f(a: number | string): void;
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### ignoreDifferentlyNamedParameters
 
@@ -49,9 +49,7 @@ type: `boolean`
 
 default: `false`
 
-Whether to ignore parameter name differences when comparing signatures. If `false`, signatures
-will not be considered unifiable if they have parameters in the same position with different
-names, even if the parameter types are the same.
+在比较签名时，是否忽略参数名差异。如果为 `false`，那么即使参数类型相同，只要签名在相同位置上的参数名称不同，也不会被视为可统一。
 
 ### ignoreOverloadsWithDifferentJSDoc
 
@@ -59,14 +57,16 @@ type: `boolean`
 
 default: `false`
 
-Whether to ignore JSDoc differences when comparing signatures. If `false`, signatures will not
-be considered unifiable if the closest leading block comments for the signatures are different,
-even if the signatures themselves are identical.
+在比较签名时，是否忽略 JSDoc 差异。如果为 `false`，那么即使签名本身完全相同，只要这些签名最接近的前导块注释不同，也不会被视为可统一。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.48.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "vitest/consistent-each-for"
-category: "正确性"
+category: "Correctness"
+version: "1.39.0"
 default: false
 type_aware: false
 fix: "none"
@@ -17,13 +18,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则确保用于创建参数化测试的方法保持一致。
-该配置会影响不同的测试函数类型（`test`、`it`、`describe`、`suite`）。
+此规则强制用于创建参数化测试的方法保持一致。
+此配置会影响不同的测试函数类型（`test`、`it`、`describe`、`suite`）。
 
 ### 为什么这不好？
 
-如果没有一致的方式来创建参数化测试，我们就需要开发者记住：
-`.for` 会将值展开为不同的参数，而 `.each` 会将数组作为一个单独的参数传入。
+如果没有一种一致的方式来创建参数化测试，我们就不得不依赖开发者记住：
+`.for` 会将这些值作为不同的参数展开，而 `.each` 会将数组作为单个参数传递。
 
 ### 示例
 
@@ -87,6 +88,10 @@ type: `"for" | "each"`
 
 <RuleHowToUse />
 
-## 参考资料
+## Version
+
+此规则在 v1.39.0 中添加。
+
+## References
 
 <RuleReferences />

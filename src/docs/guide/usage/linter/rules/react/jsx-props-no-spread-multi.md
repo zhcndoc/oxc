@@ -1,6 +1,7 @@
 ---
 title: "react/jsx-props-no-spread-multi"
-category: "Correctness"
+category: "正确性"
+version: "0.7.2"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,34 +16,38 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Enforces that any unique expression is only spread once.
+强制任何唯一表达式只展开一次。
 
-### Why is this bad?
+### 这为什么不好？
 
-Generally spreading the same expression twice is an indicator of a mistake since any attribute between the spreads may be overridden when the intent was not to.
-Even when that is not the case this will lead to unnecessary computations being performed.
+通常，重复展开同一个表达式表明存在错误，因为两个展开之间的任何属性都可能被覆盖，而这并非本意。
+即使不是这种情况，这也会导致不必要的计算。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```jsx
 <App {...props} myAttr="1" {...props} />
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```jsx
 <App myAttr="1" {...props} />
 <App {...props} myAttr="1" />
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.7.2 中添加的。
+
+## 参考资料
 
 <RuleReferences />

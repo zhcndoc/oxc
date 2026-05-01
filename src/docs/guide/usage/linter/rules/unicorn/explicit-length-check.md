@@ -1,6 +1,7 @@
 ---
-title: "unicorn/显式长度检查"
-category: "吹毛求疵"
+title: "unicorn/explicit-length-check"
+category: "Pedantic"
+version: "0.0.19"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -74,6 +75,10 @@ default: `"greater-than"`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.0.19 中添加。
+
+## 参考资料
 
 <RuleReferences />

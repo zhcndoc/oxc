@@ -1,6 +1,7 @@
 ---
 title: "import/consistent-type-specifier-style"
-category: "Style"
+category: "样式"
+version: "0.16.11"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,62 +16,66 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule either enforces or bans the use of inline type-only markers for named imports.
+此规则用于强制或禁止在命名导入中使用行内仅类型标记。
 
-### Why is this bad?
+### 为什么这不好？
 
-Mixing top-level `import type { Foo } from 'foo'` with inline `{ type Bar }`
-forces readers to mentally switch contexts when scanning your imports.
-Enforcing one style makes it immediately obvious which imports are types and which are value imports.
+将顶层的 `import type { Foo } from 'foo'` 与行内的 `{ type Bar }` 混用，
+会迫使读者在浏览导入时在不同上下文之间切换。
+强制统一一种风格可以让人立刻看出哪些导入是类型，哪些是值导入。
 
-### Examples
+### 示例
 
-Examples of incorrect code for the default `prefer-top-level` option:
-
-```typescript
-import { type Foo } from "Foo";
-import Foo, { type Bar } from "Foo";
-```
-
-Examples of correct code for the default option:
-
-```typescript
-import type { Foo } from "Foo";
-import type Foo, { Bar } from "Foo";
-```
-
-Examples of incorrect code for the `prefer-inline` option:
-
-```typescript
-import type { Foo } from "Foo";
-import type Foo, { Bar } from "Foo";
-```
-
-Examples of correct code for the `prefer-inline` option:
+默认 `prefer-top-level` 选项下的错误代码示例：
 
 ```typescript
 import { type Foo } from "Foo";
 import Foo, { type Bar } from "Foo";
 ```
 
-## Configuration
+默认选项下的正确代码示例：
 
-This rule accepts one of the following string values:
+```typescript
+import type { Foo } from "Foo";
+import type Foo, { Bar } from "Foo";
+```
+
+`prefer-inline` 选项下的错误代码示例：
+
+```typescript
+import type { Foo } from "Foo";
+import type Foo, { Bar } from "Foo";
+```
+
+`prefer-inline` 选项下的正确代码示例：
+
+```typescript
+import { type Foo } from "Foo";
+import Foo, { type Bar } from "Foo";
+```
+
+## 配置
+
+此规则接受以下字符串值之一：
 
 ### `"prefer-top-level"`
 
-Prefer `import type { Foo } from 'foo'` for type imports.
+类型导入优先使用 `import type { Foo } from 'foo'`。
 
 ### `"prefer-inline"`
 
-Prefer `import { type Foo } from 'foo'` for type imports.
+类型导入优先使用 `import { type Foo } from 'foo'`。
 
-## How to use
+## 使用方法
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.16.11 中添加。
+
+## 参考资料
 
 <RuleReferences />

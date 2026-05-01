@@ -8,8 +8,7 @@
 
 目前不支持：
 
-- `package.json` 中的 `prettier` 字段
-- 子目录中的嵌套配置
+- `prettier` 字段在 `package.json` 中
 - 子目录中的嵌套 `.editorconfig`
 - `experimentalTernaries` 和 `experimentalOperatorPosition` 选项
 

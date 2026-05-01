@@ -1,6 +1,7 @@
 ---
 title: "eslint/func-style"
-category: "风格"
+category: "Style"
+version: "0.15.11"
 default: false
 type_aware: false
 fix: "待处理"
@@ -186,6 +187,10 @@ default: `null`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则添加于 v0.15.11。
+
+## 参考资料
 
 <RuleReferences />

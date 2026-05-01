@@ -1,6 +1,7 @@
 ---
 title: "import/no-anonymous-default-export"
-category: "Style"
+category: "样式"
+version: "0.15.14"
 default: false
 type_aware: false
 fix: "none"
@@ -15,22 +16,22 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Reports if a module's default export is unnamed.
-This includes several types of unnamed data types;
-literals, object expressions, arrays, anonymous functions, arrow functions,
-and anonymous class declarations.
+如果模块的默认导出没有名称，则会报告。
+这包括几种无名的数据类型；
+字面量、对象表达式、数组、匿名函数、箭头函数，
+以及匿名类声明。
 
-### Why is this bad?
+### 为什么这不好？
 
-Ensuring that default exports are named helps improve the grepability of
-the codebase by encouraging the re-use of the same identifier for
-the module's default export at its declaration site and at its import sites.
+确保默认导出具有名称，有助于提升
+代码库的可 grep 性，因为它鼓励在
+模块默认导出的声明位置和导入位置重复使用同一个标识符。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```js
 export default [];
@@ -45,7 +46,7 @@ export default `foo`;
 export default /^123/;
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```js
 const foo = 123;
@@ -72,12 +73,12 @@ export default new Foo();
 export default foo(bar);
 ```
 
-By default, all types of anonymous default exports are forbidden,
-but any types can be selectively allowed by toggling them on in the options.
+默认情况下，所有类型的匿名默认导出都被禁止，
+但可以通过在选项中启用它们来有选择地允许任意类型。
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个具有以下属性的配置对象：
 
 ### allowAnonymousClass
 
@@ -85,7 +86,7 @@ type: `boolean`
 
 default: `false`
 
-Allow anonymous class as default export.
+允许将匿名类作为默认导出。
 
 ### allowAnonymousFunction
 
@@ -93,7 +94,7 @@ type: `boolean`
 
 default: `false`
 
-Allow anonymous function as default export.
+允许将匿名函数作为默认导出。
 
 ### allowArray
 
@@ -101,7 +102,7 @@ type: `boolean`
 
 default: `false`
 
-Allow anonymous array as default export.
+允许将匿名数组作为默认导出。
 
 ### allowArrowFunction
 
@@ -109,7 +110,7 @@ type: `boolean`
 
 default: `false`
 
-Allow anonymous arrow function as default export.
+允许将匿名箭头函数作为默认导出。
 
 ### allowCallExpression
 
@@ -117,7 +118,7 @@ type: `boolean`
 
 default: `true`
 
-Allow anonymous call expression as default export.
+允许将匿名调用表达式作为默认导出。
 
 ### allowLiteral
 
@@ -125,7 +126,7 @@ type: `boolean`
 
 default: `false`
 
-Allow anonymous literal as default export.
+允许将匿名字面量作为默认导出。
 
 ### allowNew
 
@@ -133,7 +134,7 @@ type: `boolean`
 
 default: `false`
 
-Allow anonymous new expression as default export.
+允许将匿名 new 表达式作为默认导出。
 
 ### allowObject
 
@@ -141,12 +142,16 @@ type: `boolean`
 
 default: `false`
 
-Allow anonymous object as default export.
+允许将匿名对象作为默认导出。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.15.14 中添加。
+
+## 参考
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-require-imports"
-category: "Restriction"
+category: "限制"
+version: "0.13.0"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,34 +16,33 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Forbids the use of CommonJS `require` calls.
+禁止使用 CommonJS 的 `require` 调用。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-`require` imports, while functional in Node.js and older JavaScript environments, are generally
-considered less desirable than ES modules (`import`) for several key reasons in modern JavaScript development:
+`require` 导入虽然在 Node.js 和旧版 JavaScript 环境中可用，但在现代 JavaScript 开发中，通常被认为不如 ES 模块（`import`）理想，原因主要有以下几点：
 
-1. **Static vs. Dynamic**: `require` is a **runtime** function. It executes when the code runs, which means errors related to missing modules or incorrect paths are only discovered during runtime. ES modules (`import`) are static imports. Their resolution and potential errors are checked during the compilation or bundling process, making them easier to catch during development.
+1. **静态 vs. 动态**：`require` 是一个 **运行时** 函数。它在代码运行时执行，这意味着与缺失模块或路径错误相关的错误，只有在运行时才会被发现。ES 模块（`import`）是静态导入。它们的解析和潜在错误会在编译或打包过程中被检查，因此更容易在开发阶段捕获。
 
-2. **Code Organization and Readability**: `require` statements are scattered throughout the code, potentially making it harder to quickly identify the dependencies of a given module. `import` statements are typically grouped at the top of a file, improving code organization and readability.
+2. **代码组织与可读性**：`require` 语句分散在代码各处，这可能会使快速识别某个模块的依赖变得更困难。`import` 语句通常会集中放在文件顶部，从而改善代码组织和可读性。
 
-3. **Tree Shaking and Optimization**: Modern bundlers like Webpack and Rollup use tree-shaking to remove unused code from the final bundle. Tree-shaking works significantly better with ES modules because their dependencies are declared statically and explicitly. `require` makes it harder for bundlers to accurately identify and remove unused code, resulting in larger bundle sizes and slower load times.
+3. **Tree Shaking 和优化**：Webpack 和 Rollup 等现代打包工具会使用 tree-shaking 从最终 bundle 中移除未使用的代码。Tree-shaking 与 ES 模块配合得明显更好，因为它们的依赖是静态且显式声明的。`require` 会使打包工具更难准确识别并移除未使用的代码，导致 bundle 更大、加载更慢。
 
-4. **Cyclic Dependencies**: Handling cyclic dependencies (where module A imports B, and B imports A) is significantly more challenging with `require`. ES modules, through their declarative nature and the use of dynamic imports (`import()`), provide better mechanisms to handle cyclic imports and manage asynchronous loading.
+4. **循环依赖**：处理循环依赖（即模块 A 导入 B，而 B 又导入 A）时，`require` 的处理难度要高得多。ES 模块通过其声明式特性以及动态导入（`import()`）的使用，提供了更好的机制来处理循环导入和管理异步加载。
 
-5. **Maintainability and Refactoring**: Changing module names or paths is simpler with ES modules because the changes are declared directly and the compiler or bundler catches any errors. With `require`, you might have to track down all instances of a specific `require` statement for a particular module, making refactoring more error-prone.
+5. **可维护性与重构**：使用 ES 模块时，修改模块名称或路径更简单，因为这些变更是直接声明的，编译器或打包工具会捕获任何错误。而使用 `require` 时，你可能需要追踪某个特定模块的所有 `require` 语句实例，使重构更容易出错。
 
-6. Modern JavaScript Standards: import is the standard way to import modules in modern JavaScript, aligned with current best practices and language specifications. Using require necessitates additional build steps or tools to translate it to a format that the browser or modern JavaScript environments can understand.
+6. 现代 JavaScript 标准：`import` 是现代 JavaScript 中导入模块的标准方式，与当前最佳实践和语言规范保持一致。使用 `require` 则需要额外的构建步骤或工具，将其转换为浏览器或现代 JavaScript 环境可以理解的格式。
 
-7. Error Handling: ES modules provide a more structured way to handle errors during module loading using `try...catch` blocks with dynamic imports, enhancing error management. `require` errors can be less predictable.
+7. 错误处理：ES 模块通过在动态导入中使用 `try...catch` 块，为模块加载期间的错误提供了更结构化的处理方式，从而增强错误管理。`require` 的错误则可能不那么可预测。
 
-In summary, while `require` works, the benefits of ES modules in terms of static analysis, better bundling, improved code organization, and easier maintainability make it the preferred method for importing modules in modern JavaScript projects.
+总之，虽然 `require` 可以工作，但 ES 模块在静态分析、更好的打包、改进的代码组织以及更易维护性方面的优势，使其成为现代 JavaScript 项目中导入模块的首选方式。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
 const lib1 = require("lib1");
@@ -50,7 +50,7 @@ const { lib2 } = require("lib2");
 import lib3 = require("lib3");
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 import * as lib1 from "lib1";
@@ -58,9 +58,9 @@ import { lib2 } from "lib2";
 import * as lib3 from "lib3";
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allow
 
@@ -68,14 +68,14 @@ type: `string[]`
 
 default: `[]`
 
-These strings will be compiled into regular expressions with the u flag and be used to test against the imported path.
-A common use case is to allow importing `package.json`. This is because `package.json` commonly lives outside of the TS root directory,
-so statically importing it would lead to root directory conflicts, especially with `resolveJsonModule` enabled.
-You can also use it to allow importing any JSON if your environment doesn't support JSON modules, or use it for other cases where `import` statements cannot work.
+这些字符串将使用 u 标志编译为正则表达式，并用于针对导入路径进行测试。
+一个常见用例是允许导入 `package.json`。这是因为 `package.json` 通常位于 TS 根目录之外，
+所以静态导入它会导致根目录冲突，尤其是在启用 `resolveJsonModule` 的情况下。
+如果你的环境不支持 JSON 模块，你也可以用它来允许导入任何 JSON，或者在其他 `import` 语句无法工作的情况下使用它。
 
-With `{ allow: ['/package\\.json$'] }`:
+使用 `{ allow: ['/package\\.json$'] }` 时：
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 console.log(require("../package.json").version);
@@ -87,12 +87,12 @@ type: `boolean`
 
 default: `false`
 
-When set to `true`, `import ... = require(...)` declarations won't be reported.
-This is useful if you use certain module options that require strict CommonJS interop semantics.
+当设置为 `true` 时，`import ... = require(...)` 声明不会被报告。
+如果你使用某些需要严格 CommonJS 互操作语义的模块选项，这会很有用。
 
-When set to `true`:
+当设置为 `true` 时：
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
 var foo = require("foo");
@@ -100,17 +100,21 @@ const foo = require("foo");
 let foo = require("foo");
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 import foo = require("foo");
 import foo from "foo";
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.13.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
-title: "typescript/显式成员可访问性"
-category: "限制"
+title: "typescript/explicit-member-accessibility"
+category: "Restriction"
+version: "1.61.0"
 default: false
 type_aware: false
 fix: "conditional_safe_fix_or_suggestion"
@@ -205,6 +206,10 @@ type: `"explicit" | "no-public" | "off"`
 
 <RuleHowToUse />
 
-## 参考资料
+## Version
+
+此规则于 v1.61.0 中添加。
+
+## References
 
 <RuleReferences />

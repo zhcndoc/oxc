@@ -1,6 +1,7 @@
 ---
-title: "unicorn/一致的模板字面量转义"
-category: "样式"
+title: "unicorn/consistent-template-literal-escape"
+category: "Style"
+version: "1.60.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -44,6 +45,10 @@ const foo = `\${a}`;
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则已在 v1.60.0 中添加。
 
 ## 参考资料
 

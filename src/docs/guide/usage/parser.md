@@ -1,40 +1,40 @@
 ---
-title: Parser
+title: 解析器
 outline: deep
 ---
 
-# Parser
+# 解析器
 
 <AppBadgeList />
 
-This is production ready.
+一个用 Rust 编写的高性能 JavaScript / TypeScript 解析器，为 Oxc 项目中的其他工具提供支持。
 
-## Features
+## 功能
 
-- 3x faster than swc parser ([benchmark][url-benchmark]).
-- Parses `.js(x)` and `.ts(x)`.
-- Passes all parser tests from Test262 and 99% from Babel and TypeScript.
-- Returns ESM information directly, no need for [`es-module-lexer`](https://npmx.dev/package/es-module-lexer).
-- [✅ works with checker.ts](https://x.com/robpalmer2/status/1805502964435505559)
+- 比 swc 解析器快 3 倍（[基准测试][url-benchmark]）。
+- 解析 `.js(x)` 和 `.ts(x)`。
+- 通过了 Test262 的所有解析器测试，以及 Babel 和 TypeScript 中 99% 的测试。
+- 直接返回 ESM 信息，无需 [`es-module-lexer`](https://npmx.dev/package/es-module-lexer)。
+- [✅ 可与 checker.ts 配合使用](https://x.com/robpalmer2/status/1805502964435505559)
 
-## Installation
+## 安装
 
 ### Node.js
 
-- Use the node binding [oxc-parser][url-oxc-parser-npm].
-- Try on [stackblitz](https://stackblitz.com/edit/oxc-parser).
+- 使用 node 绑定 [oxc-parser][url-oxc-parser-npm]。
+- 在 [stackblitz](https://stackblitz.com/edit/oxc-parser) 上试用。
 
 ### Rust
 
-Use the umbrella crate [oxc][url-oxc-crate] or the individual [oxc_ast][url-oxc-ast-crate] and [oxc_parser][url-oxc-parser-crate] crates.
+使用总包 [oxc][url-oxc-crate]，或分别使用 [oxc_ast][url-oxc-ast-crate] 和 [oxc_parser][url-oxc-parser-crate] 这两个 crate。
 
-Rust usage example can be found [here](https://github.com/oxc-project/oxc/blob/main/crates/oxc_parser/examples/parser.rs).
+Rust 使用示例可在[这里](https://github.com/oxc-project/oxc/blob/main/crates/oxc_parser/examples/parser.rs)找到。
 
-## Print
+## 打印
 
-After parsing and transforming, you can print code.
+在解析并转换后，你可以打印代码。
 
-Here's a direct example using [esrap](https://npmx.dev/package/esrap) _(`parse` in reverse!)_:
+这里有一个使用 [esrap](https://npmx.dev/package/esrap) 的直接示例 _（将 `parse` 反过来！）_：
 
 ```js
 import { print } from "esrap";
@@ -48,7 +48,7 @@ console.log(code); // alert("hello oxc & esrap");
 ```
 
 :::info
-Today, comments are not printed. _It will be supported thanks to [oxc-parser #13285](https://github.com/oxc-project/oxc/pull/13285)._
+目前不会打印注释。_这将通过 [oxc-parser #13285](https://github.com/oxc-project/oxc/pull/13285) 得到支持。_
 :::
 
 <!-- Links -->

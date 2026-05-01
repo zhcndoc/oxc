@@ -1,6 +1,7 @@
 ---
 title: "jsdoc/require-property-type"
-category: "Correctness"
+category: "正确性"
+version: "0.2.18"
 default: false
 type_aware: false
 fix: "none"
@@ -15,17 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Requires that each `@property` tag has a type value (within curly brackets).
+要求每个 `@property` 标签都具有类型值（在花括号内）。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-The type of a property should be documented.
+属性的类型应当被文档化。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**不正确**代码示例：
 
 ```javascript
 /**
@@ -34,7 +35,7 @@ Examples of **incorrect** code for this rule:
  */
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 /**
@@ -43,10 +44,14 @@ Examples of **correct** code for this rule:
  */
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.2.18 中添加。
+
+## 参考资料
 
 <RuleReferences />

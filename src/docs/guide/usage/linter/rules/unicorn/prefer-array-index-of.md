@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-array-index-of"
 category: "Style"
+version: "0.16.12"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,37 +16,38 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Enforces using `indexOf` or `lastIndexOf` instead of `findIndex` or `findLastIndex`
-when the callback is a simple strict equality comparison.
+强制在回调函数只是简单的严格相等比较时，使用 `indexOf` 或 `lastIndexOf`，而不是 `findIndex` 或 `findLastIndex`
 
-### Why is this bad?
+### 为什么这不好？
 
-Using `findIndex(x => x === value)` is unnecessarily verbose when `indexOf(value)`
-accomplishes the same thing more concisely and clearly. It also avoids the overhead
-of creating a callback function.
+当 `indexOf(value)` 能以更简洁、更清晰的方式完成同样的事情时，使用 `findIndex(x => x === value)` 就显得不必要地冗长。它还避免了创建回调函数的开销。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 values.findIndex((x) => x === "foo");
 values.findLastIndex((x) => x === "bar");
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 values.indexOf("foo");
 values.lastIndexOf("bar");
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.16.12 中添加的。
+
+## 参考资料
 
 <RuleReferences />

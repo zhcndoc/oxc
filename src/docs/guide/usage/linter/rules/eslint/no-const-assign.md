@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-const-assign"
 category: "Correctness"
+version: "0.0.3"
 default: true
 type_aware: false
 fix: "none"
@@ -21,7 +22,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么不好？
 
-我们无法修改使用 `const` 关键字声明的变量，因为它会引发运行时错误。
+我们无法修改使用 `const` 关键字声明的变量，因为这会引发运行时错误。
 
 注意，此规则对于 TypeScript 代码并非必要，因为 TypeScript 已经会将此捕获为错误。
 
@@ -51,6 +52,10 @@ b += 1;
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则是在 v0.0.3 中添加的。
+
+## 参考资料
 
 <RuleReferences />

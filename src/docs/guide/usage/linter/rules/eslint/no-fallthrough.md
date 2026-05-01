@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-fallthrough"
-category: "Pedantic"
+category: "学究型"
+version: "0.0.14"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,19 +16,15 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Disallow fallthrough of `case` statements
+禁止 `case` 语句的贯穿
 
-This rule is aimed at eliminating unintentional fallthrough of one case
-to the other. As such, it flags any fallthrough scenarios that are not
-marked by a comment.
+该规则旨在消除一个 case 意外贯穿到另一个 case 的情况。因此，它会标记任何未通过注释标明的贯穿场景。
 
-### Why is this bad?
+### 为什么这不好？
 
-The switch statement in JavaScript is one of the more error-prone
-constructs of the language thanks in part to the ability to “fall
-through” from one case to the next. For example:
+JavaScript 中的 switch 语句是语言里更容易出错的结构之一，部分原因在于它能够从一个 case “贯穿”到下一个 case。例如：
 
 ```js
 switch (foo) {
@@ -39,9 +36,7 @@ switch (foo) {
 }
 ```
 
-In this example, if `foo` is `1`, then execution will flow through both
-cases, as the first falls through to the second. You can prevent this by
-using `break`, as in this example:
+在这个例子中，如果 `foo` 是 `1`，那么执行会流经这两个 case，因为第一个会贯穿到第二个。你可以通过使用 `break` 来避免这一点，如下所示：
 
 ```js
 switch (foo) {
@@ -54,11 +49,7 @@ switch (foo) {
 }
 ```
 
-That works fine when you don’t want a fallthrough, but what if the
-fallthrough is intentional, there is no way to indicate that in the
-language. It’s considered a best practice to always indicate when a
-fallthrough is intentional using a comment which matches the
-`/falls?\s?through/i`` regular expression but isn’t a directive:
+当你不希望发生贯穿时，这样做没问题，但如果贯穿是有意为之，又没有办法在语言层面标明这一点。最佳实践是始终使用注释来说明贯穿是有意的，该注释应匹配 `/falls?\s?through/i`` 正则表达式，但不能是指令：
 
 ```js
 switch (foo) {
@@ -100,13 +91,11 @@ switch (foo) {
 }
 ```
 
-In this example, there is no confusion as to the expected behavior. It
-is clear that the first case is meant to fall through to the second
-case.
+在这个例子中，对预期行为不会有任何困惑。很明显，第一个 case 是要贯穿到第二个 case 的。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```js
 switch (foo) {
@@ -118,7 +107,7 @@ switch (foo) {
 }
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```js
 switch (foo) {
@@ -183,12 +172,11 @@ switch (foo) {
 }
 ```
 
-Note that the last case statement in these examples does not cause a
-warning because there is nothing to fall through into.
+请注意，在这些示例中，最后一个 case 语句不会产生警告，因为没有可以贯穿进入的目标。
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allowEmptyCase
 
@@ -196,13 +184,13 @@ type: `boolean`
 
 default: `false`
 
-Whether to allow empty case clauses to fall through.
+是否允许空的 case 子句贯穿。
 
 ### commentPattern
 
 type: `string`
 
-Custom regex pattern to match fallthrough comments.
+用于匹配贯穿注释的自定义正则表达式模式。
 
 ### reportUnusedFallthroughComment
 
@@ -210,12 +198,16 @@ type: `boolean`
 
 default: `false`
 
-Whether to report unused fallthrough comments.
+是否报告未使用的贯穿注释。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.14 中添加。
+
+## 参考
 
 <RuleReferences />

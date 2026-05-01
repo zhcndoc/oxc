@@ -1,6 +1,7 @@
 ---
 title: "eslint/default-case-last"
-category: "风格"
+category: "Style"
+version: "0.0.16"
 default: false
 type_aware: false
 fix: "none"
@@ -86,6 +87,10 @@ switch (foo) {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则是在 v0.0.16 中添加的。
+
+## 参考资料
 
 <RuleReferences />

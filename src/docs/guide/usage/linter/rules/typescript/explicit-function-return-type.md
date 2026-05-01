@@ -1,6 +1,7 @@
 ---
 title: "typescript/explicit-function-return-type"
 category: "Restriction"
+version: "0.4.4"
 default: false
 type_aware: false
 fix: "none"
@@ -15,72 +16,71 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule enforces that functions have an explicit return type annotation.
+此规则强制函数必须显式标注返回类型。
 
-### Why is this bad?
+### 为什么这不好？
 
-Explicit return types make it clearer what type is returned by a function. Making the
-type returned by a function obvious allows the reader to infer what the function does
-and how it can be used from a quick glance.
+显式返回类型可以更清楚地表明函数返回的类型。让函数返回的类型一目了然，
+使读者只需快速浏览就能推断出函数的作用以及如何使用它。
 
-Another benefit of explicit return types is the potential for a speed up of type
-checking in large codebases with many large functions.
+显式返回类型的另一个好处是，在包含许多大型函数的大型代码库中，
+它有可能加快类型检查速度。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```ts
-// Should indicate that no value is returned (void)
+// 应指明没有返回值（void）
 function test() {
   return;
 }
 
-// Should indicate that a number is returned
+// 应指明返回一个数字
 var fn = function () {
   return 1;
 };
 
-// Should indicate that a string is returned
+// 应指明返回一个字符串
 var arrowFn = () => "test";
 
 class Test {
-  // Should indicate that no value is returned (void)
+  // 应指明没有返回值（void）
   method() {
     return;
   }
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```ts
-// No return value should be expected (void)
+// 预期没有返回值（void）
 function test(): void {
   return;
 }
 
-// A return value of type number
+// 返回值类型为 number
 var fn = function (): number {
   return 1;
 };
 
-// A return value of type string
+// 返回值类型为 string
 var arrowFn = (): string => "test";
 
 class Test {
-  // No return value should be expected (void)
+  // 预期没有返回值（void）
   method(): void {
     return;
   }
 }
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个具有以下属性的配置对象：
 
 ### allowConciseArrowFunctionExpressionsStartingWithVoid
 
@@ -88,7 +88,7 @@ type: `boolean`
 
 default: `false`
 
-Whether to allow concise arrow functions that start with the `void` keyword.
+是否允许以 `void` 关键字开头的简洁箭头函数。
 
 ### allowDirectConstAssertionInArrowFunctions
 
@@ -96,7 +96,7 @@ type: `boolean`
 
 default: `true`
 
-Whether to allow arrow functions that use `as const` assertion on their return value.
+是否允许在箭头函数的返回值上使用 `as const` 断言。
 
 ### allowExpressions
 
@@ -104,7 +104,7 @@ type: `boolean`
 
 default: `false`
 
-Whether to allow expressions as function return types. When `true`, allows functions that immediately return an expression without a return type annotation.
+是否允许将表达式作为函数返回类型。为 `true` 时，允许直接返回表达式且不带返回类型注解的函数。
 
 ### allowFunctionsWithoutTypeParameters
 
@@ -112,7 +112,7 @@ type: `boolean`
 
 default: `false`
 
-Whether to allow functions that do not have generic type parameters.
+是否允许没有泛型类型参数的函数。
 
 ### allowHigherOrderFunctions
 
@@ -120,7 +120,7 @@ type: `boolean`
 
 default: `true`
 
-Whether to allow higher-order functions (functions that return another function) without return type annotations.
+是否允许没有返回类型注解的高阶函数（返回另一个函数的函数）。
 
 ### allowIIFEs
 
@@ -128,7 +128,7 @@ type: `boolean`
 
 default: `false`
 
-Whether to allow immediately invoked function expressions (IIFEs) without return type annotations.
+是否允许没有返回类型注解的立即调用函数表达式（IIFE）。
 
 ### allowTypedFunctionExpressions
 
@@ -136,7 +136,7 @@ type: `boolean`
 
 default: `true`
 
-Whether to allow typed function expressions. When `true`, allows function expressions that are assigned to a typed variable or parameter.
+是否允许带类型的函数表达式。为 `true` 时，允许被赋值给带类型变量或参数的函数表达式。
 
 ### allowedNames
 
@@ -144,12 +144,16 @@ type: `string[]`
 
 default: `[]`
 
-Array of function names that are exempt from requiring return type annotations.
+不需要返回类型注解的函数名数组。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.4.4 中添加。
+
+## 参考
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "unicorn/require-array-join-separator"
 category: "Style"
+version: "0.0.19"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,33 +16,37 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Enforce using the separator argument with `Array#join()`.
+强制在使用 `Array#join()` 时传入分隔符参数。
 
-### Why is this bad?
+### 为什么这不好？
 
-It's better to make it clear what the separator is when calling `Array#join()`,
-instead of relying on the default comma (`','`) separator.
+在调用 `Array#join()` 时明确分隔符是什么会更好，
+而不是依赖默认的逗号（`','`）分隔符。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 foo.join();
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 foo.join(",");
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.19 中添加。
+
+## 参考资料
 
 <RuleReferences />

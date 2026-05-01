@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-duplicate-type-constituents"
 category: "Correctness"
+version: "1.12.0"
 default: true
 type_aware: true
 fix: "fixable_fix"
@@ -16,17 +17,17 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule disallows duplicate constituents of union or intersection types.
+此规则不允许联合类型或交叉类型中存在重复的组成项。
 
-### Why is this bad?
+### 为什么这不好？
 
-Duplicate constituents in union and intersection types serve no purpose and can make code harder to read. They are likely a mistake.
+联合类型和交叉类型中的重复组成项没有任何意义，并且会使代码更难阅读。它们很可能是一个错误。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
 type T1 = "A" | "A";
@@ -40,7 +41,7 @@ type T4 = [A, A];
 type T5 = "foo" | "bar" | "foo";
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 type T1 = "A" | "B";
@@ -54,9 +55,9 @@ type T4 = [A, B];
 type T5 = "foo" | "bar" | "baz";
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### ignoreIntersections
 
@@ -64,8 +65,8 @@ type: `boolean`
 
 default: `false`
 
-Whether to ignore duplicate types in intersection types.
-When true, allows `type T = A & A`.
+是否忽略交叉类型中的重复类型。
+当为 true 时，允许 `type T = A & A`。
 
 ### ignoreUnions
 
@@ -73,13 +74,17 @@ type: `boolean`
 
 default: `false`
 
-Whether to ignore duplicate types in union types.
-When true, allows `type T = A | A`.
+是否忽略联合类型中的重复类型。
+当为 true 时，允许 `type T = A | A`。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.12.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

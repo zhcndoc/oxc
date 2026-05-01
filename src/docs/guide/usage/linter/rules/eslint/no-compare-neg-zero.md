@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-compare-neg-zero"
 category: "正确性"
+version: "0.0.3"
 default: true
 type_aware: false
 fix: "conditional_safe_fix_or_suggestion"
@@ -21,7 +22,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么不好？
 
-该规则应该警告试图与 `-0` 进行比较的代码，因为这不会按预期工作。也就是说，像 `x === -0` 这样的代码对于 `+0` 和 `-0` 都会通过。作者可能本意是想用 `Object.is(x, -0)`。
+该规则应当警告那些试图与 `-0` 进行比较的代码，因为这不会按预期工作。也就是说，像 `x === -0` 这样的代码对于 `+0` 和 `-0` 都会返回 true。作者可能本意是想使用 `Object.is(x, -0)`。
 
 ### 示例
 
@@ -63,6 +64,10 @@ if (0 > x) {
 
 <RuleHowToUse />
 
-## 参考资料
+## Version
+
+This rule was added in v0.0.3.
+
+## References
 
 <RuleReferences />

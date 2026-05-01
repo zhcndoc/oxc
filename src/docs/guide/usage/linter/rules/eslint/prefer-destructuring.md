@@ -1,6 +1,7 @@
 ---
 title: "eslint/prefer-destructuring"
-category: "Style"
+category: "样式"
+version: "1.10.0"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,45 +16,44 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Require destructuring from arrays and/or objects.
+要求对数组和/或对象进行解构。
 
-### Why is this bad?
+### 为什么这不好？
 
-With JavaScript ES2015, a new syntax was added for creating variables from an array index or object property,
-called destructuring. This rule enforces usage of destructuring
-instead of accessing a property through a member expression.
+在 JavaScript ES2015 中，新增了一种从数组索引或对象属性创建变量的语法，称为解构。此规则强制使用解构，
+而不是通过成员表达式访问属性。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
-// With `array` enabled
+// 启用 `array` 时
 const foo = array[0];
 bar.baz = array[0];
-// With `object` enabled
+// 启用 `object` 时
 const qux = object.qux;
 const quux = object["quux"];
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
-// With `array` enabled
+// 启用 `array` 时
 const [foo] = array;
 const arr = array[someIndex];
 [bar.baz] = array;
 
-// With `object` enabled
+// 启用 `object` 时
 const { baz } = object;
 const obj = object.bar;
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### AssignmentExpression
 
@@ -61,7 +61,7 @@ type: `object`
 
 default: `{"array":true, "object":true}`
 
-Configuration for destructuring in assignment expressions, configured for arrays and objects independently.
+用于在赋值表达式中进行解构的配置，数组和对象分别独立配置。
 
 #### AssignmentExpression.array
 
@@ -81,7 +81,7 @@ type: `object`
 
 default: `{"array":true, "object":true}`
 
-Configuration for destructuring in variable declarations, configured for arrays and objects independently.
+用于在变量声明中进行解构的配置，数组和对象分别独立配置。
 
 #### VariableDeclarator.array
 
@@ -101,12 +101,16 @@ type: `boolean`
 
 default: `false`
 
-Determines whether the object destructuring rule applies to renamed variables.
+决定对象解构规则是否适用于重命名变量。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.10.0 中新增。
+
+## 参考资料
 
 <RuleReferences />

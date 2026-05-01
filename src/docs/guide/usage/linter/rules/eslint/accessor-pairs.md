@@ -1,6 +1,7 @@
 ---
 title: "eslint/accessor-pairs"
 category: "Pedantic"
+version: "1.33.0"
 default: false
 type_aware: false
 fix: "none"
@@ -104,6 +105,10 @@ default: `true`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v1.33.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

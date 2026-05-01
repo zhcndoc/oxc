@@ -1,6 +1,7 @@
 ---
 title: "unicorn/catch-error-name"
 category: "Style"
+version: "0.0.14"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,27 +16,25 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule enforces consistent and descriptive naming for error variables
-in `catch` statements, preventing the use of vague names like `badName`
-or `_` when the error is used.
+此规则会强制 `catch` 语句中的错误变量使用一致且具有描述性的命名，
+避免在使用错误对象时使用诸如 `badName` 或 `_` 这类含糊的名称。
 
-### Why is this bad?
+### 为什么这不好？
 
-Using non-descriptive names like `badName` or `_` makes the code harder
-to read and understand, especially when debugging. It's important to use
-clear, consistent names to represent errors.
+使用像 `badName` 或 `_` 这样的非描述性名称会让代码更难阅读和理解，
+尤其是在调试时。使用清晰、一致的名称来表示错误非常重要。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的 **错误** 代码示例：
 
 ```javascript
 try {
 } catch (badName) {}
 
-// `_` is not allowed if it's used
+// 如果使用了 `_`，则不允许
 try {
 } catch (_) {
   console.log(_);
@@ -46,13 +45,13 @@ promise.catch((badName) => {});
 promise.then(undefined, (badName) => {});
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的 **正确** 代码示例：
 
 ```javascript
 try {
 } catch (error) {}
 
-// `_` is allowed if it's not used
+// 如果 `_` 没有被使用，则允许
 try {
 } catch (_) {
   console.log(123);
@@ -63,16 +62,15 @@ promise.catch((error) => {});
 promise.then(undefined, (error) => {});
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### ignore
 
 type: `string[]`
 
-A list of patterns to ignore when checking `catch` variable names. The pattern
-can be a string or regular expression.
+在检查 `catch` 变量名时要忽略的模式列表。该模式可以是字符串或正则表达式。
 
 ### name
 
@@ -80,13 +78,16 @@ type: `string`
 
 default: `"error"`
 
-The name to use for error variables in `catch` blocks. You can customize it
-to something other than `'error'` (e.g., `'exception'`).
+用于 `catch` 块中错误变量的名称。你可以将其自定义为 `'error'` 之外的其他名称（例如 `'exception'`）。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.0.14 中添加。
+
+## 参考资料
 
 <RuleReferences />

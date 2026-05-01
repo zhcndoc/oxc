@@ -1,6 +1,7 @@
 ---
 title: "unicorn/consistent-existence-index-check"
 category: "Style"
+version: "0.12.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,22 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Enforce consistent style for element existence checks with `indexOf()`,
-`lastIndexOf()`, `findIndex()`, and `findLastIndex()`. This ensures
-that comparisons are performed in a standard and clear way.
+强制对使用 `indexOf()`、`lastIndexOf()`、`findIndex()` 和 `findLastIndex()` 的元素存在性检查保持一致的风格。这样可以确保比较以标准且清晰的方式进行。
 
-### Why is this bad?
+### 为什么这不好？
 
-This rule is meant to enforce a specific style and improve code clarity.
-Using inconsistent comparison styles (e.g., `index < 0`, `index >= 0`)
-can make the intention behind the code unclear, especially in large
-codebases.
+此规则旨在强制特定风格并提升代码可读性。使用不一致的比较风格（例如 `index < 0`、`index >= 0`）会让代码意图变得不清晰，尤其是在大型代码库中。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则**错误**代码的示例：
 
 ```javascript
 const index = foo.indexOf("bar");
@@ -42,7 +38,7 @@ if (index >= 0) {
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则**正确**代码的示例：
 
 ```javascript
 const index = foo.indexOf("bar");
@@ -54,10 +50,14 @@ if (index !== -1) {
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.12.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

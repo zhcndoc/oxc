@@ -1,6 +1,7 @@
 ---
-title: "typescript/一致类型导入"
-category: "样式"
+title: "typescript/consistent-type-imports"
+category: "风格"
+version: "0.5.2"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -148,6 +149,10 @@ default: `"type-imports"`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.5.2 中添加。
+
+## 参考资料
 
 <RuleReferences />

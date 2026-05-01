@@ -1,6 +1,7 @@
 ---
 title: "eslint/max-params"
-category: "样式"
+category: "Style"
+version: "0.2.14"
 default: false
 type_aware: false
 fix: "none"
@@ -89,6 +90,10 @@ default: `3`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则添加于 v0.2.14。
+
+## 参考资料
 
 <RuleReferences />

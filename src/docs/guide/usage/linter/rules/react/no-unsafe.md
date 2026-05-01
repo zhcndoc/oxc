@@ -1,6 +1,7 @@
 ---
 title: "react/no-unsafe"
 category: "Correctness"
+version: "1.35.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,30 +16,29 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 功能说明
 
-This rule identifies and restricts the use of unsafe React lifecycle methods.
+此规则用于识别并限制不安全的 React 生命周期方法的使用。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-Certain lifecycle methods (`componentWillMount`, `componentWillReceiveProps`, and `componentWillUpdate`)
-are considered unsafe and have been deprecated since React 16.9. They are frequently misused and cause
-problems in async rendering. Using their `UNSAFE_` prefixed versions or the deprecated names themselves
-should be avoided.
+某些生命周期方法（`componentWillMount`、`componentWillReceiveProps` 和 `componentWillUpdate`）
+被视为不安全，并且自 React 16.9 起已被弃用。它们经常被误用，并会在
+异步渲染中引发问题。应避免使用它们的 `UNSAFE_` 前缀版本或这些已弃用的名称本身。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```jsx
-// By default, UNSAFE_ prefixed methods are flagged
+// 默认情况下，带有 UNSAFE_ 前缀的方法会被标记
 class Foo extends React.Component {
   UNSAFE_componentWillMount() {}
   UNSAFE_componentWillReceiveProps() {}
   UNSAFE_componentWillUpdate() {}
 }
 
-// With checkAliases: true, non-prefixed versions are also flagged
+// 使用 checkAliases: true 时，非前缀版本也会被标记
 class Bar extends React.Component {
   componentWillMount() {}
   componentWillReceiveProps() {}
@@ -46,7 +46,7 @@ class Bar extends React.Component {
 }
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```jsx
 class Foo extends React.Component {
@@ -56,9 +56,9 @@ class Foo extends React.Component {
 }
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### checkAliases
 
@@ -66,16 +66,20 @@ type: `boolean`
 
 default: `false`
 
-Whether to check for the non-prefixed lifecycle methods.
-If `true`, this means `componentWillMount`, `componentWillReceiveProps`,
-and `componentWillUpdate` will also be flagged, rather than just the
-UNSAFE\_ versions. It is recommended to set this to `true` to fully
-avoid unsafe lifecycle methods.
+是否检查不带前缀的生命周期方法。
+如果为 `true`，则表示 `componentWillMount`、`componentWillReceiveProps`
+和 `componentWillUpdate` 也会被标记，而不仅仅是
+`UNSAFE_` 版本。建议将其设置为 `true`，以彻底
+避免不安全的生命周期方法。
 
-## How to use
+## 使用方法
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v1.35.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

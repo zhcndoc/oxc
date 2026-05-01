@@ -1,6 +1,7 @@
 ---
 title: "jest/valid-expect"
 category: "正确性"
+version: "0.0.14"
 default: false
 type_aware: false
 fix: "fixable_suggestion"
@@ -44,17 +45,6 @@ expect(true).toBeDefined();
 expect(Promise.resolve("Hi!")).resolves.toBe("Hi!");
 ```
 
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/v1.1.9/docs/rules/valid-expect.md) 兼容，
-如需使用，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/valid-expect": "error"
-  }
-}
-```
-
 ## 配置
 
 此规则接受一个包含以下属性的配置对象：
@@ -94,6 +84,10 @@ default: `1`
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则于 v0.0.14 中添加。
 
 ## 参考资料
 

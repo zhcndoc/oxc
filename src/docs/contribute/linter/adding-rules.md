@@ -220,16 +220,16 @@ pub struct RuleName {
 
 ```rust [good]
 fn no_debugger_diagnostic(span: Span) -> OxcDiagnostic {
-    OxcDiagnostic::warn("`debugger` statement is not allowed")
-        .with_help("Remove this `debugger` statement")
+    OxcDiagnostic::warn("`debugger` 语句是禁止的")
+        .with_help("移除这个 `debugger` 语句")
         .with_label(span)
 }
 ```
 
 ```rust [bad]
 fn no_debugger_diagnostic(span: Span) -> OxcDiagnostic {
-    OxcDiagnostic::warn("Disallow `debugger` statements")
-        .with_help("`debugger` statements are not allowed.")
+    OxcDiagnostic::warn("禁止 `debugger` 语句")
+        .with_help("不允许使用 `debugger` 语句。")
         .with_label(span)
 ```
 
@@ -263,7 +263,7 @@ use oxc_span::Span;
 use crate::{context::LintContext, rule::Rule, AstNode};
 
 fn no_debugger_diagnostic(span: Span) -> OxcDiagnostic {
-    OxcDiagnostic::warn("`debugger` statement is not allowed")
+    OxcDiagnostic::warn("`debugger` 语句是禁止的")
         .with_label(span)
 }
 
@@ -323,7 +323,7 @@ impl Rule for NoDebugger {
 每当您更改规则时，要测试它，请运行：
 
 ```bash
-just watch "test -p oxc_linter -- rule-name"
+just watch "cargo test -p oxc_linter -- rule-name"
 ```
 
 或者只测试一次，请运行：

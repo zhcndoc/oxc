@@ -1,6 +1,7 @@
 ---
 title: "jest/no-jasmine-globals"
-category: "Style"
+category: "样式"
+version: "0.0.13"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,20 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule reports on any usage of Jasmine globals, which is not ported to
-Jest, and suggests alternatives from Jest's own API.
+此规则会报告任何对 Jasmine 全局变量的使用，这些用法并未迁移到
+Jest，并会建议使用 Jest 自身 API 的替代方案。
 
-### Why is this bad?
+### 为什么这不好？
 
-When migrating from Jasmine to Jest, relying on Jasmine-specific globals
-creates compatibility issues and prevents taking advantage of Jest's
-improved testing features and better error reporting.
+从 Jasmine 迁移到 Jest 时，依赖 Jasmine 特有的全局变量
+会造成兼容性问题，并阻碍你利用 Jest 改进后的测试功能和更好的错误报告。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
@@ -40,25 +40,29 @@ test("my test", () => {
 });
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 jest.setTimeout(5000);
 test("my test", () => {
-  // Use test.skip() instead of pending()
+  // 使用 test.skip() 代替 pending()
 });
 test.skip("my test", () => {
-  // Skipped test
+  // 跳过的测试
 });
 test("my test", () => {
-  jest.fn(); // Use jest.fn() instead of jasmine.createSpy()
+  jest.fn(); // 使用 jest.fn() 代替 jasmine.createSpy()
 });
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.13 中添加的。
+
+## 参考资料
 
 <RuleReferences />

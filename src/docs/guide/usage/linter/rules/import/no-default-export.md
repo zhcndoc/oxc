@@ -1,6 +1,7 @@
 ---
 title: "import/no-default-export"
 category: "Restriction"
+version: "0.2.14"
 default: false
 type_aware: false
 fix: "none"
@@ -15,21 +16,21 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Forbids a module from having default exports. This helps your editor
-provide better auto-import functionality, as named exports offer more
-explicit and predictable imports compared to default exports.
+禁止模块具有默认导出。这有助于你的编辑器
+提供更好的自动导入功能，因为与默认导出相比，具名导出提供了
+更明确、更可预测的导入方式。
 
-### Why is this bad?
+### 这为什么不好？
 
-Default exports can lead to confusion, as the name of the imported value
-can vary based on how it's imported. This can make refactoring and
-auto-imports less reliable.
+默认导出可能会导致混淆，因为导入值的名称
+会根据其导入方式而变化。这会使重构和
+自动导入变得不那么可靠。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 export default 'bar';
@@ -38,17 +39,21 @@ const foo = 'foo';
 export { foo as default }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 export const foo = "foo";
 export const bar = "bar";
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.2.14 中添加。
+
+## 参考资料
 
 <RuleReferences />

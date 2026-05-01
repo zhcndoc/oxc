@@ -1,6 +1,7 @@
 ---
-title: "typescript/不必要的限定符"
-category: "风格"
+title: "typescript/no-unnecessary-qualifier"
+category: "Style"
+version: "1.49.0"
 default: false
 type_aware: true
 fix: "none"
@@ -47,6 +48,10 @@ namespace A {
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+该规则于 v1.49.0 中添加。
 
 ## 参考资料
 

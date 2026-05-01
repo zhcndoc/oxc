@@ -1,6 +1,7 @@
 ---
 title: "typescript/prefer-function-type"
 category: "Style"
+version: "0.2.11"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,24 +16,22 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Enforce using function types instead of interfaces with call signatures.
+强制使用函数类型，而不是带有调用签名的接口。
 
-### Why is this bad?
+### 这为什么不好？
 
-TypeScript allows for two common ways to declare a type for a function:
+TypeScript 允许用两种常见方式来声明函数类型：
 
-- Function type: `() => string`
-- Object type with a signature: `{ (): string }`
+- 函数类型：`() => string`
+- 带有签名的对象类型：`{ (): string }`
 
-The function type form is generally preferred when possible for being
-more succinct and readable. Interfaces with only call signatures add
-unnecessary verbosity without providing additional functionality.
+在可能的情况下，通常更推荐使用函数类型，因为它更简洁、更易读。只有调用签名的接口会增加不必要的冗长，而不会提供额外功能。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则判定为**错误**的代码示例：
 
 ```typescript
 interface Example {
@@ -48,7 +47,7 @@ interface ReturnsSelf {
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则判定为**正确**的代码示例：
 
 ```typescript
 type Example = () => string;
@@ -57,28 +56,32 @@ function foo(example: () => number): number {
   return example();
 }
 
-// Returns the function itself, not the `this` argument
+// 返回函数本身，而不是 `this` 参数
 type ReturnsSelf = (arg: string) => ReturnsSelf;
 
-// Multiple properties are allowed
+// 允许多个属性
 function foo(bar: { (): string; baz: number }): string {
   return bar();
 }
 
-// Multiple call signatures (overloads) are allowed
+// 允许多个调用签名（重载）
 interface Overloaded {
   (data: string): number;
   (id: number): string;
 }
 
-// this is equivalent to Overloaded interface.
+// 这等价于 Overloaded 接口。
 type Intersection = ((data: string) => number) & ((id: number) => string);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.2.11 中新增。
+
+## 参考资料
 
 <RuleReferences />

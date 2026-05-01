@@ -1,6 +1,7 @@
 ---
 title: "typescript/prefer-reduce-type-parameter"
-category: "Style"
+category: "样式"
+version: "1.12.0"
 default: false
 type_aware: true
 fix: "fixable_fix"
@@ -16,49 +17,49 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule prefers using a type parameter for the accumulator in `Array#reduce()` instead of casting.
+此规则更倾向于在 `Array#reduce()` 中为累加器使用类型参数，而不是进行类型转换。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-`Array#reduce()` can be called with a generic type parameter to specify the type of the accumulator. This is preferred over casting the result because it provides better type safety and is more explicit about the intended type.
+`Array#reduce()` 可以使用泛型类型参数来指定累加器的类型。与对结果进行类型转换相比，这种方式更受推荐，因为它提供了更好的类型安全性，并且更明确地表达了预期类型。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
 const numbers = [1, 2, 3];
 
-// Casting the result
+// 对结果进行类型转换
 const sum = numbers.reduce((acc, val) => acc + val, 0) as number;
 
-// Using type assertion on accumulator
+// 在累加器上使用类型断言
 const result = [1, 2, 3].reduce((acc: string[], curr) => {
   acc.push(curr.toString());
   return acc;
 }, [] as string[]);
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 const numbers = [1, 2, 3];
 
-// Using type parameter
+// 使用类型参数
 const sum = numbers.reduce<number>((acc, val) => acc + val, 0);
 
-// Type parameter for complex types
+// 复杂类型使用类型参数
 const result = [1, 2, 3].reduce<string[]>((acc, curr) => {
   acc.push(curr.toString());
   return acc;
 }, []);
 
-// When TypeScript can infer the type, no parameter needed
+// 当 TypeScript 可以推断出类型时，不需要参数
 const simpleSum = numbers.reduce((acc, val) => acc + val, 0);
 
-// Object accumulator with type parameter
+// 带类型参数的对象累加器
 interface Count {
   [key: string]: number;
 }
@@ -69,10 +70,14 @@ const counts = ["a", "b", "a"].reduce<Count>((acc, item) => {
 }, {});
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v1.12.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

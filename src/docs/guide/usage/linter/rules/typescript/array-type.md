@@ -1,6 +1,7 @@
 ---
 title: "typescript/array-type"
-category: "样式"
+category: "Style"
+version: "0.2.8"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -116,6 +117,10 @@ default: `null`
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则在 v0.2.8 中添加。
 
 ## 参考资料
 

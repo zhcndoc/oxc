@@ -1,6 +1,7 @@
 ---
 title: "jsx-a11y/label-has-associated-control"
-category: "正确性"
+category: "Correctness"
+version: "0.9.1"
 default: false
 type_aware: false
 fix: "none"
@@ -115,6 +116,10 @@ default: `["label"]`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.9.1 中新增。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-unused-private-class-members"
-category: "Correctness"
+category: "正确性"
+version: "0.1.1"
 default: true
 type_aware: false
 fix: "none"
@@ -15,17 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallow unused private class members.
+禁止未使用的私有类成员。
 
-### Why is this bad?
+### 为什么这不好？
 
-Private class members that are declared and not used anywhere in the code are most likely an error due to incomplete refactoring. Such class members take up space in the code and can lead to confusion by readers.
+已声明但在代码中的任何地方都未使用的私有类成员，很可能是由于重构未完成而导致的错误。这些类成员会占用代码空间，并可能让读者感到困惑。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 class A {
@@ -56,7 +57,7 @@ class E {
 }
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 class A {
@@ -85,10 +86,14 @@ class C {
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则添加于 v0.1.1。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "react/forbid-elements"
-category: "限制"
+category: "Restriction"
+version: "0.16.11"
 default: false
 type_aware: false
 fix: "none"
@@ -97,6 +98,10 @@ type: `string`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+该规则于 v0.16.11 中添加。
+
+## 参考资料
 
 <RuleReferences />

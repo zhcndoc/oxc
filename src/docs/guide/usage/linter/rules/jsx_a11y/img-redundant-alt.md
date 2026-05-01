@@ -1,6 +1,7 @@
 ---
 title: "jsx-a11y/img-redundant-alt"
-category: "Correctness"
+category: "正确性"
+version: "0.0.19"
 default: false
 type_aware: false
 fix: "none"
@@ -15,39 +16,39 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforce that `img` alt attributes do not contain redundant words like
-"image", "picture", or "photo".
+确保 `img` 的 alt 属性不包含诸如
+“image”、“picture” 或 “photo” 之类的冗余词语。
 
-### Why is this bad?
+### 为什么这不好？
 
-Screen readers already announce `img` elements as an image, so there is
-no need to use words such as "image", "photo", or "picture" in the alt
-text. This creates redundant information for users of assistive
-technologies and makes the alt text less concise and useful.
+屏幕阅读器已经会将 `img` 元素识别为图像，因此
+无需在 alt 文本中使用“image”、“photo”或“picture”等词语。
+这会为辅助技术用户带来冗余信息，并使 alt 文本不够简洁、
+不够有用。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
-
-```jsx
-<img src="foo" alt="Photo of foo being weird." />
-<img src="bar" alt="Image of me at a bar!" />
-<img src="baz" alt="Picture of baz fixing a bug." />
-```
-
-Examples of **correct** code for this rule:
+此规则的**错误**代码示例：
 
 ```jsx
-<img src="foo" alt="Foo eating a sandwich." />
-<img src="bar" aria-hidden alt="Picture of me taking a photo of an image" /> // Will pass because it is hidden.
-<img src="baz" alt={`Baz taking a ${photo}`} /> // This is valid since photo is a variable name.
+<img src="foo" alt="Foo 的照片，看起来很奇怪。" />
+<img src="bar" alt="我在酒吧里的图片！" />
+<img src="baz" alt="Baz 修复 bug 的照片。" />
 ```
 
-## Configuration
+此规则的**正确**代码示例：
 
-This rule accepts a configuration object with the following properties:
+```jsx
+<img src="foo" alt="Foo 正在吃三明治。" />
+<img src="bar" aria-hidden alt="我在拍一张图像照片的照片" /> // 因为它是隐藏的，所以会通过。
+<img src="baz" alt={`Baz 正在拍摄一个 ${photo}`} /> // 这有效，因为 photo 是变量名。
+```
+
+## 配置
+
+此规则接受一个包含以下属性的配置对象：
 
 ### components
 
@@ -55,8 +56,8 @@ type: `string[]`
 
 default: `["img"]`
 
-JSX element types to validate (component names) where the rule applies.
-For example, `["img", "Image"]`.
+要验证的 JSX 元素类型（组件名称），该规则适用于这些类型。
+例如，`["img", "Image"]`。
 
 ### words
 
@@ -64,12 +65,16 @@ type: `string[]`
 
 default: `["image", "photo", "picture"]`
 
-Words considered redundant in alt text that should trigger a warning.
+alt 文本中被视为冗余、应触发警告的词语。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.19 中添加。
+
+## 参考资料
 
 <RuleReferences />

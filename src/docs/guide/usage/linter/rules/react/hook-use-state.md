@@ -1,6 +1,7 @@
 ---
 title: "react/hook-use-state"
 category: "Style"
+version: "1.59.0"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,22 +16,22 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Ensure destructuring and symmetric naming of useState hook value and setter variables.
+确保 useState hook 的值变量和 setter 变量采用解构并保持对称命名。
 
-### Why is this bad?
+### 为什么这是不好的？
 
-This rule checks whether the value and setter variables destructured from a React.useState() call are named symmetrically
+此规则会检查从 React.useState() 调用中解构出的值变量和 setter 变量是否采用对称命名
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```jsx
 import React from "react";
 export default function useColor() {
-  // useState call is not destructured into value + setter pair
+  // useState 调用没有被解构为 value + setter 对
   const useStateResult = React.useState();
   return useStateResult;
 }
@@ -39,26 +40,26 @@ export default function useColor() {
 ```jsx
 import React from "react";
 export default function useColor() {
-  // useState call is destructured into value + setter pair, but identifier
-  // names do not follow the [thing, setThing] naming convention
+  // useState 调用已被解构为 value + setter 对，但标识符
+  // 命名不符合 [thing, setThing] 命名约定
   const [color, updateColor] = React.useState();
   return [color, updateColor];
 }
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```jsx
 import React from "react";
 export default function useColor() {
-  // useState call is destructured into value + setter pair whose identifiers
-  // follow the [thing, setThing] naming convention
+  // useState 调用已被解构为 value + setter 对，其标识符
+  // 符合 [thing, setThing] 命名约定
   const [color, setColor] = React.useState();
   return [color, setColor];
 }
 ```
 
-## Configuration
+## 配置
 
 ### allowDestructuredState
 
@@ -66,12 +67,16 @@ type: `boolean`
 
 default: `false`
 
-When true the rule will ignore the name of the destructured value.
+当为 true 时，该规则将忽略解构出的值的名称。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.59.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

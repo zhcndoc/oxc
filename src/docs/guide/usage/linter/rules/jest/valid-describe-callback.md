@@ -1,6 +1,7 @@
 ---
 title: "jest/valid-describe-callback"
 category: "Correctness"
+version: "0.0.8"
 default: false
 type_aware: false
 fix: "none"
@@ -15,45 +16,44 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule validates that the second parameter of a `describe()` function is a
-callback function. This callback function:
+此规则用于验证 `describe()` 函数的第二个参数是否为回调函数。这个回调函数：
 
-- should not be
+- 不应为
   [async](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function)
-- should not contain any parameters
-- should not contain any `return` statements
+- 不应包含任何参数
+- 不应包含任何 `return` 语句
 
-### Why is this bad?
+### 为什么这不好？
 
-Using an improper `describe()` callback function can lead to unexpected test
-errors.
+使用不正确的 `describe()` 回调函数可能会导致意外的测试
+错误。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
-// Async callback functions are not allowed
+// 不允许使用异步回调函数
 describe("myFunction()", async () => {
   // ...
 });
 
-// Callback function parameters are not allowed
+// 不允许使用回调函数参数
 describe("myFunction()", (done) => {
   // ...
 });
 
-// Returning a value from a describe block is not allowed
+// 不允许从 describe 块中返回值
 describe("myFunction", () =>
   it("returns a truthy value", () => {
     expect(myFunction()).toBeTruthy();
   }));
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/v1.1.9/docs/rules/valid-describe-callback.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
+此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/v1.1.9/docs/rules/valid-describe-callback.md) 兼容，
+要使用它，请在你的 `.oxlintrc.json` 中添加以下配置：
 
 ```json
 {
@@ -63,10 +63,14 @@ to use it, add the following configuration to your `.oxlintrc.json`:
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.0.8 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-dom-node-remove"
-category: "Pedantic"
+category: "书呆子式"
+version: "0.0.18"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,33 +16,37 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Prefers the use of `child.remove()` over `parentNode.removeChild(child)`.
+更倾向于使用 `child.remove()`，而不是 `parentNode.removeChild(child)`。
 
-### Why is this bad?
+### 为什么这不好？
 
-The DOM function [`Node#remove()`](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove) is preferred
-over the indirect removal of an object with [`Node#removeChild()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild).
+优先使用 DOM 函数 [`Node#remove()`](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove)，
+而不是通过 [`Node#removeChild()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild) 间接移除对象。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 parentNode.removeChild(childNode);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 childNode.remove();
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.18 中添加的。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "nextjs/no-before-interactive-script-outside-document"
-category: "Correctness"
+category: "正确性"
+version: "0.2.7"
 default: false
 type_aware: false
 fix: "none"
@@ -15,25 +16,23 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Prevents the usage of `next/script`'s `beforeInteractive` strategy outside of `pages/_document.js`.
-This rule ensures that scripts with the `beforeInteractive` loading strategy are only used in the
-document component where they are most effective.
+阻止在 `pages/_document.js` 之外使用 `next/script` 的 `beforeInteractive` 策略。
+此规则确保使用 `beforeInteractive` 加载策略的脚本仅在其最有效的文档组件中使用。
 
-### Why is this bad?
+### 这为什么不好？
 
-The `beforeInteractive` strategy is specifically designed to load scripts before any page hydration
-occurs, which is only guaranteed to work correctly when placed in `pages/_document.js`. Using it elsewhere:
+`beforeInteractive` 策略专为在任何页面 hydration 发生之前加载脚本而设计，而这只有在放置于 `pages/_document.js` 中时才能保证正确工作。在其他位置使用它：
 
-- May not achieve the intended early loading behavior
-- Can lead to inconsistent script loading timing
-- Might cause hydration mismatches or other runtime issues
-- Could impact the application's performance optimization
+- 可能无法实现预期的早期加载行为
+- 可能导致脚本加载时机不一致
+- 可能引发 hydration 不匹配或其他运行时问题
+- 可能影响应用程序的性能优化
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```jsx
 // pages/index.js
@@ -44,14 +43,14 @@ export default function HomePage() {
     <div>
       <Script
         src="https://example.com/script.js"
-        strategy="beforeInteractive" // ❌ Wrong placement
+        strategy="beforeInteractive" // ❌ 错误位置
       />
     </div>
   );
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```jsx
 // pages/_document.js
@@ -66,7 +65,7 @@ class MyDocument extends Document {
         <body>
           <Script
             src="https://example.com/script.js"
-            strategy="beforeInteractive" // ✅ Correct placement
+            strategy="beforeInteractive" // ✅ 正确位置
           />
           <Main />
           <NextScript />
@@ -79,10 +78,14 @@ class MyDocument extends Document {
 export default MyDocument;
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.2.7 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-control-regex"
 category: "Correctness"
+version: "0.0.7"
 default: true
 type_aware: false
 fix: "none"
@@ -54,6 +55,10 @@ var pattern8 = new RegExp("\\n");
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.0.7 中添加。
+
+## 参考资料
 
 <RuleReferences />

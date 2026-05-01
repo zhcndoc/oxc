@@ -1,6 +1,7 @@
 ---
 title: "typescript/consistent-type-assertions"
 category: "Style"
+version: "1.44.0"
 default: false
 type_aware: false
 fix: "conditional_safe_fix_or_suggestion"
@@ -229,6 +230,10 @@ const x = { a: 1 } satisfies Foo;
 
 <RuleHowToUse />
 
-## 参考资料
+## Version
+
+此规则在 v1.44.0 中新增。
+
+## References
 
 <RuleReferences />

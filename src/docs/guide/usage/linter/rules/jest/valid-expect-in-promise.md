@@ -1,6 +1,7 @@
 ---
 title: "jest/valid-expect-in-promise"
 category: "正确性"
+version: "1.60.0"
 default: false
 type_aware: false
 fix: "none"
@@ -67,21 +68,14 @@ test("promises test", () => {
 });
 ```
 
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/valid-expect-in-promise.md) 兼容，
-如需使用，请在你的 `.oxlintrc.json` 中添加以下配置：
-
-```json
-{
-  "rules": {
-    "vitest/valid-expect-in-promise": "error"
-  }
-}
-```
-
 ## 如何使用
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则于 v1.60.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

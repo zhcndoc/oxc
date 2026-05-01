@@ -1,6 +1,7 @@
 ---
 title: "unicorn/filename-case"
 category: "Style"
+version: "0.0.14"
 default: false
 type_aware: false
 fix: "none"
@@ -15,23 +16,23 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforces a consistent case style for filenames to improve project organization and maintainability.
-By default, `kebab-case` is enforced, but other styles can be configured.
+强制文件名使用一致的大小写风格，以改善项目组织和可维护性。
+默认情况下会强制使用 `kebab-case`，但也可以配置其他风格。
 
-Files named `index.js`, `index.ts`, etc. are exempt from this rule as they cannot reliably be
-renamed to other casings (mainly just a problem with PascalCase).
+名为 `index.js`、`index.ts` 等文件不受此规则约束，因为它们无法可靠地
+重命名为其他大小写形式（主要是 PascalCase 的问题）。
 
-### Why is this bad?
+### 为什么这不好？
 
-Inconsistent file naming conventions make it harder to locate files, navigate projects, and enforce
-consistency across a codebase. Standardizing naming conventions improves readability, reduces cognitive
-overhead, and aligns with best practices in large-scale development.
+不一致的文件命名约定会让查找文件、浏览项目以及在代码库中强制
+一致性变得更困难。标准化命名约定可以提高可读性、减少认知负担，
+并与大规模开发中的最佳实践保持一致。
 
-### Examples
+### 示例
 
-Examples of **correct** filenames for each case:
+以下是每种大小写风格下**正确**的文件名示例：
 
 #### `kebabCase`
 
@@ -57,9 +58,9 @@ Examples of **correct** filenames for each case:
 - `SomeFileName.Test.js`
 - `SomeFileName.TestUtils.js`
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### case
 
@@ -67,9 +68,9 @@ type: `"kebabCase" | "camelCase" | "snakeCase" | "pascalCase"`
 
 default: `"kebabCase"`
 
-The case style to enforce for filenames.
+要强制用于文件名的大小写风格。
 
-You can set the `case` option like this:
+你可以像这样设置 `case` 选项：
 
 ```json
 {
@@ -88,9 +89,9 @@ type: `object`
 
 default: `{"kebabCase":true, "camelCase":false, "snakeCase":false, "pascalCase":false}`
 
-The case style(s) to allow/enforce for filenames. `true` means the case style is allowed, `false` means it is banned.
+要允许/强制用于文件名的大小写风格。`true` 表示允许该大小写风格，`false` 表示禁止。
 
-You can set the `cases` option like this:
+你可以像这样设置 `cases` 选项：
 
 ```json
 {
@@ -112,7 +113,7 @@ type: `boolean`
 
 default: `false`
 
-Whether camel case is allowed, e.g. `someFileName.js`.
+是否允许 camel case，例如 `someFileName.js`。
 
 #### cases.kebabCase
 
@@ -120,7 +121,7 @@ type: `boolean`
 
 default: `true`
 
-Whether kebab case is allowed, e.g. `some-file-name.js`.
+是否允许 kebab case，例如 `some-file-name.js`。
 
 #### cases.pascalCase
 
@@ -128,7 +129,7 @@ type: `boolean`
 
 default: `false`
 
-Whether pascal case is allowed, e.g. `SomeFileName.js`.
+是否允许 pascal case，例如 `SomeFileName.js`。
 
 #### cases.snakeCase
 
@@ -136,15 +137,15 @@ type: `boolean`
 
 default: `false`
 
-Whether snake case is allowed, e.g. `some_file_name.js`.
+是否允许 snake case，例如 `some_file_name.js`。
 
 ### ignore
 
 type: `string`
 
-A regular expression pattern for filenames to ignore.
+用于忽略文件名的正则表达式模式。
 
-You can set the `ignore` option like this:
+你可以像这样设置 `ignore` 选项：
 
 ```json
 {
@@ -163,13 +164,16 @@ type: `boolean`
 
 default: `true`
 
-Whether to treat additional, `.`-separated parts of a filename as
-parts of the extension rather than parts of the filename.
+是否将文件名中额外的、由 `.` 分隔的部分视为扩展名的一部分，而不是文件名的一部分。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.14 中添加的。
+
+## 参考
 
 <RuleReferences />

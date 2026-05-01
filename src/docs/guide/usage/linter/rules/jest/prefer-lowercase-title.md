@@ -1,6 +1,7 @@
 ---
 title: "jest/prefer-lowercase-title"
-category: "Style"
+category: "样式"
+version: "0.15.9"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,19 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforce `it`, `test`, `describe`, and `bench` to have descriptions that begin with a
-lowercase letter. This provides more readable test failures.
+强制 `it`、`test`、`describe` 和 `bench` 的描述以小写字母开头。这样可以使测试失败信息更易读。
 
-### Why is this bad?
+### 为什么这不好？
 
-Lowercase messages for test failures generally result in more grammatically correct
-failure messages when you have a test failure.
+测试失败信息使用小写消息时，通常会让失败信息在语法上更正确，尤其是在测试失败时。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 it("Adds 1 + 2 to equal 3", () => {
@@ -35,7 +34,7 @@ it("Adds 1 + 2 to equal 3", () => {
 });
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 it("adds 1 + 2 to equal 3", () => {
@@ -43,8 +42,8 @@ it("adds 1 + 2 to equal 3", () => {
 });
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-lowercase-title.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
+此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-lowercase-title.md) 兼容，
+如需使用它，请将以下配置添加到你的 `.oxlintrc.json` 中：
 
 ```json
 {
@@ -54,9 +53,9 @@ to use it, add the following configuration to your `.oxlintrc.json`:
 }
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个具有以下属性的配置对象：
 
 ### allowedPrefixes
 
@@ -64,12 +63,11 @@ type: `string[]`
 
 default: `[]`
 
-This array option allows specifying prefixes, which contain capitals that titles
-can start with. This can be useful when writing tests for API endpoints, where
-you'd like to prefix with the HTTP method.
-By default, nothing is allowed (the equivalent of `{ "allowedPrefixes": [] }`).
+此数组选项允许指定前缀，标题可以以这些包含大写字母的前缀开头。
+这在编写 API 端点测试时可能很有用，例如你可能希望用 HTTP 方法作为前缀。
+默认情况下，不允许任何内容（相当于 `{ "allowedPrefixes": [] }`）。
 
-Example of **correct** code for the `{ "allowedPrefixes": ["GET"] }` option:
+`{ "allowedPrefixes": ["GET"] }` 选项的**正确**代码示例：
 
 ```js
 /* jest/prefer-lowercase-title: ["error", { "allowedPrefixes": ["GET"] }] */
@@ -82,32 +80,31 @@ type: `string[]`
 
 default: `[]`
 
-This array option controls which Jest or Vitest functions are checked by this rule. There
-are four possible values:
+此数组选项控制此规则会检查哪些 Jest 或 Vitest 函数。共有四个可能的值：
 
 - `"describe"`
 - `"test"`
 - `"it"`
 - `"bench"`
 
-By default, none of these options are enabled (the equivalent of
-`{ "ignore": [] }`).
+默认情况下，这些选项都未启用（相当于
+`{ "ignore": [] }`）。
 
-Example of **correct** code for the `{ "ignore": ["describe"] }` option:
+`{ "ignore": ["describe"] }` 选项的**正确**代码示例：
 
 ```js
 /* jest/prefer-lowercase-title: ["error", { "ignore": ["describe"] }] */
 describe("Uppercase description");
 ```
 
-Example of **correct** code for the `{ "ignore": ["test"] }` option:
+`{ "ignore": ["test"] }` 选项的**正确**代码示例：
 
 ```js
 /* jest/prefer-lowercase-title: ["error", { "ignore": ["test"] }] */
 test("Uppercase description");
 ```
 
-Example of **correct** code for the `{ "ignore": ["it"] }` option:
+`{ "ignore": ["it"] }` 选项的**正确**代码示例：
 
 ```js
 /* jest/prefer-lowercase-title: ["error", { "ignore": ["it"] }] */
@@ -120,10 +117,9 @@ type: `boolean`
 
 default: `false`
 
-This option can be set to allow only the top-level `describe` blocks to have a
-title starting with an upper-case letter.
+此选项可设置为仅允许顶层 `describe` 块的标题以大写字母开头。
 
-Example of **correct** code for the `{ "ignoreTopLevelDescribe": true }` option:
+`{ "ignoreTopLevelDescribe": true }` 选项的**正确**代码示例：
 
 ```js
 /* jest/prefer-lowercase-title: ["error", { "ignoreTopLevelDescribe": true }] */
@@ -142,9 +138,9 @@ type: `boolean`
 
 default: `true`
 
-This option can be set to only validate that the first character of a test name is lowercased.
+此选项可设置为仅验证测试名称的第一个字符是否为小写。
 
-Example of **correct** code for the `{ "lowercaseFirstCharacterOnly": true }` option:
+`{ "lowercaseFirstCharacterOnly": true }` 选项的**正确**代码示例：
 
 ```js
 /* vitest/prefer-lowercase-title: ["error", { "lowercaseFirstCharacterOnly": true }] */
@@ -157,7 +153,7 @@ describe("myClass", () => {
 });
 ```
 
-Example of **incorrect** code for the `{ "lowercaseFirstCharacterOnly": true }` option:
+`{ "lowercaseFirstCharacterOnly": true }` 选项的**错误**代码示例：
 
 ```js
 /* vitest/prefer-lowercase-title: ["error", { "lowercaseFirstCharacterOnly": true }] */
@@ -170,10 +166,14 @@ describe("MyClass", () => {
 });
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.15.9 中添加。
+
+## 参考资料
 
 <RuleReferences />

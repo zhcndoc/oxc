@@ -1,6 +1,7 @@
 ---
 title: "unicorn/consistent-assert"
 category: "Pedantic"
+version: "0.16.9"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,21 +16,21 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 功能说明
 
-Enforces consistent usage of the `assert` module.
+强制 `assert` 模块的一致用法。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-Inconsistent usage of the `assert` module can make code
-harder to follow and understand.
+`assert` 模块使用不一致会让代码
+更难跟随和理解。
 
-`assert.ok(...)` is preferred as it makes the intent of
-the assertion clearer.
+`assert.ok(...)` 是更推荐的写法，因为它能更清楚地表达
+断言的意图。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则下**错误**代码的示例：
 
 ```js
 import assert from "node:assert";
@@ -37,7 +38,7 @@ import assert from "node:assert";
 assert(divide(10, 2) === 5);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则下**正确**代码的示例：
 
 ```js
 import assert from "node:assert";
@@ -45,10 +46,14 @@ import assert from "node:assert";
 assert.ok(divide(10, 2) === 5);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.16.9 中添加的。
+
+## 参考资料
 
 <RuleReferences />

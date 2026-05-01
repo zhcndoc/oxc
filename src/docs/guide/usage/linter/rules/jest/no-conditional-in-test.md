@@ -1,6 +1,7 @@
 ---
 title: "jest/no-conditional-in-test"
-category: "Pedantic"
+category: "教条主义"
+version: "0.8.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,17 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Disallow conditional statements in tests.
+禁止在测试中使用条件语句。
 
-### Why is this bad?
+### 为什么这不好？
 
-Conditional statements in tests can make the test harder to read and understand. It is better to have a single test case per test function.
+测试中的条件语句会让测试更难阅读和理解。
+最好每个测试函数只包含一个测试用例。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 it("foo", () => {
@@ -56,7 +58,7 @@ it("baz", async () => {
 });
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 describe("my tests", () => {
@@ -91,21 +93,14 @@ it("baz", async () => {
 });
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-conditional-in-test.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
-
-```json
-{
-  "rules": {
-    "vitest/no-conditional-in-test": "error"
-  }
-}
-```
-
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则添加于 v0.8.0。
+
+## 参考资料
 
 <RuleReferences />

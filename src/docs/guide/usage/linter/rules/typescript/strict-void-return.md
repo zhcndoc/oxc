@@ -1,6 +1,7 @@
 ---
 title: "typescript/strict-void-return"
-category: "吹毛求疵"
+category: "Pedantic"
+version: "0.0.8"
 default: false
 type_aware: true
 fix: "none"
@@ -62,6 +63,10 @@ run(() => undefined);
 ## 使用方法
 
 <RuleHowToUse />
+
+## 版本
+
+此规则在 v0.0.8 中添加。
 
 ## 参考资料
 

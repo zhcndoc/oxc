@@ -1,6 +1,7 @@
 ---
 title: "typescript/prefer-readonly-parameter-types"
-category: "吹毛求疵"
+category: "Pedantic"
+version: "1.49.0"
 default: false
 type_aware: true
 fix: "none"
@@ -148,6 +149,10 @@ default: `false`
 
 <RuleHowToUse />
 
-## 参考资料
+## Version
+
+此规则在 v1.49.0 中添加。
+
+## References
 
 <RuleReferences />

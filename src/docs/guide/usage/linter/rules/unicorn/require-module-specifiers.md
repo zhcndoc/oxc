@@ -1,6 +1,7 @@
 ---
 title: "unicorn/require-module-specifiers"
 category: "Suspicious"
+version: "1.20.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,18 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforce non-empty specifier list in `import` and `export` statements.
+强制 `import` 和 `export` 语句中的说明符列表不能为空。
 
-### Why is this bad?
+### 为什么这不好？
 
-Empty `import`/`export` specifiers add no value and can be confusing.
-If you want to import a module for side effects, use `import 'module'` instead.
+空的 `import`/`export` 说明符没有任何价值，而且可能会令人困惑。
+如果你只是想为了副作用而导入一个模块，请改用 `import 'module'`。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 import {} from "foo";
@@ -35,17 +36,21 @@ export {} from "foo";
 export {};
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 import "foo";
 import foo from "foo";
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v1.20.0 中加入。
+
+## 参考资料
 
 <RuleReferences />

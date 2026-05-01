@@ -1,6 +1,7 @@
 ---
 title: "jest/prefer-comparison-matcher"
-category: "Style"
+category: "样式"
+version: "0.2.15"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,26 +16,22 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule checks for comparisons in tests that could be replaced with one of the
-following built-in comparison matchers:
+此规则会检查测试中的比较，看看它们是否可以替换为以下内置比较匹配器之一：
 
 - `toBeGreaterThan`
 - `toBeGreaterThanOrEqual`
 - `toBeLessThan`
 - `toBeLessThanOrEqual`
 
-### Why is this bad?
+### 为什么这不好？
 
-Using generic matchers like `toBe(true)` with comparison expressions
-makes tests less readable and provides less helpful error messages when
-they fail. Jest's specific comparison matchers offer clearer intent and
-better error output that shows the actual values being compared.
+在比较表达式中使用像 `toBe(true)` 这样的通用匹配器，会降低测试的可读性，并且在测试失败时提供的信息也不够有帮助。Jest 的专用比较匹配器能更清晰地表达意图，并提供更好的错误输出，显示正在比较的实际值。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 expect(x > 5).toBe(true);
@@ -42,18 +39,18 @@ expect(x < 7).not.toEqual(true);
 expect(x <= y).toStrictEqual(true);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 expect(x).toBeGreaterThan(5);
 expect(x).not.toBeLessThanOrEqual(7);
 expect(x).toBeLessThanOrEqual(y);
-// special case - see below
+// 特殊情况 - 见下文
 expect(x < "Carl").toBe(true);
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-comparison-matcher.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
+此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-comparison-matcher.md) 兼容，
+如需使用，请在你的 `.oxlintrc.json` 中添加以下配置：
 
 ```json
 {
@@ -63,10 +60,14 @@ to use it, add the following configuration to your `.oxlintrc.json`:
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.2.15 中添加。
+
+## 参考
 
 <RuleReferences />

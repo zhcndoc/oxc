@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-query-selector"
 category: "Pedantic"
+version: "0.0.15"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,19 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Prefer `.querySelector()` over `.getElementById()`. And prefer `.querySelectorAll()`
-over `.getElementsByClassName()`, `.getElementsByTagName()`, and `.getElementsByName()`.
+优先使用 `.querySelector()` 而不是 `.getElementById()`。并且优先使用 `.querySelectorAll()`
+而不是 `.getElementsByClassName()`、`.getElementsByTagName()` 和 `.getElementsByName()`。
 
-### Why is this bad?
+### 为什么这不好？
 
-- Using `.querySelector()` and `.querySelectorAll()` is more flexible and allows for more specific selectors.
-- It's better to use the same method to query DOM elements. This helps keep consistency and it lends itself to future improvements (e.g. more specific selectors).
+- 使用 `.querySelector()` 和 `.querySelectorAll()` 更灵活，并且允许使用更具体的选择器。
+- 使用相同的方法查询 DOM 元素会更好。这有助于保持一致性，并且便于未来改进（例如更具体的选择器）。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 document.getElementById("foo");
@@ -37,7 +38,7 @@ document.getElementsByClassName(fn());
 document.getElementsByName("foo");
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 document.querySelector("#foo");
@@ -48,10 +49,14 @@ document.querySelectorAll("li a");
 document.querySelector("li").querySelectorAll("a");
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.0.15 中加入。
+
+## 参考资料
 
 <RuleReferences />

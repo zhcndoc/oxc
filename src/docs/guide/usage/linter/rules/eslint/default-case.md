@@ -1,6 +1,7 @@
 ---
 title: "eslint/default-case"
-category: "限制"
+category: "Restriction"
+version: "0.4.0"
 default: false
 type_aware: false
 fix: "none"
@@ -100,6 +101,10 @@ switch (a) {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+该规则于 v0.4.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

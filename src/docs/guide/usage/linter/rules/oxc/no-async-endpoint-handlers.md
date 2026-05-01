@@ -1,6 +1,7 @@
 ---
 title: "oxc/no-async-endpoint-handlers"
-category: "Suspicious"
+category: "可疑"
+version: "0.9.2"
 default: false
 type_aware: false
 fix: "none"
@@ -15,15 +16,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Disallows the use of `async` functions as Express endpoint handlers.
+禁止将 `async` 函数用作 Express 端点处理器。
 
-### Why is this bad?
+### 这为什么不好？
 
-Before v5, Express will not automatically handle Promise rejections from
-handler functions with your application's error handler. You must
-instead explicitly pass the rejected promise to `next()`.
+在 v5 之前，Express 不会自动将处理器函数中的 Promise 拒绝交给应用程序的错误处理器。你必须改为显式地将被拒绝的 promise 传递给 `next()`。
 
 ```js
 const app = express();
@@ -36,25 +35,22 @@ app.get("/", (req, res, next) => {
 });
 ```
 
-If this is not done, your server will crash with an unhandled promise
-rejection.
+如果不这样做，你的服务器将因未处理的 promise 拒绝而崩溃。
 
 ```js
 const app = express();
 app.get("/", async (req, res) => {
-  // Server will crash if User.findById rejects
+  // 如果 User.findById 拒绝，服务器将崩溃
   const user = await User.findById(req.params.id);
   res.json(user);
 });
 ```
 
-See [Express' Error Handling
-Guide](https://expressjs.com/en/guide/error-handling.html) for more
-information.
+更多信息请参阅 [Express 的错误处理指南](https://expressjs.com/en/guide/error-handling.html)。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 const app = express();
@@ -76,18 +72,18 @@ const createUser = async (req, res) => {
 };
 app.post("/user", createUser);
 
-// Async handlers that are imported will not be detected because each
-// file is checked in isolation. This does not trigger the rule, but still
-// violates it and _will_ result in server crashes.
+// 导入的异步处理器不会被检测到，因为每个
+// 文件都是独立检查的。这不会触发该规则，但仍然
+// 违反了规则，并且 _will_ 导致服务器崩溃。
 const asyncHandler = require("./asyncHandler");
 app.get("/async", asyncHandler);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 const app = express();
-// not async
+// 不是 async
 app.use((req, res, next) => {
   req.receivedAt = Date.now();
 });
@@ -95,7 +91,7 @@ app.use((req, res, next) => {
 app.get("/", (req, res, next) => {
   fs.readFile("/file-does-not-exist", (err, data) => {
     if (err) {
-      next(err); // Pass errors to Express.
+      next(err); // 将错误传递给 Express。
     } else {
       res.send(data);
     }
@@ -109,9 +105,9 @@ const asyncHandler = async (req, res) => {
 app.get("/user", (req, res, next) => asyncHandler(req, res).catch(next));
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allowedNames
 
@@ -119,12 +115,16 @@ type: `string[]`
 
 default: `[]`
 
-An array of names that are allowed to be async.
+允许为 async 的名称数组。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.9.2 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "typescript/consistent-type-definitions"
 category: "Style"
+version: "0.2.17"
 default: false
 type_aware: false
 fix: "conditional_dangerous_fix"
@@ -15,27 +16,27 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Enforce type definitions to consistently use either `interface` or `type`.
+强制类型定义始终一致地使用 `interface` 或 `type` 其中之一。
 
-### Why is this bad?
+### 为什么这不好？
 
-TypeScript provides two common ways to define an object type: `interface` and `type`.
-The two are generally very similar, and can often be used interchangeably.
-Using the same type declaration style consistently helps with code readability.
+TypeScript 提供了两种常见的方式来定义对象类型：`interface` 和 `type`。
+这两者通常非常相似，并且经常可以互换使用。
+始终使用相同的类型声明风格有助于提高代码可读性。
 
-### Examples
+### 示例
 
-By default this rule enforces the use of `interface` for defining object types.
+默认情况下，此规则强制使用 `interface` 来定义对象类型。
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```typescript
 type T = { x: number };
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```typescript
 type T = string;
@@ -46,13 +47,13 @@ interface T {
 }
 ```
 
-## Configuration
+## 配置
 
-This rule accepts one of the following string values:
+此规则接受以下字符串值之一：
 
 ### `"interface"`
 
-Prefer `interface` over `type` for object type definitions:
+对象类型定义中优先使用 `interface` 而不是 `type`：
 
 ```typescript
 interface T {
@@ -62,16 +63,20 @@ interface T {
 
 ### `"type"`
 
-Prefer `type` over `interface` for object type definitions:
+对象类型定义中优先使用 `type` 而不是 `interface`：
 
 ```typescript
 type T = { x: number };
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.2.17 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "eslint/sort-keys"
 category: "Style"
+version: "0.9.4"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,18 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-When declaring multiple properties, sorting property names alphabetically makes it easier
-to find and/or diff necessary properties at a later time.
+在声明多个属性时，将属性名按字母顺序排序，可以更容易地
+在之后查找和/或 diff 所需的属性。
 
-### Why is this bad?
+### 为什么这不好？
 
-Unsorted property keys can make the code harder to read and maintain.
+未排序的属性键会让代码更难阅读和维护。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 let myObj = {
@@ -35,7 +36,7 @@ let myObj = {
 };
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 let myObj = {
@@ -44,17 +45,17 @@ let myObj = {
 };
 ```
 
-## Configuration
+## 配置
 
-### The 1st option
+### 第 1 个选项
 
 type: `"desc" | "asc"`
 
-Sorting order for keys. Accepts "asc" for ascending or "desc" for descending.
+键的排序顺序。接受 "asc" 表示升序，或 "desc" 表示降序。
 
-### The 2nd option
+### 第 2 个选项
 
-This option is an object with the following properties:
+此选项是一个包含以下属性的对象：
 
 #### allowLineSeparatedGroups
 
@@ -62,7 +63,7 @@ type: `boolean`
 
 default: `false`
 
-When true, groups of properties separated by a blank line are sorted independently.
+当为 true 时，由空行分隔的属性组会分别排序。
 
 #### caseSensitive
 
@@ -70,7 +71,7 @@ type: `boolean`
 
 default: `true`
 
-Whether the sort comparison is case-sensitive (A < a when true).
+排序比较是否区分大小写（当为 true 时，A < a）。
 
 #### minKeys
 
@@ -78,7 +79,7 @@ type: `integer`
 
 default: `2`
 
-Minimum number of properties required in an object before sorting is enforced.
+在对象中开始强制排序之前所需的最少属性数量。
 
 #### natural
 
@@ -86,12 +87,16 @@ type: `boolean`
 
 default: `false`
 
-Use natural sort order so that, for example, "a2" comes before "a10".
+使用自然排序顺序，例如 "a2" 会排在 "a10" 之前。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.9.4 中添加。
+
+## 参考资料
 
 <RuleReferences />

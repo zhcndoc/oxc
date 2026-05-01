@@ -1,6 +1,7 @@
 ---
 title: "promise/prefer-catch"
 category: "Style"
+version: "0.15.14"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,26 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Prefer `catch` to `then(a, b)` and `then(null, b)`. This rule disallows the passing of an
-argument into the second parameter of `then` calls for handling promise errors.
+优先使用 `catch` 而不是 `then(a, b)` 和 `then(null, b)`。此规则不允许在 `then` 调用的第二个参数中传入参数来处理 promise 错误。
 
-### Why is this bad?
+### 为什么这不好？
 
-A `then` call with two arguments can make it more difficult to recognize that a catch error
-handler is present. Another issue with using the second argument in `then` calls is that
-the ordering of promise error handling is less obvious.
+带有两个参数的 `then` 调用会让人更难识别其中存在 catch 错误处理器。另一个在 `then` 调用中使用第二个参数的问题是，promise 错误处理的顺序不够明显。
 
-For example on first glance it may appear that `prom.then(fn1, fn2)` is equivalent to
-`prom.then(fn1).catch(fn2)`. However they aren't equivalent. In fact
-`prom.catch(fn2).then(fn1)` is the equivalent. This kind of confusion is a good reason for
-preferring explicit `catch` calls over passing an argument to the second parameter of
-`then` calls.
+例如，乍一看似乎 `prom.then(fn1, fn2)` 等同于 `prom.then(fn1).catch(fn2)`。然而它们并不等价。实际上，`prom.catch(fn2).then(fn1)` 才是等价的。此类混淆正是优先使用显式的 `catch` 调用，而不是向 `then` 调用的第二个参数传入参数的一个很好的理由。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```js
 prom.then(fn1, fn2);
@@ -42,7 +36,7 @@ prom.then(fn1, fn2);
 prom.then(null, fn2);
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```js
 prom.catch(fn2).then(fn1);
@@ -50,10 +44,14 @@ prom.catch(fn2).then(fn1);
 prom.catch(fn2);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则添加于 v0.15.14。
+
+## 参考资料
 
 <RuleReferences />

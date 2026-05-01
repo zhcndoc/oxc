@@ -1,6 +1,7 @@
 ---
 title: "unicorn/switch-case-braces"
-category: "Style"
+category: "风格"
+version: "0.0.15"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,19 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Requires empty switch cases to omit braces, while non-empty cases must use braces.
-This reduces visual clutter for empty cases and enforces proper scoping for non-empty ones.
+要求空的 switch 分支省略花括号，而非空分支必须使用花括号。
+这可以减少空分支的视觉干扰，并确保非空分支具有正确的作用域。
 
-### Why is this bad?
+### 为什么这不好？
 
-Using braces unnecessarily for empty cases adds visual noise,
-while omitting braces in non-empty cases can lead to scoping issues.
+对空分支不必要地使用花括号会增加视觉噪音，
+而在非空分支中省略花括号可能导致作用域问题。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 switch (num) {
@@ -39,7 +40,7 @@ switch (num) {
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 switch (num) {
@@ -51,28 +52,32 @@ switch (num) {
 }
 ```
 
-Example config:
+配置示例：
 
 ```json
 "unicorn/switch-case-braces": ["error", "avoid"]
 ```
 
-## Configuration
+## 配置
 
-This rule accepts one of the following string values:
+此规则接受以下字符串值之一：
 
 ### `"always"`
 
-Always require braces in case clauses (except empty cases).
+始终要求 case 子句使用花括号（空分支除外）。
 
 ### `"avoid"`
 
-Allow braces only when needed for scoping (e.g., variable or function declarations).
+仅在需要作用域时允许使用花括号（例如变量或函数声明）。
 
-## How to use
+## 使用方法
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.0.15 中添加。
+
+## 参考
 
 <RuleReferences />

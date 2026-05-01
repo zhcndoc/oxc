@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-this-before-super"
-category: "Correctness"
+category: "正确性"
+version: "0.2.6"
 default: true
 type_aware: false
 fix: "none"
@@ -15,36 +16,40 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Requires calling `super()` before using `this` or `super`.
+要求在使用 `this` 或 `super` 之前先调用 `super()`。
 
-This rule can be disabled for TypeScript code, as the TypeScript compiler
-enforces this check.
+如果是 TypeScript 代码，可以禁用此规则，因为 TypeScript 编译器
+已经强制执行了这一检查。
 
-### Why is this bad?
+### 为什么这不好？
 
-In the constructor of derived classes, if `this`/`super` are used before `super()` calls,
-it raises a `ReferenceError`.
+在派生类的构造函数中，如果在调用 `super()` 之前使用了 `this`/`super`，
+就会抛出 `ReferenceError`。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 class A1 extends B {
   constructor() {
-    // super() needs to be called first
+    // 必须先调用 super()
     this.a = 0;
     super();
   }
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则添加于 v0.2.6。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "jest/no-identical-title"
 category: "Style"
+version: "0.0.14"
 default: false
 type_aware: false
 fix: "none"
@@ -15,19 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule looks at the title of every test and test suite.
-It will report when two test suites or two test cases at the same level of a test suite have the same title.
+此规则会检查每个测试和测试套件的标题。
+当同一测试套件层级中的两个测试套件或两个测试用例具有相同标题时，它会报告问题。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-Having identical titles for two different tests or test suites may create confusion.
-For example, when a test with the same title as another test in the same test suite fails, it is harder to know which one failed and thus harder to fix.
+为两个不同的测试或测试套件使用相同的标题可能会造成混淆。
+例如，当一个与同一测试套件中另一个测试同名的测试失败时，就更难知道到底是哪个测试失败了，从而也更难修复。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 describe("baz", () => {
@@ -35,26 +36,19 @@ describe("baz", () => {
 });
 
 describe("baz", () => {
-  // Has the same title as a previous test suite
+  // 与前一个测试套件具有相同的标题
   // ...
 });
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/v1.1.9/docs/rules/no-identical-title.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
-
-```json
-{
-  "rules": {
-    "vitest/no-identical-title": "error"
-  }
-}
-```
-
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.14 中添加的。
+
+## 参考资料
 
 <RuleReferences />

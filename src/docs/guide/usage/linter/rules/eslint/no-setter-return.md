@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-setter-return"
-category: "Correctness"
+category: "正确性"
+version: "0.0.3"
 default: true
 type_aware: false
 fix: "none"
@@ -15,22 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Setters cannot return values.
+setter 不能返回值。
 
-This rule can be disabled for TypeScript code, as the TypeScript compiler
-enforces this check.
+对于 TypeScript 代码，可以禁用此规则，因为 TypeScript 编译器会强制执行此检查。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-While returning a value from a setter does not produce an error, the returned value is
-being ignored. Therefore, returning a value from a setter is either unnecessary or a
-possible error, since the returned value cannot be used.
+虽然从 setter 返回值不会产生错误，但返回的值会被忽略。因此，从 setter 返回值要么是不必要的，要么可能是错误，因为返回的值无法被使用。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 class URL {
@@ -40,10 +38,14 @@ class URL {
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.0.3 中添加。
+
+## 参考资料
 
 <RuleReferences />

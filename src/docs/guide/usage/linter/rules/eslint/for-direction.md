@@ -1,6 +1,7 @@
 ---
 title: "eslint/for-direction"
-category: "Correctness"
+category: "正确性"
+version: "0.0.3"
 default: true
 type_aware: false
 fix: "fixable_dangerous_fix"
@@ -66,6 +67,10 @@ for (let i = MIN; i <= MAX; i -= 0) {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.0.3 中添加。
+
+## 参考资料
 
 <RuleReferences />

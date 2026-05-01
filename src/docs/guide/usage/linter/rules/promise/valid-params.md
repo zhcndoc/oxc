@@ -1,6 +1,7 @@
 ---
 title: "promise/valid-params"
 category: "Correctness"
+version: "0.7.1"
 default: false
 type_aware: false
 fix: "none"
@@ -15,35 +16,38 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Enforces the proper number of arguments are passed to Promise functions.
+强制向 Promise 函数传递正确数量的参数。
 
-This rule is generally unnecessary if using TypeScript.
+如果使用 TypeScript，这条规则通常是不必要的。
 
-### Why is this bad?
+### 为什么这不好？
 
-Calling a Promise function with the incorrect number of arguments can lead to unexpected
-behavior or hard to spot bugs.
+用错误数量的参数调用 Promise 函数可能会导致意外的行为或难以发现的 bug。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 Promise.resolve(1, 2);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 Promise.resolve(1);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.7.1 中添加。
+
+## 参考资料
 
 <RuleReferences />

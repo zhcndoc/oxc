@@ -1,6 +1,7 @@
 ---
 title: "eslint/new-cap"
 category: "Style"
+version: "0.15.5"
 default: false
 type_aware: false
 fix: "pending"
@@ -21,7 +22,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么不好？
 
-JavaScript 中的 new 运算符创建特定类型对象的新实例。
+JavaScript 中的 new 运算符会创建特定类型对象的新实例。
 该类型的对象由构造函数表示。
 由于构造函数只是普通函数，唯一的定义特征是在调用时使用了 new。
 原生 JavaScript 函数以大写字母开头，以区分那些要用作构造函数的函数和不是用作构造函数的函数。
@@ -382,6 +383,10 @@ var friend = new person.acquaintance();
 
 <RuleHowToUse />
 
-## 参考
+## Version
+
+此规则是在 v0.15.5 中添加的。
+
+## References
 
 <RuleReferences />

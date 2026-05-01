@@ -1,6 +1,7 @@
 ---
 title: "jest/prefer-to-be"
-category: "Style"
+category: "样式"
+version: "0.2.14"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,25 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Recommends using `toBe` matcher for primitive literals and specific
-matchers for `null`, `undefined`, and `NaN`.
+建议对原始字面量使用 `toBe` 匹配器，并对 `null`、`undefined` 和 `NaN` 使用特定的匹配器。
 
-### Why is this bad?
+### 为什么这不好？
 
-When asserting against primitive literals such as numbers and strings,
-the equality matchers all operate the same, but read slightly
-differently in code.
+当对数字和字符串等原始字面量进行断言时，所有相等性匹配器的行为都相同，但在代码中的读法略有不同。
 
-This rule recommends using the `toBe` matcher in these situations, as
-it forms the most grammatically natural sentence. For `null`,
-`undefined`, and `NaN` this rule recommends using their specific `toBe`
-matchers, as they give better error messages as well.
+该规则建议在这些情况下使用 `toBe` 匹配器，因为它形成的句子最符合语法习惯。对于 `null`、`undefined` 和 `NaN`，该规则建议使用它们各自特定的 `toBe` 匹配器，因为它们也能提供更好的错误信息。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 expect(value).not.toEqual(5);
@@ -41,7 +36,7 @@ expect(getMessage()).toStrictEqual("hello world");
 expect(loadMessage()).resolves.toEqual("hello world");
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 expect(value).not.toBe(5);
@@ -51,8 +46,8 @@ expect(didError).not.toBe(true);
 expect(catchError()).toStrictEqual({ message: "oh noes!" });
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-be.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
+此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-be.md) 兼容，
+如需使用，请将以下配置添加到你的 `.oxlintrc.json` 中：
 
 ```json
 {
@@ -62,10 +57,14 @@ to use it, add the following configuration to your `.oxlintrc.json`:
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.2.14 中加入。
+
+## 参考资料
 
 <RuleReferences />

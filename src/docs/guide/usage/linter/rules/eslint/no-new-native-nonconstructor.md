@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-new-native-nonconstructor"
 category: "Correctness"
+version: "0.3.3"
 default: true
 type_aware: false
 fix: "none"
@@ -15,32 +16,29 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallow `new` operators with global non-constructor functions (`Symbol`, `BigInt`).
+禁止对全局的非构造函数（`Symbol`、`BigInt`）使用 `new` 运算符。
 
-This rule can be disabled for TypeScript code, as the TypeScript compiler
-enforces this check.
+对于 TypeScript 代码，可以禁用此规则，因为 TypeScript 编译器会强制执行此检查。
 
-### Why is this bad?
+### 为什么这不好？
 
-Both `new Symbol` and `new BigInt` throw a type error because they are
-functions and not classes. It is easy to make this mistake by assuming
-the uppercase letters indicate classes.
+`new Symbol` 和 `new BigInt` 都会抛出类型错误，因为它们是函数而不是类。很容易因为大写字母而误以为它们是类，从而犯下这个错误。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
-// throws a TypeError
+// 抛出 TypeError
 let foo = new Symbol("foo");
 
-// throws a TypeError
+// 抛出 TypeError
 let result = new BigInt(9007199254740991);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 let foo = Symbol("foo");
@@ -48,10 +46,14 @@ let foo = Symbol("foo");
 let result = BigInt(9007199254740991);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则添加于 v0.3.3。
+
+## 参考资料
 
 <RuleReferences />

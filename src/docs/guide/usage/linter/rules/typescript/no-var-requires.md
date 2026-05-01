@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-var-requires"
 category: "Restriction"
+version: "0.0.7"
 default: false
 type_aware: false
 fix: "none"
@@ -15,17 +16,16 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Disallow `require` statements except in import statements.
+禁止 `require` 语句，但导入语句中的 `require` 除外。
 
-**NOTE**: This rule is intentionally missing the `allow` option from the original typescript-eslint rule.
-This rule is deprecated in the upstream plugin and the `typescript/no-require-imports` rule should be
-used instead.
+**注意**：此规则有意缺少原始 typescript-eslint 规则中的 `allow` 选项。
+此规则在上游插件中已弃用，应改用 `typescript/no-require-imports` 规则。
 
-### Why is this bad?
+### 这为什么不好？
 
-In other words, the use of forms such as var foo = require("foo") are banned. Instead use ES module imports or import foo = require("foo") imports.
+换句话说，像 `var foo = require("foo")` 这样的写法是被禁止的。请改用 ES module 导入，或使用 `import foo = require("foo")` 导入。
 
 ```typescript
 var foo = require("foo");
@@ -33,10 +33,14 @@ const foo = require("foo");
 let foo = require("foo");
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.7 中添加的。
+
+## 参考资料
 
 <RuleReferences />

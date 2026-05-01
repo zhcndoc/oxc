@@ -1,6 +1,7 @@
 ---
 title: "react/jsx-curly-brace-presence"
-category: "Style"
+category: "样式"
+version: "0.7.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,47 +16,33 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Disallow unnecessary JSX expressions when literals alone are
-sufficient or enforce JSX expressions on literals in JSX children or
-attributes.
+当仅使用字面量就足够时，禁止不必要的 JSX 表达式；或者在 JSX 子元素或属性中的字面量上强制使用 JSX 表达式。
 
-This rule allows you to enforce curly braces or disallow unnecessary
-curly braces in JSX props and/or children.
+此规则允许你强制使用大括号，或者禁止在 JSX props 和/或子元素中使用不必要的大括号。
 
-For situations where JSX expressions are unnecessary, please refer to
-[the React doc](https://react.dev/learn/writing-markup-with-jsx)
-and [this page about JSX
-gotchas](https://github.com/facebook/react/blob/v15.4.0-rc.3/docs/docs/02.3-jsx-gotchas.md#html-entities).
+对于 JSX 表达式不必要的情况，请参阅
+[React 文档](https://react.dev/learn/writing-markup-with-jsx)
+以及[这篇关于 JSX
+陷阱的页面](https://github.com/facebook/react/blob/v15.4.0-rc.3/docs/docs/02.3-jsx-gotchas.md#html-entities)。
 
-### Why is this bad?
+### 为什么这不好？
 
-Using different styles for your JSX code can make it harder to read and
-less consistent.
+在 JSX 代码中使用不同的风格会让它更难阅读，
+也不够一致。
 
-Code consistency improves readability. By enforcing or disallowing
-curly braces in JSX props and/or children, this rule helps maintain
-consistent patterns across your application.
+代码一致性可以提升可读性。通过强制或禁止在 JSX props 和/或子元素中使用大括号，此规则有助于在你的应用中保持一致的模式。
 
-### Rule Details
+### 规则详情
 
-By default, this rule will check for and warn about unnecessary curly
-braces in both JSX props and children. For the sake of backwards
-compatibility, prop values that are JSX elements are not considered by
-default.
+默认情况下，此规则会检查并警告 JSX props 和子元素中不必要的大括号。出于向后兼容的考虑，默认不会考虑 JSX 元素类型的 prop 值。
 
-You can pass in options to enforce the presence of curly braces on JSX
-props, children, JSX prop values that are JSX elements, or any
-combination of the three. The same options are available for not
-allowing unnecessary curly braces as well as ignoring the check.
+你可以传入选项，强制 JSX props、子元素、作为 JSX 元素的 JSX prop 值，或者这三者的任意组合中使用大括号。对于禁止不必要的大括号以及忽略检查，同样提供了相同的选项。
 
-**Note**: it is _highly recommended_ that you configure this rule with
-an object, and that you set "propElementValues" to "always". The ability
-to omit curly braces around prop values that are JSX elements is
-obscure, and intentionally undocumented, and should not be relied upon.
+**注意**：强烈建议你使用对象来配置此规则，并将 "propElementValues" 设置为 "always"。允许省略 JSX 元素类型 prop 值周围大括号的能力非常隐晦，而且是刻意不文档化的，不应依赖它。
 
-#### Example Configurations
+#### 配置示例
 
 ```jsonc
 {
@@ -65,80 +52,80 @@ obscure, and intentionally undocumented, and should not be relied upon.
 }
 ```
 
-or alternatively
+或者也可以
 
 ```jsonc
 {
   "rules": {
-    "react/jsx-curly-brace-presence": ["error", "always"], // or "never" or "ignore"
+    "react/jsx-curly-brace-presence": ["error", "always"], // 或 "never" 或 "ignore"
   },
 }
 ```
 
-### Fix Details
+### 修复详情
 
-If passed in the option to fix, this is how a style violation will get fixed
+如果传入了用于修复的选项，样式违规将按以下方式修复
 
-- `always`: wrap a JSX attribute in curly braces/JSX expression and/or a JSX child the same way but also with double quotes
-- `never`: get rid of curly braces from a JSX attribute and/or a JSX child
+- `always`：将 JSX 属性用大括号/JSX 表达式包裹，并且/或者以相同方式处理 JSX 子元素，但也会使用双引号
+- `never`：去掉 JSX 属性和/或者 JSX 子元素中的大括号
 
-- All fixing operations use double quotes.
+- 所有修复操作都使用双引号。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule, when configured with `{ props: "always", children: "always" }`:
+以下是此规则配置为 `{ props: "always", children: "always" }` 时，**错误**代码的示例：
 
 ```jsx
 <App>Hello world</App>;
 <App prop="Hello world">{"Hello world"}</App>;
 ```
 
-They can be fixed to:
+它们可以被修复为：
 
 ```jsx
 <App>{"Hello world"}</App>;
 <App prop={"Hello world"}>{"Hello world"}</App>;
 ```
 
-Examples of **incorrect** code for this rule, when configured with `{ props: "never", children: "never" }`:
+以下是此规则配置为 `{ props: "never", children: "never" }` 时，**错误**代码的示例：
 
 ```jsx
 <App>{"Hello world"}</App>;
 <App prop={"Hello world"} attr={"foo"} />;
 ```
 
-They can be fixed to:
+它们可以被修复为：
 
 ```jsx
 <App>Hello world</App>;
 <App prop="Hello world" attr="foo" />;
 ```
 
-Examples of **incorrect** code for this rule, when configured with `{ props: "always", children: "always", "propElementValues": "always" }`:
+以下是此规则配置为 `{ props: "always", children: "always", "propElementValues": "always" }` 时，**错误**代码的示例：
 
 ```jsx
 <App prop=<div /> />
 ```
 
-They can be fixed to:
+它们可以被修复为：
 
 ```jsx
 <App prop={<div />} />
 ```
 
-Examples of **incorrect** code for this rule, when configured with `{ props: "never", children: "never", "propElementValues": "never" }`:
+以下是此规则配置为 `{ props: "never", children: "never", "propElementValues": "never" }` 时，**错误**代码的示例：
 
 ```jsx
 <App prop={<div />} />
 ```
 
-They can be fixed to:
+它们可以被修复为：
 
 ```jsx
 <App prop=<div /> />
 ```
 
-Examples of **incorrect** code for this rule, when configured with `"always"`:
+以下是此规则配置为 `"always"` 时，**错误**代码的示例：
 
 ```jsx
 <App>Hello world</App>;
@@ -147,7 +134,7 @@ Examples of **incorrect** code for this rule, when configured with `"always"`:
 </App>;
 ```
 
-They can be fixed to:
+它们可以被修复为：
 
 ```jsx
 <App>{"Hello world"}</App>;
@@ -156,7 +143,7 @@ They can be fixed to:
 </App>;
 ```
 
-Examples of **incorrect** code for this rule, when configured with `"never"`:
+以下是此规则配置为 `"never"` 时，**错误**代码的示例：
 
 ```jsx
 <App prop={"foo"} attr={"bar"}>
@@ -164,7 +151,7 @@ Examples of **incorrect** code for this rule, when configured with `"never"`:
 </App>
 ```
 
-It can fixed to:
+它可以被修复为：
 
 ```jsx
 <App prop="foo" attr="bar">
@@ -172,73 +159,60 @@ It can fixed to:
 </App>
 ```
 
-### Edge cases
+### 边界情况
 
-The fix also deals with template literals, strings with quotes, and
-strings with escapes characters.
+修复也会处理模板字面量、带引号的字符串，以及带转义字符的字符串。
 
-- If the rule is set to get rid of unnecessary curly braces and the
-  template literal inside a JSX expression has no expression, it will
-  throw a warning and be fixed with double quotes. For example:
+- 如果规则设置为去掉不必要的大括号，而 JSX 表达式中的模板字面量没有表达式，它会发出警告并使用双引号修复。例如：
 
 ```jsx
 <App prop={`Hello world`}>{`Hello world`}</App>
 ```
 
-will be warned and fixed to:
+会被警告并修复为：
 
 ```jsx
 <App prop="Hello world">Hello world</App>
 ```
 
-- If the rule is set to enforce curly braces and the strings have
-  quotes, it will be fixed with double quotes for JSX children and the
-  normal way for JSX attributes. Also, double quotes will be escaped in
-  the fix.
+- 如果规则设置为强制使用大括号，并且字符串中包含引号，JSX 子元素会使用双引号修复，而 JSX 属性会按常规方式修复。另外，在修复中，双引号也会被转义。
 
-For example:
+例如：
 
 ```jsx
 <App prop='Hello "foo" world'>Hello 'foo' "bar" world</App>
 ```
 
-will warned and fixed to:
+会被警告并修复为：
 
 ```jsx
 <App prop={'Hello "foo" world'}>{"Hello 'foo' \"bar\" world"}</App>
 ```
 
-- If the rule is set to get rid of unnecessary curly braces(JSX
-  expression) and there are characters that need to be escaped in its JSX
-  form, such as quote characters, [forbidden JSX text
-  characters](https://facebook.github.io/jsx/), escaped characters and
-  anything that looks like HTML entity names, the code will not be warned
-  because the fix may make the code less readable.
+- 如果规则设置为去掉不必要的大括号（JSX 表达式），而其 JSX 形式中存在需要转义的字符，例如引号字符、[禁止的 JSX 文本字符](https://facebook.github.io/jsx/)、转义字符以及任何看起来像 HTML 实体名称的内容，代码将不会被警告，因为修复可能会降低代码的可读性。
 
-Examples of **correct** code for this rule, even when configured with `"never"`:
+以下是此规则配置为 `"never"` 时，**正确**代码的示例：
 
 ```jsx
 <Color text={"\u00a0"} />
 <App>{"Hello \u00b7 world"}</App>;
 <style type="text/css">{'.main { margin-top: 0; }'}</style>;
 /**
- * there's no way to inject a whitespace into jsx without a container so this
- * will always be allowed.
+ * 无法在没有容器的情况下将空白注入 jsx，因此这
+ * 始终是允许的。
  */
 <App>{' '}</App>
 <App>{'     '}</App>
-<App>{/* comment */ <Bpp />}</App> // the comment makes the container necessary
+<App>{/* comment */ <Bpp />}</App> // 注释使容器变得必要
 ```
 
-### When Not To Use It
+### 何时不使用
 
-You should turn this rule off if you are not concerned about maintaining
-consistency regarding the use of curly braces in JSX props and/or
-children as well as the use of unnecessary JSX expressions.
+如果你不关心在 JSX props 和/或子元素中保持大括号使用的一致性，以及不必要的 JSX 表达式的使用，就应该关闭此规则。
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### children
 
@@ -246,11 +220,11 @@ type: `"always" | "never" | "ignore"`
 
 default: `"never"`
 
-Whether to enforce or disallow curly braces for child content of a JSX element.
+是否对 JSX 元素的子内容强制使用或禁止大括号。
 
-- `never` will disallow unnecessary curly braces, e.g. this will be preferred: `<Foo>I love oxlint</Foo>`
-- `always` will force the usage of curly braces like this, in all cases: `<Foo>{'I love oxlint'}</Foo>`
-- `ignore` will allow either style for child content.
+- `never` 将禁止不必要的大括号，例如以下写法会被优先采用：`<Foo>I love oxlint</Foo>`
+- `always` 将在所有情况下强制使用大括号，例如：`<Foo>{'I love oxlint'}</Foo>`
+- `ignore` 将允许子内容使用任意一种风格。
 
 ### propElementValues
 
@@ -258,15 +232,13 @@ type: `"always" | "never" | "ignore"`
 
 default: `"ignore"`
 
-When set to `ignore` or `never`, this JSX code is allowed (or enforced):
+当设置为 `ignore` 或 `never` 时，允许（或强制）以下 JSX 代码：
 `<App prop=<div /> />;`
 
-When set to `always`, the curly braces are required for prop values that are
-JSX elements: `<App prop={<div />} />;`
+当设置为 `always` 时，JSX 元素类型的 prop 值必须使用大括号：`<App prop={<div />} />;`
 
-**Note**: it is _highly_ recommended that you set `propElementValues` to `always`.
-The ability to omit curly braces around prop values that are JSX elements is obscure, and
-intentionally undocumented, and should not be relied upon.
+**注意**：强烈建议你将 `propElementValues` 设置为 `always`。
+允许省略 JSX 元素类型 prop 值周围大括号的能力非常隐晦，而且是刻意不文档化的，不应依赖它。
 
 ### props
 
@@ -274,16 +246,20 @@ type: `"always" | "never" | "ignore"`
 
 default: `"never"`
 
-Whether to enforce or disallow curly braces for props on JSX elements.
+是否对 JSX 元素上的 props 强制使用或禁止大括号。
 
-- `never` will disallow unnecessary curly braces, e.g. this will be preferred: `<Foo foo="bar" />`
-- `always` will force the usage of curly braces like this, in all cases: `<Foo foo={'bar'} />`
-- `ignore` will allow either style for prop values.
+- `never` 将禁止不必要的大括号，例如以下写法会被优先采用：`<Foo foo="bar" />`
+- `always` 将在所有情况下强制使用大括号，例如：`<Foo foo={'bar'} />`
+- `ignore` 将允许 prop 值使用任意一种风格。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.7.0 中加入。
+
+## 参考资料
 
 <RuleReferences />

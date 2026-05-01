@@ -1,6 +1,7 @@
 ---
 title: "eslint/class-methods-use-this"
-category: "限制"
+category: "Restriction"
+version: "1.16.0"
 default: false
 type_aware: false
 fix: "none"
@@ -108,6 +109,10 @@ class C {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v1.16.0 中新增。
+
+## 参考资料
 
 <RuleReferences />

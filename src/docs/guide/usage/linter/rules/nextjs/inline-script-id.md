@@ -1,6 +1,7 @@
 ---
 title: "nextjs/inline-script-id"
 category: "Correctness"
+version: "0.2.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,20 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforces that all `next/script` components with inline content or `dangerouslySetInnerHTML` must have an `id` prop.
+要求所有带有内联内容或 `dangerouslySetInnerHTML` 的 `next/script` 组件都必须具有 `id` 属性。
 
-### Why is this bad?
+### 为什么这不好？
 
-Next.js requires a unique `id` prop for inline scripts to properly deduplicate them during page renders.
-Without an `id`, the same inline script might be executed multiple times, leading to unexpected behavior
-or performance issues. This is particularly important for scripts that modify global state or perform
-one-time initializations.
+Next.js 需要为内联脚本提供唯一的 `id` 属性，以便在页面渲染期间正确去重。
+如果没有 `id`，相同的内联脚本可能会被多次执行，从而导致意外行为
+或性能问题。对于会修改全局状态或执行一次性初始化的脚本来说，这一点尤其重要。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 import Script from 'next/script';
@@ -41,7 +41,7 @@ export default function Page() {
   );
 }
 
-// Also incorrect with dangerouslySetInnerHTML
+// 使用 dangerouslySetInnerHTML 时也错误
 export default function Page() {
   return (
     <Script
@@ -53,7 +53,7 @@ export default function Page() {
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 import Script from 'next/script';
@@ -66,7 +66,7 @@ export default function Page() {
   );
 }
 
-// Correct with dangerouslySetInnerHTML
+// 使用 dangerouslySetInnerHTML 时正确
 export default function Page() {
   return (
     <Script
@@ -78,7 +78,7 @@ export default function Page() {
   );
 }
 
-// No id required for external scripts
+// 外部脚本不需要 id
 export default function Page() {
   return (
     <Script src="https://example.com/script.js" />
@@ -86,10 +86,14 @@ export default function Page() {
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.2.0 中添加的。
+
+## 参考资料
 
 <RuleReferences />

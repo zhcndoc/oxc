@@ -1,6 +1,7 @@
 ---
 title: "vitest/require-awaited-expect-poll"
-category: "Correctness"
+category: "正确性"
+version: "1.58.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,19 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule ensures that promises returned by `expect.poll` and `expect.element` calls are handled properly.
+此规则确保对 `expect.poll` 和 `expect.element` 调用返回的 promise 进行正确处理。
 
-### Why is this bad?
+### 为什么这不好？
 
-`expect.poll` and `expect.element` return promises. If not awaited or returned,
-the test completes before the assertion resolves, meaning the test will pass
-regardless of whether the assertion succeeds or fails.
+`expect.poll` 和 `expect.element` 会返回 promise。如果没有 `await` 或 `return`，
+测试会在断言解析之前完成，这意味着无论断言成功还是失败，测试都会通过。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例如下：
 
 ```js
 test("element exists", () => {
@@ -37,7 +37,7 @@ test("element exists", () => {
 });
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例如下：
 
 ```js
 test("element exists", () => {
@@ -52,10 +52,14 @@ test("element exists", async () => {
 });
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.58.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

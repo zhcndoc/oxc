@@ -1,6 +1,7 @@
 ---
 title: "typescript/prefer-string-starts-ends-with"
-category: "样式"
+category: "Style"
+version: "0.0.8"
 default: true
 type_aware: true
 fix: "none"
@@ -64,6 +65,10 @@ default: `"never"`
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则是在 v0.0.8 中添加的。
 
 ## 参考资料
 

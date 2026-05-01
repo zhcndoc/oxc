@@ -1,6 +1,7 @@
 ---
 title: "eslint/arrow-body-style"
-category: "风格"
+category: "Style"
+version: "1.4.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -179,6 +180,10 @@ const bar = () => {
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则于 v1.4.0 中添加。
 
 ## 参考
 

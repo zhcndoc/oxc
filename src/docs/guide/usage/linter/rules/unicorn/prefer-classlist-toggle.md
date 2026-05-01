@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-classlist-toggle"
 category: "Style"
+version: "1.20.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,19 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Prefers the use of `element.classList.toggle(className, condition)` over
-conditional add/remove patterns.
+优先使用 `element.classList.toggle(className, condition)`，而不是
+条件式的添加/移除模式。
 
-### Why is this bad?
+### 这为什么不好？
 
-The `toggle()` method is more concise and expressive than using conditional
-logic to switch between `add()` and `remove()`.
+与使用条件逻辑在 `add()` 和 `remove()` 之间切换相比，`toggle()` 方法更简洁，也更具表达力。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 if (condition) {
@@ -41,16 +41,20 @@ condition ? element.classList.add("className") : element.classList.remove("class
 element.classList[condition ? "add" : "remove"]("className");
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 element.classList.toggle("className", condition);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则已在 v1.20.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

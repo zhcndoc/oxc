@@ -1,6 +1,7 @@
 ---
 title: "jsdoc/no-defaults"
-category: "Correctness"
+category: "正确性"
+version: "0.3.2"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,26 +16,26 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule reports defaults being used on the relevant portion of `@param` or `@default`.
-It also optionally reports the presence of the square-bracketed optional arguments at all.
+此规则会报告在 `@param` 或 `@default` 的相关部分中使用了默认值。
+它还可以选择性地报告方括号形式的可选参数的存在。
 
-### Why is this bad?
+### 这为什么不好？
 
-The rule is intended to prevent the indication of defaults on tags
-where this would be redundant with ES2015 default parameters.
+该规则旨在防止在这些标签上标注默认值，
+因为这在 ES2015 默认参数中会显得多余。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 /** @param {number} [foo="7"] */
 function quux(foo) {}
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 /** @param {number} foo */
@@ -44,9 +45,9 @@ function quux(foo) {}
 function quux(foo) {}
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### noOptionalParamNames
 
@@ -54,12 +55,16 @@ type: `boolean`
 
 default: `false`
 
-If true, report the presence of optional param names (square brackets) on `@param` tags.
+如果为 true，则报告 `@param` 标签中可选参数名称（方括号）的存在。
 
-## How to use
+## 使用方法
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.3.2 中添加的。
+
+## 参考资料
 
 <RuleReferences />

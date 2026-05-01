@@ -1,6 +1,7 @@
 ---
 title: "typescript/prefer-includes"
 category: "Pedantic"
+version: "1.29.0"
 default: false
 type_aware: true
 fix: "fixable_fix"
@@ -16,23 +17,22 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforce using `.includes()` instead of `.indexOf() !== -1` or `/regex/.test()`.
+强制使用 `.includes()`，而不是 `.indexOf() !== -1` 或 `/regex/.test()`。
 
-### Why is this bad?
+### 为什么这不好？
 
-`.includes()` is more readable and expressive than checking `.indexOf() !== -1`.
-It clearly communicates the intent to check for the presence of a value.
-Additionally, for simple string searches, `.includes()` is often preferred over
-regex `.test()` for better performance and clarity.
+与检查 `.indexOf() !== -1` 相比，`.includes()` 更易读，也更具表达性。
+它清楚地传达了检查某个值是否存在的意图。
+此外，对于简单的字符串搜索，`.includes()` 往往比正则表达式 `.test()` 更受青睐，因为它性能更好，也更清晰。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
-// Using indexOf
+// 使用 indexOf
 const str = "hello world";
 if (str.indexOf("world") !== -1) {
   console.log("found");
@@ -46,48 +46,52 @@ if (str.indexOf("world") > -1) {
   console.log("found");
 }
 
-// Using regex test for simple strings
+// 对简单字符串使用正则 test
 if (/world/.test(str)) {
   console.log("found");
 }
 
-// Arrays
+// 数组
 const arr = [1, 2, 3];
 if (arr.indexOf(2) !== -1) {
   console.log("found");
 }
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
-// Using includes for strings
+// 字符串使用 includes
 const str = "hello world";
 if (str.includes("world")) {
   console.log("found");
 }
 
-// Using includes for arrays
+// 数组使用 includes
 const arr = [1, 2, 3];
 if (arr.includes(2)) {
   console.log("found");
 }
 
-// Complex regex patterns are allowed
+// 允许复杂的正则模式
 if (/wo+rld/.test(str)) {
   console.log("found");
 }
 
-// Regex with flags
+// 带标志位的正则
 if (/world/i.test(str)) {
   console.log("found");
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则已在 v1.29.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

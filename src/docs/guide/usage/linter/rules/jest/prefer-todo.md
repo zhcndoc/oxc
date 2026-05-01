@@ -1,6 +1,7 @@
 ---
 title: "jest/prefer-todo"
 category: "Style"
+version: "0.0.16"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,46 +16,38 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-When test cases are empty then it is better to mark them as `test.todo` as it
-will be highlighted in the summary output.
+当测试用例为空时，最好将其标记为 `test.todo`，因为它会在汇总输出中被高亮显示。
 
-### Why is this bad?
+### 为什么这不好？
 
-This rule triggers a warning if empty test cases are used without 'test.todo'.
+当使用空测试用例而不使用 `test.todo` 时，此规则会触发警告。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
-test("i need to write this test"); // invalid
-test("i need to write this test", () => {}); // invalid
-test.skip("i need to write this test", () => {}); // invalid
+test("i need to write this test"); // 无效
+test("i need to write this test", () => {}); // 无效
+test.skip("i need to write this test", () => {}); // 无效
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 test.todo("i need to write this test");
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-todo.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
-
-```json
-{
-  "rules": {
-    "vitest/prefer-todo": "error"
-  }
-}
-```
-
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.0.16 中添加。
+
+## 参考资料
 
 <RuleReferences />

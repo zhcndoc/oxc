@@ -1,6 +1,7 @@
 ---
 title: "unicorn/no-useless-fallback-in-spread"
 category: "Correctness"
+version: "0.0.16"
 default: true
 type_aware: false
 fix: "conditional_fix"
@@ -15,33 +16,37 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Disallow useless fallback when spreading in object literals.
+禁止在对象字面量中展开时使用无用的回退值。
 
-### Why is this bad?
+### 为什么这不好？
 
-Spreading [falsy values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) in object literals won't add any unexpected properties, so it's unnecessary to add an empty object as fallback.
+在对象字面量中展开 [falsy 值](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 不会添加任何意外的属性，因此没有必要添加一个空对象作为回退。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 const object = { ...(foo || {}) };
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 const object = { ...foo };
 const object = { ...(foo || { not: "empty" }) };
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.0.16 中添加。
+
+## 参考资料
 
 <RuleReferences />

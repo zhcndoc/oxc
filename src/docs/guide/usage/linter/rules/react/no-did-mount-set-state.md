@@ -1,6 +1,7 @@
 ---
 title: "react/no-did-mount-set-state"
-category: "Correctness"
+category: "正确性"
+version: "1.36.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,21 +16,20 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallows using `setState` in the `componentDidMount` lifecycle method.
+禁止在 `componentDidMount` 生命周期方法中使用 `setState`。
 
-This rule is not relevant for function components, and so can potentially be
-disabled for modern React codebases.
+此规则与函数组件无关，因此对于现代 React 代码库可以考虑将其禁用。
 
-### Why is this bad?
+### 为什么这不好？
 
-Updating the state after a component mount will trigger a second `render()` call and can lead to property/layout thrashing.
-This can cause performance issues and unexpected behavior.
+组件挂载后更新状态会触发第二次 `render()` 调用，并可能导致属性/布局抖动。
+这会引发性能问题和非预期行为。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```jsx
 var Hello = createReactClass({
@@ -44,7 +44,7 @@ var Hello = createReactClass({
 });
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```jsx
 var Hello = createReactClass({
@@ -61,22 +61,26 @@ var Hello = createReactClass({
 });
 ```
 
-## Configuration
+## 配置
 
-This rule accepts one of the following string values:
+此规则接受以下字符串值之一：
 
 ### `"allowed"`
 
-Allow `setState` calls in nested functions within `componentDidMount`, the default behavior.
+允许在 `componentDidMount` 内部的嵌套函数中调用 `setState`，这是默认行为。
 
 ### `"disallow-in-func"`
 
-When set, also disallows `setState` calls in nested functions within `componentDidMount`.
+设置后，也会禁止在 `componentDidMount` 内部的嵌套函数中调用 `setState`。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v1.36.0 中添加的。
+
+## 参考资料
 
 <RuleReferences />

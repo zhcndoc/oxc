@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-empty-object-type"
-category: "限制"
+category: "Restriction"
+version: "0.12.0"
 default: false
 type_aware: false
 fix: "pending"
@@ -138,6 +139,10 @@ type TypeProps = {};
 
 <RuleHowToUse />
 
-## 参考资料
+## Version
+
+此规则于 v0.12.0 中添加。
+
+## References
 
 <RuleReferences />

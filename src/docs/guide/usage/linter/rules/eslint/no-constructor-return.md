@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-constructor-return"
 category: "Pedantic"
+version: "0.4.3"
 default: false
 type_aware: false
 fix: "none"
@@ -50,6 +51,10 @@ class C {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则是在 v0.4.3 中添加的。
+
+## 参考资料
 
 <RuleReferences />

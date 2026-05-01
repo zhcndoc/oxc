@@ -1,6 +1,7 @@
 ---
 title: "unicorn/consistent-function-scoping"
-category: "Suspicious"
+category: "可疑"
+version: "0.8.0"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,24 +16,21 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallow functions that are declared in a scope which does not capture
-any variables from the outer scope.
+禁止在一个不会捕获任何外部作用域变量的作用域中声明函数。
 
-### Why is this bad?
+### 为什么这不好？
 
-Moving function declarations to the highest possible scope improves
-readability, directly [improves performance](https://stackoverflow.com/questions/80802/does-use-of-anonymous-functions-affect-performance/81329#81329)
-and allows JavaScript engines to better [optimize your performance](https://ponyfoo.com/articles/javascript-performance-pitfalls-v8#optimization-limit).
+将函数声明移动到尽可能高的作用域可以提高可读性，直接[提升性能](https://stackoverflow.com/questions/80802/does-use-of-anonymous-functions-affect-performance/81329#81329)，并允许 JavaScript 引擎更好地[优化你的性能](https://ponyfoo.com/articles/javascript-performance-pitfalls-v8#optimization-limit)。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 export function doFoo(foo) {
-  // Does not capture anything from the scope, can be moved to the outer scope
+  // 不会从该作用域捕获任何内容，可以移动到外层作用域
   function doBar(bar) {
     return bar === "bar";
   }
@@ -46,7 +44,7 @@ function doFoo(foo) {
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 function doBar(bar) {
@@ -65,9 +63,9 @@ export function doFoo(foo) {
 }
 ```
 
-### Limitations
+### 限制
 
-This rule does not detect or remove extraneous code blocks inside of functions:
+此规则不会检测或移除函数内部多余的代码块：
 
 ```js
 function doFoo(foo) {
@@ -81,7 +79,7 @@ function doFoo(foo) {
 }
 ```
 
-It also ignores functions that contain `JSXElement` references:
+它也会忽略包含 `JSXElement` 引用的函数：
 
 ```jsx
 function doFoo(FooComponent) {
@@ -93,7 +91,7 @@ function doFoo(FooComponent) {
 }
 ```
 
-[Immediately invoked function expressions (IIFE)](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) are ignored:
+[立即执行函数表达式（IIFE）](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) 会被忽略：
 
 ```js
 (function () {
@@ -103,9 +101,9 @@ function doFoo(FooComponent) {
 })();
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### checkArrowFunctions
 
@@ -113,12 +111,16 @@ type: `boolean`
 
 default: `true`
 
-Whether to check scoping with arrow functions.
+是否检查箭头函数的作用域。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.8.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

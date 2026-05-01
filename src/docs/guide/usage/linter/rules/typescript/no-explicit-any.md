@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-explicit-any"
 category: "Restriction"
+version: "0.0.13"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,23 +16,22 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallows explicit use of the `any` type.
+不允许显式使用 `any` 类型。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-The `any` type in TypeScript is a dangerous "escape hatch" from the type system. Using
-`any` disables many type checking rules and is generally best used only as a last resort or
-when prototyping code. This rule reports on explicit uses of the `any` keyword as a type
-annotation.
+TypeScript 中的 `any` 类型是类型系统中一个危险的“逃生出口”。使用 `any`
+会禁用许多类型检查规则，通常只应在万不得已时或在原型开发阶段使用。
+此规则会报告将 `any` 关键字显式用作类型注解的情况。
 
-> TypeScript's `--noImplicitAny` compiler option prevents an implied `any`, but doesn't
-> prevent `any` from being explicitly used the way this rule does.
+> TypeScript 的 `--noImplicitAny` 编译器选项可以防止隐式的 `any`，但并不能
+> 像此规则这样阻止显式使用 `any`。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```typescript
 const age: any = "seventeen";
@@ -45,7 +45,7 @@ function greet(param: Array<any>): string {}
 function greet(param: Array<any>): Array<any> {}
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```typescript
 const age: number = 17;
@@ -59,9 +59,9 @@ function greet(param: Array<string>): string {}
 function greet(param: Array<string>): Array<string> {}
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### fixToUnknown
 
@@ -69,7 +69,7 @@ type: `boolean`
 
 default: `false`
 
-Whether to enable auto-fixing in which the `any` type is converted to the `unknown` type.
+是否启用自动修复，将 `any` 类型转换为 `unknown` 类型。
 
 ### ignoreRestArgs
 
@@ -77,12 +77,16 @@ type: `boolean`
 
 default: `false`
 
-Whether to ignore rest parameter arrays.
+是否忽略剩余参数数组。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.13 中添加。
+
+## 参考
 
 <RuleReferences />

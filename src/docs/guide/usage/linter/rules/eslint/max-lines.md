@@ -1,6 +1,7 @@
 ---
 title: "eslint/max-lines"
 category: "Pedantic"
+version: "0.2.14"
 default: false
 type_aware: false
 fix: "none"
@@ -54,6 +55,10 @@ default: `false`
 ## 使用方法
 
 <RuleHowToUse />
+
+## 版本
+
+此规则已在 v0.2.14 中添加。
 
 ## 参考资料
 

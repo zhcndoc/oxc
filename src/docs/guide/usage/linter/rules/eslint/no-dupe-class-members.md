@@ -1,9 +1,10 @@
 ---
 title: "eslint/no-dupe-class-members"
 category: "正确性"
+version: "0.0.3"
 default: true
 type_aware: false
-fix: "none"
+fix: "无"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -56,6 +57,10 @@ a.foo();
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则是在 v0.0.3 中添加的。
+
+## 参考资料
 
 <RuleReferences />

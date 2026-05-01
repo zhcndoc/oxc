@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-duplicate-case"
 category: "Correctness"
+version: "0.0.3"
 default: true
 type_aware: false
 fix: "none"
@@ -82,6 +83,10 @@ switch (a) {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.0.3 中新增。
+
+## 参考资料
 
 <RuleReferences />

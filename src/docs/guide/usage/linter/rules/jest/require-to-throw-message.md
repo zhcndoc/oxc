@@ -1,6 +1,7 @@
 ---
 title: "jest/require-to-throw-message"
-category: "Correctness"
+category: "正确性"
+version: "0.2.9"
 default: false
 type_aware: false
 fix: "none"
@@ -15,21 +16,21 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule triggers a warning if `toThrow()` or `toThrowError()` is used without an error message.
+如果在使用 `toThrow()` 或 `toThrowError()` 时没有提供错误消息，此规则会触发警告。
 
-### Why is this bad?
+### 为什么这不好？
 
-Using `toThrow()` or `toThrowError()` without specifying an expected error message
-makes tests less specific and harder to debug. When a test only checks that an
-error was thrown but not what kind of error, it can pass even when the wrong
-error is thrown, potentially hiding bugs. Providing an expected error message
-or error type makes tests more precise and helps catch regressions more effectively.
+在未指定预期错误消息的情况下使用 `toThrow()` 或 `toThrowError()`
+会让测试不够具体，也更难调试。当测试只检查是否抛出了
+错误，而不检查是什么类型的错误时，即使抛出了错误的
+异常，测试也可能通过，从而潜在地掩盖 bug。提供预期的错误消息
+或错误类型可以让测试更精确，并更有效地发现回归问题。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例如下：
 
 ```javascript
 test("all the things", async () => {
@@ -40,7 +41,7 @@ test("all the things", async () => {
 });
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例如下：
 
 ```javascript
 test("all the things", async () => {
@@ -51,8 +52,8 @@ test("all the things", async () => {
 });
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-to-throw-message.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
+此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-to-throw-message.md) 兼容，
+要使用它，请将以下配置添加到你的 `.oxlintrc.json` 中：
 
 ```json
 {
@@ -62,10 +63,14 @@ to use it, add the following configuration to your `.oxlintrc.json`:
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.2.9 中加入。
+
+## 参考
 
 <RuleReferences />

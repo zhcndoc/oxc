@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-useless-escape"
-category: "Correctness"
+category: "正确性"
+version: "0.0.5"
 default: true
 type_aware: false
 fix: "fixable_fix"
@@ -15,19 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Disallow unnecessary escape characters.
+禁止不必要的转义字符。
 
-### Why is this bad?
+### 为什么这不好？
 
-Escaping characters unnecessarily has no effect on the behavior of strings or regexes,
-and can make code harder to read and understand by adding unnecessary complexity.
-This applies to string literals, template literals, and regular expressions.
+不必要地转义字符不会影响字符串或正则表达式的行为，
+并且会通过增加不必要的复杂性，使代码更难阅读和理解。
+这适用于字符串字面量、模板字面量和正则表达式。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 "\'";
@@ -43,7 +44,7 @@ Examples of **incorrect** code for this rule:
 /[a-z\-]/;
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 "\"";
@@ -63,9 +64,9 @@ Examples of **correct** code for this rule:
 /[a-z-]/;
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allowRegexCharacters
 
@@ -73,15 +74,19 @@ type: `string[]`
 
 default: `[]`
 
-An array of characters that are allowed to be escaped unnecessarily in regexes.
-For example, setting this to `["#"]` allows `\#` in regexes.
+一个允许在正则表达式中被不必要转义的字符数组。
+例如，将其设置为 `["#"]` 允许在正则表达式中使用 `\#`。
 
-Each string in this array must be a single character.
+此数组中的每个字符串都必须是单个字符。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.5 中添加。
+
+## 参考资料
 
 <RuleReferences />

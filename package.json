@@ -27,7 +27,7 @@
     "knip": "^6.0.2",
     "markdown-it-container": "^4.0.0",
     "markdown-it-task-lists": "^2.1.1",
-    "oxc-minify": "^0.127.0",
+    "oxc-minify": "^0.128.0",
     "typescript": "~6.0.0",
     "vite-plus": "catalog:",
     "vitepress": "2.0.0-alpha.17",
@@ -35,5 +35,5 @@
     "vitepress-plugin-llms": "^1.12.0",
     "vue": "^3.5.30"
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@10.33.2"
 }

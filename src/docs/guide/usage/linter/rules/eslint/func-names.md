@@ -1,6 +1,7 @@
 ---
 title: "eslint/func-names"
-category: "风格"
+category: "Style"
+version: "0.7.0"
 default: false
 type_aware: false
 fix: "conditional_safe_fix_or_suggestion"
@@ -228,6 +229,10 @@ function* foobar(i) {
 
 <RuleHowToUse />
 
-## 参考
+## Version
+
+此规则在 v0.7.0 中添加。
+
+## References
 
 <RuleReferences />

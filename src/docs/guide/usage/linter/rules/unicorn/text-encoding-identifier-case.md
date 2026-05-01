@@ -1,6 +1,7 @@
 ---
 title: "unicorn/text-encoding-identifier-case"
 category: "Style"
+version: "0.0.15"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,23 +16,20 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule enforces consistent casing for text encoding identifiers, specifically:
+此规则强制文本编码标识符的大小写保持一致，具体如下：
 
-- `'utf8'` instead of `'UTF-8'` or `'utf-8'` (or `'utf-8'` if `withDash` is enabled)
-- `'ascii'` instead of `'ASCII'`
+- 使用 `'utf8'`，而不是 `'UTF-8'` 或 `'utf-8'`（如果启用了 `withDash`，则允许 `'utf-8'`）
+- 使用 `'ascii'`，而不是 `'ASCII'`
 
-### Why is this bad?
+### 为什么这不好？
 
-Inconsistent casing of encoding identifiers reduces code readability and
-can lead to subtle confusion across a codebase. Although casing is not
-strictly enforced by ECMAScript or Node.js, using lowercase is the
-conventional and widely recognized style.
+编码标识符大小写不一致会降低代码可读性，并可能在整个代码库中造成细微的混淆。虽然 ECMAScript 或 Node.js 并未严格强制大小写，但使用小写是惯例且被广泛认可的风格。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 import fs from "node:fs/promises";
@@ -42,7 +40,7 @@ async function bad() {
 }
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 import fs from "node:fs/promises";
@@ -53,7 +51,7 @@ async function good() {
 }
 ```
 
-Examples of **correct** code for this rule with `{ "withDash": true }`:
+当使用 `{ "withDash": true }` 时，此规则的**正确**代码示例：
 
 ```javascript
 import fs from "node:fs/promises";
@@ -64,9 +62,9 @@ async function good() {
 }
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### withDash
 
@@ -74,12 +72,16 @@ type: `boolean`
 
 default: `false`
 
-If `true`, prefer `utf-8` over `utf8`.
+如果为 `true`，优先使用 `utf-8` 而不是 `utf8`。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.15 中添加。
+
+## 参考资料
 
 <RuleReferences />

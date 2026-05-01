@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-self-compare"
 category: "Pedantic"
+version: "0.0.3"
 default: false
 type_aware: false
 fix: "none"
@@ -15,18 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallow comparisons where both sides are exactly the same.
+禁止两边完全相同的比较。
 
-### Why is this bad?
+### 为什么这不好？
 
-Comparing a variable against itself is usually an error, either a typo or refactoring error.
-It is confusing to the reader and may potentially introduce a runtime error.
+将变量与自身进行比较通常是错误，可能是拼写错误或重构错误。
+这会让读者感到困惑，并且可能引入运行时错误。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 var x = 10;
@@ -35,10 +36,14 @@ if (x === x) {
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.3 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-array-constructor"
 category: "Pedantic"
+version: "0.0.3"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -44,6 +45,10 @@ let arr3 = new Array(9);
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则已在 v0.0.3 中添加。
+
+## 参考资料
 
 <RuleReferences />

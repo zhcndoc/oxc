@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-optional-catch-binding"
 category: "Style"
+version: "0.0.17"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,17 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Prefers omitting the catch binding parameter if it is unused.
+如果 catch 绑定参数未被使用，则优先省略它。
 
-### Why is this bad?
+### 为什么这不好？
 
-It is unnecessary to bind the error to a variable if it is not used.
+如果错误没有被使用，那么将其绑定到一个变量上是没有必要的。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**不正确**代码示例：
 
 ```javascript
 try {
@@ -33,7 +34,7 @@ try {
 } catch (e) {}
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 try {
@@ -41,10 +42,14 @@ try {
 } catch {}
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.0.17 中添加。
+
+## 参考资料
 
 <RuleReferences />

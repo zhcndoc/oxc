@@ -1,6 +1,7 @@
 ---
 title: "eslint/grouped-accessor-pairs"
-category: "风格"
+category: "Style"
+version: "0.15.12"
 default: false
 type_aware: false
 fix: "待处理"
@@ -171,6 +172,10 @@ type Bar = {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.15.12 中添加。
+
+## 参考资料
 
 <RuleReferences />

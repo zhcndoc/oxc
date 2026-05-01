@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-string-raw"
 category: "Style"
+version: "0.12.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,34 +16,38 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Prefers use of `String.raw` to avoid escaping `\`.
+倾向于使用 `String.raw` 来避免转义 `\`。
 
-### Why is this bad?
+### 为什么这不好？
 
-Excessive backslashes can make string values less readable which can be avoided by using `String.raw`.
+过多的反斜杠会降低字符串值的可读性，而使用 `String.raw` 可以避免这一点。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 const file = "C:\\windows\\style\\path\\to\\file.js";
 const regexp = new RegExp("foo\\.bar");
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 const file = String.raw`C:\windows\style\path\to\file.js`;
 const regexp = new RegExp(String.raw`foo\.bar`);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.12.0 中添加的。
+
+## 参考资料
 
 <RuleReferences />

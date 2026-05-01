@@ -1,6 +1,7 @@
 ---
 title: "promise/spec-only"
 category: "Restriction"
+version: "0.9.2"
 default: false
 type_aware: false
 fix: "none"
@@ -15,31 +16,31 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallow use of non-standard Promise static methods.
+禁止使用非标准的 Promise 静态方法。
 
-### Why is this bad?
+### 为什么这不好？
 
-Non-standard Promises may cost more maintenance work.
+非标准的 Promise 可能会带来更多维护工作。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 Promise.done();
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 Promise.resolve();
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allowedMethods
 
@@ -47,12 +48,16 @@ type: `string[]`
 
 default: `null`
 
-List of Promise static methods that are allowed to be used.
+允许使用的 Promise 静态方法列表。
 
-## How to use
+## 使用方法
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.9.2 中添加。
+
+## 参考资料
 
 <RuleReferences />

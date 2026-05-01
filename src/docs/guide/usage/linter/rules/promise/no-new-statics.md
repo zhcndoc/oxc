@@ -1,6 +1,7 @@
 ---
 title: "promise/no-new-statics"
-category: "Correctness"
+category: "正确性"
+version: "0.6.1"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,33 +16,37 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Disallows calling new on static `Promise` methods.
+禁止对静态 `Promise` 方法使用 new 调用。
 
-### Why is this bad?
+### 为什么这不好？
 
-Calling a static `Promise` method with `new` is invalid and will result
-in a `TypeError` at runtime.
+对静态 `Promise` 方法使用 `new` 是无效的，并且会在运行时导致
+`TypeError`。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 const x = new Promise.resolve(value);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 const x = Promise.resolve(value);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.6.1 中添加。
+
+## 参考
 
 <RuleReferences />

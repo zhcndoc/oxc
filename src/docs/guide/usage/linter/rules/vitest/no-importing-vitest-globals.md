@@ -1,6 +1,7 @@
 ---
 title: "vitest/no-importing-vitest-globals"
-category: "样式"
+category: "Style"
+version: "1.49.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -59,6 +60,10 @@ test("foo", () => {
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+该规则于 v1.49.0 中新增。
 
 ## 参考资料
 

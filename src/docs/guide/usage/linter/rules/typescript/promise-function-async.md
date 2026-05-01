@@ -1,6 +1,7 @@
 ---
 title: "typescript/promise-function-async"
 category: "Restriction"
+version: "1.12.0"
 default: false
 type_aware: true
 fix: "conditional_fix"
@@ -16,47 +17,47 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule requires any function or method that returns a Promise to be marked as async.
+此规则要求任何返回 Promise 的函数或方法都必须标记为 async。
 
-### Why is this bad?
+### 为什么这不好？
 
-Functions that return Promises should typically be marked as `async` to make their asynchronous nature clear and to enable the use of `await` within them. This makes the code more readable and helps prevent common mistakes with Promise handling.
+返回 Promise 的函数通常应标记为 `async`，以明确其异步特性，并允许在其中使用 `await`。这会使代码更易读，并有助于防止处理 Promise 时的常见错误。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```ts
-// Function returning Promise without async
+// 返回 Promise 但未标记 async 的函数
 function fetchData(): Promise<string> {
   return fetch("/api/data").then((res) => res.text());
 }
 
-// Method returning Promise without async
+// 返回 Promise 但未标记 async 的方法
 class DataService {
   getData(): Promise<any> {
     return fetch("/api/data").then((res) => res.json());
   }
 }
 
-// Arrow function returning Promise without async
+// 返回 Promise 但未标记 async 的箭头函数
 const processData = (): Promise<void> => {
   return Promise.resolve();
 };
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```ts
-// Async function
+// Async 函数
 async function fetchData(): Promise<string> {
   const response = await fetch("/api/data");
   return response.text();
 }
 
-// Async method
+// Async 方法
 class DataService {
   async getData(): Promise<any> {
     const response = await fetch("/api/data");
@@ -64,25 +65,25 @@ class DataService {
   }
 }
 
-// Async arrow function
+// Async 箭头函数
 const processData = async (): Promise<void> => {
   await someAsyncOperation();
 };
 
-// Functions that don't return Promise are fine
+// 不返回 Promise 的函数是可以的
 function syncFunction(): string {
   return "hello";
 }
 
-// Functions returning Promise-like but not actual Promise
+// 返回类似 Promise 但并非真正 Promise 的函数
 function createThenable(): { then: Function } {
   return { then: () => {} };
 }
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个具有以下属性的配置对象：
 
 ### allowAny
 
@@ -90,7 +91,7 @@ type: `boolean`
 
 default: `true`
 
-Whether to allow functions returning `any` type without requiring `async`.
+是否允许返回 `any` 类型的函数而不要求 `async`。
 
 ### allowedPromiseNames
 
@@ -98,8 +99,8 @@ type: `string[]`
 
 default: `[]`
 
-A list of Promise type names that are allowed without requiring `async`.
-Example: `["SpecialPromise"]` to allow functions returning `SpecialPromise` without `async`.
+允许在不要求 `async` 的情况下使用的 Promise 类型名称列表。
+示例：`["SpecialPromise"]` 表示允许返回 `SpecialPromise` 而不使用 `async`。
 
 ### checkArrowFunctions
 
@@ -107,7 +108,7 @@ type: `boolean`
 
 default: `true`
 
-Whether to check arrow functions for missing `async` keyword.
+是否检查箭头函数是否缺少 `async` 关键字。
 
 ### checkFunctionDeclarations
 
@@ -115,7 +116,7 @@ type: `boolean`
 
 default: `true`
 
-Whether to check function declarations for missing `async` keyword.
+是否检查函数声明是否缺少 `async` 关键字。
 
 ### checkFunctionExpressions
 
@@ -123,7 +124,7 @@ type: `boolean`
 
 default: `true`
 
-Whether to check function expressions for missing `async` keyword.
+是否检查函数表达式是否缺少 `async` 关键字。
 
 ### checkMethodDeclarations
 
@@ -131,12 +132,16 @@ type: `boolean`
 
 default: `true`
 
-Whether to check method declarations for missing `async` keyword.
+是否检查方法声明是否缺少 `async` 关键字。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.12.0 中添加。
+
+## 参考
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "unicorn/no-useless-undefined"
 category: "Pedantic"
+version: "0.6.1"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,41 +16,41 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Prevents usage of `undefined` in cases where it would be useless.
+阻止在 `undefined` 毫无意义的情况下使用它。
 
 ::: warning
-This rule can conflict with the default behaviors of the `eslint/array-callback-return`
-and `eslint/getter-return` rules. For both rules, you can set
-the `allowImplicit` option to avoid conflicts.
+此规则可能会与 `eslint/array-callback-return`
+和 `eslint/getter-return` 规则的默认行为冲突。对于这两个规则，你可以设置
+`allowImplicit` 选项来避免冲突。
 :::
 
-### Why is this bad?
+### 为什么这不好？
 
-`undefined` is the default value for new variables, parameters,
-return statements, etc, so specifying `undefined` in these cases
-is pointless.
+`undefined` 是新变量、参数、
+返回语句等的默认值，因此在这些情况下指定 `undefined`
+是没有意义的。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 let foo = undefined;
 const noop = () => undefined;
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 let foo;
 const noop = () => {};
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### checkArguments
 
@@ -57,7 +58,7 @@ type: `boolean`
 
 default: `true`
 
-Whether to check for useless `undefined` in function call arguments.
+是否检查函数调用参数中无意义的 `undefined`。
 
 ### checkArrowFunctionBody
 
@@ -65,12 +66,16 @@ type: `boolean`
 
 default: `true`
 
-Whether to check for useless `undefined` in arrow function bodies.
+是否检查箭头函数体中无意义的 `undefined`。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.6.1 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "typescript/consistent-generic-constructors"
 category: "Style"
+version: "0.14.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,35 +16,35 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-When constructing a generic class, you can specify the type arguments on either the left-hand side (as a type annotation) or the right-hand side (as part of the constructor call).
+在构造泛型类时，你可以在左侧（作为类型注解）或右侧（作为构造函数调用的一部分）指定类型参数。
 
-This rule enforces consistency in the way generic constructors are used.
+此规则强制泛型构造函数的使用方式保持一致。
 
-### Why is this bad?
+### 为什么这样不好？
 
-Inconsistent usage of generic constructors can make the code harder to read and maintain.
+泛型构造函数使用不一致会让代码更难阅读和维护。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```ts
 const a: Foo<string> = new Foo();
-const a = new Foo<string>(); // prefer type annotation
+const a = new Foo<string>(); // 更倾向于类型注解
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```ts
 const a = new Foo<string>();
-const a: Foo<string> = new Foo(); // prefer type annotation
+const a: Foo<string> = new Foo(); // 更倾向于类型注解
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### option
 
@@ -51,25 +52,29 @@ type: `"constructor" | "type-annotation"`
 
 default: `"constructor"`
 
-Specifies where the generic type should be specified.
+指定应在何处指定泛型类型。
 
-Possible values:
+可能的值：
 
-- `"constructor"` (default): Type arguments that only appear on the type annotation are disallowed.
-- `"type-annotation"`: Type arguments that only appear on the constructor are disallowed.
+- `"constructor"`（默认）：禁止只出现在类型注解中的类型参数。
+- `"type-annotation"`：禁止只出现在构造函数中的类型参数。
 
 #### `"constructor"`
 
-Type arguments that only appear on the type annotation are disallowed.
+禁止只出现在类型注解中的类型参数。
 
 #### `"type-annotation"`
 
-Type arguments that only appear on the constructor are disallowed.
+禁止只出现在构造函数中的类型参数。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.14.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

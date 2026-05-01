@@ -1,6 +1,7 @@
 ---
 title: "promise/no-promise-in-callback"
-category: "Suspicious"
+category: "可疑"
+version: "0.13.1"
 default: false
 type_aware: false
 fix: "none"
@@ -15,20 +16,20 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallows the use of Promises within error-first callback functions.
+禁止在错误优先回调函数中使用 Promise。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-Mixing Promises and callbacks can lead to unclear and inconsistent code.
-Promises and callbacks are different patterns for handling asynchronous code.
-Mixing them makes the logic flow harder to follow and complicates error handling,
-as callbacks rely on an error-first pattern, while Promises use `catch`.
+将 Promise 和回调混用会导致代码不清晰且不一致。
+Promise 和回调是处理异步代码的两种不同模式。
+将它们混用会使逻辑流程更难跟踪，并使错误处理更复杂，
+因为回调依赖错误优先模式，而 Promise 使用 `catch`。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 doSomething((err, val) => {
@@ -37,16 +38,20 @@ doSomething((err, val) => {
 });
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 promisify(doSomething)().then(doSomethingElse).then(console.log).catch(console.error);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则新增于 v0.13.1。
+
+## 参考资料
 
 <RuleReferences />

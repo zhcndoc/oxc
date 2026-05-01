@@ -1,6 +1,7 @@
 ---
 title: "import/max-dependencies"
 category: "Pedantic"
+version: "0.5.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,69 +16,73 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Forbid modules to have too many dependencies (`import` statements only).
+禁止模块拥有过多依赖（仅 `import` 语句）。
 
-### Why is this bad?
+### 为什么这不好？
 
-This is a useful rule because a module with too many dependencies is a code smell,
-and usually indicates the module is doing too much and/or should be broken up into
-smaller modules.
+这是一个有用的规则，因为依赖过多的模块是一种代码异味，
+通常意味着该模块做了太多事情，和/或应该被拆分成
+更小的模块。
 
-**NOTE**: This rule only counts `import` statements, and does not count dependencies from
-CommonJS `require()` statements. This is a difference from the original
-eslint-import-plugin rule.
+**注意**：此规则只统计 `import` 语句，不统计来自
+CommonJS `require()` 语句的依赖。这一点与原始的
+eslint-import-plugin 规则不同。
 
-### Examples
+### 示例
 
-Given `{ "max": 2 }`
+给定 `{ "max": 2 }`
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 import a from "./a";
 import b from "./b";
-import c from "./c"; // Too many dependencies: 3 (max: 2)
+import c from "./c"; // 依赖过多：3（最大值：2）
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 import a from "./a";
-import b from "./b"; // Allowed: 2 dependencies (max: 2)
+import b from "./b"; // 允许：2 个依赖（最大值：2）
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### ignoreTypeImports
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
-Whether to ignore type imports when counting dependencies.
+在统计依赖时是否忽略类型导入。
 
 ```ts
-// Neither of these count as dependencies if `ignoreTypeImports` is true:
+// 如果 `ignoreTypeImports` 为 true，以下两者都不计为依赖：
 import type { Foo } from "./foo";
 import { type Foo } from "./foo";
 ```
 
 ### max
 
-type: `integer`
+类型：`integer`
 
-default: `10`
+默认值：`10`
 
-Maximum number of dependencies allowed in a file.
+文件中允许的最大依赖数量。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.5.0 中添加。
+
+## 参考
 
 <RuleReferences />

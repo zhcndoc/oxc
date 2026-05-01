@@ -1,6 +1,7 @@
 ---
 title: "typescript/class-literal-property-style"
-category: "样式"
+category: "Style"
+version: "1.47.0"
 default: false
 type_aware: false
 fix: "pending"
@@ -95,6 +96,10 @@ class C {
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则于 v1.47.0 中添加。
 
 ## 参考资料
 

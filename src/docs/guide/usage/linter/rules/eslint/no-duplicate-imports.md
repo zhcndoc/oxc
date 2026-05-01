@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-duplicate-imports"
 category: "Style"
+version: "0.13.2"
 default: false
 type_aware: false
 fix: "pending"
@@ -113,6 +114,10 @@ export * from "module";
 
 <RuleHowToUse />
 
-## 参考
+## Version
+
+This rule was added in v0.13.2.
+
+## References
 
 <RuleReferences />

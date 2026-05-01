@@ -1,6 +1,7 @@
 ---
 title: "eslint/capitalized-comments"
 category: "Style"
+version: "1.34.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -125,6 +126,10 @@ capitalized-comments 规则的配置。
 
 <RuleHowToUse />
 
-## 参考
+## Version
+
+此规则于 v1.34.0 中添加。
+
+## References
 
 <RuleReferences />

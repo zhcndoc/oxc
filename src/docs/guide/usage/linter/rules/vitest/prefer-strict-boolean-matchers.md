@@ -1,6 +1,7 @@
 ---
 title: "vitest/prefer-strict-boolean-matchers"
 category: "Style"
+version: "1.57.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,18 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforce using `toBe(true)` and `toBe(false)` over matchers that coerce types to boolean.
+强制使用 `toBe(true)` 和 `toBe(false)`，而不是会将类型强制转换为布尔值的匹配器。
 
-### Why is this bad?
+### 为什么这不好？
 
-Truthy/falsy matchers coerce values to boolean and can hide type mistakes.
-Strict boolean assertions make intent explicit and avoid accidental coercion.
+Truthy/falsy 匹配器会将值强制转换为布尔值，并可能掩盖类型错误。
+严格的布尔断言能明确表达意图，并避免意外的类型转换。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 expect(foo).toBeTruthy();
@@ -35,7 +36,7 @@ expect(foo).toBeFalsy();
 expectTypeOf(foo).toBeFalsy();
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 expect(foo).toBe(true);
@@ -44,10 +45,14 @@ expect(foo).toBe(false);
 expectTypeOf(foo).toBe(false);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.57.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

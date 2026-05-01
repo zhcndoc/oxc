@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-for-in-array"
-category: "Correctness"
+category: "正确性"
+version: "1.12.0"
 default: true
 type_aware: true
 fix: "none"
@@ -16,17 +17,17 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule disallows iterating over an array with a for-in loop.
+此规则禁止使用 for-in 循环遍历数组。
 
-### Why is this bad?
+### 为什么这不好？
 
-A for-in loop iterates over the enumerable properties of an object, which includes the array indices, but also includes any enumerable properties added to the array prototype or the array instance. This is almost never what you want when iterating over an array.
+for-in 循环会遍历对象的可枚举属性，这不仅包括数组索引，还包括添加到数组原型或数组实例上的任何可枚举属性。在遍历数组时，这几乎从来不是你想要的行为。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
 const arr = [1, 2, 3];
@@ -40,37 +41,41 @@ for (const i in arr) {
 }
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 const arr = [1, 2, 3];
 
-// Use for-of to iterate over array values
+// 使用 for-of 遍历数组值
 for (const value of arr) {
   console.log(value);
 }
 
-// Use regular for loop with index
+// 使用带索引的普通 for 循环
 for (let i = 0; i < arr.length; i++) {
   console.log(i, arr[i]);
 }
 
-// Use forEach
+// 使用 forEach
 arr.forEach((value, index) => {
   console.log(index, value);
 });
 
-// for-in is fine for objects
+// for-in 适用于对象
 const obj = { a: 1, b: 2 };
 for (const key in obj) {
   console.log(key, obj[key]);
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v1.12.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

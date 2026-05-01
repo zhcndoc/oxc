@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-bitwise"
 category: "Restriction"
+version: "0.0.3"
 default: false
 type_aware: false
 fix: "none"
@@ -89,6 +90,10 @@ const b = a | 0;
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则是在 v0.0.3 中添加的。
+
+## 参考资料
 
 <RuleReferences />

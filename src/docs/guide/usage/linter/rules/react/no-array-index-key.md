@@ -1,6 +1,7 @@
 ---
 title: "react/no-array-index-key"
 category: "Perf"
+version: "0.13.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,35 +16,39 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Warn if an element uses an Array index in its key.
+如果元素在其 key 中使用了数组索引，则发出警告。
 
-### Why is this bad?
+### 为什么这不好？
 
-It's a bad idea to use the array index since it doesn't uniquely identify your elements.
-In cases where the array is sorted or an element is added to the beginning of the array,
-the index will be changed even though the element representing that index may be the same.
-This results in unnecessary renders.
+使用数组索引是个坏主意，因为它不能唯一标识你的元素。
+在数组被排序，或者有元素被添加到数组开头的情况下，
+即使代表该索引的元素可能还是同一个，索引也会发生变化。
+这会导致不必要的重新渲染。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```jsx
 things.map((thing, index) => <Hello key={index} />);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```jsx
 things.map((thing, index) => <Hello key={thing.id} />);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.13.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

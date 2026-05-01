@@ -1,6 +1,7 @@
 ---
 title: "eslint/curly"
-category: "样式"
+category: "Style"
+version: "0.15.13"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -270,6 +271,10 @@ curly 规则的执行类型。
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.15.13 中添加。
+
+## 参考资料
 
 <RuleReferences />

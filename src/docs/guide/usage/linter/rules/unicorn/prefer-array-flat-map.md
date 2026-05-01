@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-array-flat-map"
 category: "Perf"
+version: "0.0.14"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,32 +16,36 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Prefers the use of `.flatMap()` when `map().flat()` are used together.
+当 `.map().flat()` 一起使用时，优先使用 `.flatMap()`。
 
-### Why is this bad?
+### 为什么这有问题？
 
-It is slightly more efficient to use `.flatMap(…)` instead of `.map(…).flat()`.
+使用 `.flatMap(…)` 而不是 `.map(…).flat()` 会稍微更高效一些。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 const bar = [1, 2, 3].map((i) => [i]).flat();
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 const bar = [1, 2, 3].flatMap((i) => [i]);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.14 中添加的。
+
+## 参考
 
 <RuleReferences />

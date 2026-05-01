@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-redundant-type-constituents"
-category: "Correctness"
+category: "正确性"
+version: "1.12.0"
 default: true
 type_aware: true
 fix: "none"
@@ -16,36 +17,36 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule disallows type constituents of unions and intersections that are redundant.
+此规则禁止联合类型和交叉类型中冗余的类型构成项。
 
-### Why is this bad?
+### 为什么这有问题？
 
-Some constituents of union and intersection types can be redundant due to TypeScript's type system rules. These redundant constituents don't add any value and can make types harder to read and understand.
+由于 TypeScript 的类型系统规则，联合类型和交叉类型的某些构成项可能是冗余的。这些冗余的构成项不会增加任何价值，反而会使类型更难阅读和理解。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
-// unknown is redundant in unions
+// unknown 在联合类型中是冗余的
 type T1 = string | unknown;
 
-// any is redundant in unions
+// any 在联合类型中是冗余的
 type T2 = string | any;
 
-// never is redundant in unions
+// never 在联合类型中是冗余的
 type T3 = string | never;
 
-// Literal types that are wider than other types
+// 比其他类型更宽泛的字面量类型
 type T4 = string | "hello";
 
-// Object types that are subsets
+// 互为子集的对象类型
 type T5 = { a: string } | { a: string; b: number };
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 type T1 = string | number;
@@ -54,17 +55,21 @@ type T2 = "hello" | "world";
 
 type T3 = { a: string } | { b: number };
 
-// unknown in intersections is meaningful
+// unknown 在交叉类型中是有意义的
 type T4 = string & unknown;
 
-// never in intersections is meaningful
+// never 在交叉类型中是有意义的
 type T5 = string & never;
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v1.12.0 中添加的。
+
+## 参考资料
 
 <RuleReferences />

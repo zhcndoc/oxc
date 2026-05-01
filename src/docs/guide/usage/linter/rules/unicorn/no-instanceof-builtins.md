@@ -1,6 +1,7 @@
 ---
 title: "unicorn/no-instanceof-builtins"
 category: "可疑"
+version: "0.16.12"
 default: false
 type_aware: false
 fix: "conditional_suggestion"
@@ -93,6 +94,10 @@ default: `false`
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则是在 v0.16.12 中添加的。
 
 ## 参考资料
 

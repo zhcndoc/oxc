@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-cond-assign"
-category: "Correctness"
+category: "正确性"
+version: "0.0.5"
 default: true
 type_aware: false
 fix: "none"
@@ -61,6 +62,10 @@ if (user.jobTitle === "manager") {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则于 v0.0.5 中添加。
+
+## 参考资料
 
 <RuleReferences />

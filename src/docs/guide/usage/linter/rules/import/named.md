@@ -1,6 +1,7 @@
 ---
 title: "import/named"
 category: "Nursery"
+version: "0.0.13"
 default: false
 type_aware: false
 fix: "none"
@@ -15,41 +16,30 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Verifies that all named imports are part of the set of named exports in
-the referenced module.
+验证所有命名导入都属于所引用模块中的命名导出集合。
 
-For `export`, verifies that all named exports exist in the referenced
-module.
+对于 `export`，验证所有命名导出都存在于所引用模块中。
 
-Note: for packages, the plugin will find exported names from
-`jsnext:main` (deprecated) or `module`, if present in `package.json`.
-Redux's npm module includes this key, and thereby is lintable, for
-example.
+注意：对于包，插件会从 `jsnext:main`（已弃用）或 `module` 中查找导出的名称，如果它们存在于 `package.json` 中的话。Redux 的 npm 模块包含这个键，因此可以被 lint，例如。
 
-A module path that is ignored or not unambiguously an ES module will not
-be reported when imported. Note that type imports and exports, as used
-by Flow, are always ignored.
+被忽略的模块路径，或者不能明确识别为 ES 模块的路径，在导入时不会被报告。请注意，Flow 中使用的类型导入和导出始终会被忽略。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-Importing or exporting names that do not exist in the referenced module
-can lead to runtime errors and confusion. It may suggest that certain
-functionality is available when it is not, making the code harder to
-maintain and understand. This rule helps ensure that your code
-accurately reflects the available exports, improving reliability.
+导入或导出在所引用模块中不存在的名称，可能会导致运行时错误和混淆。它可能暗示某些功能可用，但实际上并不可用，从而使代码更难维护和理解。此规则有助于确保你的代码准确反映可用的导出，从而提高可靠性。
 
-### Examples
+### 示例
 
-Given
+给定
 
 ```js
 // ./foo.js
 export const foo = "I'm so foo";
 ```
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```js
 // ./baz.js
@@ -62,7 +52,7 @@ export { notFoo as defNotBar } from "./foo";
 import { dontCreateStore } from "redux";
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```js
 // ./bar.js
@@ -76,10 +66,14 @@ export { foo as bar } from "./foo";
 import { SomeNonsenseThatDoesntExist } from "react";
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.13 中添加的。
+
+## 参考
 
 <RuleReferences />

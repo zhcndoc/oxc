@@ -1,6 +1,7 @@
 ---
 title: "vitest/consistent-vitest-vi"
-category: "Style"
+category: "风格"
+version: "1.37.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,18 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule triggers an error when an unexpected vitest accessor is used.
+当使用了意外的 vitest 访问器时，此规则会触发错误。
 
-### Why is this bad?
+### 为什么这不好？
 
-Not having a consistent vitest accessor can lead to confusion
-when `vi` and `vitest` are used interchangeably.
+如果 `vi` 和 `vitest` 交替使用，未保持一致的 vitest 访问器会导致混淆。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```js
 vitest.mock("./src/calculator.ts", { spy: true });
@@ -34,7 +34,7 @@ vitest.mock("./src/calculator.ts", { spy: true });
 vi.stubEnv("NODE_ENV", "production");
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```js
 vi.mock("./src/calculator.ts", { spy: true });
@@ -42,9 +42,9 @@ vi.mock("./src/calculator.ts", { spy: true });
 vi.stubEnv("NODE_ENV", "production");
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个具有以下属性的配置对象：
 
 ### fn
 
@@ -52,12 +52,16 @@ type: `"vi" | "vitest"`
 
 default: `"vi"`
 
-Decides whether to prefer vitest function accessor
+决定是否优先使用 vitest 函数访问器
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.37.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

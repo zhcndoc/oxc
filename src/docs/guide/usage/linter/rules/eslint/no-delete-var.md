@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-delete-var"
 category: "Correctness"
+version: "0.0.4"
 default: true
 type_aware: false
 fix: "none"
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-`delete` 操作符的目的是从对象中移除属性。
+`delete` 操作符的作用是从对象中移除属性。
 
 ### 为什么不好？
 
@@ -45,6 +46,10 @@ delete y.prop;
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则已在 v0.0.4 中添加。
+
+## 参考资料
 
 <RuleReferences />

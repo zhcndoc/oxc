@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-dupe-keys"
-category: "正确性"
+category: "Correctness"
+version: "0.0.3"
 default: true
 type_aware: false
 fix: "none"
@@ -59,6 +60,10 @@ var foo = {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则于 v0.0.3 中加入。
+
+## 参考资料
 
 <RuleReferences />

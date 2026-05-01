@@ -1,6 +1,7 @@
 ---
 title: "eslint/max-depth"
 category: "Pedantic"
+version: "0.15.12"
 default: false
 type_aware: false
 fix: "none"
@@ -85,6 +86,10 @@ function foo() {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则添加于 v0.15.12。
+
+## 参考资料
 
 <RuleReferences />

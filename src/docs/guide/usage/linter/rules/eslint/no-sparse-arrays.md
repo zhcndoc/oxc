@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-sparse-arrays"
 category: "Correctness"
+version: "0.0.4"
 default: true
 type_aware: false
 fix: "none"
@@ -15,31 +16,30 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Disallow sparse arrays.
+禁止稀疏数组。
 
-### Why is this bad?
+### 为什么这不好？
 
-Take the following example:
+看下面这个例子：
 
 ```javascript
 const items = [, ,];
 ```
 
-While the items array in this example has a length of 2, there are actually
-no values in items[0] or items[1]. The fact that the array literal is
-valid with only commas inside, coupled with the length being set and
-actual item values not being set, make sparse arrays confusing for many
-developers.
+虽然这个示例中的 items 数组长度为 2，但实际上
+items[0] 或 items[1] 中都没有值。数组字面量
+只包含逗号就可以是合法的，再加上长度被设置了而
+实际的元素值却没有被设置，这会让稀疏数组对许多
+开发者来说很难理解。
 
-The confusion around sparse arrays is enough that it’s recommended to
-avoid using them unless you are certain that they are useful in your
-code.
+关于稀疏数组的困惑已经足够多，因此建议
+除非你确定它们在你的代码中有用，否则避免使用它们。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 var items = [, ,];
@@ -49,22 +49,26 @@ var items = [, ,];
 var colors = ["red", , "blue"];
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 var items = [];
 ```
 
-// trailing comma (after the last element) is not a problem
+// 末尾逗号（最后一个元素后面的逗号）不是问题
 
 ```javascript
 var colors = ["red", "blue"];
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.4 中添加的。
+
+## 参考资料
 
 <RuleReferences />

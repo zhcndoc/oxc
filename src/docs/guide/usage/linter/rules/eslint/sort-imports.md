@@ -1,6 +1,7 @@
 ---
 title: "eslint/sort-imports"
-category: "Style"
+category: "样式"
+version: "0.4.4"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,21 +16,21 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule checks all import declarations and verifies that all imports are first sorted
-by the used member syntax and then alphabetically by the first member or alias name.
+此规则会检查所有 import 声明，并验证所有 import 是否先按使用的成员语法排序，
+再按第一个成员或别名名称的字母顺序排序。
 
-When declaring multiple imports, a sorted list of import declarations make it easier for developers to read
-the code and find necessary imports later.
+在声明多个 import 时，排序后的 import 声明列表会让开发者更容易阅读
+代码，并在之后找到所需的 import。
 
-### Why is this bad?
+### 为什么这不好？
 
-Consistent import sorting can be useful for readability and maintainability of code.
+一致的 import 排序有助于提高代码的可读性和可维护性。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 import { b, a, c } from "foo.js";
@@ -38,9 +39,9 @@ import d from "foo.js";
 import e from "bar.js";
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allowSeparatedGroups
 
@@ -48,7 +49,7 @@ type: `boolean`
 
 default: `false`
 
-When `true`, the rule allows import groups separated by blank lines to be treated independently.
+当为 `true` 时，该规则允许将由空行分隔的 import 组视为彼此独立。
 
 ### ignoreCase
 
@@ -56,7 +57,7 @@ type: `boolean`
 
 default: `false`
 
-When `true`, the rule ignores case-sensitivity when sorting import names.
+当为 `true` 时，该规则在排序 import 名称时忽略大小写。
 
 ### ignoreDeclarationSort
 
@@ -64,7 +65,7 @@ type: `boolean`
 
 default: `false`
 
-When `true`, the rule ignores the sorting of import declarations (the order of `import` statements).
+当为 `true` 时，该规则忽略 import 声明的排序（`import` 语句的顺序）。
 
 ### ignoreMemberSort
 
@@ -72,7 +73,7 @@ type: `boolean`
 
 default: `false`
 
-When `true`, the rule ignores the sorting of import members within a single import declaration.
+当为 `true` 时，该规则忽略单个 import 声明内部 import 成员的排序。
 
 ### memberSyntaxSortOrder
 
@@ -80,17 +81,21 @@ type: `array`
 
 default: `["none", "all", "multiple", "single"]`
 
-Specifies the sort order of different import syntaxes.
-Must include all 4 kinds!
+指定不同 import 语法的排序顺序。
+必须包含全部 4 种！
 
 #### memberSyntaxSortOrder[n]
 
 type: `"none" | "all" | "multiple" | "single"`
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.4.4 中添加。
+
+## 参考
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-inline-comments"
 category: "Pedantic"
+version: "1.34.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,48 +16,48 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallows comments on the same line as code.
+不允许在代码同一行上添加注释。
 
-### Why is this bad?
+### 为什么这不好？
 
-Comments placed at the end of a line of code can make code harder to read.
-They can easily be missed when scanning vertically, and they make lines longer.
-Moving comments to their own lines makes them more prominent and reduces line length.
+放在代码行末尾的注释会让代码更难阅读。
+在纵向浏览时，它们很容易被忽略，而且会使行更长。
+将注释放到单独的行上会让它们更显眼，并减少行长度。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
-var a = 1; // inline comment
-var b = 2; /* another inline comment */
+var a = 1; // 行内注释
+var b = 2; /* 另一个行内注释 */
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
-// comment on its own line
+// 单独一行的注释
 var a = 1;
 
-/* block comment on its own line */
+/* 单独一行的块注释 */
 var b = 2;
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### ignorePattern
 
 type: `string`
 
-A regex pattern to ignore certain inline comments.
+用于忽略某些行内注释的正则表达式模式。
 
-Comments matching this pattern will not be reported.
+匹配此模式的注释将不会被报告。
 
-Example configuration:
+配置示例：
 
 ```json
 {
@@ -64,10 +65,14 @@ Example configuration:
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v1.34.0 中添加。
+
+## 参考
 
 <RuleReferences />

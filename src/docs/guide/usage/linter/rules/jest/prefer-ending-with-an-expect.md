@@ -1,6 +1,7 @@
 ---
 title: "jest/prefer-ending-with-an-expect"
-category: "风格"
+category: "Style"
+version: "1.60.0"
 default: false
 type_aware: false
 fix: "none"
@@ -125,6 +126,10 @@ default: `["expect"]`
 
 <RuleHowToUse />
 
-## 参考资料
+## Version
+
+此规则在 v1.60.0 中添加。
+
+## References
 
 <RuleReferences />

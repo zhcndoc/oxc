@@ -1,7 +1,8 @@
 ---
 title: "eslint/getter-return"
-category: "Nursery"
-default: false
+category: "Correctness"
+version: "0.0.3"
+default: true
 type_aware: false
 fix: "none"
 ---
@@ -70,6 +71,10 @@ default: `false`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则是在 v0.0.3 中添加的。
+
+## 参考资料
 
 <RuleReferences />

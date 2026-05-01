@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-case-declarations"
-category: "吹毛求疵"
+category: "Pedantic"
+version: "0.0.4"
 default: false
 type_aware: false
 fix: "fixable_suggestion"
@@ -68,6 +69,10 @@ switch (foo) {
 ## 使用方法
 
 <RuleHowToUse />
+
+## 版本
+
+此规则是在 v0.0.4 中添加的。
 
 ## 参考资料
 

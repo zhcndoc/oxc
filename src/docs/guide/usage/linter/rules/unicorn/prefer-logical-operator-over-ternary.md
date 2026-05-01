@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-logical-operator-over-ternary"
 category: "Style"
+version: "0.0.15"
 default: false
 type_aware: false
 fix: "fixable_suggestion"
@@ -15,34 +16,38 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule finds ternary expressions that can be simplified to a logical operator.
+此规则会查找可以简化为逻辑运算符的三元表达式。
 
-### Why is this bad?
+### 为什么这不好？
 
-Using a logical operator is shorter and simpler than a ternary expression.
+使用逻辑运算符比三元表达式更短，也更简单。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 const foo = bar ? bar : baz;
 console.log(foo ? foo : bar);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 const foo = bar || baz;
 console.log(foo ?? bar);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.15 中添加的。
+
+## 参考资料
 
 <RuleReferences />

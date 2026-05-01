@@ -1,6 +1,7 @@
 ---
 title: "vitest/prefer-called-times"
 category: "Style"
+version: "1.35.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,17 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule aims to enforce the use of `toBeCalledTimes(1)` or `toHaveBeenCalledTimes(1)` over `toBeCalledOnce()` or `toHaveBeenCalledOnce()`.
+此规则旨在强制使用 `toBeCalledTimes(1)` 或 `toHaveBeenCalledTimes(1)`，而不是 `toBeCalledOnce()` 或 `toHaveBeenCalledOnce()`。
 
-### Why is this bad?
+### 为什么这不好？
 
-This rule aims to enforce the use of `toBeCalledTimes(1)` or `toHaveBeenCalledTimes(1)` over `toBeCalledOnce()` or `toHaveBeenCalledOnce()`.
+此规则旨在强制使用 `toBeCalledTimes(1)` 或 `toHaveBeenCalledTimes(1)`，而不是 `toBeCalledOnce()` 或 `toHaveBeenCalledOnce()`。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 test("foo", () => {
@@ -36,7 +37,7 @@ test("foo", () => {
 });
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 test("foo", () => {
@@ -47,10 +48,14 @@ test("foo", () => {
 });
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则添加于 v1.35.0。
+
+## 参考资料
 
 <RuleReferences />

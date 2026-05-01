@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-useless-return"
 category: "Pedantic"
+version: "1.32.0"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,19 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 功能
 
-Disallows redundant return statements.
+禁止多余的 return 语句。
 
-### Why is this bad?
+### 为什么这不好？
 
-A `return;` statement with nothing after it is redundant, and has no effect
-on the runtime behavior of a function. This can be confusing, so it's better
-to disallow these redundant statements.
+后面没有任何内容的 `return;` 语句是多余的，并且对函数的运行时行为没有任何影响。这可能会造成困惑，因此最好禁止这类多余语句。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 function foo() {
@@ -47,7 +46,7 @@ function baz() {
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 function foo() {
@@ -66,10 +65,14 @@ function baz() {
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.32.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

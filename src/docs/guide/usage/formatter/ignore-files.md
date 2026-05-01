@@ -2,6 +2,16 @@
 
 Oxfmt 提供了多种排除文件不进行格式化的方法。
 
+Some ignore mechanisms apply globally, while others are scoped to the config file they belong to:
+
+| 机制                              | 作用范围              |
+| --------------------------------- | --------------------- |
+| 带有 `!` 前缀的 CLI 路径         | 全局                  |
+| `.prettierignore` / `--ignore-path` | 全局                |
+| 配置中的 `ignorePatterns`         | 仅限该配置           |
+
+When using [nested config](./config#create-a-config-file), `ignorePatterns` only applies to files that are resolved by that particular config file. Global mechanisms always apply regardless of which config file is in effect.
+
 ## `ignorePatterns`
 
 推荐使用此方式来忽略文件。将其添加到你的 Oxfmt 配置中：

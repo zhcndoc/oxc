@@ -1,6 +1,7 @@
 ---
 title: "typescript/non-nullable-type-assertion-style"
 category: "Restriction"
+version: "1.12.0"
 default: false
 type_aware: true
 fix: "fixable_fix"
@@ -16,28 +17,28 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-This rule prefers a non-null assertion over an explicit type cast for non-nullable types.
+此规则优先使用非空断言，而不是对不可为空类型显式进行类型转换。
 
-### Why is this bad?
+### 为什么这不好？
 
-When you know that a value cannot be `null` or `undefined`, you can use either a non-null assertion (`!`) or a type assertion (`as Type`). The non-null assertion is more concise and clearly communicates the intent that you're asserting the value is not `null`/`undefined`.
+当你知道某个值不可能是 `null` 或 `undefined` 时，你可以使用非空断言（`!`）或类型断言（`as Type`）。非空断言更加简洁，并且能清楚地表达你在断言该值不是 `null`/`undefined` 的意图。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
 declare const value: string | null;
 
-// Type assertion when non-null assertion would be clearer
+// 当非空断言更清晰时使用了类型断言
 const result1 = value as string;
 
 declare const maybe: number | undefined;
 const result2 = maybe as number;
 
-// In function calls
+// 在函数调用中
 function takesString(s: string) {
   console.log(s);
 }
@@ -45,33 +46,37 @@ function takesString(s: string) {
 takesString(value as string);
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 declare const value: string | null;
 
-// Non-null assertion for non-nullable types
+// 对不可为空类型使用非空断言
 const result1 = value!;
 
 declare const maybe: number | undefined;
 const result2 = maybe!;
 
-// In function calls
+// 在函数调用中
 function takesString(s: string) {
   console.log(s);
 }
 
 takesString(value!);
 
-// Type assertion for actual type changes is still fine
+// 对实际类型变化使用类型断言仍然可以
 declare const unknown: unknown;
-const str = unknown as string; // This is a different type, not just removing null
+const str = unknown as string; // 这是不同的类型，不只是移除 null
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则已在 v1.12.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

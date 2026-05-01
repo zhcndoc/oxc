@@ -1,6 +1,7 @@
 ---
 title: "jsdoc/require-yields"
-category: "Correctness"
+category: "正确性"
+version: "0.3.2"
 default: false
 type_aware: false
 fix: "none"
@@ -15,18 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Requires that yields are documented.
-Will also report if multiple `@yields` tags are present.
+要求记录 yields。
+如果存在多个 `@yields` 标签，也会报告。
 
-### Why is this bad?
+### 为什么这不好？
 
-The rule is intended to prevent the omission of `@yields` tags when they are necessary.
+该规则旨在防止在需要 `@yields` 标签时遗漏它们。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 function* quux(foo) {
@@ -40,7 +41,7 @@ function* quux(foo) {
 function* quux(foo) {}
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 /** * @yields Foo */
@@ -49,9 +50,9 @@ function* quux(foo) {
 }
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个具有以下属性的配置对象：
 
 ### exemptedBy
 
@@ -59,7 +60,7 @@ type: `string[]`
 
 default: `["inheritdoc"]`
 
-Functions with these tags will be exempted from the lint rule.
+带有这些标签的函数将被此 lint 规则豁免。
 
 ### forceRequireYields
 
@@ -67,7 +68,7 @@ type: `boolean`
 
 default: `false`
 
-When `true`, all generator functions must have a `@yields` tag, even if they don't yield a value or have an empty body.
+当为 `true` 时，所有生成器函数都必须有 `@yields` 标签，即使它们不产出值或主体为空。
 
 ### withGeneratorTag
 
@@ -75,12 +76,16 @@ type: `boolean`
 
 default: `false`
 
-When `true`, require `@yields` when a `@generator` tag is present.
+当为 `true` 时，在存在 `@generator` 标签时要求提供 `@yields`。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.3.2 中添加。
+
+## 参考
 
 <RuleReferences />

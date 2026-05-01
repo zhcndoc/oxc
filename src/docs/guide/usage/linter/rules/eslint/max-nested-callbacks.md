@@ -1,6 +1,7 @@
 ---
 title: "eslint/max-nested-callbacks"
 category: "Pedantic"
+version: "0.15.12"
 default: false
 type_aware: false
 fix: "none"
@@ -77,6 +78,10 @@ function handleFoo4() {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.15.12 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "vitest/prefer-import-in-mock"
 category: "Style"
+version: "1.49.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -55,6 +56,10 @@ vi.doMock(import("./path/to/module"));
 
 <RuleHowToUse />
 
-## 参考资料
+## Version
+
+此规则在 v1.49.0 中添加。
+
+## References
 
 <RuleReferences />

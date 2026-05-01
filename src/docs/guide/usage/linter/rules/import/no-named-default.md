@@ -1,6 +1,7 @@
 ---
 title: "import/no-named-default"
-category: "Style"
+category: "样式"
+version: "0.15.3"
 default: false
 type_aware: false
 fix: "none"
@@ -15,35 +16,39 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Reports use of a default export as a locally named import.
+报告将默认导出作为本地命名导入的用法。
 
-### Why is this bad?
+### 为什么这不好？
 
-Rationale: the syntax exists to import default exports expressively, let's use it.
+理由：这种语法就是为了以表达性的方式导入默认导出，让我们用起来吧。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
-// message: Using exported name 'bar' as identifier for default export.
+// message: 将导出的名称 'bar' 作为默认导出的标识符。
 import { default as foo } from "./foo.js";
 import { default as foo, bar } from "./foo.js";
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 import foo from "./foo.js";
 import foo, { bar } from "./foo.js";
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.15.3 中添加。
+
+## 参考资料
 
 <RuleReferences />

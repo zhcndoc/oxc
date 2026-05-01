@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-dupe-else-if"
-category: "正确性"
+category: "Correctness"
+version: "0.0.5"
 default: true
 type_aware: false
 fix: "无"
@@ -99,6 +100,10 @@ if (n === 1) {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.0.5 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -341,6 +341,16 @@ linting 工具的选项。
 当两者都设置时，CLI 标志优先于此值。
 仅在根配置文件中支持。
 
+### options.respectEslintDisableDirectives
+
+type: `boolean`
+
+除了其原生 `oxlint-*` 指令外，oxlint 是否应遵守 `eslint-disable*` 和 `eslint-enable*`
+指令。
+
+默认值为 `true`。
+仅在根配置文件中支持。
+
 ### options.typeAware
 
 类型：`boolean`
@@ -514,7 +524,7 @@ linting 工具的选项。
 
 #### settings.jest.version
 
-类型：`integer`
+type: `integer | string`
 
 默认值：`null`
 
@@ -713,7 +723,7 @@ Jest 版本——接受数字（`29`）或 semver 字符串（`"29.1.0"` 或 `"v
     "react": {
       "formComponents": [
         "CustomForm",
-        // OtherForm 被视为表单组件并具有一个 endpoint 属性
+        // 其他表单被视为表单组件并具有一个 endpoint 属性
         { "name": "OtherForm", "formAttribute": "endpoint" },
         // 允许在必要时指定多个属性
         { "name": "Form", "formAttribute": ["registerEndpoint", "loginEndpoint"] },

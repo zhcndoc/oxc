@@ -1,6 +1,7 @@
 ---
 title: "jest/prefer-importing-jest-globals"
-category: "风格"
+category: "Style"
+version: "1.60.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -66,6 +67,10 @@ type: `"hook" | "describe" | "test" | "expect" | "jest" | "unknown"`
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则已在 v1.60.0 中添加。
 
 ## 参考资料
 

@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-else-return"
 category: "Pedantic"
+version: "0.9.10"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -176,6 +177,10 @@ function foo() {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则添加于 v0.9.10。
+
+## 参考资料
 
 <RuleReferences />

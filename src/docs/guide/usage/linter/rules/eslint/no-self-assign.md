@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-self-assign"
-category: "Correctness"
+category: "正确性"
+version: "0.0.5"
 default: true
 type_aware: false
 fix: "none"
@@ -15,18 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 其作用
 
-Disallow assignments where both sides are exactly the same.
+禁止左右两边完全相同的赋值。
 
-### Why is this bad?
+### 为什么这不好？
 
-Self assignments have no effect, so probably those are an error due to incomplete
-refactoring. Those indicate that what you should do is still remaining.
+自我赋值没有任何效果，因此它们很可能是由于重构不完整导致的错误。这表明你还需要完成某些操作。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 foo = foo;
@@ -48,30 +48,30 @@ obj["a"] = obj["a"];
 obj[a] = obj[a];
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 foo = bar;
 [a, b] = [b, a];
 
-// This pattern is warned by the `no-use-before-define` rule.
+// 此模式会被 `no-use-before-define` 规则警告。
 let foo = foo;
 
-// The default values have an effect.
+// 默认值会产生效果。
 [foo = 1] = [foo];
 
-// This ignores if there is a function call.
+// 如果存在函数调用，则会忽略这种情况。
 obj.a().b = obj.a().b;
 a().b = a().b;
 
-// `&=` and `|=` have an effect on non-integers.
+// `&=` 和 `|=` 会对非整数产生影响。
 foo &= foo;
 foo |= foo;
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### props
 
@@ -79,9 +79,9 @@ type: `boolean`
 
 default: `true`
 
-The `props` option when set to `false`, disables the checking of properties.
+将 `props` 选项设置为 `false` 时，会禁用对属性的检查。
 
-With `props` set to `false` the following are examples of correct code:
+当 `props` 设为 `false` 时，以下是正确代码的示例：
 
 ```javascript
 obj.a = obj.a;
@@ -90,10 +90,14 @@ obj["a"] = obj["a"];
 obj[a] = obj[a];
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.5 中添加的。
+
+## 参考资料
 
 <RuleReferences />

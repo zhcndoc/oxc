@@ -1,6 +1,7 @@
 ---
 title: "unicorn/no-single-promise-in-promise-methods"
-category: "Correctness"
+category: "正确性"
+version: "0.2.18"
 default: true
 type_aware: false
 fix: "conditional_fix"
@@ -15,18 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallow passing single-element arrays to `Promise` methods.
+禁止将单元素数组传递给 `Promise` 方法。
 
-### Why is this bad?
+### 为什么这不好？
 
-Passing a single-element array to `Promise.all()`, `Promise.any()`, or
-`Promise.race()` is likely a mistake.
+将单元素数组传递给 `Promise.all()`、`Promise.any()` 或
+`Promise.race()` 很可能是一个错误。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 async function bad() {
@@ -37,7 +38,7 @@ async function bad() {
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 async function good() {
@@ -49,10 +50,14 @@ async function good() {
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.2.18 中添加。
+
+## 参考资料
 
 <RuleReferences />

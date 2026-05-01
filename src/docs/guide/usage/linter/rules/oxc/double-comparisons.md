@@ -1,6 +1,7 @@
 ---
 title: "oxc/double-comparisons"
 category: "Correctness"
+version: "0.0.22"
 default: true
 type_aware: false
 fix: "fixable_fix"
@@ -15,34 +16,38 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule checks for double comparisons in logical expressions.
+此规则检查逻辑表达式中的双重比较。
 
-### Why is this bad?
+### 这为什么不好？
 
-Redundant comparisons can be confusing and make code harder to understand.
+冗余的比较可能会令人困惑，并使代码更难理解。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 x === y || x < y;
 x < y || x === y;
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 x <= y;
 x >= y;
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.22 中添加。
+
+## 参考资料
 
 <RuleReferences />

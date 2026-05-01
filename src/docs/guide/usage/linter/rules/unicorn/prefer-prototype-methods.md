@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-prototype-methods"
 category: "Pedantic"
+version: "0.0.21"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,17 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule prefers borrowing methods from the prototype instead of the instance.
+此规则倾向于从原型而不是实例中借用方法。
 
-### Why is this bad?
+### 为什么这不好？
 
-“Borrowing” a method from an instance of `Array` or `Object` is less clear than getting it from the corresponding prototype.
+从 `Array` 或 `Object` 的实例中“借用”方法，不如直接从相应的原型中获取它来得清晰。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 const array = [].slice.apply(bar);
@@ -33,7 +34,7 @@ const type = {}.toString.call(foo);
 Reflect.apply([].forEach, arrayLike, [callback]);
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 const array = Array.prototype.slice.apply(bar);
@@ -42,10 +43,14 @@ Reflect.apply(Array.prototype.forEach, arrayLike, [callback]);
 const maxValue = Math.max.apply(Math, numbers);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.21 中添加。
+
+## 参考资料
 
 <RuleReferences />

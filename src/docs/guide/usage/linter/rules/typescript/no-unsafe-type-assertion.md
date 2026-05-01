@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-unsafe-type-assertion"
 category: "Suspicious"
+version: "1.12.0"
 default: false
 type_aware: true
 fix: "none"
@@ -16,21 +17,17 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 功能说明
 
-Disallows unsafe type assertions that narrow a type.
+禁止会缩小类型范围的不安全类型断言。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-Type assertions that narrow a type bypass TypeScript's type-checking and can lead to
-runtime errors. Type assertions that broaden a type are safe because TypeScript
-essentially knows _less_ about a type. Instead of using type assertions to narrow a
-type, it's better to rely on type guards, which help avoid potential runtime errors
-caused by unsafe type assertions.
+会缩小类型范围的类型断言会绕过 TypeScript 的类型检查，并可能导致运行时错误。会扩大类型范围的类型断言是安全的，因为 TypeScript 本质上对某个类型“知道得更少”。与其使用类型断言来缩小类型范围，不如依赖类型守卫，它们有助于避免由不安全类型断言引起的潜在运行时错误。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
 function f() {
@@ -42,7 +39,7 @@ const items = [1, "2", 3, "4"];
 const number = items[0] as number;
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 function f() {
@@ -54,10 +51,14 @@ const items = [1, "2", 3, "4"];
 const number = items[0] as number | string | undefined;
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则新增于 v1.12.0。
+
+## 参考资料
 
 <RuleReferences />

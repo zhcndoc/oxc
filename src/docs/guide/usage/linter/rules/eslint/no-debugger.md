@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-debugger"
-category: "正确性"
+category: "Correctness"
+version: "0.0.3"
 default: true
 type_aware: false
 fix: "fixable_fix"
@@ -49,6 +50,10 @@ async function main() {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+该规则于 v0.0.3 中添加。
+
+## 参考资料
 
 <RuleReferences />

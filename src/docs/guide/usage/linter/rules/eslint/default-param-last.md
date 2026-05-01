@@ -1,6 +1,7 @@
 ---
 title: "eslint/default-param-last"
 category: "Style"
+version: "0.2.15"
 default: false
 type_aware: false
 fix: "none"
@@ -74,6 +75,10 @@ function combine(a: number, b?: number, c: number = 3) {}
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则于 v0.2.15 中加入。
+
+## 参考资料
 
 <RuleReferences />

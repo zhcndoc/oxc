@@ -1,6 +1,7 @@
 ---
 title: "eslint/eqeqeq"
 category: "Pedantic"
+version: "0.0.3"
 default: false
 type_aware: false
 fix: "conditional_dangerous_fix"
@@ -204,6 +205,10 @@ if (foo != null) {
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+该规则是在 v0.0.3 中添加的。
 
 ## 参考
 

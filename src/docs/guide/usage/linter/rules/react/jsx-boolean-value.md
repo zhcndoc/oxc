@@ -1,6 +1,7 @@
 ---
 title: "react/jsx-boolean-value"
 category: "Style"
+version: "0.7.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,24 +16,24 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforce a consistent boolean attribute style in your code.
+在你的代码中强制使用一致的布尔属性样式。
 
-### Why is this bad?
+### 为什么这不好？
 
-In JSX, you can set a boolean attribute to `true` or omit it.
-This rule will enforce a consistent style for boolean attributes.
+在 JSX 中，你可以将布尔属性设置为 `true`，或者省略它。
+此规则将强制布尔属性使用一致的样式。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule with default `"never"` mode:
+以下是此规则在默认 `"never"` 模式下的**错误**代码示例：
 
 ```jsx
 const Hello = <Hello personal={true} />;
 ```
 
-Examples of **correct** code for this rule with default `"never"` mode:
+以下是此规则在默认 `"never"` 模式下的**正确**代码示例：
 
 ```jsx
 const Hello = <Hello personal />;
@@ -40,35 +41,35 @@ const Hello = <Hello personal />;
 const Foo = <Foo isSomething={false} />;
 ```
 
-Examples of **incorrect** code for this rule with `"always"` mode:
+以下是此规则在 `"always"` 模式下的**错误**代码示例：
 
 ```jsx
 const Hello = <Hello personal />;
 ```
 
-Examples of **correct** code for this rule with `"always"` mode:
+以下是此规则在 `"always"` 模式下的**正确**代码示例：
 
 ```jsx
 const Hello = <Hello personal={true} />;
 ```
 
-## Configuration
+## 配置
 
-### The 1st option
+### 第 1 个选项
 
 type: `"always" | "never"`
 
 #### `"always"`
 
-All boolean attributes must have explicit values.
+所有布尔属性都必须显式指定值。
 
 #### `"never"`
 
-All boolean attributes must omit values that are set to `true`.
+所有布尔属性都必须省略被设置为 `true` 的值。
 
-### The 2nd option
+### 第 2 个选项
 
-This option is an object with the following properties:
+此选项是一个包含以下属性的对象：
 
 #### always
 
@@ -76,8 +77,8 @@ type: `string[]`
 
 default: `[]`
 
-List of attribute names that should always have explicit boolean values.
-Only necessary when main mode is `"never"`.
+应始终具有显式布尔值的属性名列表。
+仅在主模式为 `"never"` 时需要。
 
 #### assumeUndefinedIsFalse
 
@@ -85,16 +86,16 @@ type: `boolean`
 
 default: `false`
 
-If `true`, treats `prop={false}` as equivalent to the prop being `undefined`.
-When combined with `"never"` mode, this will enforce that the attribute is omitted entirely.
+如果为 `true`，将把 `prop={false}` 视为与该 prop 为 `undefined` 等价。
+与 `"never"` 模式结合时，这将强制该属性完全省略。
 
 ```jsx
-// With "assumeUndefinedIsFalse": true
-<App foo={false} />; // Incorrect
-<App />; // Correct
+// 当 "assumeUndefinedIsFalse": true 时
+<App foo={false} />; // 错误
+<App />; // 正确
 ```
 
-This option does nothing in `"always"` mode.
+此选项在 `"always"` 模式下不起作用。
 
 #### never
 
@@ -102,13 +103,17 @@ type: `string[]`
 
 default: `[]`
 
-List of attribute names that should never have explicit boolean values.
-Only necessary when main mode is `"always"`.
+不应始终具有显式布尔值的属性名列表。
+仅在主模式为 `"always"` 时需要。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.7.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

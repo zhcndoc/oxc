@@ -1,6 +1,7 @@
 ---
 title: "unicorn/prefer-modern-math-apis"
 category: "Restriction"
+version: "0.1.1"
 default: false
 type_aware: false
 fix: "pending"
@@ -15,39 +16,43 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Checks for usage of legacy patterns for mathematical operations.
+检查是否使用了用于数学运算的旧式模式。
 
-### Why is this bad?
+### 为什么这不好？
 
-Modern JavaScript provides more concise and readable alternatives to legacy patterns.
+现代 JavaScript 提供了更简洁、更易读的替代方案来取代旧式模式。
 
-Currently, the following cases are checked:
+目前会检查以下情况：
 
-- Prefer `Math.log10(x)` over alternatives
-- Prefer `Math.hypot(…)` over alternatives
+- 优先使用 `Math.log10(x)`，而不是其他替代写法
+- 优先使用 `Math.hypot(…)`，而不是其他替代写法
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 Math.log(x) * Math.LOG10E;
 Math.sqrt(a * a + b * b);
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 Math.log10(x);
 Math.hypot(a, b);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.1.1 中添加。
+
+## 参考资料
 
 <RuleReferences />

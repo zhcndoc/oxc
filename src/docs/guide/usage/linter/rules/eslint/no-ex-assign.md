@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-ex-assign"
 category: "Correctness"
+version: "0.0.4"
 default: true
 type_aware: false
 fix: "none"
@@ -15,21 +16,21 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallow reassigning exceptions in catch clauses.
+禁止在 catch 子句中重新赋值异常。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-If a catch clause in a try statement accidentally
-(or purposely) assigns another value to the exception parameter,
-it is impossible to refer to the error from that point on.
-Since there is no arguments object to offer alternative access to this data,
-assignment of the parameter is absolutely destructive.
+如果 try 语句中的 catch 子句意外地
+（或故意地）给异常参数赋予另一个值，
+从那一刻起就无法再引用该错误。
+由于没有 arguments 对象来提供访问这些数据的其他方式，
+对该参数的赋值会造成彻底破坏。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 try {
@@ -39,7 +40,7 @@ try {
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 try {
@@ -49,10 +50,14 @@ try {
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.0.4 中添加。
+
+## 参考资料
 
 <RuleReferences />

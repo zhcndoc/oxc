@@ -1,6 +1,7 @@
 ---
 title: "typescript/prefer-return-this-type"
 category: "Style"
+version: "1.12.0"
 default: false
 type_aware: true
 fix: "fixable_fix"
@@ -16,24 +17,24 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule enforces using `this` types for return types when possible.
+该规则强制在可能的情况下使用 `this` 类型作为返回类型。
 
-### Why is this bad?
+### 为什么这不好？
 
-Classes that have methods which return the instance itself should use `this` as the return type instead of the class name. This provides better type safety for inheritance, as the return type will be the actual subclass type rather than the base class type.
+那些方法返回自身实例的类，应该使用 `this` 作为返回类型，而不是类名。这样可以为继承提供更好的类型安全性，因为返回类型将是实际的子类类型，而不是基类类型。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```ts
 class Builder {
   private value: string = "";
 
   setValue(value: string): Builder {
-    // Should return 'this'
+    // 应该返回 'this'
     this.value = value;
     return this;
   }
@@ -45,18 +46,18 @@ class Builder {
 
 class FluentAPI {
   method1(): FluentAPI {
-    // Should return 'this'
+    // 应该返回 'this'
     return this;
   }
 
   method2(): FluentAPI {
-    // Should return 'this'
+    // 应该返回 'this'
     return this;
   }
 }
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```ts
 class Builder {
@@ -82,19 +83,23 @@ class FluentAPI {
   }
 }
 
-// Now inheritance works correctly
+// 现在继承可以正常工作
 class ExtendedBuilder extends Builder {
   setPrefix(prefix: string): this {
-    // The return type is 'this' (ExtendedBuilder), not Builder
+    // 返回类型是 'this'（ExtendedBuilder），而不是 Builder
     return this.setValue(prefix + this.getValue());
   }
 }
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v1.12.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

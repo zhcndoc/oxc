@@ -1,6 +1,7 @@
 ---
 title: "typescript/no-unnecessary-type-assertion"
 category: "Suspicious"
+version: "1.12.0"
 default: false
 type_aware: true
 fix: "fixable_fix"
@@ -16,53 +17,53 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule disallows type assertions that do not change the type of an expression.
+该规则禁止不会改变表达式类型的类型断言。
 
-### Why is this bad?
+### 为什么这不好？
 
-Type assertions that don't actually change the type of an expression are unnecessary and can be safely removed. They add visual noise without providing any benefit and may indicate confusion about TypeScript's type system.
+实际上不会改变表达式类型的类型断言是多余的，可以安全移除。它们会增加视觉噪音，却没有任何好处，并且可能表明对 TypeScript 类型系统存在困惑。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```ts
 const str: string = "hello";
-const redundant = str as string; // unnecessary, str is already string
+const redundant = str as string; // 不必要，str 已经是 string
 
 function getString(): string {
   return "hello";
 }
-const result = getString() as string; // unnecessary, getString() already returns string
+const result = getString() as string; // 不必要，getString() 已经返回 string
 
 const num = 42;
-const alsoRedundant = num as 42; // unnecessary if TypeScript can infer literal type
+const alsoRedundant = num as 42; // 如果 TypeScript 可以推断字面量类型，则不必要
 
-// Unnecessary assertion to wider type
+// 不必要的向更宽泛类型的断言
 const literal = "hello" as string;
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```ts
 const unknown: unknown = "hello";
-const str = unknown as string; // necessary to narrow type
+const str = unknown as string; // 将类型收窄所必需
 
-const element = document.getElementById("myElement") as HTMLInputElement; // necessary for specific element type
+const element = document.getElementById("myElement") as HTMLInputElement; // 对特定元素类型而言是必需的
 
 const obj = { name: "John" };
-const name = obj.name as const; // necessary for literal type
+const name = obj.name as const; // 对字面量类型而言是必需的
 
-// No assertion needed
+// 不需要断言
 const str2: string = "hello";
 const num: number = 42;
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### checkLiteralConstAssertions
 
@@ -70,9 +71,9 @@ type: `boolean`
 
 default: `false`
 
-Whether to check literal const assertions like `'foo' as const`.
-When `false` (default), const assertions on literal types are not flagged.
-When `true`, these will be reported as unnecessary since the type is already a literal.
+是否检查类似 `'foo' as const` 的字面量 const 断言。
+当为 `false`（默认值）时，不会标记字面量类型上的 const 断言。
+当为 `true` 时，这些会被报告为不必要，因为该类型已经是字面量类型。
 
 ### typesToIgnore
 
@@ -80,14 +81,18 @@ type: `string[]`
 
 default: `[]`
 
-A list of type names to ignore when checking for unnecessary assertions.
-Type assertions to these types will not be flagged even if they appear unnecessary.
-Example: `["Foo", "Bar"]` to allow `x as Foo` or `x as Bar`.
+检查不必要断言时要忽略的类型名称列表。
+对这些类型的类型断言不会被标记，即使它们看起来是多余的。
+示例：`["Foo", "Bar"]` 用于允许 `x as Foo` 或 `x as Bar`。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v1.12.0 中添加。
+
+## 参考
 
 <RuleReferences />

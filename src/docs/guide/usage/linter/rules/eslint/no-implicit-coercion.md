@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-implicit-coercion"
 category: "Style"
+version: "1.33.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,19 +16,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallows shorthand type conversions using operators like `!!`, `+`, `""+ `, etc.
+禁止使用 `!!`、`+`、`""+ ` 等运算符进行简写类型转换。
 
-### Why is this bad?
+### 为什么这不好？
 
-Implicit type coercions using operators can be less clear than using explicit
-type conversion functions like `Boolean()`, `Number()`, and `String()`.
-Using explicit conversions makes the intent clearer and the code more readable.
+使用运算符进行隐式类型强制转换，可能不如使用 `Boolean()`、`Number()` 和 `String()` 这类显式类型转换函数清晰。
+使用显式转换能让意图更明确，代码也更易读。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则下**错误**的代码示例：
 
 ```javascript
 var b = !!foo;
@@ -35,7 +35,7 @@ var n = +foo;
 var s = "" + foo;
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则下**正确**的代码示例：
 
 ```javascript
 var b = Boolean(foo);
@@ -43,15 +43,15 @@ var n = Number(foo);
 var s = String(foo);
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allow
 
 type: `string[]`
 
-List of operators to allow. Valid values: `"!!"`, `"~"`, `"+"`, `"-"`, `"- -"`, `"*"`
+允许的运算符列表。有效值：`"!!"`、`"~"`、`"+"`、`"-"`、`"- -"`、`"*"`
 
 ### boolean
 
@@ -59,7 +59,7 @@ type: `boolean`
 
 default: `true`
 
-When `true`, warns on implicit boolean coercion (e.g., `!!foo`).
+当为 `true` 时，警告隐式布尔强制转换（例如，`!!foo`）。
 
 ### disallowTemplateShorthand
 
@@ -67,7 +67,7 @@ type: `boolean`
 
 default: `false`
 
-When `true`, disallows using template literals for string coercion (e.g., `` `${foo}` ``).
+当为 `true` 时，不允许使用模板字面量进行字符串强制转换（例如，`` `${foo}` ``）。
 
 ### number
 
@@ -75,7 +75,7 @@ type: `boolean`
 
 default: `true`
 
-When `true`, warns on implicit number coercion (e.g., `+foo`).
+当为 `true` 时，警告隐式数字强制转换（例如，`+foo`）。
 
 ### string
 
@@ -83,12 +83,16 @@ type: `boolean`
 
 default: `true`
 
-When `true`, warns on implicit string coercion (e.g., `"" + foo`).
+当为 `true` 时，警告隐式字符串强制转换（例如，`"" + foo`）。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v1.33.0 中新增。
+
+## 参考资料
 
 <RuleReferences />

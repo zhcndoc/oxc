@@ -1,6 +1,7 @@
 ---
 title: "jest/no-focused-tests"
 category: "Correctness"
+version: "0.0.8"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,22 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule reminds you to remove `.only` from your tests by raising a warning
-whenever you are using the exclusivity feature.
+当你使用排他性功能时，此规则会通过发出警告提醒你从测试中移除 `.only`。
 
-### Why is this bad?
+### 为什么这不好？
 
-Jest has a feature that allows you to focus tests by appending `.only` or
-prepending `f` to a test-suite or a test-case. This feature is really helpful to
-debug a failing test, so you don’t have to execute all of your tests. After you
-have fixed your test and before committing the changes you have to remove
-`.only` to ensure all tests are executed on your build system.
+Jest 提供了一项功能，可以通过在测试套件或测试用例后附加 `.only`，或者在前面加上 `f` 来聚焦测试。这个功能对于调试失败的测试非常有帮助，这样你就不必执行所有测试。在你修复测试之后，并且在提交更改之前，你必须移除 `.only`，以确保在你的构建系统上会执行所有测试。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 describe.only("foo", () => {});
@@ -46,21 +42,14 @@ fit.each`
 `();
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/v1.1.9/docs/rules/no-focused-tests.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
-
-```json
-{
-  "rules": {
-    "vitest/no-focused-tests": "error"
-  }
-}
-```
-
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.8 中添加的。
+
+## 参考资料
 
 <RuleReferences />

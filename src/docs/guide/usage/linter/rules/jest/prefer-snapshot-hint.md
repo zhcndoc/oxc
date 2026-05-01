@@ -1,6 +1,7 @@
 ---
 title: "jest/prefer-snapshot-hint"
-category: "正确性"
+category: "Correctness"
+version: "1.59.0"
 default: false
 type_aware: false
 fix: "none"
@@ -109,8 +110,8 @@ describe("cli", () => {
   describe("--version flag", () => {
     it("prints the version", async () => {
       snapshotOutput(await runCli(["--version"]), {
-        stdout: "version string",
-        stderr: "empty",
+        stdout: "版本字符串",
+        stderr: "空",
       });
     });
   });
@@ -119,7 +120,7 @@ describe("cli", () => {
     it("reads the config", async () => {
       const { stdout } = await runCli(["--config", "jest.config.js"]);
 
-      expect(stdout).toMatchSnapshot({}, "stdout: config settings");
+      expect(stdout).toMatchSnapshot({}, "stdout: 配置设置");
     });
 
     it("prints nothing to stderr", async () => {
@@ -132,7 +133,7 @@ describe("cli", () => {
       it("throws an error", async () => {
         await expect(
           runCli(["--config", "does-not-exist.js"]),
-        ).rejects.toThrowErrorMatchingSnapshot("stderr: config error");
+        ).rejects.toThrowErrorMatchingSnapshot("stderr: 配置错误");
       });
     });
   });
@@ -151,8 +152,8 @@ describe("cli", () => {
   describe("--version flag", () => {
     it("prints the version", async () => {
       snapshotOutput(await runCli(["--version"]), {
-        stdout: "version string",
-        stderr: "empty",
+        stdout: "版本字符串",
+        stderr: "空",
       });
     });
   });
@@ -207,6 +208,10 @@ describe("cli", () => {
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则在 v1.59.0 中添加。
 
 ## 参考资料
 

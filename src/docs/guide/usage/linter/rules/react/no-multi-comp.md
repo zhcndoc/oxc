@@ -1,6 +1,7 @@
 ---
 title: "react/no-multi-comp"
 category: "Restriction"
+version: "1.43.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,19 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 功能
 
-Prevents multiple React components from being defined in the same file.
+阻止在同一个文件中定义多个 React 组件。
 
-### Why is this bad?
+### 为什么这不好？
 
-Declaring multiple components in a single file can make it harder to navigate
-and maintain the codebase. Each component should ideally be in its own file
-for better organization and reusability.
+在单个文件中声明多个组件会使代码库更难导航和维护。为了更好的组织性和可复用性，每个组件理想情况下都应该放在各自的文件中。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```jsx
 function Foo({ name }) {
@@ -39,7 +38,7 @@ function Bar({ name }) {
 }
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```jsx
 function Foo({ name }) {
@@ -47,7 +46,7 @@ function Foo({ name }) {
 }
 ```
 
-## Configuration
+## 配置
 
 ### ignoreStateless
 
@@ -55,17 +54,18 @@ type: `boolean`
 
 default: `false`
 
-When `true`, the rule will ignore stateless components and will allow you to have multiple
-stateless components in the same file. Or one stateful component and one-or-more stateless
-components in the same file.
+当为 `true` 时，此规则将忽略无状态组件，并允许你在同一个文件中包含多个无状态组件。或者在同一个文件中包含一个有状态组件和一个或多个无状态组件。
 
-Stateless basically just means function components, including those created via
-`memo` and `forwardRef`.
+无状态基本上就是指函数组件，包括通过 `memo` 和 `forwardRef` 创建的组件。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v1.43.0 中添加的。
+
+## 参考资料
 
 <RuleReferences />

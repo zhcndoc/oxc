@@ -1,6 +1,7 @@
 ---
 title: "jsx-a11y/click-events-have-key-events"
-category: "Correctness"
+category: "正确性"
+version: "0.2.1"
 default: false
 type_aware: false
 fix: "none"
@@ -15,33 +16,37 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-Enforce onClick is accompanied by at least one of the following: onKeyUp, onKeyDown, onKeyPress.
+强制 onClick 至少伴随以下之一：onKeyUp、onKeyDown、onKeyPress。
 
-### Why is this bad?
+### 为什么这不好？
 
-Coding for the keyboard is important for users with physical disabilities who cannot use a mouse, AT compatibility, and screenreader users.
-This does not apply for interactive or hidden elements.
+为键盘进行编码对无法使用鼠标的身体残障用户、AT 兼容性以及屏幕阅读器用户都很重要。
+这不适用于交互元素或隐藏元素。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```jsx
 <div onClick={() => void 0} />
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```jsx
 <div onClick={() => void 0} onKeyDown={() => void 0} />
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v0.2.1 中添加。
+
+## 参考资料
 
 <RuleReferences />

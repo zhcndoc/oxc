@@ -1,6 +1,7 @@
 ---
 title: "eslint/no-await-in-loop"
 category: "Perf"
+version: "0.3.2"
 default: false
 type_aware: false
 fix: "none"
@@ -48,6 +49,10 @@ async function good() {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+该规则于 v0.3.2 中添加。
+
+## 参考资料
 
 <RuleReferences />

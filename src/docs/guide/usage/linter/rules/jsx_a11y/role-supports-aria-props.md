@@ -1,6 +1,7 @@
 ---
 title: "jsx-a11y/role-supports-aria-props"
-category: "Correctness"
+category: "正确性"
+version: "0.2.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,20 +16,19 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforce that elements with explicit or implicit roles defined contain only `aria-*` properties supported by that `role`.
-Many ARIA attributes (states and properties) can only be used on elements with particular roles.
-Some elements have implicit roles, such as `<a href="#" />`, which will resolve to `role="link"`.
+强制带有显式或隐式角色定义的元素仅包含该 `role` 支持的 `aria-*` 属性。
+许多 ARIA 属性（状态和属性）只能用于具有特定角色的元素上。
+某些元素具有隐式角色，例如 `<a href="#" />`，其将解析为 `role="link"`。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-Using ARIA attributes that are inconsistent with the element's role can cause problems for assistive
-technologies and their ability to understand or engage with the content of a page.
+使用与元素角色不一致的 ARIA 属性会给辅助技术及其理解或使用页面内容的能力带来问题。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```jsx
 <ul role="radiogroup" "aria-labelledby"="foo">
@@ -38,7 +38,7 @@ Examples of **incorrect** code for this rule:
 </ul>
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```jsx
 <ul role="radiogroup" aria-required "aria-labelledby"="foo">
@@ -48,10 +48,14 @@ Examples of **correct** code for this rule:
 </ul>
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则添加于 v0.2.0。
+
+## 参考资料
 
 <RuleReferences />

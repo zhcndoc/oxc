@@ -50,7 +50,7 @@ npx skills add https://github.com/oxc-project/oxc --skill migrate-oxfmt
 
 ## 步骤 1：升级 Prettier 到 v3.8（可选）
 
-Oxfmt 的输出最接近 Prettier v3.8。先升级可以最小化格式化差异。
+Oxfmt 的输出与 Prettier v3.8 最为接近。先升级可以将格式化差异降到最低。
 
 ## 步骤 2：安装 Oxfmt
 
@@ -80,7 +80,7 @@ $ deno add -D npm:oxfmt@latest
 
 ## 步骤 3：迁移配置
 
-Oxfmt 使用 `.oxfmtrc.json` 或 `.oxfmtrc.jsonc`。基本示例：
+Oxfmt 使用 `.oxfmtrc.json`、`.oxfmtrc.jsonc` 或 `oxfmt.config.ts`。基本示例：
 
 ```jsonc [.oxfmtrc.jsonc]
 {
@@ -102,15 +102,16 @@ module.exports = {
 };
 ```
 
-之后（`.oxfmtrc.jsonc`）：
+之后（`oxfmt.config.ts`）：
 
-```jsonc [.oxfmtrc.jsonc]
-{
-  "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "singleQuote": true,
-  "jsxSingleQuote": true,
-  "printWidth": 80,
-}
+```ts [oxfmt.config.ts]
+import { defineConfig } from "oxfmt";
+
+export default defineConfig({
+  singleQuote: true,
+  jsxSingleQuote: true,
+  printWidth: 80,
+});
 ```
 
 ### `prettierrc.yaml` 示例
@@ -203,4 +204,4 @@ npm run format
 
 ### 将 `.prettierignore` 替换为 `"ignorePatterns"`
 
-如果你不再使用 Prettier，可以选择将其内容从 `.prettierignore` 移动到 Oxfmt 配置中的 `"ignorePatterns"`。详见 [忽略文件](/docs/guide/usage/formatter/ignore-files)。
+如果你不再使用 Prettier，可以选择将其内容从 `.prettierignore` 移动到 Oxfmt 配置中的 `"ignorePatterns"`。请注意，`.prettierignore` 全局生效，而 `ignorePatterns` 仅作用于其所属的配置文件。在 [嵌套配置](./config#create-a-config-file) 设置中，这可能会改变哪些文件被忽略。更多信息请参见 [忽略文件](/docs/guide/usage/formatter/ignore-files)。

@@ -1,6 +1,7 @@
 ---
 title: "unicorn/no-useless-promise-resolve-reject"
-category: "Pedantic"
+category: "教条主义"
+version: "0.0.18"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,39 +16,33 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Disallows returning values wrapped in `Promise.resolve` or `Promise.reject`
-in an async function or a `Promise#then`/`catch`/`finally` callback.
+禁止在异步函数或 `Promise#then`/`catch`/`finally` 回调中返回被 `Promise.resolve` 或 `Promise.reject` 包裹的值。
 
-### Why is this bad?
+### 为什么这不好？
 
-Wrapping a return value in `Promise.resolve` in an async function
-or a `Promise#then`/`catch`/`finally` callback is unnecessary as all
-return values in async functions and promise callback functions are
-already wrapped in a `Promise`.
+在异步函数或 `Promise#then`/`catch`/`finally` 回调中，使用 `Promise.resolve` 包裹返回值是没有必要的，因为异步函数和 Promise 回调函数中的所有返回值都已经被包装在一个 `Promise` 中了。
 
-Similarly, returning an error wrapped in `Promise.reject` is equivalent
-to simply `throw`ing the error. This is the same for `yield`ing in
-async generators as well.
+同样，返回一个被 `Promise.reject` 包裹的错误等价于直接 `throw` 该错误。这在异步生成器中的 `yield` 也是同样如此。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```javascript
 async () => Promise.resolve(bar);
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```javascript
 async () => bar;
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### allowReject
 
@@ -55,12 +50,16 @@ type: `boolean`
 
 default: `false`
 
-If set to `true`, allows the use of `Promise.reject` in async functions and promise callbacks.
+如果设置为 `true`，则允许在异步函数和 promise 回调中使用 `Promise.reject`。
 
-## How to use
+## 使用方法
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则添加于 v0.0.18。
+
+## 参考资料
 
 <RuleReferences />

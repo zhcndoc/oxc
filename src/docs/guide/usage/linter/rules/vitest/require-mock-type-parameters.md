@@ -1,6 +1,7 @@
 ---
 title: "vitest/require-mock-type-parameters"
 category: "Correctness"
+version: "1.58.0"
 default: false
 type_aware: false
 fix: "none"
@@ -15,24 +16,25 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforces the use of type parameters on vi.fn(), and optionally on vi.importActual() and vi.importMock().
+强制在 `vi.fn()` 上使用类型参数，并可选择性地对 `vi.importActual()` 和 `vi.importMock()` 也进行检查。
 
-By default, only vi.fn() is checked. Set checkImportFunctions to true to also check vi.importActual() and vi.importMock().
+默认情况下，只检查 `vi.fn()`。将 `checkImportFunctions` 设置为 `true`，也会检查 `vi.importActual()` 和 `vi.importMock()`。
 
-### Why is this bad?
+### 为什么这不好？
 
-Without explicit type parameters, vi.fn() creates a mock typed as (...args: any[]) => any.
-This disables type checking between the mock and the real implementation, which can lead to two problems:
+如果没有显式的类型参数，`vi.fn()` 会创建一个类型为 `(...args: any[]) => any` 的 mock。
+这会禁用 mock 与真实实现之间的类型检查，可能导致两个问题：
 
-- tests that fail due to incorrect mock usage when they should pass, or worse, tests that pass while the mock silently diverges from the actual runtime behavior.
+- 测试由于错误的 mock 使用而失败，而它们本应通过
+- 或者更糟，测试通过了，但 mock 悄悄地偏离了实际运行时行为。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule configured as `{ "checkImportFunctions": false }`:
+以下是将此规则配置为 `{ "checkImportFunctions": false }` 时的**错误**代码示例：
 
-```js
+```ts
 import { vi } from "vitest";
 
 test("foo", () => {
@@ -40,9 +42,9 @@ test("foo", () => {
 });
 ```
 
-Examples of **incorrect** code for this rule configured as `{ "checkImportFunctions": true }`:
+以下是将此规则配置为 `{ "checkImportFunctions": true }` 时的**错误**代码示例：
 
-```js
+```ts
 import { vi } from "vitest";
 
 vi.mock("./example.js", async () => {
@@ -53,34 +55,34 @@ vi.mock("./example.js", async () => {
 const fs = await vi.importMock("fs");
 ```
 
-Examples of **correct** code for this rule configured as `{ "checkImportFunctions": false }`:
+以下是将此规则配置为 `{ "checkImportFunctions": false }` 时的**正确**代码示例：
 
-```js
-import { vi } from 'vitest'
+```ts
+import { vi } from "vitest";
 
- test('foo', () => {
-   const myMockedFnOne = vi.fn<(arg1: string, arg2: boolean) => number>()
-   const myMockedFnTwo = vi.fn<() => void>()
-   const myMockedFnThree = vi.fn<any>()
- })
+test("foo", () => {
+  const myMockedFnOne = vi.fn<(arg1: string, arg2: boolean) => number>();
+  const myMockedFnTwo = vi.fn<() => void>();
+  const myMockedFnThree = vi.fn<any>();
+});
 ```
 
-Examples of **correct** code for this rule configured as `{ "checkImportFunctions": true }`:
+以下是将此规则配置为 `{ "checkImportFunctions": true }` 时的**正确**代码示例：
 
-```js
+```ts
 import { vi } from "vitest";
 
 vi.mock("./example.js", async () => {
-  const originalModule = (await vi.importActual) < any > "./example.js";
+  const originalModule = await vi.importActual<any>("./example.js");
 
   return { ...originalModule };
 });
-const fs = (await vi.importMock) < any > "fs";
+const fs = await vi.importMock<any>("fs");
 ```
 
-## Configuration
+## 配置
 
-This rule accepts a configuration object with the following properties:
+此规则接受一个包含以下属性的配置对象：
 
 ### checkImportFunctions
 
@@ -88,12 +90,16 @@ type: `boolean`
 
 default: `false`
 
-Also require type parameters for `importActual` and `importMock`.
+同时要求为 `importActual` 和 `importMock` 提供类型参数。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v1.58.0 中添加的。
+
+## 参考
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "jest/prefer-to-have-been-called"
-category: "Style"
+category: "样式"
+version: "1.34.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,17 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Suggests using `toHaveBeenCalled()` or `not.toHaveBeenCalled()` over `toHaveBeenCalledTimes(0)` or `toBeCalledTimes(0)`.
+建议使用 `toHaveBeenCalled()` 或 `not.toHaveBeenCalled()`，而不是 `toHaveBeenCalledTimes(0)` 或 `toBeCalledTimes(0)`。
 
-### Why is this bad?
+### 为什么这不好？
 
-`toHaveBeenCalled()` is more explicit and readable than `toHaveBeenCalledTimes(0)`.
+`toHaveBeenCalled()` 比 `toHaveBeenCalledTimes(0)` 更明确、可读性更强。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 expect(mock).toHaveBeenCalledTimes(0);
@@ -33,7 +34,7 @@ expect(mock).toBeCalledTimes(0);
 expect(mock).not.toHaveBeenCalledTimes(0);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 expect(mock).not.toHaveBeenCalled();
@@ -41,10 +42,14 @@ expect(mock).toHaveBeenCalled();
 expect(mock).toHaveBeenCalledTimes(1);
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v1.34.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "eslint/max-lines-per-function"
 category: "Pedantic"
+version: "0.15.12"
 default: false
 type_aware: false
 fix: "none"
@@ -35,7 +36,7 @@ function foo() {
 
 /* { "eslint/max-lines-per-function": ["error", 4] } */
 function foo() {
-  // 一个注释后跟一个空行
+  // 一条注释后跟一个空行
 
   const x = 0;
 }
@@ -51,7 +52,7 @@ function foo() {
 
 /* { "eslint/max-lines-per-function": ["error", 5] } */
 function foo() {
-  // 一个注释后跟一个空行
+  // 一条注释后跟一个空行
 
   const x = 0;
 }
@@ -97,6 +98,10 @@ function foo() {
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则于 v0.15.12 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "jest/prefer-to-contain"
 category: "Style"
+version: "0.2.14"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,19 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-In order to have a better failure message, `toContain()` should be used upon
-asserting expectations on an array containing an object.
+为了获得更好的失败提示，在断言一个包含对象的数组时，应使用 `toContain()`。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-This rule triggers a warning if `toBe()`, `toEqual()` or `toStrictEqual()` is
-used to assert object inclusion in an array
+当使用 `toBe()`、`toEqual()` 或 `toStrictEqual()` 来断言对象包含在数组中时，此规则会触发警告
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```javascript
 expect(a.includes(b)).toBe(true);
@@ -37,28 +36,21 @@ expect(a.includes(b)).toEqual(true);
 expect(a.includes(b)).toStrictEqual(true);
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```javascript
 expect(a).toContain(b);
 expect(a).not.toContain(b);
 ```
 
-This rule is compatible with [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-contain.md),
-to use it, add the following configuration to your `.oxlintrc.json`:
-
-```json
-{
-  "rules": {
-    "vitest/prefer-to-contain": "error"
-  }
-}
-```
-
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则于 v0.2.14 中加入。
+
+## 参考资料
 
 <RuleReferences />

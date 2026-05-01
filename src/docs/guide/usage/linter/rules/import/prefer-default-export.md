@@ -1,6 +1,7 @@
 ---
-title: "import/优先默认导出"
-category: "样式"
+title: "import/prefer-default-export"
+category: "Style"
+version: "1.4.0"
 default: false
 type_aware: false
 fix: "none"
@@ -75,6 +76,10 @@ export default function bar() {}
 ## 如何使用
 
 <RuleHowToUse />
+
+## 版本
+
+此规则于 v1.4.0 中添加。
 
 ## 参考资料
 

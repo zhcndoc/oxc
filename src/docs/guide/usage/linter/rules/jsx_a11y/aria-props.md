@@ -1,6 +1,7 @@
 ---
 title: "jsx-a11y/aria-props"
 category: "Correctness"
+version: "0.0.22"
 default: false
 type_aware: false
 fix: "conditional_fix"
@@ -15,36 +16,39 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 作用
 
-Enforces that elements do not use invalid ARIA attributes.
+强制元素不要使用无效的 ARIA 属性。
 
-### Why is this bad?
+### 为什么这很糟糕？
 
-Using invalid ARIA attributes can mislead screen readers and other assistive technologies.
-It may cause the accessibility features of the website to fail, making it difficult
-for users with disabilities to use the site effectively.
+使用无效的 ARIA 属性可能会误导屏幕阅读器和其他辅助技术。
+这可能导致网站的无障碍功能失效，使残障用户难以有效使用该网站。
 
-This rule includes fixes for some common typos.
+此规则包含对一些常见拼写错误的修复。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+此规则的**错误**代码示例：
 
 ```jsx
 <input aria-labeledby="address_label" />
 ```
 
-Examples of **correct** code for this rule:
+此规则的**正确**代码示例：
 
 ```jsx
 <input aria-labelledby="address_label" />
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则是在 v0.0.22 中添加的。
+
+## 参考资料
 
 <RuleReferences />

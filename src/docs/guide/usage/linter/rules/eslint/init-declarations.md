@@ -1,6 +1,7 @@
 ---
 title: "eslint/init-declarations"
 category: "Style"
+version: "0.15.11"
 default: false
 type_aware: false
 fix: "none"
@@ -119,6 +120,10 @@ for (var i = 0; i < 1; i++) {}
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+该规则在 v0.15.11 中新增。
+
+## 参考资料
 
 <RuleReferences />

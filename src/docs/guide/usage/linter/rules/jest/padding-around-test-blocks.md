@@ -1,6 +1,7 @@
 ---
 title: "jest/padding-around-test-blocks"
 category: "Style"
+version: "1.13.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
@@ -15,21 +16,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### What it does
+### 它的作用
 
-This rule enforces a line of padding before and after 1 or more
-`test`/`it` statements.
+此规则强制在 1 个或多个 `test`/`it` 语句前后保留一行间距。
 
-### Why is this bad?
+### 为什么这不好？
 
-Inconsistent formatting of code can make the code more difficult to read
-and follow. This rule helps ensure that test blocks are visually
-separated from the rest of the code, making them easier to identify while
-looking through test files.
+代码格式不一致会使代码更难阅读和理解。此规则有助于确保测试块在视觉上与其余代码分隔开，使其在浏览测试文件时更容易识别。
 
-### Examples
+### 示例
 
-Examples of **incorrect** code for this rule:
+以下是此规则的**错误**代码示例：
 
 ```js
 const thing = 123;
@@ -43,7 +40,7 @@ it("foo", () => {});
 it("bar", () => {});
 ```
 
-Examples of **correct** code for this rule:
+以下是此规则的**正确**代码示例：
 
 ```js
 const thing = 123;
@@ -61,10 +58,14 @@ it("foo", () => {});
 it("bar", () => {});
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 
-## References
+## 版本
+
+此规则在 v1.13.0 中添加。
+
+## 参考资料
 
 <RuleReferences />

@@ -1,6 +1,7 @@
 ---
 title: "eslint/max-classes-per-file"
 category: "Pedantic"
+version: "0.3.4"
 default: false
 type_aware: false
 fix: "none"
@@ -66,6 +67,10 @@ default: `1`
 
 <RuleHowToUse />
 
-## 参考
+## 版本
+
+此规则在 v0.3.4 中添加。
+
+## 参考资料
 
 <RuleReferences />
