@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-empty-static-block"
-category: "Correctness"
+title: "eslint/no-empty-static-block | Oxlint"
+rule: "eslint/no-empty-static-block"
+category: "正确性"
 version: "0.0.19"
 default: true
 type_aware: false

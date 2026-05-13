@@ -1,6 +1,7 @@
 ---
-title: "react/no-danger-with-children"
-category: "正确性"
+title: "react/no-danger-with-children | Oxlint"
+rule: "react/no-danger-with-children"
+category: "Correctness"
 version: "0.9.6"
 default: false
 type_aware: false

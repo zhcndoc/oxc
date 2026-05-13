@@ -132,7 +132,9 @@ export default defineConfig({
 
 类型：`Record<string, boolean>`
 
-预定义的全局变量。
+环境用于启用和禁用全局变量集合。
+
+预定义全局变量。
 
 环境用于指定哪些全局变量是预定义的。
 可用的环境：
@@ -190,6 +192,8 @@ export default defineConfig({
 ## globals
 
 类型：`Record<string, string>`
+
+启用或禁用特定全局变量。
 
 添加或移除全局变量。
 
@@ -265,7 +269,12 @@ TypeScript 插件文件在以下环境中受支持：
 ```json
 {
   "plugins": ["import"],
-  "jsPlugins": [{ "name": "import-js", "specifier": "eslint-plugin-import" }],
+  "jsPlugins": [
+    {
+      "name": "import-js",
+      "specifier": "eslint-plugin-import"
+    }
+  ],
   "rules": {
     "import/no-cycle": "error",
     "import-js/no-unresolved": "warn"
@@ -313,7 +322,9 @@ TypeScript 插件文件在以下环境中受支持：
 
 类型：`object`
 
-linting 工具的选项。
+Oxlint 配置选项。
+
+供 lint 工具使用的选项。
 
 ### options.denyWarnings
 
@@ -375,6 +386,8 @@ type: `boolean`
 
 类型：`array`
 
+为特定文件或文件组添加、移除或以其他方式重新配置规则。
+
 ### overrides[n]
 
 类型：`object`
@@ -383,13 +396,20 @@ type: `boolean`
 
 类型：`object`
 
-环境启用和禁用全局变量集合。
+环境用于启用和禁用全局变量集合。
 
 #### overrides[n].files
 
 类型：`string[]`
 
+要覆盖的一组 glob 模式。
+
+## Example
+
+`[ "*.test.ts", "*.spec.ts" ]`
+
 一组 glob 模式。
+模式会与相对于配置文件目录的路径进行匹配。
 
 #### overrides[n].globals
 
@@ -480,13 +500,39 @@ type: `boolean`
 
 类型：`object`
 
+示例
+
+`.oxlintrc.json`
+
+```json
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "rules": {
+    "eqeqeq": "warn",
+    "import/no-cycle": "error",
+    "prefer-const": [
+      "error",
+      {
+        "ignoreReadBeforeAssign": true
+      }
+    ]
+  }
+}
+```
+
+请参阅 [Oxlint 规则](https://oxc.rs/docs/guide/usage/linter/rules.html) 获取规则列表。
+
 请参阅 [Oxlint 规则](https://oxc.rs/docs/guide/usage/linter/rules.html)
 
 ## settings
 
 类型：`object`
 
-配置 linting 插件的行为。
+适用于内置和自定义插件的特定插件配置。
+这包括 `react` 和 `jsdoc` 等内置插件的设置，
+以及通过 `jsPlugins` 加载的 JS 自定义插件的设置。
+
+配置 lint 工具插件的行为。
 
 如果你在 monorepo 中使用 Next.js，这是一个示例：
 
@@ -530,7 +576,8 @@ type: `integer | string`
 
 Jest 版本——接受数字（`29`）或 semver 字符串（`"29.1.0"` 或 `"v29.1.0"`），只保存主版本号。
 ::: warning
-使用此配置将覆盖 `no-deprecated-functions` 的配置集。
+Using this config will override the `no-deprecated-functions` config set.
+:::
 
 ### settings.jsdoc
 
@@ -674,6 +721,22 @@ Jest 版本——接受数字（`29`）或 semver 字符串（`"29.1.0"` 或 `"v
 #### settings.next.rootDir
 
 类型：`array | string`
+
+Next.js 项目的根目录。
+
+当你的 monorepo 中的 Next.js 项目位于子文件夹时，这一点尤其有用。
+
+示例：
+
+```json
+{
+  "settings": {
+    "next": {
+      "rootDir": "apps/dashboard/"
+    }
+  }
+}
+```
 
 ##### settings.next.rootDir[n]
 

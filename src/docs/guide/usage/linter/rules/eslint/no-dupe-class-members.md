@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-dupe-class-members"
-category: "正确性"
+title: "eslint/no-dupe-class-members | Oxlint"
+rule: "eslint/no-dupe-class-members"
+category: "Correctness"
 version: "0.0.3"
 default: true
 type_aware: false

@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-div-regex"
+title: "eslint/no-div-regex | Oxlint"
+rule: "eslint/no-div-regex"
 category: "Restriction"
 version: "0.4.2"
 default: false
@@ -48,7 +49,7 @@ function bar() {
 
 ## 版本
 
-This rule was added in v0.4.2.
+此规则是在 v0.4.2 中添加的。
 
 ## 参考资料
 

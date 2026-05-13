@@ -1,6 +1,7 @@
 ---
-title: "vue/no-deprecated-data-object-declaration"
-category: "正确性"
+title: "vue/no-deprecated-data-object-declaration | Oxlint"
+rule: "vue/no-deprecated-data-object-declaration"
+category: "Correctness"
 version: "1.62.0"
 default: false
 type_aware: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 禁止在 `data` 中声明对象（在 Vue.js 3.0.0+ 中）。
 

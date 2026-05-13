@@ -1,5 +1,6 @@
 ---
-title: "eslint/class-methods-use-this"
+title: "eslint/class-methods-use-this | Oxlint"
+rule: "eslint/class-methods-use-this"
 category: "Restriction"
 version: "1.16.0"
 default: false
@@ -33,7 +34,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```js
 class A {
   foo() {
-    console.log("Hello World");
+    console.log("你好，世界");
   }
 }
 ```
@@ -43,7 +44,7 @@ class A {
 ```js
 class A {
   foo() {
-    this.bar = "Hello World"; // 没问题，使用了 this
+    this.bar = "你好，世界"; // 没问题，使用了 this
   }
 }
 

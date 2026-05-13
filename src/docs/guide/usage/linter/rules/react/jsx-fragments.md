@@ -1,5 +1,6 @@
 ---
-title: "react/jsx-fragments"
+title: "react/jsx-fragments | Oxlint"
+rule: "react/jsx-fragments"
 category: "Style"
 version: "1.12.0"
 default: false
@@ -22,7 +23,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-使使用片段的代码在某种形式上更加一致。
+让使用片段的代码在某种程度上更加一致。
 
 ## 配置
 

@@ -1,5 +1,6 @@
 ---
-title: "eslint/default-case-last"
+title: "eslint/default-case-last | Oxlint"
+rule: "eslint/default-case-last"
 category: "Style"
 version: "0.0.16"
 default: false
@@ -24,7 +25,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 按照惯例且为了可读性，`default` 子句应该是 `switch` 中的最后一个。
 虽然将其放在 `case` 子句之前或之间是合法的，但这样做令人困惑，并且可能
-导致意外的“穿透”行为。
+导致意外的“贯穿”行为。
 
 ### 示例
 

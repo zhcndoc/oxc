@@ -1,6 +1,7 @@
 ---
-title: "react/forbid-dom-props"
-category: "限制"
+title: "react/forbid-dom-props | Oxlint"
+rule: "react/forbid-dom-props"
+category: "Restriction"
 version: "1.24.0"
 default: false
 type_aware: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则会阻止向元素传递 props。此规则仅适用于 DOM 节点（例如 <div />），不适用于组件（例如 <Component />）。可通过 forbid 选项自定义被禁止的 props 列表。
+此规则会阻止向元素传递 props。此规则仅适用于 DOM 节点（例如 `<div />`），不适用于组件（例如 `<Component />`）。被禁止的 props 列表可以通过 forbid 选项自定义。
 
 ### 为什么这不好？
 

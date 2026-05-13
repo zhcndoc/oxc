@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-useless-spread"
-category: "正确性"
+title: "unicorn/no-useless-spread | Oxlint"
+rule: "unicorn/no-useless-spread"
+category: "Correctness"
 version: "0.0.19"
 default: true
 type_aware: false

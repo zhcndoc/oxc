@@ -1,5 +1,6 @@
 ---
-title: "jest/require-hook"
+title: "jest/require-hook | Oxlint"
+rule: "jest/require-hook"
 category: "Style"
 version: "0.3.2"
 default: false
@@ -126,17 +127,6 @@ describe("when loading cities from the api", () => {
 afterEach(() => {
   clearCityDatabase();
 });
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-hook.md) 兼容，
-如需使用，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/require-hook": "error"
-  }
-}
 ```
 
 ## 配置

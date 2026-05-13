@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-restricted-types"
-category: "限制"
+title: "typescript/no-restricted-types | Oxlint"
+rule: "typescript/no-restricted-types"
+category: "Restriction"
 version: "1.31.0"
 default: false
 type_aware: false

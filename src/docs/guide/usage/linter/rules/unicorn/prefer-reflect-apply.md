@@ -1,6 +1,7 @@
 ---
-title: "unicorn/prefer-reflect-apply"
-category: "Style"
+title: "unicorn/prefer-reflect-apply | Oxlint"
+rule: "unicorn/prefer-reflect-apply"
+category: "样式"
 version: "0.0.19"
 default: false
 type_aware: false

@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-dupe-else-if"
-category: "Correctness"
+title: "eslint/no-dupe-else-if | Oxlint"
+rule: "eslint/no-dupe-else-if"
+category: "正确性"
 version: "0.0.5"
 default: true
 type_aware: false

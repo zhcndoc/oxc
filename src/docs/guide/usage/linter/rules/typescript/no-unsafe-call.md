@@ -1,5 +1,6 @@
 ---
-title: "typescript/no-unsafe-call"
+title: "typescript/no-unsafe-call | Oxlint"
+rule: "typescript/no-unsafe-call"
 category: "Pedantic"
 version: "1.12.0"
 default: false
@@ -23,7 +24,7 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 ### 为什么这不好？
 
-TypeScript 中的 `any` 类型会禁用类型检查。当你调用一个被类型标注为 `any` 的值时，TypeScript 无法验证它是否 वास्तव上是一个函数、它期望哪些参数，或者它会返回什么。这可能导致运行时错误。
+TypeScript 中的 `any` 类型会禁用类型检查。当你调用一个被类型标注为 `any` 的值时，TypeScript 无法验证它实际上是否是一个函数、它期望哪些参数，或者它会返回什么。这可能导致运行时错误。
 
 ### 示例
 

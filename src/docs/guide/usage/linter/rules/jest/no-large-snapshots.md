@@ -1,6 +1,7 @@
 ---
-title: "jest/no-large-snapshots"
-category: "样式"
+title: "jest/no-large-snapshots | Oxlint"
+rule: "jest/no-large-snapshots"
+category: "风格"
 version: "0.4.3"
 default: false
 type_aware: false

@@ -1,5 +1,6 @@
 ---
-title: "jsx-a11y/no-redundant-roles"
+title: "jsx-a11y/no-redundant-roles | Oxlint"
+rule: "jsx-a11y/no-redundant-roles"
 category: "Correctness"
 version: "0.2.1"
 default: false
@@ -30,14 +31,14 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 - `<nav>`: `navigation`
 - `<button>`: `button`
-- `<body>`: `document`
+- `<main>`: `main`
 
 以下是此规则的**错误**代码示例：
 
 ```jsx
 <nav role="navigation"></nav>
 <button role="button"></button>
-<body role="document"></body>
+<main role="main"></main>
 ```
 
 以下是此规则的**正确**代码示例：
@@ -45,7 +46,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```jsx
 <nav></nav>
 <button></button>
-<body></body>
+<main></main>
 ```
 
 ## 如何使用

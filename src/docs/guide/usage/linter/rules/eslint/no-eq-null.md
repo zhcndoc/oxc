@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-eq-null"
-category: "限制"
+title: "eslint/no-eq-null | Oxlint"
+rule: "eslint/no-eq-null"
+category: "Restriction"
 version: "0.2.14"
 default: false
 type_aware: false

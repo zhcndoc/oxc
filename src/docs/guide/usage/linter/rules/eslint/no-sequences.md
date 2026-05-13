@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-sequences"
+title: "eslint/no-sequences | Oxlint"
+rule: "eslint/no-sequences"
 category: "Restriction"
 version: "1.33.0"
 default: false
@@ -22,7 +23,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-逗号运算符会依次计算其每个操作数（从左到右），并返回最后一个操作数的值。不过，这经常会掩盖副作用，而且它的使用往往是无意的。
+逗号运算符会依次计算其每个操作数（从左到右），并返回最后一个操作数的值。不过，这常常会掩盖副作用，而且它的使用往往是无意的。
 
 ### 选项
 

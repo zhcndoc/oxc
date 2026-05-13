@@ -1,5 +1,6 @@
 ---
-title: "jest/prefer-snapshot-hint"
+title: "jest/prefer-snapshot-hint | Oxlint"
+rule: "jest/prefer-snapshot-hint"
 category: "Correctness"
 version: "1.59.0"
 default: false
@@ -180,17 +181,6 @@ describe("cli", () => {
     });
   });
 });
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-snapshot-hint.md) 兼容，
-如需使用，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-snapshot-hint": "error"
-  }
-}
 ```
 
 ## 配置

@@ -1,5 +1,6 @@
 ---
-title: "typescript/return-await"
+title: "typescript/return-await | Oxlint"
+rule: "typescript/return-await"
 category: "Pedantic"
 version: "1.12.0"
 default: false
@@ -58,7 +59,7 @@ async function fetchData() {
   try {
     return await fetch("/api/data");
   } catch (error) {
-    console.error("Fetch failed:", error);
+    console.error("获取失败：", error);
     throw error;
   }
 }

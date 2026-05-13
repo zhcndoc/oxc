@@ -1,5 +1,6 @@
 ---
-title: "jest/prefer-mock-return-shorthand"
+title: "jest/prefer-mock-return-shorthand | Oxlint"
+rule: "jest/prefer-mock-return-shorthand"
 category: "Style"
 version: "1.49.0"
 default: false
@@ -18,12 +19,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-在处理返回简单值的函数 mock 时，Jest 提供了一些 API 语法糖函数，用于减少你需要编写的样板代码量。
+在对返回简单值的函数进行 mock 时，Jest 提供了一些 API 语法糖函数，用于减少你需要编写的样板代码量。
 
 ### 为什么这不好？
 
-不使用 Jest 的 API 语法糖函数会增加不必要的样板代码，并使测试更难阅读。这些辅助方法能够清晰表达意图，
-减少错误，使测试保持简单且易于维护。
+不使用 Jest 的 API 语法糖函数会增加不必要的样板代码，并使测试更难阅读。这些辅助函数能清晰表达意图，并减少错误，让测试保持简洁且易于维护。
 
 ### 示例
 
@@ -57,18 +57,7 @@ jest.spyOn(fs, "readFileSync").mockImplementationOnce(() => {
 myFunction.mockResolvedValueOnce(42).mockResolvedValueOnce(42).mockReturnValue(0);
 ```
 
-此规则兼容 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-mock-return-shorthand.md)，
-要使用它，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-mock-return-shorthand": "error"
-  }
-}
-```
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

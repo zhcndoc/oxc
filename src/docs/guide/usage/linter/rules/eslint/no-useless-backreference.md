@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-useless-backreference"
-category: "正确性"
+title: "eslint/no-useless-backreference | Oxlint"
+rule: "eslint/no-useless-backreference"
+category: "Correctness"
 version: "0.16.10"
 default: true
 type_aware: false

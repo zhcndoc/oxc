@@ -1,0 +1,58 @@
+---
+title: "vitest/no-test-return-statement | Oxlint"
+rule: "vitest/no-test-return-statement"
+category: "Style"
+version: "0.2.0"
+default: false
+type_aware: false
+fix: "none"
+---
+
+<!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
+
+<script setup>
+import { data } from '../version.data.js';
+const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_linter/src/rules/vitest/no_test_return_statement.rs`;
+</script>
+
+<RuleHeader />
+
+### 它的作用
+
+禁止在测试中显式返回。
+
+### 为什么这不好？
+
+Jest 中的测试应该是 void，不应返回值。
+如果你返回的是 Promise，那么你应该将测试更新为使用
+`async/await`。
+
+### 示例
+
+以下是此规则的**错误**代码示例：
+
+```javascript
+test("one", () => {
+  return expect(1).toBe(1);
+});
+```
+
+以下是此规则的**正确**代码示例：
+
+```javascript
+test("one", () => {
+  expect(1).toBe(1);
+});
+```
+
+## 如何使用
+
+<RuleHowToUse />
+
+## 版本
+
+此规则在 v0.2.0 中添加。
+
+## 参考资料
+
+<RuleReferences />

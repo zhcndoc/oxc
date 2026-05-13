@@ -1,6 +1,7 @@
 ---
-title: "jsx-a11y/autocomplete-valid"
-category: "Correctness"
+title: "jsx-a11y/autocomplete-valid | Oxlint"
+rule: "jsx-a11y/autocomplete-valid"
+category: "正确性"
 version: "0.2.0"
 default: false
 type_aware: false

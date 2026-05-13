@@ -1,6 +1,7 @@
 ---
-title: "jest/no-disabled-tests"
-category: "Correctness"
+title: "jest/no-disabled-tests | Oxlint"
+rule: "jest/no-disabled-tests"
+category: "正确性"
 version: "0.0.7"
 default: false
 type_aware: false

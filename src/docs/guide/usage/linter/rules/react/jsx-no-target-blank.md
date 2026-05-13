@@ -1,5 +1,6 @@
 ---
-title: "react/jsx-no-target-blank"
+title: "react/jsx-no-target-blank | Oxlint"
+rule: "react/jsx-no-target-blank"
 category: "Pedantic"
 version: "0.2.5"
 default: false
@@ -107,7 +108,7 @@ default: `false`
 
 ## Version
 
-This rule was added in v0.2.5.
+此规则在 v0.2.5 中添加。
 
 ## References
 

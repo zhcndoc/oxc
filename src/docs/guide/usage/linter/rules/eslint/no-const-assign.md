@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-const-assign"
-category: "Correctness"
+title: "eslint/no-const-assign | Oxlint"
+rule: "eslint/no-const-assign"
+category: "正确性"
 version: "0.0.3"
 default: true
 type_aware: false

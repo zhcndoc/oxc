@@ -1,10 +1,11 @@
 ---
-title: "jsx-a11y/alt-text"
-category: "Correctness"
+title: "jsx-a11y/alt-text | Oxlint"
+rule: "jsx-a11y/alt-text"
+category: "正确性"
 version: "0.0.16"
 default: false
 type_aware: false
-fix: "none"
+fix: "无"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -38,10 +39,10 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 以下是此规则的**正确**代码示例：
 
 ```jsx
-<img src="flower.jpg" alt="A close-up of a white daisy" />
+<img src="flower.jpg" alt="一朵白色雏菊的特写" />
 <img src="decorative.jpg" alt="" role="presentation" />
-<object aria-label="Interactive chart" />
-<area alt="Navigation link" />
+<object aria-label="交互式图表" />
+<area alt="导航链接" />
 ```
 
 ## 配置

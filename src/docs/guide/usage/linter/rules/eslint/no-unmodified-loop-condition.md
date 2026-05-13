@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-unmodified-loop-condition"
-category: "可疑"
+title: "eslint/no-unmodified-loop-condition | Oxlint"
+rule: "eslint/no-unmodified-loop-condition"
+category: "Suspicious"
 version: "1.48.0"
 default: false
 type_aware: false

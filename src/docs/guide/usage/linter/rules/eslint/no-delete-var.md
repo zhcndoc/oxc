@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-delete-var"
-category: "Correctness"
+title: "eslint/no-delete-var | Oxlint"
+rule: "eslint/no-delete-var"
+category: "正确性"
 version: "0.0.4"
 default: true
 type_aware: false

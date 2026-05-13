@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-irregular-whitespace"
-category: "正确性"
+title: "eslint/no-irregular-whitespace | Oxlint"
+rule: "eslint/no-irregular-whitespace"
+category: "Correctness"
 version: "0.1.1"
 default: true
 type_aware: false

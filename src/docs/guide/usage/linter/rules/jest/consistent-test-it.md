@@ -1,6 +1,7 @@
 ---
-title: "jest/consistent-test-it"
-category: "Style"
+title: "jest/consistent-test-it | Oxlint"
+rule: "jest/consistent-test-it"
+category: "样式"
 version: "0.5.3"
 default: false
 type_aware: false
@@ -28,38 +29,6 @@ Jest 允许你选择如何定义测试，可以使用 `it` 或
 
 在测试套件中保持一致是个好习惯，这样所有测试都会以相同的方式编写。
 
-### 示例
-
-```javascript
-/* jest/consistent-test-it: ["error", {"fn": "test"}] */
-test("foo"); // 有效
-test.only("foo"); // 有效
-
-it("foo"); // 无效
-it.only("foo"); // 无效
-```
-
-```javascript
-/* jest/consistent-test-it: ["error", {"fn": "it"}] */
-it("foo"); // 有效
-it.only("foo"); // 有效
-test("foo"); // 无效
-test.only("foo"); // 无效
-```
-
-```javascript
-/* jest/consistent-test-it: ["error", {"fn": "it", "withinDescribe": "test"}] */
-it("foo"); // 有效
-describe("foo", function () {
-  test("bar"); // 有效
-});
-
-test("foo"); // 无效
-describe("foo", function () {
-  it("bar"); // 无效
-});
-```
-
 ## 配置
 
 此规则接受一个包含以下属性的配置对象：
@@ -72,6 +41,34 @@ default: `"test"`
 
 决定使用 `test` 还是 `it`。
 
+**`{ "fn": "test" }` 的错误代码示例：**
+
+```javascript
+it("foo");
+it.only("foo");
+```
+
+**`{ "fn": "test" }` 的正确代码示例：**
+
+```javascript
+test("foo");
+test.only("foo");
+```
+
+**`{ "fn": "it" }` 的错误代码示例：**
+
+```javascript
+test("foo");
+test.only("foo");
+```
+
+**`{ "fn": "it" }` 的正确代码示例：**
+
+```javascript
+it("foo");
+it.only("foo");
+```
+
 ### withinDescribe
 
 type: `"it" | "test"`
@@ -80,6 +77,22 @@ default: `"it"`
 
 决定在 `describe` 作用域内使用 `test` 还是 `it`。
 如果只提供了 `fn`，此项默认使用 `fn` 的值。
+
+**`{ "withinDescribe": "test" }` 的错误代码示例：**
+
+```javascript
+describe("foo", function () {
+  it("bar");
+});
+```
+
+**`{ "withinDescribe": "test" }` 的正确代码示例：**
+
+```javascript
+describe("foo", function () {
+  test("bar");
+});
+```
 
 ## 如何使用
 

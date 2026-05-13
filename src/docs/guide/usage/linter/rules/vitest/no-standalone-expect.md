@@ -1,5 +1,6 @@
 ---
-title: "vitest/no-standalone-expect"
+title: "vitest/no-standalone-expect | Oxlint"
+rule: "vitest/no-standalone-expect"
 category: "正确性"
 version: "0.0.13"
 default: false

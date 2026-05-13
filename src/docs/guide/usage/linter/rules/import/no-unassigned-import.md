@@ -1,5 +1,6 @@
 ---
-title: "import/no-unassigned-import"
+title: "import/no-unassigned-import | Oxlint"
+rule: "import/no-unassigned-import"
 category: "Suspicious"
 version: "0.16.11"
 default: false
@@ -29,7 +30,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 - 该模块被导入但未使用
 - 该模块具有副作用。具有副作用
-  会让人难以判断该模块是否 वास्तव已被使用，或者是否可以移除。
+  会让人难以判断该模块是否实际已被使用，或者是否可以移除。
   它还可能使测试或模拟应用程序的某些部分变得更加困难。
 
 ### 示例

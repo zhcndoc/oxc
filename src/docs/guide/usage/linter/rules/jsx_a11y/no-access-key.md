@@ -1,6 +1,7 @@
 ---
-title: "jsx-a11y/no-access-key"
-category: "正确性"
+title: "jsx-a11y/no-access-key | Oxlint"
+rule: "jsx-a11y/no-access-key"
+category: "Correctness"
 version: "0.0.21"
 default: false
 type_aware: false

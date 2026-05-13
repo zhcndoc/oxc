@@ -1,5 +1,6 @@
 ---
-title: "eslint/grouped-accessor-pairs"
+title: "eslint/grouped-accessor-pairs | Oxlint"
+rule: "eslint/grouped-accessor-pairs"
 category: "Style"
 version: "0.15.12"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-要求在对象字面量和类中分组访问器对。
+要求在对象字面量和类中将访问器对分组。
 
 ### 为什么不好？
 

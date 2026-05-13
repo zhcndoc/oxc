@@ -1,6 +1,7 @@
 ---
-title: "vue/no-this-in-before-route-enter"
-category: "正确性"
+title: "vue/no-this-in-before-route-enter | Oxlint"
+rule: "vue/no-this-in-before-route-enter"
+category: "Correctness"
 version: "1.37.0"
 default: false
 type_aware: false

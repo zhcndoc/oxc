@@ -1,5 +1,6 @@
 ---
-title: "jest/prefer-mock-promise-shorthand"
+title: "jest/prefer-mock-promise-shorthand | Oxlint"
+rule: "jest/prefer-mock-promise-shorthand"
 category: "Style"
 version: "0.2.16"
 default: false
@@ -50,18 +51,7 @@ myFunction
   .mockRejectedValue(new Error("调用太多次了！"));
 ```
 
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-mock-promise-shorthand.md) 兼容，
-如需使用，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-mock-promise-shorthand": "error"
-  }
-}
-```
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

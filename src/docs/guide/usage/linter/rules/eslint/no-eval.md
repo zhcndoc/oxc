@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-eval"
+title: "eslint/no-eval | Oxlint"
+rule: "eslint/no-eval"
 category: "正确性"
 version: "0.0.3"
 default: true
@@ -75,7 +76,7 @@ default: `true`
 
 此 `allowIndirect` 选项允许间接的 `eval()` 调用。
 
-对 `eval` 的间接调用（例如 `window['eval']`）比直接调用危险性更低，
+对 `eval` 的间接调用（例如 `window['eval']`)比直接调用危险性更低，
 因为它们不能动态改变作用域。与直接调用相比，间接 `eval()` 调用通常对性能的影响也更小，
 因为它们不会调用 JavaScript 的作用域链。
 

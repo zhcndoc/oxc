@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-inner-declarations"
+title: "eslint/no-inner-declarations | Oxlint"
+rule: "eslint/no-inner-declarations"
 category: "Pedantic"
 version: "0.0.5"
 default: false
@@ -41,7 +42,7 @@ if (test) {
 ```javascript
 function doSomethingElse() {}
 if (test) {
-  // your code here
+  // 你的代码在这里
 }
 ```
 
@@ -68,6 +69,8 @@ type: `"functions" | "both"`
 #### blockScopedFunctions
 
 type: `"allow" | "disallow"`
+
+控制在严格模式下是否允许在嵌套块中声明函数（ES6+ 行为）。
 
 ##### `"allow"`
 

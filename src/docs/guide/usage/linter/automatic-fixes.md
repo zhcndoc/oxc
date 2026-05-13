@@ -1,6 +1,6 @@
 ---
-title: 自动修复
-description: 使用 Oxlint 应用安全、建议和危险的修复。
+title: "Automatic fixes | Oxlint"
+description: 使用 Oxlint 应用安全修复、建议修复和危险修复。
 ---
 
 # 自动修复

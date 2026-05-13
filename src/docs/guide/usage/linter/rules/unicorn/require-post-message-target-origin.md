@@ -1,6 +1,7 @@
 ---
-title: "unicorn/require-post-message-target-origin"
-category: "可疑"
+title: "unicorn/require-post-message-target-origin | Oxlint"
+rule: "unicorn/require-post-message-target-origin"
+category: "Suspicious"
 version: "0.15.15"
 default: false
 type_aware: false

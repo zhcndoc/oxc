@@ -1,5 +1,5 @@
 ---
-title: 忽略
+title: "忽略文件 | Oxlint"
 description: 控制 Oxlint 检查哪些文件。
 ---
 

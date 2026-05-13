@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-redundant-type-constituents"
-category: "正确性"
+title: "typescript/no-redundant-type-constituents | Oxlint"
+rule: "typescript/no-redundant-type-constituents"
+category: "Correctness"
 version: "1.12.0"
 default: true
 type_aware: true

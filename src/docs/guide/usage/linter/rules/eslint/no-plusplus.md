@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-plusplus"
-category: "限制"
+title: "eslint/no-plusplus | Oxlint"
+rule: "eslint/no-plusplus"
+category: "Restriction"
 version: "0.9.5"
 default: false
 type_aware: false

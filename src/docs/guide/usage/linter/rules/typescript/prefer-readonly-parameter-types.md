@@ -1,5 +1,6 @@
 ---
-title: "typescript/prefer-readonly-parameter-types"
+title: "typescript/prefer-readonly-parameter-types | Oxlint"
+rule: "typescript/prefer-readonly-parameter-types"
 category: "Pedantic"
 version: "1.49.0"
 default: false
@@ -104,9 +105,13 @@ type: `object | string`
 
 type: `"file"`
 
+必须为 "file"
+
 ##### allow[n].name
 
 type: `array | string`
+
+要匹配的类型或值的名称
 
 名称说明符，可以是单个字符串或字符串数组
 

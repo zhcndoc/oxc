@@ -1,5 +1,6 @@
 ---
-title: "jsx-a11y/scope"
+title: "jsx-a11y/scope | Oxlint"
+rule: "jsx-a11y/scope"
 category: "Correctness"
 version: "0.0.19"
 default: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 作用
+### 用途
 
 scope 属性应仅用于 `<th>` 元素。
 

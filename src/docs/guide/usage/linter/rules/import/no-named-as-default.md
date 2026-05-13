@@ -1,6 +1,7 @@
 ---
-title: "import/no-named-as-default"
-category: "可疑"
+title: "import/no-named-as-default | Oxlint"
+rule: "import/no-named-as-default"
+category: "Suspicious"
 version: "0.2.3"
 default: false
 type_aware: false

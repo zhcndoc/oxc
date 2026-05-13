@@ -1,6 +1,7 @@
 ---
-title: "eslint/require-await"
-category: "迂腐"
+title: "eslint/require-await | Oxlint"
+rule: "eslint/require-await"
+category: "Pedantic"
 version: "0.4.2"
 default: false
 type_aware: false

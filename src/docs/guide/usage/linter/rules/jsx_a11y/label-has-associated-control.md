@@ -1,5 +1,6 @@
 ---
-title: "jsx-a11y/label-has-associated-control"
+title: "jsx-a11y/label-has-associated-control | Oxlint"
+rule: "jsx-a11y/label-has-associated-control"
 category: "Correctness"
 version: "0.9.1"
 default: false
@@ -48,7 +49,7 @@ function Foo(props) {
 
 <label>
   <input type="text" />
-  Surname
+  姓氏
 </label>;
 ```
 

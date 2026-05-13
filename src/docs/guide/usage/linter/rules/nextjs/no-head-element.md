@@ -1,5 +1,6 @@
 ---
-title: "nextjs/no-head-element"
+title: "nextjs/no-head-element | Oxlint"
+rule: "nextjs/no-head-element"
 category: "正确性"
 version: "0.2.1"
 default: false

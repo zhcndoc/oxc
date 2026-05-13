@@ -1,5 +1,6 @@
 ---
-title: "jest/no-unneeded-async-expect-function"
+title: "jest/no-unneeded-async-expect-function | Oxlint"
+rule: "jest/no-unneeded-async-expect-function"
 category: "Style"
 version: "1.39.0"
 default: false
@@ -42,17 +43,6 @@ await expect(async () => await doSomethingAsync()).rejects.toThrow();
 
 ```js
 await expect(doSomethingAsync()).rejects.toThrow();
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-unneeded-async-expect-function.md) 兼容，
-如需使用，请在你的 `.oxlintrc.json` 中添加以下配置：
-
-```json
-{
-  "rules": {
-    "vitest/no-unneeded-async-expect-function": "error"
-  }
-}
 ```
 
 ## 如何使用

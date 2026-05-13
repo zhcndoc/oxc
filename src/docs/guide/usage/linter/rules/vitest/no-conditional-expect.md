@@ -1,5 +1,6 @@
 ---
-title: "vitest/no-conditional-expect"
+title: "vitest/no-conditional-expect | Oxlint"
+rule: "vitest/no-conditional-expect"
 category: "正确性"
 version: "0.0.12"
 default: false

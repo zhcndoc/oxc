@@ -1,5 +1,6 @@
 ---
-title: "unicorn/no-instanceof-builtins"
+title: "unicorn/no-instanceof-builtins | Oxlint"
+rule: "unicorn/no-instanceof-builtins"
 category: "可疑"
 version: "0.16.12"
 default: false

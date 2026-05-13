@@ -1,6 +1,7 @@
 ---
-title: "unicorn/prefer-ternary"
-category: "样式"
+title: "unicorn/prefer-ternary | Oxlint"
+rule: "unicorn/prefer-ternary"
+category: "Style"
 version: "1.50.0"
 default: false
 type_aware: false

@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-non-null-asserted-nullish-coalescing"
-category: "限制"
+title: "typescript/no-non-null-asserted-nullish-coalescing | Oxlint"
+rule: "typescript/no-non-null-asserted-nullish-coalescing"
+category: "Restriction"
 version: "0.5.0"
 default: false
 type_aware: false

@@ -1,6 +1,7 @@
 ---
-title: "unicorn/prefer-keyboard-event-key"
-category: "样式"
+title: "unicorn/prefer-keyboard-event-key | Oxlint"
+rule: "unicorn/prefer-keyboard-event-key"
+category: "Style"
 version: "1.33.0"
 default: false
 type_aware: false

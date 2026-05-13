@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-unused-vars"
-category: "正确性"
+title: "eslint/no-unused-vars | Oxlint"
+rule: "eslint/no-unused-vars"
+category: "Correctness"
 version: "0.7.0"
 default: true
 type_aware: false
@@ -275,6 +276,8 @@ default: `{"imports":"suggestion", "variables":"suggestion"}`
 
 type: `"off" | "suggestion" | "fix" | "safe-fix"`
 
+Controls auto-fixes for unused imports.
+
 ##### `"off"`
 
 禁用此符号类型的自动修复。
@@ -295,6 +298,8 @@ type: `"off" | "suggestion" | "fix" | "safe-fix"`
 #### fix.variables
 
 type: `"off" | "suggestion" | "fix" | "safe-fix"`
+
+Controls auto-fixes for unused variables (including catch bindings).
 
 ##### `"off"`
 

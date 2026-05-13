@@ -1,6 +1,7 @@
 ---
-title: "jest/no-confusing-set-timeout"
-category: "样式"
+title: "jest/no-confusing-set-timeout | Oxlint"
+rule: "jest/no-confusing-set-timeout"
+category: "Style"
 version: "0.0.14"
 default: false
 type_aware: false

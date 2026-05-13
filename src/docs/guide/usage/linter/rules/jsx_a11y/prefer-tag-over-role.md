@@ -1,6 +1,7 @@
 ---
-title: "jsx-a11y/prefer-tag-over-role"
-category: "正确性"
+title: "jsx-a11y/prefer-tag-over-role | Oxlint"
+rule: "jsx-a11y/prefer-tag-over-role"
+category: "Correctness"
 version: "0.1.1"
 default: false
 type_aware: false

@@ -1,6 +1,7 @@
 ---
-title: "jest/no-export"
-category: "正确性"
+title: "jest/no-export | Oxlint"
+rule: "jest/no-export"
+category: "Correctness"
 version: "0.0.13"
 default: false
 type_aware: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-如果文件中包含一个或多个测试，则阻止使用导出。
+如果文件中包含一个或多个测试，则禁止使用导出。
 
 ### 为什么这不好？
 

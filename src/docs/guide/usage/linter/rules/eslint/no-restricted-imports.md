@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-restricted-imports"
-category: "限制"
+title: "eslint/no-restricted-imports | Oxlint"
+rule: "eslint/no-restricted-imports"
+category: "Restriction"
 version: "0.15.0"
 default: false
 type_aware: false

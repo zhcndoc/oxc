@@ -1,5 +1,6 @@
 ---
-title: "jest/no-test-prefixes"
+title: "jest/no-test-prefixes | Oxlint"
+rule: "jest/no-test-prefixes"
 category: "Style"
 version: "0.0.7"
 default: false
@@ -40,17 +41,6 @@ fdescribe("foo"); // 无效
 xit("foo"); // 无效
 xtest("foo"); // 无效
 xdescribe("foo"); // 无效
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/v1.1.9/docs/rules/no-test-prefixes.md) 兼容，
-要使用它，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/no-test-prefixes": "error"
-  }
-}
 ```
 
 ## 如何使用

@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-unsafe-finally"
-category: "正确性"
+title: "eslint/no-unsafe-finally | Oxlint"
+rule: "eslint/no-unsafe-finally"
+category: "Correctness"
 version: "0.0.5"
 default: true
 type_aware: false

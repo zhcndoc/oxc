@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-abusive-eslint-disable"
-category: "限制"
+title: "unicorn/no-abusive-eslint-disable | Oxlint"
+rule: "unicorn/no-abusive-eslint-disable"
+category: "Restriction"
 version: "0.0.18"
 default: false
 type_aware: false

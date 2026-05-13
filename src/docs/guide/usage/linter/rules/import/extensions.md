@@ -1,5 +1,6 @@
 ---
-title: "import/extensions"
+title: "import/extensions | Oxlint"
+rule: "import/extensions"
 category: "Restriction"
 version: "1.2.0"
 default: false
@@ -239,7 +240,9 @@ type: `object`
 
 type: `"enforce" | "ignore"`
 
-对路径组覆盖项采取的动作。
+匹配模式时采取的操作。
+
+针对路径组覆盖要采取的操作。
 
 决定如何对匹配的自定义 import 标识符验证 import 扩展名。
 

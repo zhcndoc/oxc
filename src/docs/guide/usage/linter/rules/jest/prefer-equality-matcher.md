@@ -1,5 +1,6 @@
 ---
-title: "jest/prefer-equality-matcher"
+title: "jest/prefer-equality-matcher | Oxlint"
+rule: "jest/prefer-equality-matcher"
 category: "Style"
 version: "0.2.9"
 default: false
@@ -43,17 +44,6 @@ expect(myObj !== thatObj).toStrictEqual(true);
 expect(x).toBe(5);
 expect(name).not.toEqual("Carl");
 expect(myObj).toStrictEqual(thatObj);
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-equality-matcher.md) 兼容，
-要使用它，请在你的 `.oxlintrc.json` 中添加以下配置：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-equality-matcher": "error"
-  }
-}
 ```
 
 ## 如何使用

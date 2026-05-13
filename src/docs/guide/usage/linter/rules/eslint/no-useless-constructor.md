@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-useless-constructor"
-category: "可疑"
+title: "eslint/no-useless-constructor | Oxlint"
+rule: "eslint/no-useless-constructor"
+category: "Suspicious"
 version: "0.4.4"
 default: false
 type_aware: false

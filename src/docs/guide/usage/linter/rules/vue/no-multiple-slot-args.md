@@ -1,6 +1,7 @@
 ---
-title: "vue/no-multiple-slot-args"
-category: "限制"
+title: "vue/no-multiple-slot-args | Oxlint"
+rule: "vue/no-multiple-slot-args"
+category: "Restriction"
 version: "1.15.0"
 default: false
 type_aware: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 它是做什么的
 
 禁止向具名作用域插槽传递多个参数。
 

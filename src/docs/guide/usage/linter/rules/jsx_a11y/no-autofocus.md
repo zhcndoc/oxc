@@ -1,6 +1,7 @@
 ---
-title: "jsx-a11y/no-autofocus"
-category: "正确性"
+title: "jsx-a11y/no-autofocus | Oxlint"
+rule: "jsx-a11y/no-autofocus"
+category: "Correctness"
 version: "0.0.19"
 default: false
 type_aware: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 强制不要在元素上使用 `autoFocus` 属性。
 

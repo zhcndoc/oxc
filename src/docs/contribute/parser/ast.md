@@ -90,7 +90,7 @@ struct MyVisitor;
 
 impl<'a> Visit<'a> for MyVisitor {
     fn visit_function_declaration(&mut self, func: &FunctionDeclaration<'a>) {
-        println!("Found function: {:?}", func.id);
+        println!("发现函数：{:?}", func.id);
         walk_mut::walk_function_declaration(self, func);
     }
 }
@@ -102,20 +102,57 @@ visitor.visit_program(&program);
 
 ### 可变访问者
 
-对于转换操作，使用可变访问者：
+`VisitMut` 可用于在遍历期间修改 AST。
+
+例如，将字符串字面量的二元加法转换为单个字符串字面量：
 
 ```rust
-use oxc_ast::visit::{VisitMut, walk_mut};
+use oxc_ast::AstBuilder;
+use oxc_ast_visit::{VisitMut, walk_mut};
+use oxc_str::Str;
 
-struct MyTransformer;
+struct MyTransformer<'a> {
+    pub builder: &'a AstBuilder<'a>,
+}
 
-impl<'a> VisitMut<'a> for MyTransformer {
-    fn visit_binary_expression(&mut self, expr: &mut BinaryExpression<'a>) {
-        // 转换表达式
-        if expr.operator == BinaryOperator::Addition {
-            // 修改 AST 节点
+impl<'a> VisitMut<'a> for MyTransformer<'a> {
+    fn visit_expression(&mut self, expr: &mut Expression<'a>) {
+        // 检测你想在从一种枚举变体变为另一种时修改的表达式类型。
+        if let Expression::BinaryExpression(bin_expr) = expr
+            && let (
+                BinaryOperator::Addition,
+                Expression::StringLiteral(sl),
+                Expression::StringLiteral(sr),
+            ) = (bin_expr.operator, &bin_expr.left, &bin_expr.right)
+        {
+            let value = Str::from_strs_array_in(
+                [sl.value.as_str(), sr.value.as_str()],
+                self.builder.allocator,
+            );
+            *expr = self.builder.expression_string_literal(SPAN, value, None);
         }
-        walk_mut::walk_binary_expression_mut(self, expr);
+
+        walk_mut::walk_expression(self, expr);
+    }
+}
+```
+
+例如，在不改变其类型的情况下修改二元表达式：
+
+```rust
+use oxc_ast::AstBuilder;
+use oxc_ast_visit::{VisitMut, walk_mut};
+
+struct MyTransformer<'a> {
+    pub builder: &'a AstBuilder<'a>,
+}
+
+impl<'a> VisitMut<'a> for MyTransformer<'a> {
+    fn visit_binary_expression(&mut self, expr: &mut BinaryExpression<'a>) {
+        if expr.operator == BinaryOperator::Addition {
+            // 修改 AST 节点。你只能修改 left/right 和 operator 部分，不能修改表达式本身的类型。
+        }
+        walk_mut::walk_binary_expression(self, expr);
     }
 }
 ```
@@ -302,5 +339,5 @@ println!("{:#?}", ast_node);
 
 ```rust
 let span = node.span();
-println!("Error at {}:{}", span.start, span.end);
+println!("错误位置：{}:{}", span.start, span.end);
 ```

@@ -1,5 +1,6 @@
 ---
-title: "unicorn/no-instanceof-array"
+title: "unicorn/no-instanceof-array | Oxlint"
+rule: "unicorn/no-instanceof-array"
 category: "Pedantic"
 version: "0.0.8"
 default: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 要求使用 `Array.isArray()`，而不是 `instanceof Array`。
 

@@ -1,5 +1,6 @@
 ---
-title: "typescript/consistent-type-assertions"
+title: "typescript/consistent-type-assertions | Oxlint"
+rule: "typescript/consistent-type-assertions"
 category: "Style"
 version: "1.44.0"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 功能
 
-强制一致使用 TypeScript 类型断言。
+强制始终一致地使用 TypeScript 类型断言。
 
 ### 为什么这不好？
 

@@ -1,5 +1,6 @@
 ---
-title: "import/namespace"
+title: "import/namespace | Oxlint"
+rule: "import/namespace"
 category: "Correctness"
 version: "0.2.11"
 default: false
@@ -30,7 +31,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ```javascript
 // ./foo.js
-export const bar = "I'm bar";
+export const bar = "我是 bar";
 ```
 
 以下是此规则的**错误**代码示例：
@@ -41,7 +42,7 @@ import * as foo from "./foo";
 foo.notExported(); // 错误：notExported 未导出
 
 // 赋值给导入命名空间的成员
-foo.bar = "new value"; // 错误：bar 不能被重新赋值
+foo.bar = "新值"; // 错误：bar 不能被重新赋值
 
 // 对不存在的导出进行计算属性引用
 const method = "notExported";

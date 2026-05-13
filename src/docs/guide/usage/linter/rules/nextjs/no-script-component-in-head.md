@@ -1,6 +1,7 @@
 ---
-title: "nextjs/no-script-component-in-head"
-category: "正确性"
+title: "nextjs/no-script-component-in-head | Oxlint"
+rule: "nextjs/no-script-component-in-head"
+category: "Correctness"
 version: "0.2.0"
 default: false
 type_aware: false

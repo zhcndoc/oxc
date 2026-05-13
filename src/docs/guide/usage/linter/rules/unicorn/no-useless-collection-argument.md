@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-useless-collection-argument"
-category: "Style"
+title: "unicorn/no-useless-collection-argument | Oxlint"
+rule: "unicorn/no-useless-collection-argument"
+category: "样式"
 version: "1.28.0"
 default: false
 type_aware: false

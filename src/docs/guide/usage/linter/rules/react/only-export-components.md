@@ -1,5 +1,6 @@
 ---
-title: "react/only-export-components"
+title: "react/only-export-components | Oxlint"
+rule: "react/only-export-components"
 category: "Restriction"
 version: "1.23.0"
 default: false
@@ -41,7 +42,7 @@ Fast Refresh（又称热重载）能够安全地保留组件状态。
 以下是此规则的**错误**代码示例：
 
 ```jsx
-// 1) 在不受支持的方式下将工具函数导出与组件混合
+// 1) 将工具函数与组件以不受支持的方式混合导出
 export const foo = () => {}; // 工具函数，不是组件
 export const Bar = () => <></>; // 组件
 ```

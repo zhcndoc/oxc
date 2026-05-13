@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-inferrable-types"
-category: "样式"
+title: "typescript/no-inferrable-types | Oxlint"
+rule: "typescript/no-inferrable-types"
+category: "Style"
 version: "0.14.0"
 default: false
 type_aware: false

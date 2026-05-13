@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-this-assignment"
-category: "迂腐"
+title: "unicorn/no-this-assignment | Oxlint"
+rule: "unicorn/no-this-assignment"
+category: "Pedantic"
 version: "0.0.18"
 default: false
 type_aware: false

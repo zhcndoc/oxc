@@ -1,5 +1,6 @@
 ---
-title: "vue/no-lifecycle-after-await"
+title: "vue/no-lifecycle-after-await | Oxlint"
+rule: "vue/no-lifecycle-after-await"
 category: "Correctness"
 version: "1.39.0"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止异步注册生命周期钩子。
+禁止在 `await` 之后注册生命周期钩子。
 
 ### 为什么这不好？
 
@@ -38,7 +39,7 @@ export default {
     await doSomething();
     onMounted(() => {
       /* ... */
-    }); // error
+    }); // 错误
   },
 };
 </script>
@@ -53,7 +54,7 @@ export default {
   async setup() {
     onMounted(() => {
       /* ... */
-    }); // ok
+    }); // 正确
     await doSomething();
   },
 };

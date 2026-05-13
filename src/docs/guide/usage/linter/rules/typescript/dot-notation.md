@@ -1,6 +1,7 @@
 ---
-title: "typescript/dot-notation"
-category: "Style"
+title: "typescript/dot-notation | Oxlint"
+rule: "typescript/dot-notation"
+category: "样式"
 version: "1.49.0"
 default: false
 type_aware: true

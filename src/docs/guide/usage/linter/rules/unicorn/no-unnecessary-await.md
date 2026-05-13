@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-unnecessary-await"
-category: "Correctness"
+title: "unicorn/no-unnecessary-await | Oxlint"
+rule: "unicorn/no-unnecessary-await"
+category: "正确性"
 version: "0.0.12"
 default: true
 type_aware: false

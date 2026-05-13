@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-unreachable"
-category: "正确性"
+title: "eslint/no-unreachable | Oxlint"
+rule: "eslint/no-unreachable"
+category: "Correctness"
 version: "0.4.4"
 default: true
 type_aware: false
@@ -34,7 +35,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```ts
 function foo() {
   return 2;
-  console.log("this will never be executed");
+  console.log("这段代码将永远不会被执行");
 }
 ```
 
@@ -42,7 +43,7 @@ function foo() {
 
 ```ts
 function foo() {
-  console.log("this will be executed");
+  console.log("这段代码将会被执行");
   return 2;
 }
 ```

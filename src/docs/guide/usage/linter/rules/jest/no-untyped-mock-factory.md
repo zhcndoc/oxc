@@ -1,6 +1,7 @@
 ---
-title: "jest/no-untyped-mock-factory"
-category: "Style"
+title: "jest/no-untyped-mock-factory | Oxlint"
+rule: "jest/no-untyped-mock-factory"
+category: "样式"
 version: "0.2.15"
 default: false
 type_aware: false

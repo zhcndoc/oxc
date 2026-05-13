@@ -1,6 +1,7 @@
 ---
-title: "jsx-a11y/role-has-required-aria-props"
-category: "正确性"
+title: "jsx-a11y/role-has-required-aria-props | Oxlint"
+rule: "jsx-a11y/role-has-required-aria-props"
+category: "Correctness"
 version: "0.2.0"
 default: false
 type_aware: false

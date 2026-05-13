@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-script-url"
-category: "Style"
+title: "eslint/no-script-url | Oxlint"
+rule: "eslint/no-script-url"
+category: "样式"
 version: "0.2.15"
 default: false
 type_aware: false

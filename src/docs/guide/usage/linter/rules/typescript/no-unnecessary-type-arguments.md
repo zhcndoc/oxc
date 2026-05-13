@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-unnecessary-type-arguments"
-category: "可疑"
+title: "typescript/no-unnecessary-type-arguments | Oxlint"
+rule: "typescript/no-unnecessary-type-arguments"
+category: "Suspicious"
 version: "1.12.0"
 default: false
 type_aware: true

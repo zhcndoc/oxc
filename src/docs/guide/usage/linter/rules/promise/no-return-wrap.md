@@ -1,5 +1,6 @@
 ---
-title: "promise/no-return-wrap"
+title: "promise/no-return-wrap | Oxlint"
+rule: "promise/no-return-wrap"
 category: "Style"
 version: "0.15.14"
 default: false
@@ -16,10 +17,10 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 作用
+### 说明
 
-防止在 promises 中使用 `Promise.resolve`
-或 `Promise.reject` 不必要地包装返回值。
+防止在 promises 中不必要地使用 `Promise.resolve`
+或 `Promise.reject` 包装返回值。
 
 此规则强制执行以下观点：
 

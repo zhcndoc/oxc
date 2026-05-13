@@ -1,5 +1,6 @@
 ---
-title: "typescript/only-throw-error"
+title: "typescript/only-throw-error | Oxlint"
+rule: "typescript/only-throw-error"
 category: "Pedantic"
 version: "1.12.0"
 default: false
@@ -122,9 +123,13 @@ type: `object | string`
 
 type: `"file"`
 
+必须是 "file"
+
 ##### allow[n].name
 
 type: `array | string`
+
+要匹配的类型或值的名称
 
 名称说明符，可以是单个字符串或字符串数组
 

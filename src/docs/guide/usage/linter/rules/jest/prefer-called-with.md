@@ -1,5 +1,6 @@
 ---
-title: "jest/prefer-called-with"
+title: "jest/prefer-called-with | Oxlint"
+rule: "jest/prefer-called-with"
 category: "Style"
 version: "0.2.5"
 default: false
@@ -44,17 +45,6 @@ expect(noArgsFunction).toBeCalledWith();
 expect(roughArgsFunction).toBeCalledWith(expect.anything(), expect.any(Date));
 expect(anyArgsFunction).toBeCalledTimes(1);
 expect(uncalledFunction).not.toBeCalled();
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-called-with.md) 兼容，
-如需使用，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-called-with": "error"
-  }
-}
 ```
 
 ## 如何使用

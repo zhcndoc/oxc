@@ -1,6 +1,7 @@
 ---
-title: "jest/prefer-jest-mocked"
-category: "风格"
+title: "jest/prefer-jest-mocked | Oxlint"
+rule: "jest/prefer-jest-mocked"
+category: "Style"
 version: "0.5.0"
 default: false
 type_aware: false

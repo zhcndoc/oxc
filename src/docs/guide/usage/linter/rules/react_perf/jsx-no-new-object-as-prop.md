@@ -1,6 +1,7 @@
 ---
-title: "react-perf/jsx-no-new-object-as-prop"
-category: "Perf"
+title: "react-perf/jsx-no-new-object-as-prop | Oxlint"
+rule: "react-perf/jsx-no-new-object-as-prop"
+category: "性能"
 version: "0.2.3"
 default: false
 type_aware: false

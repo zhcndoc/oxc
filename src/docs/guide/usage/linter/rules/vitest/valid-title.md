@@ -1,6 +1,7 @@
 ---
-title: "vitest/valid-title"
-category: "正确性"
+title: "vitest/valid-title | Oxlint"
+rule: "vitest/valid-title"
+category: "Correctness"
 version: "0.0.14"
 default: false
 type_aware: false

@@ -1,6 +1,7 @@
 ---
-title: "vitest/valid-expect-in-promise"
-category: "正确性"
+title: "vitest/valid-expect-in-promise | Oxlint"
+rule: "vitest/valid-expect-in-promise"
+category: "Correctness"
 version: "1.60.0"
 default: false
 type_aware: false

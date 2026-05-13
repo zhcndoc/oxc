@@ -1,6 +1,7 @@
 ---
-title: "vitest/no-conditional-tests"
-category: "正确性"
+title: "vitest/no-conditional-tests | Oxlint"
+rule: "vitest/no-conditional-tests"
+category: "Correctness"
 version: "0.8.0"
 default: false
 type_aware: false

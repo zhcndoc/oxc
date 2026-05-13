@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-lonely-if"
-category: "教条主义"
+title: "eslint/no-lonely-if | Oxlint"
+rule: "eslint/no-lonely-if"
+category: "Pedantic"
 version: "0.16.0"
 default: false
 type_aware: false

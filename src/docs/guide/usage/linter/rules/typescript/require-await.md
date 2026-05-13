@@ -1,6 +1,7 @@
 ---
-title: "typescript/require-await"
-category: "Pedantic"
+title: "typescript/require-await | Oxlint"
+rule: "typescript/require-await"
+category: "教学性"
 version: "1.12.0"
 default: false
 type_aware: true
@@ -30,24 +31,24 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 此规则的**错误**代码示例：
 
 ```ts
-// 没有 await 的 Async 函数
+// 没有 await 的异步函数
 async function fetchData() {
   return fetch("/api/data");
 }
 
-// 没有 await 的 Async 箭头函数
+// 没有 await 的异步箭头函数
 const processData = async () => {
   return someData.map((x) => x * 2);
 };
 
-// 没有 await 的 Async 方法
+// 没有 await 的异步方法
 class DataService {
   async getData() {
     return this.data;
   }
 }
 
-// 返回 Promise 但不 await 的 Async 函数
+// 返回 Promise 但不 await 的异步函数
 async function getPromise() {
   return Promise.resolve("value");
 }
@@ -56,7 +57,7 @@ async function getPromise() {
 此规则的**正确**代码示例：
 
 ```ts
-// 带有 await 的 Async 函数
+// 带有 await 的异步函数
 async function fetchData() {
   const response = await fetch("/api/data");
   return response.json();
@@ -67,7 +68,7 @@ function fetchDataSync() {
   return fetch("/api/data");
 }
 
-// 在条件分支中使用 await 的 Async 函数
+// 在条件分支中使用 await 的异步函数
 async function conditionalAwait(condition: boolean) {
   if (condition) {
     return await someAsyncOperation();
@@ -75,7 +76,7 @@ async function conditionalAwait(condition: boolean) {
   return "default";
 }
 
-// 在循环中使用 await 的 Async 函数
+// 在循环中使用 await 的异步函数
 async function processItems(items: string[]) {
   const results = [];
   for (const item of items) {

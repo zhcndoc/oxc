@@ -1,6 +1,7 @@
 ---
-title: "nextjs/google-font-preconnect"
-category: "正确性"
+title: "nextjs/google-font-preconnect | Oxlint"
+rule: "nextjs/google-font-preconnect"
+category: "Correctness"
 version: "0.2.0"
 default: false
 type_aware: false

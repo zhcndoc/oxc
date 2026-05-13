@@ -1,5 +1,6 @@
 ---
-title: "react/state-in-constructor"
+title: "react/state-in-constructor | Oxlint"
+rule: "react/state-in-constructor"
 category: "Style"
 version: "1.26.0"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制状态初始化风格只能是在
+强制 state 初始化风格只能是在
 构造函数中，或作为类属性。
 
 该规则与函数组件无关，因此对于现代 React 代码库来说，可以
@@ -26,7 +27,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-不一致的状态初始化风格会让代码库更难维护和理解。
+不一致的 state 初始化风格会让代码库更难维护和理解。
 此规则在 React 类组件中强制统一的模式。
 
 ### 示例
@@ -58,7 +59,7 @@ class Foo extends React.Component {
 
 #### `"never"` 模式
 
-将强制状态初始化风格必须使用类属性。
+将强制 state 初始化风格必须使用类属性。
 
 此规则在 `"never"` 模式下的**错误**代码示例：
 

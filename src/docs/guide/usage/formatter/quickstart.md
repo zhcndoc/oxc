@@ -1,6 +1,6 @@
 ---
-title: 快速开始
-description: 安装 Oxfmt 并学习常见工作流。
+title: "快速开始 | Oxfmt"
+description: 安装 Oxfmt 并了解常见工作流。
 ---
 
 # 快速开始

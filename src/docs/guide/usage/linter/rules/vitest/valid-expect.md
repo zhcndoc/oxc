@@ -1,6 +1,7 @@
 ---
-title: "vitest/valid-expect"
-category: "正确性"
+title: "vitest/valid-expect | Oxlint"
+rule: "vitest/valid-expect"
+category: "Correctness"
 version: "0.0.14"
 default: false
 type_aware: false

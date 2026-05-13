@@ -1,5 +1,6 @@
 ---
-title: "unicorn/no-process-exit"
+title: "unicorn/no-process-exit | Oxlint"
+rule: "unicorn/no-process-exit"
 category: "Restriction"
 version: "0.2.9"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-禁止所有对 `process.exit()` 的使用。
+禁止对 `process.exit()` 的所有使用。
 
 ### 为什么这不好？
 

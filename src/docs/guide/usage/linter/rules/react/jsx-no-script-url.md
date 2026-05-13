@@ -1,6 +1,7 @@
 ---
-title: "react/jsx-no-script-url"
-category: "可疑"
+title: "react/jsx-no-script-url | Oxlint"
+rule: "react/jsx-no-script-url"
+category: "Suspicious"
 version: "0.13.2"
 default: false
 type_aware: false

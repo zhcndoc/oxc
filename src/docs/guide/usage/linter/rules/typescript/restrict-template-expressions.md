@@ -1,6 +1,7 @@
 ---
-title: "typescript/restrict-template-expressions"
-category: "正确性"
+title: "typescript/restrict-template-expressions | Oxlint"
+rule: "typescript/restrict-template-expressions"
+category: "Correctness"
 version: "1.12.0"
 default: true
 type_aware: true
@@ -132,9 +133,13 @@ type: `object | string`
 
 type: `"file"`
 
+必须是 "file"
+
 ##### allow[n].name
 
 type: `array | string`
+
+要匹配的类型或值的名称
 
 名称说明符，可以是单个字符串或字符串数组
 

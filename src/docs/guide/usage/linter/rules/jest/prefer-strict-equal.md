@@ -1,5 +1,6 @@
 ---
-title: "jest/prefer-strict-equal"
+title: "jest/prefer-strict-equal | Oxlint"
+rule: "jest/prefer-strict-equal"
 category: "Style"
 version: "0.2.13"
 default: false
@@ -36,17 +37,6 @@ expect({ a: "a", b: undefined }).toEqual({ a: "a" });
 
 ```javascript
 expect({ a: "a", b: undefined }).toStrictEqual({ a: "a" });
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-strict-equal.md) 兼容，
-如需使用，请在你的 `.oxlintrc.json` 中添加以下配置：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-strict-equal": "error"
-  }
-}
 ```
 
 ## 如何使用

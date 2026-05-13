@@ -1,3 +1,7 @@
+---
+title: "嵌入式格式化 | Oxfmt"
+---
+
 # 嵌入式格式化
 
 格式化嵌入在 JS/TS 文件中的代码（模板字面量中的 CSS、模板字面量中的 GraphQL、Markdown 中的 JavaScript/TypeScript/CSS 等）。
@@ -88,7 +92,7 @@ const query2 = graphql(`
 ```js
 const template = html`
   <div class="container">
-    <h1>Hello</h1>
+    <h1>你好</h1>
     <p>${world}</p>
   </div>
 `;

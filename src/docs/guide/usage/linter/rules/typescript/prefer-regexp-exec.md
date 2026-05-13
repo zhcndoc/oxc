@@ -1,5 +1,6 @@
 ---
-title: "typescript/prefer-regexp-exec"
+title: "typescript/prefer-regexp-exec | Oxlint"
+rule: "typescript/prefer-regexp-exec"
 category: "Style"
 version: "1.49.0"
 default: false
@@ -23,7 +24,7 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 ### 为什么这不好？
 
-`exec()` 对与正则表达式匹配的表达方式更明确，并且避免了 `String#match()` 的重载行为。
+`exec()` 对正则表达式匹配的表达方式更明确，并且避免了 `String#match()` 的重载行为。
 
 ### 示例
 

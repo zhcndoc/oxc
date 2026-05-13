@@ -1,6 +1,7 @@
 ---
-title: "jest/no-done-callback"
-category: "样式"
+title: "jest/no-done-callback | Oxlint"
+rule: "jest/no-done-callback"
+category: "Style"
 version: "0.0.13"
 default: false
 type_aware: false
@@ -26,10 +27,10 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 最初，实现这一点最常见的模式是使用回调：
 
 ```javascript
-test("the data is peanut butter", (done) => {
+test("这份数据是花生酱", (done) => {
   function callback(data) {
     try {
-      expect(data).toBe("peanut butter");
+      expect(data).toBe("花生酱");
       done();
     } catch (error) {
       done(error);

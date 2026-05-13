@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-non-null-asserted-optional-chain"
-category: "正确性"
+title: "typescript/no-non-null-asserted-optional-chain | Oxlint"
+rule: "typescript/no-non-null-asserted-optional-chain"
+category: "Correctness"
 version: "0.0.6"
 default: true
 type_aware: false

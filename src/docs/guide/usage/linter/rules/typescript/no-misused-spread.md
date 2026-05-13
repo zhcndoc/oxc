@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-misused-spread"
-category: "正确性"
+title: "typescript/no-misused-spread | Oxlint"
+rule: "typescript/no-misused-spread"
+category: "Correctness"
 version: "1.12.0"
 default: true
 type_aware: true
@@ -116,9 +117,13 @@ type: `object | string`
 
 type: `"file"`
 
+必须为 "file"
+
 ##### allow[n].name
 
 type: `array | string`
+
+要匹配的类型或值的名称
 
 名称说明符，可以是单个字符串或字符串数组
 

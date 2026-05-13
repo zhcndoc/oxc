@@ -1,5 +1,6 @@
 ---
-title: "vitest/no-alias-methods"
+title: "vitest/no-alias-methods | Oxlint"
+rule: "vitest/no-alias-methods"
 category: "Style"
 version: "0.0.12"
 default: false
@@ -18,12 +19,12 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-此规则确保代码中仅使用 Jest 文档中使用的规范名称。
+强制使用 Vitest 的标准匹配器名称，而不是别名。
 
 ### 为什么这很糟糕？
 
-这些别名将在 Jest 的下一个重大版本中被移除 - 更多信息请参见 [jestjs/jest#13164](https://github.com/jestjs/jest/issues/13164)。
-此规则将使在代码中搜索该方法的所有出现位置更加容易，并确保所使用的方法名称保持一致。
+不建议使用 Vitest 匹配器别名，因为它们会导致匹配器用法不一致。
+此规则便于搜索某个匹配器的所有出现位置，并确保匹配器名称保持一致。
 
 ### 示例
 
@@ -59,33 +60,7 @@ expect(a).toHaveNthReturnedWith();
 expect(a).toThrow();
 ```
 
-针对 vitest 的此规则**错误**代码示例：
-
-```javascript
-expect(a).toBeCalled();
-expect(a).toBeCalledTimes();
-expect(a).not["toThrowError"]();
-```
-
-针对 vitest 的此规则**正确**代码示例：
-
-```javascript
-expect(a).toHaveBeenCalled();
-expect(a).toHaveBeenCalledTimes();
-expect(a).toHaveBeenCalledWith();
-expect(a).toHaveBeenLastCalledWith();
-expect(a).toHaveBeenNthCalledWith();
-expect(a).toHaveReturned();
-expect(a).toHaveReturnedTimes();
-expect(a).toHaveReturnedWith();
-expect(a).toHaveLastReturnedWith();
-expect(a).toHaveNthReturnedWith();
-expect(a).toThrow();
-expect(a).rejects;
-expect(a);
-```
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

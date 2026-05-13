@@ -1,5 +1,6 @@
 ---
-title: "vue/define-props-destructuring"
+title: "vue/define-props-destructuring | Oxlint"
+rule: "vue/define-props-destructuring"
 category: "Style"
 version: "1.20.0"
 default: false
@@ -23,8 +24,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-默认情况下，该规则要求在使用 `defineProps` 时使用解构语法，
-而不是将 props 存储到变量中，并且会警告不要将 `withDefaults` 与解构结合使用。
+默认情况下，该规则要求在 `defineProps` 赋值给变量时使用解构语法，并会警告不要将 `withDefaults` 与解构一起使用。
 
 ### 示例
 
@@ -57,11 +57,15 @@ const { bar = "default" } = defineProps<{ bar?: string }>();
 
 ### destructure
 
-type: `"always" | "never"`
+type: `"only-when-assigned" | "always" | "never"`
 
-default: `"always"`
+default: `"only-when-assigned"`
 
 要求或禁止解构。
+
+#### `"only-when-assigned"`
+
+当 `defineProps` 被赋值给变量时要求解构，并警告不要将 `withDefaults` 与解构一起使用
 
 #### `"always"`
 

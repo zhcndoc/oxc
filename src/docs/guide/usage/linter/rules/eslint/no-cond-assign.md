@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-cond-assign"
-category: "正确性"
+title: "eslint/no-cond-assign | Oxlint"
+rule: "eslint/no-cond-assign"
+category: "Correctness"
 version: "0.0.5"
 default: true
 type_aware: false

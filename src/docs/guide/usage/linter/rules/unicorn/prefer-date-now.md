@@ -1,6 +1,7 @@
 ---
-title: "unicorn/prefer-date-now"
-category: "教条"
+title: "unicorn/prefer-date-now | Oxlint"
+rule: "unicorn/prefer-date-now"
+category: "Pedantic"
 version: "0.0.16"
 default: false
 type_aware: false

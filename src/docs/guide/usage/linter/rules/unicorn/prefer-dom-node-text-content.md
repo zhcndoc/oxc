@@ -1,5 +1,6 @@
 ---
-title: "unicorn/prefer-dom-node-text-content"
+title: "unicorn/prefer-dom-node-text-content | Oxlint"
+rule: "unicorn/prefer-dom-node-text-content"
 category: "Style"
 version: "0.0.21"
 default: false
@@ -22,7 +23,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-使用 .innerText 有一些缺点。
+使用 `.innerText` 有一些缺点。
 
 - `.innerText` 的性能开销大得多，因为它需要布局信息来返回结果。
 - `.innerText` 仅针对 HTMLElement 对象定义，而 `.textContent` 针对所有 Node 对象定义。

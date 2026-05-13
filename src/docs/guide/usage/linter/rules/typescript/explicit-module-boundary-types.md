@@ -1,6 +1,7 @@
 ---
-title: "typescript/explicit-module-boundary-types"
-category: "Restriction"
+title: "typescript/explicit-module-boundary-types | Oxlint"
+rule: "typescript/explicit-module-boundary-types"
+category: "限制"
 version: "1.9.0"
 default: false
 type_aware: false

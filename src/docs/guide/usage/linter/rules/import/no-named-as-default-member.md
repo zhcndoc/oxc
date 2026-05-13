@@ -1,6 +1,7 @@
 ---
-title: "import/no-named-as-default-member"
-category: "可疑"
+title: "import/no-named-as-default-member | Oxlint"
+rule: "import/no-named-as-default-member"
+category: "Suspicious"
 version: "0.2.1"
 default: false
 type_aware: false

@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-unassigned-vars"
-category: "正确性"
+title: "eslint/no-unassigned-vars | Oxlint"
+rule: "eslint/no-unassigned-vars"
+category: "Correctness"
 version: "1.10.0"
 default: true
 type_aware: false

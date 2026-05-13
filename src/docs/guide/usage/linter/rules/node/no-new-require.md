@@ -1,6 +1,7 @@
 ---
-title: "node/no-new-require"
-category: "限制"
+title: "node/no-new-require | Oxlint"
+rule: "node/no-new-require"
+category: "Restriction"
 version: "0.10.0"
 default: false
 type_aware: false

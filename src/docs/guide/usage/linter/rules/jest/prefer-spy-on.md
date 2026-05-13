@@ -1,5 +1,6 @@
 ---
-title: "jest/prefer-spy-on"
+title: "jest/prefer-spy-on | Oxlint"
+rule: "jest/prefer-spy-on"
 category: "Style"
 version: "0.2.14"
 default: false
@@ -41,17 +42,6 @@ Date.now = jest.fn(() => 10);
 ```javascript
 jest.spyOn(Date, "now");
 jest.spyOn(Date, "now").mockImplementation(() => 10);
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-spy-on.md) 兼容，
-要使用它，请在你的 `.oxlintrc.json` 中添加以下配置：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-spy-on": "error"
-  }
-}
 ```
 
 ## 如何使用

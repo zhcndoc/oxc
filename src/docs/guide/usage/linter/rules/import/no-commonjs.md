@@ -1,6 +1,7 @@
 ---
-title: "import/no-commonjs"
-category: "限制"
+title: "import/no-commonjs | Oxlint"
+rule: "import/no-commonjs"
+category: "Restriction"
 version: "0.11.0"
 default: false
 type_aware: false

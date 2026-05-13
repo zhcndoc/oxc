@@ -1,6 +1,7 @@
 ---
-title: "nextjs/inline-script-id"
-category: "Correctness"
+title: "nextjs/inline-script-id | Oxlint"
+rule: "nextjs/inline-script-id"
+category: "正确性"
 version: "0.2.0"
 default: false
 type_aware: false

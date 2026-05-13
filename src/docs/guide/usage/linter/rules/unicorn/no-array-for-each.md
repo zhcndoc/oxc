@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-array-for-each"
-category: "限制"
+title: "unicorn/no-array-for-each | Oxlint"
+rule: "unicorn/no-array-for-each"
+category: "Restriction"
 version: "0.0.19"
 default: false
 type_aware: false

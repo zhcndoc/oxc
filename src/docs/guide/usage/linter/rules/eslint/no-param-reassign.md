@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-param-reassign"
+title: "eslint/no-param-reassign | Oxlint"
+rule: "eslint/no-param-reassign"
 category: "Restriction"
 version: "1.20.0"
 default: false
@@ -51,6 +52,8 @@ default: `[]`
 ### ignorePropertyModificationsForRegex
 
 type: `string[]`
+
+default: `[]`
 
 一个参数名的正则表达式模式数组（以字符串形式），应忽略这些参数名的属性修改。
 请注意，这里使用的是 [Rust 正则表达式语法](https://docs.rs/regex/latest/regex/)，因此可能不具备 JavaScript 正则表达式中的所有特性。

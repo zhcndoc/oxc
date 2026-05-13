@@ -1,5 +1,6 @@
 ---
-title: "react/forbid-elements"
+title: "react/forbid-elements | Oxlint"
+rule: "react/forbid-elements"
 category: "Restriction"
 version: "0.16.11"
 default: false
@@ -42,7 +43,7 @@ React.createElement(Modal);
 <Namespaced.Element />;
 React.createElement(Namespaced.Element);
 
-// ["error", { "forbid": [{ "element": "button", "message": "use <Button> instead" }, "input"] }]
+// ["error", { "forbid": [{ "element": "button", "message": "使用 <Button> 代替" }, "input"] }]
 <div>
   <button />
   <input />
@@ -73,7 +74,7 @@ type: `array`
 示例：
 
 - `["error, { "forbid": ["button"] }]`
-- `["error, { "forbid": [{ "element": "button", "message": "Use <Button> instead." }] }]`
+- `["error, { "forbid": [{ "element": "button", "message": "使用 <Button> 代替。" }] }]`
 - `["error, { "forbid": [{ "element": "input" }] }]`
 
 #### forbid[n]

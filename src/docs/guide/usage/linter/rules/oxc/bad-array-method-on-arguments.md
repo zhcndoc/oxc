@@ -1,5 +1,6 @@
 ---
-title: "oxc/bad-array-method-on-arguments"
+title: "oxc/bad-array-method-on-arguments | Oxlint"
+rule: "oxc/bad-array-method-on-arguments"
 category: "Correctness"
 version: "0.0.3"
 default: true
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 作用
+### 说明
 
 当在 arguments 对象本身上调用数组方法时，会应用此规则。
 

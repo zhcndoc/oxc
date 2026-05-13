@@ -1,5 +1,6 @@
 ---
-title: "jest/valid-expect-in-promise"
+title: "jest/valid-expect-in-promise | Oxlint"
+rule: "jest/valid-expect-in-promise"
 category: "正确性"
 version: "1.60.0"
 default: false

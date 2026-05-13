@@ -1,6 +1,7 @@
 ---
-title: "jsx-a11y/aria-unsupported-elements"
-category: "Correctness"
+title: "jsx-a11y/aria-unsupported-elements | Oxlint"
+rule: "jsx-a11y/aria-unsupported-elements"
+category: "正确性"
 version: "0.1.1"
 default: false
 type_aware: false

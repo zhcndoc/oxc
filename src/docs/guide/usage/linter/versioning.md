@@ -1,47 +1,47 @@
 ---
-title: Versioning policy
+title: "版本控制策略 | Oxlint"
 editLink: false
 ---
 
-# Versioning policy
+# 版本控制策略
 
-Oxlint follows semantic versioning, with the goal of providing clarity and predictability as you upgrade.
+Oxlint 遵循语义化版本控制，目标是在你升级时提供清晰性和可预测性。
 
-What's considered a **breaking** change:
+以下内容被视为 **破坏性** 变更：
 
-- Changes to the CLI interface that would break existing workflows.
-- Changes to the configuration file (`.oxlintrc.json`) that would break existing setups.
-- Renaming or removing a rule.
+- 会破坏现有工作流的 CLI 接口变更。
+- 会破坏现有配置的配置文件（`.oxlintrc.json`）变更。
+- 重命名或移除某条规则。
 
-What's considered a **non-breaking** change:
+以下内容被视为 **非破坏性** 变更：
 
-- Adding new lint rules.
-- Changing the default configuration for a rule.
-- Improving rule descriptions or diagnostic messages.
-- Adding new config options to existing rules.
-- Fixes that change rule behavior to better align with the original ESLint rule's behavior.
-- Adding new fields to the configuration file.
+- 添加新的 lint 规则。
+- 更改某条规则的默认配置。
+- 改进规则描述或诊断消息。
+- 为现有规则添加新的配置选项。
+- 使规则行为更改以更好地与原始 ESLint 规则的行为保持一致的修复。
+- 向配置文件添加新字段。
 
-## Features Not Subject to Semver
+## 不受语义化版本控制约束的特性
 
-The following features are not subject to semantic versioning. They may introduce breaking changes at any time, even in patch or minor releases:
+以下特性不受语义化版本控制约束。它们可能会在任何时候引入破坏性变更，即使是在补丁版本或次要版本中：
 
-- **JavaScript custom plugins** - The plugin API and behavior may change without notice.
-- **Type-aware linting** - Type-aware rules and their behavior may change as this feature evolves.
+- **JavaScript 自定义插件** - 插件 API 和行为可能会在不通知的情况下发生变化。
+- **类型感知 linting** - 类型感知规则及其行为可能会随着该特性的发展而变化。
 
-## Are New Lint Errors a Breaking Change?
+## 新的 Lint 错误算作破坏性变更吗？
 
-If a new version of Oxlint reports additional issues in your code, that’s expected. This behavior means Oxlint has improved — not that something in your project broke. New errors reflect stronger analysis, not a broken upgrade.
+如果 Oxlint 的新版本报告了代码中的额外问题，这是预期行为。这意味着 Oxlint 变得更好了，而不是你的项目出了问题。新的错误反映的是更强的分析能力，而不是升级失败。
 
-## What to Expect from New Versions
+## 对新版本的预期
 
-- **Patch version** (1.0.x): Bug fixes, performance improvements, internal refactors. These are always safe to upgrade.
-- **Minor version** (1.x.0): New rules, better diagnostics, new features. These are not considered breaking changes even if they cause new errors to appear in your codebase.
-- **Major version** (x.0.0): Reserved for breaking changes to the CLI or configuration format.
+- **补丁版本**（1.0.x）：错误修复、性能改进、内部重构。升级这些版本始终是安全的。
+- **次要版本**（1.x.0）：新规则、更好的诊断、新特性。即使它们导致代码库中出现新的错误，也不被视为破坏性变更。
+- **主要版本**（x.0.0）：保留用于 CLI 或配置格式的破坏性变更。
 
-## With Renovate Bot
+## 使用 Renovate Bot
 
-Add the snippet below to your Renovate config to let it keep Oxlint automatically up to date.
+将下面的片段添加到你的 Renovate 配置中，以便让它自动保持 Oxlint 为最新版本。
 
 ```json [renovate.json]
 {
@@ -57,30 +57,30 @@ Add the snippet below to your Renovate config to let it keep Oxlint automaticall
 }
 ```
 
-If you use [eslint-plugin-oxlint](https://npmx.dev/package/eslint-plugin-oxlint), ensure that it is also updated alongside Oxlint to avoid compatibility issues.
+如果你使用 [eslint-plugin-oxlint](https://npmx.dev/package/eslint-plugin-oxlint)，请确保它也与 Oxlint 一起更新，以避免兼容性问题。
 
-## With Dependabot
+## 使用 Dependabot
 
-Add the snippet below to your Dependabot config to let it keep Oxlint automatically up to date.
+将下面的片段添加到你的 Dependabot 配置中，以便让它自动保持 Oxlint 为最新版本。
 
 ```yaml
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/" # location of package.json
+    directory: "/" # package.json 的位置
     schedule:
       interval: "daily"
-    groups: # group all Oxlint updates together
+    groups: # 将所有 Oxlint 更新分组到一起
       oxlint:
         patterns:
           - "oxlint"
-    commit-message: # keep the history tidy
+    commit-message: # 保持提交历史整洁
       prefix: "chore"
       include: "scope"
-    ignore: # optional: ignore future majors
+    ignore: # 可选：忽略未来的大版本
       - dependency-name: "oxlint"
         update-types: ["version-update:semver-major"]
-    open-pull-requests-limit: 1 # one PR at a time
+    open-pull-requests-limit: 1 # 一次一个 PR
 ```
 
-If you use [eslint-plugin-oxlint](https://npmx.dev/package/eslint-plugin-oxlint), ensure that it is also updated alongside Oxlint to avoid compatibility issues.
+如果你使用 [eslint-plugin-oxlint](https://npmx.dev/package/eslint-plugin-oxlint)，请确保它也与 Oxlint 一起更新，以避免兼容性问题。

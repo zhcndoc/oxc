@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-unused-labels"
-category: "正确性"
+title: "eslint/no-unused-labels | Oxlint"
+rule: "eslint/no-unused-labels"
+category: "Correctness"
 version: "0.0.3"
 default: true
 type_aware: false

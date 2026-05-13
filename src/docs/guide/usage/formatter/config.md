@@ -1,5 +1,5 @@
 ---
-title: 配置
+title: "配置 | Oxfmt"
 description: 使用 .oxfmtrc.json 文件配置 Oxfmt。
 ---
 

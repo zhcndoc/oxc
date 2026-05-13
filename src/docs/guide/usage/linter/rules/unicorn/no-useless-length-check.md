@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-useless-length-check"
-category: "Correctness"
+title: "unicorn/no-useless-length-check | Oxlint"
+rule: "unicorn/no-useless-length-check"
+category: "正确性"
 version: "0.0.19"
 default: true
 type_aware: false

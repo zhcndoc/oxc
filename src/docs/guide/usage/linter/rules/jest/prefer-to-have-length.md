@@ -1,5 +1,6 @@
 ---
-title: "jest/prefer-to-have-length"
+title: "jest/prefer-to-have-length | Oxlint"
+rule: "jest/prefer-to-have-length"
 category: "Style"
 version: "0.2.13"
 default: false
@@ -38,17 +39,6 @@ expect(files["length"])["not"].toBe(1);
 
 ```javascript
 expect(files).toHaveLength(1);
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-have-length.md) 兼容，
-要使用它，请在你的 `.oxlintrc.json` 中添加以下配置：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-to-have-length": "error"
-  }
-}
 ```
 
 ## 如何使用

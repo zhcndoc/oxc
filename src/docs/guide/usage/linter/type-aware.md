@@ -1,27 +1,27 @@
 ---
-title: Type-Aware Linting
-description: Linting with type information.
+title: "类型感知 Lint | Oxlint"
+description: 使用类型信息进行 lint。
 ---
 
-# Type-Aware Linting
+# 类型感知 Lint
 
-Type-aware linting enables rules that rely on TypeScript’s type system, such as detecting unhandled promises or unsafe assignments. In Oxlint, type-aware linting is provided by [`tsgolint`](https://github.com/oxc-project/tsgolint) and is integrated into the Oxlint CLI and configuration system.
+类型感知 lint 使得一些依赖 TypeScript 类型系统的规则成为可能，例如检测未处理的 promise 或不安全的赋值。在 Oxlint 中，类型感知 lint 由 [`tsgolint`](https://github.com/oxc-project/tsgolint) 提供，并集成到 Oxlint CLI 和配置系统中。
 
-Type-aware linting currently supports [59 out of 61](https://github.com/oxc-project/tsgolint/tree/main?tab=readme-ov-file#implemented-rules) type-aware rules from typescript-eslint. Rule coverage, performance, and compatibility continue to improve.
+类型感知 lint 目前支持来自 typescript-eslint 的 [59/61](https://github.com/oxc-project/tsgolint/tree/main?tab=readme-ov-file#implemented-rules) 条类型感知规则。规则覆盖率、性能和兼容性仍在持续改进中。
 
-## Overview
+## 概览
 
-Oxlint separates responsibilities between two components:
+Oxlint 将职责划分给两个组件：
 
-- **Oxlint (Rust)**
-  Handles file traversal, ignore logic, configuration, non-type-aware rules, and reporting.
+- **Oxlint（Rust）**
+  负责文件遍历、忽略逻辑、配置、非类型感知规则以及报告输出。
 
-- **tsgolint (Go)**
-  Builds TypeScript programs using [`typescript-go`](https://github.com/microsoft/typescript-go) and executes type-aware rules, returning structured diagnostics to Oxlint.
+- **tsgolint（Go）**
+  使用 [`typescript-go`](https://github.com/microsoft/typescript-go) 构建 TypeScript 程序并执行类型感知规则，然后将结构化诊断结果返回给 Oxlint。
 
-## Installation
+## 安装
 
-Type-aware linting requires an additional dependency:
+类型感知 lint 需要额外依赖：
 
 ::: code-group
 
@@ -43,20 +43,20 @@ bun add -D oxlint-tsgolint@latest
 
 :::
 
-## Running type-aware linting
+## 运行类型感知 lint
 
-You can enable type-aware linting in either place:
+你可以在以下任一位置启用类型感知 lint：
 
-- CLI flag: `--type-aware`
-- Root config: `options.typeAware: true`
+- CLI 标志：`--type-aware`
+- 根配置：`options.typeAware: true`
 
-CLI:
+CLI：
 
 ```bash
 oxlint --type-aware
 ```
 
-Root config:
+根配置：
 
 ::: code-group
 
@@ -80,22 +80,22 @@ export default defineConfig({
 
 :::
 
-When enabled, Oxlint runs standard rules and type-aware rules in the `typescript/*` namespace.
+启用后，Oxlint 会运行标准规则以及 `typescript/*` 命名空间下的类型感知规则。
 
-`--type-aware` takes precedence over config files. For example, `oxlint --type-aware -c .oxlintrc.json` enables type-aware linting even if that config sets `options.typeAware` to `false`.
+`--type-aware` 的优先级高于配置文件。例如，`oxlint --type-aware -c .oxlintrc.json` 即使该配置将 `options.typeAware` 设为 `false`，也会启用类型感知 lint。
 
-`options.typeAware` and `options.typeCheck` are only supported in the root config file. Nested configs should not set these fields.
+`options.typeAware` 和 `options.typeCheck` 仅支持在根配置文件中使用。嵌套配置不应设置这些字段。
 
-In editor and LSP-based integrations like VS Code, type-aware linting can be enabled by setting the `typeAware` option to `true`, see the [Editors](./editors) page for more information.
+在 VS Code 等基于编辑器和 LSP 的集成中，可以通过将 `typeAware` 选项设置为 `true` 来启用类型感知 lint，更多信息请参见 [编辑器](./editors) 页面。
 
-### Monorepos and build outputs
+### 单仓库和构建产物
 
-Type-aware linting requires resolved type information.
+类型感知 lint 需要已解析的类型信息。
 
-In monorepos:
+在单仓库中：
 
-- Build dependent packages so `.d.ts` files are available
-- Ensure dependencies are installed before running
+- 构建依赖包，以便 `.d.ts` 文件可用
+- 确保在运行前已安装依赖
 
 ```bash
 pnpm install
@@ -103,15 +103,15 @@ pnpm -r build
 oxlint --type-aware
 ```
 
-### Type checking diagnostics
+### 类型检查诊断
 
-Enable type checking to report TypeScript errors alongside lint results:
+启用类型检查，以便在 lint 结果之外同时报告 TypeScript 错误：
 
 ```bash
 oxlint --type-aware --type-check
 ```
 
-Or enable it in the root config:
+或者在根配置中启用：
 
 ::: code-group
 
@@ -137,22 +137,22 @@ export default defineConfig({
 
 :::
 
-`--type-check` takes precedence over config files. For example, `oxlint --type-check -c .oxlintrc.json` enables type checking even if that config sets `options.typeCheck` to `false`.
+`--type-check` 的优先级高于配置文件。例如，`oxlint --type-check -c .oxlintrc.json` 即使该配置将 `options.typeCheck` 设为 `false`，也会启用类型检查。
 
-This mode can replace a separate `tsc --noEmit` step in CI:
+这种模式可以在 CI 中替代单独的 `tsc --noEmit` 步骤：
 
 ```bash
-# before
+# 之前
 tsc --noEmit
 oxlint
 
-# after
+# 之后
 oxlint --type-aware --type-check
 ```
 
-## Configuring type-aware rules
+## 配置类型感知规则
 
-Type-aware rules are configured like other Oxlint rules.
+类型感知规则的配置方式与其他 Oxlint 规则相同。
 
 ::: code-group
 
@@ -180,7 +180,7 @@ export default defineConfig({
 
 :::
 
-Rules support the same options as their `typescript-eslint` equivalents.
+规则支持与其 `typescript-eslint` 对应项相同的选项。
 
 ::: code-group
 
@@ -206,108 +206,108 @@ export default defineConfig({
 
 :::
 
-## Disable comments
+## 禁用注释
 
-Type-aware rules support inline disable comments:
+类型感知规则支持行内禁用注释：
 
 ```ts
 // oxlint-disable-next-line typescript/no-floating-promises
 doSomethingAsync();
 ```
 
-Report unused disable comments with:
+使用以下命令报告未使用的禁用注释：
 
 ```bash
 oxlint --type-aware --report-unused-disable-directives
 ```
 
-## TypeScript compatibility
+## TypeScript 兼容性
 
-Type-aware linting is powered by `typescript-go`.
+类型感知 lint 由 `typescript-go` 提供支持。
 
-- TypeScript **7.0+** is required
-- Some legacy `tsconfig` options are not supported (like `baseUrl` in `tsconfig.json`)
-- If you're using config options/features that were deprecated in TypeScript 6.0 or removed in TypeScript 7.0, you'll need to migrate your codebase first
-- Invalid options are reported when `--type-check` is enabled
+- 需要 TypeScript **7.0+**
+- 某些旧版 `tsconfig` 选项不受支持（例如 `tsconfig.json` 中的 `baseUrl`）
+- 如果你使用的是在 TypeScript 6.0 中已弃用或在 TypeScript 7.0 中已移除的配置选项/功能，你需要先迁移代码库
+- 在启用 `--type-check` 时会报告无效选项
 
-See the [TypeScript migration guide](https://github.com/microsoft/TypeScript/issues/62508#issuecomment-3348649259) for more details, and consider using [ts5to6](https://github.com/andrewbranch/ts5to6) to upgrade your tsconfig file.
+更多详情请参见 [TypeScript 迁移指南](https://github.com/microsoft/TypeScript/issues/62508#issuecomment-3348649259)，并考虑使用 [ts5to6](https://github.com/andrewbranch/ts5to6) 来升级你的 tsconfig 文件。
 
-## Stability notes
+## 稳定性说明
 
-Type-aware linting:
+类型感知 lint：
 
-- Rule coverage is incomplete (but very close)
-- Very large codebases may encounter high memory usage
-- Performance continues to improve
+- 规则覆盖不完整（但已非常接近）
+- 超大型代码库可能会遇到较高的内存使用
+- 性能仍在持续改进
 
-## Troubleshooting
+## 故障排查
 
-### Performance and debugging
+### 性能与调试
 
-If type-aware linting is slow or uses excessive memory:
+如果类型感知 lint 很慢或占用过多内存：
 
-1. Update both tools:
+1. 更新两个工具：
 
 - `oxlint`
 - `oxlint-tsgolint`
 
-2. Enable debug logging:
+2. 启用调试日志：
 
 ```bash
 OXC_LOG=debug oxlint --type-aware
 ```
 
-Example output (showing key timing milestones):
+示例输出（显示关键时间节点）：
 
 ```
-2026/01/01 12:00:00.000000 Starting tsgolint
-2026/01/01 12:00:00.001000 Starting to assign files to programs. Total files: 259
-2026/01/01 12:00:01.000000 Done assigning files to programs. Total programs: 8. Unmatched files: 75
-2026/01/01 12:00:01.001000 Starting linter with 12 workers
-2026/01/01 12:00:01.001000 Workload distribution: 8 programs
-2026/01/01 12:00:01.002000 [1/8] Running linter on program: /path/to/project/jsconfig.json
+2026/01/01 12:00:00.000000 开始 tsgolint
+2026/01/01 12:00:00.001000 开始将文件分配到程序。文件总数：259
+2026/01/01 12:00:01.000000 完成文件分配到程序。程序总数：8。未匹配文件：75
+2026/01/01 12:00:01.001000 使用 12 个 worker 启动 linter
+2026/01/01 12:00:01.001000 工作负载分布：8 个程序
+2026/01/01 12:00:01.002000 [1/8] 正在程序上运行 linter：/path/to/project/jsconfig.json
 ...
-2026/01/01 12:00:01.100000 [4/8] Running linter on program: /path/to/project/tsconfig.json
-2026/01/01 12:00:02.500000 Program created with 26140 source files
+2026/01/01 12:00:01.100000 [4/8] 正在程序上运行 linter：/path/to/project/tsconfig.json
+2026/01/01 12:00:02.500000 已创建程序，包含 26140 个源文件
 2026/01/01 12:00:14.000000 /path/to/project/oxlint-plugin.mts
 ...
-2026/01/01 12:00:14.100000 [5/8] Running linter on program: /path/to/project/apps/tsconfig.json
+2026/01/01 12:00:14.100000 [5/8] 正在程序上运行 linter：/path/to/project/apps/tsconfig.json
 ...
-2026/01/01 12:00:15.000000 Linting Complete
-Finished in 16.4s on 259 files with 161 rules using 12 threads.
+2026/01/01 12:00:15.000000 Lint 完成
+在 12 个线程上，针对 259 个文件使用 161 条规则，耗时 16.4s。
 ```
 
-**How to interpret the log:**
+**如何解读日志：**
 
-- **File assignment phase** (`Starting to assign files...` → `Done assigning files...`): Maps source files to their tsconfig projects. This phase should be fast. If slow, please file an issue.
-- **Program linting** (`[N/M] Running linter on program...`): Each TypeScript project is linted separately. Programs that take significantly longer may indicate expensive type resolution or an overly large project.
-  - Look for programs with an unusually high number of source files (e.g., `Program created with 26140 source files`). This may indicate misconfigured tsconfig `includes`/`excludes` pulling in unnecessary files like `node_modules`.
-  - Each file path logged indicates when that file is being linted. Large time gaps between files may indicate expensive type resolution for certain files.
+- **文件分配阶段**（`Starting to assign files...` → `Done assigning files...`）：将源文件映射到各自的 tsconfig 项目。此阶段应当很快。如果很慢，请提交 issue。
+- **程序 lint 阶段**（`[N/M] Running linter on program...`）：每个 TypeScript 项目会单独进行 lint。耗时明显更长的程序可能表示类型解析开销很大，或者项目规模过大。
+  - 注意源文件数量异常高的程序（例如 `Program created with 26140 source files`）。这可能说明 tsconfig 的 `includes`/`excludes` 配置不正确，导致把 `node_modules` 等不必要的文件也包含进来了。
+  - 日志中每个文件路径的出现表示该文件正在被 lint。文件之间出现较大的时间间隔，可能表示某些文件的类型解析成本很高。
 
-### Common performance issues
+### 常见性能问题
 
-#### Root tsconfig includes too many files
+#### 根 tsconfig 包含了过多文件
 
-A root `tsconfig.json` with overly broad `include` patterns can inadvertently include all files in the repository, causing significant slowdowns:
+如果根 `tsconfig.json` 的 `include` 模式过于宽泛，可能会无意中把仓库中的所有文件都包含进来，从而导致明显变慢：
 
 ```json [tsconfig.json]
 {
-  "include": ["**/*"] // ❌ Catches everything
+  "include": ["**/*"] // ❌ 捕获所有内容
 }
 ```
 
-This configuration pulls in build outputs and other files that shouldn't be type-checked.
+这种配置会把构建产物和其他不应进行类型检查的文件也纳入进来。
 
-**Fix:** Explicitly scope the `include` patterns and add appropriate `exclude` entries:
+**修复方法：** 明确限定 `include` 模式，并添加适当的 `exclude` 条目：
 
 ```json [tsconfig.json]
 {
-  "include": ["src/**/*"], // ✅ Only source files
-  "exclude": ["dist", "build", "coverage"] // node_modules are excluded by default
+  "include": ["src/**/*"], // ✅ 仅源文件
+  "exclude": ["dist", "build", "coverage"] // node_modules 默认已排除
 }
 ```
 
-For monorepos, ensure the root `tsconfig.json` does not include source files directly:
+对于单仓库，请确保根 `tsconfig.json` 不会直接包含源文件：
 
 ```json [tsconfig.json]
 {
@@ -315,15 +315,15 @@ For monorepos, ensure the root `tsconfig.json` does not include source files dir
 }
 ```
 
-**Diagnosing the issue:** Enable debug logging and look for programs with an unusually high number of source files:
+**问题诊断：** 启用调试日志，并查看是否有源文件数量异常高的程序：
 
 ```
 2026/01/01 12:00:02.500000 Program created with 26140 source files
 ```
 
-If you see thousands of files in a single program, check that tsconfig's `include`/`exclude` settings.
+如果你看到单个程序中有成千上万个文件，请检查 tsconfig 的 `include`/`exclude` 设置。
 
-## Next steps
+## 下一步
 
-- Check [implemented rules](https://github.com/oxc-project/tsgolint/tree/main?tab=readme-ov-file#implemented-rules)
-- Report issues to [https://github.com/oxc-project/tsgolint](https://github.com/oxc-project/tsgolint)
+- 查看 [已实现规则](https://github.com/oxc-project/tsgolint/tree/main?tab=readme-ov-file#implemented-rules)
+- 将问题报告到 [https://github.com/oxc-project/tsgolint](https://github.com/oxc-project/tsgolint)

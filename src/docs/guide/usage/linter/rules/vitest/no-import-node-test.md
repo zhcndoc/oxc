@@ -1,6 +1,7 @@
 ---
-title: "vitest/no-import-node-test"
-category: "Style"
+title: "vitest/no-import-node-test | Oxlint"
+rule: "vitest/no-import-node-test"
+category: "风格"
 version: "0.7.0"
 default: false
 type_aware: false

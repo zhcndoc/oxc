@@ -1,5 +1,6 @@
 ---
-title: "react/jsx-no-useless-fragment"
+title: "react/jsx-no-useless-fragment | Oxlint"
+rule: "react/jsx-no-useless-fragment"
 category: "Pedantic"
 version: "0.0.14"
 default: false
@@ -18,11 +19,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-禁止不必要的 Fragment。
+禁止无用的 Fragment。
 
 ### 为什么这不好？
 
-当你需要将多个子元素分组，而又不想在 DOM 树中添加一个节点时，Fragment 是一个很有用的工具。然而，有时你可能会得到一个只包含单个子元素的 Fragment。当这个子元素是一个元素、字符串或表达式时，就没有必要使用 Fragment。
+当你需要将多个子元素分组，而又不想在 DOM 树中添加一个节点时，Fragment 是一个非常有用的工具。然而，有时你可能会得到一个只包含单个子元素的 Fragment。当这个子元素是一个元素、字符串或表达式时，就没有必要使用 Fragment。
 
 ### 示例
 

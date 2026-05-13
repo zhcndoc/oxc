@@ -1,6 +1,7 @@
 ---
-title: "vitest/prefer-to-be-truthy"
-category: "样式"
+title: "vitest/prefer-to-be-truthy | Oxlint"
+rule: "vitest/prefer-to-be-truthy"
+category: "Style"
 version: "0.7.1"
 default: false
 type_aware: false

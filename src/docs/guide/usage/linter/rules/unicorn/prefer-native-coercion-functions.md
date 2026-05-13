@@ -1,5 +1,6 @@
 ---
-title: "unicorn/prefer-native-coercion-functions"
+title: "unicorn/prefer-native-coercion-functions | Oxlint"
+rule: "unicorn/prefer-native-coercion-functions"
 category: "Pedantic"
 version: "0.0.19"
 default: false
@@ -18,12 +19,12 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-优先使用内置函数，而不是具有相同功能的自定义函数。
+优先使用原生函数，而不是具有相同功能的自定义函数。
 
 ### 为什么这不好？
 
-如果一个函数等价于 [`String`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)、[`Number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)、[`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)、[`Boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) 或 [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)，你应该直接使用内置的那个。
-将内置函数再包装一层是没有意义的。
+如果一个函数等价于 [`String`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)、[`Number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)、[`BigInt`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)、[`Boolean`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean) 或 [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)，你应该直接使用原生的那个。
+将原生函数再包装一层是没有意义的。
 
 ### 示例
 

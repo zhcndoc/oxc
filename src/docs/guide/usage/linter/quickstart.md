@@ -1,6 +1,6 @@
 ---
-title: 快速开始
-description: 安装 Oxlint 并学习常见的工作流程。
+title: "快速开始 | Oxlint"
+description: 安装 Oxlint 并了解常见工作流程。
 ---
 
 # 快速开始

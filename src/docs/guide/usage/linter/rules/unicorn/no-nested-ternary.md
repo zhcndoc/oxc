@@ -1,5 +1,6 @@
 ---
-title: "unicorn/no-nested-ternary"
+title: "unicorn/no-nested-ternary | Oxlint"
+rule: "unicorn/no-nested-ternary"
 category: "Style"
 version: "0.0.18"
 default: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 此规则不允许深度嵌套的三元表达式。
 仅嵌套一层且用括号包裹的三元表达式是允许的。

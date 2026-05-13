@@ -1,6 +1,6 @@
 ---
-title: 设置 CI 和其他集成
-description: 在 CI 中运行 Oxfmt 或作为 git hook 运行。
+title: "在 CI 和其他集成中设置 | Oxfmt"
+description: 在 CI 中或作为 git 钩子运行 Oxfmt。
 ---
 
 # 设置 CI 和其他集成

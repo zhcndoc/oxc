@@ -1,5 +1,6 @@
 ---
-title: "react/jsx-filename-extension"
+title: "react/jsx-filename-extension | Oxlint"
+rule: "react/jsx-filename-extension"
 category: "Restriction"
 version: "0.15.14"
 default: false
@@ -87,10 +88,10 @@ default: `false`
 
 <RuleHowToUse />
 
-## Version
+## 版本
 
-This rule was added in v0.15.14.
+此规则于 v0.15.14 中添加。
 
-## References
+## 参考资料
 
 <RuleReferences />

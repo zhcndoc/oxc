@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-restricted-globals"
-category: "限制"
+title: "eslint/no-restricted-globals | Oxlint"
+rule: "eslint/no-restricted-globals"
+category: "Restriction"
 version: "0.4.0"
 default: false
 type_aware: false

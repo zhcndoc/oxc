@@ -1,6 +1,7 @@
 ---
-title: "unicorn/prefer-top-level-await"
-category: "教条主义"
+title: "unicorn/prefer-top-level-await | Oxlint"
+rule: "unicorn/prefer-top-level-await"
+category: "Pedantic"
 version: "1.20.0"
 default: false
 type_aware: false

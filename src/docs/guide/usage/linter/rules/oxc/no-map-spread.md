@@ -1,5 +1,6 @@
 ---
-title: "oxc/no-map-spread"
+title: "oxc/no-map-spread | Oxlint"
+rule: "oxc/no-map-spread"
 category: "Perf"
 version: "0.11.0"
 default: false
@@ -31,7 +32,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 展开语法常用于向数组中的对象添加属性，或将多个对象组合在一起。不幸的是，展开会为新对象触发一次重新分配，并带来 `O(n)` 的内存拷贝。
 
 ```ts
-// scores 中的每个对象都会被浅拷贝。由于 `scores` 从未
+// `scores` 中的每个对象都会被浅拷贝。由于 `scores` 从未
 // 被复用，因此展开是低效的。
 function getDisplayData() {
   const scores: Array<{ username: string; score: number }> = getScores();
@@ -77,7 +78,7 @@ class AuthorsDb {
 /* "oxc/no-map-spread": ["error", { "ignoreRereads": true }] */
 const scores = getScores();
 const displayData = scores.map(score => ({ ...score, rank: getRank(score) }));
-console.log(scores); // 在 map 调用后重新读取了 scores
+console.log(scores); // 在 map 调用后重新读取了 `scores`
 ```
 
 #### 数组
@@ -157,7 +158,7 @@ arr.map((obj) => Object.assign(obj, { b: obj.a * 2 }));
 class UsersDb {
   #users = [];
   public get users() {
-    // 克隆 users，为调用方提供其自身的深度（近似）副本。
+    // 克隆 `users`，为调用方提供其自身的深度（近似）副本。
     return this.#users.map((user) => ({ ...user }));
   }
 }
@@ -177,7 +178,7 @@ function UsersTable({ users }) {
       ))}
       <tfoot>
         <tr>
-          {/* 重新读取 users */}
+          {/* 重新读取 `users` */}
           <td>用户总数：{users.length}</td>
         </tr>
       </tfoot>

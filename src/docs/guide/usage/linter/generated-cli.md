@@ -115,7 +115,7 @@ search: false
 ## 输出
 
 - **`-f`**, **`--format`**=_`ARG`_ &mdash;
-  使用特定的输出格式。可能的值：`checkstyle`, `default`, `github`, `gitlab`, `json`, `junit`, `stylish`, `unix`
+  使用特定的输出格式。可选值：`checkstyle`、`default`、`agent`、`github`、`gitlab`、`json`、`junit`、`sarif`、`stylish`、`unix`
 
 ## 杂项
 

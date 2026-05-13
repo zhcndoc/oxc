@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-useless-rename"
+title: "eslint/no-useless-rename | Oxlint"
+rule: "eslint/no-useless-rename"
 category: "正确性"
 version: "0.2.14"
 default: true

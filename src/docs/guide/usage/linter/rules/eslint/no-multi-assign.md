@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-multi-assign"
-category: "样式"
+title: "eslint/no-multi-assign | Oxlint"
+rule: "eslint/no-multi-assign"
+category: "Style"
 version: "0.15.4"
 default: false
 type_aware: false

@@ -1,6 +1,7 @@
 ---
-title: "jest/prefer-expect-resolves"
-category: "风格"
+title: "jest/prefer-expect-resolves | Oxlint"
+rule: "jest/prefer-expect-resolves"
+category: "Style"
 version: "0.2.14"
 default: false
 type_aware: false
@@ -61,17 +62,6 @@ it("is true", async () => {
 it("errors", async () => {
   await expect(Promise.reject(new Error("oh noes!"))).rejects.toThrowError("oh noes!");
 });
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-expect-resolves.md) 兼容，
-要使用它，请在你的 `.oxlintrc.json` 中添加以下配置：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-expect-resolves": "error"
-  }
-}
 ```
 
 ## 如何使用

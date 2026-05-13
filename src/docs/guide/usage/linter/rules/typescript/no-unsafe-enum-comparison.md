@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-unsafe-enum-comparison"
-category: "Suspicious"
+title: "typescript/no-unsafe-enum-comparison | Oxlint"
+rule: "typescript/no-unsafe-enum-comparison"
+category: "可疑"
 version: "1.12.0"
 default: false
 type_aware: true

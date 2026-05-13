@@ -1,6 +1,6 @@
 ---
-title: 内置插件
-description: 启用内置插件规则集并使用与 ESLint 兼容的 JavaScript 插件扩展 Oxlint。
+title: "内置插件 | Oxlint"
+description: 启用内置插件规则集，并使用与 ESLint 兼容的 JavaScript 插件扩展 Oxlint。
 ---
 
 # 内置插件
@@ -107,25 +107,27 @@ oxlint --disable-unicorn-plugin
 
 此表列出了内置插件及其来源。
 
-| 插件名称     | 默认 | 来源                                                                                                                                                                                                                                                       |
-| ------------ | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `eslint`     | 是   | [ESLint](https://eslint.org/) 核心规则                                                                                                                                                                                                                     |
-| `typescript` | 是   | 来自 [typescript-eslint](https://typescript-eslint.io/) 的 TypeScript 规则（即 `@typescript-eslint/plugin`）。使用 [类型感知模式](./type-aware.md) 可使用类型感知规则。                                                                                    |
-| `unicorn`    | 是   | [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)                                                                                                                                                                             |
-| `react`      | 否   | [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)、[eslint-plugin-react-hooks](https://www.npmx.dev/package/eslint-plugin-react-hooks) 和 [eslint-plugin-react-refresh](https://github.com/ArnaudBarre/eslint-plugin-react-refresh) |
-| `react-perf` | 否   | [eslint-plugin-react-perf](https://github.com/cvazac/eslint-plugin-react-perf)                                                                                                                                                                             |
-| `nextjs`     | 否   | [@next/eslint-plugin-next](https://www.npmx.dev/package/@next/eslint-plugin-next)                                                                                                                                                                          |
-| `oxc`        | 是   | Oxc 特定规则以及从 deepscan 移植的选定规则                                                                                                                                                                                                                 |
-| `import`     | 否   | [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)（也等同于 [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x)）                                                                                            |
-| `jsdoc`      | 否   | [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc)                                                                                                                                                                                        |
-| `jsx-a11y`   | 否   | [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)                                                                                                                                                                             |
-| `node`       | 否   | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                                                                                                                                                                                     |
-| `promise`    | 否   | [eslint-plugin-promise](https://github.com/eslint-community/eslint-plugin-promise)                                                                                                                                                                         |
-| `jest`       | 否   | [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest)                                                                                                                                                                                 |
-| `vitest`     | 否   | [@vitest/eslint-plugin](https://github.com/vitest-dev/eslint-plugin-vitest) 即 eslint-plugin-vitest                                                                                                                                                        |
-| `vue`        | 否   | [eslint-plugin-vue](https://eslint.vuejs.org/) 适用于 script 标签的规则                                                                                                                                                                                    |
+| 插件名称      | 默认 | 来源                                                                                                                                                                                                                                                         |
+| ------------ | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `eslint`     | 是     | [ESLint](https://eslint.org/) 核心规则                                                                                                                                                                                                                       |
+| `typescript` | 是     | 来自 [typescript-eslint](https://typescript-eslint.io/) 的 TypeScript 规则（即 `@typescript-eslint/plugin`）。可使用 [类型感知模式](./type-aware.md) 获取支持类型感知的规则。                                                                       |
+| `unicorn`    | 是     | [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)                                                                                                                                                                                 |
+| `react`      | 否      | [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react)、[eslint-plugin-react-hooks](https://www.npmx.dev/package/eslint-plugin-react-hooks)\* 和 [eslint-plugin-react-refresh](https://github.com/ArnaudBarre/eslint-plugin-react-refresh) |
+| `react-perf` | 否      | [eslint-plugin-react-perf](https://github.com/cvazac/eslint-plugin-react-perf)                                                                                                                                                                                 |
+| `nextjs`     | 否      | [@next/eslint-plugin-next](https://www.npmx.dev/package/@next/eslint-plugin-next)                                                                                                                                                                              |
+| `oxc`        | 是     | Oxc 特有规则以及从 deepscan 移植的部分规则                                                                                                                                                                                                     |
+| `import`     | 否      | [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)（也等同于 [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x)）                                                                                       |
+| `jsdoc`      | 否      | [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc)                                                                                                                                                                                            |
+| `jsx-a11y`   | 否      | [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)                                                                                                                                                                                 |
+| `node`       | 否      | [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n)                                                                                                                                                                                         |
+| `promise`    | 否      | [eslint-plugin-promise](https://github.com/eslint-community/eslint-plugin-promise)                                                                                                                                                                             |
+| `jest`       | 否      | [eslint-plugin-jest](https://github.com/jest-community/eslint-plugin-jest)                                                                                                                                                                                     |
+| `vitest`     | 否      | [@vitest/eslint-plugin](https://github.com/vitest-dev/eslint-plugin-vitest)，即 eslint-plugin-vitest                                                                                                                                                           |
+| `vue`        | 否      | 可与 script 标签配合使用的 [eslint-plugin-vue](https://eslint.vuejs.org/) 规则                                                                                                                                                                                |
 
 有关规则覆盖率的当前状态，请参阅 linter [产品计划 issue](https://github.com/oxc-project/oxc/issues/481)。有关框架和文件类型支持，请参阅 [兼容性矩阵](/compatibility)。
+
+\* eslint-plugin-react-hooks 默认不实现编译器规则。有关如何执行此操作的示例，请查看 [这里](https://github.com/TheAlexLichter/oxlint-react-compiler-rules)。
 
 ## 添加新插件
 

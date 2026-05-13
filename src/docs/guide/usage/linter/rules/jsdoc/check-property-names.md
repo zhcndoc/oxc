@@ -1,6 +1,7 @@
 ---
-title: "jsdoc/check-property-names"
-category: "正确性"
+title: "jsdoc/check-property-names | Oxlint"
+rule: "jsdoc/check-property-names"
+category: "Correctness"
 version: "0.2.18"
 default: false
 type_aware: false

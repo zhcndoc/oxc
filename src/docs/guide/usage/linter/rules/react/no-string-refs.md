@@ -1,5 +1,6 @@
 ---
-title: "react/no-string-refs"
+title: "react/no-string-refs | Oxlint"
+rule: "react/no-string-refs"
 category: "Correctness"
 version: "0.0.15"
 default: false
@@ -34,7 +35,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```jsx
 var Hello = createReactClass({
   render: function () {
-    return <div ref="hello">Hello, world.</div>;
+    return <div ref="hello">你好，世界。</div>;
   },
 });
 
@@ -44,7 +45,7 @@ var Hello = createReactClass({
     // ...对 component 做一些处理
   },
   render: function () {
-    return <div ref="hello">Hello, world.</div>;
+    return <div ref="hello">你好，世界。</div>;
   },
 });
 ```
@@ -64,7 +65,7 @@ var Hello = createReactClass({
           this.hello = c;
         }}
       >
-        Hello, world.
+        你好，世界。
       </div>
     );
   },

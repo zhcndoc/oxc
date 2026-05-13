@@ -1,6 +1,7 @@
 ---
-title: "oxc/bad-object-literal-comparison"
-category: "Correctness"
+title: "oxc/bad-object-literal-comparison | Oxlint"
+rule: "oxc/bad-object-literal-comparison"
+category: "正确性"
 version: "0.1.1"
 default: true
 type_aware: false

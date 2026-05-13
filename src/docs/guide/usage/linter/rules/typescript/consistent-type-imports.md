@@ -1,6 +1,7 @@
 ---
-title: "typescript/consistent-type-imports"
-category: "风格"
+title: "typescript/consistent-type-imports | Oxlint"
+rule: "typescript/consistent-type-imports"
+category: "Style"
 version: "0.5.2"
 default: false
 type_aware: false

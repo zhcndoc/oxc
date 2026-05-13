@@ -1,5 +1,6 @@
 ---
-title: "jsdoc/require-param-name"
+title: "jsdoc/require-param-name | Oxlint"
+rule: "jsdoc/require-param-name"
 category: "Pedantic"
 version: "0.4.3"
 default: false
@@ -22,7 +23,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-参数的名称应该被记录下来。
+应该记录参数的名称。
 
 ### 示例
 

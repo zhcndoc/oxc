@@ -1,6 +1,7 @@
 ---
-title: "nextjs/no-typos"
-category: "正确性"
+title: "nextjs/no-typos | Oxlint"
+rule: "nextjs/no-typos"
+category: "Correctness"
 version: "0.2.1"
 default: false
 type_aware: false

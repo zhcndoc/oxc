@@ -1,6 +1,7 @@
 ---
-title: "jest/prefer-importing-jest-globals"
-category: "Style"
+title: "jest/prefer-importing-jest-globals | Oxlint"
+rule: "jest/prefer-importing-jest-globals"
+category: "样式"
 version: "1.60.0"
 default: false
 type_aware: false

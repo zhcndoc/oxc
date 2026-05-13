@@ -1,5 +1,6 @@
 ---
-title: "vitest/prefer-import-in-mock"
+title: "vitest/prefer-import-in-mock | Oxlint"
+rule: "vitest/prefer-import-in-mock"
 category: "Style"
 version: "1.49.0"
 default: false
@@ -56,10 +57,10 @@ vi.doMock(import("./path/to/module"));
 
 <RuleHowToUse />
 
-## Version
+## 版本
 
 此规则在 v1.49.0 中添加。
 
-## References
+## 参考资料
 
 <RuleReferences />

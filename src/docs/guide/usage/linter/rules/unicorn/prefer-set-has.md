@@ -1,5 +1,6 @@
 ---
-title: "unicorn/prefer-set-has"
+title: "unicorn/prefer-set-has | Oxlint"
+rule: "unicorn/prefer-set-has"
 category: "Perf"
 version: "0.13.2"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-在检查是否存在或不存在时，优先使用 `Set#has()` 而不是 `Array#includes()`。
+在检查某个值是否存在或不存在时，优先使用 `Set#has()` 而不是 `Array#includes()`。
 
 ### 为什么这不好？
 

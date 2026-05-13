@@ -1,5 +1,6 @@
 ---
-title: "eslint/require-yield"
+title: "eslint/require-yield | Oxlint"
+rule: "eslint/require-yield"
 category: "正确性"
 version: "0.0.4"
 default: true

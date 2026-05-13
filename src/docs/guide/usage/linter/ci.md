@@ -1,6 +1,6 @@
 ---
-title: 设置 CI 和其他集成
-description: 在 CI 中运行 Oxlint 或作为 git hook 运行。
+title: "设置 CI 和其他集成 | Oxlint"
+description: 在 CI 中或作为 git hook 运行 Oxlint。
 ---
 
 # 设置 CI 和其他集成

@@ -1,5 +1,6 @@
 ---
-title: "typescript/no-deprecated"
+title: "typescript/no-deprecated | Oxlint"
+rule: "typescript/no-deprecated"
 category: "Pedantic"
 version: "1.26.0"
 default: false
@@ -32,7 +33,7 @@ TypeScript 能识别 `@deprecated` 标签，使编辑器能够以可视化方式
 此规则的**错误**代码示例：
 
 ```ts
-/** @deprecated Use apiV2 instead. */
+/** @deprecated 使用 apiV2 替代。 */
 declare function apiV1(): Promise<string>;
 declare function apiV2(): Promise<string>;
 
@@ -46,7 +47,7 @@ const url = parse("/foo");
 此规则的**正确**代码示例：
 
 ```ts
-/** @deprecated Use apiV2 instead. */
+/** @deprecated 使用 apiV2 替代。 */
 declare function apiV1(): Promise<string>;
 declare function apiV2(): Promise<string>;
 
@@ -109,9 +110,13 @@ type: `object | string`
 
 type: `"file"`
 
+必须为 "file"
+
 ##### allow[n].name
 
 type: `array | string`
+
+要匹配的类型或值的名称
 
 名称说明符，可以是单个字符串或字符串数组
 

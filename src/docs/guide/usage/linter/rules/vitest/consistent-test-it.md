@@ -1,5 +1,6 @@
 ---
-title: "vitest/consistent-test-it"
+title: "vitest/consistent-test-it | Oxlint"
+rule: "vitest/consistent-test-it"
 category: "Style"
 version: "0.5.3"
 default: false
@@ -18,49 +19,17 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-Jest 允许你选择如何定义测试，使用 `it` 或
-`test` 关键字，并且每种都有多种变体：
+Vitest 允许你选择如何定义测试，使用 `it`
+或 `test` 关键字，并且每种都有多种变体：
 
-- **it:** `it`、`xit`、`fit`、`it.only`、`it.skip`。
-- **test:** `test`、`xtest`、`test.only`、`test.skip`。
+- **it:** `it`、`it.only`、`it.skip`、`it.concurrent`、`it.each`。
+- **test:** `test`、`test.only`、`test.skip`、`test.concurrent`、`test.each`。
 
 ### 为什么这不好？
 
 在测试套件中保持一致是一种良好的实践，这样所有测试都可以用相同的方式编写。
 
-### 示例
-
-```javascript
-/* jest/consistent-test-it: ["error", {"fn": "test"}] */
-test("foo"); // 有效
-test.only("foo"); // 有效
-
-it("foo"); // 无效
-it.only("foo"); // 无效
-```
-
-```javascript
-/* jest/consistent-test-it: ["error", {"fn": "it"}] */
-it("foo"); // 有效
-it.only("foo"); // 有效
-test("foo"); // 无效
-test.only("foo"); // 无效
-```
-
-```javascript
-/* jest/consistent-test-it: ["error", {"fn": "it", "withinDescribe": "test"}] */
-it("foo"); // 有效
-describe("foo", function () {
-  test("bar"); // 有效
-});
-
-test("foo"); // 无效
-describe("foo", function () {
-  it("bar"); // 无效
-});
-```
-
-## 配置
+## Configuration
 
 此规则接受一个包含以下属性的配置对象：
 
@@ -72,6 +41,34 @@ default: `"test"`
 
 决定使用 `test` 还是 `it`。
 
+Examples of **incorrect** code for `{ "fn": "test" }`:
+
+```javascript
+it("foo");
+it.only("foo");
+```
+
+Examples of **correct** code for `{ "fn": "test" }`:
+
+```javascript
+test("foo");
+test.only("foo");
+```
+
+Examples of **incorrect** code for `{ "fn": "it" }`:
+
+```javascript
+test("foo");
+test.only("foo");
+```
+
+Examples of **correct** code for `{ "fn": "it" }`:
+
+```javascript
+it("foo");
+it.only("foo");
+```
+
 ### withinDescribe
 
 type: `"it" | "test"`
@@ -81,7 +78,23 @@ default: `"it"`
 决定在 `describe` 作用域内使用 `test` 还是 `it`。
 如果只提供了 `fn`，此项将默认使用 `fn` 的值。
 
-## 如何使用
+Examples of **incorrect** code for `{ "withinDescribe": "test" }`:
+
+```javascript
+describe("foo", function () {
+  it("bar");
+});
+```
+
+Examples of **correct** code for `{ "withinDescribe": "test" }`:
+
+```javascript
+describe("foo", function () {
+  test("bar");
+});
+```
+
+## How to use
 
 <RuleHowToUse />
 

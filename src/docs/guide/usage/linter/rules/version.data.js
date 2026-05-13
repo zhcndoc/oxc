@@ -1,5 +1,5 @@
 export default {
   load() {
-    return "2d102fd5badfd75cf879aae30bbe0129b8ac445a";
+    return "610f4c7b0bdac95148373fab8798e8fcbecec820";
   },
 };

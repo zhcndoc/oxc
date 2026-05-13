@@ -1,6 +1,7 @@
 ---
-title: "jest/prefer-each"
-category: "Style"
+title: "jest/prefer-each | Oxlint"
+rule: "jest/prefer-each"
+category: "样式"
 version: "0.9.0"
 default: false
 type_aware: false
@@ -46,18 +47,7 @@ describe.each(items)("item", (item) => {
 });
 ```
 
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-each.md) 兼容，
-要使用它，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-each": "error"
-  }
-}
-```
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

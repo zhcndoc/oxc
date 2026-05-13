@@ -1,6 +1,7 @@
 ---
-title: "jsx-a11y/heading-has-content"
-category: "正确性"
+title: "jsx-a11y/heading-has-content | Oxlint"
+rule: "jsx-a11y/heading-has-content"
+category: "Correctness"
 version: "0.0.19"
 default: false
 type_aware: false

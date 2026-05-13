@@ -1,5 +1,6 @@
 ---
-title: "vitest/prefer-to-be-falsy"
+title: "vitest/prefer-to-be-falsy | Oxlint"
+rule: "vitest/prefer-to-be-falsy"
 category: "Style"
 version: "0.7.1"
 default: false
@@ -16,14 +17,14 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
-当 `expect` 或 `expectTypeOf` 中使用 `toBe(false)` 时，此规则会发出警告。
+当在 `expect` 或 `expectTypeOf` 中使用 `toBe(false)` 时，此规则会发出警告。
 使用 `--fix` 时，它会被替换为 `toBeFalsy()`。
 
 ### 为什么这不好？
 
-使用 `toBe(false)` 表达性较差，而且可能无法涵盖其他假值，
+使用 `toBe(false)` 的表达性较差，而且可能无法涵盖其他假值，
 例如 `0`、`null` 或 `undefined`。`toBeFalsy()` 能更全面地检查任何假值，
 从而提高测试的健壮性。
 

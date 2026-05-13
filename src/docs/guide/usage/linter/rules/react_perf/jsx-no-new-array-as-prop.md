@@ -1,5 +1,6 @@
 ---
-title: "react-perf/jsx-no-new-array-as-prop"
+title: "react-perf/jsx-no-new-array-as-prop | Oxlint"
+rule: "react-perf/jsx-no-new-array-as-prop"
 category: "Perf"
 version: "0.2.3"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-防止将仅在当前方法中局部创建的数组用作 JSX props 的值。
+防止将仅在当前函数中局部创建的数组用作 JSX props 的值。
 
 ### 为什么这不好？
 

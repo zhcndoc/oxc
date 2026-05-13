@@ -1,5 +1,6 @@
 ---
-title: "jest/prefer-hooks-in-order"
+title: "jest/prefer-hooks-in-order | Oxlint"
+rule: "jest/prefer-hooks-in-order"
 category: "Style"
 version: "0.6.0"
 default: false
@@ -119,18 +120,7 @@ describe("foo", () => {
 });
 ```
 
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/v1.1.9/docs/rules/prefer-hooks-in-order.md) 兼容，
-要使用它，请在你的 `.oxlintrc.json` 中添加以下配置：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-hooks-in-order": "error"
-  }
-}
-```
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

@@ -1,5 +1,6 @@
 ---
-title: "unicorn/prefer-node-protocol"
+title: "unicorn/prefer-node-protocol | Oxlint"
+rule: "unicorn/prefer-node-protocol"
 category: "Restriction"
 version: "0.0.19"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-在导入 Node.js 内置模块时，优先使用 `node:protocol`。
+导入 Node.js 内置模块时，优先使用 `node:protocol`。
 
 ### 为什么这不好？
 

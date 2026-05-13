@@ -1,10 +1,11 @@
 ---
+title: "JS Plugins | Oxlint"
 outline: deep
 ---
 
 # JS 插件
 
-Oxlint 支持用 JS 编写的插件——无论是自定义编写的，还是来自 npm 的。
+Oxlint 支持使用 JS 编写的插件——无论是自定义编写的，还是来自 npm 的。
 
 Oxlint 的插件 API 与 ESLint v9+ 兼容，因此大多数现有的 ESLint 插件应该可以在 Oxlint 中开箱即用。
 

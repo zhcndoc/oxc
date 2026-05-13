@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-iterator"
-category: "Correctness"
+title: "eslint/no-iterator | Oxlint"
+rule: "eslint/no-iterator"
+category: "正确性"
 version: "0.2.15"
 default: true
 type_aware: false
@@ -50,7 +51,7 @@ foo["__iterator__"] = function () {};
 以下是此规则的**正确**代码示例：
 
 ```js
-const __iterator__ = 42; // not using the __iterator__ property
+const __iterator__ = 42; // 未使用 __iterator__ 属性
 
 Foo.prototype[Symbol.iterator] = function () {
   return new FooIterator(this);

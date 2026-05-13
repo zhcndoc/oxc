@@ -1,5 +1,5 @@
 ---
-title: 设置编辑器
+title: "设置编辑器 | Oxlint"
 description: 在 VS Code、Zed、JetBrains 和其他编辑器中配置 Oxlint。
 outline: 2
 ---
@@ -139,12 +139,10 @@ vim.lsp.enable('oxlint')
 
 ## 其他编辑器
 
-对于支持 LSP 的编辑器（Emacs、Helix、Sublime），配置：
-
-```bash
-oxlint --lsp
-```
+对于支持 LSP 的编辑器（Emacs、Helix、Sublime），您可以使用 `oxlint --lsp` 作为语言服务器。
+要进行配置，请参阅 [LSP 配置参考](./lsp-config-reference.md) 了解支持的选项。
 
 ## 参考
 
 - [oxc_language_server](https://github.com/oxc-project/oxc/tree/main/crates/oxc_language_server)
+- [LSP configuration reference](/docs/guide/usage/linter/lsp-config-reference.md)

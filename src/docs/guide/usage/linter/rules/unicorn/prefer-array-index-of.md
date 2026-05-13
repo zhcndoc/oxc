@@ -1,6 +1,7 @@
 ---
-title: "unicorn/prefer-array-index-of"
-category: "Style"
+title: "unicorn/prefer-array-index-of | Oxlint"
+rule: "unicorn/prefer-array-index-of"
+category: "样式"
 version: "0.16.12"
 default: false
 type_aware: false

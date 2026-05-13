@@ -1,6 +1,7 @@
 ---
-title: "nextjs/no-duplicate-head"
-category: "正确性"
+title: "nextjs/no-duplicate-head | Oxlint"
+rule: "nextjs/no-duplicate-head"
+category: "Correctness"
 version: "0.3.3"
 default: false
 type_aware: false

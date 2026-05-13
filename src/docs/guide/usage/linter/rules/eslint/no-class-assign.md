@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-class-assign"
+title: "eslint/no-class-assign | Oxlint"
+rule: "eslint/no-class-assign"
 category: "正确性"
 version: "0.0.3"
 default: true

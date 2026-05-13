@@ -1,6 +1,7 @@
 ---
-title: "nextjs/no-head-import-in-document"
-category: "正确性"
+title: "nextjs/no-head-import-in-document | Oxlint"
+rule: "nextjs/no-head-import-in-document"
+category: "Correctness"
 version: "0.2.0"
 default: false
 type_aware: false

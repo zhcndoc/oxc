@@ -1,5 +1,6 @@
 ---
-title: "typescript/consistent-return"
+title: "typescript/consistent-return | Oxlint"
+rule: "typescript/consistent-return"
 category: "Suspicious"
 version: "0.0.8"
 default: false
@@ -25,7 +26,13 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 将返回值和不返回值的代码路径混在一起，会使控制流更难推理，并且经常意味着存在 bug。
 
-### 示例
+::: warning
+如果可能，优先使用 TypeScript 的 `noImplicitReturns` 编译器选项，而不是此规则。
+`noImplicitReturns` 使用 TypeScript 的类型信息和控制流分析，
+因此它可以检测到比此规则更多的隐式返回路径。
+:::
+
+### Examples
 
 以下是此规则的**错误**代码示例：
 

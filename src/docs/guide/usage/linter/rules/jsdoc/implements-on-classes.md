@@ -1,6 +1,7 @@
 ---
-title: "jsdoc/implements-on-classes"
-category: "正确性"
+title: "jsdoc/implements-on-classes | Oxlint"
+rule: "jsdoc/implements-on-classes"
+category: "Correctness"
 version: "0.3.2"
 default: false
 type_aware: false
@@ -16,9 +17,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 它做什么
 
-报告任何使用 `@implements` 的非构造函数问题。
+报告任何对非构造函数使用 `@implements` 的问题。
 
 ### 为什么这不好？
 

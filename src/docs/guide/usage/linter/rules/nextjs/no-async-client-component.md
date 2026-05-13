@@ -1,10 +1,11 @@
 ---
-title: "nextjs/no-async-client-component"
-category: "Correctness"
+title: "nextjs/no-async-client-component | Oxlint"
+rule: "nextjs/no-async-client-component"
+category: "正确性"
 version: "0.2.0"
 default: false
 type_aware: false
-fix: "none"
+fix: "无"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

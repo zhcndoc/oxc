@@ -1,6 +1,7 @@
 ---
-title: "eslint/operator-assignment"
-category: "样式"
+title: "eslint/operator-assignment | Oxlint"
+rule: "eslint/operator-assignment"
+category: "Style"
 version: "0.15.13"
 default: false
 type_aware: false
@@ -16,13 +17,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 它是做什么的
 
 此规则在可能的情况下要求或禁止使用赋值运算符简写。
 它鼓励使用 `+=`、`-=`、`*=`、`/=` 等简写赋值运算符，
 以使代码更加简洁易读。
 
-### 这为什么不好？
+### 为什么这不好？
 
 JavaScript 提供了将变量赋值和简单数学运算结合起来的简写运算符。不使用这些简写运算符会导致代码不必要地冗长，也可以被视为错失了提高清晰度和简洁性的机会。
 

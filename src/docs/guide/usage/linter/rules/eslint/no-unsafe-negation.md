@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-unsafe-negation"
-category: "Correctness"
+title: "eslint/no-unsafe-negation | Oxlint"
+rule: "eslint/no-unsafe-negation"
+category: "正确性"
 version: "0.0.3"
 default: true
 type_aware: false

@@ -1,6 +1,7 @@
 ---
-title: "jsx-a11y/no-static-element-interactions"
-category: "Correctness"
+title: "jsx-a11y/no-static-element-interactions | Oxlint"
+rule: "jsx-a11y/no-static-element-interactions"
+category: "正确性"
 version: "1.37.0"
 default: false
 type_aware: false

@@ -1,5 +1,6 @@
 ---
-title: "jest/no-hooks"
+title: "jest/no-hooks | Oxlint"
+rule: "jest/no-hooks"
 category: "Style"
 version: "0.0.16"
 default: false
@@ -62,7 +63,7 @@ describe("foo", () => {
     afterEach(() => {
       bar = null;
     });
-    it("does something with bar", () => {
+    it("with bar 做某事", () => {
       expect(foo.doesSomething(bar)).toBe(true);
     });
   });

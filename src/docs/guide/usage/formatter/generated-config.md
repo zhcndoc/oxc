@@ -40,7 +40,7 @@ search: false
 
 注意：XXX-in-JS 支持尚不完整。
 
-- 默认：`"auto"`
+- 默认：`auto`
 
 ## endOfLine
 
@@ -226,16 +226,23 @@ search: false
 
 从此覆盖中排除的 Glob 模式。
 
+A set of glob patterns.
+Patterns are matched against paths relative to the configuration file's directory.
+
 #### overrides[n].files
 
 类型：`string[]`
 
-用于匹配此覆盖文件的 Glob 模式。
-所有模式均相对于 Oxfmt 配置文件。
+Glob 模式，用于匹配此覆盖的文件。
+
+一组 glob 模式。
+模式会与相对于配置文件目录的路径进行匹配。
 
 #### overrides[n].options
 
 类型：`object`
+
+应用于匹配文件的格式化选项。
 
 ##### overrides[n].options.arrowParens
 
@@ -785,6 +792,48 @@ import { c } from "c";
 
 - 默认：已安装 Tailwind CSS 的 `theme.css`
 
+##### overrides[n].options.svelte
+
+类型：`object | boolean`
+
+`prettier-plugin-svelte` 的选项。
+
+传递 `true` 或对象以启用 `.svelte` 文件格式化，
+或传递 `false`（在覆盖中很方便）/省略以禁用。
+设置 `true` 会重置为默认值——任何从父作用域继承的选项都会被丢弃。
+
+注意：`prettier-plugin-svelte` 在运行时需要 `svelte` 包（`svelte/compiler`），
+但 Oxfmt 不会捆绑或自动安装它。
+您必须在项目中自行安装 `svelte`，否则格式化将在运行时失败。
+
+- 默认：禁用
+
+###### overrides[n].options.svelte.allowShorthand
+
+类型：`boolean`
+
+当属性名和表达式相同时，是否允许使用属性简写。
+
+- 默认：`true`
+
+###### overrides[n].options.svelte.indentScriptAndStyle
+
+类型：`boolean`
+
+是否缩进 `<script>` 和 `<style>` 标签内的代码。
+
+- 默认：`true`
+
+###### overrides[n].options.svelte.sortOrder
+
+类型：`string`
+
+Svelte 组件各部分的打印顺序。
+格式：按您想要的顺序用 `-` 连接关键字 `options`、`scripts`、`markup`、`styles`；
+如果您不想重新排序任何内容，则使用 `none`。
+
+- 默认：`"options-scripts-markup-styles"`
+
 ##### overrides[n].options.tabWidth
 
 类型：`integer`
@@ -1178,6 +1227,48 @@ import { c } from "c";
 注意：路径是相对于 Oxfmt 配置文件解析的。
 
 - 默认值：已安装 Tailwind CSS 的 `theme.css`
+
+## svelte
+
+type: `object | boolean`
+
+prettier-plugin-svelte 的选项。
+
+传递 `true` 或对象可启用 `.svelte` 文件格式化，
+或传递 `false`（在覆盖中很方便）/省略以禁用。
+设置为 `true` 会重置为默认值——从父作用域继承的任何选项都会被丢弃。
+
+注意：`prettier-plugin-svelte` 在运行时需要 `svelte` 包（`svelte/compiler`），
+但 Oxfmt 不会捆绑或自动安装它。
+您必须在项目中自行安装 `svelte`，否则格式化将在运行时失败。
+
+- 默认值：已禁用
+
+### svelte.allowShorthand
+
+type: `boolean`
+
+当属性名称和表达式相同时，是否允许使用属性简写。
+
+- 默认值：`true`
+
+### svelte.indentScriptAndStyle
+
+type: `boolean`
+
+是否缩进 `<script>` 和 `<style>` 标签内的代码。
+
+- 默认值：`true`
+
+### svelte.sortOrder
+
+type: `string`
+
+Svelte 组件各部分的打印顺序。
+格式：按您希望的顺序用 `-` 连接关键字 `options`、`scripts`、`markup`、`styles`；
+如果您不想重新排序任何内容，则使用 `none`。
+
+- 默认值：`"options-scripts-markup-styles"`
 
 ## tabWidth
 

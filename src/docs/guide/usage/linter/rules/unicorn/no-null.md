@@ -1,5 +1,6 @@
 ---
-title: "unicorn/no-null"
+title: "unicorn/no-null | Oxlint"
+rule: "unicorn/no-null"
 category: "Style"
 version: "0.0.21"
 default: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 它是做什么的
 
 禁止使用 `null` 字面量，以鼓励改用 `undefined`。
 

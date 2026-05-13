@@ -1,6 +1,6 @@
 ---
-title: 嵌套配置文件
-description: 使用多个配置文件将不同的 Oxlint 设置应用于仓库的不同部分。
+title: "嵌套配置文件 | Oxlint"
+description: 使用多个配置文件，将不同的 Oxlint 设置应用于仓库的不同部分。
 ---
 
 # 嵌套配置文件
@@ -105,9 +105,11 @@ export default defineConfig({
 
 ## 扩展配置文件
 
-配置可以使用 `extends` 重用其他文件中的设置。值是文件路径数组，相对于声明它们的配置文件进行解析。
+一个配置可以使用 `extends` 复用其他配置中的设置。
 
-被扩展的文件可以是任何名称。它们不需要命名为 `.oxlintrc.json`，只要是有效的 JSON 配置文件即可。对于 `oxlint.config.ts`，带有 `extends` 属性的文件必须命名为 `oxlint.config.ts`。
+在 `.oxlintrc.json` 中，`extends` 是一个文件路径数组，相对于声明它们的配置文件解析。被扩展的文件可以有任意名称。只要它们是有效的 JSON 配置文件，就不需要命名为 `.oxlintrc.json`。`.oxlintrc.json` 格式不支持包导入。
+
+在 `oxlint.config.ts` 中，导入您想要扩展的配置对象，并将它们传递给 `extends`。带有 `extends` 属性的文件必须命名为 `oxlint.config.ts`。在扩展从共享包导入的配置对象时，请使用 `oxlint.config.ts`。
 
 示例：
 
@@ -160,7 +162,18 @@ export default defineConfig({
 
 :::
 
-只有某些属性可以被扩展。支持的属性包括：
+共享包在 `oxlint.config.ts` 中的工作方式相同：
+
+```ts [oxlint.config.ts]
+import sharedConfig from "@example-org/oxlint-config";
+import { defineConfig } from "oxlint";
+
+export default defineConfig({
+  extends: [sharedConfig],
+});
+```
+
+只有某些属性可以被扩展。支持的属性如下：
 
 - `rules`
 - `plugins`

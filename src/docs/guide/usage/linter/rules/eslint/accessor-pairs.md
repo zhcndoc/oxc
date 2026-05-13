@@ -1,5 +1,6 @@
 ---
-title: "eslint/accessor-pairs"
+title: "eslint/accessor-pairs | Oxlint"
+rule: "eslint/accessor-pairs"
 category: "Pedantic"
 version: "1.33.0"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制在对象和类中使用 getter/setter 对。
+强制在对象和类中使用 getter/setter 成对出现。
 
 ### 为什么不好？
 

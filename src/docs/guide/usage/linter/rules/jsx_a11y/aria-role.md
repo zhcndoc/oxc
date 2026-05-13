@@ -1,6 +1,7 @@
 ---
-title: "jsx-a11y/aria-role"
-category: "正确性"
+title: "jsx-a11y/aria-role | Oxlint"
+rule: "jsx-a11y/aria-role"
+category: "Correctness"
 version: "0.1.1"
 default: false
 type_aware: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 其作用
+### 它的作用
 
 带有 ARIA 角色的元素必须使用有效的、非抽象的 ARIA 角色。可以在 [WAI-ARIA](https://www.w3.org/TR/wai-aria/#role_definitions) 网站找到角色定义的参考。
 

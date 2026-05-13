@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-dynamic-delete"
-category: "限制"
+title: "typescript/no-dynamic-delete | Oxlint"
+rule: "typescript/no-dynamic-delete"
+category: "Restriction"
 version: "0.5.2"
 default: false
 type_aware: false

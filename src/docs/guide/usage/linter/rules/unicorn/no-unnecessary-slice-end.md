@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-unnecessary-slice-end"
-category: "Pedantic"
+title: "unicorn/no-unnecessary-slice-end | Oxlint"
+rule: "unicorn/no-unnecessary-slice-end"
+category: "迂腐"
 version: "0.16.10"
 default: false
 type_aware: false

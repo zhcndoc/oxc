@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-empty-function"
+title: "eslint/no-empty-function | Oxlint"
+rule: "eslint/no-empty-function"
 category: "Restriction"
 version: "0.3.3"
 default: false
@@ -79,7 +80,12 @@ class Foo {
 
 ```json
 {
-  "no-empty-function": ["error", { "allow": ["constructors"] }]
+  "no-empty-function": [
+    "error",
+    {
+      "allow": ["constructors"]
+    }
+  ]
 }
 ```
 

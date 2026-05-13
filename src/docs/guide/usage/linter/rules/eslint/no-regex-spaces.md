@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-regex-spaces"
-category: "Restriction"
+title: "eslint/no-regex-spaces | Oxlint"
+rule: "eslint/no-regex-spaces"
+category: "限制"
 version: "0.0.18"
 default: false
 type_aware: false

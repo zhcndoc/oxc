@@ -1,5 +1,6 @@
 ---
-title: "typescript/prefer-promise-reject-errors"
+title: "typescript/prefer-promise-reject-errors | Oxlint"
+rule: "typescript/prefer-promise-reject-errors"
 category: "Pedantic"
 version: "1.12.0"
 default: false
@@ -42,18 +43,18 @@ Promise.reject(null); // 使用 null 拒绝
 
 Promise.reject(); // 使用 undefined 拒绝
 
-const error = "Something went wrong";
+const error = "出现了问题";
 Promise.reject(error); // 使用非 Error 变量拒绝
 ```
 
 此规则的**正确**代码示例：
 
 ```ts
-Promise.reject(new Error("Something went wrong"));
+Promise.reject(new Error("出现了问题"));
 
-Promise.reject(new TypeError("Invalid type"));
+Promise.reject(new TypeError("无效类型"));
 
-Promise.reject(new RangeError("Value out of range"));
+Promise.reject(new RangeError("值超出范围"));
 
 // 自定义 Error 子类
 class CustomError extends Error {
@@ -62,10 +63,10 @@ class CustomError extends Error {
     this.name = "CustomError";
   }
 }
-Promise.reject(new CustomError("Custom error occurred"));
+Promise.reject(new CustomError("发生了自定义错误"));
 
 // 值为 Error 对象的变量
-const error = new Error("Error message");
+const error = new Error("错误消息");
 Promise.reject(error);
 ```
 
@@ -121,9 +122,13 @@ type: `object | string`
 
 type: `"file"`
 
+必须为 "file"
+
 ##### allow[n].name
 
 type: `array | string`
+
+要匹配的类型或值的名称
 
 名称说明符，可以是单个字符串或字符串数组
 

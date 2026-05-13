@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-empty-file"
-category: "Correctness"
+title: "unicorn/no-empty-file | Oxlint"
+rule: "unicorn/no-empty-file"
+category: "正确性"
 version: "0.0.15"
 default: true
 type_aware: false

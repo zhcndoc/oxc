@@ -1,6 +1,7 @@
 ---
-title: "jest/prefer-hooks-on-top"
-category: "风格"
+title: "jest/prefer-hooks-on-top | Oxlint"
+rule: "jest/prefer-hooks-on-top"
+category: "Style"
 version: "0.4.2"
 default: false
 type_aware: false
@@ -133,18 +134,7 @@ describe("foo", () => {
 });
 ```
 
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-hooks-on-top.md) 兼容，
-要使用它，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-hooks-on-top": "error"
-  }
-}
-```
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

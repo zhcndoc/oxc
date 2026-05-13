@@ -1,6 +1,7 @@
 ---
-title: "unicorn/prefer-string-starts-ends-with"
-category: "正确性"
+title: "unicorn/prefer-string-starts-ends-with | Oxlint"
+rule: "unicorn/prefer-string-starts-ends-with"
+category: "Correctness"
 version: "0.0.18"
 default: true
 type_aware: false

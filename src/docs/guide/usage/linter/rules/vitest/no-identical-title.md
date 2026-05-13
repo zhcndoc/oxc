@@ -1,6 +1,7 @@
 ---
-title: "vitest/no-identical-title"
-category: "样式"
+title: "vitest/no-identical-title | Oxlint"
+rule: "vitest/no-identical-title"
+category: "Style"
 version: "0.0.14"
 default: false
 type_aware: false

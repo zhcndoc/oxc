@@ -1,3 +1,7 @@
+---
+title: "从 Prettier 迁移 | Oxfmt"
+---
+
 # 从 Prettier 迁移
 
 本指南涵盖从 Prettier 迁移到 Oxfmt 的内容。
@@ -204,4 +208,10 @@ npm run format
 
 ### 将 `.prettierignore` 替换为 `"ignorePatterns"`
 
-如果你不再使用 Prettier，可以选择将其内容从 `.prettierignore` 移动到 Oxfmt 配置中的 `"ignorePatterns"`。请注意，`.prettierignore` 全局生效，而 `ignorePatterns` 仅作用于其所属的配置文件。在 [嵌套配置](./config#create-a-config-file) 设置中，这可能会改变哪些文件被忽略。更多信息请参见 [忽略文件](/docs/guide/usage/formatter/ignore-files)。
+如果你不再使用 Prettier，可以选择将其内容从 `.prettierignore` 移动到 Oxfmt 配置中的 `"ignorePatterns"`。请注意，`.prettierignore` 全局生效，而 `ignorePatterns` 仅作用于其所属的配置文件。在 [嵌套配置](./config#create-a-config-file) 设置中，这可能会改变哪些文件会被忽略。更多信息请参见 [忽略文件](/docs/guide/usage/formatter/ignore-files)。
+
+### 更新 `// prettier-ignore` 注释
+
+Oxfmt 支持 `// prettier-ignore` 注释，同时也支持 `// oxfmt-ignore` 注释。
+
+不过，`// oxfmt-ignore` 仅适用于 JS 和 TS 文件。更多信息请参见 [行内忽略注释](/docs/guide/usage/formatter/ignore-comments)。

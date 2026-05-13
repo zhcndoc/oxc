@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-console"
+title: "eslint/no-console | Oxlint"
+rule: "eslint/no-console"
 category: "Restriction"
 version: "0.0.13"
 default: false
@@ -29,9 +30,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 此规则的 **错误** 代码示例：
 
 ```javascript
-console.log("Log a debug level message.");
-console.warn("Log a warn level message.");
-console.error("Log an error level message.");
+console.log("记录一条调试级别消息。");
+console.warn("记录一条警告级别消息。");
+console.error("记录一条错误级别消息。");
 console.log = foo();
 ```
 
@@ -39,7 +40,7 @@ console.log = foo();
 
 ```javascript
 // 自定义 console
-Console.log("Hello world!");
+Console.log("你好，世界！");
 ```
 
 ## 配置

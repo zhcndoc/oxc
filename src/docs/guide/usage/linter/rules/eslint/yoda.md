@@ -1,6 +1,7 @@
 ---
-title: "eslint/yoda"
-category: "样式"
+title: "eslint/yoda | Oxlint"
+rule: "eslint/yoda"
+category: "Style"
 version: "0.14.1"
 default: false
 type_aware: false

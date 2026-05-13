@@ -1,5 +1,6 @@
 ---
-title: "eslint/eqeqeq"
+title: "eslint/eqeqeq | Oxlint"
+rule: "eslint/eqeqeq"
 category: "Pedantic"
 version: "0.0.3"
 default: false
@@ -188,6 +189,9 @@ if (foo != null) {
 #### null
 
 类型：`"always" | "never" | "ignore"`
+
+对于是否允许/禁止与 `null` 进行比较的配置，
+例如 `foo == null` 或 `foo != null`
 
 ##### `"always"`
 

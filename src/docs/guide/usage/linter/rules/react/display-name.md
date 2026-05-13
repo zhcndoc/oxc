@@ -1,5 +1,6 @@
 ---
-title: "react/display-name"
+title: "react/display-name | Oxlint"
+rule: "react/display-name"
 category: "Pedantic"
 version: "1.42.0"
 default: false
@@ -23,7 +24,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ### 为什么这很糟糕？
 
 React DevTools 使用 `displayName` 在组件树中显示组件名称。
-如果没有 `displayName`，组件在 DevTools 中会显示为“Unknown”。
+如果没有 `displayName`，组件在 DevTools 中会显示为“未知”。
 
 ### 示例
 

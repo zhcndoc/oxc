@@ -1,6 +1,7 @@
 ---
-title: "typescript/require-array-sort-compare"
-category: "Correctness"
+title: "typescript/require-array-sort-compare | Oxlint"
+rule: "typescript/require-array-sort-compare"
+category: "正确性"
 version: "1.12.0"
 default: true
 type_aware: true

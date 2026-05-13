@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-caller"
-category: "Correctness"
+title: "eslint/no-caller | Oxlint"
+rule: "eslint/no-caller"
+category: "正确性"
 version: "0.0.3"
 default: true
 type_aware: false
@@ -72,10 +73,10 @@ function foo(n) {
 
 <RuleHowToUse />
 
-## Version
+## 版本
 
 此规则在 v0.0.3 中添加。
 
-## References
+## 参考资料
 
 <RuleReferences />

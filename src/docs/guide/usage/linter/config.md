@@ -1,5 +1,5 @@
 ---
-title: 配置
+title: "Configuration | Oxlint"
 description: 使用 .oxlintrc.json 或 oxlint.config.ts 配置 Oxlint。
 ---
 
@@ -170,7 +170,7 @@ export default defineConfig({
 
 Oxlint 接受 ESLint 风格的严重程度：
 
-- 禁用规则：`"off"` 或 `"allow"`
+- 禁用规则：`"off"` 或 `"`allow"`
 - 规则警告：`"warn"`
 - 规则错误：`"error"` 或 `"deny"`
 
@@ -444,6 +444,8 @@ export default defineConfig({
 
 `extends` 中的路径是相对于声明 `extends` 的配置文件进行解析的。配置从第一个到最后一个合并，后面的条目会覆盖前面的条目。
 
+使用 `oxlint.config.ts` 来扩展从共享包导入的配置对象。`.oxlintrc.json` 格式不支持包导入。
+
 ::: code-group
 
 ```json [.oxlintrc.json]
@@ -463,6 +465,17 @@ export default defineConfig({
 ```
 
 :::
+
+例如，共享包可以导出一个你导入并扩展的配置对象：
+
+```ts [oxlint.config.ts]
+import config from "@example-org/oxlint-config";
+import { defineConfig } from "oxlint";
+
+export default defineConfig({
+  extends: [config],
+});
+```
 
 ## 配置环境和全局变量
 

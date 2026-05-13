@@ -1,3 +1,7 @@
+---
+title: "Ignore files | Oxfmt"
+---
+
 # 忽略文件
 
 Oxfmt 提供了多种排除文件不进行格式化的方法。
@@ -42,10 +46,13 @@ export default defineConfig({
 
 ## `.gitignore`
 
-Oxfmt 会遵循当前目录树中的 `.gitignore` 文件。
+Oxfmt 遵循与 Git 本身相同的 Git 忽略规则：
 
-- 不会读取全局 gitignore 和父级 `.gitignore` 文件
-- 不需要 `.git` 目录
+- 当前目录树中的 `.gitignore` 文件
+- 父目录中的 `.gitignore` 文件（直到仓库边界）
+- `.git/info/exclude`
+
+However, global gitignore (`core.excludesFile`) is not read.
 
 被 `.gitignore` 忽略的文件如果显式指定**仍然可以被格式化**。
 

@@ -1,6 +1,7 @@
 ---
-title: "react/no-did-update-set-state"
-category: "Correctness"
+title: "react/no-did-update-set-state | Oxlint"
+rule: "react/no-did-update-set-state"
+category: "正确性"
 version: "1.62.0"
 default: false
 type_aware: false

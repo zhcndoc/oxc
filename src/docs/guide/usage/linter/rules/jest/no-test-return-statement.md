@@ -1,5 +1,6 @@
 ---
-title: "jest/no-test-return-statement"
+title: "jest/no-test-return-statement | Oxlint"
+rule: "jest/no-test-return-statement"
 category: "Style"
 version: "0.2.0"
 default: false
@@ -42,17 +43,6 @@ test("one", () => {
 test("one", () => {
   expect(1).toBe(1);
 });
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-test-return-statement.md) 兼容，
-要使用它，请在你的 `.oxlintrc.json` 中添加以下配置：
-
-```json
-{
-  "rules": {
-    "vitest/no-test-return-statement": "error"
-  }
-}
 ```
 
 ## 如何使用

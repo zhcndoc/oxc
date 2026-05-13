@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-implied-eval"
-category: "正确性"
+title: "typescript/no-implied-eval | Oxlint"
+rule: "typescript/no-implied-eval"
+category: "Correctness"
 version: "1.12.0"
 default: true
 type_aware: true

@@ -1,3 +1,7 @@
+---
+title: "不支持的功能 | Oxfmt"
+---
+
 # 不支持的功能
 
 :::info
@@ -8,7 +12,7 @@
 
 目前不支持：
 
-- `prettier` 字段在 `package.json` 中
+- `package.json` 中的 `prettier` 字段
 - 子目录中的嵌套 `.editorconfig`
 - `experimentalTernaries` 和 `experimentalOperatorPosition` 选项
 

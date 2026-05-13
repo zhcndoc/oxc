@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-duplicate-imports"
+title: "eslint/no-duplicate-imports | Oxlint"
+rule: "eslint/no-duplicate-imports"
 category: "Style"
 version: "0.13.2"
 default: false
@@ -22,7 +23,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么不好？
 
-每个模块使用单个导入语句会使代码更清晰，因为你可以看到
+每个模块只使用一条导入语句会让代码更清晰，因为你可以看到
 所有从该模块导入的内容都在一行上。
 
 ### 示例
@@ -114,10 +115,10 @@ export * from "module";
 
 <RuleHowToUse />
 
-## Version
+## 版本
 
-This rule was added in v0.13.2.
+此规则于 v0.13.2 中加入。
 
-## References
+## 参考资料
 
 <RuleReferences />

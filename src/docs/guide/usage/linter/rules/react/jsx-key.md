@@ -1,6 +1,7 @@
 ---
-title: "react/jsx-key"
-category: "正确性"
+title: "react/jsx-key | Oxlint"
+rule: "react/jsx-key"
+category: "Correctness"
 version: "0.0.14"
 default: false
 type_aware: false
@@ -18,12 +19,12 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-强制数组中的元素提供 `key` prop。
+强制数组中的元素使用 `key` prop。
 
 ### 为什么这不好？
 
-React 需要数组中的元素提供 `key` prop，以帮助识别哪些
-项已被更改、添加或移除。
+React [要求提供 `key` prop](https://react.dev/learn/rendering-lists#rendering-data-from-arrays)
+，以便帮助识别哪些项已更改、已添加或已删除。
 
 ### 示例
 

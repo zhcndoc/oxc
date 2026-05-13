@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-misused-new"
-category: "正确性"
+title: "typescript/no-misused-new | Oxlint"
+rule: "typescript/no-misused-new"
+category: "Correctness"
 version: "0.0.7"
 default: true
 type_aware: false
@@ -18,13 +19,14 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制 `new` 和构造函数的有效定义。此规则可防止类定义名为 `new` 的方法，以及接口定义名为 `constructor` 的方法。
+强制 new 和 constructor 的定义有效。该规则可防止类定义名为 `new` 的方法，防止接口定义名为 `constructor` 的方法，并防止接口定义返回该接口自身的构造签名。
 
 ### 为什么这不好？
 
 JavaScript 类可以定义一个构造函数方法，当类实例被新建时会运行该方法。
 
-TypeScript 允许描述静态类对象的接口定义一个 `new()` 方法（不过在实际代码中很少使用）。对 JavaScript 类和/或 TypeScript 接口不熟悉的开发者，有时可能会混淆何时使用 constructor 或 new。
+TypeScript 允许描述静态类对象的接口定义 `new()` 签名（尽管这在实际代码中很少使用）。该构造签名应返回构造出的实例类型，而不是构造函数对象本身的接口。
+对于刚接触 JavaScript 类和/或 TypeScript 接口的开发者来说，可能有时会混淆何时使用 constructor 或 new。
 
 ### 示例
 
@@ -39,6 +41,11 @@ declare class C {
 ```typescript
 interface I {
   new (): I;
+}
+```
+
+```typescript
+interface I {
   constructor(): void;
 }
 ```
@@ -52,6 +59,8 @@ declare class C {
 ```
 
 ```typescript
+class C {}
+
 interface I {
   new (): C;
 }

@@ -1,5 +1,6 @@
 ---
-title: "unicorn/prefer-bigint-literals"
+title: "unicorn/prefer-bigint-literals | Oxlint"
+rule: "unicorn/prefer-bigint-literals"
 category: "Style"
 version: "1.30.0"
 default: false
@@ -16,12 +17,12 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它做什么
+### 它的作用
 
 要求使用 BigInt 字面量（例如 `123n`），而不是调用 `BigInt()` 构造函数
-并传入字面量参数，例如数字或数字字符串
+并传入字面量参数，例如数字或数字字符串。
 
-### 这为什么不好？
+### 为什么这不好？
 
 对字面量值使用 `BigInt(…)` 过于冗长，也不如使用 BigInt 字面量符合习惯。
 

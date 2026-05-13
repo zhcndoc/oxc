@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-extraneous-class"
-category: "Suspicious"
+title: "typescript/no-extraneous-class | Oxlint"
+rule: "typescript/no-extraneous-class"
+category: "可疑"
 version: "0.7.0"
 default: false
 type_aware: false
@@ -47,7 +48,7 @@ class StaticConstants {
 
 class HelloWorldLogger {
   constructor() {
-    console.log("Hello, world!");
+    console.log("你好，世界！");
   }
 }
 

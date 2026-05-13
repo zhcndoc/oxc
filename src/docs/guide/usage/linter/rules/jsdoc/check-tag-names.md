@@ -1,5 +1,6 @@
 ---
-title: "jsdoc/check-tag-names"
+title: "jsdoc/check-tag-names | Oxlint"
+rule: "jsdoc/check-tag-names"
 category: "正确性"
 version: "0.3.2"
 default: false

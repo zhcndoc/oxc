@@ -1,5 +1,6 @@
 ---
-title: "unicorn/no-array-method-this-argument"
+title: "unicorn/no-array-method-this-argument | Oxlint"
+rule: "unicorn/no-array-method-this-argument"
 category: "Style"
 version: "0.16.12"
 default: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 禁止在数组迭代方法中使用 `thisArg` 参数，例如
 `map`、`filter`、`some`、`every` 等。

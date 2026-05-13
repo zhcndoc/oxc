@@ -1,5 +1,6 @@
 ---
-title: "eslint/no-compare-neg-zero"
+title: "eslint/no-compare-neg-zero | Oxlint"
+rule: "eslint/no-compare-neg-zero"
 category: "正确性"
 version: "0.0.3"
 default: true
@@ -64,10 +65,10 @@ if (0 > x) {
 
 <RuleHowToUse />
 
-## Version
+## 版本
 
-This rule was added in v0.0.3.
+此规则于 v0.0.3 中添加。
 
-## References
+## 参考资料
 
 <RuleReferences />

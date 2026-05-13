@@ -1,6 +1,7 @@
 ---
-title: "import/no-webpack-loader-syntax"
-category: "限制"
+title: "import/no-webpack-loader-syntax | Oxlint"
+rule: "import/no-webpack-loader-syntax"
+category: "Restriction"
 version: "0.7.0"
 default: false
 type_aware: false

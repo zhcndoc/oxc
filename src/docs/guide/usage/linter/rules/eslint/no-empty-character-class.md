@@ -1,6 +1,7 @@
 ---
-title: "eslint/no-empty-character-class"
-category: "正确性"
+title: "eslint/no-empty-character-class | Oxlint"
+rule: "eslint/no-empty-character-class"
+category: "Correctness"
 version: "0.0.7"
 default: true
 type_aware: false

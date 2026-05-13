@@ -1,6 +1,6 @@
 ---
-title: 多文件分析
-description: 针对导入循环和跨文件问题的项目级 lint 检查
+title: "多文件分析 | Oxlint"
+description: 项目范围内用于导入循环和跨文件问题的 lint 检查
 ---
 
 # 多文件分析

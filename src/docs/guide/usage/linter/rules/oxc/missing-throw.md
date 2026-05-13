@@ -1,6 +1,7 @@
 ---
-title: "oxc/missing-throw"
-category: "Correctness"
+title: "oxc/missing-throw | Oxlint"
+rule: "oxc/missing-throw"
+category: "正确性"
 version: "0.0.3"
 default: true
 type_aware: false

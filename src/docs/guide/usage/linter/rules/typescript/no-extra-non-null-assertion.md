@@ -1,6 +1,7 @@
 ---
-title: "typescript/no-extra-non-null-assertion"
-category: "正确性"
+title: "typescript/no-extra-non-null-assertion | Oxlint"
+rule: "typescript/no-extra-non-null-assertion"
+category: "Correctness"
 version: "0.0.6"
 default: true
 type_aware: false

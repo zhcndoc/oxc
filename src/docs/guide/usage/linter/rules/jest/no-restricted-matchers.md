@@ -1,6 +1,7 @@
 ---
-title: "jest/no-restricted-matchers"
-category: "样式"
+title: "jest/no-restricted-matchers | Oxlint"
+rule: "jest/no-restricted-matchers"
+category: "Style"
 version: "0.2.3"
 default: false
 type_aware: false
@@ -42,7 +43,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
     "error",
     {
       "toBeFalsy": null,
-      "resolves": "使用 `expect(await promise)` 替代。",
+      "resolves": "Use `expect(await promise)` instead.",
       "toHaveBeenCalledWith": null,
       "not.toHaveBeenCalledWith": null,
       "resolves.toHaveBeenCalledWith": null,
@@ -58,18 +59,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ```javascript
 it("is false", () => {
-  // 如果这里有修饰符（即 `not.toBeFalsy`），则会被视为没问题
+  // If there is a modifier here (i.e. `not.toBeFalsy`), it will be considered okay
   expect(a).toBeFalsy();
 });
 
 it("resolves", async () => {
-  // 禁止所有对此修饰符的使用，无论 matcher 是什么
+  // Ban all uses of this modifier, regardless of the matcher
   await expect(myPromise()).resolves.toBe(true);
 });
 
 describe("when an error happens", () => {
   it("does not upload the file", async () => {
-    // 禁止所有对此 matcher 的使用
+    // Ban all uses of this matcher
     expect(uploadFileMock).not.toHaveBeenCalledWith("file.name");
   });
 });

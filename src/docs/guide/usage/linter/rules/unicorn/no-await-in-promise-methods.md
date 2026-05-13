@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-await-in-promise-methods"
-category: "正确性"
+title: "unicorn/no-await-in-promise-methods | Oxlint"
+rule: "unicorn/no-await-in-promise-methods"
+category: "Correctness"
 version: "0.2.18"
 default: true
 type_aware: false

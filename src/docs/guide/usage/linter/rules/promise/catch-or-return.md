@@ -1,5 +1,6 @@
 ---
-title: "promise/catch-or-return"
+title: "promise/catch-or-return | Oxlint"
+rule: "promise/catch-or-return"
 category: "Restriction"
 version: "0.9.2"
 default: false
@@ -32,7 +33,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ```javascript
 myPromise.then(doSomething);
-myPromise.then(doSomething, catchErrors); // catch() 可能会更好一些
+myPromise.then(doSomething, catchErrors); // `catch()` 可能会更好一些
 ```
 
 以下是此规则的**正确**代码示例：

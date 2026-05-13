@@ -1,5 +1,6 @@
 ---
-title: "eslint/func-style"
+title: "eslint/func-style | Oxlint"
+rule: "eslint/func-style"
 category: "Style"
 version: "0.15.11"
 default: false
@@ -176,6 +177,8 @@ default: `false`
 #### overrides
 
 type: `object`
+
+重写命名导出的样式。可以是 "expression"、"declaration" 或 "ignore"（默认）。
 
 ##### overrides.namedExports
 

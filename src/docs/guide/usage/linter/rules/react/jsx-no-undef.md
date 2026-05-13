@@ -1,6 +1,7 @@
 ---
-title: "react/jsx-no-undef"
-category: "正确性"
+title: "react/jsx-no-undef | Oxlint"
+rule: "react/jsx-no-undef"
+category: "Correctness"
 version: "0.1.1"
 default: false
 type_aware: false

@@ -1,6 +1,7 @@
 ---
-title: "eslint/func-names"
-category: "Style"
+title: "eslint/func-names | Oxlint"
+rule: "eslint/func-names"
+category: "样式"
 version: "0.7.0"
 default: false
 type_aware: false

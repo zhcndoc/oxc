@@ -1,10 +1,11 @@
 ---
-title: "eslint/no-import-assign"
+title: "eslint/no-import-assign | Oxlint"
+rule: "eslint/no-import-assign"
 category: "正确性"
 version: "0.0.5"
 default: true
 type_aware: false
-fix: "none"
+fix: "无"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

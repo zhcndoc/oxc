@@ -1,5 +1,6 @@
 ---
-title: "typescript/no-floating-promises"
+title: "typescript/no-floating-promises | Oxlint"
+rule: "typescript/no-floating-promises"
 category: "正确性"
 version: "1.11.0"
 default: true
@@ -136,11 +137,15 @@ type: `object | string`
 
 type: `"file"`
 
+必须为 "file"
+
 ##### allowForKnownSafeCalls[n].name
 
 type: `array | string`
 
-名称说明符，可以是单个字符串或字符串数组
+要匹配的类型或值名称
+
+名称说明符可以是单个字符串或字符串数组
 
 ###### allowForKnownSafeCalls[n].name[n]
 
@@ -201,11 +206,15 @@ type: `object | string`
 
 type: `"file"`
 
+必须为 "file"
+
 ##### allowForKnownSafePromises[n].name
 
 type: `array | string`
 
-名称说明符，可以是单个字符串或字符串数组
+要匹配的类型或值名称
+
+名称说明符可以是单个字符串或字符串数组
 
 ###### allowForKnownSafePromises[n].name[n]
 

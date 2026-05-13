@@ -1,6 +1,7 @@
 ---
-title: "jest/no-standalone-expect"
-category: "正确性"
+title: "jest/no-standalone-expect | Oxlint"
+rule: "jest/no-standalone-expect"
+category: "Correctness"
 version: "0.0.13"
 default: false
 type_aware: false

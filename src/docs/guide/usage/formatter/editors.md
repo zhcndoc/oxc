@@ -1,6 +1,6 @@
 ---
-title: 设置编辑器
-description: 在 VS Code、Zed、JetBrains 和其他编辑器中配置 Oxfmt。
+title: "配置编辑器 | Oxfmt"
+description: 在 VS Code、Zed、JetBrains 及其他编辑器中配置 Oxfmt。
 outline: 2
 ---
 
@@ -24,8 +24,8 @@ outline: 2
 
 从以下地址下载官方 Oxc VS Code 扩展：
 
-- [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)
-- [Open VSX Registry](https://open-vsx.org/extension/oxc/oxc-vscode)
+- [Visual Studio 市场](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)
+- [Open VSX 注册表](https://open-vsx.org/extension/oxc/oxc-vscode)
 
 **该扩展兼容其他基于 VS Code 的编辑器**，包括 Cursor。
 
@@ -74,7 +74,7 @@ outline: 2
 
 ### 安装
 
-- [Oxc Zed Extension](https://zed.dev/extensions/oxc)
+- [Oxc Zed 扩展](https://zed.dev/extensions/oxc)
 
 ### 参考
 
@@ -86,7 +86,7 @@ IntelliJ IDEA 和 WebStorm。
 
 ### 安装
 
-- [Oxc in JetBrains Marketplace](https://plugins.jetbrains.com/plugin/27061-oxc)
+- [JetBrains Marketplace 中的 Oxc](https://plugins.jetbrains.com/plugin/27061-oxc)
 
 ### 参考
 

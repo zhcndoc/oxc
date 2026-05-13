@@ -1,5 +1,6 @@
 ---
-title: "typescript/consistent-indexed-object-style"
+title: "typescript/consistent-indexed-object-style | Oxlint"
+rule: "typescript/consistent-indexed-object-style"
 category: "Style"
 version: "0.4.2"
 default: false
@@ -18,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-在要求使用 `Record` 类型或索引签名类型之间进行选择。
+在 `Record` 类型和索引签名类型之间进行选择时要求保持一致。
 
 这两种类型是等价的，该规则会强制在两种风格中保持一致，二者择一：
 

@@ -1,6 +1,7 @@
 ---
-title: "jest/prefer-to-have-been-called-times"
-category: "风格"
+title: "jest/prefer-to-have-been-called-times | Oxlint"
+rule: "jest/prefer-to-have-been-called-times"
+category: "Style"
 version: "1.34.0"
 default: false
 type_aware: false
@@ -43,17 +44,6 @@ expect(someFunction).toHaveBeenCalledTimes(0);
 expect(someFunction).not.toHaveBeenCalledTimes(0);
 expect(uncalledFunction).not.toBeCalled();
 expect(method.mock.calls[0][0]).toStrictEqual(value);
-```
-
-此规则与 [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-have-been-called-times.md) 兼容，
-如需使用，请将以下配置添加到你的 `.oxlintrc.json` 中：
-
-```json
-{
-  "rules": {
-    "vitest/prefer-to-have-been-called-times": "error"
-  }
-}
 ```
 
 ## 如何使用

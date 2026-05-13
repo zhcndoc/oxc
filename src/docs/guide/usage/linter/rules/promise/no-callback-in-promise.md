@@ -1,13 +1,14 @@
 ---
-title: "promise/no-callback-in-promise"
-category: "正确性"
+title: "promise/no-callback-in-promise | Oxlint"
+rule: "promise/no-callback-in-promise"
+category: "Correctness"
 version: "0.10.0"
 default: false
 type_aware: false
 fix: "none"
 ---
 
-<!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
+<!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
 
 <script setup>
 import { data } from '../version.data.js';
@@ -34,8 +35,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ```js
 function callback(err, data) {
-  console.log("Callback got called with:", err, data);
-  throw new Error("My error");
+  console.log("回调被调用时传入的参数：", err, data);
+  throw new Error("我的错误");
 }
 
 Promise.resolve()

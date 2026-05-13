@@ -1,5 +1,6 @@
 ---
-title: "unicorn/prefer-code-point"
+title: "unicorn/prefer-code-point | Oxlint"
+rule: "unicorn/prefer-code-point"
 category: "Pedantic"
 version: "0.0.16"
 default: false
@@ -16,7 +17,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 它是做什么的
 
 更倾向于使用 `String.prototype.codePointAt` 而不是 `String.prototype.charCodeAt`。
 更倾向于使用 `String.fromCodePoint` 而不是 `String.fromCharCode`。

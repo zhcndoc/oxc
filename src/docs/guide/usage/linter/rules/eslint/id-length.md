@@ -1,6 +1,7 @@
 ---
-title: "eslint/id-length"
-category: "样式"
+title: "eslint/id-length | Oxlint"
+rule: "eslint/id-length"
+category: "Style"
 version: "1.4.0"
 default: false
 type_aware: false

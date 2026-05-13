@@ -1,6 +1,7 @@
 ---
-title: "typescript/await-thenable"
-category: "正确性"
+title: "typescript/await-thenable | Oxlint"
+rule: "typescript/await-thenable"
+category: "Correctness"
 version: "1.12.0"
 default: true
 type_aware: true

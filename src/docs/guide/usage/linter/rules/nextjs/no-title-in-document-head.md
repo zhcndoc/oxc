@@ -1,5 +1,6 @@
 ---
-title: "nextjs/no-title-in-document-head"
+title: "nextjs/no-title-in-document-head | Oxlint"
+rule: "nextjs/no-title-in-document-head"
 category: "正确性"
 version: "0.2.0"
 default: false

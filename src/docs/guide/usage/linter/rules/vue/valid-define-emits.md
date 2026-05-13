@@ -1,6 +1,7 @@
 ---
-title: "vue/valid-define-emits"
-category: "Correctness"
+title: "vue/valid-define-emits | Oxlint"
+rule: "vue/valid-define-emits"
+category: "正确性"
 version: "1.14.0"
 default: false
 type_aware: false

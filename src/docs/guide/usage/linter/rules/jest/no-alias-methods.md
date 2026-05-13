@@ -1,5 +1,6 @@
 ---
-title: "jest/no-alias-methods"
+title: "jest/no-alias-methods | Oxlint"
+rule: "jest/no-alias-methods"
 category: "Style"
 version: "0.0.12"
 default: false
@@ -18,12 +19,14 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则确保代码中只使用 Jest 文档中所用的规范名称。
+强制使用 Jest 的规范 matcher 名称，而不是别名。
 
 ### 为什么这不好？
 
-这些别名将在 Jest 的下一个重大版本中被移除 - 更多信息请参见 [jestjs/jest#13164](https://github.com/jestjs/jest/issues/13164)。
-此规则将更容易在代码中搜索该方法的所有出现位置，并确保所使用的方法名称保持一致。
+Jest matcher 别名已被弃用，并将在 Jest 的下一个大版本中移除。
+更多信息请参见 [jestjs/jest#13164](https://github.com/jestjs/jest/issues/13164)。
+
+此规则使查找某个 matcher 的所有出现位置更容易，并确保 matcher 名称之间保持一致。
 
 ### 示例
 
@@ -59,33 +62,7 @@ expect(a).toHaveNthReturnedWith();
 expect(a).toThrow();
 ```
 
-使用 vitest 时，此规则的**错误**代码示例：
-
-```javascript
-expect(a).toBeCalled();
-expect(a).toBeCalledTimes();
-expect(a).not["toThrowError"]();
-```
-
-使用 vitest 时，此规则的**正确**代码示例：
-
-```javascript
-expect(a).toHaveBeenCalled();
-expect(a).toHaveBeenCalledTimes();
-expect(a).toHaveBeenCalledWith();
-expect(a).toHaveBeenLastCalledWith();
-expect(a).toHaveBeenNthCalledWith();
-expect(a).toHaveReturned();
-expect(a).toHaveReturnedTimes();
-expect(a).toHaveReturnedWith();
-expect(a).toHaveLastReturnedWith();
-expect(a).toHaveNthReturnedWith();
-expect(a).toThrow();
-expect(a).rejects;
-expect(a);
-```
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

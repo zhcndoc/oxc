@@ -1,10 +1,11 @@
 ---
-title: "eslint/no-magic-numbers"
-category: "样式"
+title: "eslint/no-magic-numbers | Oxlint"
+rule: "eslint/no-magic-numbers"
+category: "风格"
 version: "0.9.3"
 default: false
 type_aware: false
-fix: "pending"
+fix: "待定"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

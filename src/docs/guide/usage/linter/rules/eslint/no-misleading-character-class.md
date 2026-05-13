@@ -1,10 +1,11 @@
 ---
-title: "eslint/no-misleading-character-class"
-category: "Correctness"
+title: "eslint/no-misleading-character-class | Oxlint"
+rule: "eslint/no-misleading-character-class"
+category: "正确性"
 version: "1.17.0"
 default: true
 type_aware: false
-fix: "pending"
+fix: "待定"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

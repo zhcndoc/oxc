@@ -1,5 +1,6 @@
 ---
-title: "vitest/no-duplicate-hooks"
+title: "vitest/no-duplicate-hooks | Oxlint"
+rule: "vitest/no-duplicate-hooks"
 category: "Style"
 version: "0.4.0"
 default: false
@@ -34,31 +35,31 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```javascript
 describe("foo", () => {
   beforeEach(() => {
-    // 某些设置
+    // 一些设置
   });
   beforeEach(() => {
-    // 某些设置
+    // 一些设置
   });
   test("foo_test", () => {
-    // 某些测试
+    // 一些测试
   });
 });
 
 // 嵌套 describe 场景
 describe("foo", () => {
   beforeEach(() => {
-    // 某些设置
+    // 一些设置
   });
   test("foo_test", () => {
-    // 某些测试
+    // 一些测试
   });
   describe("bar", () => {
     test("bar_test", () => {
       afterAll(() => {
-        // 某些清理
+        // 一些清理
       });
       afterAll(() => {
-        // 某些清理
+        // 一些清理
       });
     });
   });
@@ -70,25 +71,25 @@ describe("foo", () => {
 ```javascript
 describe("foo", () => {
   beforeEach(() => {
-    // 某些设置
+    // 一些设置
   });
   test("foo_test", () => {
-    // 某些测试
+    // 一些测试
   });
 });
 
 // 嵌套 describe 场景
 describe("foo", () => {
   beforeEach(() => {
-    // 某些设置
+    // 一些设置
   });
   test("foo_test", () => {
-    // 某些测试
+    // 一些测试
   });
   describe("bar", () => {
     test("bar_test", () => {
       beforeEach(() => {
-        // 某些设置
+        // 一些设置
       });
     });
   });

@@ -1,6 +1,7 @@
 ---
-title: "unicorn/no-new-array"
-category: "正确性"
+title: "unicorn/no-new-array | Oxlint"
+rule: "unicorn/no-new-array"
+category: "Correctness"
 version: "0.0.16"
 default: true
 type_aware: false

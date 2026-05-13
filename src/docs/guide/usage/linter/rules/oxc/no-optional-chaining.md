@@ -1,6 +1,7 @@
 ---
-title: "oxc/no-optional-chaining"
-category: "限制"
+title: "oxc/no-optional-chaining | Oxlint"
+rule: "oxc/no-optional-chaining"
+category: "Restriction"
 version: "0.5.0"
 default: false
 type_aware: false
