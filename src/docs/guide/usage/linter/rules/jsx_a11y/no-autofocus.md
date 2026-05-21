@@ -1,7 +1,7 @@
 ---
 title: "jsx-a11y/no-autofocus | Oxlint"
 rule: "jsx-a11y/no-autofocus"
-category: "Correctness"
+category: "正确性"
 version: "0.0.19"
 default: false
 type_aware: false
@@ -25,6 +25,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 自动聚焦元素会给有视觉和无视觉障碍的用户都带来可用性问题。在没有用户输入的情况下焦点被转移时，可能会让人感到迷失方向，并且会干扰辅助技术。用户应该控制页面上焦点何时以及移动到哪里。
 
+### 例外情况
+
+`<dialog>` 元素、具有 `role="dialog"` 的元素，以及带有
+`popover` 属性的元素（及其后代）都被豁免，因为在打开时将焦点
+引导到这些元素中是预期行为。
+参见 [MDN: `<dialog>` 可访问性](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#accessibility)。
+
 ### 示例
 
 以下是此规则的**错误**代码示例：
@@ -40,6 +47,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ```jsx
 <div />
+<dialog><input autoFocus /></dialog>
+<div role="dialog"><input autoFocus /></div>
+<div popover><input autoFocus /></div>
 ```
 
 ## 配置

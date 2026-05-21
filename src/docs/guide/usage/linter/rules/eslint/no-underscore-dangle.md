@@ -1,7 +1,7 @@
 ---
 title: "eslint/no-underscore-dangle | Oxlint"
 rule: "eslint/no-underscore-dangle"
-category: "Suspicious"
+category: "可疑"
 version: "1.62.0"
 default: false
 type_aware: false
@@ -53,73 +53,81 @@ const baz = (_bar) => {};
 
 ### allow
 
-type: `string[]`
+类型: `string[]`
 
-default: `[]`
+默认值: `[]`
 
 允许带有悬挂下划线的变量名数组。
 
 ### allowAfterSuper
 
-type: `boolean`
+类型: `boolean`
 
-default: `false`
+默认值: `false`
 
 是否允许 `super` 对象的成员中出现悬挂下划线。
 
 ### allowAfterThis
 
-type: `boolean`
+类型: `boolean`
 
-default: `false`
+默认值: `false`
 
 是否允许 `this` 对象的成员中出现悬挂下划线。
 
 ### allowAfterThisConstructor
 
-type: `boolean`
+类型: `boolean`
 
-default: `false`
+默认值: `false`
 
 是否允许 `this.constructor` 对象的成员中出现悬挂下划线。
 
 ### allowFunctionParams
 
-type: `boolean`
+类型: `boolean`
 
-default: `true`
+默认值: `true`
 
 是否允许函数参数名中出现悬挂下划线。
 
 ### allowInArrayDestructuring
 
-type: `boolean`
+类型: `boolean`
 
-default: `true`
+默认值: `true`
 
 是否允许通过数组解构赋值的变量名中出现悬挂下划线。
 
 ### allowInObjectDestructuring
 
-type: `boolean`
+类型: `boolean`
 
-default: `true`
+默认值: `true`
 
 是否允许通过对象解构赋值的变量名中出现悬挂下划线。
 
+### allowInUsingDeclarations
+
+类型: `boolean`
+
+默认值: `false`
+
+是否允许在 `using` 和 `await using` 声明中出现悬挂下划线。
+
 ### enforceInClassFields
 
-type: `boolean`
+类型: `boolean`
 
-default: `false`
+默认值: `false`
 
 是否强制类字段名中出现悬挂下划线。
 
 ### enforceInMethodNames
 
-type: `boolean`
+类型: `boolean`
 
-default: `false`
+默认值: `false`
 
 是否强制方法名中出现悬挂下划线。
 

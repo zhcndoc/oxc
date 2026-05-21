@@ -1,11 +1,11 @@
 ---
-title: "typescript/non-nullable-type-assertion-style | Oxlint"
+title: "typescript/非空类型断言风格 | Oxlint"
 rule: "typescript/non-nullable-type-assertion-style"
-category: "Restriction"
+category: "限制"
 version: "1.12.0"
 default: false
 type_aware: true
-fix: "fixable_fix"
+fix: "fixable_suggestion"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

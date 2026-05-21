@@ -1,8 +1,8 @@
 ---
 title: "jsx-a11y/no-noninteractive-element-to-interactive-role | Oxlint"
 rule: "jsx-a11y/no-noninteractive-element-to-interactive-role"
-category: "正确性"
-version: "next"
+category: "Correctness"
+version: "1.64.0"
 default: false
 type_aware: false
 fix: "none"
@@ -27,7 +27,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 交互式元素包括 `<a href>`、`<button>`、`<input>`、`<select>`、
 `<textarea>`。
 
-[WAI-ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#usage_intro) 不应被用于
+[WAI-ARIA 角色](https://www.w3.org/TR/wai-aria-1.1/#usage_intro) 不应被用于
 将非交互式元素转换为交互式元素。交互式 ARIA 角色包括 `button`、`link`、`checkbox`、`menuitem`、`menuitemcheckbox`、
 `menuitemradio`、`option`、`radio`、`searchbox`、`switch` 和 `textbox`。
 
@@ -83,7 +83,7 @@ HTML 元素名称到 ARIA 角色字符串数组的映射，这些角色字符串
 
 ## 版本
 
-此规则于 vnext 中添加。
+此规则添加于 v1.64.0。
 
 ## 参考资料
 

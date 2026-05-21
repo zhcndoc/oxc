@@ -116,6 +116,10 @@ search: false
 
 - **`-f`**, **`--format`**=_`ARG`_ &mdash;
   使用特定的输出格式。可选值：`checkstyle`、`default`、`agent`、`github`、`gitlab`、`json`、`junit`、`sarif`、`stylish`、`unix`
+- **`    --debug`**=_`OPTIONS`_ &mdash;
+  启用调试输出选项。选项之间用逗号分隔。可选值：
+
+* `timings` - 启用按规则计时信息。
 
 ## 杂项
 

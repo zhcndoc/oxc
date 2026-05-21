@@ -226,8 +226,8 @@ search: false
 
 从此覆盖中排除的 Glob 模式。
 
-A set of glob patterns.
-Patterns are matched against paths relative to the configuration file's directory.
+一组 glob 模式。
+这些模式会与相对于配置文件目录的路径进行匹配。
 
 #### overrides[n].files
 
@@ -635,7 +635,7 @@ Glob 模式，用于匹配此覆盖的文件。
 
 这有助于区分您自己的模块与外部依赖项。
 
-- 默认：`["~/", "@/"]`
+- 默认：`["~/", "@/", "#"]`
 
 ###### overrides[n].options.sortImports.newlinesBetween
 
@@ -1071,7 +1071,7 @@ Svelte 组件各部分的打印顺序。
 
 这对于区分您自己的模块和外部依赖项很有用。
 
-- 默认值：`["~/", "@/"]`
+- 默认值：`["~/", "@/", "#"]`
 
 ### sortImports.newlinesBetween
 
@@ -1230,7 +1230,7 @@ import { c } from "c";
 
 ## svelte
 
-type: `object | boolean`
+类型：`object | boolean`
 
 prettier-plugin-svelte 的选项。
 
@@ -1246,7 +1246,7 @@ prettier-plugin-svelte 的选项。
 
 ### svelte.allowShorthand
 
-type: `boolean`
+类型：`boolean`
 
 当属性名称和表达式相同时，是否允许使用属性简写。
 
@@ -1254,7 +1254,7 @@ type: `boolean`
 
 ### svelte.indentScriptAndStyle
 
-type: `boolean`
+类型：`boolean`
 
 是否缩进 `<script>` 和 `<style>` 标签内的代码。
 
@@ -1262,7 +1262,7 @@ type: `boolean`
 
 ### svelte.sortOrder
 
-type: `string`
+类型：`string`
 
 Svelte 组件各部分的打印顺序。
 格式：按您希望的顺序用 `-` 连接关键字 `options`、`scripts`、`markup`、`styles`；

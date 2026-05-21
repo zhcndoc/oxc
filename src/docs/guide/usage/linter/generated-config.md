@@ -199,7 +199,7 @@ export default defineConfig({
 
 对于每个全局变量，将相应的值设置为 `"writable"` 以允许变量被覆盖，或设置为 `"readonly"` 以禁止覆盖。
 
-可以通过将全局变量的值设置为 `"off"` 来禁用它们。例如，在一个大多数 Es2015 全局变量可用但 `Promise` 不可用的环境中，你可以使用此配置：
+可以通过将全局变量的值设置为 `"off"` 来禁用它们。例如，在一个大多数 ECMAScript 2015 全局变量可用但 `Promise` 不可用的环境中，你可以使用此配置：
 
 ```json
 {
@@ -221,7 +221,7 @@ export default defineConfig({
 
 默认值：`[]`
 
-linting 期间要忽略的 Glob 模式。这些模式是从配置文件路径解析的。
+lint 检查期间要忽略的 Glob 模式。这些模式是从配置文件路径解析的。
 
 ## jsPlugins
 
@@ -302,7 +302,7 @@ TypeScript 插件文件在以下环境中受支持：
 - jsdoc
 - jest
 - vitest
-- jsx-a11y
+- jsx-a11y (includes jsx-a11y-x)
 - nextjs
 - react-perf
 - promise
@@ -354,7 +354,7 @@ Oxlint 配置选项。
 
 ### options.respectEslintDisableDirectives
 
-type: `boolean`
+类型：`boolean`
 
 除了其原生 `oxlint-*` 指令外，oxlint 是否应遵守 `eslint-disable*` 和 `eslint-enable*`
 指令。
@@ -404,7 +404,7 @@ type: `boolean`
 
 要覆盖的一组 glob 模式。
 
-## Example
+## 示例
 
 `[ "*.test.ts", "*.spec.ts" ]`
 
@@ -447,7 +447,7 @@ type: `boolean`
 - jsdoc
 - jest
 - vitest
-- jsx-a11y
+- jsx-a11y (includes jsx-a11y-x)
 - nextjs
 - react-perf
 - promise
@@ -570,13 +570,13 @@ type: `boolean`
 
 #### settings.jest.version
 
-type: `integer | string`
+类型：`integer | string`
 
 默认值：`null`
 
 Jest 版本——接受数字（`29`）或 semver 字符串（`"29.1.0"` 或 `"v29.1.0"`），只保存主版本号。
 ::: warning
-Using this config will override the `no-deprecated-functions` config set.
+使用此配置将覆盖已设置的 `no-deprecated-functions` 配置集。
 :::
 
 ### settings.jsdoc
@@ -702,7 +702,7 @@ Using this config will override the `no-deprecated-functions` config set.
 
 类型：`string`
 
-一个可选设置，定义你的代码用于创建多态组件的 prop。此设置将用于确定需要语义上下文的规则中的元素类型。
+一个可选设置，定义你的代码用于创建多态组件的属性。此设置将用于确定需要语义上下文的规则中的元素类型。
 
 例如，如果你将 `polymorphicPropName` 设置为 `as`，则此元素：
 
@@ -824,7 +824,7 @@ Next.js 项目的根目录。
     "react": {
       "linkComponents": [
         "HyperLink",
-        // 对于使用与 `href` 不同 prop 名称的组件，使用 `linkAttribute`。
+        // 对于使用与 `href` 不同属性名称的组件，使用 `linkAttribute`。
         { "name": "MyLink", "linkAttribute": "to" },
         // 允许在必要时指定多个属性
         { "name": "Link", "linkAttribute": ["to", "href"] },
