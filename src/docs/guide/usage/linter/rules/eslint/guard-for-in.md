@@ -6,6 +6,7 @@ version: "0.2.14"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/guard-for-in"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->
@@ -19,11 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-要求 for-in 循环包含 if 语句。
+要求 `for-in` 循环包含 `if` 语句。
 
 ### 为什么不好？
 
-使用 `for in` 循环遍历对象将包含通过原型链继承的属性。在循环中不对结果进行过滤而使用 `for in` 循环可能会导致循环中出现意外项，进而导致意外行为。
+使用 `for in` 循环遍历对象会包含通过原型链继承的属性。在循环中不对结果进行过滤而使用 `for in` 循环，可能会导致循环中出现意外项，进而引发意外行为。
 
 ### 示例
 

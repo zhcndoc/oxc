@@ -1,11 +1,12 @@
 ---
 title: "react/no-unescaped-entities | Oxlint"
 rule: "react/no-unescaped-entities"
-category: "Pedantic"
+category: "迂腐"
 version: "0.0.15"
 default: false
 type_aware: false
-fix: "pending"
+fix: "待定"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unescaped-entities.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -6,6 +6,7 @@ version: "1.53.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-clone-element.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,11 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-阻止使用 `React.cloneElement`，在 React 中这被视为一种反模式。
+禁止使用 `React.cloneElement`，在 React 中这被视为一种反模式。
 
 ### 为什么这不好？
 
-建议不要使用 `React.cloneElement`，因为它可能会导致代码更难跟踪和理解。它通常不常见且脆弱，并且有多种替代方案，详见
+不建议使用 `React.cloneElement`，因为它可能会让代码更难跟踪和理解。它通常不常见且脆弱，并且有多种替代方案，详见
 [React 文档](https://react.dev/reference/react/cloneElement#alternatives)。
 
 请注意，此规则基于 `@eslint-react` 中的 [`@eslint-react/no-clone-element`](https://www.eslint-react.xyz/docs/rules/no-clone-element)

@@ -6,7 +6,15 @@ title: "从 ESLint 迁移 | Oxlint"
 
 本指南适用于当前使用 ESLint 并希望迁移到 Oxlint 的现有 JavaScript 和 TypeScript 项目。
 
-## 概述
+## 何时从 ESLint 迁移
+
+如果您希望使用一款专用的 lint 工具，并获得更快的速度、更简单的接入方式以及对现代 ESLint 工作流的良好兼容性，那么请迁移到 Oxlint。如果您希望将 Oxlint 作为更大的一体化工具链的一部分，请改用 [Vite+](https://npmx.dev/package/vite-plus)。
+
+- 迁移到 Oxlint，以获得专用的 lint 能力。
+- 迁移到 [Vite+](https://npmx.dev/package/vite-plus)，以获得集成式工作流。
+- 如果某个缺失的具体行为仍阻碍迁移，请继续使用 ESLint。
+
+## 概览
 
 Oxlint 和 ESLint 共享相似的配置概念，但它们在支持的规则和配置格式上有所不同。
 
@@ -22,13 +30,13 @@ Oxlint 已经支持来自 ESLint 核心和各种流行插件的 700 多条规则
 
 ## 使用 Skills 迁移
 
-您可以使用 [`migrate-oxlint`](https://skills.sh/oxc-project/oxc/migrate-oxlint) skill 进行交互式迁移：
+[`migrate-oxlint`](https://skills.sh/oxc-project/oxc/migrate-oxlint) skill 提供了交互式、由 agent 引导的迁移流程。请将其安装到您的 coding agent 中：
 
 ```bash
 npx skills add https://github.com/oxc-project/oxc --skill migrate-oxlint
 ```
 
-安装完成后，运行 `/migrate-oxlint`，助手将引导您完成整个迁移过程。
+安装完成后，运行 `/migrate-oxlint` 即可执行迁移。
 
 ## 从 ESLint flat config 迁移
 

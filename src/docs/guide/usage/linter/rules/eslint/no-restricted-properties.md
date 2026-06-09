@@ -6,6 +6,7 @@ version: "1.63.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-restricted-properties"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -43,7 +44,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```js
 /* no-restricted-properties: ["error", { "object": "JSON", "property": "parse" }] */
 
-JSON.parse('{ "json": "here" }'); // 'JSON.parse' is restricted from being used.
+JSON.parse('{ "json": "here" }'); // 'JSON.parse' 被禁止使用。
 ```
 
 此规则的**正确**代码示例：
@@ -68,7 +69,7 @@ JSON.stringify({ json: "here" });
 ```js
 /* no-restricted-properties: ["error", { "property": "extend", "allowObjects": ["safeUtils"] }] */
 
-unsafeUtils.extend(value); // 'extend' is restricted from being used. Property 'extend' is only allowed on these objects: safeUtils.
+unsafeUtils.extend(value); // 'extend' 被禁止使用。属性 'extend' 仅允许用于这些对象：safeUtils。
 ```
 
 此规则的**正确**代码示例：
@@ -93,7 +94,7 @@ safeUtils.extend(value);
 ```js
 /* no-restricted-properties: ["error", { "object": "legacyApi", "allowProperties": ["stableMethod"] }] */
 
-legacyApi.unstableMethod(); // 'legacyApi' is restricted from being used. Only these properties are allowed: stableMethod.
+legacyApi.unstableMethod(); // 'legacyApi' 被禁止使用。仅允许这些属性：stableMethod。
 ```
 
 此规则的**正确**代码示例：

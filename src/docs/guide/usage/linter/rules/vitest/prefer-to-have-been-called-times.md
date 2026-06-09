@@ -6,6 +6,7 @@ version: "1.34.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-have-been-called-times.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

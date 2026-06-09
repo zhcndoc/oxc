@@ -1,11 +1,12 @@
 ---
 title: "jest/require-to-throw-message | Oxlint"
 rule: "jest/require-to-throw-message"
-category: "Correctness"
+category: "正确性"
 version: "0.2.9"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/require-to-throw-message.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

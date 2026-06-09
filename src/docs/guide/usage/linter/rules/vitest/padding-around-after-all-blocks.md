@@ -2,10 +2,11 @@
 title: "vitest/padding-around-after-all-blocks | Oxlint"
 rule: "vitest/padding-around-after-all-blocks"
 category: "Style"
-version: "next"
+version: "1.66.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/padding-around-after-all-blocks.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -48,7 +49,7 @@ afterAll(() => {});
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.66.0 中添加。
 
 ## 参考资料
 

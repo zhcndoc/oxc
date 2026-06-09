@@ -1,11 +1,12 @@
 ---
 title: "jsx-a11y/role-supports-aria-props | Oxlint"
 rule: "jsx-a11y/role-supports-aria-props"
-category: "Correctness"
+category: "正确性"
 version: "0.2.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/role-supports-aria-props.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

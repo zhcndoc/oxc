@@ -6,6 +6,7 @@ version: "0.2.10"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://eslint.org/docs/latest/rules/no-new-wrappers"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

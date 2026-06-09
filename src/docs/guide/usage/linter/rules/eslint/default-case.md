@@ -6,6 +6,7 @@ version: "0.4.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/default-case"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->
@@ -28,7 +29,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 故意的还是疏忽。添加 `default` 或特殊注释
 使代码更明确并减少错误。
 
-如果没有 default 分支，你可以选择在最后一个 case 后包含 `// no default`。注释可以是任意大小写，例如 `// No Default`。
+如果没有 `default` 分支，你可以选择在最后一个 `case` 后包含 `// no default`。注释可以是任意大小写，例如 `// No Default`。
 
 示例配置：
 

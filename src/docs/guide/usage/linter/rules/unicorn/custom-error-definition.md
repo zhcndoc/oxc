@@ -6,6 +6,7 @@ version: "1.57.0"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/custom-error-definition.md"
 ---
 
 <!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

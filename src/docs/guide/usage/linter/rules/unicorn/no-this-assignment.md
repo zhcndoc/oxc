@@ -1,11 +1,12 @@
 ---
 title: "unicorn/no-this-assignment | Oxlint"
 rule: "unicorn/no-this-assignment"
-category: "Pedantic"
+category: "吹毛求疵"
 version: "0.0.18"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-this-assignment.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

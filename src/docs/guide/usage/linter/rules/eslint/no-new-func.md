@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-new-func | Oxlint"
 rule: "eslint/no-new-func"
-category: "Style"
+category: "样式"
 version: "0.9.2"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-new-func"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

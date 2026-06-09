@@ -6,6 +6,7 @@ version: "0.2.14"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://eslint.org/docs/latest/rules/no-proto"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 禁止使用 `__proto__` 属性。
 

@@ -6,6 +6,7 @@ version: "0.2.3"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/cvazac/eslint-plugin-react-perf/blob/master/docs/rules/jsx-no-jsx-as-prop.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-防止在当前方法中局部定义的 JSX 元素被用作 JSX 属性值。
+防止将当前方法中局部定义的 JSX 元素用作 JSX 属性值。
 
 ### 为什么这不好？
 

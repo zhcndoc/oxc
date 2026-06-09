@@ -5,7 +5,8 @@ category: "Correctness"
 version: "1.62.0"
 default: false
 type_aware: false
-fix: "待处理"
+fix: "pending"
+upstream: "https://eslint.vuejs.org/rules/no-deprecated-data-object-declaration.html"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 作用
+### 说明
 
 禁止在 `data` 中声明对象（在 Vue.js 3.0.0+ 中）。
 

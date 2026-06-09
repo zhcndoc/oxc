@@ -6,6 +6,7 @@ version: "1.49.0"
 default: false
 type_aware: true
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/dot-notation/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -20,7 +21,7 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 ### 它的作用
 
-在属性访问能够安全地写成 `obj.prop` 时，强制使用点号表示法。
+当属性访问可以安全地写成 `obj.prop` 时，强制使用点号表示法。
 
 ### 为什么这很糟糕？
 

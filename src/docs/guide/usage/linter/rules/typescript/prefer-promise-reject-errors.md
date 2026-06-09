@@ -1,11 +1,12 @@
 ---
 title: "typescript/prefer-promise-reject-errors | Oxlint"
 rule: "typescript/prefer-promise-reject-errors"
-category: "Pedantic"
+category: "迂腐"
 version: "1.12.0"
 default: false
 type_aware: true
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/prefer-promise-reject-errors/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

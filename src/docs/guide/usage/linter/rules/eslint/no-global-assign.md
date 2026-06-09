@@ -6,6 +6,7 @@ version: "0.0.7"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-global-assign"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,11 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止修改只读全局变量。
+禁止给只读全局变量赋值。
 
 ### 为什么这不好？
 
-在几乎所有情况下，你都不希望给这些全局变量赋值，因为这样做可能会导致无法访问重要功能。
+在几乎所有情况下，你都不应该给这些全局变量赋值，因为这样做可能会导致无法访问重要功能。
 
 ### 示例
 

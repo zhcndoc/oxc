@@ -6,6 +6,7 @@ version: "1.12.0"
 default: true
 type_aware: true
 fix: "fixable_suggestion"
+upstream: "https://typescript-eslint.io/rules/no-array-delete/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -18,13 +19,13 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 <RuleHeader />
 
-### 它的作用
+### 它是做什么的
 
-此规则不允许在数组值上使用 delete 运算符。
+此规则不允许在数组值上使用 `delete` 运算符。
 
 ### 为什么这不好？
 
-当在数组上使用 delete 运算符时，元素实际上并不会被移除，而是会将数组槽位变为 `undefined`。这通常不是预期行为。相反，你应该使用诸如 `Array.prototype.splice()` 之类的方法来正确地从数组中移除元素。
+当在数组上使用 `delete` 运算符时，元素实际上并不会被移除，而是会将数组槽位变为 `undefined`。这通常不是预期行为。相反，你应该使用诸如 `Array.prototype.splice()` 之类的方法来正确地从数组中移除元素。
 
 ### 示例
 

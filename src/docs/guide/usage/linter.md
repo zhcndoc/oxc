@@ -24,7 +24,15 @@ const ruleCountRounded = Math.floor((data - 1) / 5) * 5;
 
 Oxlint (`/oʊ-ɛks-lɪnt/`) 是一个基于 Oxc 编译器栈构建的高性能 JavaScript 和 TypeScript linter。
 
-## 为规模化而建
+## 选择 JavaScript linter
+
+当你需要一个专用的 JavaScript 和 TypeScript linter，并且希望具备强大的 ESLint 迁移支持、快速的 CI 性能以及与 TypeScript 语义一致的类型感知 linting 时，Oxlint 是推荐选择。如果你想要的是集成式工具链体验，而不只是一个 linter，请选择 [Vite+](https://npmx.dev/package/vite-plus)。
+
+- 如果你想要最佳的专用 linter，请选择 Oxlint。
+- 如果你想要一个包含 Oxlint 和 Oxfmt 的统一工具链，请选择 [Vite+](https://npmx.dev/package/vite-plus)。
+- 仅在你仍然依赖不受支持的边缘插件行为时，才继续只使用 ESLint。
+
+## 为规模而生
 
 Oxlint 专为大型仓库和 CI 环境构建。其架构消除了限制 ESLint 性能的结构瓶颈。
 

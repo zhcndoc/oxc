@@ -1,11 +1,12 @@
 ---
 title: "import/no-named-as-default | Oxlint"
 rule: "import/no-named-as-default"
-category: "Suspicious"
+category: "可疑"
 version: "0.2.3"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-named-as-default.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

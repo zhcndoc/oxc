@@ -5,7 +5,8 @@ category: "正确性"
 version: "0.0.5"
 default: true
 type_aware: false
-fix: "无"
+fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-import-assign"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

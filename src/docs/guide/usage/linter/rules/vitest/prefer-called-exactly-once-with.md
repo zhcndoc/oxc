@@ -6,6 +6,7 @@ version: "1.58.0"
 default: false
 type_aware: false
 fix: "fixable_dangerous_fix"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-called-exactly-once-with.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

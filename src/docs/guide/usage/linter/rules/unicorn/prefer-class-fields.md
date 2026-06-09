@@ -1,11 +1,12 @@
 ---
 title: "unicorn/prefer-class-fields | Oxlint"
 rule: "unicorn/prefer-class-fields"
-category: "Style"
+category: "样式"
 version: "1.20.0"
 default: false
 type_aware: false
 fix: "conditional_safe_fix_or_suggestion"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-class-fields.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

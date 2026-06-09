@@ -6,6 +6,7 @@ version: "0.0.19"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-is-mounted.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -23,7 +24,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-`isMounted` 是一种反模式，在使用类组件或函数组件时不可用。
+`isMounted` 是一种反模式，在类组件或函数组件中都不可用。
 
 ### 示例
 

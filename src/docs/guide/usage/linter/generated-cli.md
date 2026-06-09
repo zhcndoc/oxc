@@ -119,7 +119,8 @@ search: false
 - **`    --debug`**=_`OPTIONS`_ &mdash;
   启用调试输出选项。选项之间用逗号分隔。可选值：
 
-* `timings` - 启用按规则计时信息。
+* `files` - 打印将要执行 lint 的文件列表，然后退出。
+* `timings` - 启用每条规则的耗时信息。
 
 ## 杂项
 

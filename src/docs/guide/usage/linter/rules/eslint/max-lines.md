@@ -6,6 +6,7 @@ version: "0.2.14"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/max-lines"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -26,8 +27,6 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 有些人认为大文件是一种代码异味。大文件往往包含过多功能，导致难以理解代码逻辑。虽然文件中可接受的最大行数没有客观标准，但大多数人会同意不应达到数千行。建议通常在 100 到 500 行之间。
 
 ## 配置
-
-此规则接受一个包含以下属性的配置对象：
 
 ### max
 

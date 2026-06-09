@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-useless-backreference | Oxlint"
 rule: "eslint/no-useless-backreference"
-category: "Correctness"
+category: "正确性"
 version: "0.16.10"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-useless-backreference"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

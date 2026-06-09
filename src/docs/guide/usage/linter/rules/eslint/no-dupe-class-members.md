@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-dupe-class-members | Oxlint"
 rule: "eslint/no-dupe-class-members"
-category: "Correctness"
+category: "正确性"
 version: "0.0.3"
 default: true
 type_aware: false
-fix: "无"
+fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-dupe-class-members"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

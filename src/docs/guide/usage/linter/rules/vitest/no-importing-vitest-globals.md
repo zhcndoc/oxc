@@ -1,11 +1,12 @@
 ---
 title: "vitest/no-importing-vitest-globals | Oxlint"
 rule: "vitest/no-importing-vitest-globals"
-category: "Style"
+category: "样式"
 version: "1.49.0"
 default: false
 type_aware: false
-fix: "fixable_fix"
+fix: "可自动修复"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-importing-vitest-globals.md"
 ---
 
 <!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

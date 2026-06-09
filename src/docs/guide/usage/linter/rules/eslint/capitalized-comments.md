@@ -6,6 +6,7 @@ version: "1.34.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://eslint.org/docs/latest/rules/capitalized-comments"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->
@@ -57,30 +58,6 @@ capitalized-comments 规则的配置。
 
 此选项是一个具有以下属性的对象：
 
-#### block
-
-类型：`object`
-
-特定于块注释的配置选项。
-
-##### block.ignoreConsecutiveComments
-
-类型：`boolean`
-
-如果为 true，第一个注释之后的连续注释将被忽略。
-
-##### block.ignoreInlineComments
-
-类型：`boolean`
-
-如果为 true，行内注释（代码中间的注释）将被忽略。
-
-##### block.ignorePattern
-
-类型：`string`
-
-一个正则表达式模式。匹配该模式的注释不会导致违规。
-
 #### ignoreConsecutiveComments
 
 类型：`boolean`
@@ -99,31 +76,7 @@ capitalized-comments 规则的配置。
 
 一个正则表达式模式。匹配该模式的注释不会导致违规。
 
-#### line
-
-类型：`object`
-
-特定于行注释的配置选项。
-
-##### line.ignoreConsecutiveComments
-
-类型：`boolean`
-
-如果为 true，第一个注释之后的连续注释将被忽略。
-
-##### line.ignoreInlineComments
-
-类型：`boolean`
-
-如果为 true，行内注释（代码中间的注释）将被忽略。
-
-##### line.ignorePattern
-
-类型：`string`
-
-一个正则表达式模式。匹配该模式的注释不会导致违规。
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

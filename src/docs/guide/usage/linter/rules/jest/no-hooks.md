@@ -6,6 +6,7 @@ version: "0.0.16"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-hooks.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -63,7 +64,7 @@ describe("foo", () => {
     afterEach(() => {
       bar = null;
     });
-    it("with bar 做某事", () => {
+    it("使用 bar 做某事", () => {
       expect(foo.doesSomething(bar)).toBe(true);
     });
   });

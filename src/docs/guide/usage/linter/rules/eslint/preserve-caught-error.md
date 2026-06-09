@@ -6,6 +6,7 @@ version: "1.16.0"
 default: false
 type_aware: false
 fix: "conditional_fix"
+upstream: "https://eslint.org/docs/latest/rules/preserve-caught-error"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-要求在 catch 块中重新抛出错误时，使用 'cause' 属性保留原始错误。
+要求在 catch 块中重新抛出错误时，使用 `'cause'` 属性保留原始错误。
 
 ### 为什么这很糟糕？
 

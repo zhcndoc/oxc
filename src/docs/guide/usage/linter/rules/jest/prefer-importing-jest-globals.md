@@ -6,6 +6,7 @@ version: "1.60.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-importing-jest-globals.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

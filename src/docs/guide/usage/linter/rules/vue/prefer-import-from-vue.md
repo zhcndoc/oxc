@@ -1,11 +1,12 @@
 ---
 title: "vue/prefer-import-from-vue | Oxlint"
 rule: "vue/prefer-import-from-vue"
-category: "Correctness"
+category: "正确性"
 version: "1.20.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://eslint.vuejs.org/rules/prefer-import-from-vue.html"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

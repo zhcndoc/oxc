@@ -1,11 +1,12 @@
 ---
 title: "typescript/no-unnecessary-type-parameters | Oxlint"
 rule: "typescript/no-unnecessary-type-parameters"
-category: "Suspicious"
+category: "可疑"
 version: "1.49.0"
 default: false
 type_aware: true
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/no-unnecessary-type-parameters/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

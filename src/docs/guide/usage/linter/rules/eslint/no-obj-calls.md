@@ -6,6 +6,7 @@ version: "0.0.7"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-obj-calls"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -6,6 +6,7 @@ version: "0.14.0"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-unused-expressions"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -77,7 +78,15 @@ default: `false`
 
 设置为 `true` 时，也会对未使用的 JSX 表达式强制执行此规则。
 
-## 如何使用
+### ignoreDirectives
+
+type: `boolean`
+
+default: `false`
+
+设置为 `true` 时，允许指令前导。
+
+## How to use
 
 <RuleHowToUse />
 

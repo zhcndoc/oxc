@@ -1,11 +1,12 @@
 ---
 title: "typescript/no-unsafe-assignment | Oxlint"
 rule: "typescript/no-unsafe-assignment"
-category: "Pedantic"
+category: "教育性"
 version: "1.12.0"
 default: false
 type_aware: true
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/no-unsafe-assignment/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

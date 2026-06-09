@@ -6,6 +6,7 @@ version: "0.4.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/requireReturnsDescription.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,12 +20,12 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-要求 `@returns` 标签具有描述值。
-如果返回值是 `void `、`undefined`，或者是 `Promise<void>` 或 `Promise<undefined>`，则不会报告该错误。
+要求 `@returns` 标签带有描述。
+如果返回值是 `void`、`undefined`，或者是 `Promise<void>` 或 `Promise<undefined>`，则不会报告该错误。
 
 ### 为什么这很糟糕？
 
-`@returns` 标签应该有一个描述值。
+`@returns` 标签应该有描述。
 
 ### 示例
 

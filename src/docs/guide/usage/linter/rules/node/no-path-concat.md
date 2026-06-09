@@ -6,6 +6,7 @@ version: "1.49.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/eslint-community/eslint-plugin-n/blob/master/docs/rules/no-path-concat.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

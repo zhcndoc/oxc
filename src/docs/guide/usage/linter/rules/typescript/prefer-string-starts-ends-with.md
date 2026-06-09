@@ -6,6 +6,7 @@ version: "0.0.8"
 default: true
 type_aware: true
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/prefer-string-starts-ends-with/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

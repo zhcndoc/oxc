@@ -6,6 +6,7 @@ version: "0.7.1"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/eslint-community/eslint-plugin-promise/blob/main/docs/rules/valid-params.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 强制向 Promise 函数传递正确数量的参数。
 
@@ -25,7 +26,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-用错误数量的参数调用 Promise 函数可能会导致意外的行为或难以发现的 bug。
+以错误数量的参数调用 Promise 函数可能会导致意外行为或难以发现的 bug。
 
 ### 示例
 

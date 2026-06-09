@@ -6,6 +6,7 @@ version: "0.0.3"
 default: true
 type_aware: false
 fix: "conditional_fix"
+upstream: "https://eslint.org/docs/latest/rules/valid-typeof"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -24,7 +25,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ### 为什么这不好？
 
 对于绝大多数用例，`typeof` 运算符的结果是以下字符串字面量之一：`"undefined"`、`"object"`、`"boolean"`、`"number"`、`"string"`、
-`"function"`、`"symbol"` 和 `"bigint"`。将 `typeof` 运算符的结果与其他字符串字面量进行比较通常是一个类型错误。
+`"function"`、`"symbol"` 和 `"`bigint"`。将 `typeof` 运算符的结果与其他字符串字面量进行比较通常是一个类型错误。
 
 ### 示例
 

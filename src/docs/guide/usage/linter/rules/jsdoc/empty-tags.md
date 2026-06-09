@@ -6,6 +6,7 @@ version: "0.2.16"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/emptyTags.md"
 ---
 
 <!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

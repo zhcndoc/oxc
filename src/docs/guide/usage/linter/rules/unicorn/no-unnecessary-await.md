@@ -6,6 +6,7 @@ version: "0.0.12"
 default: true
 type_aware: false
 fix: "conditional_fix"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unnecessary-await.md"
 ---
 
 <!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -6,6 +6,7 @@ version: "1.44.0"
 default: false
 type_aware: false
 fix: "fixable_safe_fix_or_suggestion"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/relative-url-style.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -23,7 +24,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-在 `new URL()` 中使用相对 URL 时，URL 应该始终使用 `./` 前缀，或者始终不使用，且保持一致。
+在 `new URL()` 中使用相对 URL 时，URL 应该始终使用 `./` 前缀，或者始终不使用，并保持一致。
 
 ### 示例
 

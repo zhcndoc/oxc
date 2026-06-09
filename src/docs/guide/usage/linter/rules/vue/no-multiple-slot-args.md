@@ -5,7 +5,8 @@ category: "Restriction"
 version: "1.15.0"
 default: false
 type_aware: false
-fix: "待定"
+fix: "pending"
+upstream: "https://eslint.vuejs.org/rules/no-multiple-slot-args.html"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -6,6 +6,7 @@ version: "1.10.0"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-unassigned-vars"
 ---
 
 <!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -1,11 +1,12 @@
 ---
 title: "eslint/prefer-exponentiation-operator | Oxlint"
 rule: "eslint/prefer-exponentiation-operator"
-category: "Style"
+category: "样式"
 version: "0.4.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://eslint.org/docs/latest/rules/prefer-exponentiation-operator"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

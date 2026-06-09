@@ -1,11 +1,12 @@
 ---
 title: "typescript/no-extra-non-null-assertion | Oxlint"
 rule: "typescript/no-extra-non-null-assertion"
-category: "Correctness"
+category: "正确性"
 version: "0.0.6"
 default: true
 type_aware: false
-fix: "fixable_fix"
+fix: "可自动修复"
+upstream: "https://typescript-eslint.io/rules/no-extra-non-null-assertion/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

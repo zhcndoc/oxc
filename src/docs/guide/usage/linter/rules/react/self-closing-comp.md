@@ -6,6 +6,7 @@ version: "0.9.3"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

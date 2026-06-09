@@ -5,7 +5,8 @@ category: "正确性"
 version: "1.17.0"
 default: true
 type_aware: false
-fix: "待定"
+fix: "fixable_suggestion"
+upstream: "https://eslint.org/docs/latest/rules/no-misleading-character-class"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

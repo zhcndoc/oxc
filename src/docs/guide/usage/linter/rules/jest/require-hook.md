@@ -6,6 +6,7 @@ version: "0.3.2"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/require-hook.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

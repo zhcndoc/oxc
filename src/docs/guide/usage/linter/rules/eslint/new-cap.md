@@ -6,6 +6,7 @@ version: "0.15.5"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://eslint.org/docs/latest/rules/new-cap"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->
@@ -30,7 +31,7 @@ JavaScript 中的 new 运算符会创建特定类型对象的新实例。
 许多风格指南建议遵循此模式，以便更容易确定哪些函数将用作构造函数。
 
 **警告**：
-选项 `newIsCapExceptionPattern` 和 `capIsNewExceptionPattern` 是使用 [rust regex 语法](https://docs.rs/regex/latest/regex/) 实现的。不支持许多 JavaScript 功能（前瞻、后顾...）。
+选项 `newIsCapExceptionPattern` 和 `capIsNewExceptionPattern` 是使用 [rust 正则表达式语法](https://docs.rs/regex/latest/regex/) 实现的。不支持许多 JavaScript 功能（前瞻、后顾...）。
 
 ### 示例
 

@@ -6,6 +6,7 @@ version: "0.15.4"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-nested-ternary"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,11 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止嵌套的三元表达式，以提高代码可读性和可维护性。
+禁止嵌套的三元表达式，以提升代码可读性和可维护性。
 
-### 为什么这是坏的？
+### 为什么这是不好的？
 
-嵌套的三元表达式会使代码更难阅读和理解。它们可能导致逻辑复杂且难以调试。
+嵌套的三元表达式会让代码更难阅读和理解，也可能使逻辑更复杂，难以调试。
 
 ### 示例
 

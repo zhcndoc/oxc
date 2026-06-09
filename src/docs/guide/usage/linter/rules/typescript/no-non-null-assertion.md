@@ -6,6 +6,7 @@ version: "0.5.0"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://typescript-eslint.io/rules/no-non-null-assertion/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

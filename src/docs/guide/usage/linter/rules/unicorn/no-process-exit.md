@@ -1,11 +1,12 @@
 ---
 title: "unicorn/no-process-exit | Oxlint"
 rule: "unicorn/no-process-exit"
-category: "Restriction"
+category: "限制"
 version: "0.2.9"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-process-exit.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

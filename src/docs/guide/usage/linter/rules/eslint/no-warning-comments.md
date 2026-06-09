@@ -6,6 +6,7 @@ version: "1.24.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-warning-comments"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -78,7 +79,23 @@ const x = 1;
 当 `location` 为 `"start"` 时，在注释开头需要忽略的字符数组。
 可用于忽略 JSDoc 风格注释中常见的注释装饰字符，例如 `*`。
 
-## 如何使用
+## 配置
+
+此规则接受一个包含以下属性的配置对象：
+
+### decoration
+
+type: `string[]`
+
+### location
+
+type: `"start" | "anywhere"`
+
+### terms
+
+type: `string[]`
+
+## 使用方法
 
 <RuleHowToUse />
 

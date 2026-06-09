@@ -6,6 +6,7 @@ version: "1.58.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/require-test-timeout.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请不要手动编辑。 -->

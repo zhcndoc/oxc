@@ -6,6 +6,7 @@ version: "0.0.8"
 default: true
 type_aware: false
 fix: "conditional_fix"
+upstream: "https://typescript-eslint.io/rules/prefer-as-const/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -26,7 +27,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 有两种常见方式可以告诉 TypeScript，一个字面量值应当被解释为
 其字面量类型（例如 `2`），而不是通用的基本类型（例如 `number`）；
 
-`as const`：告诉 TypeScript 自动推断字面量类型
+`as const`：告诉 TypeScript 自动推断字面量类型  
 `as` 加字面量类型：显式告诉 TypeScript 该字面量类型
 
 通常更推荐使用 `as const`，因为它不需要重新输入字面量值。

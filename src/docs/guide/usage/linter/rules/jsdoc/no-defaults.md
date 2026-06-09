@@ -1,11 +1,12 @@
 ---
 title: "jsdoc/no-defaults | Oxlint"
 rule: "jsdoc/no-defaults"
-category: "Correctness"
+category: "正确性"
 version: "0.3.2"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/noDefaults.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -6,6 +6,7 @@ version: "0.15.13"
 default: false
 type_aware: false
 fix: "fixable_dangerous_fix"
+upstream: "https://eslint.org/docs/latest/rules/operator-assignment"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它是做什么的
+### 它的作用
 
 此规则在可能的情况下要求或禁止使用赋值运算符简写。
 它鼓励使用 `+=`、`-=`、`*=`、`/=` 等简写赋值运算符，
@@ -68,13 +69,7 @@ x.y = x.y / a.b;
 
 此规则接受以下字符串值之一：
 
-### `"always"`
-
-在可能的情况下要求使用赋值运算符简写。
-
-### `"never"`
-
-禁止使用赋值运算符简写。
+type: `"always" | "never"`
 
 ## 如何使用
 

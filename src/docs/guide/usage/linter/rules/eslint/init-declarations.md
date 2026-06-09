@@ -6,6 +6,7 @@ version: "0.15.11"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/init-declarations"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->
@@ -95,14 +96,6 @@ for (var i = 0; i < 1; i++) {}
 ### 第一个选项
 
 类型：`"always" | "never"`
-
-#### `"always"`
-
-要求变量在声明时初始化。这是默认行为。
-
-#### `"never"`
-
-禁止在声明时初始化。
 
 ### 第二个选项
 

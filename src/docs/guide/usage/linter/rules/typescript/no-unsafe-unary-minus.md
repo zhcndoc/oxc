@@ -1,11 +1,12 @@
 ---
 title: "typescript/no-unsafe-unary-minus | Oxlint"
 rule: "typescript/no-unsafe-unary-minus"
-category: "Correctness"
+category: "正确性"
 version: "1.12.0"
 default: true
 type_aware: true
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/no-unsafe-unary-minus/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

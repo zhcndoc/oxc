@@ -6,6 +6,7 @@ version: "1.63.0"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://eslint.vuejs.org/rules/no-deprecated-model-definition.html"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

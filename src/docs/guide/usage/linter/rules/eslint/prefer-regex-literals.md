@@ -6,6 +6,7 @@ version: "1.64.0"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://eslint.org/docs/latest/rules/prefer-regex-literals"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -6,6 +6,7 @@ version: "0.0.3"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://eslint.org/docs/latest/rules/array-callback-return"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->

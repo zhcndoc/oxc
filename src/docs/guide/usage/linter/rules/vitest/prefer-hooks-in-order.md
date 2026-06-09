@@ -6,6 +6,7 @@ version: "0.6.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-hooks-in-order.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -44,21 +45,21 @@ describe("foo", () => {
   beforeAll(() => {
     createMyDatabase();
   });
-  it("accepts this input", () => {
+  it("接受此输入", () => {
     // ...
   });
-  it("returns that value", () => {
+  it("返回那个值", () => {
     // ...
   });
-  describe("when the database has specific values", () => {
+  describe("当数据库具有特定值时", () => {
     const specificValue = "...";
     beforeEach(() => {
       seedMyDatabase(specificValue);
     });
-    it("accepts that input", () => {
+    it("接受该输入", () => {
       // ...
     });
-    it("throws an error", () => {
+    it("抛出错误", () => {
       // ...
     });
     afterEach(() => {
@@ -67,7 +68,7 @@ describe("foo", () => {
     beforeEach(() => {
       mockLogger();
     });
-    it("logs a message", () => {
+    it("记录一条消息", () => {
       // ...
     });
   });
@@ -87,21 +88,21 @@ describe("foo", () => {
   beforeEach(() => {
     seedMyDatabase();
   });
-  it("accepts this input", () => {
+  it("接受此输入", () => {
     // ...
   });
-  it("returns that value", () => {
+  it("返回那个值", () => {
     // ...
   });
-  describe("when the database has specific values", () => {
+  describe("当数据库具有特定值时", () => {
     const specificValue = "...";
     beforeEach(() => {
       seedMyDatabase(specificValue);
     });
-    it("accepts that input", () => {
+    it("接受该输入", () => {
       // ...
     });
-    it("throws an error", () => {
+    it("抛出错误", () => {
       // ...
     });
     beforeEach(() => {
@@ -110,7 +111,7 @@ describe("foo", () => {
     afterEach(() => {
       clearLogger();
     });
-    it("logs a message", () => {
+    it("记录一条消息", () => {
       // ...
     });
   });

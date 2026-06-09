@@ -6,6 +6,7 @@ version: "0.6.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-hooks-in-order.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -120,7 +121,7 @@ describe("foo", () => {
 });
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 

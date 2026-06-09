@@ -6,6 +6,7 @@ version: "0.4.4"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/requireParamDescription.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-要求每个 `@param` 标签都有描述值。
+要求每个 `@param` 标签都包含描述。
 
 ### 为什么这不好？
 

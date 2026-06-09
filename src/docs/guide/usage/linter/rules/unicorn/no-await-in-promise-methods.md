@@ -1,11 +1,12 @@
 ---
 title: "unicorn/no-await-in-promise-methods | Oxlint"
 rule: "unicorn/no-await-in-promise-methods"
-category: "Correctness"
+category: "正确性"
 version: "0.2.18"
 default: true
 type_aware: false
 fix: "fixable_suggestion"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-await-in-promise-methods.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

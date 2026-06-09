@@ -1,11 +1,12 @@
 ---
 title: "typescript/consistent-type-exports | Oxlint"
 rule: "typescript/consistent-type-exports"
-category: "Style"
+category: "样式"
 version: "0.0.8"
 default: false
 type_aware: true
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/consistent-type-exports/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -24,7 +25,7 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 ### 为什么这不好？
 
-在不使用 `export type` 的情况下将仅类型导出与值导出混合在一起，会使模块意图更难阅读，并可能导致不必要的运行时导出表面。
+在不使用 `export type` 的情况下将仅类型导出与值导出混合在一起，会使模块意图更难阅读，并可能导致不必要的运行时导出面。
 
 ### 示例
 

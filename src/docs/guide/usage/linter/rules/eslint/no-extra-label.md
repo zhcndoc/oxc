@@ -6,6 +6,7 @@ version: "0.15.4"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://eslint.org/docs/latest/rules/no-extra-label"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 禁止不必要的标签。
 

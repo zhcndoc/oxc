@@ -1,11 +1,12 @@
 ---
 title: "jsdoc/check-property-names | Oxlint"
 rule: "jsdoc/check-property-names"
-category: "Correctness"
+category: "正确性"
 version: "0.2.18"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/checkPropertyNames.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-unreachable | Oxlint"
 rule: "eslint/no-unreachable"
-category: "Correctness"
+category: "正确性"
 version: "0.4.4"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-unreachable"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

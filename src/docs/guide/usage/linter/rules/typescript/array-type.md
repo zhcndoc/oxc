@@ -6,6 +6,7 @@ version: "0.2.8"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://typescript-eslint.io/rules/array-type/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

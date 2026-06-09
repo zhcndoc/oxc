@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-eq-null | Oxlint"
 rule: "eslint/no-eq-null"
-category: "Restriction"
+category: "限制"
 version: "0.2.14"
 default: false
 type_aware: false
 fix: "fixable_dangerous_fix"
+upstream: "https://eslint.org/docs/latest/rules/no-eq-null"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

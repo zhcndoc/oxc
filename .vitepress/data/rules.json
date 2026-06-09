@@ -213,7 +213,7 @@
     "scope": "eslint",
     "value": "id-match",
     "category": "style",
-    "version": "next",
+    "version": "1.66.0",
     "type_aware": false,
     "fix": "none",
     "default": false,
@@ -753,7 +753,7 @@
     "scope": "eslint",
     "value": "no-implied-eval",
     "category": "suspicious",
-    "version": "next",
+    "version": "1.66.0",
     "type_aware": false,
     "fix": "none",
     "default": true,
@@ -895,7 +895,7 @@
     "category": "correctness",
     "version": "1.17.0",
     "type_aware": false,
-    "fix": "pending",
+    "fix": "fixable_suggestion",
     "default": true,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-misleading-character-class.html"
   },
@@ -1611,6 +1611,16 @@
   },
   {
     "scope": "eslint",
+    "value": "prefer-named-capture-group",
+    "category": "style",
+    "version": "1.68.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/prefer-named-capture-group.html"
+  },
+  {
+    "scope": "eslint",
     "value": "prefer-numeric-literals",
     "category": "style",
     "version": "0.7.0",
@@ -1933,7 +1943,7 @@
     "scope": "import",
     "value": "newline-after-import",
     "category": "style",
-    "version": "next",
+    "version": "1.66.0",
     "type_aware": false,
     "fix": "fixable_fix",
     "default": false,
@@ -2305,7 +2315,7 @@
     "category": "correctness",
     "version": "0.0.8",
     "type_aware": false,
-    "fix": "fixable_fix",
+    "fix": "fixable_suggestion",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/jest/no-focused-tests.html"
   },
@@ -2961,6 +2971,16 @@
   },
   {
     "scope": "jsdoc",
+    "value": "require-yields-description",
+    "category": "style",
+    "version": "1.68.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/jsdoc/require-yields-description.html"
+  },
+  {
+    "scope": "jsdoc",
     "value": "require-yields-type",
     "category": "pedantic",
     "version": "1.65.0",
@@ -3541,6 +3561,16 @@
   },
   {
     "scope": "node",
+    "value": "callback-return",
+    "category": "style",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/node/callback-return.html"
+  },
+  {
+    "scope": "node",
     "value": "global-require",
     "category": "style",
     "version": "1.36.0",
@@ -3705,7 +3735,7 @@
     "category": "correctness",
     "version": "0.0.22",
     "type_aware": false,
-    "fix": "fixable_fix",
+    "fix": "fixable_suggestion",
     "default": true,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/oxc/double-comparisons.html"
   },
@@ -3795,7 +3825,7 @@
     "category": "perf",
     "version": "0.11.0",
     "type_aware": false,
-    "fix": "conditional_safe_fix_or_suggestion",
+    "fix": "conditional_suggestion",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/oxc/no-map-spread.html"
   },
@@ -4413,7 +4443,7 @@
     "scope": "react",
     "value": "no-object-type-as-default-prop",
     "category": "perf",
-    "version": "next",
+    "version": "1.66.0",
     "type_aware": false,
     "fix": "none",
     "default": false,
@@ -4513,7 +4543,7 @@
     "scope": "react",
     "value": "no-unstable-nested-components",
     "category": "suspicious",
-    "version": "next",
+    "version": "1.66.0",
     "type_aware": false,
     "fix": "none",
     "default": false,
@@ -4848,6 +4878,16 @@
     "fix": "none",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/typescript/explicit-module-boundary-types.html"
+  },
+  {
+    "scope": "typescript",
+    "value": "method-signature-style",
+    "category": "style",
+    "version": "1.68.0",
+    "type_aware": false,
+    "fix": "pending",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/typescript/method-signature-style.html"
   },
   {
     "scope": "typescript",
@@ -5891,6 +5931,16 @@
   },
   {
     "scope": "unicorn",
+    "value": "import-style",
+    "category": "restriction",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/import-style.html"
+  },
+  {
+    "scope": "unicorn",
     "value": "new-for-builtins",
     "category": "pedantic",
     "version": "0.0.16",
@@ -6165,7 +6215,7 @@
     "category": "correctness",
     "version": "0.0.16",
     "type_aware": false,
-    "fix": "pending",
+    "fix": "fixable_dangerous_suggestion",
     "default": true,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-new-array.html"
   },
@@ -7215,7 +7265,7 @@
     "category": "correctness",
     "version": "0.0.8",
     "type_aware": false,
-    "fix": "fixable_fix",
+    "fix": "fixable_suggestion",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vitest/no-focused-tests.html"
   },
@@ -7353,7 +7403,7 @@
     "scope": "vitest",
     "value": "padding-around-after-all-blocks",
     "category": "style",
-    "version": "next",
+    "version": "1.66.0",
     "type_aware": false,
     "fix": "fixable_fix",
     "default": false,
@@ -7781,6 +7831,16 @@
   },
   {
     "scope": "vue",
+    "value": "component-definition-name-casing",
+    "category": "style",
+    "version": "1.68.0",
+    "type_aware": false,
+    "fix": "fixable_fix",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/component-definition-name-casing.html"
+  },
+  {
+    "scope": "vue",
     "value": "define-emits-declaration",
     "category": "style",
     "version": "1.15.0",
@@ -7821,6 +7881,16 @@
   },
   {
     "scope": "vue",
+    "value": "next-tick-style",
+    "category": "style",
+    "version": "next",
+    "type_aware": false,
+    "fix": "fixable_fix",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/next-tick-style.html"
+  },
+  {
+    "scope": "vue",
     "value": "no-arrow-functions-in-watch",
     "category": "correctness",
     "version": "1.39.0",
@@ -7828,6 +7898,16 @@
     "fix": "none",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-arrow-functions-in-watch.html"
+  },
+  {
+    "scope": "vue",
+    "value": "no-computed-properties-in-data",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-computed-properties-in-data.html"
   },
   {
     "scope": "vue",
@@ -7881,6 +7961,16 @@
   },
   {
     "scope": "vue",
+    "value": "no-deprecated-props-default-this",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "pending",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-deprecated-props-default-this.html"
+  },
+  {
+    "scope": "vue",
     "value": "no-deprecated-vue-config-keycodes",
     "category": "correctness",
     "version": "1.62.0",
@@ -7898,6 +7988,16 @@
     "fix": "none",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-export-in-script-setup.html"
+  },
+  {
+    "scope": "vue",
+    "value": "no-expose-after-await",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-expose-after-await.html"
   },
   {
     "scope": "vue",
@@ -7941,6 +8041,46 @@
   },
   {
     "scope": "vue",
+    "value": "no-reserved-component-names",
+    "category": "correctness",
+    "version": "1.68.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-reserved-component-names.html"
+  },
+  {
+    "scope": "vue",
+    "value": "no-reserved-keys",
+    "category": "correctness",
+    "version": "next",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-reserved-keys.html"
+  },
+  {
+    "scope": "vue",
+    "value": "no-reserved-props",
+    "category": "correctness",
+    "version": "next",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-reserved-props.html"
+  },
+  {
+    "scope": "vue",
+    "value": "no-shared-component-data",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "pending",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-shared-component-data.html"
+  },
+  {
+    "scope": "vue",
     "value": "no-this-in-before-route-enter",
     "category": "correctness",
     "version": "1.37.0",
@@ -7948,6 +8088,16 @@
     "fix": "none",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-this-in-before-route-enter.html"
+  },
+  {
+    "scope": "vue",
+    "value": "no-watch-after-await",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-watch-after-await.html"
   },
   {
     "scope": "vue",
@@ -7961,6 +8111,16 @@
   },
   {
     "scope": "vue",
+    "value": "prop-name-casing",
+    "category": "style",
+    "version": "next",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/prop-name-casing.html"
+  },
+  {
+    "scope": "vue",
     "value": "require-default-export",
     "category": "suspicious",
     "version": "1.21.0",
@@ -7968,6 +8128,56 @@
     "fix": "none",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/require-default-export.html"
+  },
+  {
+    "scope": "vue",
+    "value": "require-direct-export",
+    "category": "style",
+    "version": "next",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/require-direct-export.html"
+  },
+  {
+    "scope": "vue",
+    "value": "require-prop-type-constructor",
+    "category": "correctness",
+    "version": "1.68.0",
+    "type_aware": false,
+    "fix": "fixable_fix",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/require-prop-type-constructor.html"
+  },
+  {
+    "scope": "vue",
+    "value": "require-prop-types",
+    "category": "style",
+    "version": "next",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/require-prop-types.html"
+  },
+  {
+    "scope": "vue",
+    "value": "require-render-return",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/require-render-return.html"
+  },
+  {
+    "scope": "vue",
+    "value": "require-slots-as-functions",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/require-slots-as-functions.html"
   },
   {
     "scope": "vue",
@@ -7991,6 +8201,16 @@
   },
   {
     "scope": "vue",
+    "value": "return-in-emits-validator",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/return-in-emits-validator.html"
+  },
+  {
+    "scope": "vue",
     "value": "valid-define-emits",
     "category": "correctness",
     "version": "1.14.0",
@@ -8001,6 +8221,16 @@
   },
   {
     "scope": "vue",
+    "value": "valid-define-options",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/valid-define-options.html"
+  },
+  {
+    "scope": "vue",
     "value": "valid-define-props",
     "category": "correctness",
     "version": "1.15.0",
@@ -8008,5 +8238,15 @@
     "fix": "pending",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/valid-define-props.html"
+  },
+  {
+    "scope": "vue",
+    "value": "valid-next-tick",
+    "category": "correctness",
+    "version": "1.67.0",
+    "type_aware": false,
+    "fix": "fixable_fix",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/valid-next-tick.html"
   }
 ]

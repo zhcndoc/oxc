@@ -6,6 +6,7 @@ version: "0.0.4"
 default: false
 type_aware: false
 fix: "fixable_suggestion"
+upstream: "https://eslint.org/docs/latest/rules/no-case-declarations"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->

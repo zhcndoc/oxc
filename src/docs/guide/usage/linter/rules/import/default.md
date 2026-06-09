@@ -6,6 +6,7 @@ version: "0.0.13"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/default.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -38,7 +39,7 @@ export function bar() {
 }
 
 // ./foo.js
-import bar from "./bar"; // 未在 ./bar 中找到默认导出
+import bar from "./bar"; // 未找到 ./bar 中的默认导出
 ```
 
 以下是此规则的**正确**代码示例：

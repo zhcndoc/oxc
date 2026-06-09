@@ -6,6 +6,7 @@ version: "0.0.17"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-optional-catch-binding.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 作用
+### 说明
 
 如果 catch 绑定参数未被使用，则应省略它。
 

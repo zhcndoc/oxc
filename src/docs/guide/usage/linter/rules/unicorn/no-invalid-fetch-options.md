@@ -6,6 +6,7 @@ version: "0.15.12"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-invalid-fetch-options.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 禁止在 `fetch()` 和 `new Request()` 中使用无效选项。具体来说，此规则确保当方法为 `GET` 或 `HEAD` 时不会提供 body，因为这会导致 `TypeError`。
 

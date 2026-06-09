@@ -1,11 +1,12 @@
 ---
 title: "jest/no-export | Oxlint"
 rule: "jest/no-export"
-category: "Correctness"
+category: "正确性"
 version: "0.0.13"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-export.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

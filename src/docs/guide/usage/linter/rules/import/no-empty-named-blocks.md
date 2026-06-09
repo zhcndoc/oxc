@@ -1,11 +1,12 @@
 ---
 title: "import/no-empty-named-blocks | Oxlint"
 rule: "import/no-empty-named-blocks"
-category: "Suspicious"
+category: "可疑"
 version: "0.16.1"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-empty-named-blocks.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -6,6 +6,7 @@ version: "0.2.3"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-restricted-matchers.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -43,7 +44,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
     "error",
     {
       "toBeFalsy": null,
-      "resolves": "Use `expect(await promise)` instead.",
+      "resolves": "使用 `expect(await promise)` 代替。",
       "toHaveBeenCalledWith": null,
       "not.toHaveBeenCalledWith": null,
       "resolves.toHaveBeenCalledWith": null,
@@ -59,18 +60,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ```javascript
 it("is false", () => {
-  // If there is a modifier here (i.e. `not.toBeFalsy`), it will be considered okay
+  // 如果这里有一个修饰符（例如 `not.toBeFalsy`），则会被视为可以接受
   expect(a).toBeFalsy();
 });
 
 it("resolves", async () => {
-  // Ban all uses of this modifier, regardless of the matcher
+  // 禁止此修饰符的所有用法，无论 matcher 是什么
   await expect(myPromise()).resolves.toBe(true);
 });
 
 describe("when an error happens", () => {
   it("does not upload the file", async () => {
-    // Ban all uses of this matcher
+    // 禁止此 matcher 的所有用法
     expect(uploadFileMock).not.toHaveBeenCalledWith("file.name");
   });
 });
@@ -80,15 +81,7 @@ describe("when an error happens", () => {
 
 此规则接受一个带有以下属性的配置对象：
 
-### restrictedMatchers
-
-type: `Record<string, string>`
-
-default: `{}`
-
-一个用于限制 matcher/修饰符并提供自定义消息的映射。
-键是 matcher/修饰符名称（例如 `"toBeFalsy"`、`"resolves"`、`"not.toHaveBeenCalledWith"`）。
-值是在使用该 matcher/修饰符时显示的可选自定义消息。
+type: `object`
 
 ## 如何使用
 

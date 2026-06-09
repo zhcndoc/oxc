@@ -5,7 +5,8 @@ category: "Correctness"
 version: "0.0.8"
 default: false
 type_aware: false
-fix: "fixable_fix"
+fix: "fixable_suggestion"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-focused-tests.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-此规则会在你使用排他性特性时发出警告，提醒你从测试中移除 `.only`。
+此规则会在你使用聚焦测试特性时发出警告，提醒你从测试中移除 `.only`。
 
 ### 为什么这不好？
 

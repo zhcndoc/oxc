@@ -1,14 +1,15 @@
 ---
 title: "eslint/no-shadow-restricted-names | Oxlint"
 rule: "eslint/no-shadow-restricted-names"
-category: "Correctness"
+category: "正确性"
 version: "0.0.3"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-shadow-restricted-names"
 ---
 
-<!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
+<!-- 该文件由 `tasks/website_linter/src/rules/doc_page.rs` 自动生成。请勿手动编辑。 -->
 
 <script setup>
 import { data } from '../version.data.js';

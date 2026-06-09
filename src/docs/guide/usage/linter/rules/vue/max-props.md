@@ -6,6 +6,7 @@ version: "1.19.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.vuejs.org/rules/max-props.html"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-强制限制为给定的 Vue 组件定义的 props 最大数量。
+强制限制给定的 Vue 组件定义所能拥有的 props 最大数量。
 
 ### 为什么这不好？
 

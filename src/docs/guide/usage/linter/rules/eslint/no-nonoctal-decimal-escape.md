@@ -6,6 +6,7 @@ version: "0.2.10"
 default: true
 type_aware: false
 fix: "fixable_suggestion"
+upstream: "https://eslint.org/docs/latest/rules/no-nonoctal-decimal-escape"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,11 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-此规则不允许在字符串字面量中使用 \8 和 \9 转义序列。
+此规则不允许在字符串字面量中使用 `\8` 和 `\9` 转义序列。
 
 ### 为什么这不好？
 
-ECMAScript 规范将字符串字面量中的 \8 和 \9 视为一种遗留特性
+ECMAScript 规范将字符串字面量中的 `\8` 和 `\9` 视为一种遗留特性
 
 ### 示例
 

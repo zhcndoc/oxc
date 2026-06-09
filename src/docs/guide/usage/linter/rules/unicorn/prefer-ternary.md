@@ -5,7 +5,8 @@ category: "Style"
 version: "1.50.0"
 default: false
 type_aware: false
-fix: "pending"
+fix: "待定"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-ternary.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

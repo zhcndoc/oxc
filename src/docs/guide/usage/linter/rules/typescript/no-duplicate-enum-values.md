@@ -1,11 +1,12 @@
 ---
 title: "typescript/no-duplicate-enum-values | Oxlint"
 rule: "typescript/no-duplicate-enum-values"
-category: "Correctness"
+category: "正确性"
 version: "0.0.8"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/no-duplicate-enum-values/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

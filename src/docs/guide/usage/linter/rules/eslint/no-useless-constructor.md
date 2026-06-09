@@ -5,7 +5,8 @@ category: "Suspicious"
 version: "0.4.4"
 default: false
 type_aware: false
-fix: "可修复建议"
+fix: "fixable_suggestion"
+upstream: "https://eslint.org/docs/latest/rules/no-useless-constructor"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

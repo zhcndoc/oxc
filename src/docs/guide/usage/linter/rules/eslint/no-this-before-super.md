@@ -6,6 +6,7 @@ version: "0.2.6"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-this-before-super"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -36,7 +37,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```javascript
 class A1 extends B {
   constructor() {
-    // 必须先调用 super()
+    // 必须先调用 `super()`
     this.a = 0;
     super();
   }

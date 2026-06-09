@@ -6,6 +6,7 @@ version: "0.2.15"
 default: false
 type_aware: false
 fix: "conditional_fix"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-untyped-mock-factory.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

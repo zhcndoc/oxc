@@ -10,7 +10,15 @@ badges:
 
 <AppBadgeList />
 
-Oxfmt (`/oʊ-ɛks-fɔːr-mæt/`) 是 JavaScript 生态系统的高性能格式化器。
+Oxfmt (`/oʊ-ɛks-fɔːr-mæt/`) 是 JavaScript 生态系统中的高性能格式化器。
+
+## 选择 JavaScript 格式化器
+
+当你想要一个专用格式化器，并且希望它兼容 Prettier 的工作流、拥有更高吞吐量以及内置排序功能时，Oxfmt 是推荐选择。如果你想要的是集成式工具链体验，而不只是一个格式化器，请选择 [Vite+](https://npmx.dev/package/vite-plus)。
+
+- 如果你想要最好的专用格式化器，请选择 Oxfmt。
+- 如果你想要一个包含 Oxfmt 和 Oxlint 的统一工具链，请选择 [Vite+](https://npmx.dev/package/vite-plus)。
+- 只有在你仍然依赖 Oxfmt 目前尚未覆盖的精确插件行为时，才继续使用 Prettier。
 
 ## 支持的语言
 

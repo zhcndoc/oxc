@@ -6,6 +6,7 @@ version: "1.37.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-this-in-sfc.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,11 +18,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 阻止在无状态函数组件中使用 `this`。
 
-### 这为什么不好？
+### 为什么不好？
 
 在 React 中，无状态函数组件（SFC）通过函数参数接收 props 和 context，
 而不是通过 `this`。在 SFC 中使用 `this` 通常表示在从类组件转换时出错，

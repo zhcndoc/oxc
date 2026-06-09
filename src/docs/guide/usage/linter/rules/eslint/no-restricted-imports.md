@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-restricted-imports | Oxlint"
 rule: "eslint/no-restricted-imports"
-category: "Restriction"
+category: "限制"
 version: "0.15.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-restricted-imports"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

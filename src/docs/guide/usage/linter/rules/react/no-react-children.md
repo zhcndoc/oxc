@@ -1,11 +1,12 @@
 ---
 title: "react/no-react-children | Oxlint"
 rule: "react/no-react-children"
-category: "Restriction"
+category: "限制"
 version: "1.53.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-react-children.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

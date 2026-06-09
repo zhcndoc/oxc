@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-unused-vars | Oxlint"
 rule: "eslint/no-unused-vars"
-category: "Correctness"
+category: "正确性"
 version: "0.7.0"
 default: true
 type_aware: false
 fix: "conditional_dangerous_fix_or_suggestion"
+upstream: "https://eslint.org/docs/latest/rules/no-unused-vars"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -169,13 +170,9 @@ var global_var = 42;
 
 ## 配置
 
-此规则接受一个具有以下属性的配置对象：
-
 ### args
 
 type: `"after-used" | "all" | "none"`
-
-default: `"after-used"`
 
 控制如何检查未使用的参数。
 
@@ -185,13 +182,15 @@ default: `"after-used"`
 
 #### `"all"`
 
-所有命名参数都必须被使用
+所有命名参数都必须被使用。
 
 #### `"none"`
 
-不检查参数
+不检查参数。
 
 ### argsIgnorePattern
+
+type: `string`
 
 为未使用的参数指定此规则的例外。名称匹配此模式的参数将被忽略。
 
@@ -224,7 +223,9 @@ type: `"all" | "none"`
 
 ### caughtErrorsIgnorePattern
 
-为 `catch` 块中捕获的错误指定此规则的例外。`catch` 块中声明且名称匹配此模式的变量将被忽略。
+type: `string`
+
+为 `catch` 块中捕获的错误指定此规则的例外。在 `catch` 块中声明且名称匹配此模式的变量将被忽略。
 
 #### 示例
 
@@ -239,6 +240,8 @@ try {
 ```
 
 ### destructuredArrayIgnorePattern
+
+type: `string`
 
 此选项指定解构模式中的例外，这些变量不会被检查是否使用。数组解构中声明且名称匹配此模式的变量将被忽略。
 
@@ -268,7 +271,11 @@ foo.forEach((item) => {
 
 type: `object`
 
-default: `{"imports":"suggestion", "variables":"suggestion"}`
+控制 `no-unused-vars` 生成哪些自动修复。
+
+当省略此项时，`imports` 和 `variables` 都默认为 `"suggestion"`，从而保留当前行为。
+
+注意：此选项处于实验阶段，并可能根据反馈发生变化。
 
 对 `no-unused-vars` 的细粒度自动修复控制。
 
@@ -276,7 +283,7 @@ default: `{"imports":"suggestion", "variables":"suggestion"}`
 
 type: `"off" | "suggestion" | "fix" | "safe-fix"`
 
-Controls auto-fixes for unused imports.
+控制未使用导入的自动修复。
 
 ##### `"off"`
 
@@ -299,7 +306,7 @@ Controls auto-fixes for unused imports.
 
 type: `"off" | "suggestion" | "fix" | "safe-fix"`
 
-Controls auto-fixes for unused variables (including catch bindings).
+控制未使用变量（包括 `catch` 绑定）的自动修复。
 
 ##### `"off"`
 
@@ -471,8 +478,6 @@ function foo(): typeof foo {}
 
 type: `"all" | "local"`
 
-default: `"all"`
-
 控制如何检查全局作用域中变量的使用情况。
 
 #### `"all"`
@@ -484,6 +489,8 @@ default: `"all"`
 只检查本地声明的变量是否被使用，但允许全局变量未被使用。
 
 ### varsIgnorePattern
+
+type: `string`
 
 为未使用的变量指定此规则的例外。名称匹配此模式的变量将被忽略。
 

@@ -1,11 +1,12 @@
 ---
 title: "nextjs/no-styled-jsx-in-document | Oxlint"
 rule: "nextjs/no-styled-jsx-in-document"
-category: "Correctness"
+category: "正确性"
 version: "0.3.3"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://nextjs.org/docs/messages/no-styled-jsx-in-document"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -1,11 +1,12 @@
 ---
 title: "typescript/no-invalid-void-type | Oxlint"
 rule: "typescript/no-invalid-void-type"
-category: "Restriction"
+category: "限制"
 version: "1.47.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/no-invalid-void-type/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

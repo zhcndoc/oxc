@@ -1,11 +1,12 @@
 ---
 title: "react/exhaustive-deps | Oxlint"
 rule: "react/exhaustive-deps"
-category: "Correctness"
+category: "正确性"
 version: "0.12.0"
 default: false
 type_aware: false
 fix: "fixable_dangerous_fix_or_suggestion"
+upstream: "https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

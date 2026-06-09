@@ -6,6 +6,7 @@ version: "0.0.8"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/valid-describe-callback.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -53,7 +54,7 @@ describe("myFunction", () =>
   }));
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 

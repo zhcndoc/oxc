@@ -6,6 +6,7 @@ version: "0.13.0"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://typescript-eslint.io/rules/no-require-imports/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

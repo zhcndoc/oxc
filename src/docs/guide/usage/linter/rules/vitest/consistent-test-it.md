@@ -6,6 +6,7 @@ version: "0.5.3"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/consistent-test-it.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -29,7 +30,7 @@ Vitest 允许你选择如何定义测试，使用 `it`
 
 在测试套件中保持一致是一种良好的实践，这样所有测试都可以用相同的方式编写。
 
-## Configuration
+## 配置
 
 此规则接受一个包含以下属性的配置对象：
 
@@ -94,7 +95,7 @@ describe("foo", function () {
 });
 ```
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 

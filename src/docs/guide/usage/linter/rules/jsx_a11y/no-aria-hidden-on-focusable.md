@@ -6,6 +6,7 @@ version: "0.0.22"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/no-aria-hidden-on-focusable.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,11 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制不要将 `aria-hidden="true"` 设置在可聚焦元素上。
+强制不要在可聚焦元素上设置 `aria-hidden="true"`。
 
 ### 为什么这很糟糕？
 
-可聚焦元素上的 `aria-hidden="true"` 可能会让屏幕阅读器用户感到困惑，或导致意外行为。
+在可聚焦元素上设置 `aria-hidden="true"` 可能会让屏幕阅读器用户感到困惑，或导致意外行为。
 
 ### 示例
 

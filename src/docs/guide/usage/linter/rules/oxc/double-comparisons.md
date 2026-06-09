@@ -5,7 +5,7 @@ category: "Correctness"
 version: "0.0.22"
 default: true
 type_aware: false
-fix: "fixable_fix"
+fix: "fixable_suggestion"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

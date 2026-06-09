@@ -6,6 +6,7 @@ version: "0.0.18"
 default: false
 type_aware: false
 fix: "fixable_safe_fix_or_suggestion"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-typeof-undefined.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -23,7 +24,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-使用 `typeof value === 'undefined'` 来检查一个值是否为 `undefined`，过于冗长。通常更好的是直接与 `undefined` 比较。只有在全局变量可能不存在时才需要使用 `typeof`，在这种情况下，使用 `globalThis.value === undefined` 可能更好。
+使用 `typeof value === 'undefined'` 来检查一个值是否为 `undefined`，过于冗长。通常更好的做法是直接与 `undefined` 比较。只有在全局变量可能不存在时才需要使用 `typeof`；在这种情况下，使用 `globalThis.value === undefined` 可能更好。
 
 ### 示例
 

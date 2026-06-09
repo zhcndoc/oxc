@@ -13,7 +13,8 @@ search: false
 
 在唯一的箭头函数参数周围包含括号。
 
-- 默认：`"always"`
+- Languages: JS, JSX, TS, TSX
+- Default: `"always"`
 
 ## bracketSameLine
 
@@ -22,7 +23,8 @@ search: false
 将多行 HTML（HTML、JSX、Vue、Angular）元素的 `>` 放在最后一行的末尾，
 而不是单独放在下一行（不适用于自闭合元素）。
 
-- 默认：`false`
+- Languages: JSX, TSX, HTML, Angular, Vue, MJML, Svelte
+- Default: `false`
 
 ## bracketSpacing
 
@@ -30,7 +32,8 @@ search: false
 
 在对象字面量的括号之间打印空格。
 
-- 默认：`true`
+- Languages: JS, JSX, TS, TSX, JSON, JSONC, JSON5, GraphQL, YAML
+- Default: `true`
 
 ## embeddedLanguageFormatting
 
@@ -38,9 +41,8 @@ search: false
 
 控制是否格式化文件中嵌入的部分（例如，CSS-in-JS 或 JS-in-Vue 等）。
 
-注意：XXX-in-JS 支持尚不完整。
-
-- 默认：`auto`
+- Languages: JS, JSX, TS, TSX, HTML, Vue, Angular, Svelte, Markdown, MDX (languages with embedded code)
+- Default: `"auto"`
 
 ## endOfLine
 
@@ -50,8 +52,9 @@ search: false
 
 注意：不支持 `"auto"`。
 
-- 默认：`"lf"`
-- 覆盖 `.editorconfig.end_of_line`
+- Languages: All
+- Default: `"lf"`
+- Overrides `.editorconfig.end_of_line`
 
 ## htmlWhitespaceSensitivity
 
@@ -59,7 +62,8 @@ search: false
 
 指定 HTML、Vue、Angular 和 Handlebars 的全局空白敏感度。
 
-- 默认：`"css"`
+- Languages: HTML, Angular, Vue, Handlebars, Svelte
+- Default: `"css"`
 
 ## ignorePatterns
 
@@ -76,8 +80,9 @@ search: false
 
 是否在文件末尾插入最终换行符。
 
-- 默认：`true`
-- 覆盖 `.editorconfig.insert_final_newline`
+- Languages: All
+- Default: `true`
+- Overrides `.editorconfig.insert_final_newline`
 
 ## jsdoc
 
@@ -91,7 +96,8 @@ search: false
 
 传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- 默认：禁用
+- Languages: JS, JSX, TS, TSX
+- Default: Disabled
 
 ### jsdoc.addDefaultToDescription
 
@@ -194,7 +200,8 @@ search: false
 
 在 JSX 中使用单引号而不是双引号。
 
-- 默认：`false`
+- Languages: JSX, TSX
+- Default: `false`
 
 ## objectWrap
 
@@ -205,7 +212,8 @@ search: false
 默认情况下，如果第一个属性之前有换行符，则将对象格式化为多行。
 作者可以使用此启发式方法在上下文中提高可读性，尽管它有一些缺点。
 
-- 默认：`"preserve"`
+- Languages: JS, JSX, TS, TSX, JSON, JSONC, JSON5
+- Default: `"preserve"`
 
 ## overrides
 
@@ -250,7 +258,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在唯一的箭头函数参数周围包含括号。
 
-- 默认：`"always"`
+- Languages: JS, JSX, TS, TSX
+- Default: `"always"`
 
 ##### overrides[n].options.bracketSameLine
 
@@ -259,7 +268,8 @@ Glob 模式，用于匹配此覆盖的文件。
 将多行 HTML（HTML、JSX、Vue、Angular）元素的 `>` 放在最后一行的末尾，
 而不是单独放在下一行（不适用于自闭合元素）。
 
-- 默认：`false`
+- Languages: JSX, TSX, HTML, Angular, Vue, MJML, Svelte
+- Default: `false`
 
 ##### overrides[n].options.bracketSpacing
 
@@ -267,7 +277,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在对象字面量的括号之间打印空格。
 
-- 默认：`true`
+- Languages: JS, JSX, TS, TSX, JSON, JSONC, JSON5, GraphQL, YAML
+- Default: `true`
 
 ##### overrides[n].options.embeddedLanguageFormatting
 
@@ -275,9 +286,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 控制是否格式化文件中嵌入的部分（例如，CSS-in-JS 或 JS-in-Vue 等）。
 
-注意：XXX-in-JS 支持尚不完整。
-
-- 默认：`"auto"`
+- Languages: JS, JSX, TS, TSX, HTML, Vue, Angular, Svelte, Markdown, MDX (languages with embedded code)
+- Default: `"auto"`
 
 ##### overrides[n].options.endOfLine
 
@@ -287,8 +297,9 @@ Glob 模式，用于匹配此覆盖的文件。
 
 注意：不支持 `"auto"`。
 
-- 默认：`"lf"`
-- 覆盖 `.editorconfig.end_of_line`
+- Languages: All
+- Default: `"lf"`
+- Overrides `.editorconfig.end_of_line`
 
 ##### overrides[n].options.htmlWhitespaceSensitivity
 
@@ -296,7 +307,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 指定 HTML、Vue、Angular 和 Handlebars 的全局空白敏感度。
 
-- 默认：`"css"`
+- Languages: HTML, Angular, Vue, Handlebars, Svelte
+- Default: `"css"`
 
 ##### overrides[n].options.insertFinalNewline
 
@@ -304,8 +316,9 @@ Glob 模式，用于匹配此覆盖的文件。
 
 是否在文件末尾插入最终换行符。
 
-- 默认：`true`
-- 覆盖 `.editorconfig.insert_final_newline`
+- Languages: All
+- Default: `true`
+- Overrides `.editorconfig.insert_final_newline`
 
 ##### overrides[n].options.jsdoc
 
@@ -319,7 +332,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- 默认：禁用
+- Languages: JS, JSX, TS, TSX
+- Default: Disabled
 
 ###### overrides[n].options.jsdoc.addDefaultToDescription
 
@@ -422,7 +436,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在 JSX 中使用单引号而不是双引号。
 
-- 默认：`false`
+- Languages: JSX, TSX
+- Default: `false`
 
 ##### overrides[n].options.objectWrap
 
@@ -433,7 +448,8 @@ Glob 模式，用于匹配此覆盖的文件。
 默认情况下，如果第一个属性之前有换行符，则将对象格式化为多行。
 作者可以使用此启发式方法在上下文中提高可读性，尽管它有一些缺点。
 
-- 默认：`"preserve"`
+- Languages: JS, JSX, TS, TSX, JSON, JSONC, JSON5
+- Default: `"preserve"`
 
 ##### overrides[n].options.printWidth
 
@@ -443,8 +459,9 @@ Glob 模式，用于匹配此覆盖的文件。
 
 如果您不想在格式化 Markdown 时换行，可以将 `proseWrap` 选项设置为禁用它。
 
-- 默认：`100`
-- 覆盖 `.editorconfig.max_line_length`
+- Languages: All
+- Default: `100`
+- Overrides `.editorconfig.max_line_length`
 
 ##### overrides[n].options.proseWrap
 
@@ -456,7 +473,8 @@ Glob 模式，用于匹配此覆盖的文件。
 要将散文文本换行到打印宽度，将此选项更改为 "always"。
 如果您想强制所有散文块位于单行并依赖编辑器/查看器软换行，可以使用 "never"。
 
-- 默认：`"preserve"`
+- Languages: Markdown, MDX, YAML
+- Default: `"preserve"`
 
 ##### overrides[n].options.quoteProps
 
@@ -464,7 +482,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 更改对象中属性何时被引用。
 
-- 默认：`"as-needed"`
+- Languages: JS, JSX, TS, TSX
+- Default: `"as-needed"`
 
 ##### overrides[n].options.semi
 
@@ -472,7 +491,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在语句末尾打印分号。
 
-- 默认：`true`
+- Languages: JS, JSX, TS, TSX
+- Default: `true`
 
 ##### overrides[n].options.singleAttributePerLine
 
@@ -480,7 +500,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在 HTML、Vue 和 JSX 中强制每行单个属性。
 
-- 默认：`false`
+- Languages: JSX, TSX, HTML, Angular, Vue, MJML, Svelte
+- Default: `false`
 
 ##### overrides[n].options.singleQuote
 
@@ -490,8 +511,9 @@ Glob 模式，用于匹配此覆盖的文件。
 
 对于 JSX，您可以设置 `jsxSingleQuote` 选项。
 
-- 默认：`false`
-- 覆盖 `.editorconfig.quote_type`
+- Languages: JS, JSX, TS, TSX, CSS, Less, SCSS, Markdown, MDX, YAML, Handlebars, Svelte
+- Default: `false`
+- Overrides `.editorconfig.quote_type`
 
 ##### overrides[n].options.sortImports
 
@@ -504,7 +526,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- 默认：禁用
+- Languages: JS, JSX, TS, TSX
+- Default: Disabled
 
 ###### overrides[n].options.sortImports.customGroups
 
@@ -710,7 +733,8 @@ import { c } from "c";
 但我们认为它更清晰且更易于导航。
 详细信息请参阅每个字段的文档。
 
-- 默认：`true`
+- Languages: JSON (`package.json` only)
+- Default: `true`
 
 ###### overrides[n].options.sortPackageJson.sortScripts
 
@@ -732,7 +756,8 @@ import { c } from "c";
 
 传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- 默认：禁用
+- Languages: JS, JSX, TS, TSX, HTML, Vue, Angular, Handlebars, CSS, SCSS, Less, Svelte
+- Default: Disabled
 
 ###### overrides[n].options.sortTailwindcss.attributes
 
@@ -806,7 +831,8 @@ import { c } from "c";
 但 Oxfmt 不会捆绑或自动安装它。
 您必须在项目中自行安装 `svelte`，否则格式化将在运行时失败。
 
-- 默认：禁用
+- Languages: Svelte
+- Default: Disabled
 
 ###### overrides[n].options.svelte.allowShorthand
 
@@ -840,8 +866,9 @@ Svelte 组件各部分的打印顺序。
 
 指定每个缩进级别的空格数。
 
-- 默认：`2`
-- 覆盖 `.editorconfig.indent_size`（回退到 `.editorconfig.tab_width`）
+- Languages: All
+- Default: `2`
+- Overrides `.editorconfig.indent_size` (falls back to `.editorconfig.tab_width`)
 
 ##### overrides[n].options.trailingComma
 
@@ -851,7 +878,8 @@ Svelte 组件各部分的打印顺序。
 
 例如，单行数组永远不会获得尾随逗号。
 
-- 默认：`"all"`
+- Languages: JS, JSX, TS, TSX, JSONC, JSON5, TOML, CSS, Less, SCSS, YAML
+- Default: `"all"`
 
 ##### overrides[n].options.useTabs
 
@@ -859,8 +887,9 @@ Svelte 组件各部分的打印顺序。
 
 使用制表符而不是空格缩进行。
 
-- 默认：`false`
-- 覆盖 `.editorconfig.indent_style`
+- Languages: All
+- Default: `false`
+- Overrides `.editorconfig.indent_style`
 
 ##### overrides[n].options.vueIndentScriptAndStyle
 
@@ -868,7 +897,8 @@ Svelte 组件各部分的打印顺序。
 
 是否缩进 Vue 文件中 `<script>` 和 `<style>` 标签内的代码。
 
-- 默认：`false`
+- Languages: Vue
+- Default: `false`
 
 ## printWidth
 
@@ -878,8 +908,9 @@ Svelte 组件各部分的打印顺序。
 
 如果您不想在格式化 Markdown 时进行换行，可以将 `proseWrap` 选项设为禁用来关闭它。
 
-- 默认值：`100`
-- 覆盖 `.editorconfig.max_line_length`
+- Languages: All
+- Default: `100`
+- Overrides `.editorconfig.max_line_length`
 
 ## proseWrap
 
@@ -891,7 +922,8 @@ Svelte 组件各部分的打印顺序。
 要将文本换行到打印宽度，请将此选项更改为 `"always"`。
 如果您希望强制所有文本块位于单行，并依赖编辑器/查看器的软换行，可以使用 `"never"`。
 
-- 默认值：`"preserve"`
+- Languages: Markdown, MDX, YAML
+- Default: `"preserve"`
 
 ## quoteProps
 
@@ -899,7 +931,8 @@ Svelte 组件各部分的打印顺序。
 
 更改对象中属性何时加引号。
 
-- 默认值：`"as-needed"`
+- Languages: JS, JSX, TS, TSX
+- Default: `"as-needed"`
 
 ## semi
 
@@ -907,7 +940,8 @@ Svelte 组件各部分的打印顺序。
 
 在语句末尾打印分号。
 
-- 默认值：`true`
+- Languages: JS, JSX, TS, TSX
+- Default: `true`
 
 ## singleAttributePerLine
 
@@ -915,7 +949,8 @@ Svelte 组件各部分的打印顺序。
 
 在 HTML、Vue 和 JSX 中强制每行单个属性。
 
-- 默认值：`false`
+- Languages: JSX, TSX, HTML, Angular, Vue, MJML, Svelte
+- Default: `false`
 
 ## singleQuote
 
@@ -925,8 +960,9 @@ Svelte 组件各部分的打印顺序。
 
 对于 JSX，您可以设置 `jsxSingleQuote` 选项。
 
-- 默认值：`false`
-- 覆盖 `.editorconfig.quote_type`
+- Languages: JS, JSX, TS, TSX, CSS, Less, SCSS, Markdown, MDX, YAML, Handlebars, Svelte
+- Default: `false`
+- Overrides `.editorconfig.quote_type`
 
 ## sortImports
 
@@ -939,7 +975,8 @@ Svelte 组件各部分的打印顺序。
 
 传递 `true` 或对象以启用并使用默认值，或省略/设置为 `false` 以禁用。
 
-- 默认值：禁用
+- Languages: JS, JSX, TS, TSX
+- Default: Disabled
 
 ### sortImports.customGroups
 
@@ -1146,7 +1183,8 @@ import { c } from "c";
 但我们认为它更清晰且更易于导航。
 详细信息，请参阅每个字段的文档。
 
-- 默认值：`true`
+- Languages: JSON (`package.json` only)
+- Default: `true`
 
 ### sortPackageJson.sortScripts
 
@@ -1168,7 +1206,8 @@ import { c } from "c";
 
 传递 `true` 或对象以启用并使用默认值，或省略/设置为 `false` 以禁用。
 
-- 默认值：禁用
+- Languages: JS, JSX, TS, TSX, HTML, Vue, Angular, Handlebars, CSS, SCSS, Less, Svelte
+- Default: Disabled
 
 ### sortTailwindcss.attributes
 
@@ -1242,7 +1281,8 @@ prettier-plugin-svelte 的选项。
 但 Oxfmt 不会捆绑或自动安装它。
 您必须在项目中自行安装 `svelte`，否则格式化将在运行时失败。
 
-- 默认值：已禁用
+- Languages: Svelte
+- Default: Disabled
 
 ### svelte.allowShorthand
 
@@ -1276,8 +1316,9 @@ Svelte 组件各部分的打印顺序。
 
 指定每个缩进级别的空格数。
 
-- 默认值：`2`
-- 覆盖 `.editorconfig.indent_size`（回退到 `.editorconfig.tab_width`）
+- Languages: All
+- Default: `2`
+- Overrides `.editorconfig.indent_size` (falls back to `.editorconfig.tab_width`)
 
 ## trailingComma
 
@@ -1287,7 +1328,8 @@ Svelte 组件各部分的打印顺序。
 
 例如，单行数组永远不会带有尾随逗号。
 
-- 默认值：`"all"`
+- Languages: JS, JSX, TS, TSX, JSONC, JSON5, TOML, CSS, Less, SCSS, YAML
+- Default: `"all"`
 
 ## useTabs
 
@@ -1295,8 +1337,9 @@ Svelte 组件各部分的打印顺序。
 
 使用制表符而不是空格进行缩进。
 
-- 默认值：`false`
-- 覆盖 `.editorconfig.indent_style`
+- Languages: All
+- Default: `false`
+- Overrides `.editorconfig.indent_style`
 
 ## vueIndentScriptAndStyle
 
@@ -1304,4 +1347,5 @@ Svelte 组件各部分的打印顺序。
 
 是否缩进 Vue 文件中 `<script>` 和 `<style>` 标签内的代码。
 
-- 默认值：`false`
+- Languages: Vue
+- Default: `false`

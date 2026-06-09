@@ -398,6 +398,22 @@ Oxlint 配置选项。
 
 环境用于启用和禁用全局变量集合。
 
+#### overrides[n].excludeFiles
+
+type: `string[]`
+
+A list of glob patterns to exclude from this override.
+
+Files matching these patterns are not globally ignored; this override
+simply does not apply to them.
+
+## Example
+
+`[ "*.generated.ts", "fixtures/**" ]`
+
+A set of glob patterns.
+Patterns are matched against paths relative to the configuration file's directory.
+
 #### overrides[n].files
 
 类型：`string[]`

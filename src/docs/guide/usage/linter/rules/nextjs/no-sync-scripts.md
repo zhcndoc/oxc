@@ -1,11 +1,12 @@
 ---
 title: "nextjs/no-sync-scripts | Oxlint"
 rule: "nextjs/no-sync-scripts"
-category: "Correctness"
+category: "正确性"
 version: "0.2.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://nextjs.org/docs/messages/no-sync-scripts"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

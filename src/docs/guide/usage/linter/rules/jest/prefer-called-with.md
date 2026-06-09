@@ -1,11 +1,12 @@
 ---
 title: "jest/prefer-called-with | Oxlint"
 rule: "jest/prefer-called-with"
-category: "Style"
+category: "样式"
 version: "0.2.5"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-called-with.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -26,7 +27,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 在测试函数调用时，通常更有价值的是同时断言：
 函数已被调用，以及它被调用时传入了哪些参数。
 使用 `toBeCalled()` 或 `toHaveBeenCalled()` 只能验证函数
-被调用了，但不能验证参数，可能会漏掉
+已被调用，但不能验证参数，可能会漏掉
 函数以错误参数被调用的 bug。
 
 ### 示例

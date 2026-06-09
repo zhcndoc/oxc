@@ -6,9 +6,10 @@ version: "0.4.3"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-large-snapshots.md"
 ---
 
-<!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
+<!-- 此文件由 `tasks/website_linter/src/rules/doc_page.rs` 自动生成。请勿手动编辑。 -->
 
 <script setup>
 import { data } from '../version.data.js';

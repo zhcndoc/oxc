@@ -6,6 +6,7 @@ version: "1.63.0"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://eslint.org/docs/latest/rules/logical-assignment-operators"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -77,17 +78,6 @@ a = a ?? b;
 ### 第 1 个选项
 
 type: `"always" | "never"`
-
-#### `"always"`
-
-此选项会检查可以使用逻辑赋值运算符简写的表达式。
-例如，`a = a || b` 可以简写为 `a ||= b`。
-对于具有结合性的表达式，例如 `a = a || b || c`，会被报告为可以简写为 `a ||= b || c`，除非使用括号显式定义求值顺序，例如 `a = (a || b) || c`。
-
-#### `"never"`
-
-此选项禁止使用逻辑赋值运算符简写。
-例如，`a ||= b` 应写为 `a = a || b`。
 
 ### 第 2 个选项
 

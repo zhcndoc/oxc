@@ -6,6 +6,7 @@ version: "0.11.1"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/no-unsafe-function-type/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,11 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-禁止使用不安全的内置 Function 类型。
+禁止使用不安全的内置 `Function` 类型。
 
 ### 这为什么不好？
 
-TypeScript 内置的 Function 类型允许以任意数量的参数调用，并返回 any 类型。Function 也允许类或普通对象，只要它们恰好拥有 Function 类的所有属性即可。通常更好的做法是使用函数类型语法来明确指定函数参数和返回类型。
+TypeScript 内置的 `Function` 类型允许以任意数量的参数调用，并返回 `any` 类型。`Function` 也允许类或普通对象，只要它们恰好拥有 `Function` 类的所有属性即可。通常更好的做法是使用函数类型语法来明确指定函数参数和返回类型。
 
 ### 示例
 

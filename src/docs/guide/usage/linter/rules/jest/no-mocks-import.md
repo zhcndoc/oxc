@@ -6,6 +6,7 @@ version: "0.0.13"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-mocks-import.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,9 +18,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
-此规则会报告从包含 `__mocks__` 组件的路径导入的内容。
+此规则会报告从包含 `__mocks__` 目录的路径导入的内容。
 
 ### 为什么这不好？
 

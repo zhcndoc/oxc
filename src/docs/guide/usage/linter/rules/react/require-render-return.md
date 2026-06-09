@@ -6,6 +6,7 @@ version: "0.2.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/require-render-return.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,9 +18,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 作用
+### 说明
 
-强制在 `render` 函数中返回值时使用 ES5 或 ES2015 类。
+在 `render` 函数返回值时强制使用 ES5 或 ES2015 类。
 
 此规则与函数组件无关，因此对于现代 React 代码库可以考虑禁用。
 

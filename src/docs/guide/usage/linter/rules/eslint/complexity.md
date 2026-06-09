@@ -6,6 +6,7 @@ version: "1.37.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/complexity"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->
@@ -88,8 +89,6 @@ function foo() {
 
 ## 配置
 
-此规则接受一个具有以下属性的配置对象：
-
 ### max
 
 type: `integer`
@@ -102,9 +101,7 @@ default: `20`
 
 type: `"classic" | "modified"`
 
-default: `"classic"`
-
-要使用的圈复杂度变体
+The cyclomatic complexity variant to use
 
 #### `"classic"`
 

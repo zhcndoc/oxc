@@ -6,6 +6,7 @@ version: "0.0.8"
 default: false
 type_aware: true
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/consistent-return/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -32,7 +33,7 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 因此它可以检测到比此规则更多的隐式返回路径。
 :::
 
-### Examples
+### 示例
 
 以下是此规则的**错误**代码示例：
 
@@ -60,7 +61,7 @@ function maybe(flag: boolean): number {
 
 此规则接受一个包含以下属性的配置对象：
 
-### treatUndefinedAsUnspecified
+### `treatUndefinedAsUnspecified`
 
 type: `boolean`
 

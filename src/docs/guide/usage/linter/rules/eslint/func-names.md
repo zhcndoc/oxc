@@ -6,6 +6,7 @@ version: "0.7.0"
 default: false
 type_aware: false
 fix: "conditional_safe_fix_or_suggestion"
+upstream: "https://eslint.org/docs/latest/rules/func-names"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

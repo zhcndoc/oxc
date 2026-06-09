@@ -1,11 +1,12 @@
 ---
 title: "typescript/no-non-null-asserted-nullish-coalescing | Oxlint"
 rule: "typescript/no-non-null-asserted-nullish-coalescing"
-category: "Restriction"
+category: "限制"
 version: "0.5.0"
 default: false
 type_aware: false
-fix: "可修复的建议"
+fix: "fixable_suggestion"
+upstream: "https://typescript-eslint.io/rules/no-non-null-asserted-nullish-coalescing/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

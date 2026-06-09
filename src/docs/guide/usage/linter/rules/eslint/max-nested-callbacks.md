@@ -6,6 +6,7 @@ version: "0.15.12"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/max-nested-callbacks"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->
@@ -64,8 +65,6 @@ function handleFoo4() {
 ```
 
 ## 配置
-
-此规则接受一个包含以下属性的配置对象：
 
 ### max
 

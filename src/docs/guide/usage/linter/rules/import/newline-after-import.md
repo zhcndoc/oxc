@@ -1,11 +1,12 @@
 ---
 title: "import/newline-after-import | Oxlint"
 rule: "import/newline-after-import"
-category: "风格"
-version: "next"
+category: "Style"
+version: "1.66.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/newline-after-import.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -194,7 +195,7 @@ const FOO = "BAR";
 
 ## 版本
 
-此规则已在 vnext 中添加。
+This rule was added in v1.66.0.
 
 ## 参考资料
 

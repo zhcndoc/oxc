@@ -2,10 +2,11 @@
 title: "react/no-object-type-as-default-prop | Oxlint"
 rule: "react/no-object-type-as-default-prop"
 category: "Perf"
-version: "next"
+version: "1.66.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-object-type-as-default-prop.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -69,7 +70,7 @@ function Baz({ onClick }) {
 
 ## 版本
 
-此规则在 vnext 中加入。
+此规则在 v1.66.0 中新增。
 
 ## 参考资料
 

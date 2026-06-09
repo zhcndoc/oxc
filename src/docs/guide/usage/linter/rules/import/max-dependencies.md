@@ -1,11 +1,12 @@
 ---
 title: "import/max-dependencies | Oxlint"
 rule: "import/max-dependencies"
-category: "Pedantic"
+category: "教条"
 version: "0.5.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/max-dependencies.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -51,8 +52,6 @@ import b from "./b"; // 允许：2 个依赖（最大值：2）
 ```
 
 ## 配置
-
-此规则接受一个包含以下属性的配置对象：
 
 ### ignoreTypeImports
 

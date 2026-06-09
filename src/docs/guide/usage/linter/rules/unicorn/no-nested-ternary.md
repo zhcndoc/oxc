@@ -1,11 +1,12 @@
 ---
 title: "unicorn/no-nested-ternary | Oxlint"
 rule: "unicorn/no-nested-ternary"
-category: "Style"
+category: "样式"
 version: "0.0.18"
 default: false
 type_aware: false
 fix: "conditional_fix"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-nested-ternary.md"
 ---
 
 <!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

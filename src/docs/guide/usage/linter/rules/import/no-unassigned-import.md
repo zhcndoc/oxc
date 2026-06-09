@@ -6,6 +6,7 @@ version: "0.16.11"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-unassigned-import.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-该规则旨在通过在模块被导入但未被赋值时进行报告，来移除具有副作用的模块。
+该规则旨在通过报告已导入但未被赋值的模块，来移除具有副作用的模块。
 
 ### 为什么这不好？
 

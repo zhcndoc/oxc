@@ -6,6 +6,7 @@ version: "0.0.16"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-amd.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 作用
+### 说明
 
 禁止使用 AMD 的 `require` 和 `define` 调用。
 

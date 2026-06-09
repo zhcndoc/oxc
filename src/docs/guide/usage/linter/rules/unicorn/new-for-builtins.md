@@ -6,9 +6,10 @@ version: "0.0.16"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/new-for-builtins.md"
 ---
 
-<!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请不要手动编辑。 -->
+<!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
 
 <script setup>
 import { data } from '../version.data.js';

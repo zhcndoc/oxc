@@ -6,6 +6,7 @@ version: "0.0.11"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/no-unsafe-declaration-merging/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -1,11 +1,12 @@
 ---
 title: "unicorn/prefer-dom-node-remove | Oxlint"
 rule: "unicorn/prefer-dom-node-remove"
-category: "Pedantic"
+category: "迂腐"
 version: "0.0.18"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-dom-node-remove.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -1,11 +1,12 @@
 ---
 title: "typescript/no-useless-empty-export | Oxlint"
 rule: "typescript/no-useless-empty-export"
-category: "Correctness"
+category: "正确性"
 version: "0.4.4"
 default: true
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://typescript-eslint.io/rules/no-useless-empty-export/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

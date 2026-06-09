@@ -1,11 +1,12 @@
 ---
 title: "typescript/no-unnecessary-boolean-literal-compare | Oxlint"
 rule: "typescript/no-unnecessary-boolean-literal-compare"
-category: "Suspicious"
+category: "可疑"
 version: "1.12.0"
 default: false
 type_aware: true
 fix: "pending"
+upstream: "https://typescript-eslint.io/rules/no-unnecessary-boolean-literal-compare/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

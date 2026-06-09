@@ -6,6 +6,7 @@ version: "0.4.4"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/explicit-function-return-type/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

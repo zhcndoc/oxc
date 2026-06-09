@@ -6,6 +6,7 @@ version: "0.7.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-webpack-loader-syntax.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,12 +20,12 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-禁止在 import 或 require 语句中直接使用 Webpack loader 语法。
+禁止在 `import` 或 `require` 语句中直接使用 Webpack loader 语法。
 
 ### 为什么这不好？
 
-这种 loader 语法不是标准的，因此会使代码与 Webpack 耦合。推荐的指定
-Webpack loader 配置的方式是在 [Webpack 配置文件](https://webpack.js.org/concepts/loaders/#configuration) 中。
+这种 loader 语法不是标准的，因此会使代码与 Webpack 耦合。推荐在 [Webpack 配置文件](https://webpack.js.org/concepts/loaders/#configuration) 中指定
+Webpack loader 配置。
 
 ### 示例
 

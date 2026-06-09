@@ -1,11 +1,12 @@
 ---
 title: "vue/no-required-prop-with-default | Oxlint"
 rule: "vue/no-required-prop-with-default"
-category: "Suspicious"
+category: "可疑"
 version: "1.17.0"
 default: false
 type_aware: false
 fix: "fixable_suggestion"
+upstream: "https://eslint.vuejs.org/rules/no-required-prop-with-default.html"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

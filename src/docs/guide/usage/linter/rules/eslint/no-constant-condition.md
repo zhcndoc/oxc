@@ -6,6 +6,7 @@ version: "0.0.3"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-constant-condition"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -69,15 +70,7 @@ while (typeof x === "undefined") {
 
 ### checkLoops
 
-类型：`"all" | "allExceptWhileTrue" | "none"`
-
-默认值：`"allExceptWhileTrue"`
-
-配置选项，用于指定是否检查循环中的常量条件。
-
-- `"all"` 或 `true` 禁止循环中的常量表达式
-- `"allExceptWhileTrue"` 禁止循环中的常量表达式，但表达式为 `true` 的 while 循环除外
-- `"none"` 或 `false` 允许循环中的常量表达式
+type: `boolean | "all" | "allExceptWhileTrue" | "none"`
 
 ## 如何使用
 

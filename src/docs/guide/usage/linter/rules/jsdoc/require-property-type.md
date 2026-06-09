@@ -6,6 +6,7 @@ version: "0.2.18"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/requirePropertyType.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请不要手动编辑。 -->
@@ -17,13 +18,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
-要求每个 `@property` 标签都具有类型值（在花括号内）。
+要求每个 `@property` 标签都包含类型值（位于花括号内）。
 
 ### 为什么这很糟糕？
 
-属性的类型应当被文档化。
+属性的类型应该被文档化。
 
 ### 示例
 

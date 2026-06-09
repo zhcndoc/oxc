@@ -5,7 +5,7 @@ category: "Perf"
 version: "0.11.0"
 default: false
 type_aware: false
-fix: "conditional_safe_fix_or_suggestion"
+fix: "conditional_suggestion"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -106,10 +106,9 @@ set[Symbol.isConcatSpreadable] = true;
 let d = arr.concat(set); // [1, 2, 3, 4]
 ```
 
-### 自动修复
+### 修复建议
 
-此规则可以自动修复由对象展开引起的违规，但不会修复数组。对象展开将被替换为
-[`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。未来可能会添加数组修复。
+此规则可以为由对象展开导致的违规提供修复建议，但不会修复数组。对象展开可以替换为 [`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)。未来可能会添加数组修复。
 
 只有包含单个元素（展开项）的对象表达式不会被修复。
 
@@ -117,24 +116,20 @@ let d = arr.concat(set); // [1, 2, 3, 4]
 arr.map((x) => ({ ...x })); // 不修复
 ```
 
-当展开之前存在“普通”元素时，可以使用 `fix`（通过 `--fix`）。由于 `Object.apply` 会修改第一个参数，并且这些元素会在新对象中创建，因此展开标识符不会被修改。实际上，展开语义得以保留
+在展开之前包含“普通”属性的对象表达式不会被修复，因为要用 `Object.assign` 保持语义，需要分配一个新对象。
 
 ```js
-// before
-arr.map(({ x, y }) => ({ x, ...y }));
-
-// after
-arr.map(({ x, y }) => Object.assign({ x }, y));
+arr.map(({ x, y }) => ({ x, ...y })); // 不修复
 ```
 
 当展开是对象中的第一个属性时，会提供一个建议（通过 `--fix-suggestions`）。此修复会修改展开标识符，这意味着它可能会带来意外的副作用。
 
 ```js
-// before
+// 之前
 arr.map(({ x, y }) => ({ ...x, y }));
 arr.map(({ x, y }) => ({ ...x, y }));
 
-// after
+// 之后
 arr.map(({ x, y }) => Object.assign(x, { y }));
 arr.map(({ x, y }) => Object.assign(x, y));
 ```

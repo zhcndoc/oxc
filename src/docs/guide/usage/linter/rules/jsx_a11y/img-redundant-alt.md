@@ -6,6 +6,7 @@ version: "0.0.19"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/img-redundant-alt.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -20,12 +21,12 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ### 作用
 
 确保 `img` 的 alt 属性不包含诸如
-“image”、“picture” 或 “photo” 之类的冗余词语。
+“图像”、“图片”或“照片”之类的冗余词语。
 
 ### 为什么这不好？
 
 屏幕阅读器已经会将 `img` 元素识别为图像，因此
-无需在 alt 文本中使用“image”、“photo”或“picture”等词语。
+无需在 alt 文本中使用“图像”、“照片”或“图片”等词语。
 这会为辅助技术用户带来冗余信息，并使 alt 文本不够简洁、
 不够有用。
 

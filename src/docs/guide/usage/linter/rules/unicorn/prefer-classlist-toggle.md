@@ -6,6 +6,7 @@ version: "1.20.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-classlist-toggle.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,12 +18,12 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 优先使用 `element.classList.toggle(className, condition)`，而不是
-条件式的添加/移除模式。
+通过条件逻辑进行添加/移除的模式。
 
-### 这为什么不好？
+### 为什么不好
 
 与使用条件逻辑在 `add()` 和 `remove()` 之间切换相比，`toggle()` 方法更简洁，也更具表达力。
 

@@ -6,6 +6,7 @@ version: "0.2.3"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-restricted-matchers.md"
 ---
 
 <!-- 该文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -79,15 +80,7 @@ describe("when an error happens", () => {
 
 此规则接受一个带有以下属性的配置对象：
 
-### restrictedMatchers
-
-type: `Record<string, string>`
-
-default: `{}`
-
-受限的 matchers/修饰符到自定义消息的映射。
-键是 matcher/修饰符名称（例如 "toBeFalsy"、"resolves"、"not.toHaveBeenCalledWith"）。
-值是一个可选的自定义消息，会在使用该 matcher/修饰符时显示。
+type: `object`
 
 ## 如何使用
 

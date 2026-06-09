@@ -6,6 +6,7 @@ version: "1.30.0"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-bigint-literals.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,10 +18,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
-要求使用 BigInt 字面量（例如 `123n`），而不是调用 `BigInt()` 构造函数
-并传入字面量参数，例如数字或数字字符串。
+要求使用 BigInt 字面量（例如 `123n`），而不是调用 `BigInt()` 构造函数并传入字面量参数，例如数字或数字字符串。
 
 ### 为什么这不好？
 

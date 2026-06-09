@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-loss-of-precision | Oxlint"
 rule: "eslint/no-loss-of-precision"
-category: "Correctness"
+category: "正确性"
 version: "0.0.7"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-loss-of-precision"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

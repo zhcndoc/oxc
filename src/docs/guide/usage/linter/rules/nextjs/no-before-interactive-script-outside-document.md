@@ -6,6 +6,7 @@ version: "0.2.7"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://nextjs.org/docs/messages/no-before-interactive-script-outside-document"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

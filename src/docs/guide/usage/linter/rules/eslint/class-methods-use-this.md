@@ -6,6 +6,7 @@ version: "1.16.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/class-methods-use-this"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 作用
+### 说明
 
 强制类方法使用 `this`。
 
@@ -89,14 +90,6 @@ class C {
 默认值：`null`
 
 是否忽略实现接口的类。
-
-#### `"all"`
-
-忽略所有实现接口的类
-
-#### `"public-fields"`
-
-仅忽略实现接口的类中的公共字段
 
 ### ignoreOverrideMethods
 

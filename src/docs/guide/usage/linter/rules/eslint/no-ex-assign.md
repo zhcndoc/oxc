@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-ex-assign | Oxlint"
 rule: "eslint/no-ex-assign"
-category: "Correctness"
+category: "正确性"
 version: "0.0.4"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-ex-assign"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

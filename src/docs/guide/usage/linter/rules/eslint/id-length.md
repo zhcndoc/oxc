@@ -6,6 +6,7 @@ version: "1.4.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/id-length"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。不要手动编辑。 -->
@@ -177,15 +178,7 @@ default: `"always"`
 
 是否检查属性名长度。
 
-#### `"always"`
-
-属性名与其他标识符一样被检查。
-
-#### `"never"`
-
-属性名不会被检查长度。
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

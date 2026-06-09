@@ -6,6 +6,7 @@ version: "1.60.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-ending-with-an-expect.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -30,7 +31,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 以下是此规则在默认值下的**错误**代码示例：
 
 ```js
-it("lets me change the selected option", () => {
+it("让我们更改所选选项", () => {
   const container = render(MySelect, {
     props: { options: [1, 2, 3], selected: 1 },
   });
@@ -45,7 +46,7 @@ it("lets me change the selected option", () => {
 以下是此规则在默认值下的**正确**代码示例：
 
 ```js
-it("lets me change the selected option", () => {
+it("让我们更改所选选项", () => {
   const container = render(MySelect, {
     props: { options: [1, 2, 3], selected: 1 },
   });
@@ -66,7 +67,7 @@ it("lets me change the selected option", () => {
 import { expectSaga } from "redux-saga-test-plan";
 import { addSaga } from "../src/sagas";
 
-test("returns sum", () => {
+test("返回总和", () => {
   expectSaga(addSaga, 1, 1).returns(2).run();
 });
 ```
@@ -77,7 +78,7 @@ test("returns sum", () => {
 import { expectSaga } from "redux-saga-test-plan";
 import { addSaga } from "../src/sagas";
 
-test("returns sum", () => {
+test("返回总和", () => {
   expectSaga(addSaga, 1, 1).returns(2).run();
 });
 ```
@@ -88,7 +89,7 @@ test("returns sum", () => {
 each([
   [2, 3],
   [1, 3],
-]).test("the selection can change from %d to %d", (firstSelection, secondSelection) => {
+]).test("选项可以从 %d 更改为 %d", (firstSelection, secondSelection) => {
   const container = render(MySelect, {
     props: { options: [1, 2, 3], selected: firstSelection },
   });

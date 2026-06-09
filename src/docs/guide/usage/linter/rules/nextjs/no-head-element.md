@@ -6,6 +6,7 @@ version: "0.2.1"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://nextjs.org/docs/messages/no-head-element"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -35,7 +36,7 @@ function Index() {
   return (
     <>
       <head>
-        <title>My page title</title>
+        <title>我的页面标题</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </head>
     </>
@@ -54,7 +55,7 @@ function Index() {
   return (
     <>
       <Head>
-        <title>My page title</title>
+        <title>我的页面标题</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
     </>

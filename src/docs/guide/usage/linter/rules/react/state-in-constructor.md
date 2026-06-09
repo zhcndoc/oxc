@@ -6,6 +6,7 @@ version: "1.26.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/state-in-constructor.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -90,14 +91,7 @@ class Foo extends React.Component {
 
 此规则接受以下字符串值之一：
 
-### `"always"`
-
-强制在构造函数中初始化 state。
-这是默认模式。
-
-### `"never"`
-
-强制使用类属性初始化 state。
+type: `"always" | "never"`
 
 ## 使用方法
 

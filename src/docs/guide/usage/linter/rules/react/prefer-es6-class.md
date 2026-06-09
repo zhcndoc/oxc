@@ -6,6 +6,7 @@ version: "0.5.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请不要手动编辑。 -->
@@ -45,13 +46,7 @@ var Hello = createReactClass({
 
 此规则接受以下字符串值之一：
 
-### `"always"`
-
-始终优先使用 ES2015 类风格组件。
-
-### `"never"`
-
-不允许 ES2015 类风格，优先使用 `createReactClass`。
+type: `"always" | "never"`
 
 ## 如何使用
 

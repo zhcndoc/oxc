@@ -1,11 +1,12 @@
 ---
 title: "jest/no-focused-tests | Oxlint"
 rule: "jest/no-focused-tests"
-category: "Correctness"
+category: "正确性"
 version: "0.0.8"
 default: false
 type_aware: false
-fix: "fixable_fix"
+fix: "可通过建议修复"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-focused-tests.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

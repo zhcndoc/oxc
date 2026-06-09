@@ -6,6 +6,7 @@ version: "0.2.1"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/click-events-have-key-events.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,13 +18,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 说明
 
-强制 onClick 至少伴随以下之一：onKeyUp、onKeyDown、onKeyPress。
+强制 `onClick` 至少伴随以下之一：`onKeyUp`、`onKeyDown`、`onKeyPress`。
 
-### 为什么这不好？
+### 为什么这很重要？
 
-为键盘进行编码对无法使用鼠标的身体残障用户、AT 兼容性以及屏幕阅读器用户都很重要。
+为键盘操作进行编程对无法使用鼠标的身体残障用户、AT 兼容性以及屏幕阅读器用户都很重要。
 这不适用于交互元素或隐藏元素。
 
 ### 示例

@@ -1,11 +1,12 @@
 ---
 title: "unicorn/no-array-reduce | Oxlint"
 rule: "unicorn/no-array-reduce"
-category: "Restriction"
+category: "限制"
 version: "0.0.19"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-reduce.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

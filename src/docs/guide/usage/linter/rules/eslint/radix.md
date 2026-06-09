@@ -6,6 +6,7 @@ version: "0.3.3"
 default: false
 type_aware: false
 fix: "conditional_dangerous_fix"
+upstream: "https://eslint.org/docs/latest/rules/radix"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -54,6 +55,18 @@ let num = parseInt("071"); // 57
 ```javascript
 let num = parseInt("071", 10); // 71
 ```
+
+## 配置
+
+此规则接受以下字符串值之一：
+
+### `"always"`
+
+在使用 `parseInt()` 时，始终要求提供 radix 参数。
+
+### `"as-needed"`
+
+仅在必要时要求提供 radix 参数。
 
 ## 如何使用
 

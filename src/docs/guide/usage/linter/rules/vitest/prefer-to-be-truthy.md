@@ -6,6 +6,7 @@ version: "0.7.1"
 default: false
 type_aware: false
 fix: "fixable_fix"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-be-truthy.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -24,8 +25,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-使用 `toBe(true)` 灵活性较差，可能无法考虑其他真值
-，例如非空字符串或对象。`toBeTruthy()` 会检查任意
+使用 `toBe(true)` 的灵活性较差，可能无法考虑其他真值，
+例如非空字符串或对象。`toBeTruthy()` 会检查任意
 真值，这使测试更加全面和稳健。
 
 ### 示例

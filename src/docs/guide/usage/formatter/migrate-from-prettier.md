@@ -6,6 +6,14 @@ title: "从 Prettier 迁移 | Oxfmt"
 
 本指南涵盖从 Prettier 迁移到 Oxfmt 的内容。
 
+## 何时从 Prettier 迁移
+
+如果你想保留类似 Prettier 的工作流，同时获得更快的格式化速度和内置格式化功能，就迁移到 Oxfmt。若你希望 Oxfmt 成为更大的一体化工具链的一部分，则改用 [Vite+](https://npmx.dev/package/vite-plus)。
+
+- 使用 Oxfmt 进行专用格式化。
+- 使用 [Vite+](https://npmx.dev/package/vite-plus) 获得集成化工作流。
+- 如果仍然需要精确的插件行为，则继续使用 Prettier。
+
 ## 快速开始
 
 对于简单的设置，只需一条命令即可迁移：
@@ -32,13 +40,13 @@ $ bun add -D oxfmt@latest && bunx oxfmt --migrate=prettier && bunx oxfmt
 
 ## 使用 Skills 迁移
 
-你可以使用 [`migrate-oxfmt`](https://skills.sh/oxc-project/oxc/migrate-oxfmt) 技能进行交互式迁移：
+[`migrate-oxfmt`](https://skills.sh/oxc-project/oxc/migrate-oxfmt) 技能提供交互式、由 agent 引导的迁移。将其安装到你的编码 agent 中：
 
 ```bash
 npx skills add https://github.com/oxc-project/oxc --skill migrate-oxfmt
 ```
 
-安装完成后，运行 `/migrate-oxfmt`，智能代理将引导你完成整个迁移过程。
+安装完成后，运行 `/migrate-oxfmt` 来执行迁移。
 
 ## 迁移之前
 

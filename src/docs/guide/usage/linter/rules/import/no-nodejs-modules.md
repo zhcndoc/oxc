@@ -6,6 +6,7 @@ version: "1.43.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-nodejs-modules.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请不要手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 禁止使用 Node.js 内置模块。对于无法访问这些模块的客户端 Web 项目来说，这可能很有用。
 
@@ -61,7 +62,7 @@ import path from "path";
 
 type: `string[]`
 
-允许模块名称的数组。默认为空数组。
+允许的模块名称数组。默认为空数组。
 
 ## 如何使用
 

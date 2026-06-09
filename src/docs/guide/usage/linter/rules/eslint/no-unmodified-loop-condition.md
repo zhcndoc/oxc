@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-unmodified-loop-condition | Oxlint"
 rule: "eslint/no-unmodified-loop-condition"
-category: "Suspicious"
+category: "可疑"
 version: "1.48.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-unmodified-loop-condition"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

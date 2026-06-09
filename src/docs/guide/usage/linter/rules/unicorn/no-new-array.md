@@ -5,7 +5,8 @@ category: "Correctness"
 version: "0.0.16"
 default: true
 type_aware: false
-fix: "pending"
+fix: "fixable_dangerous_suggestion"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-new-array.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

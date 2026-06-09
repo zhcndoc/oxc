@@ -6,6 +6,7 @@ version: "0.9.3"
 default: false
 type_aware: false
 fix: "待定"
+upstream: "https://eslint.org/docs/latest/rules/no-magic-numbers"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -170,6 +171,8 @@ default: `[]`
 要忽略的数字数组，如果它们被用作魔法数字。可以包含浮点数或 BigInt 字符串。
 
 #### ignore[n]
+
+type: `number | string`
 
 ### ignoreArrayIndexes
 

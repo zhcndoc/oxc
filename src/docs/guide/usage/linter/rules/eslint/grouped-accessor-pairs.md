@@ -5,7 +5,8 @@ category: "Style"
 version: "0.15.12"
 default: false
 type_aware: false
-fix: "待处理"
+fix: "pending"
+upstream: "https://eslint.org/docs/latest/rules/grouped-accessor-pairs"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

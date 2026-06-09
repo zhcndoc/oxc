@@ -1,11 +1,12 @@
 ---
 title: "unicorn/no-abusive-eslint-disable | Oxlint"
 rule: "unicorn/no-abusive-eslint-disable"
-category: "Restriction"
+category: "限制"
 version: "0.0.18"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-abusive-eslint-disable.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

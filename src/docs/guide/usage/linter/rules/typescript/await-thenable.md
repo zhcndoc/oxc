@@ -5,7 +5,8 @@ category: "Correctness"
 version: "1.12.0"
 default: true
 type_aware: true
-fix: "可修复建议"
+fix: "fixable_suggestion"
+upstream: "https://typescript-eslint.io/rules/await-thenable/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

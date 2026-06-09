@@ -6,6 +6,7 @@ version: "0.0.19"
 default: true
 type_aware: false
 fix: "fixable_suggestion"
+upstream: "https://eslint.org/docs/latest/rules/no-empty-static-block"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 功能
 
-不允许使用空的静态块。
+不允许空的静态块。
 
 ### 为什么这不好？
 

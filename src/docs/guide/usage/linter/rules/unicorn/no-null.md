@@ -6,6 +6,7 @@ version: "0.0.21"
 default: false
 type_aware: false
 fix: "conditional_dangerous_fix"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-null.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -46,6 +47,14 @@ let foo;
 ## 配置
 
 此规则接受一个包含以下属性的配置对象：
+
+### checkArguments
+
+type: `boolean`
+
+default: `true`
+
+当设置为 `true` 时，禁止将 `null` 直接作为函数调用或构造函数参数使用。
 
 ### checkStrictEquality
 

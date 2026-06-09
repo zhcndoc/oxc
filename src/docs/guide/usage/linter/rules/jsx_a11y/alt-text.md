@@ -5,7 +5,8 @@ category: "正确性"
 version: "0.0.16"
 default: false
 type_aware: false
-fix: "无"
+fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/alt-text.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

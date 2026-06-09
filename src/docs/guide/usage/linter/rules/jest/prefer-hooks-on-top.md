@@ -6,6 +6,7 @@ version: "0.4.2"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/prefer-hooks-on-top.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -35,7 +36,7 @@ describe("foo", () => {
     seedMyDatabase();
   });
 
-  it("accepts this input", () => {
+  it("接受此输入", () => {
     // ...
   });
 
@@ -43,21 +44,21 @@ describe("foo", () => {
     createMyDatabase();
   });
 
-  it("returns that value", () => {
+  it("返回该值", () => {
     // ...
   });
 
-  describe("when the database has specific values", () => {
+  describe("当数据库具有特定值时", () => {
     const specificValue = "...";
     beforeEach(() => {
       seedMyDatabase(specificValue);
     });
 
-    it("accepts that input", () => {
+    it("接受该输入", () => {
       // ...
     });
 
-    it("throws an error", () => {
+    it("抛出错误", () => {
       // ...
     });
 
@@ -69,7 +70,7 @@ describe("foo", () => {
       mockLogger();
     });
 
-    it("logs a message", () => {
+    it("记录一条消息", () => {
       // ...
     });
   });
@@ -96,15 +97,15 @@ describe("foo", () => {
     clearMyDatabase();
   });
 
-  it("accepts this input", () => {
+  it("接受此输入", () => {
     // ...
   });
 
-  it("returns that value", () => {
+  it("返回该值", () => {
     // ...
   });
 
-  describe("when the database has specific values", () => {
+  describe("当数据库具有特定值时", () => {
     const specificValue = "...";
 
     beforeEach(() => {
@@ -119,15 +120,15 @@ describe("foo", () => {
       clearLogger();
     });
 
-    it("accepts that input", () => {
+    it("接受该输入", () => {
       // ...
     });
 
-    it("throws an error", () => {
+    it("抛出错误", () => {
       // ...
     });
 
-    it("logs a message", () => {
+    it("记录一条消息", () => {
       // ...
     });
   });

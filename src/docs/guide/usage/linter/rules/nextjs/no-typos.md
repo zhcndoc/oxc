@@ -5,7 +5,8 @@ category: "Correctness"
 version: "0.2.1"
 default: false
 type_aware: false
-fix: "待定"
+fix: "pending"
+upstream: "https://nextjs.org/docs/messages/no-typos"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -19,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-检测 Next.js 数据获取函数名中常见的拼写错误。
+检测 Next.js 数据获取函数名中的常见拼写错误。
 
 ### 为什么这很糟糕？
 

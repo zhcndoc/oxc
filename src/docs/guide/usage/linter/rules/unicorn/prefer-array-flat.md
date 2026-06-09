@@ -6,6 +6,7 @@ version: "0.0.20"
 default: false
 type_aware: false
 fix: "conditional_dangerous_fix"
+upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

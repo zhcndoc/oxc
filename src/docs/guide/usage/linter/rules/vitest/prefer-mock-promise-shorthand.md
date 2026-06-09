@@ -6,6 +6,7 @@ version: "0.2.16"
 default: false
 type_aware: false
 fix: "conditional_fix"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-mock-promise-shorthand.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,11 +18,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
-在处理返回 promise 的函数的 mock 时，Jest 提供了一些 API 语法糖函数，用于减少你需要编写的样板代码量。在可能的情况下，应优先使用这些方法。
+在处理返回 promise 的函数的 mock 时，Jest 提供了一些 API 速记方法，用于减少你需要编写的样板代码量。在可能的情况下，应优先使用这些方法。
 
-### 这为什么不好？
+### 原因
 
 使用像 `mockImplementation(() => Promise.resolve())` 或 `mockReturnValue(Promise.reject())` 这样的通用 mock 函数，比 Jest 专门提供的 promise 简写更冗长、可读性更差。像 `mockResolvedValue()` 和 `mockRejectedValue()` 这样的简写方法表达性更强，也能让测试意图更清晰。
 

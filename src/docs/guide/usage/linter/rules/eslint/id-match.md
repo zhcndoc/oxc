@@ -2,10 +2,11 @@
 title: "eslint/id-match | Oxlint"
 rule: "eslint/id-match"
 category: "Style"
-version: "next"
+version: "1.66.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/id-match"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -108,7 +109,7 @@ default: `false`
 
 ## 版本
 
-此规则是在 vnext 中添加的。
+此规则在 v1.66.0 中加入。
 
 ## 参考资料
 

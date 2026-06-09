@@ -1,11 +1,12 @@
 ---
 title: "jsx-a11y/label-has-associated-control | Oxlint"
 rule: "jsx-a11y/label-has-associated-control"
-category: "Correctness"
+category: "正确性"
 version: "0.9.1"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/label-has-associated-control.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -23,7 +24,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-表单标签如果没有正确关联到表单控件（例如 `<input>`），或者不包含可访问文本，就会妨碍使用屏幕阅读器等辅助技术的用户进行访问。用户可能没有足够的信息来理解表单控件的用途。
+如果表单标签没有正确关联到表单控件（例如 `<input>`），或者不包含可访问文本，就会妨碍使用屏幕阅读器等辅助技术的用户进行访问。用户可能没有足够的信息来理解表单控件的用途。
 
 ### 示例
 

@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-plusplus | Oxlint"
 rule: "eslint/no-plusplus"
-category: "Restriction"
+category: "限制"
 version: "0.9.5"
 default: false
 type_aware: false
-fix: "条件建议"
+fix: "conditional_suggestion"
+upstream: "https://eslint.org/docs/latest/rules/no-plusplus"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

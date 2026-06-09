@@ -1,11 +1,12 @@
 ---
 title: "eslint/no-empty-character-class | Oxlint"
 rule: "eslint/no-empty-character-class"
-category: "Correctness"
+category: "正确性"
 version: "0.0.7"
 default: true
 type_aware: false
-fix: "无"
+fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-empty-character-class"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

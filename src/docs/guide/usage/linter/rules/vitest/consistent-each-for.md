@@ -6,6 +6,7 @@ version: "1.39.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/consistent-each-for.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -89,10 +90,10 @@ type: `"for" | "each"`
 
 <RuleHowToUse />
 
-## Version
+## 版本
 
 此规则在 v1.39.0 中添加。
 
-## References
+## 参考资料
 
 <RuleReferences />

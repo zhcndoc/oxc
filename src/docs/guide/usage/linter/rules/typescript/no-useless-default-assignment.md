@@ -6,6 +6,7 @@ version: "1.49.0"
 default: true
 type_aware: true
 fix: "none"
+upstream: "https://typescript-eslint.io/rules/no-useless-default-assignment/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

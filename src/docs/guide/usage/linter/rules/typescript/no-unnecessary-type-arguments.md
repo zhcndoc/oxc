@@ -6,6 +6,7 @@ version: "1.12.0"
 default: false
 type_aware: true
 fix: "fixable_fix"
+upstream: "https://typescript-eslint.io/rules/no-unnecessary-type-arguments/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

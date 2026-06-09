@@ -6,6 +6,7 @@ version: "0.2.3"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/no-restricted-vi-methods.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -54,13 +55,7 @@ test("播放视频", () => {
 
 此规则接受一个包含以下属性的配置对象：
 
-### restrictedJestMethods
-
-type: `Record<string, string>`
-
-default: `{}`
-
-受限制的 Jest 方法名称到自定义消息的映射——或者使用 `null`，以显示通用消息。
+type: `object`
 
 ## 使用方法
 

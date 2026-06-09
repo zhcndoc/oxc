@@ -1,11 +1,12 @@
 ---
 title: "jsx-a11y/anchor-has-content | Oxlint"
 rule: "jsx-a11y/anchor-has-content"
-category: "Correctness"
+category: "正确性"
 version: "0.0.18"
 default: false
 type_aware: false
 fix: "conditional_suggestion"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/anchor-has-content.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

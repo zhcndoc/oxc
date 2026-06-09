@@ -6,6 +6,7 @@ version: "0.2.3"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-restricted-jest-methods.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -55,13 +56,7 @@ test("播放视频", () => {
 
 此规则接受一个包含以下属性的配置对象：
 
-### restrictedJestMethods
-
-type: `Record<string, string>`
-
-default: `{}`
-
-受限制的 Jest 方法名到自定义消息的映射；如果为 `null`，则使用通用消息。
+type: `object`
 
 ## 如何使用
 

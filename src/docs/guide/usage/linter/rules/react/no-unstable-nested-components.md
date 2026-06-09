@@ -1,11 +1,12 @@
 ---
 title: "react/no-unstable-nested-components | Oxlint"
 rule: "react/no-unstable-nested-components"
-category: "可疑"
-version: "next"
+category: "Suspicious"
+version: "1.66.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unstable-nested-components.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -85,7 +86,7 @@ default: `"render*"`
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.66.0 中添加。
 
 ## 参考资料
 

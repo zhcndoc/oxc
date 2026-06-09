@@ -6,6 +6,7 @@ version: "0.3.4"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/max-classes-per-file"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -45,8 +46,6 @@ function foo() {
 ```
 
 ## 配置
-
-此规则接受一个包含以下属性的配置对象：
 
 ### ignoreExpressions
 

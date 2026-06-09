@@ -6,6 +6,7 @@ version: "0.13.2"
 default: false
 type_aware: false
 fix: "pending"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-script-url.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -36,7 +37,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 此规则的**错误**代码示例：
 
 ```jsx
-<a href="javascript:void(0)">Test</a>
+<a href="javascript:void(0)">测试</a>
 ```
 
 此规则的**正确**代码示例：

@@ -1,11 +1,12 @@
 ---
 title: "react/no-render-return-value | Oxlint"
 rule: "react/no-render-return-value"
-category: "Correctness"
+category: "正确性"
 version: "0.0.15"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-render-return-value.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

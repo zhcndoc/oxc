@@ -6,6 +6,7 @@ version: "0.2.1"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-named-as-default-member.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 报告将导出的名称（具名导出）作为默认导出的属性来使用的情况。当试图通过默认导出访问具名导出时，就会发生这种情况，这是不正确的。
 

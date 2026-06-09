@@ -1,11 +1,12 @@
 ---
 title: "jest/no-interpolation-in-snapshots | Oxlint"
 rule: "jest/no-interpolation-in-snapshots"
-category: "Style"
+category: "样式"
 version: "0.0.13"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/no-interpolation-in-snapshots.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

@@ -6,6 +6,7 @@ version: "1.21.0"
 default: false
 type_aware: false
 fix: "fixable_dangerous_fix"
+upstream: "https://eslint.vuejs.org/rules/no-import-compiler-macros.html"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -17,7 +18,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 <RuleHeader />
 
-### 它的作用
+### 作用
 
 禁止导入 Vue 编译器宏。
 

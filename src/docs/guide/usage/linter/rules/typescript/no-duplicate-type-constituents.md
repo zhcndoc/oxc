@@ -6,6 +6,7 @@ version: "1.12.0"
 default: true
 type_aware: true
 fix: "fixable_fix"
+upstream: "https://typescript-eslint.io/rules/no-duplicate-type-constituents/"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->

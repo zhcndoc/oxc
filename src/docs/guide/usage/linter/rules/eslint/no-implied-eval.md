@@ -2,10 +2,11 @@
 title: "eslint/no-implied-eval | Oxlint"
 rule: "eslint/no-implied-eval"
 category: "Suspicious"
-version: "next"
+version: "1.66.0"
 default: true
 type_aware: false
 fix: "none"
+upstream: "https://eslint.org/docs/latest/rules/no-implied-eval"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
@@ -52,7 +53,7 @@ window.setTimeout(doWork, 100);
 
 ## 版本
 
-此规则已在 vnext 中添加。
+此规则在 v1.66.0 中新增。
 
 ## 参考资料
 

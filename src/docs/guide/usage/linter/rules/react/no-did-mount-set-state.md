@@ -1,11 +1,12 @@
 ---
 title: "react/no-did-mount-set-state | Oxlint"
 rule: "react/no-did-mount-set-state"
-category: "Correctness"
+category: "正确性"
 version: "1.36.0"
 default: false
 type_aware: false
 fix: "none"
+upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-did-mount-set-state.md"
 ---
 
 <!-- 此文件由 tasks/website_linter/src/rules/doc_page.rs 自动生成。请勿手动编辑。 -->
