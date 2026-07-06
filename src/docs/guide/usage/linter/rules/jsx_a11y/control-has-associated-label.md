@@ -32,7 +32,6 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ```jsx
 <button />
-<input type="text" />
 <a href="/path" />
 <th />
 <div role="button" />
@@ -42,12 +41,12 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 以下是此规则的**正确**代码示例：
 
 ```jsx
-<button>Save</button>
-<button aria-label="Save" />
-<label>Name <input type="text" /></label>
-<a href="/path">Learn more</a>
-<th>Column Header</th>
-<div role="button">Submit</div>
+<button>保存</button>
+<button aria-label="保存" />
+<label>姓名 <input type="text" /></label>
+<a href="/path">了解更多</a>
+<th>列标题</th>
+<div role="button">提交</div>
 <div role="checkbox" aria-labelledby="label_id" />
 ```
 
@@ -76,19 +75,19 @@ default: `2`
 
 type: `string[]`
 
-default: `[]`
+default: `["audio", "canvas", "embed", "input", "textarea", "tr", "video"]`
 
-要忽略的元素（除默认忽略列表之外）。
-默认为 `[]`。
+要忽略的元素。
+默认值为 `["audio", "canvas", "embed", "input", "textarea", "tr", "video"]`。
 
 ### ignoreRoles
 
 type: `string[]`
 
-default: `[]`
+default: `["grid", "listbox", "menu", "menubar", "radiogroup", "row", "tablist", "toolbar", "tree", "treegrid"]`
 
 要忽略的交互角色。
-默认为 `[]`。
+默认值为 `["grid", "listbox", "menu", "menubar", "radiogroup", "row", "tablist", "toolbar", "tree", "treegrid"]`。
 
 ### labelAttributes
 
@@ -98,7 +97,7 @@ default: `[]`
 
 用于检查可访问标签文本的附加属性。
 
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

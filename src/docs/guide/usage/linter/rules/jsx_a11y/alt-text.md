@@ -46,9 +46,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 <area alt="导航链接" />
 ```
 
-## 配置
+## Configuration
 
-此规则接受一个包含以下属性的配置对象：
+This rule accepts a configuration object with the following properties:
 
 ### area
 
@@ -56,7 +56,17 @@ type: `string[]`
 
 default: `[]`
 
-用于检查 `area` 元素上替代文本的自定义组件。
+Custom components to check for alt text on `area` elements.
+
+### elements
+
+type: `array`
+
+Custom components to check for alt text on any of the supported elements.
+
+#### elements[n]
+
+type: `"img" | "object" | "area" | "input[type="image"]"`
 
 ### img
 
@@ -64,7 +74,7 @@ type: `string[]`
 
 default: `[]`
 
-用于检查 `img` 元素上替代文本的自定义组件。
+Custom components to check for alt text on `img` elements.
 
 ### input[type="image"]
 
@@ -72,7 +82,7 @@ type: `string[]`
 
 default: `[]`
 
-用于检查 `input[type="image"]` 元素上替代文本的自定义组件。
+Custom components to check for alt text on `input[type="image"]` elements.
 
 ### object
 
@@ -80,7 +90,7 @@ type: `string[]`
 
 default: `[]`
 
-用于检查 `object` 元素上替代文本的自定义组件。
+Custom components to check for alt text on `object` elements.
 
 ## 如何使用
 

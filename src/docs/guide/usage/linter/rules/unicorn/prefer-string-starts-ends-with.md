@@ -22,6 +22,10 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 优先使用 [`String#startsWith()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith) 和 [`String#endsWith()`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith)，而不是使用 `/^foo/` 或 `/foo$/` 的正则表达式。
 
+::: warning
+此规则已弃用。请改用类型感知的 [`typescript/prefer-string-starts-ends-with`](https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-string-starts-ends-with.html) 规则。
+:::
+
 ### 为什么这不好？
 
 使用 `String#startsWith()` 和 `String#endsWith()` 更具可读性，而且性能更好，因为它不需要解析正则表达式。
@@ -42,7 +46,7 @@ const foo = "hello";
 foo.startsWith("abc");
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

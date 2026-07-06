@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制优先使用 `as const`，而不是字面量类型。
+强制使用 `as const`，而不是字面量类型。
 
 ### 为什么这不好？
 

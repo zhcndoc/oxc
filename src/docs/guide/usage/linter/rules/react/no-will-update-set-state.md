@@ -61,15 +61,9 @@ var Hello = createReactClass({
 
 此规则接受以下字符串值之一：
 
-### `"allowed"`
+type: `"允许" | "在函数中禁用"`
 
-禁止在函数之外的 `componentWillUpdate` 中调用任何 `this.setState`。
-
-### `"disallow-in-func"`
-
-通过禁止即使在函数内部调用 `this.setState``，使此规则更加严格。
-
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

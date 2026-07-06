@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-此规则用于强制或禁止在命名导入中使用行内仅类型标记。
+强制使用或禁止在命名导入中使用行内类型专用标记。
 
 ### 为什么这不好？
 

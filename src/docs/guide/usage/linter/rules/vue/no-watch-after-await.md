@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止异步注册 `watch`。
+禁止异步注册的 `watch`。
 
 ### 为什么这不好？
 
@@ -60,7 +60,7 @@ export default {
 </script>
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

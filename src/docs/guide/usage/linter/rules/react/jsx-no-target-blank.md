@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则旨在通过要求外部链接 href 和表单 action 使用 `rel='noreferrer'`，从而防止用户生成的链接 href 和表单 action 造成安全漏洞，并可选地对任何动态生成的链接 href 和表单 action 进行同样的限制。
+此规则旨在通过要求外部链接 href 和表单 action 使用 `rel='noreferrer'`，来防止用户生成的链接 href 和表单 action 产生安全漏洞，并可选择性地对任何动态生成的链接 href 和表单 action 进行限制。
 
 ### 为什么这不好？
 
@@ -107,10 +107,10 @@ default: `false`
 
 <RuleHowToUse />
 
-## Version
+## 版本
 
 此规则在 v0.2.5 中添加。
 
-## References
+## 参考资料
 
 <RuleReferences />

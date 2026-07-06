@@ -1,8 +1,8 @@
 ---
 title: "vue/no-reserved-props | Oxlint"
 rule: "vue/no-reserved-props"
-category: "正确性"
-version: "next"
+category: "Correctness"
+version: "1.69.0"
 default: false
 type_aware: false
 fix: "none"
@@ -65,7 +65,7 @@ type: `integer`
 
 default: `3`
 
-应用保留属性集合的 Vue 主版本。Vue 2 保留
+用于保留属性集合的 Vue 主版本。Vue 2 保留
 更多名称（`is`、`slot`、`class`、`style` 等）而不是 Vue 3。
 
 ## 如何使用
@@ -74,7 +74,7 @@ default: `3`
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.69.0 中添加。
 
 ## 参考资料
 

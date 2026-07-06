@@ -141,13 +141,13 @@ default: `"type-imports"`
 
 #### `"type-imports"`
 
-会强制你始终使用 `import type Foo from '...'`，但装饰器的元数据引用除外。
+强制始终使用 `import type Foo from '...'`，除非被装饰器元数据引用。
 
 #### `"no-type-imports"`
 
 会强制你始终使用 `import Foo from '...'`
 
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

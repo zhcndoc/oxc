@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制在模板字面量中对 ${ 采用一致的转义风格。
+强制在模板字面量中转义 `${` 时保持一致的风格。
 
 ### 为什么这不好？
 
@@ -44,7 +44,7 @@ const foo = `\$\{a}`;
 const foo = `\${a}`;
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

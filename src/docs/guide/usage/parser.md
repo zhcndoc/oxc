@@ -22,7 +22,7 @@ outline: deep
 ### Node.js
 
 - 使用 node 绑定 [oxc-parser][url-oxc-parser-npm]。
-- 在 [stackblitz](https://stackblitz.com/edit/oxc-parser) 上试用。
+- 在 [stackblitz](https://stackblitz.com/fork/github/oxc-project/website/tree/main/stackblitz-templates/oxc-parser) 上试用。
 
 ### Rust
 

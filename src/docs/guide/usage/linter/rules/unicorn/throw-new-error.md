@@ -37,6 +37,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 throw Error("🦄");
 throw TypeError("unicorn");
 throw lib.TypeError("unicorn");
+const e = Error("message");
 ```
 
 以下是此规则的**正确**代码示例：
@@ -45,9 +46,10 @@ throw lib.TypeError("unicorn");
 throw new Error("🦄");
 throw new TypeError("unicorn");
 throw new lib.TypeError("unicorn");
+const e = new Error("message");
 ```
 
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止在构造函数中返回值。
+禁止从构造函数中返回值。
 
 ### 为什么不好？
 

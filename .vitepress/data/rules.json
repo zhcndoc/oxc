@@ -925,7 +925,7 @@
     "category": "pedantic",
     "version": "0.0.18",
     "type_aware": false,
-    "fix": "pending",
+    "fix": "fixable_fix",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-negated-condition.html"
   },
@@ -1775,7 +1775,7 @@
     "category": "pedantic",
     "version": "0.9.3",
     "type_aware": false,
-    "fix": "pending",
+    "fix": "conditional_fix",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/sort-vars.html"
   },
@@ -2865,7 +2865,7 @@
     "category": "pedantic",
     "version": "0.4.4",
     "type_aware": false,
-    "fix": "pending",
+    "fix": "fixable_fix",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/jsdoc/require-param-type.html"
   },
@@ -3601,6 +3601,16 @@
   },
   {
     "scope": "node",
+    "value": "no-mixed-requires",
+    "category": "style",
+    "version": "1.71.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/node/no-mixed-requires.html"
+  },
+  {
+    "scope": "node",
     "value": "no-new-require",
     "category": "restriction",
     "version": "0.10.0",
@@ -3628,6 +3638,16 @@
     "fix": "none",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/node/no-process-env.html"
+  },
+  {
+    "scope": "node",
+    "value": "no-sync",
+    "category": "style",
+    "version": "1.71.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/node/no-sync.html"
   },
   {
     "scope": "oxc",
@@ -4251,6 +4271,16 @@
   },
   {
     "scope": "react",
+    "value": "jsx-no-literals",
+    "category": "restriction",
+    "version": "1.70.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-no-literals.html"
+  },
+  {
+    "scope": "react",
     "value": "jsx-no-script-url",
     "category": "suspicious",
     "version": "0.13.2",
@@ -4588,6 +4618,16 @@
     "fix": "none",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/react/prefer-function-component.html"
+  },
+  {
+    "scope": "react",
+    "value": "react-compiler",
+    "category": "nursery",
+    "version": "1.70.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/react/react-compiler.html"
   },
   {
     "scope": "react",
@@ -5285,7 +5325,7 @@
     "category": "suspicious",
     "version": "0.0.6",
     "type_aware": false,
-    "fix": "pending",
+    "fix": "fixable_suggestion",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-type-constraint.html"
   },
@@ -5941,6 +5981,16 @@
   },
   {
     "scope": "unicorn",
+    "value": "max-nested-calls",
+    "category": "style",
+    "version": "1.71.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/max-nested-calls.html"
+  },
+  {
+    "scope": "unicorn",
     "value": "new-for-builtins",
     "category": "pedantic",
     "version": "0.0.16",
@@ -5988,6 +6038,16 @@
     "fix": "pending",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-array-callback-reference.html"
+  },
+  {
+    "scope": "unicorn",
+    "value": "no-array-fill-with-reference-type",
+    "category": "suspicious",
+    "version": "1.70.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-array-fill-with-reference-type.html"
   },
   {
     "scope": "unicorn",
@@ -6185,7 +6245,7 @@
     "category": "pedantic",
     "version": "0.0.18",
     "type_aware": false,
-    "fix": "pending",
+    "fix": "fixable_fix",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-negated-condition.html"
   },
@@ -6681,6 +6741,16 @@
   },
   {
     "scope": "unicorn",
+    "value": "prefer-export-from",
+    "category": "style",
+    "version": "1.70.0",
+    "type_aware": false,
+    "fix": "fixable_suggestion",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/prefer-export-from.html"
+  },
+  {
+    "scope": "unicorn",
     "value": "prefer-global-this",
     "category": "style",
     "version": "0.16.12",
@@ -6811,6 +6881,16 @@
   },
   {
     "scope": "unicorn",
+    "value": "prefer-number-coercion",
+    "category": "pedantic",
+    "version": "1.71.0",
+    "type_aware": false,
+    "fix": "fixable_suggestion",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/prefer-number-coercion.html"
+  },
+  {
+    "scope": "unicorn",
     "value": "prefer-number-properties",
     "category": "restriction",
     "version": "0.0.19",
@@ -6908,6 +6988,16 @@
     "fix": "fixable_fix",
     "default": true,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/prefer-set-size.html"
+  },
+  {
+    "scope": "unicorn",
+    "value": "prefer-single-call",
+    "category": "pedantic",
+    "version": "1.70.0",
+    "type_aware": false,
+    "fix": "fixable_fix",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/unicorn/prefer-single-call.html"
   },
   {
     "scope": "unicorn",
@@ -7112,7 +7202,7 @@
   {
     "scope": "vitest",
     "value": "consistent-each-for",
-    "category": "correctness",
+    "category": "style",
     "version": "1.39.0",
     "type_aware": false,
     "fix": "none",
@@ -7883,7 +7973,7 @@
     "scope": "vue",
     "value": "next-tick-style",
     "category": "style",
-    "version": "next",
+    "version": "1.69.0",
     "type_aware": false,
     "fix": "fixable_fix",
     "default": false,
@@ -7898,6 +7988,16 @@
     "fix": "none",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-arrow-functions-in-watch.html"
+  },
+  {
+    "scope": "vue",
+    "value": "no-async-in-computed-properties",
+    "category": "correctness",
+    "version": "1.71.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-async-in-computed-properties.html"
   },
   {
     "scope": "vue",
@@ -7981,6 +8081,16 @@
   },
   {
     "scope": "vue",
+    "value": "no-dupe-keys",
+    "category": "correctness",
+    "version": "1.70.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": true,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-dupe-keys.html"
+  },
+  {
+    "scope": "vue",
     "value": "no-export-in-script-setup",
     "category": "correctness",
     "version": "1.20.0",
@@ -8053,7 +8163,7 @@
     "scope": "vue",
     "value": "no-reserved-keys",
     "category": "correctness",
-    "version": "next",
+    "version": "1.69.0",
     "type_aware": false,
     "fix": "none",
     "default": false,
@@ -8063,7 +8173,7 @@
     "scope": "vue",
     "value": "no-reserved-props",
     "category": "correctness",
-    "version": "next",
+    "version": "1.69.0",
     "type_aware": false,
     "fix": "none",
     "default": false,
@@ -8078,6 +8188,16 @@
     "fix": "pending",
     "default": false,
     "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-shared-component-data.html"
+  },
+  {
+    "scope": "vue",
+    "value": "no-side-effects-in-computed-properties",
+    "category": "correctness",
+    "version": "1.70.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/no-side-effects-in-computed-properties.html"
   },
   {
     "scope": "vue",
@@ -8113,7 +8233,7 @@
     "scope": "vue",
     "value": "prop-name-casing",
     "category": "style",
-    "version": "next",
+    "version": "1.69.0",
     "type_aware": false,
     "fix": "none",
     "default": false,
@@ -8131,9 +8251,19 @@
   },
   {
     "scope": "vue",
+    "value": "require-default-prop",
+    "category": "style",
+    "version": "1.70.0",
+    "type_aware": false,
+    "fix": "none",
+    "default": false,
+    "docs_url": "https://oxc.rs/docs/guide/usage/linter/rules/vue/require-default-prop.html"
+  },
+  {
+    "scope": "vue",
     "value": "require-direct-export",
     "category": "style",
-    "version": "next",
+    "version": "1.69.0",
     "type_aware": false,
     "fix": "none",
     "default": false,
@@ -8153,7 +8283,7 @@
     "scope": "vue",
     "value": "require-prop-types",
     "category": "style",
-    "version": "next",
+    "version": "1.69.0",
     "type_aware": false,
     "fix": "none",
     "default": false,

@@ -19,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-禁止使用桶文件，其中包含 `export *` 语句，
+禁止使用桶文件，其中文件包含 `export *` 语句，
 并且模块总数超过阈值。
 
 默认阈值为 100。
@@ -58,9 +58,9 @@ export { foo } from "foo";
 
 ### threshold
 
-type: `integer`
+类型：`integer`
 
-default: `100`
+默认值：`100`
 
 通过 `export *` 可以重新导出的最大模块数量，
 超过该数量后将触发此规则。

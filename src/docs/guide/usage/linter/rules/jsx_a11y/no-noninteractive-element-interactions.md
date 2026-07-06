@@ -48,25 +48,25 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 <div onClick={() => {}} role="presentation" />
 ```
 
-## 配置
+## Configuration
 
-此规则接受一个包含以下属性的配置对象：
+This rule accepts a configuration object containing the following properties:
 
 ### handlers
 
 type: `string[]`
 
-default: `null`
+default: `["onError", "onLoad", "onKeyPress", "onKeyDown", "onKeyUp", "onFocus", "onBlur", "onClick", "onContextMenu", "onDblClick", "onDoubleClick", "onDrag", "onDragEnd", "onDragEnter", "onDragExit", "onDragLeave", "onDragOver", "onDragStart", "onDrop", "onMouseDown", "onMouseEnter", "onMouseLeave", "onMouseMove", "onMouseOut", "onMouseOver", "onMouseUp"]`
 
-应触发此规则的事件处理器名称数组。
+An array of event handler names to which this rule should apply.
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 
-## 版本
+## Version
 
-此规则于 v1.65.0 中添加。
+This rule was added in v1.65.0.
 
 ## 参考资料
 

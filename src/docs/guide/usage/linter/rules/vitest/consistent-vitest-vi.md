@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-当使用了意外的 vitest 访问器时，此规则会触发错误。
+当使用了意外的 Vitest 访问器时，此规则会触发错误。
 
 ### 为什么这不好？
 

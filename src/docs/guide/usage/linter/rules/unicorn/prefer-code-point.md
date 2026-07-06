@@ -20,8 +20,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它是做什么的
 
-更倾向于使用 `String.prototype.codePointAt` 而不是 `String.prototype.charCodeAt`。
-更倾向于使用 `String.fromCodePoint` 而不是 `String.fromCharCode`。
+优先使用 `String#codePointAt` 而不是 `String#charCodeAt`。
+优先使用 `String.fromCodePoint` 而不是 `String.fromCharCode`。
 
 ### 为什么这不好？
 

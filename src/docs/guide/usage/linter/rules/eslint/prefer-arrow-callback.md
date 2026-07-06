@@ -30,25 +30,6 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 - 更简短，也更易于阅读；
 - 不能用作构造函数，这一点对回调来说是理想的。
 
-### 选项
-
-```json
-{
-  "prefer-arrow-callback": [
-    "error",
-    {
-      "allowNamedFunctions": false,
-      "allowUnboundThis": true
-    }
-  ]
-}
-```
-
-- `allowNamedFunctions`（默认 `false`）— 当为 `true` 时，允许命名函数
-  表达式。
-- `allowUnboundThis`（默认 `true`）— 当为 `false` 时，引用 `this` 的函数
-  表达式即使未绑定到 `this` 值，也会被报告。
-
 ### 示例
 
 以下是此规则的**错误**代码示例：
@@ -87,11 +68,15 @@ type: `boolean`
 
 default: `false`
 
+如果将此选项设置为 `true`，则允许命名函数表达式。
+
 ### allowUnboundThis
 
 type: `boolean`
 
 default: `true`
+
+如果将此选项设置为 `false`，即使函数表达式未绑定到 `this` 值，引用了 `this` 的函数表达式也会被报告。
 
 ## 如何使用
 

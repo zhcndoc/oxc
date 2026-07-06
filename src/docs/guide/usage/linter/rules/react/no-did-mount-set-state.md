@@ -67,15 +67,9 @@ var Hello = createReactClass({
 
 此规则接受以下字符串值之一：
 
-### `"allowed"`
+类型：`"allowed" | "disallow-in-func"`
 
-允许在 `componentDidMount` 内部的嵌套函数中调用 `setState`，这是默认行为。
-
-### `"disallow-in-func"`
-
-设置后，也会禁止在 `componentDidMount` 内部的嵌套函数中调用 `setState`。
-
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

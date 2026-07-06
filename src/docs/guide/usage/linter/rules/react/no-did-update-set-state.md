@@ -75,52 +75,15 @@ var Hello = createReactClass({
 
 此规则接受以下字符串值之一：
 
-### `"allowed"`
+类型：`"allowed" | "disallow-in-func"`
 
-禁止在 `componentDidUpdate` 中、函数外部调用任何 `this.setState`。
-
-### `"disallow-in-func"`
-
-`disallow-in-func` 模式会使该规则更加严格，甚至禁止在函数内部调用
-`this.setState`。
-
-使用 `"disallow-in-func"` 选项时，此规则的**错误**代码示例如下：
-
-```jsx
-var Hello = createReactClass({
-  componentDidUpdate: function () {
-    this.setState({
-      name: this.props.name.toUpperCase(),
-    });
-  },
-  render: function () {
-    return <div>Hello {this.state.name}</div>;
-  },
-});
-```
-
-```jsx
-var Hello = createReactClass({
-  componentDidUpdate: function () {
-    this.onUpdate(function callback(newName) {
-      this.setState({
-        name: newName,
-      });
-    });
-  },
-  render: function () {
-    return <div>Hello {this.state.name}</div>;
-  },
-});
-```
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 
-## 版本
+## Version
 
-此规则添加于 v1.62.0。
+This rule was added in v1.62.0.
 
 ## 参考
 

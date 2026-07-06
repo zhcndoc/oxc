@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制 `defineOptions` 编译器宏的使用有效。
+强制正确使用 `defineOptions` 编译器宏。
 
 ### 为什么这很糟糕？
 
@@ -47,7 +47,7 @@ defineOptions({ name: "foo", inheritAttrs: false });
 </script>
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

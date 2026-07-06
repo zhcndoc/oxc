@@ -133,17 +133,15 @@ module.exports = function foo(name) {};
 
 ## 配置
 
-此规则接受一个可选字符串 `"always"` 或 `"never"`（省略时默认为 `"always"`），以及一个包含 `considerPropertyDescriptor` 和 `includeCommonJSModuleExports` 两个属性的可选选项对象。
-
-### 第 1 个选项
+### [0]
 
 type: `"always" | "never"`
 
-### 第 2 个选项
+### [1]
 
-此选项是一个包含以下属性的对象：
+type: `object`
 
-#### considerPropertyDescriptor
+#### [1].considerPropertyDescriptor
 
 type: `boolean`
 
@@ -151,7 +149,7 @@ default: `false`
 
 如果将 `considerPropertyDescriptor` 设为 `true`，检查时会考虑 `Object.create`、`Object.defineProperty`、`Object.defineProperties` 和 `Reflect.defineProperty` 的使用。
 
-#### includeCommonJSModuleExports
+#### [1].includeCommonJSModuleExports
 
 type: `boolean`
 
@@ -159,7 +157,7 @@ default: `false`
 
 如果将 `includeCommonJSModuleExports` 设为 `true`，则此规则会检查 `module.exports` 和 `module["exports"]`。
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

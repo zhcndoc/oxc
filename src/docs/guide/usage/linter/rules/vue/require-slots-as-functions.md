@@ -1,7 +1,7 @@
 ---
 title: "vue/require-slots-as-functions | Oxlint"
 rule: "vue/require-slots-as-functions"
-category: "Correctness"
+category: "正确性"
 version: "1.67.0"
 default: false
 type_aware: false
@@ -56,7 +56,7 @@ export default {
 </script>
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

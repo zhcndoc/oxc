@@ -1,7 +1,7 @@
 ---
 title: "eslint/arrow-body-style | Oxlint"
 rule: "eslint/arrow-body-style"
-category: "Style"
+category: "样式"
 version: "1.4.0"
 default: false
 type_aware: false
@@ -30,36 +30,6 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 不一致地使用块体与简洁体会使代码更难阅读。
 简洁体仅限于单个表达式，其值会被隐式返回。
-
-### 选项
-
-第一个选项：
-
-- 类型：`string`
-- 枚举：`"always"`, `"as-needed"`, `"never"`
-- 默认：`"as-needed"`
-
-可能的值：
-
-- `never` 强制函数体周围不使用花括号（限制箭头函数仅用于返回表达式）
-- `always` 强制函数体周围使用花括号
-- `as-needed` 强制在可以省略花括号的地方不使用（默认）
-
-第二个选项：
-
-- 类型：`object`
-- 属性：
-  - `requireReturnForObjectLiteral`: `boolean`（默认：`false`）- 要求对象字面量使用花括号和显式返回。
-
-注意：此选项仅在第一个选项为 `"as-needed"` 时适用。
-
-示例配置：
-
-```json
-{
-  "arrow-body-style": ["error", "as-needed", { "requireReturnForObjectLiteral": true }]
-}
-```
 
 ### 示例
 
@@ -169,6 +139,18 @@ const bar = () => {
 
 类型：`"as-needed" | "always" | "never"`
 
+#### `"as-needed"`
+
+强制在可以省略大括号的地方不使用大括号（默认）。
+
+#### `"always"`
+
+强制在函数体周围使用大括号。
+
+#### `"never"`
+
+强制不在函数体周围使用大括号（将箭头函数限制为返回一个表达式的角色）。
+
 ### 第二个选项
 
 此选项是一个对象，包含以下属性：
@@ -178,6 +160,8 @@ const bar = () => {
 类型：`boolean`
 
 默认：`false`
+
+要求对象字面量使用大括号并显式 `return`。此选项仅在第一个选项为 `"as-needed"` 时适用。
 
 ## 如何使用
 

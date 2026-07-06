@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-该规则禁止对 `Function` 对象使用 `new` 运算符。
+禁止将 `new` 运算符与 `Function` 对象一起使用。
 
 ### 为什么这不好？
 

@@ -67,15 +67,23 @@ default: `false`
 
 是否允许使用带两个参数的 `then()` 作为终止方法。
 
+### allowThenStrict
+
+type: `boolean`
+
+default: `false`
+
+是否允许将 `then(null, handler)` 作为终止方法。
+
 ### terminationMethod
 
-type: `string[]`
+type: `array | string`
 
-default: `["catch"]`
+#### terminationMethod[n]
 
-允许的终止方法列表（例如：`catch`、`done`）。
+type: `string`
 
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

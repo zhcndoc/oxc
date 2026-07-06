@@ -59,11 +59,9 @@ function MyComponent(props) {
 
 type: `string`
 
-default: `null`
+可选地提供一个要检查的附加 hook 正则表达式。
 
-可选地提供一个用于检查的额外 hooks 的正则表达式。
-
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

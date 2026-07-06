@@ -20,13 +20,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 说明
 
-强制显式从 'vitest' 导入，而不是使用 vitest 全局变量。
+强制从 'vitest' 显式导入，而不是使用 Vitest 全局变量。
 
 ### 为什么这不好？
 
-不导入而直接使用 vitest 全局变量会依赖隐式的全局配置
-（vitest 配置中的 `globals: true`）。显式导入可以让依赖关系更清晰，
-提升 IDE 支持，并确保在不同设置下都能兼容。
+在不导入的情况下使用 Vitest 全局变量，会依赖隐式的全局配置
+（vitest 配置中的 `globals: true`）。显式导入能让依赖关系更清晰，
+提升 IDE 支持，并确保在不同设置下的兼容性。
 
 ### 示例
 
@@ -52,7 +52,7 @@ describe("suite", () => {
 });
 ```
 
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

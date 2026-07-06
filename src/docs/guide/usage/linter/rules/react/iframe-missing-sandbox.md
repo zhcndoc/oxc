@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制为 iframe 元素设置 sandbox 属性。
+强制 `iframe` 元素使用 `sandbox` 属性。
 
 ### 为什么这很糟糕？
 
@@ -46,7 +46,7 @@ sandbox 属性为 iframe 中的内容启用一组额外的限制。使用 sandbo
 <iframe sandbox="allow-origin" />;
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

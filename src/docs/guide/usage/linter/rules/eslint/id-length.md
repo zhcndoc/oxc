@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-此规则通过计算给定标识符的字素（graphemes）数量来强制实施最小和/或最大标识符长度约定。
+通过统计给定标识符的字形数量，强制执行最小和/或最大标识符长度规范。
 
 ### 为什么不好？
 
@@ -178,7 +178,7 @@ default: `"always"`
 
 是否检查属性名长度。
 
-## How to use
+## 如何使用
 
 <RuleHowToUse />
 

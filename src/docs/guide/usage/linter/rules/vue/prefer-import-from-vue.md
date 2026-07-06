@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制使用 `import from 'vue'`，而不是 `import from '@vue/*'`。
+强制从 `vue` 而不是 `@vue/*` 导入。
 
 ### 为什么这不好？
 
@@ -47,7 +47,7 @@ import { ref } from "@vue/reactivity";
 import { createApp, ref, Component } from "vue";
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

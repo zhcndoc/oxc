@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则强制 `import`/`export` 语句以及 `import()` 表达式中的属性列表不能为空。
+此规则强制 `import`/`export` 语句和 `import()` 表达式中的属性列表不能为空。
 
 ### 为什么这不好？
 

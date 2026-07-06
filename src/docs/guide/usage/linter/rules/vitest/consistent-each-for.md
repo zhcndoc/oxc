@@ -1,7 +1,7 @@
 ---
 title: "vitest/consistent-each-for | Oxlint"
 rule: "vitest/consistent-each-for"
-category: "Correctness"
+category: "Style"
 version: "1.39.0"
 default: false
 type_aware: false
@@ -64,25 +64,25 @@ describe.for([[1], [2]])("suite %s", ([n]) => {
 
 ### describe
 
-type: `"for" | "each"`
+类型：`"for" | "each"`
 
 用于为 `describe` 块创建参数化测试的首选方法。
 
 ### it
 
-type: `"for" | "each"`
+类型：`"for" | "each"`
 
 用于为 `it` 块创建参数化测试的首选方法。
 
 ### suite
 
-type: `"for" | "each"`
+类型：`"for" | "each"`
 
 用于为 `suite` 块创建参数化测试的首选方法。
 
 ### test
 
-type: `"for" | "each"`
+类型：`"for" | "each"`
 
 用于为 `test` 块创建参数化测试的首选方法。
 

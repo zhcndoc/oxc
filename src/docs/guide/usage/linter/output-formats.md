@@ -29,6 +29,16 @@ Found 0 warnings and 1 error.
 Finished in 6ms on 1 file with 2 rules using 1 threads.
 ```
 
+### `--format=agent`
+
+输出一种简洁的格式，供 AI 代理及类似工具使用。
+
+```
+test.js:5:1: error eslint(no-debugger): `debugger` 语句不允许 help: 移除 debugger 语句
+test.js:1:10: warning eslint(no-unused-vars): 函数 'foo' 已声明但从未使用。 help: 考虑移除此声明。
+test.js:1:17: warning eslint(no-unused-vars): 参数 'b' 已声明但从未使用。未使用的参数应以 '_' 开头。 help: 考虑移除此参数。
+```
+
 ### `--format=checkstyle`
 
 输出 Checkstyle XML 格式，可被某些 CI 工具解析。
@@ -49,6 +59,8 @@ Finished in 6ms on 1 file with 2 rules using 1 threads.
 ```
 ::error file=test.js,line=5,endLine=5,col=1,endColumn=10,title=eslint(no-debugger)::`debugger` 语句不允许
 ```
+
+如果 Oxlint 检测到其运行在 GitHub Actions 环境中，将默认启用此格式；你可以在 CI 配置中通过提供不同的 `--format` 选项来覆盖此行为。
 
 ### `--format=gitlab`
 
@@ -116,10 +128,79 @@ Finished in 6ms on 1 file with 2 rules using 1 threads.
 <testsuites name="Oxlint" tests="1" failures="0" errors="1">
   <testsuite name="test.js" tests="1" disabled="0" errors="1" failures="0">
     <testcase name="eslint(no-debugger)">
-      <error message="`debugger` 语句不允许">line 5, column 1, `debugger` 语句不允许</error>
+      <error message="`debugger` 语句不允许">第 5 行，第 1 列，`debugger` 语句不允许</error>
     </testcase>
   </testsuite>
 </testsuites>
+```
+
+### `--format=sarif`
+
+输出 [SARIF](https://sarifweb.azurewebsites.net/) v2.1.0 格式，这是一种标准化格式，可被各种代码扫描工具接收，包括 [GitHub Code Scanning](https://docs.github.com/en/code-security/concepts/code-scanning/sarif-files)、[GitLab](https://docs.gitlab.com/user/application_security/detect/sarif/) 和 [SonarQube](https://docs.sonarsource.com/sonarqube-server/analyzing-source-code/importing-external-issues/importing-issues-from-sarif-reports)。
+
+```json
+{
+  "version": "2.1.0",
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/errata01/os/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "oxlint",
+          "version": "1.66.0",
+          "semanticVersion": "1.66.0",
+          "informationUri": "https://oxc.rs/docs/guide/usage/linter.html",
+          "rules": [
+            {
+              "id": "eslint(no-debugger)",
+              "name": "no-debugger",
+              "helpUri": "https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-debugger.html",
+              "properties": {
+                "category": "correctness",
+                "plugin": "eslint",
+                "fix": "fixable_suggestion"
+              }
+            }
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "location": {
+            "uri": "test.js"
+          }
+        }
+      ],
+      "results": [
+        {
+          "ruleId": "eslint(no-debugger)",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "`debugger` 语句不允许"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test.js",
+                  "index": 0
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 1,
+                  "endLine": 5,
+                  "endColumn": 10
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "unicodeCodePoints"
+    }
+  ]
+}
 ```
 
 ### `--format=stylish`

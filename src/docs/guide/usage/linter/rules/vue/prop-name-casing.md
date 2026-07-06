@@ -2,7 +2,7 @@
 title: "vue/prop-name-casing | Oxlint"
 rule: "vue/prop-name-casing"
 category: "Style"
-version: "next"
+version: "1.69.0"
 default: false
 type_aware: false
 fix: "none"
@@ -68,13 +68,13 @@ type: `string[]`
 
 default: `[]`
 
-## 如何使用
+## 使用方法
 
 <RuleHowToUse />
 
 ## 版本
 
-此规则从 vnext 版本开始加入。
+此规则已在 v1.69.0 中添加。
 
 ## 参考
 

@@ -26,13 +26,19 @@ const fixableCount = rules.filter((r) => hasFix(r.fix)).length;
 - 默认启用的规则：{{ defaultCount }}
 - 提供修复的规则：{{ fixableCount }}
 
-::: details '可修复？' 列图例
+::: details 规则类别
 
-- 🛠️: 此规则提供自动修复
-- 💡: 此规则提供建议
-- ⚠️🛠️: 此规则提供危险的自动修复
-- ⚠️💡: 此规则提供危险的建议
-- 🚧: 可能提供自动修复或建议，但当前尚未实现
+类别按意图对规则进行分组，并且可以在配置中一起启用。详情请参见 [使用类别启用规则组](/docs/guide/usage/linter/config.html#enable-groups-of-rules-with-categories)。
+
+:::
+
+::: details “可修复？”列图例
+
+- 🛠️：此规则提供自动修复
+- 💡：此规则提供建议
+- ⚠️🛠️：此规则提供危险的自动修复
+- ⚠️💡：此规则提供危险的建议
+- 🚧：可能提供自动修复或建议，但当前尚未实现
 
 :::
 

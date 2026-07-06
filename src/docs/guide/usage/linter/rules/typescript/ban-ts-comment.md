@@ -73,21 +73,37 @@ default: `3`
 
 ### ts-check
 
-如何处理 `@ts-check` 指令。
+type: `object | boolean | "allow-with-description"`
+
+#### ts-check.descriptionFormat
+
+type: `string`
 
 ### ts-expect-error
 
-如何处理 `@ts-expect-error` 指令。
+type: `object | boolean | "allow-with-description"`
+
+#### ts-expect-error.descriptionFormat
+
+type: `string`
 
 ### ts-ignore
 
-如何处理 `@ts-ignore` 指令。
+type: `object | boolean | "allow-with-description"`
+
+#### ts-ignore.descriptionFormat
+
+type: `string`
 
 ### ts-nocheck
 
-如何处理 `@ts-nocheck` 指令。
+type: `object | boolean | "allow-with-description"`
 
-## 如何使用
+#### ts-nocheck.descriptionFormat
+
+type: `string`
+
+## How to Use
 
 <RuleHowToUse />
 

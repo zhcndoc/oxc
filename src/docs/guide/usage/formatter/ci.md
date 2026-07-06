@@ -39,7 +39,7 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v4
 
@@ -76,7 +76,7 @@ jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v4
 
@@ -127,7 +127,7 @@ oxfmt:
 
 ## 预提交钩子
 
-要自动格式化暂存的文件，使用 `oxfmt --no-error-on-unmatched-pattern`。这会格式化所有支持的文件，并在没有文件匹配时避免错误（例如，只暂存了 Ruby 文件）。
+要自动格式化暂存的文件，使用 `oxfmt --no-error-on-unmatched-pattern`。这会格式化所有受支持的文件，并在没有文件匹配时避免报错（例如，只暂存了 Ruby 文件）。
 
 使用 `--check` 来验证格式而不写入文件。
 
@@ -141,4 +141,4 @@ oxfmt:
 }
 ```
 
-要在安装依赖时自动安装 git hook，考虑也使用 [husky](https://typicode.github.io/husky/get-started.html)。
+要在安装依赖时自动安装 git hook，也可以考虑使用 [husky](https://typicode.github.io/husky/get-started.html)。

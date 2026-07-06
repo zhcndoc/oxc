@@ -19,7 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-检查数字相关函数的基数或精度参数是否超出限制。
+检查 number 相关函数的 radix 或 precision 参数是否超过限制。
 
 ### 为什么这不好？
 

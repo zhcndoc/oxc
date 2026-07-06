@@ -5,7 +5,7 @@ category: "Pedantic"
 version: "0.9.3"
 default: false
 type_aware: false
-fix: "pending"
+fix: "conditional_fix"
 upstream: "https://eslint.org/docs/latest/rules/sort-vars"
 ---
 
@@ -20,10 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-当在同一个代码块中声明多个变量时，对变量名进行排序会让
-以后更容易找到所需的变量。
+强制对同一块作用域内的变量声明进行排序。
 
 ### 为什么这不好？
+
+在同一块作用域内声明多个变量时，对变量名进行排序可以让以后更容易找到所需的变量。
 
 未排序的变量声明会让代码更难阅读和维护。
 
@@ -43,9 +44,9 @@ var a, b, c, d;
 var B, a, c;
 ```
 
-## 配置
+## Configuration
 
-此规则接受一个包含以下属性的配置对象：
+This rule accepts a configuration object containing the following properties:
 
 ### ignoreCase
 
@@ -53,7 +54,7 @@ type: `boolean`
 
 default: `false`
 
-当为 `true` 时，该规则在对变量排序时会忽略大小写。
+When `true`, this rule will ignore case when sorting variables.
 
 ## 如何使用
 

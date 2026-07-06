@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-要求 `@returns` 标签具有类型值（用花括号包裹）。
+要求 `@returns` 标签具有类型值（用花括号括起来）。
 
 ### 为什么这不好？
 

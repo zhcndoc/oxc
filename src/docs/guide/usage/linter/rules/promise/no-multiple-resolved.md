@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则会警告在作为 Promise 构造函数执行器的函数中，存在多次 resolve 的路径。
+此规则会警告 Promise 构造函数的执行器函数中存在多次 resolve 的路径。
 
 ### 为什么这很糟糕？
 
@@ -61,7 +61,7 @@ new Promise((resolve, reject) => {
 });
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

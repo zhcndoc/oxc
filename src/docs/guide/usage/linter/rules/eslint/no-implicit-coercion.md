@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止使用 `!!`、`+`、`""+ ` 等运算符进行简写类型转换。
+禁止使用 `!!`、一元 `+` 和 `"" +` 等运算符进行简写类型转换。
 
 ### 为什么这不好？
 

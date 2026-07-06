@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制所有 `button` HTML 元素显式指定 `type` 属性。
+对所有 HTML `button` 元素强制显式指定 `type` 属性。
 
 ### 为什么这不好？
 
@@ -50,29 +50,29 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### button
 
-type: `boolean`
+类型: `boolean`
 
-default: `true`
+默认值: `true`
 
 如果为 true，则允许 `type="button"`。
 
 ### reset
 
-type: `boolean`
+类型: `boolean`
 
-default: `true`
+默认值: `true`
 
 如果为 true，则允许 `type="reset"`。
 
 ### submit
 
-type: `boolean`
+类型: `boolean`
 
-default: `true`
+默认值: `true`
 
 如果为 true，则允许 `type="submit"`。
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

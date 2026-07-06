@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 说明
 
-禁止在 `data` 中声明对象（在 Vue.js 3.0.0+ 中）。
+禁止为 `data` 使用对象声明（在 Vue.js 3.0.0+ 中）。
 
 ### 为什么这不好？
 

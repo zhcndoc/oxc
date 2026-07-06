@@ -48,21 +48,35 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ## 配置
 
-此规则接受一个包含以下属性的配置对象：
+### [0]
 
-### components
+类型：`array`
 
-type: `Record<string, array>`
+#### [0][n]
 
-default: `{}`
+类型：`object`
 
-要额外检查的组件。
+##### [0][n].name
 
-### includeFromSettings
+类型：`string`
 
-type: `boolean`
+组件名称。
 
-default: `false`
+##### [0][n].props
+
+类型：`string[]`
+
+应进行验证的属性列表。
+
+### [1]
+
+类型：`object`
+
+#### [1].includeFromSettings
+
+类型：`boolean`
+
+默认值：`false`
 
 是否包含来自设置中的组件。
 

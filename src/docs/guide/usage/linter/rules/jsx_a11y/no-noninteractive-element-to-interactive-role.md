@@ -41,42 +41,25 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 此规则的**错误**代码示例：
 
 ```jsx
-<h1 role="button">Click me</h1>
-<li role="link">Navigate</li>
-<article role="button">Submit</article>
+<h1 role="button">点击我</h1>
+<li role="link">导航</li>
+<article role="button">提交</article>
 ```
 
 此规则的**正确**代码示例：
 
 ```jsx
-<button>Click me</button>
-<a href="/page">Navigate</a>
-<div role="button">Submit</div>
-<ul role="menu"><li role="menuitem">Item</li></ul>
+<button>点击我</button>
+<a href="/page">导航</a>
+<div role="button">提交</div>
+<ul role="menu"><li role="menuitem">项目</li></ul>
 ```
 
-## 配置
+## Configuration
 
-此规则接受一个包含以下属性的配置对象：
-
-### allowed_roles
+This rule accepts a configuration object containing the following properties:
 
 type: `Record<string, array>`
-
-HTML 元素名称到 ARIA 角色字符串数组的映射，这些角色字符串数组是
-允许用于该元素的覆盖值。例如，`{ "ul": ["menu", "tablist"] }`
-允许 `<ul role="menu" />` 而不会触发该规则。
-
-默认值为：
-
-```json
-{
-  "ul": ["menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
-  "ol": ["menu", "menubar", "radiogroup", "tablist", "tree", "treegrid"],
-  "li": ["menuitem", "menuitemcheckbox", "menuitemradio", "row", "tab", "treeitem"],
-  "fieldset": ["radiogroup", "presentation"]
-}
-```
 
 ## 如何使用
 

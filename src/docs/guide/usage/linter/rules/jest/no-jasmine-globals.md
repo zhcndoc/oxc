@@ -20,8 +20,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则会报告任何对 Jasmine 全局变量的使用，这些用法并未迁移到
-Jest，并会建议使用 Jest 自身 API 的替代方案。
+此规则会报告对任何 Jasmine 全局变量的使用，这些变量并未移植到
+Jest，并会建议使用 Jest 自身 API 中的替代方案。
 
 ### 为什么这不好？
 
@@ -57,7 +57,7 @@ test("my test", () => {
 });
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

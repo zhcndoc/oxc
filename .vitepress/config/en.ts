@@ -219,6 +219,10 @@ export const enConfig = defineLocaleConfig("root", {
               link: "/docs/guide/usage/transformer/jsx",
             },
             {
+              text: "React 编译器",
+              link: "/docs/guide/usage/transformer/react-compiler",
+            },
+            {
               text: "插件",
               link: "/docs/guide/usage/transformer/plugins",
             },

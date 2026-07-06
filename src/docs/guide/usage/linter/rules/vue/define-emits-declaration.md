@@ -1,7 +1,7 @@
 ---
 title: "vue/define-emits-declaration | Oxlint"
 rule: "vue/define-emits-declaration"
-category: "Style"
+category: "样式"
 version: "1.15.0"
 default: false
 type_aware: false
@@ -20,8 +20,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-此规则强制规范 `defineEmits` 的类型声明风格，你应当使用 `type-based`、严格的 `type-literal`（引入于 Vue 3.3），或 `runtime` 声明。
-此规则仅在 setup script 和 `lang="ts"` 中生效。
+强制 Vue 中 `defineEmits` 的声明风格保持一致。
+此规则仅适用于 `lang="ts"` 的 `<script setup>`。
 
 ### 为什么这不好？
 
@@ -110,7 +110,7 @@ const emit2 = defineEmits({
 
 强制使用运行时声明，即通过数组或对象声明 emits，例如 `defineEmits(['event1', 'event2'])`。
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则允许你指定不想在应用中使用的全局变量名。
+指定在应用程序中不应使用的全局变量名称。
 
 ### 为什么这不好？
 
@@ -48,7 +48,24 @@ function onClick() {
 
 此规则接受一个具有以下属性的配置对象：
 
-### restrictedGlobals
+### checkGlobalObject
+
+type: `boolean`
+
+default: `false`
+
+一个布尔选项，用于启用对通过全局对象访问受限全局变量的检测。默认值为 `false`。
+
+### globalObjects
+
+type: `string[]`
+
+default: `["globalThis", "self", "window"]`
+
+一个数组选项，用于在启用 `checkGlobalObject` 时指定要检查的额外全局对象名称。
+默认情况下，该规则会检查这些全局对象：`globalThis`、`self` 和 `window`。
+
+### globals
 
 type: `Record<string, string>`
 
@@ -58,7 +75,7 @@ default: `{}`
 `{ "name": "event", "message": "请改用局部参数。" }` 的对象，用于定义哪些全局变量
 被限制使用。
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制 `import` 和 `export` 语句中的说明符列表不能为空。
+强制在 `import` 和 `export` 语句中使用非空的说明符列表。
 
 ### 为什么这不好？
 

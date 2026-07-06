@@ -20,8 +20,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则强制 `defineProps` 的类型声明风格，你应该使用 `type-based` 或 `runtime` 声明。
-此规则仅在带有 `lang="ts"` 的 `<script setup>` 中生效。
+强制 `defineProps` 在 Vue 中使用一致的声明风格。
+此规则仅适用于 `lang="ts"` 的 `<script setup>`。
 
 ### 这为什么不好？
 

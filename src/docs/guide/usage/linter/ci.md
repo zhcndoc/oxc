@@ -41,10 +41,13 @@ jobs:
   oxlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-
+      # 注意：出于安全考虑，强烈建议将所有
+      # actions 固定到特定的 SHA 哈希，而不是使用像这样
+      # 的版本标签。
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v6
         with:
           node-version: lts/*
@@ -55,15 +58,7 @@ jobs:
       - run: pnpm run lint
 ```
 
-或者，你可以使用 github 格式选项输出，以获得 [更好的警告/错误注释](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-an-error-message)：
-
-```json [package.json]
-{
-  "scripts": {
-    "lint:github": "oxlint --format=github"
-  }
-}
-```
+默认情况下，当 Oxlint 检测到自己运行在 GitHub Actions 环境中时，它会启用[更好的警告/错误注释](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#setting-an-error-message)。你可以通过提供带有不同格式化器选项的 `--format` 标志来覆盖此行为。
 
 ### GitLab CI
 
@@ -101,7 +96,7 @@ oxlint:
 
 如果你想使用类型感知规则，请确保启用了它们，并考虑缓存 `node_modules` 以加快依赖项的安装速度。
 
-## Git hooks
+## Git 钩子
 
 ### lint-staged
 
@@ -138,6 +133,6 @@ repos:
 
 Unplugin 通过 [第三方包](https://npmx.dev/package/unplugin-oxlint) 支持
 
-### Vite plugin
+### Vite 插件
 
-Vite plugin 通过 [第三方包](https://npmx.dev/package/vite-plugin-oxlint) 支持
+Vite 插件通过 [第三方包](https://npmx.dev/package/vite-plugin-oxlint) 支持

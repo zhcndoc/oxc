@@ -1,7 +1,7 @@
 ---
 title: "jsx-a11y/no-redundant-roles | Oxlint"
 rule: "jsx-a11y/no-redundant-roles"
-category: "Correctness"
+category: "正确性"
 version: "0.2.1"
 default: false
 type_aware: false
@@ -30,25 +30,37 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 此规则适用于以下元素及其隐式角色：
 
-- `<nav>`: `navigation`
 - `<button>`: `button`
-- `<main>`: `main`
 
 以下是此规则的**错误**代码示例：
 
 ```jsx
-<nav role="navigation"></nav>
 <button role="button"></button>
-<main role="main"></main>
 ```
 
 以下是此规则的**正确**代码示例：
 
 ```jsx
-<nav></nav>
 <button></button>
-<main></main>
 ```
+
+### 选项
+
+此规则接受一个对象，其键为元素名称，值为允许在该元素上出现的多余角色数组。提供某个条目会覆盖该元素的默认例外情况。
+
+默认情况下，`<nav>` 上允许使用 `role="navigation"`。还可以允许其他角色，例如，为了保留一些浏览器在应用 `list-style: none` 时会移除的显式列表语义：
+
+```json
+{
+  "jsx-a11y/no-redundant-roles": ["error", { "ul": ["list"], "ol": ["list"], "li": ["listitem"] }]
+}
+```
+
+## 配置
+
+此规则接受一个包含以下属性的配置对象：
+
+type: `Record<string, array>`
 
 ## 如何使用
 

@@ -20,8 +20,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-要求 [hoisted](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting) 的 Vitest API
-（`vi.mock`、`vi.unmock` 和 `vi.hoisted`）出现在文件的顶层。
+要求将 [hoisted](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting) 的 Vitest API
+（`vi.mock`、`vi.unmock` 和 `vi.hoisted`）放在文件顶层。
 
 ### 为什么这不好？
 

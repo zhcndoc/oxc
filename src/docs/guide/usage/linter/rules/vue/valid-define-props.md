@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则检查 `defineProps` 编译器宏是否有效。
+在 Vue 中强制正确使用 `defineProps` 编译器宏。
 
 此规则在以下情况下会报告 `defineProps` 编译器宏：
 
@@ -101,7 +101,7 @@ defineProps();
 </script>
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

@@ -42,6 +42,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 <Item callback={this.props.jsx} />
 ```
 
+## 配置
+
+此规则接受一个包含以下属性的配置对象：
+
+### nativeAllowList
+
+类型：`array | "all"`
+
+#### nativeAllowList[n]
+
+类型：`string`
+
 ## 如何使用
 
 <RuleHowToUse />

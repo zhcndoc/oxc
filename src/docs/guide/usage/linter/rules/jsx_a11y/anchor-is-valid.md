@@ -1,7 +1,7 @@
 ---
 title: "jsx-a11y/anchor-is-valid | Oxlint"
 rule: "jsx-a11y/anchor-is-valid"
-category: "Correctness"
+category: "正确性"
 version: "0.0.19"
 default: false
 type_aware: false
@@ -93,15 +93,33 @@ HTML `<a>` 元素在具有有效的 href 属性时，正式被定义为表示一
 
 此规则接受一个包含以下属性的配置对象：
 
-### validHrefs
+### aspects
+
+type: `array`
+
+要运行的子规则方面。
+
+#### aspects[n]
+
+type: `"noHref" | "invalidHref" | "preferButton"`
+
+### components
 
 type: `string[]`
 
 default: `[]`
 
-有效 href 值的字符串列表。
+要视为锚点元素的自定义组件。
 
-## 如何使用
+### specialLink
+
+type: `string[]`
+
+default: `[]`
+
+要视为链接目标的自定义属性名。
+
+## How to Use
 
 <RuleHowToUse />
 

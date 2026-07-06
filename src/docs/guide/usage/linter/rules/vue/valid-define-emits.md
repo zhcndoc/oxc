@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-此规则检查 `defineEmits` 编译器宏是否有效。
+强制在 Vue 中正确使用 `defineEmits` 编译器宏。
 
 在以下情况下，此规则会报告 `defineEmits` 编译器宏的问题：
 
@@ -101,7 +101,7 @@ defineEmits();
 </script>
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

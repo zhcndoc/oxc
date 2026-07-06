@@ -45,13 +45,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 </div>
 ```
 
-## 配置
+## Configuration
 
-此规则接受一个具有以下属性的配置对象：
+This rule accepts a configuration object with the following properties:
 
-type: `object`
+type: `Record<string, array>`
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

@@ -45,15 +45,13 @@ new A();
 
 ## 配置
 
-此规则接受一个包含以下属性的配置对象：
-
 ### allowNamedExports
 
 type: `boolean`
 
 default: `false`
 
-允许出现在声明之前的命名导出。
+允许在声明之前出现的命名导出。
 
 ### classes
 
@@ -103,7 +101,7 @@ default: `true`
 
 检查变量声明。
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

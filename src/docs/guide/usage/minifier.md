@@ -26,7 +26,7 @@
 ### Node.js
 
 - 使用 node 绑定 [oxc-minify][url-oxc-minify-npm]。
-- 在 [stackblitz](https://stackblitz.com/edit/oxc-minify) 上试用。
+- 在 [stackblitz](https://stackblitz.com/fork/github/oxc-project/website/tree/main/stackblitz-templates/oxc-minify) 上试用。
 
 ### Rust
 

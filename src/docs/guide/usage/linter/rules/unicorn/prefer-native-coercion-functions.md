@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-优先使用原生函数，而不是具有相同功能的自定义函数。
+优先使用内置函数，而不是具有相同功能的自定义函数。
 
 ### 为什么这不好？
 

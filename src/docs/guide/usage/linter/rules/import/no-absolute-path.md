@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则禁止使用绝对路径导入模块。
+禁止使用绝对路径导入模块。
 
 ### 为什么这不好？
 
@@ -113,7 +113,7 @@ default: `true`
 import foo from "/foo"; // reported
 ```
 
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

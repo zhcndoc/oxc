@@ -46,30 +46,17 @@ const a: Foo<string> = new Foo(); // 更倾向于类型注解
 
 ## 配置
 
-此规则接受一个包含以下属性的配置对象：
+此规则接受以下字符串值之一：
 
-### option
-
-type: `"constructor" | "type-annotation"`
-
-default: `"constructor"`
-
-指定应在何处指定泛型类型。
-
-可能的值：
-
-- `"constructor"`（默认）：禁止只出现在类型注解中的类型参数。
-- `"type-annotation"`：禁止只出现在构造函数中的类型参数。
-
-#### `"constructor"`
+### `"constructor"`
 
 禁止只出现在类型注解中的类型参数。
 
-#### `"type-annotation"`
+### `"type-annotation"`
 
 禁止只出现在构造函数中的类型参数。
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

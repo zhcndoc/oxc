@@ -20,13 +20,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-禁止 JSX 上下文提供者的值使用会导致不必要重新渲染的值。
+禁止使用会导致不必要重新渲染的 JSX context provider value。
 
 ### 为什么这不好？
 
-每当 value 属性变化时，React Context 及其所有子节点和消费者都会重新渲染。由于每个 JavaScript 对象都具有自己的标识，像对象表达式（`{foo: 'bar'}`）或函数表达式这类内容在每次渲染时都会获得新的标识。这会让上下文认为它获得了一个新对象，并可能导致不必要的重新渲染和意料之外的后果。
+React Context 及其所有子节点和 Consumers 会在 value prop 变化时重新渲染。由于每个 JavaScript 对象都具有自己的标识，像对象表达式（`{foo: 'bar'}`）或函数表达式之类的内容在每次渲染时都会获得新的标识。这会让 context 认为它收到了一个新对象，并可能导致不必要的重新渲染和意外后果。
 
-这可能会带来很大的性能损耗，因为它不仅会导致上下文提供者和消费者以及其子树中的所有元素重新渲染，React 在渲染提供者并查找消费者时所做的树扫描处理也会被浪费。
+这可能会带来很大的性能损耗，因为它不仅会导致 context providers 和 consumers 以及其子树中的所有元素重新渲染，React 在渲染 provider 并查找 consumers 时进行的树扫描处理也会被浪费。
 
 ### 示例
 

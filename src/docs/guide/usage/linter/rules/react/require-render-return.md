@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 说明
 
-在 `render` 函数返回值时强制使用 ES5 或 ES2015 类。
+要求 ES5 和 ES2015 React 组件中的 render 方法返回一个值。
 
 此规则与函数组件无关，因此对于现代 React 代码库可以考虑禁用。
 

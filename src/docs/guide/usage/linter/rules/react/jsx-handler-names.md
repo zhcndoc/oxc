@@ -46,7 +46,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 此规则接受一个包含以下属性的配置对象：
 
-### checkInlineFunctions
+### checkInlineFunction
 
 type: `boolean`
 
@@ -62,33 +62,21 @@ default: `false`
 
 是否检查 JSX 属性中的局部变量。
 
-### eventHandlerPrefixes
+### eventHandlerPrefix
 
-type: `string`
+type: `string | boolean`
 
 default: `"handle"`
 
 要检查的事件处理器前缀。
 
-### eventHandlerPropPrefixes
+### eventHandlerPropPrefix
 
-type: `string`
+type: `string | boolean`
 
 default: `"on"`
 
 要检查的事件处理器属性前缀。
-
-### eventHandlerPropRegex
-
-type: `string`
-
-事件处理器属性前缀的编译后正则表达式。
-
-### eventHandlerRegex
-
-type: `string`
-
-事件处理器前缀的编译后正则表达式。
 
 ### ignoreComponentNames
 

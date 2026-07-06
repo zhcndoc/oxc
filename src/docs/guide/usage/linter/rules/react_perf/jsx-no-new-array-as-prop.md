@@ -20,11 +20,14 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-防止将仅在当前函数中局部创建的数组用作 JSX props 的值。
+阻止将当前方法内局部创建的数组用作 JSX props 的值。
 
 ### 为什么这不好？
 
-将局部定义的数组用作 props 的值可能会导致非预期的重新渲染和性能问题。每次父组件渲染时，都会创建一个新的数组实例，从而导致子组件不必要的重新渲染。这也会使代码更难维护，因为组件的 props 传递不再保持一致。
+将局部定义的数组用作 props 的值可能会导致非预期的
+重新渲染和性能问题。每次父组件渲染时，都会创建一个新的 Array 实例，从而导致
+子组件的不必要重新渲染。这也会使代码更难维护，因为
+组件的 props 没有以一致的方式传递。
 
 ### 示例
 
@@ -43,6 +46,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```jsx
 <Item list={this.props.list} />
 ```
+
+## 配置
+
+此规则接受一个包含以下属性的配置对象：
+
+### nativeAllowList
+
+类型：`array | "all"`
+
+#### nativeAllowList[n]
+
+类型：`string`
 
 ## 如何使用
 

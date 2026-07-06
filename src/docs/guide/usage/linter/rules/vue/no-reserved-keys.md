@@ -1,8 +1,8 @@
 ---
 title: "vue/no-reserved-keys | Oxlint"
 rule: "vue/no-reserved-keys"
-category: "正确性"
-version: "next"
+category: "Correctness"
+version: "1.69.0"
 default: false
 type_aware: false
 fix: "none"
@@ -65,7 +65,7 @@ type: `string[]`
 
 default: `[]`
 
-在内置的 `props` / `computed` / `data` / `asyncData` / `methods` / `setup` 之外，额外要检查的组件选项分组。
+除内置的 `props` / `computed` / `data` / `asyncData` / `methods` / `setup` 之外，额外要检查的组件选项分组。
 
 ### reserved
 
@@ -81,7 +81,7 @@ default: `[]`
 
 ## 版本
 
-此规则于 vnext 中添加。
+此规则已在 v1.69.0 中添加。
 
 ## 参考
 

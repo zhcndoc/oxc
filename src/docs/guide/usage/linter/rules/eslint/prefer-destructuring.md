@@ -1,7 +1,7 @@
 ---
 title: "eslint/prefer-destructuring | Oxlint"
 rule: "eslint/prefer-destructuring"
-category: "Style"
+category: "样式"
 version: "1.10.0"
 default: false
 type_aware: false
@@ -55,55 +55,27 @@ const obj = object.bar;
 
 ## 配置
 
-此规则接受一个包含以下属性的配置对象：
+### 第 1 个选项
 
-### AssignmentExpression
+此选项是一个包含以下属性的对象：
 
-type: `object`
+#### array
 
-default: `{"array":true, "object":true}`
+类型：`boolean`
 
-用于在赋值表达式中进行解构的配置，数组和对象分别独立配置。
+#### object
 
-#### AssignmentExpression.array
+类型：`boolean`
 
-type: `boolean`
+### 第 2 个选项
 
-default: `true`
+此选项是一个包含以下属性的对象：
 
-#### AssignmentExpression.object
+#### enforceForRenamedProperties
 
-type: `boolean`
+类型：`boolean`
 
-default: `true`
-
-### VariableDeclarator
-
-type: `object`
-
-default: `{"array":true, "object":true}`
-
-用于在变量声明中进行解构的配置，数组和对象分别独立配置。
-
-#### VariableDeclarator.array
-
-type: `boolean`
-
-default: `true`
-
-#### VariableDeclarator.object
-
-type: `boolean`
-
-default: `true`
-
-### enforceForRenamedProperties
-
-type: `boolean`
-
-default: `false`
-
-决定对象解构规则是否适用于重命名变量。
+默认值：`false`
 
 ## 如何使用
 

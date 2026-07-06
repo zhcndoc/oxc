@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-在检查是否存在或不存在时，优先使用 `includes()` 而不是 `indexOf()`。
+在检查是否存在/不存在时，优先使用 `includes()` 而不是 `indexOf()`。
 所有内置对象除了 `.indexOf()` 之外，也都有 `.includes()`。
 
 ### 为什么这不好？

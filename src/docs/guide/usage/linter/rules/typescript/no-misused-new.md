@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制 `new` 和 `constructor` 的定义有效。该规则可防止类定义名为 `new` 的方法，防止接口定义名为 `constructor` 的方法，并防止接口定义返回该接口自身的构造签名。
+强制 `new` 和 `constructor` 的有效定义。此规则可防止类定义名为 `new` 的方法、防止接口定义名为 `constructor` 的方法，以及防止接口定义返回该接口自身的构造签名。
 
 ### 为什么这不好？
 

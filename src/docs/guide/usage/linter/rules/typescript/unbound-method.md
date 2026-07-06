@@ -21,7 +21,7 @@ const tsgolintSource = `https://github.com/oxc-project/tsgolint/blob/main/intern
 
 ### 它的作用
 
-此规则强制未绑定的方法以其预期的作用域调用。
+This rule enforces that unbound methods are called with their expected scope.
 
 ### 为什么这很糟糕？
 

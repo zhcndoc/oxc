@@ -19,8 +19,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 功能说明
 
-检查 clamp 函数 `Math.min(Math.max(x, y), z)` 是否总是会计算出
-一个常量结果，因为参数顺序错误。
+检查 clamp 函数 `Math.min(Math.max(x, y), z)` 是否会因为参数顺序错误而始终求得一个常量结果。
 
 ### 为什么这不好？
 

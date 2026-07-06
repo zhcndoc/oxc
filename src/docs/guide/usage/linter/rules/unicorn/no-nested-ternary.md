@@ -20,8 +20,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-此规则不允许深度嵌套的三元表达式。
-仅嵌套一层且用括号包裹的三元表达式是允许的。
+禁止深度嵌套的三元表达式。
+
+仅嵌套一层且用括号包裹的三元表达式允许通过此规则。
 
 ### 为什么这不好？
 
@@ -43,7 +44,7 @@ const foo = i > 5 ? (i < 100 ? true : false) : true;
 const foo = i > 5 ? (i < 100 ? true : false) : i < 100 ? true : false;
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

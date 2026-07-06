@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-在导出文件时，此规则会检查是否存在默认导出。
+检查是否存在默认导出。
 
 ### 为什么这不好？
 

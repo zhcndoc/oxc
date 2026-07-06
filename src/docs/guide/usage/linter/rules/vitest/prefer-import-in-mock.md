@@ -50,11 +50,9 @@ vi.doMock(import("./path/to/module"));
 
 类型：`boolean`
 
-默认值：`true`
+此规则是否应生成修复。
 
-表示该规则是否应生成修复。
-
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

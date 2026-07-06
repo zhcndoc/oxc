@@ -12,18 +12,18 @@ badges:
 
 一个高性能的模块解析器，主要支持 Node.js 解析算法，并且可配置。
 
-## 特性
+## Features
 
-- 所有配置都与 [webpack/enhanced-resolve][url-enhanced-resolve] 保持一致。
-- 比 [webpack/enhanced-resolve][url-enhanced-resolve] 快 28 倍（[基准测试](https://github.com/oxc-project/bench-resolver)）。
-- 参见 [README](https://github.com/oxc-project/oxc-resolver)
+- All configurations are consistent with [webpack/enhanced-resolve][url-enhanced-resolve].
+- 28 times faster than [webpack/enhanced-resolve][url-enhanced-resolve] ([benchmark](https://github.com/oxc-project/bench-resolver)).
+- See [README](https://github.com/oxc-project/oxc-resolver)
 
 ## 安装
 
 ### Node.js
 
 - 使用 node 绑定 [oxc-resolver][url-oxc-resolver-npm]。
-- 在 [stackblitz](https://stackblitz.com/edit/oxc-resolver) 上试用。
+- 在 [stackblitz](https://stackblitz.com/fork/github/oxc-project/website/tree/main/stackblitz-templates/oxc-resolver) 上试用。
 
 ### Rust
 

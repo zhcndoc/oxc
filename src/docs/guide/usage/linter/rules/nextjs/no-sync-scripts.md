@@ -20,8 +20,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则会禁止在 Next.js 应用中使用同步的 `<script>` 标签。
-它要求任何带有 `src` 属性的 `<script>` 标签同时也必须具有
+阻止在 Next.js 应用中使用同步 `<script>` 标签。
+要求任何带有 `src` 属性的 `<script>` 标签同时具有
 `async` 或 `defer` 属性。
 
 ### 这为什么不好？
@@ -55,7 +55,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 <script {...props}></script>
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

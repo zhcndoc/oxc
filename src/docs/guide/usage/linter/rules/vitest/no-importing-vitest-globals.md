@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-该规则禁止导入任何 vitest 全局函数。
+该规则禁止导入任何 Vitest 全局函数。
 
 ### 为什么这很糟糕？
 
@@ -59,13 +59,13 @@ test("foo", () => {
 });
 ```
 
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 
-## 版本
+## Version
 
-该规则于 v1.49.0 中新增。
+This rule was added in v1.49.0.
 
 ## 参考资料
 

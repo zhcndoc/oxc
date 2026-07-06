@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-此规则不允许在字符串字面量中使用 `\8` 和 `\9` 转义序列。
+禁止在字符串字面量中使用 `\8` 和 `\9` 转义序列。
 
 ### 为什么这不好？
 
@@ -42,7 +42,7 @@ let x = "8";
 let y = "\\9";
 ```
 
-## 如何使用
+## 使用方法
 
 <RuleHowToUse />
 

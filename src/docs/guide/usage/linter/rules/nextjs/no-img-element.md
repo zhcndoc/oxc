@@ -20,13 +20,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-由于更慢的
-[LCP](https://nextjs.org/learn/seo/lcp) 和更高的带宽，禁止使用 `<img>` 元素。
+防止使用 `<img>` 元素，因为它会导致更慢的
+[LCP](https://nextjs.org/learn/seo/lcp) 和更高的带宽消耗。
 
 ### 为什么这不好？
 
 `<img>` 元素未针对性能进行优化，可能会导致
-更慢的 LCP 和更高的带宽。使用来自
+更慢的 LCP 和更高的带宽消耗。使用来自
 `next/image` 的 [`<Image />`](https://nextjs.org/docs/pages/api-reference/components/image)
 会自动优化图像并将其作为静态资源提供。
 

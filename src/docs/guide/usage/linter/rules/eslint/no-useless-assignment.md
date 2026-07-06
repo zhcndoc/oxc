@@ -31,8 +31,6 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 以下是此规则的**错误**代码示例：
 
 ```js
-/* eslint no-useless-assignment: "error" */
-
 function fn1() {
   let v = "used";
   doSomething(v);

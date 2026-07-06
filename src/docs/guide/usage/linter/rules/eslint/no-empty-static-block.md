@@ -52,7 +52,7 @@ class Bar {
 }
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

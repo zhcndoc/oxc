@@ -62,11 +62,11 @@ default: `"always"`
 
 #### `"always"`
 
-始终允许使用 `.jsx` 文件扩展名。
+始终允许使用 JSX 文件扩展名。
 
 #### `"as-needed"`
 
-仅允许在包含 JSX 语法的文件中使用 `.jsx` 文件扩展名。
+仅允许在包含 JSX 语法的文件中使用 JSX 文件扩展名。
 
 ### extensions
 

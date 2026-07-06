@@ -80,13 +80,14 @@ function loadData(error, data) {
 - 精确名称（例如 `"err"`、`"error"`）
 - 正则表达式模式（例如 `"^(err|error)$"`）
 
-如果配置的错误变量名称以 `^` 开头，则会被视为正则表达式模式。
+如果错误变量的配置名称以 `^` 开头，则会被视为正则表达式模式。
+无效的正则表达式模式会在配置解析期间被拒绝。
 
 默认值：`"err"`。
 
 type: `string`
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

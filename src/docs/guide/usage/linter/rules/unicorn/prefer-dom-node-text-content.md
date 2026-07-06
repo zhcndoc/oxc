@@ -26,9 +26,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 使用 `.innerText` 有一些缺点。
 
-- `.innerText` 的性能开销大得多，因为它需要布局信息来返回结果。
-- `.innerText` 仅针对 HTMLElement 对象定义，而 `.textContent` 针对所有 Node 对象定义。
-- `.innerText` 不是标准的，例如，Firefox 中并没有它。
+- `.innerText` 返回渲染后的文本并忽略隐藏内容，而 `.textContent` 返回节点的完整文本内容。
+- `.innerText` 可能会触发重排，因为它会考虑 CSS 样式。
+- `.innerText` 只对 HTMLElement 对象定义，而 `.textContent` 对所有 Node 对象都定义。
 
 ### 示例
 

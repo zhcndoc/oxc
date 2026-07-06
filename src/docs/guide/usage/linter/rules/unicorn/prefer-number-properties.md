@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止将 `parseInt()`、`parseFloat()`、`isNan()`、`isFinite()`、`Nan`、`Infinity` 和 `-Infinity` 作为全局变量使用。
+不允许将 `parseInt()`、`parseFloat()`、`isNaN()`、`isFinite()`、`NaN`、`Infinity` 和 `-Infinity` 作为全局变量使用。
 
 ### 为什么这不好？
 
@@ -56,19 +56,19 @@ const bar = Number.parseFloat("10.5");
 
 ### checkInfinity
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
-如果设置为 `true`，则检查是否将 `Infinity` 和 `-Infinity` 作为全局变量使用。
+如果设置为 `true`，则检查是否使用 `Infinity` 和 `-Infinity` 作为全局变量。
 
 ### checkNaN
 
-type: `boolean`
+类型：`boolean`
 
-default: `true`
+默认值：`true`
 
-如果设置为 `true`，则检查是否将 `NaN` 作为全局变量使用。
+如果设置为 `true`，则检查是否使用 `NaN` 作为全局变量。
 
 ## 如何使用
 

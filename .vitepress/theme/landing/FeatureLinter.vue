@@ -11,7 +11,7 @@
           <li>
             比 <code class="mx-1 outline-none bg-nickel/50 text-aqua">ESLint</code> 快 50~100 倍
           </li>
-          <li>700+ 条规则，并持续增长</li>
+          <li>800+ 条规则，并持续增长</li>
           <li>
             由
             <code class="mx-1 outline-none bg-nickel/50 text-aqua">tsgo</code>

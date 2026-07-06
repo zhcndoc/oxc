@@ -20,9 +20,10 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止模块具有默认导出。这有助于你的编辑器
-提供更好的自动导入功能，因为与默认导出相比，具名导出提供了
-更明确、更可预测的导入方式。
+禁止模块使用默认导出。
+
+这有助于你的编辑器提供更好的自动导入功能，因为与默认导出相比，具名导出
+能提供更明确、更可预测的导入方式。
 
 ### 这为什么不好？
 
@@ -48,7 +49,7 @@ export const foo = "foo";
 export const bar = "bar";
 ```
 
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

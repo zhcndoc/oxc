@@ -214,8 +214,6 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ## 配置
 
-此规则接受一个包含以下属性的配置对象：
-
 ### children
 
 type: `"always" | "never" | "ignore"`

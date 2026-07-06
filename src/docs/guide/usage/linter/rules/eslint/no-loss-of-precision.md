@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止数字字面量的精度丢失。
+禁止数字字面量中的精度丢失。
 
 ### 为什么这不好？
 

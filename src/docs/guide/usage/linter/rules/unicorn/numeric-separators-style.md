@@ -1,7 +1,7 @@
 ---
 title: "unicorn/numeric-separators-style | Oxlint"
 rule: "unicorn/numeric-separators-style"
-category: "Style"
+category: "样式"
 version: "0.0.19"
 default: false
 type_aware: false
@@ -61,6 +61,8 @@ const valid = [1_234_567, 1_234.567_89, 0xab_cd_ef, 0b1000_1111, 0o10_4421, 1_29
 
 type: `object`
 
+default: `{"groupLength":4, "minimumDigits":0}`
+
 二进制字面量的配置（例如 `0b1010_0001` 及 bigint 变体）。
 控制数字如何分组以及何时应用分隔符。
 
@@ -68,36 +70,64 @@ type: `object`
 
 type: `integer`
 
-插入数字分隔符时每组的位数。
-例如，`groupLength` 为 3 时，会将 `1234567` 格式化为 `1_234_567`。
+default: `0`
+
+插入数字分隔符时每组的数字位数。
+例如，`groupLength` 为 3 时，`1234567` 会格式化为 `1_234_567`。
 
 #### binary.minimumDigits
 
 type: `integer`
 
-应用分组前所需的最少位数。
-位数少于此阈值的值不会被分组。
+default: `0`
+
+应用分组前所需的最少数字位数。
+少于此阈值的值不会分组。
+
+#### binary.onlyIfContainsSeparator
+
+type: `boolean`
+
+仅在数字字面量已经包含分隔符（`_`）时强制执行该规则。
+
+当为 `true` 时，没有分隔符的数字将保持原样；当为 `false`（默认）时，
+即使尚未包含分隔符，也会对符合条件的数字强制分组。
 
 ### hexadecimal
 
 type: `object`
 
-十六进制字面量的配置（例如 `0xAB_CD`、`0Xab_cd` 及 bigint 变体）。
+default: `{"groupLength":2, "minimumDigits":0}`
+
+十六进制字面量的配置（例如 `0xAB_CD`、`0Xab_cd` 以及 bigint 变体）。
 控制数字如何分组以及何时应用分隔符。
 
 #### hexadecimal.groupLength
 
 type: `integer`
 
-插入数字分隔符时每组的位数。
-例如，`groupLength` 为 3 时，会将 `1234567` 格式化为 `1_234_567`。
+default: `0`
+
+插入数字分隔符时每组的数字位数。
+例如，`groupLength` 为 3 时，`1234567` 会格式化为 `1_234_567`。
 
 #### hexadecimal.minimumDigits
 
 type: `integer`
 
-应用分组前所需的最少位数。
-位数少于此阈值的值不会被分组。
+default: `0`
+
+应用分组前所需的最少数字位数。
+少于此阈值的值不会分组。
+
+#### hexadecimal.onlyIfContainsSeparator
+
+type: `boolean`
+
+仅在数字字面量已经包含分隔符（`_`）时强制执行该规则。
+
+当为 `true` 时，没有分隔符的数字将保持原样；当为 `false`（默认）时，
+即使尚未包含分隔符，也会对符合条件的数字强制分组。
 
 ### number
 
@@ -106,23 +136,46 @@ type: `object`
 十进制数字的配置（整数、小数部分和指数）。
 控制数字如何分组以及何时应用分隔符。
 
+#### number.fractionGroupLength
+
+type: `integer`
+
+default: `Infinity`
+
+小数部分（小数点后）每组数字的位数。
+
 #### number.groupLength
 
 type: `integer`
 
-插入数字分隔符时每组的位数。
-例如，`groupLength` 为 3 时，会将 `1234567` 格式化为 `1_234_567`。
+default: `0`
+
+插入数字分隔符时每组的数字位数。
+例如，`groupLength` 为 3 时，`1234567` 会格式化为 `1_234_567`。
 
 #### number.minimumDigits
 
 type: `integer`
 
-应用分组前所需的最少位数。
-位数少于此阈值的值不会被分组。
+default: `0`
+
+应用分组前所需的最少数字位数。
+少于此阈值的值不会分组。
+
+#### number.onlyIfContainsSeparator
+
+type: `boolean`
+
+仅在数字字面量已经包含分隔符（`_`）时强制执行该规则。
+
+当为 `true` 时，没有分隔符的数字将保持原样；当为 `false`（默认）时，
+即使尚未包含分隔符，也会对符合条件的数字强制分组。
 
 ### octal
 
 type: `object`
+
+default: `{"groupLength":4, "minimumDigits":0}`
 
 八进制字面量的配置（例如 `0o1234_5670` 及 bigint 变体）。
 控制数字如何分组以及何时应用分隔符。
@@ -131,15 +184,28 @@ type: `object`
 
 type: `integer`
 
-插入数字分隔符时每组的位数。
-例如，`groupLength` 为 3 时，会将 `1234567` 格式化为 `1_234_567`。
+default: `0`
+
+插入数字分隔符时每组的数字位数。
+例如，`groupLength` 为 3 时，`1234567` 会格式化为 `1_234_567`。
 
 #### octal.minimumDigits
 
 type: `integer`
 
-应用分组前所需的最少位数。
-位数少于此阈值的值不会被分组。
+default: `0`
+
+应用分组前所需的最少数字位数。
+少于此阈值的值不会分组。
+
+#### octal.onlyIfContainsSeparator
+
+type: `boolean`
+
+仅在数字字面量已经包含分隔符（`_`）时强制执行该规则。
+
+当为 `true` 时，没有分隔符的数字将保持原样；当为 `false`（默认）时，
+即使尚未包含分隔符，也会对符合条件的数字强制分组。
 
 ### onlyIfContainsSeparator
 
@@ -152,7 +218,7 @@ default: `false`
 当为 `true` 时，没有分隔符的数字将保持原样；当为 `false`（默认）时，
 即使尚未包含分隔符，也会对符合条件的数字强制分组。
 
-## 如何使用
+## How to use
 
 <RuleHowToUse />
 

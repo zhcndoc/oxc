@@ -47,14 +47,6 @@ default: `"always"`
 
 对 `/// <reference lib="..." />` 引用的约束方式。
 
-#### `"always"`
-
-允许三斜杠 `lib` 引用。
-
-#### `"never"`
-
-禁止三斜杠 `lib` 引用。
-
 ### path
 
 type: `"always" | "never"`
@@ -99,7 +91,7 @@ default: `"prefer-import"`
 import { bar } from "foo";
 ```
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

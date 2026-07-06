@@ -20,10 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-确保不存在通过其依赖关系回到此模块的可解析路径。
+禁止循环依赖。此规则确保不存在一条可解析的路径，能够通过其依赖关系回到
+此模块。
 
-这包括深度为 1 的循环（被导入的模块又导入我）直到某个实际上
-无限大的值，如果未设置 `maxDepth` 选项。
+这包括深度为 1 的循环（被导入的模块又导入了我），直到在未设置 `maxDepth` 选项时
+实际上是无限的值。
 
 ### 为什么这不好？
 
@@ -104,7 +105,7 @@ default: `true`
 
 type: `integer`
 
-default: `4294967295`
+default: `Infinity`
 
 要遍历的最大依赖深度
 

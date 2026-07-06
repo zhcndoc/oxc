@@ -68,7 +68,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 type: `"kebabCase" | "camelCase" | "snakeCase" | "pascalCase"`
 
-default: `"kebabCase"`
+default: `null`
 
 要强制用于文件名的大小写风格。
 
@@ -89,7 +89,7 @@ default: `"kebabCase"`
 
 type: `object`
 
-default: `{"kebabCase":true, "camelCase":false, "snakeCase":false, "pascalCase":false}`
+default: `null`
 
 要允许/强制用于文件名的大小写风格。`true` 表示允许该大小写风格，`false` 表示禁止。
 
@@ -121,7 +121,7 @@ default: `false`
 
 type: `boolean`
 
-default: `true`
+default: `false`
 
 是否允许 kebab case，例如 `some-file-name.js`。
 
@@ -143,9 +143,9 @@ default: `false`
 
 ### ignore
 
-type: `string`
+type: `string[]`
 
-用于忽略文件名的正则表达式模式。
+用于忽略文件名的正则表达式模式数组。
 
 你可以像这样设置 `ignore` 选项：
 
@@ -154,7 +154,7 @@ type: `string`
   "unicorn/filename-case": [
     "error",
     {
-      "ignore": "^foo.*$"
+      "ignore": ["^foo.*$"]
     }
   ]
 }
@@ -168,7 +168,7 @@ default: `true`
 
 是否将文件名中额外的、由 `.` 分隔的部分视为扩展名的一部分，而不是文件名的一部分。
 
-## 如何使用
+## How to Use
 
 <RuleHowToUse />
 

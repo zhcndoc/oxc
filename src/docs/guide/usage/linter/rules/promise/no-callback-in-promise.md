@@ -1,7 +1,7 @@
 ---
 title: "promise/no-callback-in-promise | Oxlint"
 rule: "promise/no-callback-in-promise"
-category: "Correctness"
+category: "正确性"
 version: "0.10.0"
 default: false
 type_aware: false
@@ -60,14 +60,6 @@ Promise.resolve()
 ## 配置
 
 此规则接受一个包含以下属性的配置对象：
-
-### callbacks
-
-type: `string[]`
-
-default: `["callback", "cb", "done", "next"]`
-
-要在 Promise `then` 和 `catch` 方法中检查的回调函数名称列表。
 
 ### exceptions
 

@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-导入 Node.js 内置模块时，优先使用 `node:protocol`。
+在导入 Node.js 内置模块时，优先使用 `node:` 协议。
 
 ### 为什么这不好？
 

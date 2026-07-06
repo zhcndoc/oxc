@@ -42,6 +42,28 @@ function quux(foo) {}
 function quux(foo) {}
 ```
 
+## 配置
+
+此规则接受一个配置对象，包含以下属性：
+
+### defaultDestructuredRootDescription
+
+type: `string`
+
+default: `"根对象"`
+
+用于默认设置解构根的描述字符串。默认为“根对象”。
+
+### setDefaultDestructuredRootDescription
+
+type: `boolean`
+
+default: `false`
+
+是否设置默认的解构根描述。
+例如，您可能希望避免手动为与解构根对象对应的 @param 设置描述，因为它始终应是同一类型的对象。
+使用 `defaultDestructuredRootDescription` 作为描述字符串。默认为 `false`。
+
 ## 如何使用
 
 <RuleHowToUse />
