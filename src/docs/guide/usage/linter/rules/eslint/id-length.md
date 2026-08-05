@@ -1,7 +1,7 @@
 ---
 title: "eslint/id-length | Oxlint"
 rule: "eslint/id-length"
-category: "Style"
+category: "风格"
 version: "1.4.0"
 default: false
 type_aware: false
@@ -24,7 +24,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么不好？
 
-非常短的标识符名称（如 e, x, \_t）或非常长的名称（如 hashGeneratorResultOutputContainerObject）会使代码更难阅读，并且可能降低可维护性。为了防止这种情况，可以强制实施最小和/或最大标识符长度。
+像 e、x、_t 这样的非常短的标识符名称，或像
+hashGeneratorResultOutputContainerObject 这样的非常长的标识符名称，可能会使代码更难阅读，也可能降低代码的可维护性。为避免这种情况，可以强制执行最小和/或最大标识符长度。
 
 ### 示例
 

@@ -31,7 +31,7 @@ Oxc 是一套套件。像 lint 工具、格式化工具、解析器、转换器�
 
 ### 正确性与清晰的边界
 
-Oxc 旨在做到正确且可预测。当行为与其他工具不同时时，应记录这些差异。兼容性是一项特性，而非偶然。
+Oxc 旨在做到正确且可预测。当行为与其他工具不同时，应记录这些差异。兼容性是一项特性，而非偶然。
 
 ### 实用的开发者体验
 
@@ -41,12 +41,13 @@ Oxc 专注于适用于真实项目的工作流。默认值应当合理，配置�
 
 Oxc 包括终端用户工具和可复用的编译器构建块：
 
-- [Oxlint](/docs/guide/usage/linter) 是最快的 JavaScript 和 TypeScript lint 工具。它旨在兼容 ESLint 生态系统。
-- [Oxfmt](/docs/guide/usage/formatter) 是最快的格式化工具。它旨在兼容 Prettier 格式化。
-- [Parser](/docs/guide/usage/parser) 是最快的 JS 和 TS 解析器，带有用于工具开发的 AST。
-- [Transformer](/docs/guide/usage/transformer) 提供最快的 TS、JSX 和现代 JavaScript 转换。
-- [Minifier](/docs/guide/usage/minifier) 是最快的生产输出压缩器。
-- [Resolver](/docs/guide/usage/resolver) 是最快的 JS 和 TS 项目模块解析器。
+- [Oxlint](/docs/guide/usage/linter) 是最快的 JavaScript 和 TypeScript 代码检查工具。它致力于兼容 ESLint 生态系统。
+- [Oxfmt](/docs/guide/usage/formatter) 是最快的代码格式化工具。它致力于提供与 Prettier 兼容的格式化功能。
+- [Parser](/docs/guide/usage/parser) 是最快的 JavaScript 和 TypeScript 解析器，并为工具链提供 AST。
+- [Transformer](/docs/guide/usage/transformer) 提供最快的 TypeScript、JSX 和现代 JavaScript 转换功能。
+- [Minifier](/docs/guide/usage/minifier) 是用于生产环境输出的最快压缩器。
+- [Resolver](/docs/guide/usage/resolver) 是面向 JavaScript 和 TypeScript 项目的最快模块解析器。
+- [TypeScript Runner](/docs/guide/usage/oxc-node) 可直接在 Node.js 中运行 TypeScript 和 JSX。
 
 你可以单独使用每个工具，也可以将它们作为一个工具链一起使用。
 

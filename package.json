@@ -12,7 +12,7 @@
     "lint:fix": "vp run lint --fix && typos -w",
     "fmt": "vp fmt",
     "knip": "knip --no-config-hints",
-    "sponsors": "degit Boshen/sponsors sponsors --force && node scripts/generate-sponsors.js",
+    "sponsors": "degit oxc-project/sponsors sponsors --force && node scripts/generate-sponsors.js",
     "prepare": "vp config",
     "void": "void"
   },
@@ -21,21 +21,20 @@
     "@types/markdown-it": "^14.1.2",
     "@types/markdown-it-container": "4.0.0",
     "@types/node": "^25.5.0",
-    "@voidzero-dev/vitepress-theme": "^4.8.4",
+    "@voidzero-dev/vitepress-theme": "^5.0.0",
     "degit": "^3.0.0",
     "esbuild": "0.28.1",
-    "feed": "^5.2.0",
+    "feed": "^6.0.0",
     "knip": "^6.0.2",
     "markdown-it-container": "^4.0.0",
     "markdown-it-task-lists": "^2.1.1",
-    "oxc-minify": "^0.138.0",
-    "typescript": "~6.0.0",
+    "typescript": "~7.0.0",
     "vite-plus": "catalog:",
-    "vitepress": "2.0.0-alpha.17",
+    "vitepress": "2.0.0-alpha.18",
     "vitepress-plugin-group-icons": "^1.7.1",
     "vitepress-plugin-llms": "^1.12.0",
-    "void": "^0.10.0",
+    "void": "^0.10.8",
     "vue": "^3.5.30"
   },
-  "packageManager": "pnpm@11.9.0"
+  "packageManager": "pnpm@11.17.0"
 }

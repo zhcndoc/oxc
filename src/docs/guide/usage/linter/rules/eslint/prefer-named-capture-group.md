@@ -1,11 +1,11 @@
 ---
-title: "eslint/prefer-named-capture-group | Oxlint"
+title: "eslint/首选具名捕获组 | Oxlint"
 rule: "eslint/prefer-named-capture-group"
-category: "Style"
+category: "样式"
 version: "1.68.0"
 default: false
 type_aware: false
-fix: "none"
+fix: "pending"
 upstream: "https://eslint.org/docs/latest/rules/prefer-named-capture-group"
 ---
 

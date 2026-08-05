@@ -1,11 +1,11 @@
 ---
 title: "typescript/no-require-imports | Oxlint"
 rule: "typescript/no-require-imports"
-category: "Restriction"
+category: "限制"
 version: "0.13.0"
 default: false
 type_aware: false
-fix: "pending"
+fix: "待处理"
 upstream: "https://typescript-eslint.io/rules/no-require-imports/"
 ---
 
@@ -30,7 +30,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 2. **代码组织与可读性**：`require` 语句分散在代码各处，这可能会使快速识别某个模块的依赖变得更困难。`import` 语句通常会集中放在文件顶部，从而改善代码组织和可读性。
 
-3. **Tree Shaking 和优化**：Webpack 和 Rollup 等现代打包工具会使用 tree-shaking 从最终 bundle 中移除未使用的代码。Tree-shaking 与 ES 模块配合得明显更好，因为它们的依赖是静态且显式声明的。`require` 会使打包工具更难准确识别并移除未使用的代码，导致 bundle 更大、加载更慢。
+3. **Tree Shaking 和优化**：Webpack 和 Rollup 等现代打包工具会使用 Tree Shaking 从最终 bundle 中移除未使用的代码。Tree Shaking 与 ES 模块配合得明显更好，因为它们的依赖是静态且显式声明的。`require` 会使打包工具更难准确识别并移除未使用的代码，导致 bundle 更大、加载更慢。
 
 4. **循环依赖**：处理循环依赖（即模块 A 导入 B，而 B 又导入 A）时，`require` 的处理难度要高得多。ES 模块通过其声明式特性以及动态导入（`import()`）的使用，提供了更好的机制来处理循环导入和管理异步加载。
 
@@ -66,14 +66,12 @@ import * as lib3 from "lib3";
 
 ### allow
 
-type: `string[]`
+类型：`string[]`
 
-default: `[]`
-
-这些字符串将使用 u 标志编译为正则表达式，并用于针对导入路径进行测试。
-一个常见用例是允许导入 `package.json`。这是因为 `package.json` 通常位于 TS 根目录之外，
-所以静态导入它会导致根目录冲突，尤其是在启用 `resolveJsonModule` 的情况下。
-如果你的环境不支持 JSON 模块，你也可以用它来允许导入任何 JSON，或者在其他 `import` 语句无法工作的情况下使用它。
+这些字符串将使用 u 标志编译为正则表达式，并用于匹配导入路径。
+一个常见的使用场景是允许导入 `package.json`。这是因为 `package.json` 通常位于 TS 根目录之外，
+因此静态导入它会导致根目录冲突，尤其是在启用 `resolveJsonModule` 的情况下。
+如果你的环境不支持 JSON 模块，也可以使用它来允许导入任意 JSON，或者将其用于其他无法使用 `import` 语句的场景。
 
 使用 `{ allow: ['/package\\.json$'] }` 时：
 
@@ -85,9 +83,9 @@ console.log(require("../package.json").version);
 
 ### allowAsImport
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
 当设置为 `true` 时，`import ... = require(...)` 声明不会被报告。
 如果你使用某些需要严格 CommonJS 互操作语义的模块选项，这会很有用。

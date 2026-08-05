@@ -66,7 +66,7 @@ type: `"camelCase" | "snake_case"`
 
 type: `string[]`
 
-default: `[]`
+要忽略的 Prop 名称，以正则表达式模式表示。
 
 ## 使用方法
 

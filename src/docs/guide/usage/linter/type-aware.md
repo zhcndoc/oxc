@@ -206,6 +206,42 @@ export default defineConfig({
 
 :::
 
+## 规则耗时
+
+使用 `--debug timings` 查找配置中耗时最多的规则：
+
+```bash
+oxlint --type-aware --debug timings
+```
+
+报告会按总耗时对规则排序，并包含其相对占比、调用次数和执行来源：
+
+```text
+Rule timings:
+Rule                                                         Time (ms)  Relative  Calls  Source
+----------------------------------------------------------  ----------  --------  -----  ----------
+typescript/unbound-method                                      108.620     46.5%  12450  type-aware
+typescript/no-floating-promises                                 65.606     28.1%   7327  type-aware
+eslint/no-unused-vars                                            2.187      0.9%    372  native
+typescript/no-duplicate-type-constituents                        1.505      0.6%    870  type-aware
+typescript/no-meaningless-void-operator                          1.445      0.6%    383  type-aware
+vitest/no-standalone-expect                                      0.978      0.4%    372  native
+vitest/expect-expect                                             0.951      0.4%   4682  native
+typescript/no-implied-eval                                       0.401      0.2%  13809  type-aware
+oxc/no-map-spread                                                0.383      0.2%  12545  native
+react/no-did-update-set-state                                    0.382      0.2%  12545  native
+eslint/no-misleading-character-class                             0.380      0.2%  13524  native
+typescript/no-redundant-type-constituents                        0.371      0.2%    870  type-aware
+unicorn/no-single-promise-in-promise-methods                     0.362      0.2%  12545  native
+eslint/no-useless-backreference                                  0.360      0.2%  13524  native
+typescript/no-useless-default-assignment                         0.258      0.1%   3110  type-aware
+eslint/no-console                                                0.256      0.1%  12484  native
+eslint/no-caller                                                 0.253      0.1%  11603  native
+...
+```
+
+`native` 规则在 Oxlint 内部运行，而由 tsgolint 运行的规则则标记为 `type-aware`。除非启用，否则耗时收集不会产生开销。启用后，它会增加测量开销，因此应使用报告比较同一次运行中的规则，而不是将其作为端到端基准。
+
 ## 禁用注释
 
 类型感知规则支持行内禁用注释：
@@ -238,7 +274,7 @@ oxlint --type-aware --report-unused-disable-directives
 
 - 规则覆盖不完整（但已非常接近）
 - 超大型代码库可能会遇到较高的内存使用
-- 性能仍在持续改进
+- 性能仍在持续改进。
 
 ## 故障排查
 
@@ -326,4 +362,4 @@ OXC_LOG=debug oxlint --type-aware
 ## 下一步
 
 - 查看 [已实现规则](https://github.com/oxc-project/tsgolint/tree/main?tab=readme-ov-file#implemented-rules)
-- 将问题报告到 [https://github.com/oxc-project/tsgolint](https://github.com/oxc-project/tsgolint)
+- 将问题报告到 [https://github.com/oxc-project/tsgolint](https://github.com/oxc-project/tsgolint)。

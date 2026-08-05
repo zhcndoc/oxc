@@ -115,12 +115,6 @@ export const sharedConfig = {
   themeConfig: {
     variant: "oxc",
 
-    // TEMPORARY CHANGE TO VITE+ ALPHA ANNOUNCEMENT
-    // banner: {
-    //   id: latestBlog.link,
-    //   text: `Announcing ${latestBlog.text}`,
-    //   url: latestBlog.link,
-    // },
     banner: {
       id: "rainyun",
       text: "雨云 RainYun - 企业级云计算服务提供商：新用户注册立享五折！",
@@ -221,6 +215,7 @@ export const sharedConfig = {
             { text: "转换器", link: "/docs/guide/usage/transformer" },
             { text: "压缩器", link: "/docs/guide/usage/minifier" },
             { text: "模块解析器", link: "/docs/guide/usage/resolver" },
+            { text: "TypeScript 运行器", link: "/docs/guide/usage/oxc-node" },
           ],
         },
         {

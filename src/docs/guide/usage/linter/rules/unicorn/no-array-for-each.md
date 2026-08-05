@@ -1,11 +1,11 @@
 ---
 title: "unicorn/no-array-for-each | Oxlint"
 rule: "unicorn/no-array-for-each"
-category: "Restriction"
+category: "限制"
 version: "0.0.19"
 default: false
 type_aware: false
-fix: "pending"
+fix: "待定"
 upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-for-each.md"
 ---
 
@@ -48,6 +48,10 @@ foo.forEach((element) => {
 ```javascript
 const foo = [1, 2, 3];
 for (const element of foo) {
+  /* ... */
+}
+
+for (const [index, element] of foo.entries()) {
   /* ... */
 }
 ```

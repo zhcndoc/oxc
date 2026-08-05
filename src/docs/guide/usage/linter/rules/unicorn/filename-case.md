@@ -60,13 +60,27 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 - `SomeFileName.Test.js`
 - `SomeFileName.TestUtils.js`
 
+#### `lowercase`
+
+仅拒绝包含大写字母的文件名；分隔符可以使用。
+
+- `somefilename.js`
+- `some-file-name.js`
+- `some_file_name.js`
+
+#### `screamingSnakeCase`
+
+- `SOME_FILE_NAME.js`
+- `SOME_FILE_NAME.TEST.js`
+- `SOME_FILE_NAME.TEST_UTILS.js`
+
 ## 配置
 
 此规则接受一个包含以下属性的配置对象：
 
 ### case
 
-type: `"kebabCase" | "camelCase" | "snakeCase" | "pascalCase"`
+type: `"kebabCase" | "camelCase" | "snakeCase" | "pascalCase" | "lowercase" | "screamingSnakeCase"`
 
 default: `null`
 
@@ -125,6 +139,14 @@ default: `false`
 
 是否允许 kebab case，例如 `some-file-name.js`。
 
+#### cases.lowercase
+
+type: `boolean`
+
+default: `false`
+
+是否允许小写，例如 `somefilename.js`。
+
 #### cases.pascalCase
 
 type: `boolean`
@@ -132,6 +154,14 @@ type: `boolean`
 default: `false`
 
 是否允许 pascal case，例如 `SomeFileName.js`。
+
+#### cases.screamingSnakeCase
+
+type: `boolean`
+
+default: `false`
+
+是否允许 screaming snake case，例如 `SOME_FILE_NAME.js`。
 
 #### cases.snakeCase
 
@@ -168,7 +198,7 @@ default: `true`
 
 是否将文件名中额外的、由 `.` 分隔的部分视为扩展名的一部分，而不是文件名的一部分。
 
-## How to Use
+## 使用方法
 
 <RuleHowToUse />
 

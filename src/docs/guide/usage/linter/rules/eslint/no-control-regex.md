@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-禁止在正则表达式中使用控制字符和一些匹配控制字符的转义序列。
+禁止在正则表达式中使用控制字符，以及一些匹配控制字符的转义序列。
 
 ### 为什么不好？
 
@@ -28,7 +28,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 示例
 
-此规则**错误**代码示例：
+此规则的**错误**代码示例：
 
 ```javascript
 var pattern1 = /\x00/;
@@ -40,7 +40,7 @@ var pattern6 = new RegExp("\x0C"); // 模式中的原始 U+000C 字符
 var pattern7 = new RegExp("\\x0C"); // \x0C 模式
 ```
 
-此规则**正确**代码示例：
+此规则的**正确**代码示例：
 
 ```javascript
 var pattern1 = /\x20/;
@@ -51,6 +51,7 @@ var pattern5 = /\n/;
 var pattern6 = new RegExp("\x20");
 var pattern7 = new RegExp("\\t");
 var pattern8 = new RegExp("\\n");
+var pattern9 = /\0/;
 ```
 
 ## 如何使用

@@ -48,25 +48,25 @@ function quux(foo) {}
 
 ### checkConstructors
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
 是否检查构造函数方法。
 
 ### checkDestructured
 
-type: `boolean`
+类型：`boolean`
 
-default: `true`
+默认值：`true`
 
 是否检查解构参数。
 
 ### checkDestructuredRoots
 
-type: `boolean`
+类型：`boolean`
 
-default: `true`
+默认值：`true`
 
 是否在存在如下代码时检查解构参数：
 `function doSomething({ a, b }) { ... }`。由于在此示例中没有命名
@@ -75,43 +75,68 @@ default: `true`
 
 ### checkGetters
 
-type: `boolean`
+类型：`boolean`
 
-default: `true`
+默认值：`true`
 
 是否检查 getter 方法。
 
 ### checkRestProperty
 
-type: `boolean`
+类型：`boolean`
 
-default: `false`
+默认值：`false`
 
 是否检查剩余属性。
 
 ### checkSetters
 
-type: `boolean`
+类型：`boolean`
 
-default: `true`
+默认值：`true`
 
 是否检查 setter 方法。
 
 ### checkTypesPattern
 
-type: `string`
+类型：`string`
 
-default: `"^(?:[oO]bject|[aA]rray|PlainObject|Generic(?:Object|Array))$"`
+默认值：`"^(?:[oO]bject|[aA]rray|PlainObject|Generic(?:Object|Array))$"`
 
 用于匹配可免于检查的类型的正则表达式模式。
 
 ### exemptedBy
 
-type: `string[]`
+类型：`string[]`
 
-default: `["inheritdoc"]`
+默认值：`["inheritdoc"]`
 
 免于 `@param` 检查的 JSDoc 标签列表。
+
+### ignoreWhenAllParamsMissing
+
+类型：`boolean`
+
+默认值：`false`
+
+设置为 `true` 时，如果所有参数均缺失，则忽略报告。默认为 `false`。
+
+### interfaceExemptsParamsCheck
+
+类型：`boolean`
+
+默认值：`false`
+
+如果希望 TypeScript 接口免于检查 `@param` 是否存在，请设置此选项。
+将检查用于定义函数本身的类型（在变量声明中），或检查是否存在带有类型的单个解构对象。默认为 `false`。
+
+### useDefaultObjectProperties
+
+类型：`boolean`
+
+默认值：`false`
+
+如果希望检查作为默认值提供的对象中的属性是否有文档说明，请设置为 `true`。默认为 `false`。
 
 ## 如何使用
 

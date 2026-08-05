@@ -146,7 +146,7 @@ oxlint --init
 
 然后根据需要自定义 `.oxlintrc.json`。请参阅 [配置](/docs/guide/usage/linter/config)。
 
-或者，Oxlint 支持名为 `oxlint.config.ts` 的 TypeScript 配置文件。详见 [配置](/docs/guide/usage/linter/config#typescript-config)。
+或者，Oxlint 支持名为 `oxlint.config.ts` 或 `oxlint.config.mts` 的 TypeScript 配置文件。详情请参阅 [配置](/docs/guide/usage/linter/config#typescript-config)。
 
 然后运行 Oxlint：
 
@@ -260,4 +260,4 @@ oxlint --rules
 - 学习高级功能：[多文件分析](/docs/guide/usage/linter/multi-file-analysis)、[类型感知 lint](/docs/guide/usage/linter/type-aware)、[JS 插件](/docs/guide/usage/linter/js-plugins)
 - 迁移：[从 ESLint 迁移](/docs/guide/usage/linter/migrate-from-eslint) <!-- , [从 Biome 迁移](/docs/guide/usage/linter/migrate-from-biome) -->
 - [兼容性矩阵](/compatibility)
-- [CLI 参考](/docs/guide/usage/linter/cli)
+- [CLI 参考](/docs/guide/usage/linter/cli)。

@@ -20,7 +20,10 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-强制一致地使用类型导入。
+通过在导入中添加或移除 `type` 关键字，强制统一类型导入的用法。
+
+`fixStyle` 选项控制此规则自动修复导入时新添加的 `type` 关键字的位置。它不会强制调整代码中已有的 `type` 关键字的位置。若要强制统一位置，请使用
+[`import/consistent-type-specifier-style`](https://oxc.rs/docs/guide/usage/linter/rules/import/consistent-type-specifier-style.html)。
 
 #### 忽略的文件
 
@@ -147,7 +150,7 @@ default: `"type-imports"`
 
 会强制你始终使用 `import Foo from '...'`
 
-## How to use
+## 使用方法
 
 <RuleHowToUse />
 

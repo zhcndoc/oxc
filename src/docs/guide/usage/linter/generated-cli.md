@@ -16,7 +16,7 @@ search: false
 * 你可以在配置文件中使用注释。
 * 尝试兼容 ESLint v8 的格式
 
-  如果未提供，Oxlint 将在当前工作目录中查找 `.oxlintrc.json`、`.oxlintrc.jsonc` 或 `oxlint.config.ts` 文件。
+  如果未提供，Oxlint 将在当前工作目录中查找 `.oxlintrc.json`、`.oxlintrc.jsonc`、`oxlint.config.ts` 或 `oxlint.config.mts` 文件。
 
 - **`    --tsconfig`**=_`<./tsconfig.json>`_ &mdash;
   覆盖用于导入解析的 TypeScript 配置。Oxlint 会自动发现每个文件相关的 `tsconfig.json`。仅当你的项目使用非标准的 tsconfig 名称或位置时才使用此选项。
@@ -24,7 +24,7 @@ search: false
   ::: warning 避免使用此选项。它可能导致导入解析和类型感知 lint 之间的差异。类型感知 lint **不**尊重此选项，并将始终自动为每个文件发现合适的 `tsconfig.json`。 :::
 
 - **`    --init`** &mdash;
-  使用默认值初始化 oxlint 配置
+  使用默认值初始化 oxlint 配置。
 
 ## 允许/拒绝多个 Lint 规则
 
@@ -47,9 +47,9 @@ search: false
 - **`-A`**, **`--allow`**=_`NAME`_ &mdash;
   允许规则或类别（抑制 lint）
 - **`-W`**, **`--warn`**=_`NAME`_ &mdash;
-  拒绝规则或类别（发出警告）
+  对规则或类别发出警告（生成警告）
 - **`-D`**, **`--deny`**=_`NAME`_ &mdash;
-  拒绝规则或类别（发出错误）
+  拒绝规则或类别（发出错误）。
 
 ## 启用/禁用插件
 
@@ -80,7 +80,7 @@ search: false
 - **`    --node-plugin`** &mdash;
   启用 node 插件并检测 node 使用问题
 - **`    --vue-plugin`** &mdash;
-  启用 vue 插件并检测 vue 使用问题
+  启用 vue 插件并检测 vue 使用问题。
 
 ## 修复问题
 
@@ -89,7 +89,7 @@ search: false
 - **`    --fix-suggestions`** &mdash;
   应用可自动修复的建议。可能会改变程序行为。
 - **`    --fix-dangerously`** &mdash;
-  应用危险的修复和建议
+  应用危险的修复和建议。
 
 ## 忽略文件
 
@@ -101,7 +101,7 @@ search: false
   支持的语法与 `.eslintignore` 和 `.gitignore` 文件相同。你应该引用你的模式以避免 shell 对 glob 模式的解释。
 
 - **`    --no-ignore`** &mdash;
-  禁用从 `.eslintignore` 文件、**`--ignore-path`** 标志和 **`--ignore-pattern`** 标志排除文件
+  禁用从 `.eslintignore` 文件、**`--ignore-path`** 标志和 **`--ignore-pattern`** 标志排除文件。
 
 ## 处理警告
 
@@ -110,7 +110,7 @@ search: false
 - **`    --deny-warnings`** &mdash;
   确保警告产生非零退出码
 - **`    --max-warnings`**=_`INT`_ &mdash;
-  指定警告阈值，如果项目中存在太多警告级别的规则违规，可用于强制以错误状态退出
+  指定警告阈值，如果项目中存在太多警告级别的规则违规，可用于强制以错误状态退出。
 
 ## 输出
 
@@ -143,7 +143,7 @@ search: false
 ## 可用的位置项：
 
 - _`PATH`_ &mdash;
-  单个文件、单个路径或路径列表
+  单个文件、单个路径或路径列表。
 
 ## 可用的选项：
 
@@ -160,4 +160,4 @@ search: false
 - **`-h`**, **`--help`** &mdash;
   打印帮助信息
 - **`-V`**, **`--version`** &mdash;
-  打印版本信息
+  打印版本信息。

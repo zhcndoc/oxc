@@ -1,11 +1,11 @@
 ---
 title: "typescript/no-unnecessary-condition | Oxlint"
 rule: "typescript/no-unnecessary-condition"
-category: "Nursery"
+category: "孵化"
 version: "1.48.0"
 default: false
 type_aware: true
-fix: "none"
+fix: "pending"
 upstream: "https://typescript-eslint.io/rules/no-unnecessary-condition/"
 ---
 
@@ -90,7 +90,19 @@ type: `boolean`
 
 default: `false`
 
-是否检查类型谓词函数。
+是否检查传递给类型谓词函数和断言函数的参数。
+
+启用后，如果参数已经满足谓词条件，或者断言函数接收到的参数始终为真或始终为假，则该规则会报告此次调用。
+
+例如，`narrow(value)` 是不必要的，因为 `value` 已经具有 `true` 类型：
+
+```ts
+declare const narrow: (value: unknown) => value is true;
+const value = true;
+if (narrow(value)) {
+  // ...
+}
+```
 
 ## 如何使用
 

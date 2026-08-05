@@ -1,11 +1,11 @@
 ---
 title: "unicorn/no-array-sort | Oxlint"
 rule: "unicorn/no-array-sort"
-category: "Suspicious"
+category: "可疑"
 version: "1.15.0"
 default: false
 type_aware: false
-fix: "fixable_fix"
+fix: "可修复建议"
 upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-sort.md"
 ---
 
@@ -43,6 +43,21 @@ const sorted = [...array].toSorted();
 ## 配置
 
 此规则接受一个配置对象，包含以下属性：
+
+### allowAfterSpread
+
+type: `boolean`
+
+default: `false`
+
+当设置为 `true` 时，允许对通过展开运算符创建的新数组进行排序，例如 `[...iterable].sort()`。
+在对 `Set` 等可迭代对象进行排序时，这可以避免使用 `toSorted()` 产生的双重内存分配。
+
+当 `allowAfterSpread` 设置为 `true` 时，此规则的**正确**代码示例如下：
+
+```js
+const sorted = [...mySet].sort();
+```
 
 ### allowExpressionStatement
 

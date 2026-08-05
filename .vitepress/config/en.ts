@@ -22,6 +22,7 @@ export const enConfig = defineLocaleConfig("root", {
           { text: "转换器", link: "/docs/guide/usage/transformer" },
           { text: "压缩器", link: "/docs/guide/usage/minifier" },
           { text: "模块解析器", link: "/docs/guide/usage/resolver" },
+          { text: "TypeScript 运行器", link: "/docs/guide/usage/oxc-node" },
         ],
       },
       { text: "参与贡献", link: "/docs/contribute/introduction" },
@@ -187,6 +188,10 @@ export const enConfig = defineLocaleConfig("root", {
                   link: "/docs/guide/usage/formatter/config-file-reference",
                 },
                 {
+                  text: "语言支持",
+                  link: "/docs/guide/usage/formatter/language-support",
+                },
+                {
                   text: "不支持的特性",
                   link: "/docs/guide/usage/formatter/unsupported-features",
                 },
@@ -272,6 +277,12 @@ export const enConfig = defineLocaleConfig("root", {
           collapsed: true,
           link: "/docs/guide/usage/resolver",
           items: [{ text: "概览", link: "/docs/guide/usage/resolver" }],
+        },
+        {
+          text: "TypeScript 运行器",
+          collapsed: true,
+          link: "/docs/guide/usage/oxc-node",
+          items: [{ text: "Overview", link: "/docs/guide/usage/oxc-node" }],
         },
         {
           text: "资源",

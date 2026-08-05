@@ -120,18 +120,17 @@ default: `[]`
 
 type: `string[]`
 
-default: `["expect"]`
-
-应当被视为断言函数的函数名列表。
+应当被视为断言函数的函数名列表。  
+默认值：`["expect"]`
 
 ## 如何使用
 
 <RuleHowToUse />
 
-## Version
+## 版本
 
 此规则在 v1.60.0 中添加。
 
-## References
+## 参考资料
 
 <RuleReferences />

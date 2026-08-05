@@ -1,7 +1,7 @@
 ---
 title: "import/consistent-type-specifier-style | Oxlint"
 rule: "import/consistent-type-specifier-style"
-category: "Style"
+category: "样式"
 version: "0.16.11"
 default: false
 type_aware: false
@@ -40,15 +40,30 @@ import Foo, { type Bar } from "Foo";
 默认选项下的正确代码示例：
 
 ```typescript
-import type { Foo } from "Foo";
-import type Foo, { Bar } from "Foo";
+import type { Foo } from 'Foo';
+import type Foo, { Bar } from 'Foo';
+```
+
+`prefer-top-level-if-only-type-imports` 选项下的错误代码示例：
+
+```typescript
+import { type Foo } from "Foo";
+import { type Foo, type Bar } from "Foo";
+```
+
+`prefer-top-level-if-only-type-imports` 选项下的正确代码示例：
+
+```typescript
+import type { Foo } from 'Foo';
+import { type Foo, someValue } from 'Foo';
+import type Foo, { Bar } from 'Foo';
 ```
 
 `prefer-inline` 选项下的错误代码示例：
 
 ```typescript
-import type { Foo } from "Foo";
-import type Foo, { Bar } from "Foo";
+import type { Foo } from 'Foo';
+import type Foo, { Bar } from 'Foo';
 ```
 
 `prefer-inline` 选项下的正确代码示例：
@@ -69,6 +84,10 @@ import Foo, { type Bar } from "Foo";
 ### `"prefer-inline"`
 
 类型导入优先使用 `import { type Foo } from 'foo'`。
+
+### `"prefer-top-level-if-only-type-imports"`
+
+当所有具名导入都是类型时，优先使用 `import type { Foo } from 'foo'`；但存在值导入时，允许使用 `import { type Foo, bar } from 'foo'`。
 
 ## 使用方法
 

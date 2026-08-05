@@ -92,7 +92,7 @@ $ deno add -D npm:oxfmt@latest
 
 ## 步骤 3：迁移配置
 
-Oxfmt 使用 `.oxfmtrc.json`、`.oxfmtrc.jsonc` 或 `oxfmt.config.ts`。基本示例：
+Oxfmt 使用 `.oxfmtrc.json`、`.oxfmtrc.jsonc`、`oxfmt.config.ts` 或 `oxfmt.config.mts`。基本示例：
 
 ```jsonc [.oxfmtrc.jsonc]
 {
@@ -173,7 +173,7 @@ singleQuote: true
 +   run: yarn oxfmt --check
 ```
 
-### Git hooks (husky, lint-staged)
+### Git 钩子（husky、lint-staged）
 
 在 `package.json` 中：
 

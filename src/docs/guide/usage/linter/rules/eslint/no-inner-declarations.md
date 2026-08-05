@@ -81,7 +81,21 @@ type: `"allow" | "disallow"`
 
 无论是否为严格模式，都禁止在嵌套块中声明函数。
 
-## 如何使用
+#### namespaces
+
+type: `"allow" | "disallow"`
+
+控制是否允许直接在 TypeScript 命名空间或模块体内声明。
+
+##### `"allow"`
+
+允许直接在 TypeScript 命名空间或模块体内声明。
+
+##### `"disallow"`
+
+禁止直接在 TypeScript 命名空间或模块体内声明。
+
+## 使用方法
 
 <RuleHowToUse />
 

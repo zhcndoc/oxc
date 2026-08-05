@@ -45,7 +45,6 @@ outline: 2
 
 ```json [.vscode/settings.json]
 {
-  "oxc.fmt.configPath": ".oxfmtrc.json",
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true
 }
@@ -68,7 +67,7 @@ outline: 2
 
 ### 参考
 
-- [oxc-project/oxc-vscode](https://github.com/oxc-project/oxc-vscode)
+- [oxc-project/oxc-vscode](https://github.com/oxc-project/oxc-vscode)。
 
 ## Zed
 
@@ -90,7 +89,7 @@ IntelliJ IDEA 和 WebStorm。
 
 ### 参考
 
-- [oxc-project/oxc-intellij-plugin](https://github.com/oxc-project/oxc-intellij-plugin)
+- [oxc-project/oxc-intellij-plugin](https://github.com/oxc-project/oxc-intellij-plugin)。
 
 ## Neovim
 

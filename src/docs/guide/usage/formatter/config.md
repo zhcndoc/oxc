@@ -22,6 +22,9 @@ Oxfmt 会从正在格式化的文件所在目录开始，向上遍历目录树�
 - `.oxfmtrc.json`
 - `.oxfmtrc.jsonc`
 - `oxfmt.config.ts`
+- `oxfmt.config.mts`
+
+每个目录只能使用一个配置文件：JSON 配置和 TypeScript 配置不能共存，`oxfmt.config.ts` 和 `oxfmt.config.mts` 也不能共存。
 
 离每个被格式化文件最近的配置文件优先生效。这意味着你可以在项目树的不同层级放置不同的配置文件。
 例如，整个仓库使用一个根配置，而某个子目录中使用更具体的配置：
@@ -114,7 +117,7 @@ indent_size = 2
 Oxfmt 仅使用当前目录中最近的 `.editorconfig`：
 
 - `root = true` 不会被遵守
-- 嵌套的 `.editorconfig` 文件不会合并
+- 嵌套的 `.editorconfig` 文件不会合并。
 
 ## 覆盖
 
@@ -172,7 +175,7 @@ export default defineConfig({
 
 - `files`（必需）：匹配文件的 Glob 模式
 - `excludeFiles`（可选）：从此覆盖中排除的 Glob 模式
-- `options`: 要应用的格式化选项
+- `options`：要应用的格式化选项
 
 Glob 模式相对于包含 Oxfmt 配置文件的目录进行解析。
 
@@ -183,7 +186,7 @@ Glob 模式相对于包含 Oxfmt 配置文件的目录进行解析。
 1. 默认值
 2. 配置文件根选项
 3. 配置文件 `overrides` 选项
-4. 对于未设置的字段，回退到 `.editorconfig` 支持的选项
+4. 对于未设置的字段，回退到 `.editorconfig` 支持的选项。
 
 ## Oxfmt 特定选项
 

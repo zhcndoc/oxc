@@ -22,7 +22,7 @@ const ruleCountRounded = Math.floor((data - 1) / 5) * 5;
 
 <AppBadgeList />
 
-Oxlint (`/oʊ-ɛks-lɪnt/`) 是一个基于 Oxc 编译器栈构建的高性能 JavaScript 和 TypeScript linter。
+Oxlint (`/oʊ-ɛks-lɪnt/`) 是一个基于 Oxc 编译器栈构建的高性能 JavaScript 和 TypeScript 代码检查器。
 
 ## 选择 JavaScript linter
 
@@ -55,15 +55,15 @@ Oxlint 开箱即用。默认情况下，它优先考虑高信号的正确性检�
 
 这种广度使得迁移变得直接，同时不会牺牲规则覆盖率。并且已经构建了工具 [为您迁移整个 linter 配置](/docs/guide/usage/linter/migrate-from-eslint)。
 
-## 类型感知 linting
+## 类型感知代码检查
 
-Oxlint 利用 TypeScript 编译器的原生 Go 端口 ([tsgo](https://github.com/microsoft/typescript-go) aka TypeScript 7)，提供完整的 TypeScript 兼容性和您期望从 TypeScript 本身获得的相同类型系统行为。
+Oxlint 利用 TypeScript 编译器的原生 Go 移植版本（[tsgo](https://github.com/microsoft/typescript-go)，即 TypeScript 7），提供完整的 TypeScript 兼容性，以及您期望从 TypeScript 本身获得的相同类型系统行为。
 
-这使得需要类型的任务关键型检查成为可能，例如检测浮动的 promises。
+这使得需要类型信息的关键检查成为可能，例如检测未处理的 Promise。
 
-相比之下，[Biome 的方法](https://biomejs.dev/blog/biome-v2) 是实现自己的类型推断，而不是依赖 TypeScript 编译器，他们指出覆盖率仍在改进中。
+相比之下，[Biome 的方法](https://biomejs.dev/blog/biome-v2) 是实现自己的类型推断，而不是依赖 TypeScript 编译器；他们指出，其覆盖率仍在不断提高。
 
-参见：[类型感知 linting](/docs/guide/usage/linter/type-aware)
+参见：[类型感知代码检查](/docs/guide/usage/linter/type-aware)。
 
 ## 多文件分析
 
@@ -71,7 +71,7 @@ Oxlint 将多文件分析支持作为一流功能。
 
 启用后，Oxlint 会构建项目范围的模块图，并在规则之间共享解析和解析结果。这改进了依赖于跨文件导入的检查，并有助于避免在 ESLint 中使用像 [`import/no-cycle`](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-cycle.md) 这样的规则时经常看到的性能骤降。
 
-参见：[多文件分析](/docs/guide/usage/linter/multi-file-analysis.md)
+参见：[多文件分析](/docs/guide/usage/linter/multi-file-analysis.md)。
 
 ## 对人类 _和_ AI 友好的诊断
 
@@ -83,7 +83,7 @@ Oxlint 诊断旨在既可读又可机器操作。
 
 Oxlint 专为不能接受失败的工作流程而建。
 
-崩溃被视为最高优先级的 bug。
+崩溃被视为最高优先级的 bug。  
 性能回归被视为 bug。
 
 稳定性和吞吐量始终被优先考虑，尤其是对于 CI 和大型 monorepos。
@@ -150,7 +150,7 @@ Oxlint 支持：
 
 ## 使用 Oxlint 的项目
 
-Oxlint 被以下流行项目在生产环境中使用：
+Oxlint 被以下知名项目用于生产环境：
 
 - [elastic/kibana](https://github.com/elastic/kibana)
 - [getsentry/sentry-javascript](https://github.com/getsentry/sentry-javascript)
@@ -165,6 +165,7 @@ Oxlint 被以下流行项目在生产环境中使用：
 ## 迁移
 
 - [从 ESLint 迁移](/docs/guide/usage/linter/migrate-from-eslint)
+
 <!-- - [从 Biome 迁移](/docs/guide/usage/linter/migrate-from-biome) -->
 
 ## 参考

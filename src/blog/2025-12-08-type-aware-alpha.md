@@ -8,6 +8,12 @@ authors:
 
 <AppBlogPostHeader />
 
+<Alert type="info">
+
+**本文宣布类型感知 linting 的 Alpha 版本发布。** 类型感知 linting 此后已达到稳定版！有关最新功能和改进，请参阅[类型感知 Linting 稳定版公告](/blog/2026-07-22-type-aware-linting-stable)。
+
+</Alert>
+
 <br>
 
 我们很高兴地宣布 Oxlint 中类型感知 linting 的 Alpha 版本发布！
@@ -24,7 +30,7 @@ authors:
 - [性能](#performance) - 查看类型感知 linting 比 ESLint 快多少
 - [技术预览以来有哪些新功能](#what-s-new-since-the-technical-preview) - 新功能和改进
 - [技术细节](#technical-details) - 类型感知 linting 如何在底层工作
-- [下一步计划](#what-s-next) - Beta 版本的即将改进
+- [下一步计划](#what-s-next) - Beta 版本的即将改进。
 
 ## 快速开始
 
@@ -189,15 +195,15 @@ Oxlint 中的类型感知 linting 使用独特的双二进制架构：
 
 ```
 oxlint CLI (Rust)
-  ├─ Handles file traversal, ignore logic, and diagnostics
-  ├─ Runs non-type-aware rules and custom JS plugins
-  ├─ Passes paths and configuration to tsgolint
-  └─ Formats and displays results
+  ├─ 处理文件遍历、忽略逻辑和诊断
+  ├─ 运行非类型感知规则和自定义 JS 插件
+  ├─ 将路径和配置传递给 tsgolint
+  └─ 格式化并显示结果
 
 tsgolint (Go)
-  ├─ Uses typescript-go directly for type checking
-  ├─ Executes type-aware rules
-  └─ Returns structured diagnostics
+  ├─ 直接使用 typescript-go 进行类型检查
+  ├─ 执行类型感知规则
+  └─ 返回结构化诊断信息
 ```
 
 这种设计在通过 typescript-go 利用 TypeScript 类型系统的同时，保持了 Oxlint 核心的快速。前端 - 后端分离意味着 `oxlint` 控制用户体验，而 `tsgolint` 处理类型分析的繁重工作。
@@ -216,7 +222,7 @@ tsgolint (Go)
 
 ### 实现细节
 
-`tsgolint` 不使用 typescript-go 的公共 API。相反，它通过 [shimming](https://github.com/oxc-project/tsgolint/tree/main/shim) 内部 API 来编译 typescript-go，使它们可访问。我们积极跟踪 typescript-go 更新并根据需要修复破坏性变更。
+`tsgolint` 不使用 typescript-go 的公共 API。相反，它通过 [填充适配](https://github.com/oxc-project/tsgolint/tree/main/shim) 内部 API 来编译 typescript-go，使它们可访问。我们积极跟踪 typescript-go 更新并根据需要修复破坏性变更。
 
 我们的 typescript-go 分支使用 renovatebot 定期同步，确保我们保持最新的改进和修复。一旦 TypeScript 7.0 正式发布，我们将跟踪稳定版本而不是主分支的顶端。
 

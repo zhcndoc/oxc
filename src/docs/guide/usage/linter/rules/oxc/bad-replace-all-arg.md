@@ -23,7 +23,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这不好？
 
-`replaceAll` 方法会将字符串的所有出现位置替换为另一个字符串。如果正则表达式没有使用全局标志（g），则只会替换字符串的第一次出现。
+当传入正则表达式时，`replaceAll` 方法要求设置全局标志（g）。
+否则，它会在运行时抛出 `TypeError`，而不是执行替换。
 
 ### 示例
 

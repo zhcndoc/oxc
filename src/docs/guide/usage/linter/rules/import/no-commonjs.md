@@ -1,7 +1,7 @@
 ---
 title: "import/no-commonjs | Oxlint"
 rule: "import/no-commonjs"
-category: "Restriction"
+category: "限制"
 version: "0.11.0"
 default: false
 type_aware: false
@@ -24,7 +24,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这很糟糕？
 
-ESM 模块或 Typescript 使用 `import` 和 `export` 语法，而不是 CommonJS 语法。
+ESM 模块或 TypeScript 使用 `import` 和 `export` 语法，而不是 CommonJS 语法。
 此规则强制使用更现代的模块系统，以提高代码库的可维护性和一致性。
 
 ### 示例
@@ -82,9 +82,7 @@ default: `false`
 ```js
 module.exports = "foo";
 module.exports = function rule(context) {
-  return {
-    /* ... */
-  };
+  return {/* ... */};
 };
 ```
 

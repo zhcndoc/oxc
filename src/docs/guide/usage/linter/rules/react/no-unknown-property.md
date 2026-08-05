@@ -1,11 +1,11 @@
 ---
 title: "react/no-unknown-property | Oxlint"
 rule: "react/no-unknown-property"
-category: "Restriction"
+category: "限制"
 version: "0.2.0"
 default: false
 type_aware: false
-fix: "pending"
+fix: "fixable_suggestion"
 upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/no-unknown-property.md"
 ---
 

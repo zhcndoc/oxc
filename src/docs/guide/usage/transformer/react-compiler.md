@@ -1,6 +1,6 @@
 # React 编译器
 
-Oxc 对 [React 编译器](https://react.dev/learn/react-compiler) 提供实验性支持，它会自动对 React 组件和 hooks 进行 memo 化。
+Oxc 对 [React 编译器](https://react.dev/learn/react-compiler) 提供实验性支持，它会自动对 React 组件和 hooks 进行记忆化。
 
 ::: warning
 此功能处于实验阶段，并且仍在积极开发中。选项和行为可能会发生变化。
@@ -39,4 +39,6 @@ React Compiler [需要原始源代码](https://react.dev/learn/react-compiler/in
 
 这就是为什么 Oxc 会在自身的 JSX 转换之前运行 React Compiler。
 
-违反 [React 规则](https://react.dev/reference/rules) 的代码也会被跳过，而不是被优化——例如内部可变性，或者建立在可观察变异之上的库，比如 MobX 的 `observer()`。
+违反 [React 规则](https://react.dev/reference/rules)的代码也会被跳过，而不是进行优化——例如内部可变性，或基于可观察变更构建的库（如 MobX 的 `observer()`）。
+
+要查找这类代码，Oxlint 提供了一个实验性的 [`react/react-compiler`](../linter/rules/react/react-compiler) 规则，该规则会以仅检查模式运行相同的分析并报告违规情况。

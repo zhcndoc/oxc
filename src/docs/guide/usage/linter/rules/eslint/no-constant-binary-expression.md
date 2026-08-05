@@ -24,7 +24,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么不好？
 
-始终求值为 true 或 false 的比较，以及始终短路或从不短路的逻辑表达式（`||`、`&&`、`??`），都可能表明程序员写错了。
+始终求值为 true 或 false 的比较，以及始终短路或从不短路的逻辑表达式（`||`、`&&`、`??`），都很可能表明程序员犯了错误。
+默认情况下，此规则还会报告两侧都是字面量值的关系比较
+（`<`、`<=`、`>`、`>=`）。
 
 这些错误在复杂表达式中尤其常见，因为运算符优先级很容易被误判。
 
@@ -57,7 +59,17 @@ const x = a + (b ?? c);
 const isEmpty = x.length === 0;
 ```
 
-## 如何使用
+## 配置
+
+此规则接受一个包含以下属性的配置对象：
+
+### checkRelationalComparisons
+
+类型：`boolean`
+
+默认值：`true`
+
+## 使用方法
 
 <RuleHowToUse />
 
@@ -65,6 +77,6 @@ const isEmpty = x.length === 0;
 
 此规则在 v0.0.3 中添加。
 
-## References
+## 参考资料
 
 <RuleReferences />

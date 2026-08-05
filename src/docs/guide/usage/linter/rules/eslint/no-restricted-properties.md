@@ -24,7 +24,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 为什么这很糟糕？
 
-对象上的某些属性在代码库中可能会被禁止使用。这对于废弃某个 API 或限制某个模块方法的使用很有用。例如，你可能希望在使用 Mocha 时禁止使用 describe.only，或者告诉人们使用 Object.assign 而不是 \_.extend。
+代码库中可能不允许使用对象上的某些属性。这对于弃用 API 或限制模块方法的使用很有帮助。例如，在使用 Mocha 时，你可能希望禁止使用 describe.only，或者建议人们使用 Object.assign 而不是 _.extend。
 
 如果你想禁止使用标记为 `@deprecated` 的 API，建议改用支持类型感知的 `typescript/no-deprecated` 规则。
 

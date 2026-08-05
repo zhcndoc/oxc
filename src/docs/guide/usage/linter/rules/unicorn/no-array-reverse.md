@@ -1,11 +1,11 @@
 ---
 title: "unicorn/no-array-reverse | Oxlint"
 rule: "unicorn/no-array-reverse"
-category: "Suspicious"
+category: "可疑"
 version: "1.15.0"
 default: false
 type_aware: false
-fix: "fixable_fix"
+fix: "可通过建议修复"
 upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-array-reverse.md"
 ---
 

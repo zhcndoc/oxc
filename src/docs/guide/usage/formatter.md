@@ -24,7 +24,7 @@ Oxfmt (`/oʊ-ɛks-fɔːr-mæt/`) 是 JavaScript 生态系统中的高性能格�
 
 支持包括 JavaScript、JSX、TypeScript、TSX、JSON、JSONC、JSON5、YAML、TOML、HTML、Angular、Vue、Svelte、CSS、SCSS、Less、Markdown、MDX、GraphQL、Ember、Handlebars 等。
 
-查看 [兼容性矩阵](/compatibility) 以获取详细的框架和文件类型支持。
+请参阅[语言支持](./formatter/language-support)，了解完整列表以及哪些语言原生使用 Rust 进行格式化；有关框架和文件类型支持的详细信息，请参阅[兼容性矩阵](/compatibility)。
 
 ## 专为大规模设计
 
@@ -41,7 +41,7 @@ Oxfmt 包含了通常需要外部 Prettier 插件的内置功能：
 - [导入排序](./formatter/sorting#sort-imports)
 - [Tailwind CSS 类排序](./formatter/sorting#tailwind-css-class-sorting)
 - [package.json 字段排序](./formatter/sorting#sort-package-json-fields)
-- [嵌入式格式化](./formatter/embedded-formatting)（CSS-in-JS、GraphQL 等）
+- [嵌入式格式化](./formatter/embedded-formatting)（CSS-in-JS、GraphQL 等）。
 
 ## 兼容 Prettier
 
@@ -97,4 +97,5 @@ pnpm run fmt:check
 
 - [CLI 参考](./formatter/cli)
 - [配置文件参考](./formatter/config-file-reference)
+- [语言支持](./formatter/language-support)
 - [不支持的功能](./formatter/unsupported-features)

@@ -20,7 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制遵循不使用命名空间（即“通配符” \*）导入的约定。
+强制遵循不使用命名空间（也称为“通配符”*）导入的约定。
 
 ### 这为什么不好？
 

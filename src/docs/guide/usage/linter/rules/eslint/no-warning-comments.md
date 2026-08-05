@@ -51,49 +51,43 @@ function doSomething() {}
 const x = 1;
 ```
 
-### 选项
-
-此规则有一个包含以下默认值的选项对象：
-
-```json
-{
-  "terms": ["todo", "fixme", "xxx"],
-  "location": "start",
-  "decoration": []
-}
-```
-
-#### `terms`
-
-要匹配的术语数组。匹配不区分大小写。
-
-#### `location`
-
-在哪里检查这些术语：
-
-- `"start"`（默认）：术语必须出现在注释开头（在任何装饰字符之后）
-- `"anywhere"`：术语可以出现在注释中的任意位置
-
-#### `decoration`
-
-当 `location` 为 `"start"` 时，在注释开头需要忽略的字符数组。
-可用于忽略 JSDoc 风格注释中常见的注释装饰字符，例如 `*`。
-
 ## 配置
 
 此规则接受一个包含以下属性的配置对象：
 
 ### decoration
 
-type: `string[]`
+类型: `string[]`
+
+默认值: `[]`
+
+一个字符数组，用于在 `location` 为 `"start"` 时忽略注释开头的字符。
+
+适用于忽略 JSDoc 风格注释中常见的注释装饰符，例如 `*`。
 
 ### location
 
-type: `"start" | "anywhere"`
+类型: `"start" | "anywhere"`
+
+默认值: `"start"`
+
+检查术语的位置。
+
+#### `"start"`
+
+术语必须出现在注释的开头，位于所有装饰符之后。
+
+#### `"anywhere"`
+
+术语可以出现在注释中的任意位置。
 
 ### terms
 
-type: `string[]`
+类型: `string[]`
+
+默认值: `["todo", "fixme", "xxx"]`
+
+要匹配的术语数组。匹配时不区分大小写。
 
 ## 使用方法
 

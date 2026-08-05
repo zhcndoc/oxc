@@ -44,7 +44,7 @@ expect(Promise.resolve("Hi!")).resolves.toBe("Hi!");
 ```javascript
 expect("something").toEqual("something");
 expect(true).toBeDefined();
-expect(Promise.resolve("Hi!")).resolves.toBe("Hi!");
+await expect(Promise.resolve("Hi!")).resolves.toBe("Hi!");
 ```
 
 ## 配置

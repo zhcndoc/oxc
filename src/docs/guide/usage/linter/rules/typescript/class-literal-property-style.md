@@ -1,11 +1,11 @@
 ---
 title: "typescript/class-literal-property-style | Oxlint"
 rule: "typescript/class-literal-property-style"
-category: "Style"
+category: "风格"
 version: "1.47.0"
 default: false
 type_aware: false
-fix: "pending"
+fix: "conditional_suggestion"
 upstream: "https://typescript-eslint.io/rules/class-literal-property-style/"
 ---
 

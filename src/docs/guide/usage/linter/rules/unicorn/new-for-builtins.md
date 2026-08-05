@@ -40,6 +40,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```javascript
 const foo = new String("hello world");
 const bar = Array(1, 2, 3);
+const now = Date();
 ```
 
 以下是此规则的**正确**代码示例：
@@ -47,6 +48,7 @@ const bar = Array(1, 2, 3);
 ```javascript
 const foo = String("hello world");
 const bar = new Array(1, 2, 3);
+const now = String(new Date());
 ```
 
 ## 如何使用

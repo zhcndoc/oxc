@@ -18,7 +18,7 @@ title: "从 ESLint 迁移 | Oxlint"
 
 Oxlint 和 ESLint 共享相似的配置概念，但它们在支持的规则和配置格式上有所不同。
 
-Oxlint 已经支持来自 ESLint 核心和各种流行插件的 700 多条规则。我们打算支持几乎所有现有的 ESLint 核心规则，这项工作正在进行中。查看 [兼容性矩阵](/compatibility) 以验证对您框架和文件类型的支持。
+Oxlint 已支持 ESLint 核心及各种流行插件中的 800 多条规则。我们计划支持几乎所有现有的 ESLint 核心规则，这项工作仍在进行中。请查看[兼容性矩阵](/compatibility)，以确认对您的框架和文件类型的支持情况。
 
 迁移时，请预期以下情况：
 
@@ -116,7 +116,7 @@ export default defineConfig({
 
 ## 同时运行 Oxlint 和 ESLint
 
-如果 Oxlint 中并非所有需要的规则都可用，您可以并排运行 Oxlint 和 ESLint。
+如果 Oxlint 中并非所有需要的规则都可用，您可以并行运行 Oxlint 和 ESLint。
 
 常见的设置是：
 
@@ -140,9 +140,9 @@ oxlint && eslint
 npm install --save-dev eslint-plugin-oxlint
 ```
 
-这减少了重复的诊断，可以帮助大幅减少 linting 时间，并允许 ESLint 仅专注于 Oxlint 尚未支持的规则。
+这可以减少重复的诊断，有助于大幅缩短 lint 时间，并让 ESLint 仅专注于 Oxlint 尚未支持的规则。
 
-长期来看 - 一旦 Oxlint 中添加了剩余的重要规则 - 我们强烈建议完全迁移到 Oxlint，以简化您的设置并减少项目的依赖数量。
+从长远来看，一旦 Oxlint 添加了剩余的重要规则，我们强烈建议完全迁移到 Oxlint，以简化您的设置并减少项目的依赖数量。
 
 ## 从旧版 ESLint (v8.x) 配置迁移
 
@@ -156,7 +156,7 @@ npm install --save-dev eslint-plugin-oxlint
 
 您可能有一些在 ESLint 中依赖的特定规则尚未移植到 Oxlint。
 
-我们支持的插件中的几乎所有规则都将被移植 - 并且大多数已经移植完成。对于那些不会移植的规则，有些规则在原始插件中已弃用，或者已经有了替代实现。
+我们支持的插件中的几乎所有规则都将被移植——并且大多数已经移植完成。对于那些不会移植的规则，有些规则在原始插件中已弃用，或者已经有了替代实现。
 
 您可以查看 [元问题](https://github.com/oxc-project/oxc/issues/481) 了解规则/插件实现状态，以查看您依赖的规则是否计划实现，或者是否已由其他等效规则实现。
 

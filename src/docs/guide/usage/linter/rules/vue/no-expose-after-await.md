@@ -35,9 +35,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```vue
 <script setup>
 await doSomething();
-defineExpose({
-  /* ... */
-}); // 错误
+defineExpose({/* ... */}); // 错误
 </script>
 ```
 
@@ -45,9 +43,7 @@ defineExpose({
 
 ```vue
 <script setup>
-defineExpose({
-  /* ... */
-}); // 正确
+defineExpose({/* ... */}); // 正确
 await doSomething();
 </script>
 ```

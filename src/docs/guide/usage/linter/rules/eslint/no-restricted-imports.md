@@ -20,8 +20,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-此规则允许你指定在应用程序中不希望使用的导入。
-它只适用于静态导入，不适用于动态导入。
+此规则允许你指定不希望在应用程序中使用的导入。
+它适用于静态导入，以及源为字符串字面量的动态 `import()`；
+计算得到的源（例如 `import(bar)`）会被忽略。
 
 ### 为什么这不好？
 

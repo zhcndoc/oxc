@@ -1,7 +1,7 @@
 ---
 title: "nextjs/google-font-display | Oxlint"
 rule: "nextjs/google-font-display"
-category: "Correctness"
+category: "正确性"
 version: "0.2.0"
 default: false
 type_aware: false
@@ -34,13 +34,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 ```jsx
 import Head from "next/head";
 
-export default Test = () => {
+export default (Test = () => {
   return (
     <Head>
       <link href="https://fonts.googleapis.com/css2?family=Krona+One" rel="stylesheet" />
     </Head>
   );
-};
+});
 ```
 
 以下是此规则的**正确**代码示例：
@@ -48,7 +48,7 @@ export default Test = () => {
 ```jsx
 import Head from "next/head";
 
-export default Test = () => {
+export default (Test = () => {
   return (
     <Head>
       <link
@@ -57,7 +57,7 @@ export default Test = () => {
       />
     </Head>
   );
-};
+});
 ```
 
 ## 如何使用

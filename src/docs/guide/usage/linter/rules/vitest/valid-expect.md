@@ -1,7 +1,7 @@
 ---
 title: "vitest/valid-expect | Oxlint"
 rule: "vitest/valid-expect"
-category: "Correctness"
+category: "正确性"
 version: "0.0.14"
 default: false
 type_aware: false
@@ -44,7 +44,7 @@ expect(Promise.resolve("Hi!")).resolves.toBe("Hi!");
 ```javascript
 expect("something").toEqual("something");
 expect(true).toBeDefined();
-expect(Promise.resolve("Hi!")).resolves.toBe("Hi!");
+await expect(Promise.resolve("Hi!")).resolves.toBe("Hi!");
 ```
 
 ## 配置

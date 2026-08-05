@@ -1,7 +1,7 @@
 ---
 title: "eslint/no-restricted-globals | Oxlint"
 rule: "eslint/no-restricted-globals"
-category: "Restriction"
+category: "限制"
 version: "0.4.0"
 default: false
 type_aware: false
@@ -44,38 +44,7 @@ function onClick() {
 }
 ```
 
-## 配置
-
-此规则接受一个具有以下属性的配置对象：
-
-### checkGlobalObject
-
-type: `boolean`
-
-default: `false`
-
-一个布尔选项，用于启用对通过全局对象访问受限全局变量的检测。默认值为 `false`。
-
-### globalObjects
-
-type: `string[]`
-
-default: `["globalThis", "self", "window"]`
-
-一个数组选项，用于在启用 `checkGlobalObject` 时指定要检查的额外全局对象名称。
-默认情况下，该规则会检查这些全局对象：`globalThis`、`self` 和 `window`。
-
-### globals
-
-type: `Record<string, string>`
-
-default: `{}`
-
-格式为
-`{ "name": "event", "message": "请改用局部参数。" }` 的对象，用于定义哪些全局变量
-被限制使用。
-
-## How to Use
+## 使用方法
 
 <RuleHowToUse />
 

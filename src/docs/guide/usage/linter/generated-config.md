@@ -187,7 +187,20 @@ export default defineConfig({
 
 类型：`string[]`
 
-此配置文件扩展（继承自）的配置文件路径。文件路径是相对于包含 `extends` 属性的配置文件的位置解析的。配置文件从第一个到最后一个合并，最后一个文件覆盖之前的文件。
+此配置文件扩展（继承）的配置。
+
+在 `.oxlintrc.json` 中，`extends` 的类型为 `string[]`。每个字符串都是配置文件的路径，该路径相对于包含 `extends` 属性的配置文件所在位置进行解析。
+
+在 `oxlint.config.ts` 中，`extends` 的类型为 `OxlintConfig[]`。导入每个配置，并直接传入配置对象：
+
+```ts
+import { defineConfig } from "oxlint";
+import baseConfig from "./base-config.ts";
+
+export default defineConfig({ extends: [baseConfig] });
+```
+
+配置会按照从第一个到最后一个的顺序进行合并，后一个配置会覆盖前面的配置。
 
 ## globals
 
@@ -221,7 +234,9 @@ export default defineConfig({
 
 默认值：`[]`
 
-lint 检查期间要忽略的 Glob 模式。这些模式是从配置文件路径解析的。
+代码检查期间要忽略的 Glob 模式。模式使用 gitignore 风格的匹配方式，
+其根目录为包含配置文件的目录。
+无法匹配该目录之外的文件；包含 `..` 的模式将被视为配置错误而拒绝。
 
 ## jsPlugins
 
@@ -294,15 +309,15 @@ TypeScript 插件文件在以下环境中受支持：
 
 注意：以下插件名称被保留，因为它们在 oxlint 中是以 Rust 原生实现的，不能用于 JS 插件：
 
-- react (includes react-hooks)
+- react（包含 react-hooks）
 - unicorn
-- typescript (includes @typescript-eslint)
+- typescript（包含 @typescript-eslint）
 - oxc
-- import (includes import-x)
+- import（包含 import-x）
 - jsdoc
 - jest
 - vitest
-- jsx-a11y (includes jsx-a11y-x)
+- jsx-a11y（包含 jsx-a11y-x）
 - nextjs
 - react-perf
 - promise
@@ -400,19 +415,18 @@ Oxlint 配置选项。
 
 #### overrides[n].excludeFiles
 
-type: `string[]`
+类型：`string[]`
 
-A list of glob patterns to exclude from this override.
+要从此覆盖配置中排除的 glob 模式列表。
 
-Files matching these patterns are not globally ignored; this override
-simply does not apply to them.
+匹配这些模式的文件不会被全局忽略；此覆盖配置只是不适用于这些文件。
 
-## Example
+## 示例
 
 `[ "*.generated.ts", "fixtures/**" ]`
 
-A set of glob patterns.
-Patterns are matched against paths relative to the configuration file's directory.
+一组 glob 模式。  
+模式会根据相对于配置文件所在目录的路径进行匹配。
 
 #### overrides[n].files
 
@@ -424,7 +438,7 @@ Patterns are matched against paths relative to the configuration file's director
 
 `[ "*.test.ts", "*.spec.ts" ]`
 
-一组 glob 模式。
+一组 glob 模式。  
 模式会与相对于配置文件目录的路径进行匹配。
 
 #### overrides[n].globals
@@ -510,9 +524,9 @@ Patterns are matched against paths relative to the configuration file's director
 
 ### plugins[n]
 
-类型：`"eslint" | "react" | "unicorn" | "typescript" | "oxc" | "import" | "jsdoc" | "jest" | "vitest" | "jsx-a11y" | "nextjs" | "react-perf" | "promise" | "node" | "vue"`
+类型：`"eslint" | "react" | "unicorn" | "typescript" | "oxc" | "import" | "jsdoc" | "jest" | "vitest" | "jsx-a11y" | "nextjs" | "react-perf" | "promise" | "node" | "vue"`】【。
 
-## rules
+## 规则
 
 类型：`object`
 
@@ -538,7 +552,7 @@ Patterns are matched against paths relative to the configuration file's director
 
 请参阅 [Oxlint 规则](https://oxc.rs/docs/guide/usage/linter/rules.html) 获取规则列表。
 
-请参阅 [Oxlint 规则](https://oxc.rs/docs/guide/usage/linter/rules.html)
+请参阅 [Oxlint 规则](https://oxc.rs/docs/guide/usage/linter/rules.html)。
 
 ## settings
 

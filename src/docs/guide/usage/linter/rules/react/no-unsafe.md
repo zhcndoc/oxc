@@ -1,7 +1,7 @@
 ---
 title: "react/no-unsafe | Oxlint"
 rule: "react/no-unsafe"
-category: "Correctness"
+category: "正确性"
 version: "1.35.0"
 default: false
 type_aware: false
@@ -68,11 +68,9 @@ type: `boolean`
 
 default: `false`
 
-是否检查不带前缀的生命周期方法。
-如果为 `true`，则表示 `componentWillMount`、`componentWillReceiveProps`
-和 `componentWillUpdate` 也会被标记，而不仅仅是
-`UNSAFE_` 版本。建议将其设置为 `true`，以彻底
-避免不安全的生命周期方法。
+是否检查未添加前缀的生命周期方法。  
+如果为 `true`，则 `componentWillMount`、`componentWillReceiveProps`  
+和 `componentWillUpdate` 也会被标记，而不仅仅是带有 `UNSAFE_` 前缀的版本。建议将其设置为 `true`，以完全避免使用不安全的生命周期方法。
 
 ## 使用方法
 

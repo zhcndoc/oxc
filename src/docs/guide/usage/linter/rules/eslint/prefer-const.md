@@ -1,7 +1,7 @@
 ---
 title: "eslint/prefer-const | Oxlint"
 rule: "eslint/prefer-const"
-category: "Style"
+category: "样式"
 version: "1.43.0"
 default: false
 type_aware: false
@@ -22,7 +22,15 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 要求对在初始声明后从未被重新赋值的变量使用 `const` 声明。
 
-### 为什么这不好？
+#### 忽略的文件
+
+此规则完全忽略 `.svelte` 和 `.vue` 文件。Oxlint 只解析这些文件的
+`<script>` 代码块，因此模板重新赋值的绑定看起来像是从未被重新赋值，将其转换为
+`const` 会导致框架编译器失败。在 Svelte 中，模板通过 `bind:this={el}` 和
+`bind:value={x}` 写入；在 Vue 中，`<script setup>` 中的 `let` 是一个
+`setup-let` 绑定，`v-model="x"` 和诸如 `@click="x = 1"` 这样的内联处理程序会直接对其赋值。
+
+### 为什么这是不好的？
 
 如果一个变量从未被重新赋值，使用 `const` 声明会更好。
 `const` 声明会告诉读者：“这个变量从未被重新赋值”，从而减少认知负担并提高可维护性。

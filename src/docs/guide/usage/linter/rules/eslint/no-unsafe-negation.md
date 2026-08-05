@@ -30,8 +30,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 示例
 
-以下是此规则的**错误**代码示例：
-
+此规则的**错误**代码示例：
 <!-- prettier-ignore-start -->
 ```javascript
 if (!key in object) {}

@@ -1,11 +1,11 @@
 ---
 title: "typescript/no-unnecessary-type-conversion | Oxlint"
 rule: "typescript/no-unnecessary-type-conversion"
-category: "Suspicious"
+category: "可疑"
 version: "1.49.0"
 default: false
 type_aware: true
-fix: "none"
+fix: "待定"
 upstream: "https://typescript-eslint.io/rules/no-unnecessary-type-conversion/"
 ---
 

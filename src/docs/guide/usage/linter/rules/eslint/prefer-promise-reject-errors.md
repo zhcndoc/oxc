@@ -1,7 +1,7 @@
 ---
 title: "eslint/prefer-promise-reject-errors | Oxlint"
 rule: "eslint/prefer-promise-reject-errors"
-category: "Style"
+category: "Pedantic"
 version: "0.15.7"
 default: false
 type_aware: false
@@ -22,7 +22,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 要求将 Error 对象用作 Promise 的拒绝原因。
 
-### 为什么这不好？
+::: warning
+此规则不如具有类型感知能力的
+[typescript/prefer-promise-reject-errors](https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-promise-reject-errors.html)
+规则准确。当类型信息可用时，我们建议使用 TypeScript 规则。
+:::
+
+### 为什么这很糟糕？
 
 对于 Promise 中用户定义的错误，通常认为最佳实践是仅将内置 `Error` 对象的实例传递给
 `reject()` 函数。`Error` 对象会自动

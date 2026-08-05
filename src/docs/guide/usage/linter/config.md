@@ -1,11 +1,11 @@
 ---
-title: "Configuration | Oxlint"
+title: "配置 | Oxlint"
 description: 使用 .oxlintrc.json 或 oxlint.config.ts 配置 Oxlint。
 ---
 
 # 配置
 
-Oxlint 开箱即用，但大多数团队会提交一个配置文件（`.oxlintrc.json` 或 `oxlint.config.ts`），以保持本地运行、编辑器和 CI 中的 lint 检查一致。
+Oxlint 开箱即用，但大多数团队会提交一个配置文件（`.oxlintrc.json` 或 `oxlint.config.ts`），以保持本地运行、编辑器和 CI 中的代码检查一致。
 
 本页重点介绍项目配置：规则、类别、插件、覆盖和共享设置。
 
@@ -17,19 +17,19 @@ Oxlint 开箱即用，但大多数团队会提交一个配置文件（`.oxlintrc
 oxlint --init
 ```
 
-Oxlint 会自动在当前工作目录中查找 `.oxlintrc.json` 或 `oxlint.config.ts`。你也可以显式传递配置（注意这将禁用嵌套配置查找）：
+Oxlint 会自动在当前工作目录中查找 `.oxlintrc.json`、`.oxlintrc.jsonc`、`oxlint.config.ts` 或 `oxlint.config.mts`。你也可以显式传入配置文件（请注意，这将禁用嵌套配置查找）：
 
 ```sh
-oxlint -c ./oxlintrc.json
+oxlint -c ./.oxlintrc.json
 # 或
-oxlint --config ./oxlintrc.json
+oxlint --config ./.oxlintrc.json
 ```
 
 注意：
 
-- `.oxlintrc.json` 支持注释（类似 jsonc）。
-- 配置格式旨在与 ESLint v8 的格式（`eslintrc.json`）兼容。
-- 你可以在目录中使用 `.oxlintrc.json` 或 `oxlint.config.ts`，但不能同时使用。
+- `.oxlintrc.json` 支持注释（类似于 jsonc）。
+- 配置格式旨在兼容 ESLint v8 的格式（`eslintrc.json`）。
+- 每个目录只能使用一个配置文件：JSON 和 TypeScript 配置不能共存，`oxlint.config.ts` 和 `oxlint.config.mts` 也不能共存。
 
 最小配置如下所示：
 
@@ -47,7 +47,7 @@ oxlint --config ./oxlintrc.json
 
 ### TypeScript 配置文件（`oxlint.config.ts`）
 
-Oxlint 还支持名为 `oxlint.config.ts` 的 TypeScript 配置文件。
+Oxlint 还支持名为 `oxlint.config.ts` 或 `oxlint.config.mts` 的 TypeScript 配置文件。
 
 ```ts [oxlint.config.ts]
 import { defineConfig } from "oxlint";
@@ -64,8 +64,8 @@ export default defineConfig({
 
 注意：
 
-- 文件必须命名为 `oxlint.config.ts`（即使通过 `--config` 传递时也是如此）。
-- 默认导出必须是一个对象，并且应该用 `defineConfig` 包装以获得类型支持。
+- 对于自动发现，文件必须命名为 `oxlint.config.ts` 或 `oxlint.config.mts`。通过 `--config` 传入时，任何带有 JS/TS 扩展名（`.js`、`.mjs`、`.cjs`、`.ts`、`.mts`、`.cts`）的路径均可接受。
+- 默认导出必须是一个对象，并且应使用 `defineConfig` 包装以获得类型支持。
 - TypeScript 配置需要基于 Node 的 `oxlint` 包（JS 运行时）。如果你使用的是独立二进制文件，请改用 `.oxlintrc.json`。
 - TypeScript 配置需要能够执行 TypeScript 的 Node 运行时（Node v22.18+ 或 v24+）。
 
@@ -170,7 +170,7 @@ export default defineConfig({
 
 Oxlint 接受 ESLint 风格的严重程度：
 
-- 禁用规则：`"off"` 或 `"`allow"`
+- 禁用规则：`"off"` 或 `"allow"`
 - 规则警告：`"warn"`
 - 规则错误：`"error"` 或 `"deny"`
 
@@ -517,7 +517,7 @@ export default defineConfig({
 
 - `"readonly"` 或 `"readable"` 或 `false`
 - `"writable"` 或 `"writeable"` 或 `true`
-- `"off"` 用于禁用全局变量
+- `"off"` 用于禁用全局变量。
 
 ## 插件设置
 

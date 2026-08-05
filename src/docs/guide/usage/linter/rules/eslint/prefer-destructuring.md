@@ -71,6 +71,12 @@ const obj = object.bar;
 
 此选项是一个包含以下属性的对象：
 
+#### enforceForDeclarationWithTypeAnnotation
+
+类型：`boolean`
+
+默认值：`false`
+
 #### enforceForRenamedProperties
 
 类型：`boolean`

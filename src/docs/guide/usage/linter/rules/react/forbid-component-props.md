@@ -1,11 +1,11 @@
 ---
 title: "react/forbid-component-props | Oxlint"
 rule: "react/forbid-component-props"
-category: "Restriction"
+category: "限制"
 version: "1.62.0"
 default: false
 type_aware: false
-fix: "none"
+fix: "无"
 upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/forbid-component-props.md"
 ---
 
@@ -81,25 +81,33 @@ type: `object | string`
 
 type: `string[]`
 
-允许使用此 prop 的组件名称（其他所有组件都被禁止）。
+默认值：`[]`
+
+允许使用此 prop 的组件名称（其他所有组件中都禁止使用）。
 
 ##### forbid[n].allowedForPatterns
 
 type: `string[]`
 
-允许使用此 prop 的组件名称的 glob 模式。
+默认值：`[]`
+
+允许使用此 prop 的组件名称所匹配的 Glob 模式。
 
 ##### forbid[n].disallowedFor
 
 type: `string[]`
 
-禁止使用此 prop 的组件名称（其他所有组件都被允许）。
+默认值：`[]`
+
+禁止使用此 prop 的组件名称（其他所有组件中都允许使用）。
 
 ##### forbid[n].disallowedForPatterns
 
 type: `string[]`
 
-禁止使用此 prop 的组件名称的 glob 模式。
+默认值：`[]`
+
+禁止使用此 prop 的组件名称所匹配的 Glob 模式。
 
 ##### forbid[n].message
 
@@ -117,7 +125,7 @@ type: `string`
 
 type: `string`
 
-用于匹配 prop 名称的 glob 模式。
+用于匹配 prop 名称的 Glob 模式。
 
 ## 如何使用
 

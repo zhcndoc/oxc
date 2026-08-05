@@ -1,11 +1,11 @@
 ---
 title: "react/forbid-dom-props | Oxlint"
 rule: "react/forbid-dom-props"
-category: "Restriction"
+category: "限制"
 version: "1.24.0"
 default: false
 type_aware: false
-fix: "none"
+fix: "无"
 upstream: "https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/forbid-dom-props.md"
 ---
 
@@ -60,13 +60,14 @@ type: `array`
 
 一个在 DOM 元素上被禁止的 prop 名称或对象数组。
 
-数组中的每个元素可以是一个包含属性名的字符串，或一个包含 `propName`、可选的 `disallowedFor` DOM 节点名称数组，以及可选自定义 `message` 的对象。
+数组中的每个元素可以是包含属性名称的字符串，也可以是包含 `propName`、可选的 `disallowedFor` 和 `disallowedValues` 数组，以及可选自定义 `message` 的对象。
 
 示例：
 
 - `["error", { "forbid": ["id", "style"] }]`
 - `["error", { "forbid": [{ "propName": "className", "message": "使用 class 代替" }] }]`
 - `["error", { "forbid": [{ "propName": "style", "disallowedFor": ["div", "span"] }] }]`
+- `["error", { "forbid": [{ "propName": "type", "disallowedValues": ["button"] }] }]`
 
 #### forbid[n]
 
@@ -79,6 +80,12 @@ type: `object | string`
 type: `string[]`
 
 一个 DOM 元素名称列表（例如 `["div", "span"]`），此 prop 在这些元素上被禁止。如果为空或省略，则该 prop 在所有 DOM 元素上都被禁止。
+
+##### forbid[n].disallowedValues
+
+type: `string[]`
+
+一个字符串字面量值列表，此 prop 在这些值下被禁止。如果省略，则该 prop 对所有值都被禁止。
 
 ##### forbid[n].message
 

@@ -33,20 +33,32 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 此规则的**错误**代码示例：
 
 ```jsx
-<ul role="radiogroup" "aria-labelledby"="foo">
-    <li aria-required tabIndex="-1" role="radio" aria-checked="false">Rainbow Trout</li>
-    <li aria-required tabIndex="-1" role="radio" aria-checked="false">Brook Trout</li>
-    <li aria-required tabIndex="0" role="radio" aria-checked="true">Lake Trout</li>
+<ul role="radiogroup" aria-labelledby="foo">
+  <li aria-required tabIndex="-1" role="radio" aria-checked="false">
+    Rainbow Trout
+  </li>
+  <li aria-required tabIndex="-1" role="radio" aria-checked="false">
+    Brook Trout
+  </li>
+  <li aria-required tabIndex="0" role="radio" aria-checked="true">
+    Lake Trout
+  </li>
 </ul>
 ```
 
 此规则的**正确**代码示例：
 
 ```jsx
-<ul role="radiogroup" aria-required "aria-labelledby"="foo">
-    <li tabIndex="-1" role="radio" aria-checked="false">Rainbow Trout</li>
-    <li tabIndex="-1" role="radio" aria-checked="false">Brook Trout</li>
-    <li tabIndex="0" role="radio" aria-checked="true">Lake Trout</li>
+<ul role="radiogroup" aria-required aria-labelledby="foo">
+  <li tabIndex="-1" role="radio" aria-checked="false">
+    Rainbow Trout
+  </li>
+  <li tabIndex="-1" role="radio" aria-checked="false">
+    Brook Trout
+  </li>
+  <li tabIndex="0" role="radio" aria-checked="true">
+    Lake Trout
+  </li>
 </ul>
 ```
 

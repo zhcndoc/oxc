@@ -13,18 +13,18 @@ search: false
 
 在唯一的箭头函数参数周围包含括号。
 
-- Languages: JS, JSX, TS, TSX
-- Default: `"always"`
+- 语言：JS、JSX、TS、TSX
+- 默认值：`"always"`
 
 ## bracketSameLine
 
 类型：`boolean`
 
-将多行 HTML（HTML、JSX、Vue、Angular）元素的 `>` 放在最后一行的末尾，
+将多行 HTML（HTML、JSX、Vue、Angular）元素的 `>` 放在最后一行的末尾，  
 而不是单独放在下一行（不适用于自闭合元素）。
 
-- Languages: JSX, TSX, HTML, Angular, Vue, MJML, Svelte
-- Default: `false`
+- 语言：JSX、TSX、HTML、Angular、Vue、MJML、Svelte
+- 默认值：`false`
 
 ## bracketSpacing
 
@@ -41,8 +41,8 @@ search: false
 
 控制是否格式化文件中嵌入的部分（例如，CSS-in-JS 或 JS-in-Vue 等）。
 
-- Languages: JS, JSX, TS, TSX, HTML, Vue, Angular, Svelte, Markdown, MDX (languages with embedded code)
-- Default: `"auto"`
+- 语言：JS、JSX、TS、TSX、HTML、Vue、Angular、Svelte、Markdown、MDX（包含嵌入代码的语言）
+- 默认值：`"auto"`
 
 ## endOfLine
 
@@ -52,9 +52,9 @@ search: false
 
 注意：不支持 `"auto"`。
 
-- Languages: All
-- Default: `"lf"`
-- Overrides `.editorconfig.end_of_line`
+- 语言：全部
+- 默认值：`"lf"`
+- 覆盖 `.editorconfig.end_of_line`。
 
 ## htmlWhitespaceSensitivity
 
@@ -62,15 +62,16 @@ search: false
 
 指定 HTML、Vue、Angular 和 Handlebars 的全局空白敏感度。
 
-- Languages: HTML, Angular, Vue, Handlebars, Svelte
-- Default: `"css"`
+- 语言：HTML、Angular、Vue、Handlebars、Svelte
+- 默认值：`"css"`
 
 ## ignorePatterns
 
 类型：`string[]`
 
 忽略匹配这些 glob 模式的文件。
-模式基于 Oxfmt 配置文件的位置。
+模式使用 gitignore 风格的匹配方式，其根目录为包含配置文件的目录。
+无法匹配该目录之外的文件；包含 `..` 的模式将被视为配置错误。
 
 - 默认：`[]`
 
@@ -80,9 +81,9 @@ search: false
 
 是否在文件末尾插入最终换行符。
 
-- Languages: All
-- Default: `true`
-- Overrides `.editorconfig.insert_final_newline`
+- 语言：全部
+- 默认值：`true`
+- 覆盖 `.editorconfig.insert_final_newline`
 
 ## jsdoc
 
@@ -96,14 +97,14 @@ search: false
 
 传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Languages: JS, JSX, TS, TSX
-- Default: Disabled
+- 语言：JS、JSX、TS、TSX
+- 默认：禁用
 
 ### jsdoc.addDefaultToDescription
 
 类型：`boolean`
 
-将默认值附加到 `@param` 描述中（例如“默认值是 `value`"）。
+将默认值附加到 `@param` 描述中（例如“默认值是 `value`”）。
 
 - 默认：`true`
 
@@ -125,7 +126,7 @@ search: false
 
 ### jsdoc.commentLineStrategy
 
-类型：`string`
+类型：`"singleLine" | "multiline" | "keep"`
 
 如何格式化注释块。
 
@@ -161,7 +162,7 @@ search: false
 
 ### jsdoc.lineWrappingStyle
 
-类型：`string`
+类型：`"greedy" | "balance"`
 
 在打印宽度处换行描述行的策略。
 
@@ -219,7 +220,7 @@ search: false
 
 类型：`array`
 
-特定于文件的覆盖。
+特定于文件的覆盖。  
 当文件匹配多个覆盖时，后面的覆盖优先（数组顺序很重要）。
 
 - 默认：`[]`
@@ -258,8 +259,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在唯一的箭头函数参数周围包含括号。
 
-- Languages: JS, JSX, TS, TSX
-- Default: `"always"`
+- 语言：JS、JSX、TS、TSX
+- 默认：`"always"`
 
 ##### overrides[n].options.bracketSameLine
 
@@ -268,8 +269,8 @@ Glob 模式，用于匹配此覆盖的文件。
 将多行 HTML（HTML、JSX、Vue、Angular）元素的 `>` 放在最后一行的末尾，
 而不是单独放在下一行（不适用于自闭合元素）。
 
-- Languages: JSX, TSX, HTML, Angular, Vue, MJML, Svelte
-- Default: `false`
+- 语言：JSX、TSX、HTML、Angular、Vue、MJML、Svelte
+- 默认：`false`
 
 ##### overrides[n].options.bracketSpacing
 
@@ -277,8 +278,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在对象字面量的括号之间打印空格。
 
-- Languages: JS, JSX, TS, TSX, JSON, JSONC, JSON5, GraphQL, YAML
-- Default: `true`
+- 语言：JS、JSX、TS、TSX、JSON、JSONC、JSON5、GraphQL、YAML
+- 默认：`true`
 
 ##### overrides[n].options.embeddedLanguageFormatting
 
@@ -286,8 +287,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 控制是否格式化文件中嵌入的部分（例如，CSS-in-JS 或 JS-in-Vue 等）。
 
-- Languages: JS, JSX, TS, TSX, HTML, Vue, Angular, Svelte, Markdown, MDX (languages with embedded code)
-- Default: `"auto"`
+- 语言：JS、JSX、TS、TSX、HTML、Vue、Angular、Svelte、Markdown、MDX（包含嵌入代码的语言）
+- 默认：`"auto"`
 
 ##### overrides[n].options.endOfLine
 
@@ -297,9 +298,9 @@ Glob 模式，用于匹配此覆盖的文件。
 
 注意：不支持 `"auto"`。
 
-- Languages: All
-- Default: `"lf"`
-- Overrides `.editorconfig.end_of_line`
+- 语言：全部
+- 默认：`"lf"`
+- 覆盖 `.editorconfig.end_of_line`
 
 ##### overrides[n].options.htmlWhitespaceSensitivity
 
@@ -307,8 +308,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 指定 HTML、Vue、Angular 和 Handlebars 的全局空白敏感度。
 
-- Languages: HTML, Angular, Vue, Handlebars, Svelte
-- Default: `"css"`
+- 语言：HTML、Angular、Vue、Handlebars、Svelte
+- 默认：`"css"`
 
 ##### overrides[n].options.insertFinalNewline
 
@@ -316,9 +317,9 @@ Glob 模式，用于匹配此覆盖的文件。
 
 是否在文件末尾插入最终换行符。
 
-- Languages: All
-- Default: `true`
-- Overrides `.editorconfig.insert_final_newline`
+- 语言：全部
+- 默认：`true`
+- 覆盖 `.editorconfig.insert_final_newline`
 
 ##### overrides[n].options.jsdoc
 
@@ -332,8 +333,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Languages: JS, JSX, TS, TSX
-- Default: Disabled
+- 语言：JS、JSX、TS、TSX
+- 默认：已禁用
 
 ###### overrides[n].options.jsdoc.addDefaultToDescription
 
@@ -361,7 +362,7 @@ Glob 模式，用于匹配此覆盖的文件。
 
 ###### overrides[n].options.jsdoc.commentLineStrategy
 
-类型：`string`
+类型：`"singleLine" | "multiline" | "keep"`
 
 如何格式化注释块。
 
@@ -397,7 +398,7 @@ Glob 模式，用于匹配此覆盖的文件。
 
 ###### overrides[n].options.jsdoc.lineWrappingStyle
 
-类型：`string`
+类型：`"greedy" | "balance"`
 
 在打印宽度处换行描述行的策略。
 
@@ -436,8 +437,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在 JSX 中使用单引号而不是双引号。
 
-- Languages: JSX, TSX
-- Default: `false`
+- 语言：JSX、TSX
+- 默认：`false`
 
 ##### overrides[n].options.objectWrap
 
@@ -448,8 +449,8 @@ Glob 模式，用于匹配此覆盖的文件。
 默认情况下，如果第一个属性之前有换行符，则将对象格式化为多行。
 作者可以使用此启发式方法在上下文中提高可读性，尽管它有一些缺点。
 
-- Languages: JS, JSX, TS, TSX, JSON, JSONC, JSON5
-- Default: `"preserve"`
+- 语言：JS、JSX、TS、TSX、JSON、JSONC、JSON5
+- 默认：`"preserve"`
 
 ##### overrides[n].options.printWidth
 
@@ -459,9 +460,9 @@ Glob 模式，用于匹配此覆盖的文件。
 
 如果您不想在格式化 Markdown 时换行，可以将 `proseWrap` 选项设置为禁用它。
 
-- Languages: All
-- Default: `100`
-- Overrides `.editorconfig.max_line_length`
+- 语言：全部
+- 默认：`100`
+- 覆盖 `.editorconfig.max_line_length`
 
 ##### overrides[n].options.proseWrap
 
@@ -473,8 +474,8 @@ Glob 模式，用于匹配此覆盖的文件。
 要将散文文本换行到打印宽度，将此选项更改为 "always"。
 如果您想强制所有散文块位于单行并依赖编辑器/查看器软换行，可以使用 "never"。
 
-- Languages: Markdown, MDX, YAML
-- Default: `"preserve"`
+- 语言：Markdown、MDX、YAML
+- 默认：`"preserve"`
 
 ##### overrides[n].options.quoteProps
 
@@ -482,8 +483,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 更改对象中属性何时被引用。
 
-- Languages: JS, JSX, TS, TSX
-- Default: `"as-needed"`
+- 语言：JS、JSX、TS、TSX
+- 默认：`"as-needed"`
 
 ##### overrides[n].options.semi
 
@@ -491,8 +492,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在语句末尾打印分号。
 
-- Languages: JS, JSX, TS, TSX
-- Default: `true`
+- 语言：JS、JSX、TS、TSX
+- 默认：`true`
 
 ##### overrides[n].options.singleAttributePerLine
 
@@ -500,8 +501,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 在 HTML、Vue 和 JSX 中强制每行单个属性。
 
-- Languages: JSX, TSX, HTML, Angular, Vue, MJML, Svelte
-- Default: `false`
+- 语言：JSX、TSX、HTML、Angular、Vue、MJML、Svelte
+- 默认：`false`
 
 ##### overrides[n].options.singleQuote
 
@@ -511,9 +512,9 @@ Glob 模式，用于匹配此覆盖的文件。
 
 对于 JSX，您可以设置 `jsxSingleQuote` 选项。
 
-- Languages: JS, JSX, TS, TSX, CSS, Less, SCSS, Markdown, MDX, YAML, Handlebars, Svelte
-- Default: `false`
-- Overrides `.editorconfig.quote_type`
+- 语言：JS、JSX、TS、TSX、CSS、Less、SCSS、Markdown、MDX、YAML、Handlebars、Svelte
+- 默认：`false`
+- 覆盖 `.editorconfig.quote_type`
 
 ##### overrides[n].options.sortImports
 
@@ -526,8 +527,8 @@ Glob 模式，用于匹配此覆盖的文件。
 
 传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Languages: JS, JSX, TS, TSX
-- Default: Disabled
+- 语言：JS、JSX、TS、TSX
+- 默认：已禁用
 
 ###### overrides[n].options.sortImports.customGroups
 
@@ -733,8 +734,8 @@ import { c } from "c";
 但我们认为它更清晰且更易于导航。
 详细信息请参阅每个字段的文档。
 
-- Languages: JSON (`package.json` only)
-- Default: `true`
+- 语言：JSON（仅限 `package.json`）
+- 默认：`true`
 
 ###### overrides[n].options.sortPackageJson.sortScripts
 
@@ -756,8 +757,8 @@ import { c } from "c";
 
 传递 `true` 或对象以使用默认值启用，或省略/设置 `false` 以禁用。
 
-- Languages: JS, JSX, TS, TSX, HTML, Vue, Angular, Handlebars, CSS, SCSS, Less, Svelte
-- Default: Disabled
+- 语言：JS、JSX、TS、TSX、HTML、Vue、Angular、Handlebars、CSS、SCSS、Less、Svelte
+- 默认：已禁用
 
 ###### overrides[n].options.sortTailwindcss.attributes
 
@@ -831,8 +832,8 @@ import { c } from "c";
 但 Oxfmt 不会捆绑或自动安装它。
 您必须在项目中自行安装 `svelte`，否则格式化将在运行时失败。
 
-- Languages: Svelte
-- Default: Disabled
+- 语言：Svelte
+- 默认：已禁用
 
 ###### overrides[n].options.svelte.allowShorthand
 
@@ -866,9 +867,9 @@ Svelte 组件各部分的打印顺序。
 
 指定每个缩进级别的空格数。
 
-- Languages: All
-- Default: `2`
-- Overrides `.editorconfig.indent_size` (falls back to `.editorconfig.tab_width`)
+- 语言：全部
+- 默认：`2`
+- 覆盖 `.editorconfig.indent_size`（回退到 `.editorconfig.tab_width`）
 
 ##### overrides[n].options.trailingComma
 
@@ -878,8 +879,8 @@ Svelte 组件各部分的打印顺序。
 
 例如，单行数组永远不会获得尾随逗号。
 
-- Languages: JS, JSX, TS, TSX, JSONC, JSON5, TOML, CSS, Less, SCSS, YAML
-- Default: `"all"`
+- 语言：JS、JSX、TS、TSX、JSONC、JSON5、TOML、CSS、Less、SCSS、YAML
+- 默认：`"all"`
 
 ##### overrides[n].options.useTabs
 
@@ -887,9 +888,9 @@ Svelte 组件各部分的打印顺序。
 
 使用制表符而不是空格缩进行。
 
-- Languages: All
-- Default: `false`
-- Overrides `.editorconfig.indent_style`
+- 语言：全部
+- 默认：`false`
+- 覆盖 `.editorconfig.indent_style`
 
 ##### overrides[n].options.vueIndentScriptAndStyle
 
@@ -897,8 +898,8 @@ Svelte 组件各部分的打印顺序。
 
 是否缩进 Vue 文件中 `<script>` 和 `<style>` 标签内的代码。
 
-- Languages: Vue
-- Default: `false`
+- 语言：Vue
+- 默认：`false`
 
 ## printWidth
 
@@ -908,9 +909,9 @@ Svelte 组件各部分的打印顺序。
 
 如果您不想在格式化 Markdown 时进行换行，可以将 `proseWrap` 选项设为禁用来关闭它。
 
-- Languages: All
-- Default: `100`
-- Overrides `.editorconfig.max_line_length`
+- 语言：全部
+- 默认值：`100`
+- 覆盖 `.editorconfig.max_line_length`
 
 ## proseWrap
 
@@ -922,8 +923,8 @@ Svelte 组件各部分的打印顺序。
 要将文本换行到打印宽度，请将此选项更改为 `"always"`。
 如果您希望强制所有文本块位于单行，并依赖编辑器/查看器的软换行，可以使用 `"never"`。
 
-- Languages: Markdown, MDX, YAML
-- Default: `"preserve"`
+- 语言：Markdown、MDX、YAML
+- 默认值：`"preserve"`
 
 ## quoteProps
 
@@ -931,8 +932,8 @@ Svelte 组件各部分的打印顺序。
 
 更改对象中属性何时加引号。
 
-- Languages: JS, JSX, TS, TSX
-- Default: `"as-needed"`
+- 语言：JS、JSX、TS、TSX
+- 默认值：`"as-needed"`
 
 ## semi
 
@@ -940,8 +941,8 @@ Svelte 组件各部分的打印顺序。
 
 在语句末尾打印分号。
 
-- Languages: JS, JSX, TS, TSX
-- Default: `true`
+- 语言：JS、JSX、TS、TSX
+- 默认值：`true`
 
 ## singleAttributePerLine
 
@@ -952,7 +953,7 @@ Svelte 组件各部分的打印顺序。
 - Languages: JSX, TSX, HTML, Angular, Vue, MJML, Svelte
 - Default: `false`
 
-## singleQuote
+## 单引号
 
 类型：`boolean`
 
@@ -960,9 +961,9 @@ Svelte 组件各部分的打印顺序。
 
 对于 JSX，您可以设置 `jsxSingleQuote` 选项。
 
-- Languages: JS, JSX, TS, TSX, CSS, Less, SCSS, Markdown, MDX, YAML, Handlebars, Svelte
-- Default: `false`
-- Overrides `.editorconfig.quote_type`
+- 语言：JS、JSX、TS、TSX、CSS、Less、SCSS、Markdown、MDX、YAML、Handlebars、Svelte
+- 默认值：`false`
+- 覆盖 `.editorconfig.quote_type`
 
 ## sortImports
 
@@ -1171,7 +1172,7 @@ import { c } from "c";
 
 默认情况下，出于安全原因，排序副作用导入是禁用的。
 
-- 默认值：`false`
+- 默认值：`false`。
 
 ## sortPackageJson
 
@@ -1200,8 +1201,8 @@ import { c } from "c";
 
 排序 Tailwind CSS 类。
 
-使用与 [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) 相同的算法。
-选项名称省略了原始插件中使用的 `tailwind` 前缀（例如，`config` 而不是 `tailwindConfig`）。
+使用与 [prettier-plugin-tailwindcss](https://github.com/tailwindlabs/prettier-plugin-tailwindcss) 相同的算法。  
+选项名称省略了原始插件中使用的 `tailwind` 前缀（例如，`config` 而不是 `tailwindConfig`）。  
 详细信息，请参阅每个字段的文档。
 
 传递 `true` 或对象以启用并使用默认值，或省略/设置为 `false` 以禁用。
@@ -1265,7 +1266,7 @@ import { c } from "c";
 
 注意：路径是相对于 Oxfmt 配置文件解析的。
 
-- 默认值：已安装 Tailwind CSS 的 `theme.css`
+- 默认值：已安装 Tailwind CSS 的 `theme.css`。
 
 ## svelte
 
@@ -1316,9 +1317,9 @@ Svelte 组件各部分的打印顺序。
 
 指定每个缩进级别的空格数。
 
-- Languages: All
-- Default: `2`
-- Overrides `.editorconfig.indent_size` (falls back to `.editorconfig.tab_width`)
+- 适用语言：全部
+- 默认值：`2`
+- 覆盖 `.editorconfig.indent_size`（回退到 `.editorconfig.tab_width`）
 
 ## trailingComma
 
@@ -1328,8 +1329,8 @@ Svelte 组件各部分的打印顺序。
 
 例如，单行数组永远不会带有尾随逗号。
 
-- Languages: JS, JSX, TS, TSX, JSONC, JSON5, TOML, CSS, Less, SCSS, YAML
-- Default: `"all"`
+- 语言：JS、JSX、TS、TSX、JSONC、JSON5、TOML、CSS、Less、SCSS、YAML
+- 默认值：`"all"`
 
 ## useTabs
 
@@ -1337,9 +1338,9 @@ Svelte 组件各部分的打印顺序。
 
 使用制表符而不是空格进行缩进。
 
-- Languages: All
-- Default: `false`
-- Overrides `.editorconfig.indent_style`
+- 语言：全部
+- 默认值：`false`
+- 覆盖 `.editorconfig.indent_style`。
 
 ## vueIndentScriptAndStyle
 
