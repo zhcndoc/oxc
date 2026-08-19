@@ -31,6 +31,12 @@ $ bun add -D oxfmt
 
 :::
 
+::: warning 独立二进制文件
+Oxfmt 也提供独立二进制文件。它可以作为纯 CLI 使用，无需 Node.js，但不支持 [Prettier 支持的格式](./language-support#prettier-backed)（这些文件会被跳过）、动态配置文件（`oxfmt.config.ts`）、[Tailwind CSS 类排序](./sorting#sort-tailwind-css-classes)、[LSP](./editors) 模式等。
+
+目前，npm 软件包是推荐的 Oxfmt 安装方式，并支持所有功能。
+:::
+
 将脚本添加到 `package.json`：
 
 ```json [package.json]
@@ -167,4 +173,4 @@ console.log(code); // "let a = 42"
 - [设置 CI](./ci)
 - 学习高级功能：[排序](./sorting)、[嵌入格式化](./embedded-formatting)
 - [兼容性矩阵](/compatibility)
-- 查看 [CLI 参考](./cli)
+- 查看 [CLI 参考](./cli)。

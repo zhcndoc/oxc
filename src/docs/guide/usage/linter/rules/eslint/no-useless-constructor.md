@@ -27,7 +27,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 如果未指定构造函数，ES2015 会提供一个默认的类构造函数。因此，提供一个空构造函数，或者一个仅仅委托给其父类的构造函数，都是没有必要的。
 
 ::: warning
-注意：此 lint 规则会报告那些唯一目的在于更改父类构造函数可见性，或通过修饰符暴露参数属性的构造函数。这是因为该规则没有类型信息来判断父类构造函数是 `public`、`protected` 还是 `private`。
+注意：此 lint 规则会报告唯一目的是更改父类构造函数可见性的构造函数。这是因为该规则没有类型信息来确定父类构造函数是 `public`、`protected` 还是 `private`。
 :::
 
 ### 示例

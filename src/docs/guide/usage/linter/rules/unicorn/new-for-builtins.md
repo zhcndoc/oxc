@@ -20,10 +20,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-强制对以下内置对象使用 `new`：`Object`、`Array`、`ArrayBuffer`、`BigInt64Array`、
-`BigUint64Array`、`DataView`、`Date`、`Error`、`Float32Array`、`Float64Array`、`Function`、`Int8Array`、
-`Int16Array`、`Int32Array`、`Map`、`WeakMap`、`Set`、`WeakSet`、`Promise`、`RegExp`、`Uint8Array`、
-`Uint16Array`、`Uint32Array`、`Uint8ClampedArray`、`SharedArrayBuffer`、`Proxy`、`WeakRef`、`FinalizationRegistry`。
+强制对以下内置对象使用 `new`：`Object`、`Array`、`ArrayBuffer`、`BigInt64Array`、`BigUint64Array`、`DataView`、`Date`、`Error`、`Float16Array`、`Float32Array`、`Float64Array`、`Function`、`Int8Array`、`Int16Array`、`Int32Array`、`Map`、`WeakMap`、`Set`、`WeakSet`、`Promise`、`RegExp`、`Uint8Array`、`Uint16Array`、`Uint32Array`、`Uint8ClampedArray`、`SharedArrayBuffer`、`Proxy`、`WeakRef`、`FinalizationRegistry`。
 
 禁止对以下内置对象使用 `new`：`String`、`Number`、`Boolean`、`Symbol`、`BigInt`。
 

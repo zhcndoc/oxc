@@ -73,7 +73,7 @@ class A {
 
 type: `boolean`
 
-default: `true`
+default: `false`
 
 此 `allowIndirect` 选项允许间接的 `eval()` 调用。
 

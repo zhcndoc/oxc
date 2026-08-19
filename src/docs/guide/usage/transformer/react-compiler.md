@@ -41,4 +41,4 @@ React Compiler [需要原始源代码](https://react.dev/learn/react-compiler/in
 
 违反 [React 规则](https://react.dev/reference/rules)的代码也会被跳过，而不是进行优化——例如内部可变性，或基于可观察变更构建的库（如 MobX 的 `observer()`）。
 
-要查找这类代码，Oxlint 提供了一个实验性的 [`react/react-compiler`](../linter/rules/react/react-compiler) 规则，该规则会以仅检查模式运行相同的分析并报告违规情况。
+要查找这类代码，Oxlint 提供了实验性的 [由 React Compiler 驱动的规则](/blog/2026-08-18-react-compiler-support#oxlint)，这些规则会在仅 lint 模式下运行相同的分析，并报告具体的违规类别。

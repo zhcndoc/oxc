@@ -86,7 +86,7 @@ line 51
 `;
 ```
 
-此规则的**错误**代码示例：
+此规则的**正确**代码示例：
 
 ```js
 exports[`a more manageable and readable snapshot 1`] = `
@@ -107,14 +107,15 @@ type: `Record<string, array>`
 
 default: `{}`
 
-一个从快照文件路径到允许超过大小限制的快照名称数组的映射。
-快照名称可以指定为正则表达式。
+允许超过大小限制的快照名称数组与快照文件路径的映射。
+每个快照名称都会被解释为 Rust 正则表达式。如果它不是有效的正则
+表达式，则会将其作为精确的字面字符串进行匹配。
 
 ### inlineMaxSize
 
 type: `integer`
 
-default: `50`
+default: `null`
 
 内联快照允许的最大行数。
 

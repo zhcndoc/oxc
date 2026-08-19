@@ -127,7 +127,7 @@ oxlint --disable-unicorn-plugin
 
 有关规则覆盖率的当前状态，请参阅 linter [产品计划 issue](https://github.com/oxc-project/oxc/issues/481)。有关框架和文件类型支持，请参阅 [兼容性矩阵](/compatibility)。
 
-\* React Compiler 规则以原生方式实现为 [`react/react-compiler`](./rules/react/react-compiler) 规则，该规则以仅 lint 模式运行 React Compiler 的分析。它仍处于实验阶段，默认关闭，因此必须显式启用。
+\* [React Compiler 规则](/blog/2026-08-18-react-compiler-support#oxlint)以原生方式实现为特定类别的 `react/*` 规则，这些规则会在仅 lint 模式下运行 React Compiler 的分析。它们是实验性的，默认处于关闭状态，因此必须显式启用 React 插件和所需的规则类别。
 
 ## 添加新插件
 

@@ -6,9 +6,7 @@ editLink: false
 
 ## 🤝 如何赞助
 
-您可以通过 [OpenCollective](https://opencollective.com/oxc) 赞助我们。
-
-我们的 [GitHub Sponsors](https://github.com/sponsors/oxc-project) 页面在设置过程中遇到了一个错误，目前仍在等待处理，因此 OpenCollective 暂时是唯一的选择。
+你可以在 [GitHub Sponsors](https://github.com/sponsors/oxc-project) 或 [OpenCollective](https://opencollective.com/oxc) 上赞助我们。
 
 ## 💚 为什么要赞助？
 

@@ -1,7 +1,7 @@
 ---
 title: "import/extensions | Oxlint"
 rule: "import/extensions"
-category: "Restriction"
+category: "限制"
 version: "1.2.0"
 default: false
 type_aware: false
@@ -155,11 +155,11 @@ type: `"enforce" | "ignore"`
 
 决定如何对匹配的自定义 import 标识符验证 import 扩展名。
 
-####### `"enforce"`
+###### `"enforce"`
 
 对匹配的导入强制执行扩展名校验（根据配置要求扩展名）。
 
-####### `"ignore"`
+###### `"ignore"`
 
 完全忽略匹配的导入（跳过所有扩展名校验）。
 

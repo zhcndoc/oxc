@@ -194,7 +194,7 @@ type: `string`
 
 为未使用的参数指定此规则的例外。名称匹配此模式的参数将被忽略。
 
-默认情况下，此模式为 `^_`，除非选项配置为对象。在这种情况下，其默认值为 [`None`]。请注意，此行为与 ESLint 和 TypeScript-ESLint 都不同，后两者从不提供默认模式。
+默认情况下，以 `_` 开头的名称会被忽略，但单独的 `_` 参数除外。如果选项配置为对象，则默认值为 [`None`]。请注意，此行为与 ESLint 和 TypeScript-ESLint 都不同，后两者从不提供默认模式。
 
 #### 示例
 
@@ -416,8 +416,7 @@ type: `boolean`
 default: `false`
 
 `reportUsedIgnorePattern` 选项是一个布尔值。
-使用此选项时，如果变量匹配任何有效的忽略模式选项（`varsIgnorePattern`、`argsIgnorePattern`、
-`caughtErrorsIgnorePattern` 或 `destructuredArrayIgnorePattern`），并且这些变量已经被使用，则会报告它们。
+使用此选项时，如果变量匹配任何有效的忽略模式选项（`varsIgnorePattern`、`argsIgnorePattern`、`caughtErrorsIgnorePattern` 或 `destructuredArrayIgnorePattern`），并且这些变量已经被使用，则会报告它们。
 
 #### 示例
 

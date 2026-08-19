@@ -1,7 +1,7 @@
 ---
 title: "eslint/no-irregular-whitespace | Oxlint"
 rule: "eslint/no-irregular-whitespace"
-category: "Correctness"
+category: "正确性"
 version: "0.1.1"
 default: true
 type_aware: false
@@ -54,7 +54,7 @@ function example() {
 
 type: `boolean`
 
-default: `true`
+default: `false`
 
 是否跳过注释中的不规则空白。
 

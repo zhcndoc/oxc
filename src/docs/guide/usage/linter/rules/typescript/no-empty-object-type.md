@@ -1,11 +1,11 @@
 ---
 title: "typescript/no-empty-object-type | Oxlint"
 rule: "typescript/no-empty-object-type"
-category: "Restriction"
+category: "限制"
 version: "0.12.0"
 default: false
 type_aware: false
-fix: "pending"
+fix: "conditional_suggestion"
 upstream: "https://typescript-eslint.io/rules/no-empty-object-type/"
 ---
 
@@ -141,10 +141,10 @@ type TypeProps = {};
 
 <RuleHowToUse />
 
-## Version
+## 版本
 
 此规则于 v0.12.0 中添加。
 
-## References
+## 参考资料
 
 <RuleReferences />

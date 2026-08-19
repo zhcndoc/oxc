@@ -296,6 +296,42 @@ const rule = {
 
 需要说明的是，ESLint 方面的 `create` API _并不是_ 一个糟糕的设计决定。只是当 Rust-JS 互操作介入时，它会带来一些困难。
 
-## 下一步
+## 为自定义规则编写测试
+
+Oxlint 提供了一个基于 ESLint `RuleTester` 的 `RuleTester` API。可以使用它为自定义规则编写单元测试，以确保你编写的自定义规则覆盖所有相关情况。
+
+例如，使用 Vitest 作为测试运行器时，你可以像这样为“类不超过 5 个”规则编写测试：
+
+```js
+import { RuleTester } from "oxlint/plugins-dev";
+import { describe, it } from "vitest";
+import { maxClasses } from "./max-classes.js";
+
+RuleTester.describe = describe;
+RuleTester.it = it;
+
+const ruleTester = new RuleTester({ languageOptions: { parserOptions: { lang: "ts" } } });
+
+// List valid and invalid cases, including the expected error messages for invalid cases.
+ruleTester.run("max-classes", maxClasses, {
+  valid: [
+    "class A {}",
+    // Exactly at the limit.
+    "class A {} class B {} class C {} class D {} class E {}",
+    // Expressions are not declarations, so they never count.
+    "const a = class {}; const b = class {}; const c = class {}; const d = class {}; const e = class {}; const f = class {};",
+  ],
+  invalid: [
+    {
+      name: "the sixth declaration",
+      code: "class A {} class B {} class C {} class D {} class E {} class F {}",
+      // Columns are 0-indexed; the span covers the whole class declaration.
+      errors: [{ messageId: "maxClasses", line: 1, column: 55, endColumn: 65 }],
+    },
+  ],
+});
+```
+
+## 后续步骤
 
 请参阅 [API 支持](./js-plugins#api-support) 部分，了解在 Oxlint 插件中支持使用的 ESLint API。

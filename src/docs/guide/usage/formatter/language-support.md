@@ -15,19 +15,24 @@ Oxfmt 可格式化多种文件类型。大多数文件类型由 Oxfmt 自有的 
 由 Oxfmt 直接格式化，无需依赖 Prettier：
 
 | 语言                 | 扩展名                                         |
-| -------------------- | ---------------------------------------------- |
-| JavaScript / JSX      | `.js`、`.jsx`、`.mjs`、`.cjs` 以及更多扩展名    |
-| TypeScript / TSX      | `.ts`、`.tsx`、`.mts`、`.cts`、`.d.ts`         |
-| JSON / JSONC / JSON5  | `.json`、`.jsonc`、`.json5`                   |
-| CSS / SCSS / Less     | `.css`、`.scss`、`.less`、`.pcss`、`.postcss` |
-| GraphQL               | `.graphql`、`.gql`、`.graphqls`               |
-| TOML                  | `.toml`                                       |
+| -------------------- | --------------------------------------------- |
+| JavaScript / JSX     | `.js`、`.jsx`、`.mjs`、`.cjs`，以及更多         |
+| TypeScript / TSX     | `.ts`、`.tsx`、`.mts`、`.cts`、`.d.ts`        |
+| JSON / JSONC / JSON5 | `.json`、`.jsonc`、`.json5`                   |
+| CSS / SCSS / Less    | `.css`、`.scss`、`.less`、`.pcss`、`.postcss` |
+| GraphQL              | `.graphql`、`.gql`、`.graphqls`               |
+| TOML                 | `.toml`                                       |
+| YAML                 | `.yml`、`.yaml`                               |
 
 检测还涵盖许多按名称识别的常见配置文件。例如，`.babelrc` 和 `.swcrc` 会被视为 JSON 文件。
 
 ## 基于 Prettier
 
 委托给捆绑的 Prettier。无需单独安装 `prettier`。
+
+:::warning
+这些格式需要 Node.js，并且仅在 `oxfmt` npm 包中可用。GitHub Releases 提供的独立二进制文件会跳过这些文件。详情请参阅[快速开始](./quickstart#install)。
+:::
 
 :::tip
 这些功能正在积极移植到 Rust。当每个原生格式化器上线后，其对应的语言会移至上方的[原生格式化器](#native)列表中，以获得最高性能。你无需进行任何更改。
@@ -41,15 +46,14 @@ Oxfmt 可格式化多种文件类型。大多数文件类型由 Oxfmt 自有的 
 | Svelte     | `.svelte`                 |
 | Markdown   | `.md`、`.markdown`        |
 | MDX        | `.mdx`                    |
-| YAML       | `.yml`、`.yaml`           |
 | Handlebars | `.hbs`、`.handlebars`     |
 | MJML       | `.mjml`                   |
 
 ## 嵌入式语言
 
-Oxfmt 还会格式化嵌入 JS/TS 模板字面量中的代码。CSS 和 GraphQL 使用原生方式进行格式化；HTML 和 Markdown 则通过 Prettier 进行格式化。详情及示例请参阅[嵌入式格式化](./embedded-formatting)。
+Oxfmt 还会格式化嵌入 JS/TS 模板字面量中的代码。上述相同的划分规则同样适用：[原生支持](#native)列表中的语言由原生引擎格式化，而[基于 Prettier](#prettier-backed)列表中的语言则交由 Prettier 处理。详情和示例请参阅[嵌入式格式化](./embedded-formatting)。
 
-对于 Vue 和 Svelte 文件，嵌入的 JavaScript 和 TypeScript（例如 `<script>` 块）由 Oxfmt 的原生引擎进行格式化，而不是由 Prettier 处理。其他由 Prettier 支持的格式中嵌入的 JS/TS（例如 HTML 中的 `<script>` 标签）仍由 Prettier 进行格式化。
+对于 Vue 和 Svelte 文件，嵌入的 JS/TS（例如 `<script>` 块）由原生格式化器而非 Prettier 格式化。其他基于 Prettier 的格式中的嵌入式 JS/TS（例如 HTML 中的 `<script>` 标签）仍由 Prettier 格式化。
 
 ## 另请参阅
 

@@ -48,6 +48,18 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 <a><TextWrapper aria-hidden /></a>
 ```
 
+## 配置
+
+此规则接受一个具有以下属性的配置对象：
+
+### components
+
+类型：`string[]`
+
+默认值：`[]`
+
+要作为锚点元素处理的其他自定义组件名称。
+
 ## 如何使用
 
 <RuleHowToUse />
