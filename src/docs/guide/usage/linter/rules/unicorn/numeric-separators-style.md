@@ -70,7 +70,7 @@ default: `{"groupLength":4, "minimumDigits":0}`
 
 type: `integer`
 
-default: `0`
+default: `4`
 
 插入数字分隔符时每组的数字位数。
 例如，`groupLength` 为 3 时，`1234567` 会格式化为 `1_234_567`。
@@ -106,7 +106,7 @@ default: `{"groupLength":2, "minimumDigits":0}`
 
 type: `integer`
 
-default: `0`
+default: `2`
 
 插入数字分隔符时每组的数字位数。
 例如，`groupLength` 为 3 时，`1234567` 会格式化为 `1_234_567`。
@@ -148,7 +148,7 @@ default: `Infinity`
 
 type: `integer`
 
-default: `0`
+default: `3`
 
 插入数字分隔符时每组的数字位数。
 例如，`groupLength` 为 3 时，`1234567` 会格式化为 `1_234_567`。
@@ -157,7 +157,7 @@ default: `0`
 
 type: `integer`
 
-default: `0`
+default: `5`
 
 应用分组前所需的最少数字位数。
 少于此阈值的值不会分组。
@@ -184,7 +184,7 @@ default: `{"groupLength":4, "minimumDigits":0}`
 
 type: `integer`
 
-default: `0`
+default: `4`
 
 插入数字分隔符时每组的数字位数。
 例如，`groupLength` 为 3 时，`1234567` 会格式化为 `1_234_567`。

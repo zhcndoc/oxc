@@ -36,11 +36,9 @@ ES2019 引入了一个新方法 [`Array#flat()`](https://developer.mozilla.org/e
 const foo = array.flatMap((x) => x);
 const foo = array.reduce((a, b) => a.concat(b), []);
 const foo = array.reduce((a, b) => [...a, ...b], []);
-const foo = [].concat(maybeArray);
 const foo = [].concat(...array);
 const foo = [].concat.apply([], array);
 const foo = Array.prototype.concat.apply([], array);
-const foo = Array.prototype.concat.call([], maybeArray);
 const foo = Array.prototype.concat.call([], ...array);
 ```
 

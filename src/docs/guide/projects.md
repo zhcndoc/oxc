@@ -7,34 +7,35 @@ outline: deep
 
 ## Oxlint / Oxfmt / 两者
 
-- [Google Neuroglancer](https://github.com/google/neuroglancer) (Oxlint) - WebGL 体积数据可视化工具
-- [Shopify](https://www.shopify.com/news/performance%F0%9F%91%86-complexity%F0%9F%91%87-killer-updates-from-shopify-engineering) (Oxlint) - 将数小时的工作量缩短至数秒
+- [Sentry](https://github.com/getsentry/sentry) (Both) - 错误追踪与性能监控应用
+- [Vue.js](https://github.com/vuejs/core) (Both) - 渐进式 JavaScript 框架
+- [Kibana](https://github.com/elastic/kibana) (Oxlint) - Elasticsearch 数据可视化工具
+- [Electron](https://github.com/electron/electron) (Both) - 跨平台应用框架
 - [Cloudflare Agents](https://github.com/cloudflare/agents) (Both) - Cloudflare Agents SDK
-- [BBC Simorgh](https://github.com/bbc/simorgh) (Oxlint) - BBC 在线渲染平台
+- [Renovate](https://github.com/renovatebot/renovate) (Oxlint) - 依赖更新自动化机器人
+- [Bluesky](https://github.com/bluesky-social/social-app) (Oxlint) - 社交媒体网络
+- [Shopify](https://www.shopify.com/news/performance%F0%9F%91%86-complexity%F0%9F%91%87-killer-updates-from-shopify-engineering) (Oxlint) - 将数小时的工作量缩短至数秒
+- [Google Neuroglancer](https://github.com/google/neuroglancer) (Oxlint) - WebGL 体积数据可视化工具
 - [Turborepo](https://github.com/vercel/turborepo) (Both) - 面向 JavaScript 和 TypeScript 代码库的高性能构建系统
 - [Sentry JavaScript](https://github.com/getsentry/sentry-javascript) (Both) - 官方 Sentry JavaScript SDK
-- [Vue.js](https://github.com/vuejs/core) (Both) - 渐进式 JavaScript 框架
 - [Hugging Face JS](https://github.com/huggingface/huggingface.js) (Oxfmt) - Hugging Face JS 库
 - [Bun](https://github.com/oven-sh/bun) (Oxlint) - JavaScript 运行时和工具包
 - [Mastodon](https://github.com/mastodon/mastodon) (Oxfmt) - 去中心化社交网络服务器
 - [Preact](https://github.com/preactjs/preact) (Oxlint) - 仅 3kB、拥有相同现代 API 的快速 React 替代方案
-- [PostHog](https://github.com/PostHog/posthog) (Oxlint) - 开源产品分析平台
+- [PostHog](https://github.com/PostHog/posthog) (Both) - 开源产品分析平台
 - [Lichess](https://github.com/lichess-org/lila) (Both) - Lichess 国际象棋服务器/前端
 - [Rolldown](https://github.com/rolldown/rolldown) (Both) - VoidZero/Vite 生态系统中的 Rust 打包器
-- [Renovate](https://github.com/renovatebot/renovate) (Oxlint) - 依赖更新自动化机器人
 - [Vue Pinia](https://github.com/vuejs/pinia) (Oxfmt) - Vue 官方状态管理库
-- [AFFiNE](https://github.com/toeverything/affine) (Oxlint) - 下一代知识库
+- [AFFiNE](https://github.com/toeverything/affine) (Both) - 下一代知识库
 - [FormatJS](https://github.com/formatjs/formatjs) (Both) - JavaScript 国际化库
 - [napi-rs](https://github.com/napi-rs/napi-rs) (Oxlint) - 通过 Node-API 使用 Rust 构建已编译 Node.js 插件的框架
 - [ComfyUI Frontend](https://github.com/Comfy-Org/ComfyUI_frontend) (Oxfmt) - ComfyUI 的前端
 - [Actual](https://github.com/actualbudget/actual) (Both) - 开源预算管理应用
 - [Hey API](https://heyapi.dev/) (Oxlint) - 从 OpenAPI 生成 TypeScript 代码的生态系统
-- [nuxt-auth](https://github.com/sidebase/nuxt-auth) (Oxlint) - 为 Nuxt 3 构建的身份验证方案
 - [OpenClaw](https://github.com/openclaw/openclaw) (Both) - 开源个人 AI 助手
 - [npmx.dev](https://github.com/npmx-dev/npmx.dev) (Both) - npm 包浏览器
-- [Bluesky](https://github.com/bluesky-social/social-app) (Oxlint) - 社交媒体网络
-- [Electron](https://github.com/electron/electron) (Both) - 跨平台应用框架
 - [SWR](https://github.com/vercel/swr) (Both) - React 数据获取库
+- [Redux](https://github.com/reduxjs/redux) (Both) - JavaScript 应用程序的状态管理
 
 ## 模块解析器
 

@@ -16,9 +16,11 @@ Oxlint 自动忽略：
 
 - `.git` 目录
 - 文件名中包含 `.min.`、`-min.` 或 `_min.` 的压缩文件
-- 被 `.gitignore` 匹配的文件（全局 gitignore 文件不生效）
+- 通过目录遍历发现且匹配 `.gitignore` 的文件（不遵循全局 gitignore 文件）
 
 隐藏文件不会被自动忽略。
+
+`.gitignore` 会限制文件发现范围。即使显式命名的文件匹配 `.gitignore`，仍会对其进行检查；而显式命名的被忽略目录会被跳过，因为需要发现其中的内容。
 
 ## `ignorePatterns`
 
@@ -100,8 +102,10 @@ export default defineConfig({
 
 ## 禁用忽略
 
-要禁用所有忽略行为，包括忽略文件和 CLI 忽略选项，使用 `--no-ignore`：
+要禁用 `.eslintignore`、`--ignore-path` 和 `--ignore-pattern`，请使用 `--no-ignore`：
 
 ```bash
 oxlint --no-ignore
 ```
+
+这不会禁用 Oxlint 配置中的 `ignorePatterns`，也不会禁用目录发现期间的 `.gitignore` 过滤。

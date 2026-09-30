@@ -5,7 +5,7 @@ category: "Style"
 version: "0.7.1"
 default: false
 type_aware: false
-fix: "fixable_fix"
+fix: "fixable_suggestion"
 upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-be-truthy.md"
 ---
 
@@ -20,14 +20,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-当 `expect` 或 `expectTypeOf` 中使用 `toBe(true)` 时，此规则会发出警告。
-使用 `--fix` 时，它将被替换为 `toBeTruthy()`。
+当 `expect` 或 `expectTypeOf` 使用 `toBe(true)` 时，此规则会发出警告。
+使用 `--fix-suggestions` 时，它会被替换为 `toBeTruthy()`。
 
 ### 为什么这不好？
 
-使用 `toBe(true)` 的灵活性较差，可能无法考虑其他真值，
-例如非空字符串或对象。`toBeTruthy()` 会检查任意
-真值，这使测试更加全面和稳健。
+测试真值时，`toBeTruthy()` 能直接表达这一意图。
+与 `toBe(true)` 不同，它还接受非空字符串和对象等非布尔真值。由于替换会改变断言通过的值，因此它被作为建议提供。
 
 ### 示例
 

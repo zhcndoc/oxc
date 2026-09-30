@@ -58,14 +58,18 @@ const Button = styled.div`
 
 **输出（使用默认选项）：**
 
+<!-- prettier-ignore-start -->
+
 ```jsx
 import styled from "styled-components";
 
 const Button = styled.div.withConfig({
   displayName: "Button",
   componentId: "sc-1234567-0",
-})(["color:blue;padding:10px;"]);
+})`color:blue;padding:10px;`;
 ```
+
+<!-- prettier-ignore-end -->
 
 ### 配置选项
 
@@ -79,10 +83,12 @@ const Button = styled.div.withConfig({
 
 #### 模板字面量选项
 
-| 选项                        | 类型      | 默认值 | 描述                                                                    |
-| --------------------------- | --------- | ------ | ---------------------------------------------------------------------- |
-| `transpileTemplateLiterals` | `boolean` | `true` | 将模板字面量转换为更小的表示形式，以减小包体积                           |
-| `minify`                    | `boolean` | `true` | 通过移除空白字符和注释来压缩 CSS 内容                                     |
+| 选项                        | 类型      | 默认值  | 描述                                               |
+| --------------------------- | --------- | ------- | -------------------------------------------------- |
+| `transpileTemplateLiterals` | `boolean` | `false` | 将标记模板字面量转换为数组表示                   |
+| `minify`                    | `boolean` | `true`  | 通过移除空白和注释压缩 CSS 内容                  |
+
+`transpileTemplateLiterals` 默认禁用，因为 Oxc 不会将模板字面量降级到 ES5。如果没有后续降级，这种数组表示会增加输出大小。只有在下游转换会降级模板字面量时才启用它。
 
 #### 高级选项
 

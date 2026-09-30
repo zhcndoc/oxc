@@ -50,6 +50,7 @@ search: false
 
 配置文件的路径。类似于 `--config` CLI 选项。
 如果设置了该项，则会禁用对配置文件的搜索。
+空字符串会被视为未设置。
 
 ## disableNestedConfig
 
@@ -57,6 +58,7 @@ search: false
 
 是否禁用嵌套配置支持。类似于 `--disable-nested-config` CLI 选项。
 当设置了 `configPath` 时，它会自动启用。
+在 Vite+ 模式下，嵌套配置支持始终禁用。
 
 ## fixKind
 
@@ -89,12 +91,16 @@ search: false
 如果你的编辑器不支持 `textDocument/diagnostic`，
 此选项用于处理何时将诊断发送给客户端。
 
+此选项仅适用于使用推送模型的客户端。支持 `textDocument/diagnostic` 的客户端会自行请求诊断信息（拉取模型），因此 `run` 目前对它们没有影响。
+请参阅 [#26613](https://github.com/oxc-project/oxc/issues/26613)。
+
 ## tsConfigPath
 
 类型：`string`
 
 tsconfig 文件的路径。类似于 `--tsconfig` CLI 选项。
 如果设置了该项，则会禁用对 tsconfig 文件的自动发现。
+空字符串会被视为未设置。
 
 ## typeAware
 

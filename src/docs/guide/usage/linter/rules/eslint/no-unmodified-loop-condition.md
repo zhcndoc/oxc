@@ -47,6 +47,18 @@ while (!done) {
 }
 ```
 
+## 配置
+
+此规则接受包含以下属性的配置对象：
+
+### checkConditionalExpressions
+
+type: `boolean`
+
+default: `false`
+
+是否应独立检查条件表达式每个分支中的引用，而不是检查整个表达式的结果。
+
 ## 如何使用
 
 <RuleHowToUse />

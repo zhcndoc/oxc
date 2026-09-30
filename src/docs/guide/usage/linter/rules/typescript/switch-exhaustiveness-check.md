@@ -140,9 +140,10 @@ default: `false`
 
 type: `string`
 
-当 default 分支注释匹配到该正则表达式模式时，
-将抑制穷尽性检查。
-例如：`"@skip-exhaustive-check"` 允许 `default: // @skip-exhaustive-check`
+将注释视为省略的 `default` 分支时使用的正则表达式模式。
+注释必须出现在最后一个 case 之后，并且 switch 不能包含 `default` 分支。
+对于联合类型，只有启用 `considerDefaultExhaustiveForUnions` 时，它才会抑制穷举检查。
+示例：`"^skip default$"` 允许以 `// skip default` 结尾的 switch。
 
 ### requireDefaultForNonUnion
 

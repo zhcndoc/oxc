@@ -2,7 +2,7 @@
 title: "react/no-deriving-state-in-effects | Oxlint"
 rule: "react/no-deriving-state-in-effects"
 category: "Perf"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -22,8 +22,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 禁止在 effect 中从状态派生值并将其存回状态；派生值应在渲染期间计算。
 
-由 React Compiler 提供支持，该编译器会针对每个文件运行一次，并与其他 React Compiler 规则共享。移植自
-[`react-hooks/no-deriving-state-in-effects`](https://react.dev/reference/eslint-plugin-react-hooks/lints/no-deriving-state-in-effects)。
+由 React Compiler 提供支持，该编译器每个文件运行一次，并与其他 React Compiler 规则共享。移植自
+`react-hooks/no-deriving-state-in-effects`.
 
 ### 为什么这是不好的做法？
 
@@ -61,7 +61,7 @@ function Component({ firstName, lastName }) {
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.79.0 中添加。
 
 ## 参考资料
 

@@ -6,20 +6,24 @@ Oxc 对 [React 编译器](https://react.dev/learn/react-compiler) 提供实验�
 此功能处于实验阶段，并且仍在积极开发中。选项和行为可能会发生变化。
 :::
 
-在底层，Oxc 集成的是 [React Compiler 的 Rust 移植版](https://github.com/facebook/react/pull/36173)，而不是基于 Babel 的 `babel-plugin-react-compiler`。由于该移植版是一个已合并到 React 的 PR，但尚未发布，Oxc 将其以可发布的 crate 形式内置在 [oxc-project/forked-react-compiler](https://github.com/oxc-project/forked-react-compiler) 中。
+在底层，Oxc 集成的是 [React Compiler 的 Rust 移植版](https://github.com/facebook/react/pull/36173)，而不是基于 Babel 的 `babel-plugin-react-compiler`。Oxc [在仓库内引入并维护该编译器](https://github.com/oxc-project/oxc/tree/main/crates/oxc_react_compiler)，使其能够直接处理 Oxc 的 AST。
 
 ## 通用用法
 
+安装专用的 React 转换软件包：
+
+```sh
+pnpm add -D oxc-transform-react
+```
+
 ```js
-import { transform } from "oxc-transform";
+import { transform } from "oxc-transform-react";
 
-// 使用默认选项启用。
-const result = await transform("App.jsx", sourceCode, {
-  reactCompiler: true,
-});
+// React Compiler is enabled by default with a React 19 target.
+const result = await transform("App.jsx", sourceCode);
 
-// 或使用选项启用。
-const result = await transform("App.jsx", sourceCode, {
+// Or configure it explicitly.
+const configuredResult = await transform("App.jsx", sourceCode, {
   reactCompiler: {
     // React 运行时版本目标。`'17'` 和 `'18'` 需要
     // `react-compiler-runtime` 包；`'19'` 将运行时包含在 `react` 中。
@@ -28,7 +32,9 @@ const result = await transform("App.jsx", sourceCode, {
 });
 ```
 
-传入 `false` 或省略该选项可禁用 React Compiler。
+传入 `reactCompiler: false` 可禁用 React Compiler。省略此选项将使用默认配置启用它。
+
+文件名包含 `node_modules` 的文件默认会被跳过。提供 `reactCompiler.sources` 白名单会替换默认过滤器，因此可以显式选择依赖项。
 
 ## 当 React Compiler 无法工作时
 

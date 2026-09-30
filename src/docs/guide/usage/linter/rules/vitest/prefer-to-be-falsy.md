@@ -5,7 +5,7 @@ category: "Style"
 version: "0.7.1"
 default: false
 type_aware: false
-fix: "fixable_fix"
+fix: "fixable_suggestion"
 upstream: "https://github.com/vitest-dev/eslint-plugin-vitest/blob/main/docs/rules/prefer-to-be-falsy.md"
 ---
 
@@ -20,14 +20,13 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 作用
 
-当在 `expect` 或 `expectTypeOf` 中使用 `toBe(false)` 时，此规则会发出警告。
-使用 `--fix` 时，它会被替换为 `toBeFalsy()`。
+当 `expect` 或 `expectTypeOf` 使用 `toBe(false)` 时，此规则会发出警告。
+使用 `--fix-suggestions` 时，它会被替换为 `toBeFalsy()`。
 
 ### 为什么这不好？
 
-使用 `toBe(false)` 的表达性较差，而且可能无法涵盖其他假值，
-例如 `0`、`null` 或 `undefined`。`toBeFalsy()` 能更全面地检查任何假值，
-从而提高测试的健壮性。
+测试假值时，`toBeFalsy()` 能直接表达这一意图。
+与 `toBe(false)` 不同，它还接受 `0`、`null` 和 `undefined` 等非布尔假值。由于替换会改变断言通过的值，因此它被作为建议提供。
 
 ### 示例
 

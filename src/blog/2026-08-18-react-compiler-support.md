@@ -13,7 +13,7 @@ Oxlint 现已包含 22 条由 React Compiler 驱动的规则，这些规则使�
 
 [`oxc-transform-react`](https://npmx.dev/package/oxc-transform-react) 软件包会应用 React Compiler 的自动记忆化。在我们的初步基准测试中，它的速度比 Babel 快 10 倍以上。
 
-与 [`@vitejs/plugin-react`](https://npmx.dev/package/@vitejs/plugin-react) 的集成即将推出。
+Vite 集成已在 [`@vitejs/plugin-react` v6.1.0](https://npmx.dev/package/@vitejs/plugin-react/v/6.1.0) 中提供。
 
 ## 入门
 
@@ -98,9 +98,24 @@ if (result.fatal) {
 }
 ```
 
-### [`@vitejs/plugin-react`](https://npmx.dev/package/@vitejs/plugin-react)
+### Vite
 
-原生集成正在等待 [vitejs/vite-plugin-react#1419](https://github.com/vitejs/vite-plugin-react/pull/1419) 合并。
+对于 Vite 8，Vite 集成已在 [`@vitejs/plugin-react` v6.1.0](https://npmx.dev/package/@vitejs/plugin-react/v/6.1.0) 中提供。安装该插件及其可选的 `oxc-transform-react` 对等依赖：
+
+```sh
+pnpm add -D @vitejs/plugin-react@^6.1.0 oxc-transform-react
+```
+
+使用 `compiler` 选项启用实验性集成：
+
+```js [vite.config.js]
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react({ compiler: true })],
+});
+```
 
 我们将这一框架专属的集成保留在 [`@vitejs/plugin-react`](https://npmx.dev/package/@vitejs/plugin-react) 中，而不是将其添加到 Vite 或 Rolldown，这样可以让核心工具链保持厂商中立。
 

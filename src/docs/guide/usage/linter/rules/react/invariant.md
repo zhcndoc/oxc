@@ -2,7 +2,7 @@
 title: "react/invariant | Oxlint"
 rule: "react/invariant"
 category: "限制"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -23,7 +23,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 报告 React Compiler 内部不变量违规。这些问题表明编译器本身存在错误，而不是你的代码存在问题——请考虑向 oxc 或 React 团队报告。
 
 由 React Compiler 提供支持，该编译器每个文件运行一次，并与其他 React Compiler 规则共享。移植自
-[`react-hooks/invariant`](https://react.dev/reference/eslint-plugin-react-hooks/lints/invariant)。
+`react-hooks/invariant`.
 
 ### 为什么这很糟糕？
 
@@ -35,7 +35,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.79.0 中添加。
 
 ## 参考
 

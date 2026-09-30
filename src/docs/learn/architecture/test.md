@@ -17,9 +17,11 @@
 
 来自 [Test262](https://github.com/tc39/test262)、[Babel](https://github.com/babel/babel) 和 [TypeScript](https://github.com/microsoft/TypeScript) 的解析器测试用于测试 JavaScript、TypeScript 和 JSX 语法。
 
-对于 Test262，包含所有 stage 4 和正则表达式测试。
+共享的 [`tasks/coverage`](https://github.com/oxc-project/oxc/tree/main/tasks/coverage) 测试工具会在解析器、语义分析、代码生成、转换、压缩和 ESTree 测试中复用这些测试夹具集合。
 
-所有一致性结果都存储在快照文件中以跟踪变化：
+对于 Test262，会包含所有 stage 4 和正则表达式测试。
+
+所有一致性结果都存储在快照文件中，以便跟踪变化：
 
 - [test262.snap](https://github.com/oxc-project/oxc/blob/main/tasks/coverage/snapshots/parser_test262.snap).
 - [babel.snap](https://github.com/oxc-project/oxc/blob/main/tasks/coverage/snapshots/parser_babel.snap).
@@ -31,25 +33,25 @@
 
 为了确保解析器在遇到随机数据时不会 panic，使用了三个模糊测试工具：
 
-1. [cargo fuzz](https://github.com/rust-fuzz/cargo-fuzz) 用于 [向解析器发送随机字节](https://github.com/oxc-project/oxc-fuzz-parser/blob/main/fuzz/fuzz_targets/parser.rs)。
+1. [`cargo-fuzz`](https://github.com/oxc-project/fuzz-oxc) 用于向解析器发送随机数据。
 2. [shift-fuzzer-js](https://github.com/shapesecurity/shift-fuzzer-js) 由 [bakkot](https://github.com/bakkot) 开发，用于生成随机但有效的 AST。
-3. [Automated-Fuzzer](https://github.com/qarmin/Automated-Fuzzer) 由 [qarmin](https://github.com/qarmin) 开发，[主动报告](https://github.com/oxc-project/oxc/issues?q=is%3Aissue+author%3Aqarmin+) 崩溃。
+3. [Automated-Fuzzer](https://github.com/qarmin/Automated-Fuzzer) 由 [qarmin](https://github.com/qarmin) 开发，会[主动报告](https://github.com/oxc-project/oxc/issues?q=is%3Aissue+author%3Aqarmin+)崩溃。
 
 ### 内存安全
 
-Oxc 使用基于 [`bumpalo`](https://docs.rs/bumpalo/latest/bumpalo) 的 arena 分配器作为其 AST 和其他数据的内存分配器。
-没有任何 AST 节点类型具有 `Drop` 实现。
-这是由 Oxc 的分配器在编译时强制执行的，如果任何代码尝试在 arena 中分配具有 `Drop` 的类型，会导致编译时错误。这在静态上确保了拥有堆分配数据的类型不能存储在 arena 中，否则会导致内存泄漏。
+Oxc 使用 arena 分配器作为 AST 和其他数据的内存分配器。
+任何 AST 节点类型都没有 `Drop` 实现。
+这由 Oxc 分配器在编译时强制执行：如果代码尝试在 arena 中分配实现了 `Drop` 的类型，就会产生编译错误。这样可以在静态层面确保拥有堆分配数据的类型不会存储在 arena 中，避免内存泄漏。
 
 ### 不安全代码
 
-Oxc 使用 `unsafe` 代码进行性能优化。我们的目标是将 `unsafe` 限制在内部自包含的数据结构中，对外呈现安全的 API。Miri [被运行](https://github.com/oxc-project/oxc/actions/workflows/miri.yml) 在包含这些结构的包上，每次 PR 都会运行。
+Oxc 使用 `unsafe` 代码进行性能优化。我们的目标是将 `unsafe` 限制在对外提供安全 API 的自包含数据结构中。[Miri](https://github.com/oxc-project/oxc/blob/main/.github/workflows/miri.yml) 会在包含这些结构的 crate 发生相关变更时运行。
 
 ## 检查器
 
 ### 快照诊断
 
-所有检查器诊断信息都写入 [快照文件](https://github.com/oxc-project/oxc/tree/main/crates/oxc_linter/src/snapshots) 以测试回归。
+所有检查器诊断信息都会写入[快照文件](https://github.com/oxc-project/oxc/tree/main/crates/oxc_linter/src/snapshots)，用于回归测试。
 
 例如：
 
@@ -68,7 +70,7 @@ Oxc 使用 `unsafe` 代码进行性能优化。我们的目标是将 `unsafe` �
 
 ### 生态系统 CI
 
-[oxc-ecosystem-ci](https://github.com/oxc-project/oxc-ecosystem-ci) 针对大型仓库运行 `oxlint` 以检查误报、回归和 panic。测试的仓库包括：
+[oxc-ecosystem-ci](https://github.com/oxc-project/oxc-ecosystem-ci) 针对大型仓库运行 Oxlint 和 Oxfmt。Oxlint 检查误报、回归和 panic；Oxfmt 检查格式差异、代码丢失、错误和 panic。测试的仓库包括：
 
 - [rolldown/rolldown](https://github.com/rolldown-rs/rolldown)
 - [napi-rs/napi-rs](https://github.com/napi-rs/napi-rs)
@@ -94,7 +96,7 @@ assert(printed == printed2);
 
 例如，幂等地最小化一段代码应该产生相同的结果。
 
-所有工具（解析器、转换器、最小化器等）都在 Test262、Babel 和 TypeScript 测试文件上进行幂等测试。
+代码生成器、转换器、压缩器和格式化器都会在 Test262、Babel 和 TypeScript 测试文件上进行幂等测试。
 
 ## 集成测试
 
@@ -108,7 +110,9 @@ assert(printed == printed2);
 
 仓库 [monitor-oxc](https://github.com/oxc-project/monitor-oxc) 针对 [npm-high-impact](https://github.com/wooorm/npm-high-impact) 中前 3000 个 npm 包执行端到端测试。
 
-其 `package.json` 有 3000 个依赖项：
+它会对这些软件包的文件运行代码生成、转换、压缩、名称混淆、空白移除和格式化。
+
+其 `package.json` 将这些软件包列为依赖项：
 
 ```json
 "devDependencies": {
@@ -144,14 +148,14 @@ test("zwitch", () => import("zwitch").then(assert.ok));
 
 此测试文件在每个工具（代码生成器、转换器、最小化器等）重写 `node_modules` 中的所有文件后运行。
 
-包每天更新到最新版本。
+该工作流每三小时运行一次。
 
-此设置捕获了许多一致性测试套件遗漏的隐蔽错误。
+还会针对 Vue 测试隔离声明。
 
 ---
 
-如果您有任何关于如何改进我们测试基础设施的想法，
-请随时在 [Discord][discord-url] 上联系我们。
+如果你对如何改进我们的测试基础设施有任何想法，
+欢迎在 [Discord][discord-url] 上联系我们。
 
 [discord-url]: https://discord.gg/9uXCAwqQZW
 [code-coverage-badge]: https://codecov.io/github/oxc-project/oxc/branch/main/graph/badge.svg

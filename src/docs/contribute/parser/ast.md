@@ -41,15 +41,11 @@ just ast
 
 ```rust
 #[ast(visit)]
-pub struct FunctionDeclaration<'a> {
+pub struct IdentifierReference<'a> {
+    pub node_id: Cell<NodeId>,
     pub span: Span,
-    pub id: Option<BindingIdentifier<'a>>,
-    pub generator: bool,
-    pub r#async: bool,
-    pub params: FormalParameters<'a>,
-    pub body: Option<FunctionBody<'a>>,
-    pub type_parameters: Option<TSTypeParameterDeclaration<'a>>,
-    pub return_type: Option<TSTypeAnnotation<'a>>,
+    pub name: Ident<'a>,
+    pub reference_id: Cell<Option<ReferenceId>>,
 }
 ```
 
@@ -65,9 +61,11 @@ AST 使用内存 arena 进行高效分配：
 
 ```rust
 use oxc_allocator::Allocator;
+use oxc_parser::Parser;
 
 let allocator = Allocator::default();
-let ast = parser.parse(&allocator, source_text, source_type)?;
+let parsed = Parser::new(&allocator, source_text, source_type).parse();
+let ast = parsed.program;
 ```
 
 优势：
@@ -84,14 +82,18 @@ let ast = parser.parse(&allocator, source_text, source_type)?;
 使用生成的访问者进行 AST 遍历：
 
 ```rust
-use oxc_ast::visit::{Visit, walk_mut};
+use oxc_ast::ast::Function;
+use oxc_ast_visit::{Visit, walk};
+use oxc_syntax::scope::ScopeFlags;
 
 struct MyVisitor;
 
 impl<'a> Visit<'a> for MyVisitor {
-    fn visit_function_declaration(&mut self, func: &FunctionDeclaration<'a>) {
-        println!("发现函数：{:?}", func.id);
-        walk_mut::walk_function_declaration(self, func);
+    fn visit_function(&mut self, func: &Function<'a>, flags: ScopeFlags) {
+        if func.is_function_declaration() {
+            println!("发现函数：{:?}", func.id);
+        }
+        walk::walk_function(self, func, flags);
     }
 }
 
@@ -107,29 +109,32 @@ visitor.visit_program(&program);
 例如，将字符串字面量的二元加法转换为单个字符串字面量：
 
 ```rust
-use oxc_ast::AstBuilder;
+use oxc_ast::{
+    ast::{BinaryOperator, Expression},
+    builder::AstBuilder,
+};
 use oxc_ast_visit::{VisitMut, walk_mut};
+use oxc_span::SPAN;
 use oxc_str::Str;
 
 struct MyTransformer<'a> {
-    pub builder: &'a AstBuilder<'a>,
+    builder: &'a AstBuilder<'a>,
 }
 
 impl<'a> VisitMut<'a> for MyTransformer<'a> {
     fn visit_expression(&mut self, expr: &mut Expression<'a>) {
-        // 检测你想在从一种枚举变体变为另一种时修改的表达式类型。
-        if let Expression::BinaryExpression(bin_expr) = expr
+        if let Expression::BinaryExpression(binary) = expr
             && let (
                 BinaryOperator::Addition,
-                Expression::StringLiteral(sl),
-                Expression::StringLiteral(sr),
-            ) = (bin_expr.operator, &bin_expr.left, &bin_expr.right)
+                Expression::StringLiteral(left),
+                Expression::StringLiteral(right),
+            ) = (binary.operator, &binary.left, &binary.right)
         {
             let value = Str::from_strs_array_in(
-                [sl.value.as_str(), sr.value.as_str()],
-                self.builder.allocator,
+                [left.value.as_str(), right.value.as_str()],
+                self.builder,
             );
-            *expr = self.builder.expression_string_literal(SPAN, value, None);
+            *expr = Expression::new_string_literal(SPAN, value, None, self.builder);
         }
 
         walk_mut::walk_expression(self, expr);
@@ -140,17 +145,15 @@ impl<'a> VisitMut<'a> for MyTransformer<'a> {
 例如，在不改变其类型的情况下修改二元表达式：
 
 ```rust
-use oxc_ast::AstBuilder;
+use oxc_ast::ast::{BinaryExpression, BinaryOperator};
 use oxc_ast_visit::{VisitMut, walk_mut};
 
-struct MyTransformer<'a> {
-    pub builder: &'a AstBuilder<'a>,
-}
+struct MyTransformer;
 
-impl<'a> VisitMut<'a> for MyTransformer<'a> {
+impl<'a> VisitMut<'a> for MyTransformer {
     fn visit_binary_expression(&mut self, expr: &mut BinaryExpression<'a>) {
         if expr.operator == BinaryOperator::Addition {
-            // 修改 AST 节点。你只能修改 left/right 和 operator 部分，不能修改表达式本身的类型。
+            // 修改 expr.left、expr.right 或 expr.operator。
         }
         walk_mut::walk_binary_expression(self, expr);
     }
@@ -164,18 +167,23 @@ impl<'a> VisitMut<'a> for MyTransformer<'a> {
 使用 AST 构建器创建节点：
 
 ```rust
-use oxc_ast::AstBuilder;
+use oxc_ast::{
+    ast::{BinaryOperator, Expression},
+    builder::AstBuilder,
+};
+use oxc_span::SPAN;
 
 let ast = AstBuilder::new(&allocator);
 
 // 创建一个二元表达式：a + b
-let left = ast.expression_identifier_reference(SPAN, "a");
-let right = ast.expression_identifier_reference(SPAN, "b");
-let expr = ast.expression_binary_expression(
+let left = Expression::new_identifier(SPAN, "a", &ast);
+let right = Expression::new_identifier(SPAN, "b", &ast);
+let expr = Expression::new_binary_expression(
     SPAN,
     left,
     BinaryOperator::Addition,
     right,
+    &ast,
 );
 ```
 
@@ -184,13 +192,20 @@ let expr = ast.expression_binary_expression(
 常用模式作为辅助函数提供：
 
 ```rust
-impl<'a> AstBuilder<'a> {
-    pub fn expression_numeric_literal(&self, span: Span, value: f64) -> Expression<'a> {
-        self.alloc(Expression::NumericLiteral(
-            self.alloc(NumericLiteral { span, value, raw: None })
-        ))
-    }
-}
+use oxc_ast::{
+    ast::{Expression, NumberBase},
+    builder::AstBuilder,
+};
+use oxc_span::SPAN;
+
+let ast = AstBuilder::new(&allocator);
+let number = Expression::new_numeric_literal(
+    SPAN,
+    42.0,
+    None,
+    NumberBase::Decimal,
+    &ast,
+);
 ```
 
 ## 开发工作流
@@ -201,9 +216,13 @@ impl<'a> AstBuilder<'a> {
 
    ```rust
    #[ast(visit)]
+   #[derive(Debug)]
+   #[generate_derive(CloneIn, Dummy, ReplaceWith, TakeIn)]
+   #[generate_derive(ContentEq, ESTree, GetSpan, GetSpanMut, UnstableAddress)]
    pub struct MyNewNode<'a> {
+       pub node_id: Cell<NodeId>,
        pub span: Span,
-       pub name: Atom<'a>,
+       pub name: Ident<'a>,
        pub value: Expression<'a>,
    }
    ```
@@ -213,7 +232,7 @@ impl<'a> AstBuilder<'a> {
    ```rust
    pub enum Statement<'a> {
        // ... 现有变体
-       MyNewStatement(Box<'a, MyNewNode<'a>>),
+       MyNewStatement(Box<'a, MyNewNode<'a>>) = 18,
    }
    ```
 
@@ -225,8 +244,8 @@ impl<'a> AstBuilder<'a> {
 
 4. **实现解析逻辑**：
    ```rust
-   impl<'a> Parser<'a> {
-       fn parse_my_new_node(&mut self) -> Result<MyNewNode<'a>> {
+   impl<'a, C: ParserConfig> ParserImpl<'a, C> {
+       fn parse_my_new_statement(&mut self) -> Statement<'a> {
            // 解析实现
        }
    }
@@ -250,15 +269,15 @@ impl<'a> AstBuilder<'a> {
 AST 专为缓存效率而设计：
 
 ```rust
-// 好：紧凑表示
-struct CompactNode<'a> {
-    span: Span,           // 8 字节
-    flags: u8,            // 1 字节
-    name: Atom<'a>,       // 8 字节
+// 正确：为大型枚举载荷使用 Box
+pub enum Expression<'a> {
+    NumericLiteral(Box<'a, NumericLiteral<'a>>) = 2,
+    StringLiteral(Box<'a, StringLiteral<'a>>) = 5,
+    // ... 其他变体
 }
 
-// 避免：未装箱的大枚举
-enum LargeEnum {
+// 避免：直接存储大型载荷
+pub enum LargeEnum {
     Small,
     Large { /* 200 字节的数据 */ },
 }
@@ -269,11 +288,13 @@ enum LargeEnum {
 所有 AST 节点都在 arena 中分配：
 
 ```rust
-// 由 #[ast] 宏自动处理
-let node = self.ast.alloc(MyNode {
-    span: SPAN,
-    value: 42,
-});
+let node = Expression::new_numeric_literal(
+    SPAN,
+    42.0,
+    None,
+    NumberBase::Decimal,
+    &ast,
+);
 ```
 
 ### 枚举大小测试
@@ -281,10 +302,11 @@ let node = self.ast.alloc(MyNode {
 我们强制要求较小的枚举大小：
 
 ```rust
-#[cfg(all(target_arch = "x86_64", target_pointer_width = "64"))]
+#[cfg(target_pointer_width = "64")]
 #[test]
-fn no_bloat_enum_sizes() {
+fn size_asserts() {
     use std::mem::size_of;
+
     assert_eq!(size_of::<Statement>(), 16);
     assert_eq!(size_of::<Expression>(), 16);
     assert_eq!(size_of::<Declaration>(), 16);
@@ -299,11 +321,15 @@ fn no_bloat_enum_sizes() {
 
 ```rust
 #[ast(visit)]
-#[cfg_attr(feature = "serialize", derive(Serialize))]
+#[derive(Debug)]
+#[generate_derive(CloneIn, Dummy, ReplaceWith, TakeIn)]
+#[generate_derive(ContentEq, ESTree, GetSpan, GetSpanMut, UnstableAddress)]
 pub struct MyNode<'a> {
-    #[cfg_attr(feature = "serialize", serde(skip))]
+    pub node_id: Cell<NodeId>,
+    pub span: Span,
+    #[estree(skip)]
     pub internal_data: u32,
-    pub public_field: Atom<'a>,
+    pub public_field: Str<'a>,
 }
 ```
 
@@ -314,9 +340,9 @@ pub struct MyNode<'a> {
 ```rust
 #[ast(visit)]
 pub struct IdentifierReference<'a> {
+    pub node_id: Cell<NodeId>,
     pub span: Span,
-    pub name: Atom<'a>,
-    #[ast(ignore)]
+    pub name: Ident<'a>,
     pub reference_id: Cell<Option<ReferenceId>>,
 }
 ```
@@ -330,7 +356,7 @@ pub struct IdentifierReference<'a> {
 使用调试格式化器检查 AST：
 
 ```rust
-println!("{:#?}", ast_node);
+println!("{ast_node:#?}");
 ```
 
 ### Span 信息
@@ -338,6 +364,8 @@ println!("{:#?}", ast_node);
 跟踪源代码位置以用于错误报告：
 
 ```rust
+use oxc_span::GetSpan;
+
 let span = node.span();
 println!("错误位置：{}:{}", span.start, span.end);
 ```

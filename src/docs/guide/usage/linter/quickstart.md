@@ -194,7 +194,7 @@ oxlint --ignore-path .oxlintignore
 oxlint --ignore-pattern "dist/**" --ignore-pattern "*.min.js"
 ```
 
-禁用忽略处理：
+禁用 `.eslintignore` 和 CLI 忽略选项：
 
 ```sh
 oxlint --no-ignore

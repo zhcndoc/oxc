@@ -2,7 +2,7 @@
 title: "react/todo | Oxlint"
 rule: "react/todo"
 category: "限制"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -22,8 +22,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 报告 React Compiler 尚无法分析的代码，因为这些代码使用了编译器尚未实现的功能。这些代码属于被跳过的优化（提前退出），而不是违反规则。
 
-由 React Compiler 提供支持，该编译器每个文件只运行一次，并与其他 React Compiler 规则共享。移植自
-[`react-hooks/todo`](https://react.dev/reference/eslint-plugin-react-hooks/lints/todo)。
+由 React Compiler 提供支持，该编译器每个文件运行一次，并与其他 React Compiler 规则共享。移植自
+`react-hooks/todo`.
 
 ### 为什么这很糟糕？
 
@@ -35,7 +35,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.79.0 中添加。
 
 ## 参考
 

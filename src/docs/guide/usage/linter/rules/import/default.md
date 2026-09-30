@@ -46,7 +46,7 @@ import bar from "./bar"; // 未找到 ./bar 中的默认导出
 
 ```javascript
 // ./bar.js
-export default function bar() {
+export function bar() {
   return null;
 }
 

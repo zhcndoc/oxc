@@ -2,7 +2,7 @@
 title: "react/capitalized-calls | Oxlint"
 rule: "react/capitalized-calls"
 category: "Suspicious"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -23,7 +23,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 禁止在渲染期间直接调用首字母大写的函数或方法，而不是使用 JSX 渲染它们，因为首字母大写的名称是为组件保留的。
 
 由 React Compiler 提供支持，该编译器每个文件运行一次，并与其他 React Compiler 规则共享。移植自
-[`react-hooks/capitalized-calls`](https://react.dev/reference/eslint-plugin-react-hooks/lints/capitalized-calls)。
+`react-hooks/capitalized-calls`.
 
 ### 为什么这是个问题？
 
@@ -59,7 +59,7 @@ function Component() {
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.79.0 中添加。
 
 ## 参考
 

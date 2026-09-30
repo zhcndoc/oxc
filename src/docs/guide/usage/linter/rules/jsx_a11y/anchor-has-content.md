@@ -25,7 +25,9 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 或者，你也可以使用 `title` 属性或 `aria-label` 属性。
 
-### 为什么这不好？
+直接作为 JSX 属性值传递给自定义组件的锚点会被忽略，因为接收组件可能会提供其内容。
+
+### 为什么这是不好的做法？
 
 没有内容的锚点元素可能会让依赖屏幕阅读器理解内容的用户感到困惑。
 
@@ -39,6 +41,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 <a dangerouslySetInnerHTML={{ __html: 'foo' }} />
 <a title='foo' />
 <a aria-label='foo' />
+<Button render={<a href='/home' />}>Home</Button>
 ```
 
 以下是此规则的**错误**代码示例：

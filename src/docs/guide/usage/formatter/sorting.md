@@ -146,6 +146,9 @@ export default defineConfig({
 
 :::
 
+并非所有 `perfectionist` 选项都可用。特别是依赖源文件外部信息的选项不受支持。
+例如，`tsconfigPath` 会通过 `tsconfig.json` 解析 TypeScript 路径别名。要将别名导入归类为内部导入，请在 `internalPattern` 中列出其前缀，或使用 `customGroups` 匹配它们。
+
 ## 排序 Tailwind CSS 类
 
 排序 Tailwind 工具类。

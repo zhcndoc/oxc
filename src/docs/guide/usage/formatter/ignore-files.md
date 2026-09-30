@@ -6,7 +6,7 @@ title: "Ignore files | Oxfmt"
 
 Oxfmt 提供了多种排除文件不进行格式化的方法。
 
-Some ignore mechanisms apply globally, while others are scoped to the config file they belong to:
+一些忽略机制是全局应用的，而另一些只作用于其所属的配置文件：
 
 | 机制                              | 作用范围              |
 | --------------------------------- | --------------------- |
@@ -14,7 +14,7 @@ Some ignore mechanisms apply globally, while others are scoped to the config fil
 | `.prettierignore` / `--ignore-path` | 全局                |
 | 配置中的 `ignorePatterns`         | 仅限该配置           |
 
-When using [nested config](./config#create-a-config-file), `ignorePatterns` only applies to files that are resolved by that particular config file. Global mechanisms always apply regardless of which config file is in effect.
+使用[嵌套配置](./config#create-a-config-file)时，`ignorePatterns` 仅适用于由该配置文件解析的文件。无论当前使用哪个配置文件，全局机制始终生效。
 
 ## `ignorePatterns`
 
@@ -52,9 +52,13 @@ Oxfmt 遵循与 Git 本身相同的 Git 忽略规则：
 - 父目录中的 `.gitignore` 文件（直到仓库边界）
 - `.git/info/exclude`
 
-However, global gitignore (`core.excludesFile`) is not read.
+但是，不会读取全局 gitignore（`core.excludesFile`）。
 
 被 `.gitignore` 忽略的文件如果显式指定**仍然可以被格式化**。
+
+请注意，此例外仅适用于显式指定的**文件**。
+目录目标仍会在应用 `.gitignore` 的情况下遍历，因此 `oxfmt dist` 不会格式化被忽略的 `dist/` 下的文件。
+要格式化这些文件，请指定文件，例如 `oxfmt dist/index.js`，或使用 shell 展开的（不带引号的）glob，例如 `oxfmt dist/**/*.js`。
 
 ## VCS 目录和 `node_modules`
 

@@ -6,8 +6,9 @@
 
 - [消除死代码。](./minifier/dead-code-elimination)
 - [将语法转换为更短且更重复的输出。](./minifier/syntax-normalization)
-- [混淆变量名。](./minifier/mangling)
-- [移除空白和注释。](./minifier/whitespace-stripping)
+- [混淆变量名和选定的属性名。](./minifier/mangling)
+- [移除空白和注释。](./minifier/codegen#whitespace-stripping)
+- [转义非 ASCII 字符。](./minifier/codegen#ascii-escaping)
 
 ## 假设
 

@@ -14,7 +14,7 @@ title: "不支持的功能 | Oxfmt"
 
 - `package.json` 中的 `prettier` 字段
 - 子目录中的嵌套 `.editorconfig`
-- `experimentalTernaries` 和 `experimentalOperatorPosition` 选项
+- `experimentalTernaries` 选项
 
 注意：默认 `printWidth` 为 `100`（Prettier 使用 `80`）。
 

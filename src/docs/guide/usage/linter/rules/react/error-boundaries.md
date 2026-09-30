@@ -2,7 +2,7 @@
 title: "react/error-boundaries | Oxlint"
 rule: "react/error-boundaries"
 category: "正确性"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -63,7 +63,7 @@ function Component(props) {
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.79.0 中添加。
 
 ## 参考
 

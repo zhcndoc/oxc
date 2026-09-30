@@ -2,7 +2,7 @@
 title: "react/hooks | Oxlint"
 rule: "react/hooks"
 category: "Suspicious"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -23,7 +23,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 运行 React Compiler 的 Rules of Hooks 验证：hooks 必须无条件调用，以一致的顺序调用，在组件或 hook 的顶层调用，并且不能作为一等值使用。
 
 由 React Compiler 提供支持，该编译器每个文件运行一次，并与其他 React Compiler 规则共享。移植自
-[`react-hooks/hooks`](https://react.dev/reference/eslint-plugin-react-hooks/lints/hooks)。
+`react-hooks/hooks`.
 
 此规则与 `react/rules-of-hooks` 存在重叠；因此上游将其禁用。
 
@@ -59,7 +59,7 @@ function Component(props) {
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.79.0 中添加。
 
 ## 参考
 

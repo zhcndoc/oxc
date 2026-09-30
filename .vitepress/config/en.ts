@@ -265,8 +265,8 @@ export const enConfig = defineLocaleConfig("root", {
               link: "/docs/guide/usage/minifier/mangling",
             },
             {
-              text: "空白压缩",
-              link: "/docs/guide/usage/minifier/whitespace-stripping",
+              text: "代码生成",
+              link: "/docs/guide/usage/minifier/codegen",
             },
             {
               text: "常见问题",

@@ -357,6 +357,8 @@ Glob 模式，用于匹配此覆盖的文件。
 如果您指定了多个条件，如 `elementNamePattern`、`selector` 和 `modifiers`，
 则所有条件都必须满足才能匹配自定义组（与逻辑）。
 
+注意：预定义的组名（例如 `side_effect`、`external`）和 `unknown` 是保留名称，不能用作 `groupName`。
+
 - 默认值：`[]`
 
 #### sortImports.customGroups[n]

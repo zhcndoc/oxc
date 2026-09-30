@@ -95,6 +95,23 @@ createRoot(document.getElementById("root")).render(<App />);
 
 此规则接受一个包含以下属性的配置对象：
 
+### allowCompoundComponents
+
+type: `boolean`
+
+default: `false`
+
+当导出对象的每个属性都是 React 组件时允许导出该对象。
+这与 Vite 对复合组件的支持相匹配。对象不能为空，不能包含嵌套对象、展开或访问器，
+并且匿名函数必须使用组件名称作为静态属性键。
+
+```jsx
+// 当 allowCompoundComponents: true 时允许
+const Root = () => <div />;
+const Label = () => <span />;
+export const Tag = { Root, Label };
+```
+
 ### allowConstantExport
 
 type: `boolean`

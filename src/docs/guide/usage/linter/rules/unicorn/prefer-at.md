@@ -5,7 +5,7 @@ category: "Pedantic"
 version: "1.20.0"
 default: false
 type_aware: false
-fix: "fixable_dangerous_fix"
+fix: "fixable_dangerous_fix_or_suggestion"
 upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-at.md"
 ---
 
@@ -25,6 +25,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 方法。
 
 此规则也不鼓励使用 [`String#charAt()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt)。
+它还会检查用于提取单个字符的 `String#substring()` 调用。
 
 ### 为什么这不好？
 

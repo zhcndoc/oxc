@@ -2,7 +2,7 @@
 title: "react/void-use-memo | Oxlint"
 rule: "react/void-use-memo"
 category: "Correctness"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -23,7 +23,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 验证 `useMemo()` 回调是否返回值，以及记忆化的结果是否确实被组件或钩子使用。
 
 由 React Compiler 提供支持，该编译器每个文件运行一次，并与其他 React Compiler 规则共享。移植自
-[`react-hooks/void-use-memo`](https://react.dev/reference/eslint-plugin-react-hooks/lints/void-use-memo)。
+`react-hooks/void-use-memo`.
 
 ### 为什么这是不好的？
 
@@ -59,7 +59,7 @@ function Component({ a }) {
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.79.0 中添加。
 
 ## 参考
 

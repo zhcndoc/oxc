@@ -39,9 +39,9 @@ Oxfmt 面向大型代码库和 CI 环境，强调高吞吐量和可预测的性�
 Oxfmt 包含了通常需要外部 Prettier 插件的内置功能：
 
 - [导入排序](./formatter/sorting#sort-imports)
-- [Tailwind CSS 类排序](./formatter/sorting#tailwind-css-class-sorting)
+- [Tailwind CSS 类排序](./formatter/sorting#sort-tailwind-css-classes)
 - [package.json 字段排序](./formatter/sorting#sort-package-json-fields)
-- [嵌入式格式化](./formatter/embedded-formatting)（CSS-in-JS、GraphQL 等）。
+- [嵌入式格式化](./formatter/embedded-formatting)（CSS-in-JS、GraphQL 等）
 
 ## 兼容 Prettier
 

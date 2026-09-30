@@ -2,7 +2,7 @@
 title: "react/syntax | Oxlint"
 rule: "react/syntax"
 category: "限制"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -22,7 +22,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 报告 React Compiler 在分析组件或 hook 时遇到的无效 JavaScript，例如重新赋值 `const` 绑定
 
-此规则由 React Compiler 提供支持，React Compiler 每个文件运行一次，并与其他 React Compiler 规则共享。移植自 [`react-hooks/syntax`](https://react.dev/reference/eslint-plugin-react-hooks/lints/syntax)
+由 React Compiler 提供支持，该编译器每个文件运行一次，并与其他 React Compiler 规则共享。移植自
+`react-hooks/syntax`.
 
 ### 为什么这很糟糕？
 
@@ -34,7 +35,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ## 版本
 
-此规则在 vnext 中添加
+此规则在 v1.79.0 中添加。
 
 ## 参考
 

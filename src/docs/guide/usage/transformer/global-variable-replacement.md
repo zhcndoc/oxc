@@ -29,7 +29,17 @@ const result = await transform("lib.js", sourceCode, {
 });
 ```
 
-每个 `define` 条目都会将一个表达式映射为包含表达式的代码字符串。其键必须是标识符（例如 `__DEV__`），或者是由标识符组成的点分序列（例如 `process.env.NODE_ENV`、`import.meta.env.MODE`）。其值必须是一个有效表达式。
+每个 `define` 条目都会将一个表达式映射到包含表达式的代码字符串。键可以是标识符（例如 `__DEV__`）、由标识符组成的点分序列（例如 `process.env.NODE_ENV` 或 `import.meta.env.MODE`），也可以是对上述任一形式使用 `typeof` 的表达式（例如 `typeof window` 或 `typeof globalThis.process`）。值必须是有效的表达式。
+
+```js
+import { transform } from "oxc-transform";
+
+const result = await transform("lib.js", sourceCode, {
+  define: {
+    "typeof window": '"undefined"',
+  },
+});
+```
 
 ::: tip 始终给值加引号
 

@@ -2,7 +2,7 @@
 title: "react/memo-dependencies | Oxlint"
 rule: "react/memo-dependencies"
 category: "Suspicious"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -22,8 +22,8 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 验证 `useMemo()` 和 `useCallback()` 是否声明了完整的依赖列表，且不包含多余值。
 
-由 React Compiler 提供支持，它会为每个文件运行一次，并与其他 React Compiler 规则共享。移植自
-[`react-hooks/memo-dependencies`](https://react.dev/reference/eslint-plugin-react-hooks/lints/memo-dependencies)。
+由 React Compiler 提供支持，该编译器每个文件运行一次，并与其他 React Compiler 规则共享。移植自
+`react-hooks/memo-dependencies`.
 
 ### 为什么这是个问题？
 
@@ -35,7 +35,7 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ## 版本
 
-此规则在 vnext 中添加。
+此规则在 v1.79.0 中添加。
 
 ## 参考
 

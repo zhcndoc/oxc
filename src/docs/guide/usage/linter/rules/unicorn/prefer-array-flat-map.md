@@ -5,7 +5,7 @@ category: "Perf"
 version: "0.0.14"
 default: false
 type_aware: false
-fix: "fixable_fix"
+fix: "fixable_safe_fix_or_suggestion"
 upstream: "https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-array-flat-map.md"
 ---
 
@@ -20,11 +20,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ### 它的作用
 
-当 `.map().flat()` 一起使用时，优先使用 `.flatMap()`。
+优先使用单个 `.flatMap()`，而不是 `.map().flat()` 或 `.filter().flatMap()`。
 
 ### 为什么这有问题？
 
-使用 `.flatMap(…)` 而不是 `.map(…).flat()` 会稍微更高效一些。
+单个 `.flatMap(…)` 可以避免创建中间数组。
 
 ### 示例
 
@@ -32,12 +32,14 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 ```javascript
 const bar = [1, 2, 3].map((i) => [i]).flat();
+const result = values.filter((value) => value > 0).flatMap((value) => [value, value]);
 ```
 
 以下是此规则的**正确**代码示例：
 
 ```javascript
 const bar = [1, 2, 3].flatMap((i) => [i]);
+const result = values.flatMap((value) => (value > 0 ? [value, value] : []));
 ```
 
 ## 如何使用

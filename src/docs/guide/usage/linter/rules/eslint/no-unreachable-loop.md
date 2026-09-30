@@ -2,7 +2,7 @@
 title: "eslint/no-unreachable-loop | Oxlint"
 rule: "eslint/no-unreachable-loop"
 category: "Nursery"
-version: "next"
+version: "1.79.0"
 default: false
 type_aware: false
 fix: "none"
@@ -62,7 +62,7 @@ for (const item of items) {
 
 ## 版本
 
-此规则已在 vnext 中添加。
+此规则在 v1.79.0 中添加。
 
 ## 参考资料
 

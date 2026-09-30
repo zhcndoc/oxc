@@ -22,7 +22,11 @@ const source = `https://github.com/oxc-project/oxc/blob/${ data }/crates/oxc_lin
 
 禁止读取但从未赋值的 let 或 var 变量。
 
-### 为什么这不好？
+#### 忽略的文件
+
+此规则会完全忽略 `.svelte` 和 `.vue` 文件。Oxlint 只解析这些文件的 `<script>` 块，因此由模板赋值的绑定看起来像从未被赋值。在 Svelte 中，模板通过 `bind:this={el}` 和 `bind:value={x}` 写入；在 Vue 中，`<script setup>` 中的 `let` 是一个 `setup-let` 绑定，`v-model="x"` 和 `@click="x = 1"` 等内联处理程序会直接为其赋值。
+
+### 为什么这是不好的做法？
 
 此规则会标记那些从未被赋值、但仍在代码中被读取或使用的 let 或 var 声明。
 由于这些变量的值始终为 `undefined`，它们的使用很可能是编程错误。

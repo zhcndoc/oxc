@@ -4,7 +4,7 @@
 
 ## 特性
 
-以下功能按固定顺序运行，无论选项的顺序如何：
+无论选项的顺序如何，Oxc 的转换流水线都会按固定顺序运行受支持的功能：
 
 1. **[React 编译器](./transformer/react-compiler)** — 最先运行，基于原始源代码。
 2. **[TypeScript](./transformer/typescript)** — 类型剥离。
@@ -15,6 +15,8 @@
 7. **[降级](./transformer/lowering)** — 从 ES2026 降级到 ES2015。
 8. **[注入](./transformer/global-variable-replacement#inject)** — 全局变量注入。
 9. **[定义](./transformer/global-variable-replacement#define)** — 全局变量替换。
+
+`oxc-transform` 暴露第 2 至第 9 步。专用的 `oxc-transform-react` 软件包会先运行 React Compiler，然后移除 TypeScript 语法、运行 React Refresh 并转换 JSX。
 
 Oxc 还支持在不使用 TypeScript 编译器的情况下进行 [TypeScript Isolated Declarations emit](./transformer/isolated-declarations)。
 
@@ -62,6 +64,16 @@ const result = await transform("lib.ts", sourceCode, {
 使用带有 `transformer` 特性的总包 crate [oxc][url-oxc-crate]。
 
 Rust 使用示例可[在此处](https://github.com/oxc-project/oxc/blob/main/crates/oxc_transformer/examples/transformer.rs)查看。
+
+## 专用转换软件包
+
+### [`oxc-transform-react`](https://npmx.dev/package/oxc-transform-react)
+
+面向 React 的转换流水线，结合了实验性的 React Compiler、TypeScript 语法移除、JSX 转换和 React Fast Refresh。
+
+### [`oxc-transform-relay`](https://npmx.dev/oxc-transform-relay)
+
+Relay 转换器会将 `graphql` 标记模板替换为对 `relay-compiler` 生成的构件的引用，同时保留其他语法供下游工具使用。
 
 ## 集成
 
